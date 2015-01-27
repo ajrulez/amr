@@ -6,6 +6,8 @@ import edu.stanford.nlp.stamr.AMRSlurp;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,6 +24,7 @@ public class DumpSequence {
         AMR[] train = AMRSlurp.slurp("data/training-500-subset.txt", AMRSlurp.Format.LDC);
         dumpSequences(train, "data/training-500-seq.txt");
         dumpManygen(train, "data/training-500-manygen.txt");
+        dumpCONLL(train, "data/training-500-conll.txt");
     }
 
     private static String getType(AMR amr, int i) {
@@ -126,7 +129,29 @@ public class DumpSequence {
             AMR.Node[] nodes = new AMR.Node[amr.nodes.size()];
             int i = 0;
             for (AMR.Node node : amr.nodes) {
-                nodes[i] = node;
+                nodes[i++] = node;
+            }
+            assert(i == nodes.length);
+
+            for (int j = 0; j < nodes.length; j++) {
+                bw.append(""+nodes[j].alignment).append("\t");
+                bw.append(nodes[j].toString().replaceAll(" ","")).append("\t");
+
+                if (amr.incomingArcs.containsKey(nodes[j])) {
+                    List<AMR.Arc> incoming = amr.incomingArcs.get(nodes[j]);
+
+                    assert(incoming.size() > 0);
+
+                    // Multiheaded (incoming.size() > 1) can just pick one and should still be a tree.
+
+                    AMR.Arc parent = incoming.get(0);
+                    int parentId = Arrays.asList(nodes).indexOf(parent.head);
+                    bw.append(""+parentId).append("\t").append(parent.title);
+                }
+                else {
+                    bw.append("-1\tROOT");
+                }
+                bw.append("\n");
             }
             bw.append("\n");
         }
