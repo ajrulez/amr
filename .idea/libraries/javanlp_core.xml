@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="javanlp-core">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-more.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-core.jar!/classes/edu/stanford/nlp/ie/ner/webapp/WEB-INF/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-core.jar!/classes/edu/stanford/nlp/parser/webapp/WEB-INF/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-core.jar!/classes/edu/stanford/nlp/pipeline/webapp/WEB-INF/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-core.jar!/classes/edu/stanford/nlp/time/suservlet/WEB-INF/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-core.jar!/edu/stanford/nlp/ie/ner/webapp/WEB-INF/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-core.jar!/edu/stanford/nlp/parser/webapp/WEB-INF/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-core.jar!/edu/stanford/nlp/pipeline/webapp/WEB-INF/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-core.jar!/edu/stanford/nlp/time/suservlet/WEB-INF/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-core.jar!/itest/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-core.jar!/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-core.jar!/test/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-more.jar!/itest/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-more.jar!/src" />
+      <root url="jar://$PROJECT_DIR$/lib/javanlp-more.jar!/test/src" />
+    </SOURCES>
+  </library>
+</component>
