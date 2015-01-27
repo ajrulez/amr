@@ -133,8 +133,14 @@ public class DumpSequence {
             }
             assert(i == nodes.length);
 
+            for (int j = 0; j < amr.sourceText.length; j++) {
+                if (j != 0) bw.append(" ");
+                bw.append(amr.sourceText[j]);
+            }
+            bw.append("\n");
+
             for (int j = 0; j < nodes.length; j++) {
-                bw.append(""+nodes[j].alignment).append("\t");
+                bw.append(""+(j+1)).append("\t");
                 bw.append(nodes[j].toString().replaceAll(" ","")).append("\t");
 
                 if (amr.incomingArcs.containsKey(nodes[j])) {
@@ -145,12 +151,13 @@ public class DumpSequence {
                     // Multiheaded (incoming.size() > 1) can just pick one and should still be a tree.
 
                     AMR.Arc parent = incoming.get(0);
-                    int parentId = Arrays.asList(nodes).indexOf(parent.head);
+                    int parentId = Arrays.asList(nodes).indexOf(parent.head)+1;
                     bw.append(""+parentId).append("\t").append(parent.title);
                 }
                 else {
-                    bw.append("-1\tROOT");
+                    bw.append("0\tROOT");
                 }
+                bw.append("\t"+nodes[j].alignment);
                 bw.append("\n");
             }
             bw.append("\n");
