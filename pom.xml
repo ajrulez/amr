@@ -27,5 +27,10 @@
             <artifactId>lanterna</artifactId>
             <version>2.1.8</version>
         </dependency>
+        <dependency>
+            <groupId>com.esotericsoftware.kryo</groupId>
+            <artifactId>kryo</artifactId>
+            <version>2.24.0</version>
+        </dependency>
     </dependencies>
 </project>

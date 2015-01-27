@@ -2,13 +2,13 @@ package edu.stanford.nlp.stamr.datagen;
 
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRSlurp;
+import edu.stanford.nlp.util.IdentityHashSet;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by keenon on 12/3/14.
@@ -23,7 +23,7 @@ public class DumpSequence {
     public static void dumpPreAligned() throws IOException {
         AMR[] train = AMRSlurp.slurp("data/training-500-subset.txt", AMRSlurp.Format.LDC);
         dumpSequences(train, "data/training-500-seq.txt");
-        dumpManygen(train, "data/training-500-manygen.txt");
+        dumpManygenDictionaries(train, "data/training-500-manygen.txt");
         dumpCONLL(train, "data/training-500-conll.txt");
     }
 
@@ -33,7 +33,7 @@ public class DumpSequence {
         if (nodes.size() == 1) {
             AMR.Node node = nodes.iterator().next();
 
-            if (node.type == AMR.NodeType.QUOTE) return "QUOTE";
+            if (node.type == AMR.NodeType.QUOTE) return "DICT";
 
             if (node.title.contains("-")) {
                 String[] components = node.title.split("-");
@@ -49,7 +49,6 @@ public class DumpSequence {
                 }
             }
 
-
             if (node.title.equalsIgnoreCase(amr.sourceText[i])) return "IDENTITY";
 
             if (node.title.equalsIgnoreCase(amr.multiSentenceAnnotationWrapper.sentences.get(0).getLemmaAtIndex(i))) return "LEMMA";
@@ -63,10 +62,6 @@ public class DumpSequence {
             }
 
             return "DICT";
-        }
-
-        for (AMR.Node node : nodes) {
-            if (node.type == AMR.NodeType.QUOTE) return "QUOTE";
         }
 
         if (amr.nodeSetConnected(nodes)) {
@@ -89,32 +84,94 @@ public class DumpSequence {
         bw.close();
     }
 
-    public static void dumpManygen(AMR[] bank, String path) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+    public static void dumpManygenDictionaries(AMR[] bank, String path) throws IOException {
+        Map<String,List<String>> dictionaries = new HashMap<String, List<String>>();
+
+        int tokens = 0;
         for (AMR amr : bank) {
+            boolean lastDict = false;
+            int dictStart = -1;
+
             for (int i = 0; i < amr.sourceText.length; i++) {
                 String type = getType(amr, i);
-                bw.append(amr.sourceText[i]).append("\t");
-                if (type.equals("NONE")) {
-                    bw.append("NONE").append("\n");
-                }
-                else {
-                    Set<AMR.Node> nodes = amr.nodesWithAlignment(i);
-                    if (amr.nodeSetConnected(nodes)) {
-                        AMR miniclone = amr.cloneConnectedSubset(nodes).first;
-                        String s = miniclone.toString();
-                        s = s.replaceAll("\\n","").replaceAll("\\t","").replaceAll(" ","");
-                        bw.append(s).append("\n");
-                    }
-                    else {
-                        AMR.Node head = amr.getSetHead(nodes);
-                        bw.append(head.toString().replaceAll(" ","")).append("\n");
+                if (type.equals("DICT")) {
+                    if (!lastDict) {
+                        lastDict = true;
+                        dictStart = i;
                     }
                 }
+                else if (lastDict) {
+                    addToDict(dictStart, i-1, amr, dictionaries);
+                    lastDict = false;
+                }
+
+                tokens++;
             }
-            bw.append("\n");
+
+            if (lastDict) {
+                addToDict(dictStart, amr.sourceText.length-1, amr, dictionaries);
+                lastDict = false;
+            }
+        }
+
+        int numIdentical = 0;
+
+        BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+        for (String s : dictionaries.keySet()) {
+            Set<String> set = new HashSet<String>();
+
+            for (int i = 0; i < dictionaries.get(s).size(); i++) {
+                if (i != 0) bw.write("\n");
+                bw.write(s+"\t");
+                bw.write(dictionaries.get(s).get(i));
+
+                set.add(dictionaries.get(s).get(i));
+            }
+            bw.write("\n");
+
+            if (set.size() == 1) {
+                numIdentical ++;
+            }
         }
         bw.close();
+
+        System.out.println("Dictionary entries with only 1 choice:");
+        System.out.println(numIdentical+" / "+dictionaries.keySet().size()+" = "+
+                ((double)numIdentical / dictionaries.keySet().size()));
+
+        int multichoice = dictionaries.keySet().size() - numIdentical;
+        System.out.println("Dictionaries with multiple choices:");
+        System.out.println(multichoice+" / "+tokens+" = "+
+                ((double)multichoice / tokens));
+    }
+
+    private static void addToDict(int start, int end, AMR amr, Map<String,List<String>> dictionaries) {
+        Set<AMR.Node> nodes = new IdentityHashSet<AMR.Node>();
+
+        String sourceTokens = "";
+        for (int i = start; i <= end; i++) {
+            nodes.addAll(amr.nodesWithAlignment(i));
+
+            if (i != start) {
+                sourceTokens += "_";
+            }
+            sourceTokens += amr.sourceText[i].toLowerCase();
+        }
+
+        if (amr.nodeSetConnected(nodes)) {
+            AMR clone = amr.cloneConnectedSubset(nodes).first;
+            for (AMR.Node node : clone.depthFirstSearch()) {
+                clone.giveNodeUniqueRef(node);
+            }
+            String gen = clone.toString().replaceAll("\\n","").replaceAll("\\t","").replaceAll(" ", "");
+            String context = amr.formatSourceTokens();
+
+            if (!dictionaries.containsKey(sourceTokens)) {
+                dictionaries.put(sourceTokens, new ArrayList<String>());
+            }
+
+            dictionaries.get(sourceTokens).add(gen+"\t"+start+"\t"+end+"\n"+context+"\n");
+        }
     }
 
     // Dumps:
