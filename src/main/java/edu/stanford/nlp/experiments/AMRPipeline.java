@@ -2,20 +2,15 @@ package edu.stanford.nlp.experiments;
 
 import com.github.keenon.minimalml.cache.BatchCoreNLPCache;
 import com.github.keenon.minimalml.cache.CoreNLPCache;
+import com.github.keenon.minimalml.word2vec.Word2VecLoader;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRParser;
 import edu.stanford.nlp.stamr.AMRSlurp;
 import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.Triple;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 import java.util.function.Function;
 
 /**
@@ -27,34 +22,65 @@ public class AMRPipeline {
 
     /////////////////////////////////////////////////////
     // FEATURE SPECS
+    //
+    // Features can return Double, double[], or Strings
+    // (or anything that handles .toString() without
+    // collisions, String is default case)
     /////////////////////////////////////////////////////
+
+    static Map<String,double[]> embeddings;
+
+    static {
+        try {
+            embeddings = Word2VecLoader.loadData("data/google-300-trimmed.ser.gz");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @SuppressWarnings("unchecked")
     LinearPipe<Pair<LabeledSequence,Integer>, String> nerPlusPlus = new LinearPipe<>(
             new ArrayList<Function<Pair<LabeledSequence,Integer>,Object>>(){{
-                add((pair) -> pair.second);
-            }}
+
+                // Input pair is (Seq, index into Seq for current token)
+
+                add((pair) -> pair.first.tokens[pair.second]);
+                add((pair) -> embeddings.get(pair.first.tokens[pair.second]));
+            }},
+            AMRPipeline::writeNerPlusPlusContext
     );
 
     @SuppressWarnings("unchecked")
     LinearPipe<Triple<LabeledSequence,Integer,Integer>, String> dictionaryLookup = new LinearPipe<>(
             new ArrayList<Function<Triple<LabeledSequence,Integer,Integer>,Object>>(){{
-                add((triple) -> triple.second);
-            }}
+
+                // Input triple is (Seq, index into Seq for start of expression, index into Seq for end of expression)
+
+                add((triple) -> triple.first.tokens[triple.second]);
+            }},
+            AMRPipeline::writeDictionaryContext
     );
 
     @SuppressWarnings("unchecked")
     LinearPipe<Triple<AMRNodeSet,Integer,Integer>, Boolean> arcExistence = new LinearPipe<>(
             new ArrayList<Function<Triple<AMRNodeSet,Integer,Integer>,Object>>(){{
+
+                // Input triple is (Set, array offset for first node, array offset for second node)
+
                 add((triple) -> triple.second);
-            }}
+            }},
+            AMRPipeline::writeArcContext
     );
 
     @SuppressWarnings("unchecked")
     LinearPipe<Triple<AMRNodeSet,Integer,Integer>, String> arcType = new LinearPipe<>(
             new ArrayList<Function<Triple<AMRNodeSet,Integer,Integer>,Object>>(){{
+
+                // Input triple is (Set, array offset for first node, array offset for second node)
+
                 add((triple) -> triple.second);
-            }}
+            }},
+            AMRPipeline::writeArcContext
     );
 
     /////////////////////////////////////////////////////
@@ -62,25 +88,50 @@ public class AMRPipeline {
     /////////////////////////////////////////////////////
 
     public void trainStages() throws IOException {
-        List<LabeledSequence> nerPlusPlusData = loadSequenceData("data/training-500-seq.txt");
-        List<LabeledSequence> dictionaryData = loadManygenData("data/training-500-manygen.txt");
-        List<AMRNodeSet> mstData = loadCoNLLData("data/training-500-conll.txt");
+        System.out.println("Loading training data");
+        List<LabeledSequence> nerPlusPlusData = loadSequenceData("data/train-400-seq.txt");
+        List<LabeledSequence> dictionaryData = loadManygenData("data/train-400-manygen.txt");
+        List<AMRNodeSet> mstData = loadCoNLLData("data/train-400-conll.txt");
 
+        System.out.println("Training");
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
         dictionaryLookup.train(getDictionaryForClassifier(dictionaryData));
         arcExistence.train(getArcExistenceForClassifier(mstData));
         arcType.train(getArcTypeForClassifier(mstData));
     }
 
-    public void analyzeStages() throws IOException {
-        List<LabeledSequence> nerPlusPlusData = loadSequenceData("data/training-500-seq.txt");
-        List<LabeledSequence> dictionaryData = loadManygenData("data/training-500-manygen.txt");
-        List<AMRNodeSet> mstData = loadCoNLLData("data/training-500-conll.txt");
+    public AMR runPipeline(String[] parts) {
+        // TODO, actually stitch together outputs
+        return new AMR();
+    }
 
-        nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusData));
-        dictionaryLookup.analyze(getDictionaryForClassifier(dictionaryData));
-        arcExistence.analyze(getArcExistenceForClassifier(mstData));
-        arcType.analyze(getArcTypeForClassifier(mstData));
+    public void analyzeStages() throws IOException {
+        System.out.println("Loading training data");
+        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData("data/train-400-seq.txt");
+        List<LabeledSequence> dictionaryDataTrain = loadManygenData("data/train-400-manygen.txt");
+        List<AMRNodeSet> mstDataTrain = loadCoNLLData("data/train-400-conll.txt");
+
+        System.out.println("Loading testing data");
+        List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData("data/test-100-seq.txt");
+        List<LabeledSequence> dictionaryDataTest = loadManygenData("data/test-100-manygen.txt");
+        List<AMRNodeSet> mstDataTest = loadCoNLLData("data/test-100-conll.txt");
+
+        System.out.println("Running analysis");
+        nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain),
+                getNERPlusPlusForClassifier(nerPlusPlusDataTest),
+                "data/ner-plus-plus-analysis");
+
+        dictionaryLookup.analyze(getDictionaryForClassifier(dictionaryDataTrain),
+                getDictionaryForClassifier(dictionaryDataTest),
+                "data/dictionary-lookup-analysis");
+
+        arcExistence.analyze(getArcExistenceForClassifier(mstDataTrain),
+                getArcExistenceForClassifier(mstDataTest),
+                "data/arc-existence-analysis");
+
+        arcType.analyze(getArcTypeForClassifier(mstDataTrain),
+                getArcTypeForClassifier(mstDataTest),
+                "data/arc-type-analysis");
     }
 
     public static void main(String[] args) throws IOException {
@@ -164,11 +215,15 @@ public class AMRPipeline {
                 if (currentSeq != null) {
                     seqList.add(currentSeq);
                 }
-                currentSeq = new LabeledSequence();
+                currentSeq = null;
+                stage = 0;
             }
 
             else if (stage == 1) {
-                assert(currentSeq != null);
+                assert(currentSeq == null);
+
+                currentSeq = new LabeledSequence();
+                currentSeq.labels = new String[0];
                 currentSeq.tokens = line.split(" ");
                 currentSeq.labels = new String[currentSeq.tokens.length];
             }
@@ -178,13 +233,12 @@ public class AMRPipeline {
                 assert(currentSeq != null);
 
                 // Format layout:
-                // TOKEN, AMR, START_INDEX, END_INDEX
+                // AMR, START_INDEX, END_INDEX
 
-                String token = parts[0];
-                String amr = parts[1];
+                String amr = parts[0];
 
-                int startIndex = Integer.parseInt(parts[2]);
-                int endIndex = Integer.parseInt(parts[3]);
+                int startIndex = Integer.parseInt(parts[1]);
+                int endIndex = Integer.parseInt(parts[2]);
                 for (int i = startIndex; i <= endIndex; i++) {
                     currentSeq.labels[i] = amr;
                 }
@@ -238,9 +292,11 @@ public class AMRPipeline {
                 assert(currentNodeSet == null);
                 currentNodeSet = new AMRNodeSet();
 
-                currentNodeSet.tokens = line.split(" ");
+                String[] parts = line.split("\t");
+                int length = Integer.parseInt(parts[0]);
 
-                int length = currentNodeSet.tokens.length;
+                currentNodeSet.tokens = parts[1].split(" ");
+
                 currentNodeSet.correctArcs = new String[length+1][length+1];
                 currentNodeSet.forcedArcs = new String[length+1][length+1];
                 currentNodeSet.nodes = new AMR.Node[length+1];
@@ -300,9 +356,9 @@ public class AMRPipeline {
     // DATA TRANSFORMS
     /////////////////////////////////////////////////////
 
-    public static Set<Pair<Pair<LabeledSequence,Integer>,String>> getNERPlusPlusForClassifier(
+    public static List<Pair<Pair<LabeledSequence,Integer>,String>> getNERPlusPlusForClassifier(
             List<LabeledSequence> nerPlusPlusData) {
-        Set<Pair<Pair<LabeledSequence,Integer>,String>> nerPlusPlusTrainingData = new HashSet<>();
+        List<Pair<Pair<LabeledSequence,Integer>,String>> nerPlusPlusTrainingData = new ArrayList<>();
         for (LabeledSequence seq : nerPlusPlusData) {
             for (int i = 0; i < seq.tokens.length; i++) {
                 Pair<Pair<LabeledSequence,Integer>,String> pair = new Pair<>();
@@ -314,14 +370,14 @@ public class AMRPipeline {
         return nerPlusPlusTrainingData;
     }
 
-    public static Set<Pair<Triple<LabeledSequence,Integer,Integer>,String>> getDictionaryForClassifier(
+    public static List<Pair<Triple<LabeledSequence,Integer,Integer>,String>> getDictionaryForClassifier(
         List<LabeledSequence> dictionaryData) {
-        Set<Pair<Triple<LabeledSequence,Integer,Integer>,String>> dictionaryTrainingData = new HashSet<>();
+        List<Pair<Triple<LabeledSequence,Integer,Integer>,String>> dictionaryTrainingData = new ArrayList<>();
         for (LabeledSequence seq : dictionaryData) {
             int min = seq.tokens.length;
             int max = 0;
             for (int i = 0; i < seq.tokens.length; i++) {
-                if (seq.labels[i].length() > 0) {
+                if (seq.labels[i] != null) {
                     if (i < min) min = i;
                     if (i > max) max = i;
                 }
@@ -336,13 +392,13 @@ public class AMRPipeline {
         return dictionaryTrainingData;
     }
 
-    public static Set<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> getArcExistenceForClassifier(
+    public static List<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> getArcExistenceForClassifier(
             List<AMRNodeSet> mstData) {
-        Set<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> arcExistenceData = new HashSet<>();
+        List<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> arcExistenceData = new ArrayList<>();
         for (AMRNodeSet set : mstData) {
             for (int i = 0; i < set.correctArcs.length; i++) {
                 for (int j = 0; j < set.correctArcs[i].length; j++) {
-                    boolean arcExists = set.correctArcs[i][j].length() == 1;
+                    boolean arcExists = set.correctArcs[i][j] != null;
                     arcExistenceData.add(new Pair<>(new Triple<>(set, i, j), arcExists));
                 }
             }
@@ -350,13 +406,13 @@ public class AMRPipeline {
         return arcExistenceData;
     }
 
-    public static Set<Pair<Triple<AMRNodeSet,Integer,Integer>,String>> getArcTypeForClassifier(
+    public static List<Pair<Triple<AMRNodeSet,Integer,Integer>,String>> getArcTypeForClassifier(
             List<AMRNodeSet> mstData) {
-        Set<Pair<Triple<AMRNodeSet,Integer,Integer>,String>> arcTypeData = new HashSet<>();
+        List<Pair<Triple<AMRNodeSet,Integer,Integer>,String>> arcTypeData = new ArrayList<>();
         for (AMRNodeSet set : mstData) {
             for (int i = 0; i < set.correctArcs.length; i++) {
                 for (int j = 0; j < set.correctArcs[i].length; j++) {
-                    boolean arcExists = set.correctArcs[i][j].length() == 1;
+                    boolean arcExists = set.correctArcs[i][j] != null;
                     if (arcExists) {
                         arcTypeData.add(new Pair<>(new Triple<>(set, i, j), set.correctArcs[i][j]));
                     }
@@ -364,5 +420,88 @@ public class AMRPipeline {
             }
         }
         return arcTypeData;
+    }
+
+    /////////////////////////////////////////////////////
+    // ERROR ANALYSIS
+    /////////////////////////////////////////////////////
+
+    public static void writeNerPlusPlusContext(Pair<LabeledSequence,Integer> pair, BufferedWriter bw) {
+        LabeledSequence seq = pair.first;
+        for (int i = 0; i < seq.tokens.length; i++) {
+            try {
+                if (i != 0) bw.write(" ");
+                if (i == pair.second) bw.write("[");
+                bw.write(seq.tokens[i]);
+                if (i == pair.second) bw.write("]");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void writeDictionaryContext(Triple<LabeledSequence,Integer,Integer> triple, BufferedWriter bw) {
+        LabeledSequence seq = triple.first;
+        for (int i = 0; i < seq.tokens.length; i++) {
+            try {
+                if (i != 0) bw.write(" ");
+                if (i == triple.second) bw.write("[");
+                bw.write(seq.tokens[i]);
+                if (i == triple.third) bw.write("]");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void writeArcContext(Triple<AMRNodeSet, Integer, Integer> triple, BufferedWriter bw) {
+        AMRNodeSet set = triple.first;
+
+        AMR.Node source = set.nodes[triple.second];
+        AMR.Node sink = set.nodes[triple.third];
+
+        if (source == null || sink == null) return;
+
+        try {
+            if (triple.second == 0) {
+                bw.write("SOURCE:ROOT");
+            }
+            else {
+                bw.write("SOURCE: " + source.toString() + "=\"" + set.tokens[source.alignment] + "\"\n");
+            }
+            bw.write("SINK: "+sink.toString()+"=\""+set.tokens[sink.alignment]+"\"\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < set.tokens.length; i++) {
+            try {
+                if (i != 0) bw.write(" ");
+                if (i == set.nodes[triple.second].alignment) bw.write("<<");
+                if (i == set.nodes[triple.third].alignment) bw.write(">>");
+                bw.write(set.tokens[i]);
+                if (i == set.nodes[triple.second].alignment) bw.write(">>");
+                if (i == set.nodes[triple.third].alignment) bw.write("<<");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        try {
+            bw.write("\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        for (int i = 1; i < set.nodes.length; i++) {
+            if (i == triple.second || i == triple.third) continue;
+            try {
+                AMR.Node node = set.nodes[i];
+                bw.write(node.toString()+"=\""+set.tokens[node.alignment]+"\"\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

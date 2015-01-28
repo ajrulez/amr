@@ -1,0 +1,1934 @@
+4	Establishing Models in Industrial Innovation
+1	(m/model)	4	ARG1	1
+2	(i2/industry)	3	ARG1	3
+3	(i/innovate-01)	1	mod	4
+4	(e/establish-01)	0	ROOT	0
+
+24	Since the Tangshan Earthquake , the starting point for construction standards in the mainland is that under an earthquake of the same magnitude , buildings should preserve their basic frame without collapsing .
+1	(m3/magnitude)	14	ARG2	22
+2	(c2/collapse-01)	6	manner	31
+3	(s3/since)	7	time	0
+4	(b/building)	6	ARG0	24
+5	(b2/basic)	21	mod	28
+6	(p/preserve-01)	7	ARG1	26
+7	(r/recommend-01)	12	domain	25
+8	(e/earthquake)	3	op1	2
+9	(s/start-01)	12	mod	6
+10	(s2/standard)	9	ARG1	10
+11	-	2	polarity	30
+12	(p2/point)	0	ROOT	7
+13	(m/mainland)	12	location	13
+14	(s4/same-41)	1	ARG1-of	21
+15	"Tangshan"	19	op1	2
+16	(t/thing)	21	part-of	24
+17	(e2/earthquake)	7	condition	18
+18	(e/earthquake)	1	poss	18
+19	(n/name)	8	name	2
+20	(c3/construct-01)	10	mod	9
+21	(f/frame)	6	ARG1	29
+22	(m2/magnitude)	8	mod	22
+23	(t/thing)	2	ARG0	24
+24	(b/building)	21	poss	27
+
+27	In regions where the earthquake risk is high , warning the public and spreading disaster prevention awareness could greatly reduce casualties during earthquakes ; this is the very minimum duty that any responsible government should undertake .
+1	(g3/government-organization)	17	ARG0	33
+2	(a2/and)	16	ARG0	12
+3	(m/minimum)	27	mod	28
+4	(p/possible)	7	snt1	17
+5	(r3/risk-01)	9	domain	5
+6	(g/great)	16	extent	18
+7	(m2/multi-sentence)	0	ROOT	23
+8	(t/this)	27	domain	24
+9	(h/high)	14	location-of	7
+10	(w/warn-01)	2	op1	9
+11	(p3/prevent-01)	26	topic	15
+12	(a4/any)	1	mod	31
+13	(c/casualty)	16	ARG1	20
+14	(r/region)	16	location	1
+15	(v/very)	3	degree	27
+16	(r2/reduce-01)	4	domain	19
+17	(u/undertake-01)	27	ARG1-of	35
+18	(r5/recommend-01)	17	ARG1-of	34
+19	(e/earthquake)	5	ARG1	4
+20	(r4/responsible-41)	1	ARG1-of	32
+21	(d2/disaster)	11	ARG1	14
+22	(p2/public)	10	ARG2	11
+23	(g2/govern-01)	1	ARG0-of	33
+24	(e/earthquake)	16	time	22
+25	(s/spread-03)	2	op2	13
+26	(a3/awareness)	25	ARG1	16
+27	(d/duty)	7	snt2	29
+
+38	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure .
+1	(t/this)	38	mod	40
+2	(c4/central)	18	mod	29
+3	(m3/military)	18	part-of	20
+4	(r/regiment)	15	ARG0	22
+5	(r/regiment)	24	ARG0	22
+6	(r/regiment)	9	ARG0	22
+7	(p4/person)	35	ARG0	44
+8	(c5/communicate-01)	14	ARG0	52
+9	(c3/contact-01)	24	ARG1	27
+10	(c2/communicate-01)	16	ARG1	6
+11	(b3/batter-01)	31	ARG1-of	36
+12	(a2/and)	26	snt1	1
+13	(s2/serious)	30	mod	10
+14	(f/fail-01)	36	ARG1	53
+15	(r2/rely-01)	24	instrument	32
+16	(b2/break-12)	25	ARG0	4
+17	1	23	op1	35
+18	(h/headquarters)	9	ARG1	30
+19	(w/way)	35	ARG1	47
+20	(n/name)	3	name	20
+21	(p2/possible)	26	snt2	24
+22	-	35	polarity	46
+23	(j/just)	31	quant	34
+24	(m2/maintain-01)	21	domain	26
+25	(b/bring-01)	12	op2	8
+26	(m/multi-sentence)	0	ROOT	15
+27	"Red"	20	op1	20
+28	(m3/military)	4	part-of	20
+29	"Army"	20	op2	21
+30	(p/problem)	25	ARG1	11
+31	(r3/radio)	15	ARG1	37
+32	(s/surface)	25	ARG2	14
+33	(h3/have-concession-91)	26	snt3	42
+34	(a/also)	25	mod	7
+35	(h2/have-03)	33	ARG1	45
+36	(d/deal-01)	19	instrument-of	49
+37	(p3/past)	21	time	18
+38	(o/occasion)	35	time	41
+
+19	As soon as the earthquake occurred , grass-root organizations contacted their own people and average people also contacted their own systems or departments , in an interdependent manner .
+1	(c2/contact-01)	3	op2	17
+2	(a2/as-soon-as)	3	time	0
+3	(a/and)	0	ROOT	13
+4	(s/system)	12	op1	20
+5	(h/have-org-role-91)	6	ARG0-of	10
+6	(p2/person)	4	poss	15
+7	(i/interdependent)	3	manner	26
+8	(a5/also)	1	mod	16
+9	(p2/person)	14	poss	15
+10	(c/contact-01)	3	op1	9
+11	(a4/average)	6	mod	14
+12	(o/or)	1	ARG1	21
+13	(o2/organization)	5	ARG1	8
+14	(d2/department)	12	op2	22
+15	(p/person)	1	ARG1	12
+16	(e/earthquake)	2	op1	4
+17	(g/grass-roots)	13	mod	7
+18	(o2/organization)	1	ARG0	8
+19	(p2/person)	1	ARG0	15
+
+33	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within .
+1	(s/serve-01)	8	op1	18
+2	(c7/core)	6	ARG1	49
+3	(i2/i)	9	ARG0	9
+4	(i/it)	6	ARG0	17
+5	(i/it)	16	ARG0	17
+6	(e/expose-01)	8	op2	41
+7	(o2/once-and-for-all)	6	manner	42
+8	(a/and)	17	ARG2	8
+9	(b/believe-01)	8	op2	10
+10	(i/it)	1	ARG0	17
+11	(f/false)	19	mod	23
+12	(e2/elitist)	8	op1	32
+13	(s2/strip-01)	1	ARG1	20
+14	(w/within)	2	location	50
+15	(i/it)	32	ARG0	1
+16	(b2/benefit-01)	32	ARG1	6
+17	(c/contrast-01)	0	ROOT	0
+18	(p/politician)	8	op2	35
+19	(b3/benevolence)	13	ARG1	24
+20	(g/great)	16	mod	13
+21	(c6/cannibal)	2	mod	48
+22	(m/most)	20	degree	13
+23	(t/total)	32	degree	4
+24	(o/outer)	26	mod	28
+25	(a3/and)	26	part-of	33
+26	(s3/skin)	28	ARG1	29
+27	-	23	polarity	3
+28	(c2/compose-01)	19	ARG2-of	26
+29	(b4/benefit-01)	9	ARG1	14
+30	(c3/capitalist)	8	op3	38
+31	(r/rot-01)	2	ARG1-of	47
+32	(l/lack-01)	8	op1	5
+33	(a2/and)	16	instrument	40
+
+6	Am I being foolish in doing this ?
+1	interrogative	2	mode	7
+2	(f/foolish)	0	ROOT	3
+3	(t/this)	6	ARG1	6
+4	(i/i)	2	domain	1
+5	(i/i)	6	ARG0	1
+6	(d/do-02)	2	condition	5
+
+18	As long as we stick to this issue , Xinghui surely has no way of winning the lawsuit if it goes to court .
+1	(a/as-long-as)	15	condition	0
+2	(c/company)	13	ARG0	9
+3	(c2/court)	16	ARG4	22
+4	(l2/lawsuit)	11	ARG1	17
+5	(c/company)	11	ARG0	9
+6	(s2/stick-01)	1	op1	4
+7	(i/issue)	6	ARG2	7
+8	-	13	polarity	12
+9	"Xinghui"	10	op1	9
+10	(n/name)	2	name	9
+11	(w3/win-01)	14	instrument-of	15
+12	(t/this)	7	mod	6
+13	(h/have-03)	15	domain	11
+14	(w2/way)	13	ARG1	13
+15	(s/sure)	0	ROOT	10
+16	(g/go-01)	13	condition	20
+17	(w/we)	6	ARG1	3
+18	(l2/lawsuit)	16	ARG1	17
+
+13	Without the guarantee from the contract signed with us , they would surely have been unable to deploy them !
+1	(g/guarantee-01)	12	ARG1-of	2
+2	(w/we)	3	ARG2	8
+3	(s2/sign-02)	8	ARG1-of	6
+4	(t2/they)	3	ARG0	10
+5	(s/sure)	0	ROOT	12
+6	-	7	polarity	15
+7	(p/possible)	5	domain	15
+8	(c/contract)	1	source	5
+9	-	12	polarity	1
+10	(d/deploy-01)	7	domain	17
+11	(t2/they)	10	ARG0	10
+12	(t/thing)	5	manner	2
+13	(t3/they)	10	ARG1	18
+
+22	I headed straight for the center of activities , but in actual fact traffic was being controlled as early as 4 o'clock , and they had already started limiting the crowds entering the sports center .
+1	(s3/sport)	6	mod	33
+2	(f/fact)	21	prep-in	12
+3	(a3/actual)	2	mod	11
+4	(c/contrast-01)	0	ROOT	9
+5	(e/early)	21	time	18
+6	(c5/center)	12	ARG1	34
+7	(d/date-entity)	5	extent	21
+8	(a4/already)	22	time	26
+9	(a2/activity)	6	poss	7
+10	(s2/straight)	19	manner	2
+11	(t/traffic)	21	ARG1	13
+12	(e2/enter-01)	18	ARG0-of	31
+13	(i/i)	19	ARG0	0
+14	"4:00"	7	time	20
+15	(a/and)	4	ARG2	23
+16	(t2/they)	22	ARG0	24
+17	(l2/limit-01)	22	ARG1	28
+18	(c4/crowd)	17	ARG1	30
+19	(h/head-02)	4	ARG1	1
+20	(c6/center)	19	ARG1	5
+21	(c2/control-01)	15	op1	16
+22	(s/start-01)	15	op2	27
+
+16	I had a look at my call register , and out of dozens of calls dialed only one was properly connected !
+1	(c3/call-02)	15	ARG1	14
+2	(i/i)	6	ARG0	0
+3	(o/only)	1	quant	16
+4	(m/multiple)	1	quant	12
+5	(d3/dial-01)	1	ARG1-of	15
+6	(l/look-01)	14	op1	3
+7	(c4/call-02)	10	ARG2	14
+8	12	4	op1	12
+9	(c2/call-02)	11	ARG1	6
+10	(i2/include-91)	1	ARG1-of	11
+11	(r/register-02)	6	ARG1	7
+12	(p/proper)	15	manner	19
+13	1	3	op1	17
+14	(a/and)	0	ROOT	9
+15	(c/connect-01)	14	op2	20
+16	(i/i)	1	ARG0	5
+
+13	He needs to conduct a beer summit between Palin and NBC .
+1	(n3/name)	4	name	10
+2	(n2/name)	6	name	8
+3	(s/summit)	8	mod	6
+4	(p2/publication)	8	ARG1	10
+5	(b/beer)	3	mod	5
+6	(p/person)	8	ARG0	8
+7	"NBC"	1	op1	10
+8	(m/meet-03)	9	ARG1	6
+9	(c/conduct-01)	11	ARG1	3
+10	(h/he)	9	ARG0	0
+11	(n/need-01)	0	ROOT	1
+12	"Palin"	1	op1	8
+13	(h/he)	11	ARG0	0
+
+13	I think Romney wins big today and obviously stays in .
+1	(o/obvious-41)	4	ARG1-of	7
+2	(b/big)	5	degree	4
+3	(i/i)	10	ARG0	0
+4	(s/stay-01)	7	op2	8
+5	(w/win-01)	7	op1	3
+6	(p/person)	5	ARG0	2
+7	(a/and)	10	ARG1	6
+8	(t2/today)	5	time	5
+9	(n/name)	6	name	2
+10	(t/think-01)	0	ROOT	1
+11	(i2/in)	4	ARG3	9
+12	"Romney"	9	op1	2
+13	(p/person)	4	ARG1	2
+
+1	No one
+1	(n2/no-one)	0	ROOT	0
+
+1	Nuts .
+1	(n/nuts)	0	ROOT	0
+
+11	He 's right in some ways but it does n't translate into being right across the board .
+1	(a/across)	2	mod	14
+2	(r/right-41)	10	ARG1	2
+3	(b/board)	1	op1	16
+4	(r2/right-41)	9	ARG2	13
+5	(w/way)	2	mod	5
+6	(h/he)	2	ARG1	0
+7	-	9	polarity	9
+8	(s/some)	5	quant	4
+9	(t/translate-01)	10	ARG2	10
+10	(c/contrast-01)	0	ROOT	6
+11	(h/he)	2	ARG1	0
+
+16	Democrats get it , minorities get it , white republican jurisdictions do n't .
+1	(u2/understand-01)	2	ARG2	11
+2	(c/contrast-01)	0	ROOT	7
+3	(m/minority)	13	op2	4
+4	(j/jurisdiction)	1	ARG0	10
+5	(i/it)	1	ARG1	6
+6	-	1	polarity	12
+7	(p2/political-party)	4	mod	9
+8	"Democrat"	10	op1	0
+9	(u/understand-01)	2	ARG1	5
+10	(n/name)	7	name	0
+11	(w/white)	4	mod	8
+12	"Republican"	10	op1	9
+13	(a/and)	1	ARG0	7
+14	(i/it)	1	ARG1	2
+15	(p/political-party)	13	op1	0
+16	(n2/name)	7	name	9
+
+8	I get what Ron Paul is saying .
+1	"Paul"	3	op2	4
+2	(p/person)	8	ARG0	3
+3	(n/name)	2	name	3
+4	"Ron"	3	op1	3
+5	(t/thing)	6	ARG1	6
+6	(u/understand-01)	0	ROOT	1
+7	(i/i)	6	ARG0	0
+8	(s/say-01)	5	ARG1-of	6
+
+12	How does one survive until the insurance -LRB- hopefully by a respectable company -RRB- claim comes through ?
+1	(o/one)	7	ARG0	2
+2	(r/respect-01)	8	ARG1-of	11
+3	(a/amr-unknown)	12	ARG0	17
+4	(c2/come-17)	11	op1	15
+5	(p/possible)	2	mod	8
+6	(h/hopefully)	2	mod	8
+7	(s/survive-01)	0	ROOT	3
+8	(c4/company)	4	ARG0	6
+9	(i/insurance)	10	ARG1	14
+10	(c3/claim-01)	4	ARG1	14
+11	(u/until)	7	time	4
+12	(c/cause-01)	7	ARG1-of	17
+
+23	Anyone who suffers a loss as have those who lost everything over the weekend will not be made whole , and whatever claim they receive will not come soon or easy .
+1	(w3/whatever)	8	mod	21
+2	(e2/easy)	23	op2	30
+3	(l/lose-02)	12	ARG1	4
+4	(o/over)	3	time	11
+5	(w2/whole)	20	ARG1	18
+6	-	2	polarity	26
+7	(e/everything)	3	ARG1	10
+8	(c2/claim)	17	ARG1	22
+9	(r/resemble-01)	12	ARG1-of	5
+10	(r2/receive-01)	8	ARG1-of	24
+11	(p/person)	9	ARG2	7
+12	(s/suffer-01)	18	ARG0-of	2
+13	(s2/soon)	23	op1	28
+14	-	20	polarity	15
+15	(w/weekend)	4	op1	13
+16	-	13	polarity	26
+17	(c/come-01)	22	op2	27
+18	(a2/anyone)	20	ARG0	0
+19	(l2/lose-02)	11	ARG0-of	9
+20	(m/make-18)	22	op1	17
+21	(a2/anyone)	10	ARG0	23
+22	(a/and)	0	ROOT	20
+23	(o2/or)	17	mod	29
+
+11	He 's a nonfactor at this point and only in out of spite .
+1	(f/factor)	11	op1	3
+2	(o/only)	3	mod	8
+3	(s/spite)	6	ARG0	12
+4	-	1	polarity	3
+5	(t/this)	1	time	5
+6	(c/cause-01)	8	ARG1-of	10
+7	(h/he)	1	domain	0
+8	(i/in)	11	op2	9
+9	(h/he)	8	domain	0
+10	(p/point)	5	op1	6
+11	(a/and)	0	ROOT	7
+
+4	Where is the morality when disease is spread ?
+1	(a/amr-unknown)	3	location	8
+2	(s/spread-03)	3	time	7
+3	(m/morality)	0	ROOT	3
+4	(d/disease)	2	ARG1	5
+
+25	Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ?
+1	(s/something)	21	ARG1	30
+2	(w/want-01)	5	ARG0	19
+3	(i/involve-01)	2	ARG1	21
+4	(c2/cause-01)	15	ARG1	15
+5	(m2/mean-01)	4	ARG1	26
+6	(l2/literal)	16	mod	3
+7	(l/liberal)	9	mod	9
+8	(s/something)	3	ARG2	23
+9	(m/mind)	15	ARG0	10
+10	100	16	value	4
+11	(g2/govern-01)	20	ARG0-of	20
+12	(w/want-01)	4	ARG0	19
+13	-	5	polarity	25
+14	(c/cause-01)	23	ARG1-of	0
+15	(u/understand-01)	23	domain	12
+16	(p/percentage-entity)	23	degree	5
+17	(a/amr-unknown)	4	ARG0	0
+18	(j/just)	4	mod	14
+19	-	2	polarity	18
+20	(g/government-organization)	3	ARG1	20
+21	(o/oppose-01)	5	ARG1	29
+22	(y/you)	2	ARG0	16
+23	(p2/possible)	0	ROOT	6
+24	-	23	polarity	6
+25	(y/you)	21	ARG0	27
+
+15	Are n't you one of the assholes who assured us how Romney was inevitable as the GOP nominee ?
+1	(h/have-org-role-91)	4	ARG0-of	17
+2	(i2/include-91)	10	ARG2-of	3
+3	"Romney"	6	op1	11
+4	(p/person)	14	domain	11
+5	(p2/political-party)	1	ARG1	16
+6	(n2/name)	5	name	16
+7	"GOP"	6	op1	16
+8	interrogative	10	mode	18
+9	(n/name)	4	name	11
+10	(a2/asshole)	0	ROOT	6
+11	(y/you)	2	ARG1	2
+12	(a/assure-01)	10	ARG0-of	8
+13	(n3/nominee)	1	ARG2	17
+14	(i/inevitable)	12	ARG2	13
+15	(w/we)	12	ARG1	9
+
+26	After seeing those bus tours to AIG execs homes , promoted on ACORN 's website , I am wondering why those same people are n't outraged at this .
+1	(h2/have-org-role-91)	2	ARG0-of	7
+2	(p/person)	8	ARG1	22
+3	(s/same-41)	2	ARG1-of	21
+4	(b/bus)	26	mod	3
+5	(o2/organization)	12	poss	12
+6	(c2/company)	1	ARG1	6
+7	(i/i)	17	ARG0	16
+8	(o/outrage-01)	17	ARG1	25
+9	(p3/promote-02)	26	ARG1-of	10
+10	"AIG"	19	op1	6
+11	(p2/person)	21	poss	7
+12	(w2/website)	9	ARG0	14
+13	(a/amr-unknown)	16	ARG0	19
+14	"ACORN"	19	op1	12
+15	(t/this)	8	ARG0	27
+16	(c/cause-01)	8	ARG1-of	19
+17	(w/wonder-01)	0	ROOT	18
+18	(s2/see-01)	25	op1	1
+19	(n/name)	6	name	6
+20	(n2/name)	5	name	12
+21	(h/home)	26	destination	8
+22	(e/executive)	1	ARG2	7
+23	(t2/this)	2	mod	20
+24	-	8	polarity	24
+25	(a2/after)	17	time	0
+26	(t3/tour)	18	ARG1	4
+
+7	He is not lying to call it stimulus .
+1	(h/he)	5	ARG0	0
+2	(h/he)	7	ARG0	0
+3	(s/stimulus)	7	ARG2	7
+4	(i/it)	7	ARG1	6
+5	(l/lie-02)	0	ROOT	3
+6	-	5	polarity	2
+7	(c/call-01)	5	ARG1	5
+
+14	No one should be expected to practice self sufficiency or concern themselves with personal responsibility .
+1	(s/suffice-01)	14	ARG1	8
+2	(s2/self)	1	ARG0	7
+3	(o/or)	5	ARG1	9
+4	n2	7	ARG0	11
+5	(r/recommend-01)	0	ROOT	2
+6	(r2/responsible-41)	7	ARG1	14
+7	(c/concern-02)	3	op2	10
+8	(n2/no-one)	5	ARG2	0
+9	n2	14	ARG0	0
+10	n2	6	ARG2	13
+11	(s2/self)	1	ARG1	7
+12	(e/expect-01)	3	op1	4
+13	n2	6	ARG1	13
+14	(p2/practice-01)	12	ARG1	6
+
+15	This will ultimately accelerate the speed of desertification in sub - Saharan African countries and other areas of the world .
+1	(t/this)	6	ARG0	0
+2	(w/world)	13	part-of	19
+3	(s/speed-01)	6	ARG1	5
+4	(d/desertification)	3	ARG1	7
+5	(o/other)	13	mod	15
+6	(a/accelerate-01)	0	ROOT	3
+7	(w2/world-region)	14	location	12
+8	(a2/and)	4	location	14
+9	(n/name)	7	name	12
+10	"sub-Saharan"	9	op1	11
+11	"Africa"	9	op2	12
+12	(t/this)	3	ARG0	0
+13	(a3/area)	8	op2	16
+14	(c/country)	8	op1	12
+15	(u/ultimate)	6	time	2
+
+16	The low - cut gold swimsuit with a low back weighs 500 grams , with a sales price of 10 million Japanese yen .
+1	500	3	quant	11
+2	10000000	4	quant	19
+3	(m/mass-quantity)	12	ARG3	12
+4	(m2/monetary-quantity)	15	ARG3	22
+5	(l/low)	11	mod	8
+6	(y/yen)	4	unit	22
+7	(c/country)	6	mod	21
+8	(l2/low-cut)	13	mod	1
+9	(g2/gram)	3	unit	12
+10	(g/gold)	13	consist-of	4
+11	(b/back)	13	prep-with	9
+12	(w/weigh-01)	0	ROOT	10
+13	(s/swimsuit)	12	ARG1	5
+14	"Japan"	16	op1	21
+15	(s2/sell-01)	13	ARG1-of	16
+16	(n/name)	7	name	21
+
+4	Saudi Arabia -LRB- SA -RRB-
+1	(n/name)	3	name	0
+2	"Saudi"	1	op1	0
+3	(c/country)	0	ROOT	0
+4	"Arabia"	1	op2	1
+
+15	Naif Arab Academy for Security Sciences is run by an Arab Interior Ministers ' Council .
+1	"Arab"	10	op1	10
+2	"Ministers'"	10	op3	12
+3	"Security"	10	op5	4
+4	"Sciences"	10	op6	5
+5	(u/university)	9	ARG1	0
+6	"Council"	10	op4	14
+7	(o/organization)	9	ARG0	10
+8	"Arab"	10	op2	1
+9	(r/run-01)	0	ROOT	7
+10	(n/name)	7	name	10
+11	"Academy"	10	op3	2
+12	"Interior"	10	op2	11
+13	(n2/name)	5	name	0
+14	"for"	10	op4	3
+15	"Naif"	10	op1	0
+
+10	Some specialize in dealing with kidnapping and hostage-taking scenarios .
+1	(p/person)	10	ARG0	0
+2	(s3/scenario)	10	ARG1	8
+3	(p/person)	4	ARG0	0
+4	(s/specialize-01)	0	ROOT	1
+5	(h/hostage)	7	ARG1	7
+6	(k/kidnap-01)	8	op1	5
+7	(t/take-01)	8	op2	7
+8	(a/and)	2	mod	6
+9	(s2/some)	1	quant	0
+10	(d/deal-01)	4	ARG1	3
+
+4	North Korea -LRB- KP -RRB-
+1	(n/name)	4	name	0
+2	"Korea"	1	op2	1
+3	"North"	1	op1	0
+4	(c/country)	0	ROOT	0
+
+23	A government source stated the visit by a group of IAEA safety experts is scheduled to last for a week beginning January 12 , 2002 .
+1	(n/name)	21	name	10
+2	2002	7	year	24
+3	(s2/source)	19	ARG0	2
+4	(g/government-organization)	3	mod	1
+5	(s3/schedule-01)	19	ARG1	14
+6	(g2/govern-01)	4	ARG0-of	1
+7	(d/date-entity)	15	time	21
+8	1	23	quant	18
+9	12	7	day	22
+10	(e/expert-41)	22	ARG1-of	12
+11	(l/last-01)	5	ARG2	16
+12	(h/have-org-role-91)	22	ARG0-of	10
+13	1	7	month	21
+14	(w/week)	23	unit	19
+15	(b/begin-01)	23	ARG1-of	20
+16	(v/visit-01)	11	ARG1	5
+17	"IAEA"	1	op1	10
+18	(s4/safe-41)	10	ARG2	11
+19	(s/state-01)	0	ROOT	3
+20	(v/visit-01)	5	ARG1	5
+21	(o/organization)	12	ARG1	10
+22	(p/person)	16	ARG0	12
+23	(t/temporal-quantity)	11	ARG2	19
+
+15	IAEA also stated the lab is not one of the frozen facilities it wants to look into .
+1	(f2/freeze-01)	9	ARG1-of	10
+2	(i/include-91)	4	ARG1	8
+3	(l/lab)	2	ARG1	4
+4	(s/state-01)	0	ROOT	2
+5	-	2	polarity	6
+6	(w/want-01)	10	ARG1-of	13
+7	(n/name)	8	name	0
+8	(o/organization)	10	ARG0	0
+9	(f/facility)	2	ARG2	11
+10	(l2/look-01)	9	ARG1-of	15
+11	(a/also)	4	mod	1
+12	(o2/one)	2	ARG3	7
+13	(o/organization)	6	ARG0	0
+14	"IAEA"	7	op1	0
+15	(o/organization)	4	ARG0	0
+
+8	Delays have pushed back the finish until at least 2008 .
+1	(u/until)	4	time	6
+2	(d/delay-01)	4	ARG0	0
+3	(d2/date-entity)	6	op1	9
+4	(p/push-01)	0	ROOT	2
+5	2008	3	year	9
+6	(a/at-least)	1	op1	7
+7	(f/finish-01)	4	ARG1	5
+8	(b/back)	4	ARG2	3
+
+18	South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat .
+1	(p/person)	15	ARG0	1
+2	2002	14	year	7
+3	(p/person)	9	ARG0	1
+4	"South"	10	op1	0
+5	"Korea"	10	op2	1
+6	1	14	month	4
+7	(d2/dog)	11	consist-of	15
+8	(r/rally-01)	0	ROOT	2
+9	(e/eat-01)	16	ARG1	14
+10	(n/name)	17	name	0
+11	(m/meat)	9	ARG1	16
+12	(p/person)	8	ARG1	1
+13	11	14	day	5
+14	(d/date-entity)	8	time	4
+15	(s/support-01)	8	ARG2	9
+16	(e2/entitle-01)	15	ARG1	12
+17	(c/country)	1	source	0
+18	(p/person)	16	ARG2	11
+
+10	The activists accuse the organizations of being culturally-biased and insulting .
+1	(o/organization)	2	ARG0	4
+2	(i/insult-01)	10	op2	9
+3	(a2/activist)	7	ARG0	1
+4	(c/cultural)	5	mod	7
+5	(b/bias-01)	10	op1	7
+6	(a2/activist)	2	ARG1	1
+7	(a/accuse-01)	0	ROOT	2
+8	(o/organization)	5	ARG1	4
+9	(o/organization)	7	ARG1	4
+10	(a3/and)	7	ARG2	8
+
+9	The debate was partly fueled by FIFA , football 's international governing body .
+1	"FIFA"	9	op1	6
+2	(f/fuel-01)	0	ROOT	4
+3	(p/partly)	2	degree	3
+4	(d/debate-01)	2	ARG1	1
+5	(f2/football)	6	ARG1	8
+6	(g/govern-01)	8	ARG0-of	11
+7	(i/international)	8	mod	10
+8	(b/body)	2	ARG0	6
+9	(n/name)	8	name	6
+
+12	The anti-Japan group stated that South Korean culture is under attack .
+1	"South"	6	op1	5
+2	(c2/country)	4	source	5
+3	"Korea"	6	op2	6
+4	(c/culture)	10	ARG1	7
+5	(c3/country)	9	ARG1	1
+6	(n/name)	2	name	5
+7	"Japan"	6	op1	1
+8	(g/group)	12	ARG0	2
+9	(o/oppose-01)	8	ARG0-of	1
+10	(a/attack-01)	12	ARG1	10
+11	(n2/name)	2	name	1
+12	(s/state-01)	0	ROOT	3
+
+9	The nationalist group was formed to campaign against Japan .
+1	"Japan"	7	op1	8
+2	(c2/country)	4	op1	8
+3	(g/group)	9	ARG0	2
+4	(a/against)	9	ARG1	7
+5	(g/group)	6	ARG1	2
+6	(f/form-01)	0	ROOT	4
+7	(n2/name)	2	name	8
+8	(n/nationalist)	3	mod	1
+9	(c/campaign-01)	6	purpose	6
+
+26	Another group said they will launch an association next Monday of around 100 dog meat restaurant owners in the Seoul region and hold a seminar to promote the dish .
+1	(n/next)	7	mod	8
+2	"Seoul"	9	op1	19
+3	(m2/monday)	7	weekday	9
+4	(a3/association)	17	ARG1	7
+5	(o/own-01)	6	ARG0-of	16
+6	(p/person)	4	consist-of	16
+7	(d/date-entity)	17	time	9
+8	(g/group)	16	ARG0	1
+9	(n2/name)	12	name	19
+10	(s2/seminar)	16	ARG1	24
+11	(m/meat)	14	ARG1	28
+12	(c/city)	25	part	19
+13	(a4/around)	6	quant	11
+14	(p2/promote-02)	10	ARG0-of	26
+15	(m/meat)	23	mod	14
+16	(h/hold-04)	22	op2	22
+17	(l/launch-01)	22	op1	5
+18	(s/say-01)	0	ROOT	2
+19	(g/group)	18	ARG0	1
+20	(g/group)	17	ARG0	3
+21	(d2/dog)	11	consist-of	13
+22	(a2/and)	18	ARG1	21
+23	(r/restaurant)	5	ARG1	15
+24	100	13	op1	12
+25	(r2/region)	6	location	20
+26	(a/another)	8	mod	0
+
+25	Head of the Korean Football Association and a FIFA vice president Chung Mong-Joon said FIFA should not intervene in the eating habits of a sovereign nation .
+1	"FIFA"	4	op1	8
+2	(h3/have-org-role-91)	15	ARG0-of	0
+3	(i/intervene-01)	12	ARG1	17
+4	(n2/name)	5	name	3
+5	(o2/organization)	2	ARG1	8
+6	-	3	polarity	16
+7	"Mong-Joon"	4	op2	12
+8	"Association"	4	op3	5
+9	(v/vice)	11	mod	9
+10	(n4/nation)	23	poss	25
+11	(p2/president)	2	ARG2	10
+12	(r/recommend-01)	18	ARG1	15
+13	(o/organization)	17	ARG1	3
+14	(n3/name)	5	name	8
+15	(p/person)	18	ARG0	11
+16	"Chung"	4	op1	11
+17	(h/head-01)	15	ARG0-of	0
+18	(s/say-01)	0	ROOT	13
+19	(s2/sovereign)	10	mod	24
+20	"Korean"	4	op1	3
+21	"Football"	4	op2	4
+22	(o2/organization)	3	ARG0	8
+23	(h2/habit)	3	ARG1	21
+24	(n/name)	15	name	11
+25	(e/eat-01)	23	topic	20
+
+8	No similar move is planned for the World Cup .
+1	(g/game)	3	ARG2	7
+2	"World"	5	op1	7
+3	(p/plan-01)	0	ROOT	4
+4	(m/move)	3	ARG1	2
+5	(n/name)	1	name	7
+6	-	3	polarity	0
+7	(r/resemble-01)	4	ARG1-of	1
+8	"Cup"	5	op2	8
+
+11	International ; Government ; terrorism ; war and conflict ; dissent ; leader
+1	(c/conflict-01)	4	op2	8
+2	(i/international)	4	op1	0
+3	(t/terrorism)	4	op3	4
+4	(a/and)	0	ROOT	1
+5	(d/dissent-01)	4	op5	10
+6	(g2/govern-01)	9	ARG0-of	2
+7	(l/lead-02)	11	ARG0-of	12
+8	(a2/and)	4	op4	7
+9	(g/government-organization)	4	op2	2
+10	(w/war-01)	4	op1	6
+11	(p/person)	4	op6	12
+
+15	The severe actions against militants and radicals came as Pervez Musharraf banned 5 Islamic groups .
+1	(s/severe)	6	mod	1
+2	(g/group)	14	ARG1	14
+3	"Islam"	5	op1	13
+4	5	12	quant	12
+5	(n/name)	9	name	9
+6	(a/act-02)	0	ROOT	2
+7	(a2/and)	6	prep-against	5
+8	(r/radical)	7	op2	6
+9	(p/person)	14	ARG0	9
+10	(n2/name)	12	name	13
+11	"Musharraf"	5	op2	10
+12	(r2/religious-group)	2	mod	13
+13	(m/militant)	7	op1	4
+14	(b/ban-01)	6	time	11
+15	"Pervez"	5	op1	9
+
+12	Iftikhar Ahmed is a Pakistani interior ministry official .
+1	(c/country)	2	poss	4
+2	(m/ministry)	10	ARG1	6
+3	(n/name)	1	name	4
+4	(i/interior)	2	topic	5
+5	(p2/person)	0	ROOT	0
+6	"Iftikhar"	3	op1	0
+7	"Ahmed"	3	op2	1
+8	"Pakistan"	3	op1	4
+9	(o/official)	10	ARG2	7
+10	(h/have-org-role-91)	5	ARG0-of	7
+11	(n2/name)	5	name	0
+12	(p/person)	5	domain	0
+
+20	The Lashkar-e-Taiba and Jaish-e-Mohammad are still distributing their message through a range of publications and magazines easily available in Karachi .
+1	(m/message)	7	ARG1	8
+2	"Jaish-e-Mohammad"	6	op1	3
+3	(a2/and)	7	medium	14
+4	(e/easy)	8	manner	16
+5	(c/city)	8	location	19
+6	(n/name)	12	name	1
+7	(d/distribute-01)	0	ROOT	6
+8	(a3/available)	3	mod	17
+9	"Karachi"	6	op1	19
+10	(n2/name)	12	name	3
+11	(s/still)	7	mod	5
+12	(o2/organization)	3	op2	3
+13	(a/and)	7	ARG0	2
+14	(o/organization)	3	op1	1
+15	(p/publication)	3	op1	13
+16	(m2/magazine)	3	op2	15
+17	"Lashkar-e-Taiba"	6	op1	1
+18	(n3/name)	5	name	19
+19	(r/range)	3	quant	11
+20	(a/and)	1	poss	7
+
+22	Qari Mohammad Zafar stated that himself and other people have been told by our elders to read pro-Jihad newspapers and magazines .
+1	(o/other)	3	mod	7
+2	(m/magazine)	10	op2	20
+3	(p2/person)	10	op2	8
+4	(s/state-01)	0	ROOT	3
+5	a	14	ARG0	6
+6	(n2/newspaper)	10	op1	18
+7	(f/favor-01)	10	ARG0-of	17
+8	(n/name)	3	name	0
+9	"Qari"	8	op1	0
+10	(a/and)	20	ARG2	6
+11	(p/person)	4	ARG0	0
+12	"Mohammad"	8	op2	1
+13	(p/person)	10	op1	5
+14	(r/read-01)	20	ARG1	16
+15	(w2/war)	7	ARG1	17
+16	"Jihad"	8	op1	17
+17	"Zafar"	8	op3	2
+18	(w/we)	21	poss	13
+19	(a2/and)	14	ARG1	19
+20	(t/tell-01)	4	ARG1	11
+21	(e/elder)	20	ARG0	14
+22	(n3/name)	15	name	17
+
+45	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir .
+1	(d3/divide-02)	45	ARG1-of	42
+2	(s4/society)	31	part-of	32
+3	(n6/name)	18	name	43
+4	(g/government-organization)	28	ARG0	23
+5	"Kashmir"	3	op1	46
+6	(a3/article)	20	op1	18
+7	(n5/name)	45	name	46
+8	(s/state-01)	0	ROOT	11
+9	(a/action)	8	ARG1	12
+10	"Al-Rashid"	3	op1	7
+11	(e2/extremism)	9	prep-against	15
+12	(c/country)	39	ARG1	22
+13	(n3/name)	12	name	22
+14	(l/large)	31	mod	28
+15	(p/publication)	43	part-of	4
+16	15	26	day	10
+17	(s5/support-01)	31	ARG0-of	34
+18	(w/world-region)	45	mod	43
+19	"Islam"	3	op1	4
+20	(a2/above)	8	location	16
+21	-	28	polarity	25
+22	(n/name)	15	name	4
+23	(r2/rule-03)	44	prep-against	39
+24	(c2/country)	23	ARG0	38
+25	"Himalayas"	3	op1	43
+26	(d/date-entity)	43	time	10
+27	(r/recommend-01)	8	ARG1	24
+28	(d2/domineer-00)	27	ARG1	26
+29	(e/extreme)	9	mod	13
+30	"India"	3	op1	38
+31	(s3/section)	28	ARG1	29
+32	2002	26	year	10
+33	(c/country)	2	mod	31
+34	1	26	month	10
+35	"Pakistan"	3	op1	22
+36	(n4/name)	12	name	38
+37	"Daily"	3	op2	5
+38	(n2/name)	40	name	7
+39	(g2/govern-01)	4	ARG0-of	23
+40	(o/organization)	15	poss	7
+41	"Trust"	3	op2	8
+42	(s2/state-01)	6	ARG0-of	19
+43	(h/headline)	8	ARG0	1
+44	(j/jihad)	17	ARG1	36
+45	(s6/state)	23	ARG1	46
+
+27	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press .
+1	(e2/extremism)	10	mod	19
+2	(s3/support-01)	15	ARG0	34
+3	(f/free-41)	2	ARG1	36
+4	(p/possible)	7	ARG1	6
+5	(g/government-organization)	27	ARG0	12
+6	(r3/religion)	1	mod	18
+7	(s/state-01)	0	ROOT	1
+8	(s2/sudden)	13	mod	24
+9	(g4/general)	2	mod	33
+10	(g3/group)	26	poss	20
+11	(n/name)	25	name	4
+12	(p3/press)	3	ARG1	39
+13	(r2/remove-01)	4	condition	25
+14	(p4/person)	7	ARG0	0
+15	(c2/cause-01)	4	ARG1-of	29
+16	(a/analyze-01)	14	ARG0-of	0
+17	(t/trouble)	4	domain	8
+18	"Pakistan"	11	op1	4
+19	(n2/newsstand)	13	ARG2	28
+20	(b/ban-01)	10	ARG1-of	17
+21	(g/government-organization)	2	ARG0	32
+22	(e/explain-01)	17	domain	9
+23	(g/government-organization)	22	ARG0	5
+24	(g2/govern-01)	5	ARG0-of	5
+25	(c/country)	24	ARG1	4
+26	(p2/publication)	13	ARG1	22
+27	(r/reason-01)	22	ARG1	14
+
+15	Thirteen drug traffickers were killed and 10 arrested in Iran anti-drug sweeps .
+1	(n/name)	11	name	9
+2	(t/traffic-00)	8	ARG0-of	2
+3	"Iran"	1	op1	9
+4	(d/drug)	2	ARG1	1
+5	(s/sweep-01)	13	instrument	11
+6	(c2/counter-01)	5	purpose	10
+7	(k/kill-01)	13	op1	4
+8	(p/person)	10	ARG1	2
+9	(d2/drug)	6	ARG1	10
+10	(a2/arrest-01)	13	op2	7
+11	(c/country)	13	location	9
+12	10	8	quant	6
+13	(a/and)	0	ROOT	5
+14	(p2/person)	7	ARG1	2
+15	13	8	quant	0
+
+17	Val Fajr means swear to victory in Arabic and is a phrase from the Koran .
+1	(e/event)	16	ARG0	0
+2	(s/swear-01)	16	ARG1	3
+3	(l/language)	2	medium	7
+4	(a/and)	0	ROOT	8
+5	(b/book)	11	source	14
+6	(n4/name)	5	name	13
+7	"The"	6	op1	13
+8	(w/win-01)	2	ARG1	5
+9	(n3/name)	3	name	7
+10	"Arabic"	6	op1	7
+11	(p/phrase)	4	op2	11
+12	"Fajr"	6	op2	1
+13	(e/event)	11	domain	0
+14	"Koran"	6	op2	14
+15	"Val"	6	op1	0
+16	(m/mean-01)	4	op1	2
+17	(n2/name)	1	name	0
+
+20	An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking .
+1	1	15	month	5
+2	(r/report-01)	0	ROOT	3
+3	(a/administrate-01)	11	ARG0-of	13
+4	(i/interim)	11	mod	12
+5	(c3/cultivate-01)	19	ARG1	17
+6	2002	15	year	8
+7	(p/poppy)	5	ARG1	20
+8	16	15	day	6
+9	(t2/traffic-00)	13	ARG1	27
+10	(d2/drug)	9	ARG1	26
+11	(g/government-organization)	19	ARG0	13
+12	(c/country)	16	source	1
+13	(e/end-01)	19	purpose	25
+14	"Afghanistan"	17	op1	1
+15	(d/date-entity)	2	time	5
+16	(t/television)	2	ARG0	2
+17	(n/name)	12	name	1
+18	(o/opium)	7	mod	19
+19	(b/ban-01)	2	ARG1	15
+20	(c/country)	3	ARG1	10
+
+10	Iranian law states the death penalty for drug trafficking .
+1	(l/law)	4	ARG0	1
+2	(n/name)	3	name	0
+3	(c/country)	1	source	0
+4	(p/penalize-01)	7	ARG1	5
+5	(l/law)	7	ARG0	1
+6	(d2/die-01)	4	manner	4
+7	(s/state-01)	0	ROOT	2
+8	(d/drug)	9	mod	7
+9	(t/trafficking)	4	ARG2	8
+10	"Iran"	2	op1	0
+
+34	Iranian army arrests 1600 drug traffickers , kills 21 , and seizes 6 tons of drugs and weapons in large-scale operation along its borders with Afghanistan and Pakistan .
+1	(k/kill-01)	9	op2	7
+2	(a3/army)	13	ARG0	1
+3	(c/country)	2	mod	0
+4	(w/weapon)	9	op2	17
+5	(l/large-scale)	16	mod	19
+6	(d2/drug)	9	op1	15
+7	(a6/along)	16	location	21
+8	(n3/name)	3	name	27
+9	(a5/and)	32	ARG1	26
+10	"Iran"	8	op1	0
+11	(a/and)	0	ROOT	10
+12	(a4/and)	28	domain	16
+13	(a2/arrest-01)	9	op1	2
+14	21	15	quant	8
+15	(p2/person)	1	ARG1	5
+16	(o/operation)	9	time	20
+17	6	28	quant	12
+18	(c2/country)	9	op1	25
+19	(n2/name)	3	name	25
+20	"Afghanistan"	8	op1	25
+21	(d/drug)	22	ARG1	4
+22	(t/traffic-00)	15	ARG0-of	5
+23	(c3/country)	9	op2	27
+24	(a3/army)	1	ARG0	1
+25	(s/seize-01)	9	op3	11
+26	(n/name)	3	name	0
+27	"Pakistan"	8	op1	27
+28	(m/mass-quantity)	25	ARG1	13
+29	(t2/ton)	28	unit	13
+30	1600	15	quant	3
+31	(a3/army)	25	ARG0	1
+32	(b/border-01)	7	op1	23
+33	(p/person)	13	ARG1	5
+34	(c/country)	32	ARG2	22
+
+28	In a separate dispatch IRNA stated that during the past 20 days in southern Iran 's Fars Province police had arrested 107 drug traffickers including 11 foreign nationals .
+1	(s3/south)	17	mod	13
+2	(n2/national)	8	ARG1	27
+3	"IRNA"	13	op1	4
+4	(p2/person)	19	ARG1	23
+5	20	12	quant	10
+6	"Province"	13	op2	17
+7	(d2/drug)	20	ARG1	22
+8	(i/include-91)	4	ARG2-of	24
+9	(d3/day)	12	unit	11
+10	"Iran"	13	op1	14
+11	(s/state-01)	0	ROOT	5
+12	(t2/temporal-quantity)	14	op1	11
+13	(n4/name)	17	name	14
+14	(p3/past)	19	time	9
+15	107	4	quant	21
+16	(n/name)	18	name	4
+17	(c2/country)	23	part-of	14
+18	(p5/publication)	11	ARG0	4
+19	(a/arrest-01)	11	ARG1	20
+20	(t/traffic-00)	4	ARG0-of	23
+21	(d/dispatch)	11	medium	3
+22	(p/police)	19	ARG0	18
+23	(p4/province)	19	location	17
+24	(s2/separate)	21	mod	2
+25	"Fars"	13	op1	16
+26	(n3/name)	23	name	16
+27	11	2	quant	25
+28	(f/foreign)	2	mod	26
+
+23	Last week Afghan Television reported that Afghanistan 's interim administration has banned cultivation of opium poppies in an attempt to end drug trafficking .
+1	(n2/name)	10	name	6
+2	(a/administrate-01)	5	ARG0-of	9
+3	(w/week)	6	time	1
+4	"Afghanistan"	1	op1	6
+5	(g/government-organization)	21	ARG0	9
+6	(r/report-01)	0	ROOT	4
+7	(p/poppy)	14	ARG1	15
+8	(e/end-01)	15	ARG1	20
+9	(l/last)	3	mod	0
+10	(c2/country)	2	ARG1	6
+11	(t/traffic-00)	8	ARG1	22
+12	(n/name)	13	name	2
+13	(c/company)	6	ARG0	2
+14	(c3/cultivate-01)	21	ARG1	12
+15	(a2/attempt-01)	21	purpose	18
+16	(g/government-organization)	15	ARG0	9
+17	"Afghan"	1	op1	2
+18	(i/interim)	5	mod	8
+19	(g/government-organization)	8	ARG0	9
+20	"Television"	1	op2	3
+21	(b/ban-01)	6	ARG1	11
+22	(d/drug)	11	ARG1	21
+23	(o/opium)	7	mod	14
+
+9	Iranian law applies the death penalty for drug trafficking .
+1	(n/name)	3	name	0
+2	(d2/drug)	8	ARG1	7
+3	(c/country)	6	mod	0
+4	(p/penalty)	5	ARG1	5
+5	(a/apply-02)	0	ROOT	2
+6	(l/law)	5	ARG0	1
+7	"Iran"	1	op1	0
+8	(t/traffic-00)	5	ARG2	8
+9	(d/death)	4	mod	4
+
+21	Canadian government 's warning of al-Qaeda 's capability to launch a cyberattack causes various industries to review their preparedness .
+1	(i/industry)	6	ARG0	14
+2	(c3/capable-41)	20	ARG1	7
+3	"Canada"	5	op1	0
+4	(c4/cyber)	16	mod	11
+5	(n2/name)	8	name	5
+6	(r/review-01)	17	ARG1	16
+7	(v/various)	1	mod	13
+8	(c5/criminal-organization)	2	ARG1	5
+9	(l/launch-01)	2	ARG2	9
+10	(n/name)	14	name	0
+11	(i/industry)	13	ARG1	14
+12	(g/government-organization)	20	ARG0	1
+13	(p/prepare-02)	6	ARG1	18
+14	(c2/country)	15	ARG1	0
+15	(g2/govern-01)	12	ARG0-of	1
+16	(a/attack-01)	9	ARG1	11
+17	(c/cause-01)	0	ROOT	12
+18	(c5/criminal-organization)	9	ARG0	5
+19	(a/attack-01)	13	ARG2	11
+20	(w/warn-01)	17	ARG0	3
+21	"al-Qaeda"	5	op1	5
+
+21	In a recent interview Bradley stated that many utility firms perform a brief review of their multi-tiered response systems after such warnings are issued .
+1	(r3/recent)	4	time	2
+2	(m/many)	15	quant	7
+3	(r/review-01)	19	ARG1	13
+4	(i2/interview-01)	9	manner	3
+5	(i/issue-01)	12	op1	23
+6	(s3/such)	7	mod	20
+7	(w/warn-01)	5	ARG1	21
+8	(p/person)	9	ARG0	4
+9	(s/state-01)	0	ROOT	5
+10	(b/brief)	3	duration	12
+11	(r2/respond-01)	16	ARG0-of	17
+12	(a/after)	19	time	19
+13	(m2/multi-tiered)	16	mod	16
+14	(n/name)	8	name	4
+15	(f/firm)	19	ARG0	9
+16	(s2/system)	3	ARG1	18
+17	"Bradley"	14	op1	4
+18	(u/utility)	15	mod	8
+19	(p2/perform-01)	9	ARG1	10
+20	(f/firm)	3	ARG0	9
+21	(p/person)	4	ARG1	4
+
+22	A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are known to have remained in Canada .
+1	(n5/name)	10	name	17
+2	"Canada"	1	op1	17
+3	(n/name)	21	name	3
+4	(p/person)	22	ARG0	8
+5	(k/know-01)	0	ROOT	12
+6	(n3/name)	4	name	9
+7	(n2/number)	16	ARG3	1
+8	(r/remain-01)	5	ARG1	15
+9	(h/have-org-role-91)	13	ARG0-of	4
+10	(c/country)	8	location	17
+11	"al-Qaeda"	1	op1	3
+12	"Millennium"	1	op1	6
+13	(m/militant)	16	ARG2	4
+14	(p2/plot-01)	4	ARG0-of	7
+15	(n4/name)	17	name	6
+16	(i/include-91)	8	ARG1	5
+17	(e/event)	14	time	6
+18	"Ressam"	1	op2	10
+19	(p/person)	16	ARG1	9
+20	"Ahmed"	1	op1	9
+21	(c2/criminal-organization)	9	ARG1	3
+22	(b/bomb-01)	14	ARG1	8
+
+10	Many businesses began preparing for cyber incidents before the year 2000 .
+1	(i/incident)	9	ARG1	6
+2	(c/cyber)	1	mod	5
+3	(b/begin-01)	0	ROOT	2
+4	(b3/before)	3	time	7
+5	2000	10	year	10
+6	(b2/business)	3	ARG0	1
+7	(b2/business)	9	ARG0	1
+8	(m/many)	6	quant	0
+9	(p/prepare-02)	3	ARG1	3
+10	(d/date-entity)	4	op1	10
+
+20	Bell Canada works very closely with the Government and the private sector to be aware of security concerns and to update accordingly .
+1	(a/and)	16	ARG3	8
+2	(p/private)	7	mod	10
+3	(g/government-organization)	1	op1	7
+4	(c/company)	16	ARG0	0
+5	(a2/and)	16	ARG1	18
+6	(u/update-01)	1	op2	20
+7	(s/sector)	1	op2	11
+8	"Canada"	12	op2	1
+9	(v/very)	15	degree	3
+10	(r/realize-01)	1	op1	14
+11	(c/company)	10	ARG0	0
+12	(n/name)	4	name	0
+13	(s2/security)	19	ARG0	16
+14	(a3/accordingly)	6	manner	21
+15	(c3/close)	16	manner	4
+16	(w/work-01)	0	ROOT	2
+17	(c/company)	6	ARG0	0
+18	(g2/govern-01)	3	ARG0-of	7
+19	(c2/concern-01)	10	ARG1	17
+20	"Bell"	12	op1	0
+
+8	There has not been a cyber event that has resulted in a loss of power for utility customers .
+1	(p/power)	3	ARG1	14
+2	(e/event)	5	ARG1	6
+3	(l/lose-02)	5	ARG2	12
+4	(u/utility)	7	mod	16
+5	(r/result-01)	0	ROOT	9
+6	(c/cyber)	2	mod	5
+7	(c2/customer)	3	ARG0	17
+8	-	5	polarity	2
+
+3	Russia -LRB- RU -RRB-
+1	"Russia"	3	op1	0
+2	(c/country)	0	ROOT	0
+3	(n/name)	2	name	0
+
+34	A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles .
+1	(s3/state-01)	17	op2	24
+2	(m3/military)	24	mod	4
+3	(d4/defense)	5	mod	21
+4	(l/lead-03)	21	domain	29
+5	(f/facility)	31	topic	22
+6	(g2/govern-01)	27	ARG0-of	18
+7	(a2/action)	19	ARG1	13
+8	(c2/cost-01)	34	ARG1-of	36
+9	"Space"	11	op2	5
+10	(s/statement)	19	ARG0	1
+11	(n/name)	2	name	4
+12	(d/date-entity)	10	time	10
+13	(a2/action)	4	ARG0	26
+14	(m/monetary-quantity)	8	ARG2	41
+15	(s/statement)	1	ARG0	1
+16	(r/ruble)	14	unit	41
+17	(a/and)	0	ROOT	23
+18	"Russian"	11	op1	4
+19	(c/call-01)	17	op1	11
+20	1	12	month	10
+21	(p2/possible)	1	ARG1	27
+22	(m2/multiple)	14	quant	37
+23	100000000	22	op1	37
+24	(s2/service)	10	source	8
+25	(p/press)	24	mod	7
+26	2002	12	year	10
+27	(g/government-organization)	31	mod	18
+28	(v/violate-01)	19	ARG2	16
+29	(l2/lose-02)	4	ARG2	32
+30	(d3/direct)	28	mod	15
+31	(d2/decree)	28	ARG1	19
+32	26	12	day	10
+33	"Forces"	11	op3	6
+34	(s4/spacecraft)	29	ARG1	35
+
+13	United energy services argues that non-payment of bills has prevented it from maintaining supplies .
+1	"Energy"	2	op2	1
+2	(n/name)	12	name	0
+3	-	9	polarity	5
+4	(p/prevent-01)	5	ARG1	9
+5	(a/argue-01)	0	ROOT	3
+6	"Services"	2	op3	2
+7	(s/supply)	11	ARG1	13
+8	(b/bill)	9	ARG3	7
+9	(p2/pay-01)	4	ARG0	5
+10	"United"	2	op1	0
+11	(m/maintain-01)	4	ARG1	12
+12	(c/company)	5	ARG0	0
+13	(c/company)	11	ARG0	10
+
+37	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences .
+1	(n2/name)	12	name	30
+2	(p3/pay-01)	9	ARG0	11
+3	"Space"	1	op2	31
+4	(n3/name)	30	name	26
+5	"Peninsula"	1	op2	27
+6	(c5/cut-02)	9	ARG0	6
+7	(c7/center)	6	location	21
+8	(s/space)	32	topic	1
+9	(c4/cause-01)	27	ARG1-of	35
+10	-	2	polarity	11
+11	(h/have-org-role-91)	37	ARG0-of	2
+12	(m2/military)	25	ARG1	30
+13	(p/possible)	33	ARG1	34
+14	(b/bill-01)	2	ARG3	13
+15	(r/resemble-01)	6	ARG1-of	15
+16	"Far"	1	op1	24
+17	(n/name)	20	name	0
+18	"East"	1	op2	25
+19	(n4/name)	23	name	24
+20	(c/country)	11	ARG1	0
+21	(m/military)	6	prep-against	9
+22	(c3/catastrophic)	27	mod	36
+23	(w2/world-region)	30	location	24
+24	(c6/cause-01)	6	ARG1-of	10
+25	(c8/command-02)	7	purpose	20
+26	"Russia"	1	op1	0
+27	(c2/consequence)	13	domain	37
+28	(m/military)	2	ARG0	9
+29	(c9/cut-02)	15	ARG2	17
+30	(p4/peninsula)	7	location	27
+31	"Kamchatka"	1	op1	26
+32	(o/official)	11	ARG2	2
+33	(w/warn-01)	0	ROOT	3
+34	(p2/power)	6	ARG1	5
+35	"Forces"	1	op3	32
+36	"Russian"	1	op1	30
+37	(p5/person)	33	ARG0	2
+
+10	The Kamchatka command center plays a role in ISS operations .
+1	"Kamchatka"	5	op1	1
+2	(o/operate-01)	3	ARG1	9
+3	(p/play-02)	0	ROOT	4
+4	(c2/command-02)	9	topic	2
+5	(n/name)	8	name	1
+6	(n2/name)	10	name	8
+7	"ISS"	5	op1	8
+8	(p2/peninsula)	9	location	1
+9	(c/center)	3	ARG0	3
+10	(s/spaceship)	2	ARG1	8
+
+15	The Government or UES or the Ministry of Defense must resolve the issue .
+1	(n2/name)	3	name	6
+2	(g2/govern-01)	3	ARG0-of	1
+3	(g3/government-organization)	12	op3	6
+4	(r/resolve-01)	5	ARG2	10
+5	(o/obligate-01)	0	ROOT	9
+6	"Ministry"	1	op1	6
+7	"UES"	1	op1	3
+8	(n/name)	13	name	3
+9	"of"	1	op2	7
+10	(g/government-organization)	12	op1	1
+11	"Defense"	1	op3	8
+12	(o2/or)	4	ARG0	4
+13	(c/company)	12	op2	3
+14	(i/issue)	4	ARG1	12
+15	(o2/or)	5	ARG1	4
+
+12	Kamchatenergo stated that non-payment of bills prevent it from maintaining power supplies .
+1	(p/prevent-01)	5	ARG1	6
+2	(p3/power)	8	ARG1	10
+3	"Kamchatenergo"	9	op1	0
+4	-	10	polarity	3
+5	(s/state-01)	0	ROOT	1
+6	(b/bill-01)	10	ARG3	5
+7	(c/company)	5	ARG0	0
+8	(s2/supply-01)	11	ARG1	11
+9	(n/name)	7	name	0
+10	(p2/pay-01)	1	ARG0	3
+11	(m/maintain-01)	1	ARG1	9
+12	(c/company)	11	ARG0	7
+
+17	Russia provided several ISS modules including Zvezda and Zarya
+1	(m/module)	11	ARG1	4
+2	(s2/spaceship)	13	op2	8
+3	(n3/name)	2	name	8
+4	(s3/spaceship)	1	poss	3
+5	(i/include-91)	1	ARG2-of	5
+6	"Zvezda"	3	op1	6
+7	(n4/name)	2	name	3
+8	(n2/name)	2	name	6
+9	(c/country)	11	ARG0	0
+10	(s/spaceship)	13	op1	6
+11	(p/provide-01)	0	ROOT	1
+12	"ISS"	3	op1	3
+13	(a/and)	5	ARG1	7
+14	(s4/several)	1	quant	2
+15	"Zarya"	3	op1	8
+16	(n/name)	9	name	0
+17	"Russia"	3	op1	0
+
+3	Australia -LRB- AU -RRB-
+1	(n/name)	3	name	0
+2	"Australia"	1	op1	0
+3	(c/country)	0	ROOT	0
+
+22	The Great Olympic swindle was written by British journalist Andrew Jennings and published by Simon and Schuster .
+1	"Britain"	7	op1	7
+2	(b/book)	6	ARG1	0
+3	(c2/company)	6	ARG0	14
+4	(j/journalist)	18	ARG0	8
+5	"Schuster"	7	op3	16
+6	(p/publish-01)	17	op2	12
+7	(n/name)	4	name	9
+8	(b/book)	18	ARG1	0
+9	(n2/name)	10	name	7
+10	(c/country)	4	mod	7
+11	"The"	7	op1	0
+12	"Olympic"	7	op3	2
+13	"Jennings"	7	op2	10
+14	(n4/name)	3	name	14
+15	"Simon"	7	op1	14
+16	"and"	7	op2	15
+17	(a/and)	0	ROOT	11
+18	(w/write-01)	17	op1	5
+19	"Great"	7	op2	1
+20	"Andrew"	7	op1	9
+21	(n3/name)	2	name	0
+22	"Swindle"	7	op4	0
+
+16	Rakhimov was also said to have bribed members of the International Amateur Boxing Federation in the vote for the Federation Presidency .
+1	(n2/name)	13	name	10
+2	"Federation"	1	op4	13
+3	(p2/presidency)	5	ARG1	20
+4	(m/member)	9	ARG1	7
+5	(v/vote-01)	9	purpose	16
+6	"Boxing"	1	op3	12
+7	(p/person)	9	ARG0	0
+8	(s/say-01)	0	ROOT	3
+9	(b/bribe-01)	8	ARG1	6
+10	(a/also)	8	mod	2
+11	"International"	1	op1	10
+12	"Amateur"	1	op2	11
+13	(o/organization)	4	poss	10
+14	(o/organization)	3	poss	10
+15	(n/name)	7	name	0
+16	"Rakhimov"	1	op1	0
+
+19	The SMH and Jennings were then sued over 3 articles published in the lead-up to the 000000 Olympics .
+1	(n2/name)	7	name	4
+2	(c/company)	13	op1	0
+3	(p2/publish-01)	16	ARG1-of	10
+4	2000	19	year	16
+5	3	16	quant	8
+6	"Jennings"	1	op1	3
+7	(p/person)	13	op2	3
+8	(g/game)	14	ARG2	17
+9	"Olympics"	1	op1	17
+10	"SMH"	1	op2	1
+11	(t/then)	12	mod	5
+12	(s/sue-01)	0	ROOT	6
+13	(a/and)	12	ARG1	2
+14	(l/lead-05)	3	time	13
+15	"The"	1	op1	0
+16	(a2/article)	12	ARG2	9
+17	(n3/name)	8	name	17
+18	(n/name)	2	name	0
+19	(d2/date-entity)	8	time	16
+
+20	OSCE urges permanent end to Afghan terrorism and drug-trafficking to create long-term stability in Central Asia .
+1	"Afghanistan"	5	op1	5
+2	(l/long-term)	18	duration	11
+3	(p/permanent)	16	duration	2
+4	(d/drug)	6	mod	8
+5	(n2/name)	11	name	5
+6	(t2/trafficking)	17	op2	8
+7	"OSCE"	5	op1	0
+8	"Asia"	5	op2	15
+9	(u/urge-01)	0	ROOT	1
+10	(t/terrorism)	17	op1	6
+11	(c/country)	17	location	5
+12	(c2/create-01)	16	purpose	10
+13	(o/organization)	9	ARG0	0
+14	"Central"	5	op1	14
+15	(n/name)	13	name	0
+16	(e/end-01)	9	ARG1	3
+17	(a/and)	16	ARG1	7
+18	(s/stability)	12	ARG1	12
+19	(w/world-region)	18	location	14
+20	(n3/name)	19	name	14
+
+32	Both Tajikistan and Uzbekistan share a border with Afghanistan and have experienced raids by Taliban-backed Islamic militants in recent years .
+1	(m2/multiple)	12	duration	19
+2	(c2/country)	24	op2	3
+3	(b4/before)	16	time	18
+4	"Afghanistan"	8	op1	8
+5	(s/share-01)	7	op1	4
+6	(c4/criminal-organization)	30	ARG0	14
+7	(a2/and)	16	ARG0	2
+8	(n4/name)	6	name	14
+9	"Islam"	8	op1	15
+10	(n2/name)	2	name	3
+11	(c3/country)	15	ARG1	8
+12	(n6/now)	3	op1	18
+13	(c/country)	24	op1	1
+14	(r/raid-01)	16	ARG1	12
+15	(b/border-01)	5	ARG1	6
+16	(e/experience-01)	7	op2	11
+17	(n5/name)	31	name	15
+18	(t/temporal-quantity)	1	op1	19
+19	(m/militant)	14	ARG0	16
+20	(a2/and)	15	ARG2	2
+21	(n3/name)	2	name	8
+22	"Uzbekistan"	8	op1	3
+23	1	18	quant	19
+24	(b2/both)	7	op1	0
+25	(y/year)	18	unit	19
+26	(a2/and)	5	ARG0	2
+27	"Tajikistan"	8	op1	1
+28	(a/and)	0	ROOT	9
+29	(n/name)	2	name	1
+30	(b3/back-01)	19	ARG1-of	14
+31	(r2/religious-group)	19	mod	15
+32	"Taliban"	8	op1	14
+
+20	Gilbert stated that Tajikistan 's positive and responsible approach to the crisis in Afghanistan has significantly improved the country 's image internationally .
+1	"Afghanistan"	11	op1	13
+2	(r/responsible)	7	op2	7
+3	(p2/positive)	7	op1	5
+4	(i2/image)	20	ARG1	20
+5	(c/country)	4	poss	18
+6	"Tajikistan"	11	op1	3
+7	(a2/and)	14	ARG2	6
+8	(i3/international)	4	location	21
+9	(s2/significant)	20	degree	15
+10	(c/country)	14	ARG0	3
+11	(n3/name)	5	name	13
+12	"Gilbert"	11	op1	0
+13	(c2/crisis)	14	ARG1	11
+14	(a/approach-02)	20	ARG0	8
+15	(p/person)	19	ARG0	0
+16	(n/name)	15	name	0
+17	(n2/name)	5	name	3
+18	(c3/country)	13	location	13
+19	(s/state-01)	0	ROOT	1
+20	(i/improve-01)	19	ARG1	16
+
+12	Drug trafficking from Afghanistan resumed during a brief hiatus in the anti-terrorist operation .
+1	(h/hiatus)	6	op1	8
+2	(c/country)	9	source	3
+3	(t2/terrorist)	8	ARG1	11
+4	(r/resume-01)	0	ROOT	4
+5	(n/name)	2	name	3
+6	(d2/during)	4	time	5
+7	(b/brief)	1	mod	7
+8	(c2/counter-01)	12	purpose	11
+9	(t/trafficking)	4	ARG1	1
+10	"Afghanistan"	5	op1	3
+11	(d/drug)	9	mod	0
+12	(o/operation)	1	part-of	12
+
+10	Cultivation of raw opium provided the only source of income for much of the rural population .
+1	(r/raw)	10	mod	2
+2	(s/source)	8	ARG1	7
+3	(p2/population)	5	part-of	15
+4	(r2/rural)	3	location	14
+5	(m/much)	8	ARG2	11
+6	(c/cultivate-01)	8	ARG0	0
+7	(o2/only)	2	frequency	6
+8	(p/provide-01)	0	ROOT	4
+9	(i/income)	2	source-of	9
+10	(o/opium)	6	ARG1	3
+
+28	Afghan officials conducted talks with Russian officials asking for assistance in stopping Afghanistan 's large illegal opium and heroin trade .
+1	(l/large)	14	mod	14
+2	(l2/legal)	14	mod	15
+3	-	2	polarity	15
+4	(h3/have-org-role-91)	5	ARG0-of	6
+5	(p/person)	24	ARG0	1
+6	(o/official)	4	ARG2	1
+7	"Russia"	20	op1	5
+8	(o2/official)	4	ARG2	6
+9	(a/ask-02)	24	purpose	7
+10	(a2/assist-01)	9	ARG1	9
+11	"Afghanistan"	20	op1	0
+12	(a3/and)	14	ARG1	17
+13	(s/stop-01)	10	ARG2	11
+14	(t2/trade-01)	13	ARG1	19
+15	(p/person)	9	ARG0	1
+16	(o3/opium)	12	op1	16
+17	(p2/person)	9	ARG2	1
+18	(p2/person)	10	ARG0	1
+19	(h2/have-org-role-91)	5	ARG0-of	1
+20	(n2/name)	21	name	5
+21	(c3/country)	4	ARG1	5
+22	(n/name)	21	name	0
+23	(p2/person)	25	ARG2	6
+24	(c/conduct-01)	0	ROOT	2
+25	(t/talk-01)	24	ARG1	3
+26	(c2/country)	4	ARG1	0
+27	(p/person)	25	ARG0	6
+28	(h/heroin)	12	op2	18
+
+19	Unfortunately over the past six years , the rule of the Taliban turned Afghanistan into a center of terrorism and drugs .
+1	(r/rule-03)	8	ARG0	8
+2	"Taliban"	3	op1	11
+3	(n2/name)	7	name	13
+4	(t3/terrorism)	18	op1	18
+5	(o2/over)	8	time	1
+6	-	11	polarity	0
+7	(c/country)	8	ARG1	13
+8	(t2/turn-02)	0	ROOT	12
+9	(y2/year)	13	unit	5
+10	(c3/criminal-organization)	1	ARG0	11
+11	(f/fortunate)	8	mod	0
+12	(p/past)	13	mod	3
+13	(t4/temporal-quantity)	5	op1	5
+14	"Afghanistan"	3	op1	13
+15	(c2/center)	8	ARG2	16
+16	(n/name)	10	name	11
+17	(d/drug)	18	op2	20
+18	(a/and)	15	location-of	19
+19	6	13	quant	4
+
+23	Leader of Afghanistan 's interim government Hamid Karzai said the fight against poppy harvesting and the lucrative trafficking of opium and heroin will be a top priority .
+1	(l/lead-02)	3	ARG0-of	0
+2	(a/and)	14	ARG1	14
+3	(p/person)	6	ARG0	6
+4	(p2/priority)	6	ARG1	26
+5	(o/opium)	2	op1	19
+6	(s/say-01)	0	ROOT	8
+7	(t/top)	4	degree	25
+8	(t2/traffic-00)	2	op2	17
+9	(a2/and)	8	ARG1	20
+10	"Hamid"	12	op1	6
+11	(p3/poppy)	18	ARG1	12
+12	(n2/name)	15	name	2
+13	(l2/lucrative)	8	mod	16
+14	(f/fight-01)	4	domain	10
+15	(c/country)	22	ARG1	2
+16	(n/name)	3	name	6
+17	"Karzai"	12	op2	7
+18	(h/harvest-01)	2	op1	13
+19	"Afghanistan"	12	op1	2
+20	(i/interim)	21	duration	4
+21	(g/government-organization)	1	ARG1	5
+22	(g2/govern-01)	21	ARG0-of	5
+23	(h2/heroin)	2	op2	21
+
+9	Afghan authorities will seek to ban poppy harvesting .
+1	(p/poppy)	5	ARG1	6
+2	(n/name)	4	name	0
+3	"Afghanistan"	2	op1	0
+4	(c/country)	7	mod	0
+5	(h/harvest-01)	8	ARG1	7
+6	(s/seek-01)	0	ROOT	3
+7	(a/authority)	6	ARG0	1
+8	(b/ban-01)	6	ARG1	5
+9	(a/authority)	8	ARG0	1
+
+16	The Northern Alliance opposes the Taliban but tolerated the harvest of poppy in territory it controlled .
+1	(o2/oppose-01)	12	ARG1	3
+2	"Taliban"	3	op1	5
+3	(n2/name)	14	name	5
+4	(o/organization)	7	ARG0	1
+5	(h/harvest-01)	7	ARG1	9
+6	(o/organization)	1	ARG0	1
+7	(t/tolerate-01)	12	ARG2	7
+8	(o/organization)	10	ARG0	14
+9	(n/name)	4	name	1
+10	(c3/control-01)	15	ARG1-of	15
+11	(p/poppy)	5	ARG1	11
+12	(c2/contrast-01)	0	ROOT	6
+13	"Northern"	3	op1	1
+14	(c/criminal-organization)	1	ARG1	5
+15	(t2/territory)	5	location	13
+16	"Alliance"	3	op2	2
+
+28	South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project .
+1	(f/favor-01)	19	ARG1	13
+2	(m2/multi-billion)	26	quant	18
+3	(n/name)	15	name	3
+4	(a3/aircraft)	25	mod	19
+5	"Defense"	3	op1	3
+6	(d/dollar)	26	unit	18
+7	(c/cause-01)	12	ARG1-of	9
+8	"Korea"	3	op2	1
+9	(n4/name)	13	name	14
+10	(n2/name)	15	name	8
+11	(f2/fight-01)	4	ARG0-of	19
+12	(a/attack-01)	0	ROOT	6
+13	(c3/country)	20	source	14
+14	"Ministry"	3	op2	4
+15	(g2/government-organization)	12	location	8
+16	"South"	3	op1	0
+17	"Parliament"	3	op1	8
+18	(g/government-organization)	12	ARG1	3
+19	(a2/allege-01)	7	ARG0	10
+20	(c2/company)	1	ARG1	15
+21	"Boeing"	3	op1	16
+22	(n5/name)	13	name	0
+23	(g/government-organization)	1	ARG0	11
+24	(c4/country)	15	poss	0
+25	(p/project)	1	purpose	20
+26	(m/monetary-quantity)	25	mod	18
+27	"U.S."	3	op1	14
+28	(n3/name)	20	name	16
+
+16	Award of the contract was temporarily suspended in February 2002 after the prices offered by 4 bidders were judged too high .
+1	(j/judge-01)	2	op1	18
+2	(a2/after)	14	time	10
+3	(b/bid-01)	8	ARG0-of	16
+4	(p/price)	1	ARG1	12
+5	(t2/too)	13	degree	19
+6	(o/offer-01)	4	ARG1-of	13
+7	(c/contract)	9	ARG1	3
+8	(p2/person)	6	ARG0	16
+9	(a/award-01)	14	ARG1	0
+10	(t/temporary)	14	duration	5
+11	(d/date-entity)	14	time	8
+12	4	8	quant	15
+13	(h/high)	1	ARG2	20
+14	(s/suspend-01)	0	ROOT	6
+15	2	11	month	8
+16	2002	11	year	9
+
+11	Dassault is seeking its first foreign order for the Rafale .
+1	(s/seek-01)	0	ROOT	2
+2	(a/aircraft-type)	11	ARG1	9
+3	(f2/first)	11	frequency	4
+4	(c/company)	1	ARG0	0
+5	(n/name)	4	name	0
+6	(f/foreign)	11	ARG0	5
+7	"Dassault"	5	op1	0
+8	(n2/name)	2	name	9
+9	"Rafale"	5	op1	9
+10	(c/company)	11	ARG3	3
+11	(o/order-02)	1	ARG1	6
+
+5	There would be an investigation into how classified documents had been leaked .
+1	(c/cause-01)	3	ARG1	5
+2	(c2/classify-02)	5	ARG1-of	7
+3	(i/investigate-01)	0	ROOT	4
+4	(l/leak-01)	1	ARG1	11
+5	(d/document)	4	ARG1	8
+
+19	Rafale reportedly offered more generous terms for technology transfer and subcontracts for South Korea 's aerospace industry .
+1	(t/term)	19	ARG1	5
+2	(s/subcontract-01)	7	op2	10
+3	(r/report-01)	19	ARG1-of	1
+4	(n/name)	5	name	0
+5	(a/aircraft-type)	19	ARG0	0
+6	(t3/technology)	10	ARG1	7
+7	(a2/and)	1	purpose	9
+8	(a3/aerospace)	9	mod	15
+9	(i/industry)	14	ARG1	16
+10	(t2/transfer-01)	7	op1	8
+11	(n2/name)	15	name	12
+12	"Korea"	4	op2	13
+13	(a/aircraft-type)	14	ARG0	0
+14	(g/generous-41)	1	ARG2-of	4
+15	(c/country)	9	poss	12
+16	"South"	4	op1	12
+17	"Rafale"	4	op1	0
+18	(m/more)	14	degree	3
+19	(o/offer-01)	0	ROOT	2
+
+29	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts .
+1	(c2/company)	18	ARG0	16
+2	(c3/cause-01)	7	ARG1-of	15
+3	(f/few)	4	mod	19
+4	(p2/point)	23	consist-of	13
+5	(n4/name)	1	name	22
+6	(n3/name)	1	name	7
+7	(b/benefit-01)	8	ARG1	9
+8	(s2/say-01)	26	ARG1	6
+9	(c/criticize-01)	15	ARG0-of	5
+10	"Dassault"	5	op1	22
+11	(t/term)	18	mod	24
+12	(c2/company)	7	ARG1	7
+13	"Korea"	5	op1	1
+14	(n2/name)	19	name	1
+15	(p/person)	8	ARG0	5
+16	"Boeing"	5	op1	7
+17	(p3/point)	18	ARG1	20
+18	(g/gain-02)	2	ARG0	18
+19	(n/newspaper)	26	ARG0	1
+20	(m/most)	7	degree	10
+21	(a/and)	11	mod	28
+22	(s3/subcontract-01)	21	op2	29
+23	(m2/minimum)	7	ARG0	14
+24	(m3/more)	3	degree	19
+25	(t2/transfer-01)	21	op1	27
+26	(s/state-01)	0	ROOT	3
+27	"Herald"	5	op2	2
+28	(c4/company)	3	compared-to	22
+29	(t3/technology)	25	ARG1	26
+
+22	According to Taiwan 's '' Ministry of Economy '' statistics , the volume of trade between mainland and Taiwan last year was 20.9 billion US dollars .
+1	"of"	4	op2	6
+2	(s/say-01)	0	ROOT	0
+3	(c2/country)	9	mod	24
+4	(n/name)	22	name	5
+5	(c/country)	12	ARG2	18
+6	"Ministry"	4	op1	5
+7	(n2/name)	3	name	18
+8	"Economy"	4	op3	7
+9	(d/dollar)	18	unit	25
+10	"Taiwan"	4	op1	18
+11	"US"	4	op1	24
+12	(t/trade-01)	15	quant-of	14
+13	20900000000	18	quant	22
+14	(n3/name)	3	name	24
+15	(v/volume)	18	domain	12
+16	(s2/statistic)	2	ARG0	9
+17	(l/last)	21	mod	19
+18	(m2/monetary-quantity)	2	ARG1	25
+19	c	22	poss	2
+20	(m/mainland)	12	ARG0	16
+21	(y/year)	15	time	20
+22	(g/government-organization)	16	source	5
+
+21	The number of investment projects dropped by 444 as compared with last year , but the value of investments rose by more than 130 million US dollars as compared with last year .
+1	(i2/invest-01)	18	mod	18
+2	(c2/compare-01)	4	ARG1-of	9
+3	(c3/compare-01)	20	ARG1-of	28
+4	(d/drop-01)	13	ARG1	5
+5	(n/number)	4	ARG1	1
+6	(m/monetary-quantity)	16	op1	26
+7	(i/invest-01)	17	mod	3
+8	(d2/dollar)	6	unit	26
+9	(y/year)	2	ARG2	31
+10	"US"	11	op1	25
+11	(n2/name)	12	name	25
+12	(c4/country)	8	mod	25
+13	(c/contrast-01)	0	ROOT	14
+14	(y/year)	2	ARG2	12
+15	130000000	6	quant	23
+16	(m2/more-than)	20	ARG2	22
+17	(p/project)	5	quant-of	4
+18	(v/value)	20	ARG1	16
+19	444	4	ARG2	7
+20	(r/rise-01)	13	ARG2	19
+21	(l/last)	9	mod	11
+
+58	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project .
+1	(w/whole)	20	mod	43
+2	(p5/plan-01)	8	op2	48
+3	(m3/manage-01)	31	mod	12
+4	(g/good)	8	op1	0
+5	(m5/manage-01)	8	op2	0
+6	(m6/material)	8	op2	0
+7	(m/manage-01)	11	mod	2
+8	(a/and)	34	ARG1	14
+9	(p6/project)	11	poss	5
+10	"Three"	17	op2	6
+11	(s3/system)	32	ARG1	31
+12	"Corp."	17	op2	21
+13	(d/database)	3	ARG1	29
+14	(e/equip-01)	8	op6	0
+15	(c5/core)	57	mod	0
+16	"Gorges"	17	op3	7
+17	(n3/name)	25	name	20
+18	(m4/manage-01)	11	mod	30
+19	(c6/control-01)	8	op1	38
+20	(p4/process)	3	ARG1	0
+21	"Canada"	17	op4	23
+22	(c/computer)	30	mod	16
+23	(a5/and)	8	op5	55
+24	"MAI"	17	op1	20
+25	(c3/company)	30	poss	20
+26	(e2/each)	27	mod	64
+27	(s4/subproject)	45	ARG1	65
+28	(a3/and)	32	ARG2	39
+29	"of"	17	op3	22
+30	(t/technology)	19	ARG0	17
+31	(m2/method)	8	op1	13
+32	(u/use-01)	25	ARG0-of	26
+33	(s4/subproject)	54	ARG1	70
+34	(i/introduce-02)	0	ROOT	10
+35	(p/project)	3	ARG1	1
+36	(s4/subproject)	2	ARG1	70
+37	(s4/subproject)	14	part-of	0
+38	(c8/construct-01)	8	op7	0
+39	(p6/project)	27	part-of	70
+40	(p4/process)	19	ARG1	44
+41	(t/technology)	8	op2	17
+42	(a4/and)	20	consist-of	55
+43	(s4/subproject)	38	part-of	0
+44	(i2/install-01)	8	op8	0
+45	(d2/design-01)	8	op1	46
+46	(s4/subproject)	8	part-of	0
+47	(s/system)	34	ARG0	3
+48	(s4/subproject)	53	ARG1	23
+49	"The"	17	op1	5
+50	(n/name)	9	name	5
+51	(t/technology)	3	ARG0	0
+52	(a2/advance-01)	30	ARG1-of	15
+53	(f/finance-01)	8	op4	52
+54	(c7/contract-02)	8	op3	50
+55	(s2/science)	31	mod	11
+56	(s4/subproject)	44	part-of	0
+57	(c4/component)	32	prep-as	0
+58	(p3/project)	13	mod	28
+
+17	Xinhua News Agency , Rangoon , March 17th , by reporter Yunfei Zhang
+1	(r/report-01)	9	ARG0-of	10
+2	(p2/publication)	7	ARG0	0
+3	(d/date-entity)	7	time	6
+4	"Xinhua"	14	op1	0
+5	"Agency"	14	op3	2
+6	"Rangoon"	14	op1	4
+7	(b/byline-91)	0	ROOT	6
+8	"Yunfei"	14	op1	11
+9	(p/person)	7	ARG1	11
+10	(c2/city)	7	location	4
+11	"Zhang"	14	op2	12
+12	3	3	month	6
+13	"News"	14	op2	1
+14	(n2/name)	9	name	11
+15	17	3	day	7
+16	(n3/name)	10	name	4
+17	(n/name)	2	name	0
+
+23	Myanmaran officials revealed that the total trade volume between Myanmar and Thailand exceeded 300 million US dollars in 1995 .
+1	(r/reveal-01)	0	ROOT	2
+2	(v/volume)	23	ARG0	7
+3	1995	8	year	18
+4	(p/person)	1	ARG0	1
+5	"Myanmar"	12	op1	0
+6	(d/dollar)	15	unit	16
+7	"US"	12	op1	15
+8	(d2/date-entity)	23	time	18
+9	300000000	15	quant	13
+10	(t2/total-01)	2	ARG2-of	5
+11	"Thailand"	12	op1	11
+12	(n/name)	17	name	0
+13	(t/trade-01)	2	quant-of	6
+14	(n2/name)	17	name	11
+15	(m/monetary-quantity)	23	ARG1	16
+16	(n3/name)	17	name	15
+17	(c/country)	13	ARG0	9
+18	(c3/country)	6	mod	15
+19	(h/have-org-role-91)	4	ARG0-of	1
+20	(c/country)	19	ARG1	0
+21	(o/official)	19	ARG2	1
+22	(c2/country)	13	ARG2	11
+23	(e/exceed-01)	1	ARG1	12
+
+12	Xinhua News Agency , Beijing , March 18th
+1	(d/date-entity)	4	time	7
+2	18	1	day	7
+3	(n2/name)	11	name	4
+4	(b/byline-91)	0	ROOT	6
+5	(n/name)	9	name	0
+6	3	1	month	6
+7	"Beijing"	3	op1	4
+8	"News"	3	op2	1
+9	(p/publication)	4	ARG0	0
+10	"Xinhua"	3	op1	0
+11	(c2/city)	4	location	4
+12	"Agency"	3	op3	2
+
+26	Apart from setting up joint venture enterprises , GE also invested more than 1 billion US dollars in China by means of airplane and container leasing .
+1	(c/company)	12	ARG0	8
+2	(i/invest-01)	0	ROOT	10
+3	(j/joint)	21	mod	4
+4	(n3/name)	6	name	15
+5	(c/company)	2	ARG0	8
+6	(c4/country)	10	mod	15
+7	(n/name)	1	name	8
+8	(a2/and)	14	ARG1	23
+9	(c3/container)	8	op2	24
+10	(d/dollar)	18	unit	16
+11	(e/enterprise)	12	ARG1	6
+12	(s/set-03)	16	ARG1	2
+13	(c/company)	14	ARG0	8
+14	(l/lease-02)	2	instrument	25
+15	(m2/more-than)	2	ARG1	11
+16	(e2/except-00)	2	ARG2-of	0
+17	(n2/name)	6	name	18
+18	(m/monetary-quantity)	15	op1	16
+19	(a3/airplane)	8	op1	22
+20	"US"	4	op1	15
+21	(v/venture)	11	mod	5
+22	"GE"	4	op1	8
+23	(a/also)	2	mod	9
+24	"China"	4	op1	18
+25	1000000000	18	quant	13
+26	(c2/country)	2	ARG2	18
+

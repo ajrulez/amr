@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class DumpSequence {
     public static void main(String[] args) throws IOException {
-        dumpPreAligned();
+        dumpPreAlignedSplit();
     }
 
     public static void dumpPreAligned() throws IOException {
@@ -25,6 +25,26 @@ public class DumpSequence {
         dumpSequences(train, "data/training-500-seq.txt");
         dumpManygenDictionaries(train, "data/training-500-manygen.txt");
         dumpCONLL(train, "data/training-500-conll.txt");
+    }
+
+    public static void dumpPreAlignedSplit() throws IOException {
+        AMR[] bank = AMRSlurp.slurp("data/training-500-subset.txt", AMRSlurp.Format.LDC);
+        List<AMR> trainList = new ArrayList<>();
+        List<AMR> testList = new ArrayList<>();
+        for (int i = 0; i < bank.length; i++) {
+            if (i % 5 == 0) testList.add(bank[i]);
+            else trainList.add(bank[i]);
+        }
+        AMR[] train = trainList.toArray(new AMR[trainList.size()]);
+        AMR[] test = testList.toArray(new AMR[testList.size()]);
+
+        dumpSequences(train, "data/train-"+train.length+"-seq.txt");
+        dumpManygenDictionaries(train, "data/train-"+train.length+"-manygen.txt");
+        dumpCONLL(train, "data/train-"+train.length+"-conll.txt");
+
+        dumpSequences(test, "data/test-"+test.length+"-seq.txt");
+        dumpManygenDictionaries(test, "data/test-"+test.length+"-manygen.txt");
+        dumpCONLL(test, "data/test-"+test.length+"-conll.txt");
     }
 
     private static String getType(AMR amr, int i) {
@@ -170,7 +190,7 @@ public class DumpSequence {
                 dictionaries.put(sourceTokens, new ArrayList<String>());
             }
 
-            dictionaries.get(sourceTokens).add(gen+"\t"+start+"\t"+end+"\n"+context+"\n");
+            dictionaries.get(sourceTokens).add(context+"\n"+gen+"\t"+start+"\t"+end+"\n");
         }
     }
 
@@ -189,6 +209,8 @@ public class DumpSequence {
                 nodes[i++] = node;
             }
             assert(i == nodes.length);
+
+            bw.append(nodes.length+"\t");
 
             for (int j = 0; j < amr.sourceText.length; j++) {
                 if (j != 0) bw.append(" ");
