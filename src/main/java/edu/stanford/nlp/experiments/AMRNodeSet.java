@@ -1,5 +1,6 @@
 package edu.stanford.nlp.experiments;
 
+import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.util.Triple;
 
@@ -13,6 +14,17 @@ import java.util.Set;
  */
 public class AMRNodeSet {
     public AMR.Node[] nodes;
-    public Set<Triple<Integer,Integer,String>> forcedArcs = new HashSet<>();
-    public LabeledSequence sourceSequence;
+    public String[][] forcedArcs;
+    public String[][] correctArcs;
+    public String[] tokens;
+    public Annotation annotation;
+
+    public String formatTokens() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < tokens.length; i++) {
+            if (i != 0) sb.append(" ");
+            sb.append(tokens[i]);
+        }
+        return sb.toString();
+    }
 }

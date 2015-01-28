@@ -8,6 +8,14 @@
     <artifactId>amr</artifactId>
     <version>0.01-SNAPSHOT</version>
 
+
+    <repositories>
+        <repository>
+            <id>snapshots-repo</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!--
         <dependency>
@@ -31,6 +39,11 @@
             <groupId>com.esotericsoftware.kryo</groupId>
             <artifactId>kryo</artifactId>
             <version>2.24.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.keenon</groupId>
+            <artifactId>minimalml</artifactId>
+            <version>0.2.6-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

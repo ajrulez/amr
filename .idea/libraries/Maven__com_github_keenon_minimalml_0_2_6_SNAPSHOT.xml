@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.github.keenon:minimalml:0.2.6-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/keenon/minimalml/0.2.6-SNAPSHOT/minimalml-0.2.6-20150124.224515-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/keenon/minimalml/0.2.6-SNAPSHOT/minimalml-0.2.6-20150124.224515-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/keenon/minimalml/0.2.6-SNAPSHOT/minimalml-0.2.6-20150124.224515-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

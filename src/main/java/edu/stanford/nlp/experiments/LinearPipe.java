@@ -25,8 +25,9 @@ public class LinearPipe<IN,OUT> {
     Function<IN,Object>[] features;
     LinearClassifier<OUT,String> classifier;
 
-    public LinearPipe(Function<IN,Object>[] features) {
-        this.features = features;
+    @SuppressWarnings("unchecked")
+    public LinearPipe(List<Function<IN,Object>> features) {
+        this.features = features.toArray(new Function[features.size()]);
     }
 
     private Counter<String> featurize(IN in) {
