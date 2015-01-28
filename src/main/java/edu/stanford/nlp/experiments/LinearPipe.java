@@ -127,7 +127,7 @@ public class LinearPipe<IN,OUT> {
             int target = tagTypes.indexOf(prediction.second);
             int guess = tagTypes.indexOf(prediction.third);
 
-            if (target > 0 || guess > 0) continue;
+            if (target < 0 || guess < 0) continue;
 
             counts[target][guess]++;
         }
