@@ -232,10 +232,10 @@ public class AMRPipeline {
 
         Map<Integer,AMR.Node> oldToNew = new HashMap<>();
         AMR result = new AMR();
+        result.sourceText = tokens;
 
         if (!arcMap.containsKey(-1)) {
-            System.err.println("Got no MST!!!! Returning empty tree");
-            // TODO: Debt, why wouldn't it contain -1?
+            System.err.println("Got no parse for \""+result.formatSourceTokens()+"\"! Returning empty tree");
             return result;
         }
 
