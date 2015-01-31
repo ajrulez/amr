@@ -119,6 +119,7 @@ public class LinearPipe<IN,OUT> {
         List<OUT> tagTypes = new ArrayList<>();
         for (Triple<IN,OUT,OUT> prediction : predictions) {
             if (!tagTypes.contains(prediction.second)) tagTypes.add(prediction.second);
+            if (!tagTypes.contains(prediction.third)) tagTypes.add(prediction.third);
         }
 
         int[][] counts = new int[tagTypes.size()][tagTypes.size()];
@@ -126,8 +127,6 @@ public class LinearPipe<IN,OUT> {
         for (Triple<IN,OUT,OUT> prediction : predictions) {
             int target = tagTypes.indexOf(prediction.second);
             int guess = tagTypes.indexOf(prediction.third);
-
-            if (target < 0 || guess < 0) continue;
 
             counts[target][guess]++;
         }

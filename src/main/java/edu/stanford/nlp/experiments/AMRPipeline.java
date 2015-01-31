@@ -3,6 +3,8 @@ package edu.stanford.nlp.experiments;
 import com.github.keenon.minimalml.cache.BatchCoreNLPCache;
 import com.github.keenon.minimalml.cache.CoreNLPCache;
 import com.github.keenon.minimalml.word2vec.Word2VecLoader;
+import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRParser;
 import edu.stanford.nlp.stamr.AMRSlurp;
@@ -100,9 +102,85 @@ public class AMRPipeline {
         arcType.train(getArcTypeForClassifier(mstData));
     }
 
-    public AMR runPipeline(String[] parts) {
-        // TODO, actually stitch together outputs
+    public AMR runPipeline(String[] tokens) {
+        LabeledSequence labeledSequence = new LabeledSequence();
+        labeledSequence.tokens = tokens;
+        labeledSequence.annotation = new Annotation(); // TODO: generate CoreNLP annotation here
+
+        String[] labels = new String[tokens.length];
+        for (int i = 0; i < tokens.length; i++) {
+            labels[i] = nerPlusPlus.predict(new Pair<>(labeledSequence, i));
+        }
+
+        List<AMR> structures = new ArrayList<>();
+
+        // First we get all adjacent DICT entries together...
+
+        List<List<Integer>> adjacentDicts = new ArrayList<>();
+
+        List<Integer> currentDict = null;
+        for (int i = 0; i < tokens.length; i++) {
+            if (labels[i].equals("DICT")) {
+                if (currentDict == null) {
+                    currentDict = new ArrayList<>();
+                }
+                currentDict.add(i);
+            }
+            else if (currentDict != null) {
+                adjacentDicts.add(currentDict);
+                currentDict = null;
+            }
+        }
+
+        // Now we can go through and start to generate components as a list of AMR's
+
+        List<AMR> gen = new ArrayList<>();
+
+        // First do all non-dict elements
+
+        for (int i = 0; i < tokens.length; i++) {
+            if (labels[i].equals("VERB")) {
+                // TODO: Train a simple sense-tagger, or just use DICT for everything
+                gen.add(createAMRSingleton(tokens[i].toLowerCase()+"-01"));
+            }
+            else if (labels[i].equals("IDENTITY")) {
+                gen.add(createAMRSingleton(tokens[i].toLowerCase()));
+            }
+            else if (labels[i].equals("LEMMA")) {
+                gen.add(createAMRSingleton(labeledSequence.annotation.get(CoreAnnotations.TokensAnnotation.class).
+                        get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase()));
+            }
+            //
+            // else do nothing, no other tags generate any nodes
+            //
+        }
+
+        // Now add all the dict elements
+
+        for (List<Integer> dict : adjacentDicts) {
+
+        }
+
+        AMRNodeSet nodeSet = new AMRNodeSet();
+        nodeSet.annotation = labeledSequence.annotation;
+        nodeSet.tokens = labeledSequence.tokens;
+
         return new AMR();
+    }
+
+    private AMR createAMRSingleton(String title) {
+        return createAMRSingleton(title, AMR.NodeType.ENTITY);
+    }
+
+    private AMR createAMRSingleton(String title, AMR.NodeType type) {
+        AMR amr = new AMR();
+        if (type == AMR.NodeType.ENTITY) {
+            amr.addNode("" + title.charAt(0), title);
+        }
+        else {
+            amr.addNode(title, type);
+        }
+        return amr;
     }
 
     public void analyzeStages() throws IOException {
