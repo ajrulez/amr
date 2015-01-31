@@ -1,0 +1,2034 @@
+# ::id bolt12_07_4800.1 ::date 2012-12-19T12:53:14 ::annotator SDL-AMR-09 ::preferred
+# ::snt Establishing Models in Industrial Innovation 
+(e / establish-01 [0 = "Establishing"]
+	:ARG1 (m / model [1 = "Models"]
+		:mod (i / innovate-01 [4 = "Innovation"]
+			:ARG1 (i2 / industry [3 = "Industrial"]))))
+
+# ::id bolt12_10465_5552.1 ::date 2012-12-03T16:21:13 ::annotator SDL-AMR-09 ::preferred
+# ::snt Since the Tangshan Earthquake , the starting point for construction standards in the mainland is that under an earthquake of the same magnitude , buildings should preserve their basic frame without collapsing . 
+(p2 / point [7 = "point"]
+	:mod (s / start-01 [6 = "starting"]
+		:ARG1 (s2 / standard [10 = "standards"]
+			:mod (c3 / construct-01 [9 = "construction"])))
+	:location (m / mainland [13 = "mainland"])
+	:domain (r / recommend-01 [25 = "should"]
+		:ARG1 (p / preserve-01 [26 = "preserve"]
+			:ARG0 (b / building [24 = "buildings"])
+			:ARG1 (f / frame [29 = "frame"]
+				:part-of (t / thing [24 = "buildings"])
+				:mod (b2 / basic [28 = "basic"])
+				:poss b [27 = "their"])
+			:manner (c2 / collapse-01 [31 = "collapsing"]
+				:polarity - [30 = "without"]
+				:ARG0 t [24 = "buildings"]))
+		:time (s3 / since [0 = "Since"]
+			:op1 (e / earthquake [2 = "Tangshan"]
+				:name (n / name [2 = "Tangshan"]
+					:op1 "Tangshan" [2 = "Tangshan"])))
+		:condition (e2 / earthquake [18 = "earthquake"]
+			:mod (m2 / magnitude [22 = "magnitude"]
+				:ARG1-of (s4 / same-41 [21 = "same"]
+					:ARG2 (m3 / magnitude [22 = "magnitude"]
+						:poss e [18 = "earthquake"]))))))
+
+# ::id bolt12_10465_5552.6 ::date 2012-12-06T20:04:14 ::annotator SDL-AMR-09 ::preferred
+# ::snt In regions where the earthquake risk is high , warning the public and spreading disaster prevention awareness could greatly reduce casualties during earthquakes ; this is the very minimum duty that any responsible government should undertake . 
+(m2 / multi-sentence [23 = ";"]
+	:snt1 (p / possible [17 = "could"]
+		:domain (r2 / reduce-01 [19 = "reduce"]
+			:ARG0 (a2 / and [12 = "and"]
+				:op1 (w / warn-01 [9 = "warning"]
+					:ARG2 (p2 / public [11 = "public"]))
+				:op2 (s / spread-03 [13 = "spreading"]
+					:ARG1 (a3 / awareness [16 = "awareness"]
+						:topic (p3 / prevent-01 [15 = "prevention"]
+							:ARG1 (d2 / disaster [14 = "disaster"])))))
+			:ARG1 (c / casualty [20 = "casualties"])
+			:location (r / region [1 = "regions"]
+				:location-of (h / high [7 = "high"]
+					:domain (r3 / risk-01 [5 = "risk"]
+						:ARG1 (e / earthquake [4 = "earthquake"]))))
+			:extent (g / great [18 = "greatly"])
+			:time e [22 = "earthquakes"]))
+	:snt2 (d / duty [29 = "duty"]
+		:domain (t / this [24 = "this"])
+		:mod (m / minimum [28 = "minimum"]
+			:degree (v / very [27 = "very"]))
+		:ARG1-of (u / undertake-01 [35 = "undertake"]
+			:ARG0 (g3 / government-organization [33 = "government"]
+				:ARG0-of (g2 / govern-01 [33 = "government"])
+				:ARG1-of (r4 / responsible-41 [32 = "responsible"])
+				:mod (a4 / any [31 = "any"]))
+			:ARG1-of (r5 / recommend-01 [34 = "should"]))))
+
+# ::id bolt12_10465_5592.4 ::date 2012-12-07T06:12:04 ::annotator SDL-AMR-09 ::preferred
+# ::snt In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
+(m / multi-sentence [15 = "."]
+	:snt2 (p2 / possible [24 = "able"]
+		:domain (m2 / maintain-01 [26 = "maintain"]
+			:ARG0 (r / regiment [22 = "regiments"]
+				:part-of (m3 / military [20 = "Red"]
+					:name (n / name [20 = "Red"]
+						:op1 "Red" [20 = "Red"]
+						:op2 "Army" [21 = "Army"])))
+			:ARG1 (c3 / contact-01 [27 = "contact"]
+				:ARG0 r [22 = "regiments"]
+				:ARG1 (h / headquarters [30 = "headquarters"]
+					:mod (c4 / central [29 = "central"])
+					:part-of m3 [20 = "Red"]))
+			:instrument (r2 / rely-01 [32 = "relying"]
+				:ARG0 r [22 = "regiments"]
+				:ARG1 (r3 / radio [37 = "radio"]
+					:ARG1-of (b3 / batter-01 [36 = "battered"])
+					:quant (j / just [34 = "just"]
+						:op1 1 [35 = "one"]))))
+		:time (p3 / past [18 = "past"]))
+	:snt1 (a2 / and [1 = "addition"]
+		:op2 (b / bring-01 [8 = "brought"]
+			:ARG0 (b2 / break-12 [4 = "breakdown"]
+				:ARG1 (c2 / communicate-01 [6 = "communication"]))
+			:ARG1 (p / problem [11 = "problem"]
+				:mod (s2 / serious [10 = "serious"]))
+			:ARG2 (s / surface [14 = "surface"])
+			:mod (a / also [7 = "also"])))
+	:snt3 (h3 / have-concession-91 [42 = "though"]
+		:ARG1 (h2 / have-03 [45 = "had"]
+			:polarity - [46 = "no"]
+			:ARG0 (p4 / person [44 = "people"])
+			:ARG1 (w / way [47 = "way"]
+				:instrument-of (d / deal-01 [49 = "deal"]
+					:ARG1 (f / fail-01 [53 = "failure"]
+						:ARG0 (c5 / communicate-01 [52 = "communication"]))))
+			:time (o / occasion [41 = "occasion"]
+				:mod (t / this [40 = "this"])))))
+
+# ::id bolt12_10474_1421.4 ::date 2012-12-07T07:31:55 ::annotator SDL-AMR-09 ::preferred
+# ::snt As soon as the earthquake occurred , grass-root organizations contacted their own people and average people also contacted their own systems or departments , in an interdependent manner . 
+(a / and [13 = "and"]
+	:op1 (c / contact-01 [9 = "contacted"]
+		:ARG0 (o2 / organization [8 = "organizations"]
+			:mod (g / grass-roots [7 = "grass-root"]))
+		:ARG1 (p / person [12 = "people"]
+			:ARG0-of (h / have-org-role-91 [10 = "their"]
+				:ARG1 o2 [8 = "organizations"])))
+	:op2 (c2 / contact-01 [17 = "contacted"]
+		:ARG0 (p2 / person [15 = "people"]
+			:mod (a4 / average [14 = "average"]))
+		:ARG1 (o / or [21 = "or"]
+			:op1 (s / system [20 = "systems"]
+				:poss p2 [15 = "people"])
+			:op2 (d2 / department [22 = "departments"]
+				:poss p2 [15 = "people"]))
+		:mod (a5 / also [16 = "also"]))
+	:time (a2 / as-soon-as [0 = "As"]
+		:op1 (e / earthquake [4 = "earthquake"]))
+	:manner (i / interdependent [26 = "interdependent"]))
+
+# ::id bolt12_10474_1831.3 ::date 2012-12-07T08:06:57 ::annotator SDL-AMR-09 ::preferred
+# ::snt But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
+(c / contrast-01 [0 = "But"]
+	:ARG2 (a / and [8 = "and"]
+		:op1 (l / lack-01 [5 = "without"]
+			:ARG0 (i / it [1 = "it"])
+			:ARG1 (b2 / benefit-01 [6 = "benefits"])
+			:degree (t / total [4 = "totally"]
+				:polarity - [3 = "not"]))
+		:op2 (b / believe-01 [10 = "believe"]
+			:ARG0 (i2 / i [9 = "I"])
+			:ARG1 (b4 / benefit-01 [14 = "benefit"]
+				:ARG0 i [17 = "it"]
+				:mod (g / great [13 = "greatest"]
+					:degree (m / most [13 = "greatest"]))
+				:instrument (a2 / and [40 = "and"]
+					:op1 (s / serve-01 [18 = "served"]
+						:ARG0 i [17 = "it"]
+						:ARG1 (s2 / strip-01 [20 = "strip"]
+							:ARG1 (b3 / benevolence [24 = "benevolence"]
+								:mod (f / false [23 = "false"])
+								:ARG2-of (c2 / compose-01 [26 = "composed"]
+									:ARG1 (s3 / skin [29 = "skin"]
+										:part-of (a3 / and [33 = ","]
+											:op1 (e2 / elitist [32 = "elitists"])
+											:op2 (p / politician [35 = "politicians"])
+											:op3 (c3 / capitalist [38 = "capitalists"]))
+										:mod (o / outer [28 = "outer"]))))))
+					:op2 (e / expose-01 [41 = "exposed"]
+						:ARG0 i [17 = "it"]
+						:ARG1 (c7 / core [49 = "core"]
+							:ARG1-of (r / rot-01 [47 = "rotten"])
+							:mod (c6 / cannibal [48 = "cannibalistic"])
+							:location (w / within [50 = "within"]))
+						:manner (o2 / once-and-for-all [42 = "once"])))))))
+
+# ::id bolt12_10474_1831.8 ::date 2012-12-07T09:08:08 ::annotator SDL-AMR-09 ::preferred
+# ::snt Am I being foolish in doing this ? 
+(f / foolish [3 = "foolish"]
+	:mode interrogative [7 = "?"]
+	:domain (i / i [1 = "I"])
+	:condition (d / do-02 [5 = "doing"]
+		:ARG0 i [1 = "I"]
+		:ARG1 (t / this [6 = "this"])))
+
+# ::id bolt12_10489_5932.3 ::date 2012-12-09T14:30:42 ::annotator SDL-AMR-09 ::preferred
+# ::snt As long as we stick to this issue , Xinghui surely has no way of winning the lawsuit if it goes to court . 
+(s / sure [10 = "surely"]
+	:domain (h / have-03 [11 = "has"]
+		:polarity - [12 = "no"]
+		:ARG0 (c / company [9 = "Xinghui"]
+			:name (n / name [9 = "Xinghui"]
+				:op1 "Xinghui" [9 = "Xinghui"]))
+		:ARG1 (w2 / way [13 = "way"]
+			:instrument-of (w3 / win-01 [15 = "winning"]
+				:ARG0 c [9 = "Xinghui"]
+				:ARG1 (l2 / lawsuit [17 = "lawsuit"])))
+		:condition (g / go-01 [20 = "goes"]
+			:ARG1 l2 [17 = "lawsuit"]
+			:ARG4 (c2 / court [22 = "court"])))
+	:condition (a / as-long-as [0 = "As"]
+		:op1 (s2 / stick-01 [4 = "stick"]
+			:ARG1 (w / we [3 = "we"])
+			:ARG2 (i / issue [7 = "issue"]
+				:mod (t / this [6 = "this"])))))
+
+# ::id bolt12_10489_5932.8 ::date 2012-12-09T17:27:26 ::annotator SDL-AMR-09 ::preferred
+# ::snt Without the guarantee from the contract signed with us , they would surely have been unable to deploy them ! 
+(s / sure [12 = "surely"]
+	:domain (p / possible [15 = "unable"]
+		:polarity - [15 = "unable"]
+		:domain (d / deploy-01 [17 = "deploy"]
+			:ARG0 (t2 / they [10 = "they"])
+			:ARG1 (t3 / they [18 = "them"])))
+	:manner (t / thing [2 = "guarantee"]
+		:polarity - [1 = "the"]
+		:ARG1-of (g / guarantee-01 [2 = "guarantee"]
+			:source (c / contract [5 = "contract"]
+				:ARG1-of (s2 / sign-02 [6 = "signed"]
+					:ARG0 t2 [10 = "they"]
+					:ARG2 (w / we [8 = "us"]))))))
+
+# ::id bolt12_10489_6271.3 ::date 2012-12-09T18:00:56 ::annotator SDL-AMR-09 ::preferred
+# ::snt I headed straight for the center of activities , but in actual fact traffic was being controlled as early as 4 o'clock , and they had already started limiting the crowds entering the sports center . 
+(c / contrast-01 [9 = "but"]
+	:ARG1 (h / head-02 [1 = "headed"]
+		:ARG0 (i / i [0 = "I"])
+		:ARG1 (c6 / center [5 = "center"]
+			:poss (a2 / activity [7 = "activities"]))
+		:manner (s2 / straight [2 = "straight"]))
+	:ARG2 (a / and [23 = "and"]
+		:op1 (c2 / control-01 [16 = "controlled"]
+			:ARG1 (t / traffic [13 = "traffic"])
+			:prep-in (f / fact [12 = "fact"]
+				:mod (a3 / actual [11 = "actual"]))
+			:time (e / early [18 = "early"]
+				:extent (d / date-entity [21 = "o'clock"]
+					:time "4:00" [20 = "4"])))
+		:op2 (s / start-01 [27 = "started"]
+			:ARG0 (t2 / they [24 = "they"])
+			:ARG1 (l2 / limit-01 [28 = "limiting"]
+				:ARG1 (c4 / crowd [30 = "crowds"]
+					:ARG0-of (e2 / enter-01 [31 = "entering"]
+						:ARG1 (c5 / center [34 = "center"]
+							:mod (s3 / sport [33 = "sports"])))))
+			:time (a4 / already [26 = "already"]))))
+
+# ::id bolt12_10489_6271.8 ::date 2012-12-09T19:31:50 ::annotator SDL-AMR-09 ::preferred
+# ::snt I had a look at my call register , and out of dozens of calls dialed only one was properly connected ! 
+(a / and [9 = "and"]
+	:op1 (l / look-01 [3 = "look"]
+		:ARG0 (i / i [0 = "I"])
+		:ARG1 (r / register-02 [7 = "register"]
+			:ARG1 (c2 / call-02 [6 = "call"]
+				:ARG0 i [5 = "my"])))
+	:op2 (c / connect-01 [20 = "connected"]
+		:ARG1 (c3 / call-02 [14 = "calls"]
+			:quant (o / only [16 = "only"]
+				:op1 1 [17 = "one"])
+			:ARG1-of (i2 / include-91 [11 = "of"]
+				:ARG2 (c4 / call-02 [14 = "calls"]
+					:quant (m / multiple [12 = "dozens"]
+						:op1 12 [12 = "dozens"])
+					:ARG1-of (d3 / dial-01 [15 = "dialed"]))))
+		:manner (p / proper [19 = "properly"])))
+
+# ::id DF-170-181103-888_2097.5 ::date 2013-09-16T07:28:10 ::annotator LDC-AMR-14 ::preferred
+# ::snt He needs to conduct a beer summit between Palin and NBC . 
+(n / need-01 [1 = "needs"]
+	:ARG0 (h / he [0 = "He"])
+	:ARG1 (c / conduct-01 [3 = "conduct"]
+		:ARG0 h [0 = "He"]
+		:ARG1 (m / meet-03 [6 = "summit"]
+			:ARG0 (p / person [8 = "Palin"]
+				:name (n2 / name [8 = "Palin"]
+					:op1 "Palin" [8 = "Palin"]))
+			:ARG1 (p2 / publication [10 = "NBC"]
+				:name (n3 / name [10 = "NBC"]
+					:op1 "NBC" [10 = "NBC"]))
+			:mod (s / summit [6 = "summit"]
+				:mod (b / beer [5 = "beer"])))))
+
+# ::id DF-170-181103-888_2382.2 ::date 2013-09-16T07:46:10 ::annotator LDC-AMR-14 ::preferred
+# ::snt I think Romney wins big today and obviously stays in . 
+(t / think-01 [1 = "think"]
+	:ARG0 (i / i [0 = "I"])
+	:ARG1 (a / and [6 = "and"]
+		:op1 (w / win-01 [3 = "wins"]
+			:ARG0 (p / person [2 = "Romney"]
+				:name (n / name [2 = "Romney"]
+					:op1 "Romney" [2 = "Romney"]))
+			:degree (b / big [4 = "big"])
+			:time (t2 / today [5 = "today"]))
+		:op2 (s / stay-01 [8 = "stays"]
+			:ARG1 p [2 = "Romney"]
+			:ARG3 (i2 / in [9 = "in"])
+			:ARG1-of (o / obvious-41 [7 = "obviously"]))))
+
+# ::id DF-170-181103-888_2382.7 ::date 2013-09-16T08:07:18 ::annotator LDC-AMR-14 ::preferred
+# ::snt No one 
+(n2 / no-one [0 = "No"])
+
+# ::id DF-170-181103-888_2466.2 ::date 2013-09-16T08:25:53 ::annotator LDC-AMR-14 ::preferred
+# ::snt Nuts . 
+(n / nuts [0 = "Nuts"])
+
+# ::id DF-170-181103-888_2466.7 ::date 2013-09-16T09:04:56 ::annotator LDC-AMR-14 ::preferred
+# ::snt He 's right in some ways but it does n't translate into being right across the board . 
+(c / contrast-01 [6 = "but"]
+	:ARG1 (r / right-41 [2 = "right"]
+		:ARG1 (h / he [0 = "He"])
+		:mod (w / way [5 = "ways"]
+			:quant (s / some [4 = "some"])))
+	:ARG2 (t / translate-01 [10 = "translate"]
+		:polarity - [9 = "n't"]
+		:ARG2 (r2 / right-41 [13 = "right"]
+			:ARG1 h [0 = "He"]
+			:mod (a / across [14 = "across"]
+				:op1 (b / board [16 = "board"])))))
+
+# ::id DF-170-181103-888_2466.12 ::date 2013-09-17T15:21:14 ::annotator LDC-AMR-14 ::preferred
+# ::snt Democrats get it , minorities get it , white republican jurisdictions do n't . 
+(c / contrast-01 [7 = ","]
+	:ARG1 (u / understand-01 [5 = "get"]
+		:ARG0 (a / and [7 = ","]
+			:op1 (p / political-party [0 = "Democrats"]
+				:name (n / name [0 = "Democrats"]
+					:op1 "Democrat" [0 = "Democrats"]))
+			:op2 (m / minority [4 = "minorities"]))
+		:ARG1 (i / it [6 = "it"]))
+	:ARG2 (u2 / understand-01 [11 = "do"]
+		:polarity - [12 = "n't"]
+		:ARG0 (j / jurisdiction [10 = "jurisdictions"]
+			:mod (w / white [8 = "white"])
+			:mod (p2 / political-party [9 = "republican"]
+				:name (n2 / name [9 = "republican"]
+					:op1 "Republican" [9 = "republican"])))
+		:ARG1 i [2 = "it"]))
+
+# ::id DF-170-181103-888_2466.17 ::date 2013-09-17T15:55:27 ::annotator LDC-AMR-14 ::preferred
+# ::snt I get what Ron Paul is saying . 
+(u / understand-01 [1 = "get"]
+	:ARG0 (i / i [0 = "I"])
+	:ARG1 (t / thing [6 = "saying"]
+		:ARG1-of (s / say-01 [6 = "saying"]
+			:ARG0 (p / person [3 = "Ron"]
+				:name (n / name [3 = "Ron"]
+					:op1 "Ron" [3 = "Ron"]
+					:op2 "Paul" [4 = "Paul"])))))
+
+# ::id DF-170-181103-888_2466.22 ::date 2013-09-17T16:33:43 ::annotator LDC-AMR-14 ::preferred
+# ::snt How does one survive until the insurance -LRB- hopefully by a respectable company -RRB- claim comes through ? 
+(s / survive-01 [3 = "survive"]
+	:ARG0 (o / one [2 = "one"])
+	:ARG1-of (c / cause-01 [17 = "?"]
+		:ARG0 (a / amr-unknown [17 = "?"]))
+	:time (u / until [4 = "until"]
+		:op1 (c2 / come-17 [15 = "comes"]
+			:ARG0 (c4 / company [6 = "insurance"]
+				:ARG1-of (r / respect-01 [11 = "respectable"]
+					:mod (p / possible [8 = "hopefully"])
+					:mod (h / hopefully [8 = "hopefully"])))
+			:ARG1 (c3 / claim-01 [14 = "claim"]
+				:ARG1 (i / insurance [14 = "claim"])))))
+
+# ::id DF-170-181103-888_2466.27 ::date 2013-09-18T06:14:15 ::annotator LDC-AMR-14 ::preferred
+# ::snt Anyone who suffers a loss as have those who lost everything over the weekend will not be made whole , and whatever claim they receive will not come soon or easy . 
+(a / and [20 = "and"]
+	:op1 (m / make-18 [17 = "made"]
+		:polarity - [15 = "not"]
+		:ARG0 (a2 / anyone [0 = "Anyone"]
+			:ARG0-of (s / suffer-01 [2 = "suffers"]
+				:ARG1 (l / lose-02 [4 = "loss"])
+				:ARG1-of (r / resemble-01 [5 = "as"]
+					:ARG2 (p / person [7 = "those"]
+						:ARG0-of (l2 / lose-02 [9 = "lost"]
+							:ARG1 (e / everything [10 = "everything"])
+							:time (o / over [11 = "over"]
+								:op1 (w / weekend [13 = "weekend"])))))))
+		:ARG1 (w2 / whole [18 = "whole"]))
+	:op2 (c / come-01 [27 = "come"]
+		:ARG1 (c2 / claim [22 = "claim"]
+			:mod (w3 / whatever [21 = "whatever"])
+			:ARG1-of (r2 / receive-01 [24 = "receive"]
+				:ARG0 a2 [23 = "they"]))
+		:mod (o2 / or [29 = "or"]
+			:op1 (s2 / soon [28 = "soon"]
+				:polarity - [26 = "not"])
+			:op2 (e2 / easy [30 = "easy"]
+				:polarity - [26 = "not"]))))
+
+# ::id DF-170-181103-888_2520.4 ::date 2013-09-18T06:56:37 ::annotator LDC-AMR-14 ::preferred
+# ::snt He 's a nonfactor at this point and only in out of spite . 
+(a / and [7 = "and"]
+	:op1 (f / factor [3 = "nonfactor"]
+		:polarity - [3 = "nonfactor"]
+		:domain (h / he [0 = "He"])
+		:time (t / this [5 = "this"]
+			:op1 (p / point [6 = "point"])))
+	:op2 (i / in [9 = "in"]
+		:ARG1-of (c / cause-01 [10 = "out"]
+			:ARG0 (s / spite [12 = "spite"]
+				:mod (o / only [8 = "only"])))
+		:domain h [0 = "He"]))
+
+# ::id DF-170-181103-888_2529.4 ::date 2013-09-18T07:32:36 ::annotator LDC-AMR-14 ::preferred
+# ::snt Where is the morality when disease is spread ? 
+(m / morality [3 = "morality"]
+	:location (a / amr-unknown [8 = "?"])
+	:time (s / spread-03 [7 = "spread"]
+		:ARG1 (d / disease [5 = "disease"])))
+
+# ::id DF-170-181103-888_2529.9 ::date 2013-09-18T08:01:20 ::annotator LDC-AMR-14 ::preferred
+# ::snt Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ? 
+(p2 / possible [6 = "impossible"]
+	:polarity - [6 = "impossible"]
+	:ARG1-of (c / cause-01 [0 = "Why"]
+		:ARG0 (a / amr-unknown [0 = "Why"]))
+	:degree (p / percentage-entity [5 = "%"]
+		:value 100 [4 = "100"]
+		:mod (l2 / literal [3 = "literally"]))
+	:domain (u / understand-01 [12 = "understand"]
+		:ARG0 (m / mind [10 = "mind"]
+			:mod (l / liberal [9 = "liberal"]))
+		:ARG1 (c2 / cause-01 [15 = "because"]
+			:ARG0 (w / want-01 [19 = "want"]
+				:polarity - [18 = "n't"]
+				:ARG0 (y / you [16 = "you"])
+				:ARG1 (i / involve-01 [21 = "involved"]
+					:ARG1 (g / government-organization [20 = "government"]
+						:ARG0-of (g2 / govern-01 [20 = "government"]))
+					:ARG2 (s / something [23 = "something"])))
+			:ARG1 (m2 / mean-01 [26 = "mean"]
+				:polarity - [25 = "n't"]
+				:ARG0 w [19 = "want"]
+				:ARG1 (o / oppose-01 [29 = "against"]
+					:ARG0 y [27 = "you"]
+					:ARG1 s [30 = "it"]))
+			:mod (j / just [14 = "just"]))))
+
+# ::id DF-170-181103-888_3028.3 ::date 2013-09-18T11:33:09 ::annotator LDC-AMR-14 ::preferred
+# ::snt Are n't you one of the assholes who assured us how Romney was inevitable as the GOP nominee ? 
+(a2 / asshole [6 = "assholes"]
+	:mode interrogative [18 = "?"]
+	:ARG2-of (i2 / include-91 [3 = "one"]
+		:ARG1 (y / you [2 = "you"]))
+	:ARG0-of (a / assure-01 [8 = "assured"]
+		:ARG1 (w / we [9 = "us"])
+		:ARG2 (i / inevitable [13 = "inevitable"]
+			:domain (p / person [11 = "Romney"]
+				:name (n / name [11 = "Romney"]
+					:op1 "Romney" [11 = "Romney"])
+				:ARG0-of (h / have-org-role-91 [17 = "nominee"]
+					:ARG1 (p2 / political-party [16 = "GOP"]
+						:name (n2 / name [16 = "GOP"]
+							:op1 "GOP" [16 = "GOP"]))
+					:ARG2 (n3 / nominee [17 = "nominee"]))))))
+
+# ::id DF-170-181103-888_3333.4 ::date 2013-09-18T12:45:51 ::annotator LDC-AMR-14 ::preferred
+# ::snt After seeing those bus tours to AIG execs homes , promoted on ACORN 's website , I am wondering why those same people are n't outraged at this . 
+(w / wonder-01 [18 = "wondering"]
+	:ARG0 (i / i [16 = "I"])
+	:ARG1 (o / outrage-01 [25 = "outraged"]
+		:polarity - [24 = "n't"]
+		:ARG0 (t / this [27 = "this"])
+		:ARG1 (p / person [22 = "people"]
+			:mod (t2 / this [20 = "those"])
+			:ARG1-of (s / same-41 [21 = "same"]))
+		:ARG1-of (c / cause-01 [19 = "why"]
+			:ARG0 (a / amr-unknown [19 = "why"])))
+	:time (a2 / after [0 = "After"]
+		:op1 (s2 / see-01 [1 = "seeing"]
+			:ARG1 (t3 / tour [4 = "tours"]
+				:mod (b / bus [3 = "bus"])
+				:destination (h / home [8 = "homes"]
+					:poss (p2 / person [7 = "execs"]
+						:ARG0-of (h2 / have-org-role-91 [7 = "execs"]
+							:ARG1 (c2 / company [6 = "AIG"]
+								:name (n / name [6 = "AIG"]
+									:op1 "AIG" [6 = "AIG"]))
+							:ARG2 (e / executive [7 = "execs"]))))
+				:ARG1-of (p3 / promote-02 [10 = "promoted"]
+					:ARG0 (w2 / website [14 = "website"]
+						:poss (o2 / organization [12 = "ACORN"]
+							:name (n2 / name [12 = "ACORN"]
+								:op1 "ACORN" [12 = "ACORN"]))))))))
+
+# ::id DF-170-181103-888_3333.9 ::date 2013-09-18T15:51:21 ::annotator LDC-AMR-14 ::preferred
+# ::snt He is not lying to call it stimulus . 
+(l / lie-02 [3 = "lying"]
+	:polarity - [2 = "not"]
+	:ARG0 (h / he [0 = "He"])
+	:ARG1 (c / call-01 [5 = "call"]
+		:ARG0 h [0 = "He"]
+		:ARG1 (i / it [6 = "it"])
+		:ARG2 (s / stimulus [7 = "stimulus"])))
+
+# ::id DF-170-181103-888_3333.14 ::date 2013-09-19T09:05:10 ::annotator LDC-AMR-14 ::preferred
+# ::snt No one should be expected to practice self sufficiency or concern themselves with personal responsibility . 
+(r / recommend-01 [2 = "should"]
+	:ARG1 (o / or [9 = "or"]
+		:op1 (e / expect-01 [4 = "expected"]
+			:ARG1 (p2 / practice-01 [6 = "practice"]
+				:ARG0 n2 [0 = "No"]
+				:ARG1 (s / suffice-01 [8 = "sufficiency"]
+					:ARG0 (s2 / self [7 = "self"])
+					:ARG1 s2 [7 = "self"])))
+		:op2 (c / concern-02 [10 = "concern"]
+			:ARG0 n2 [11 = "themselves"]
+			:ARG1 (r2 / responsible-41 [14 = "responsibility"]
+				:ARG1 n2 [13 = "personal"]
+				:ARG2 n2 [13 = "personal"])))
+	:ARG2 (n2 / no-one [0 = "No"]))
+
+# ::id sdl_0002.2 ::date 2013-07-04T02:23:45 ::annotator SDL-AMR-09 ::preferred
+# ::snt This will ultimately accelerate the speed of desertification in sub - Saharan African countries and other areas of the world . 
+(a / accelerate-01 [3 = "accelerate"]
+	:ARG0 (t / this [0 = "This"])
+	:ARG1 (s / speed-01 [5 = "speed"]
+		:ARG0 t [0 = "This"]
+		:ARG1 (d / desertification [7 = "desertification"]
+			:location (a2 / and [14 = "and"]
+				:op1 (c / country [12 = "African"]
+					:location (w2 / world-region [12 = "African"]
+						:name (n / name [12 = "African"]
+							:op1 "sub-Saharan" [11 = "Saharan"]
+							:op2 "Africa" [12 = "African"])))
+				:op2 (a3 / area [16 = "areas"]
+					:part-of (w / world [19 = "world"])
+					:mod (o / other [15 = "other"])))))
+	:time (u / ultimate [2 = "ultimately"]))
+
+# ::id sdl_0002.7 ::date 2013-07-09T00:19:51 ::annotator SDL-AMR-09 ::preferred
+# ::snt The low - cut gold swimsuit with a low back weighs 500 grams , with a sales price of 10 million Japanese yen . 
+(w / weigh-01 [10 = "weighs"]
+	:ARG1 (s / swimsuit [5 = "swimsuit"]
+		:consist-of (g / gold [4 = "gold"])
+		:prep-with (b / back [9 = "back"]
+			:mod (l / low [8 = "low"]))
+		:ARG1-of (s2 / sell-01 [16 = "sales"]
+			:ARG3 (m2 / monetary-quantity [22 = "yen"]
+				:unit (y / yen [22 = "yen"]
+					:mod (c / country [21 = "Japanese"]
+						:name (n / name [21 = "Japanese"]
+							:op1 "Japan" [21 = "Japanese"])))
+				:quant 10000000 [19 = "10"]))
+		:mod (l2 / low-cut [1 = "low"]))
+	:ARG3 (m / mass-quantity [12 = "grams"]
+		:quant 500 [11 = "500"]
+		:unit (g2 / gram [12 = "grams"])))
+
+# ::id PROXY_AFP_ENG_20020105_0162.2 ::date 2013-05-01T11:37:06 ::snt-type country ::annotator LDC-AMR-14 ::preferred
+# ::snt Saudi Arabia -LRB- SA -RRB- 
+(c / country [0 = "Saudi"]
+	:name (n / name [0 = "Saudi"]
+		:op1 "Saudi" [0 = "Saudi"]
+		:op2 "Arabia" [1 = "Arabia"]))
+
+# ::id PROXY_AFP_ENG_20020105_0162.7 ::date 2013-05-08T11:38:23 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Naif Arab Academy for Security Sciences is run by an Arab Interior Ministers ' Council . 
+(r / run-01 [7 = "run"]
+	:ARG0 (o / organization [10 = "Arab"]
+		:name (n / name [10 = "Arab"]
+			:op1 "Arab" [10 = "Arab"]
+			:op2 "Interior" [11 = "Interior"]
+			:op3 "Ministers'" [12 = "Ministers"]
+			:op4 "Council" [14 = "Council"]))
+	:ARG1 (u / university [0 = "Naif"]
+		:name (n2 / name [0 = "Naif"]
+			:op1 "Naif" [0 = "Naif"]
+			:op2 "Arab" [1 = "Arab"]
+			:op3 "Academy" [2 = "Academy"]
+			:op4 "for" [3 = "for"]
+			:op5 "Security" [4 = "Security"]
+			:op6 "Sciences" [5 = "Sciences"])))
+
+# ::id PROXY_AFP_ENG_20020105_0162.12 ::date 2013-05-08T13:10:08 ::snt-type body subordinate ::annotator LDC-AMR-14 ::preferred
+# ::snt Some specialize in dealing with kidnapping and hostage-taking scenarios . 
+(s / specialize-01 [1 = "specialize"]
+	:ARG0 (p / person [0 = "Some"]
+		:quant (s2 / some [0 = "Some"]))
+	:ARG1 (d / deal-01 [3 = "dealing"]
+		:ARG0 p [0 = "Some"]
+		:ARG1 (s3 / scenario [8 = "scenarios"]
+			:mod (a / and [6 = "and"]
+				:op1 (k / kidnap-01 [5 = "kidnapping"])
+				:op2 (t / take-01 [7 = "hostage-taking"]
+					:ARG1 (h / hostage [7 = "hostage-taking"]))))))
+
+# ::id PROXY_AFP_ENG_20020106_0520.2 ::date 2013-05-02T13:38:13 ::snt-type country ::annotator LDC-AMR-14 ::preferred
+# ::snt North Korea -LRB- KP -RRB- 
+(c / country [0 = "North"]
+	:name (n / name [0 = "North"]
+		:op1 "North" [0 = "North"]
+		:op2 "Korea" [1 = "Korea"]))
+
+# ::id PROXY_AFP_ENG_20020106_0520.7 ::date 2013-05-09T12:30:23 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt A government source stated the visit by a group of IAEA safety experts is scheduled to last for a week beginning January 12 , 2002 . 
+(s / state-01 [3 = "stated"]
+	:ARG0 (s2 / source [2 = "source"]
+		:mod (g / government-organization [1 = "government"]
+			:ARG0-of (g2 / govern-01 [1 = "government"])))
+	:ARG1 (s3 / schedule-01 [14 = "scheduled"]
+		:ARG1 (v / visit-01 [5 = "visit"]
+			:ARG0 (p / person [12 = "experts"]
+				:ARG1-of (e / expert-41 [12 = "experts"]
+					:ARG2 (s4 / safe-41 [11 = "safety"]))
+				:ARG0-of (h / have-org-role-91 [10 = "IAEA"]
+					:ARG1 (o / organization [10 = "IAEA"]
+						:name (n / name [10 = "IAEA"]
+							:op1 "IAEA" [10 = "IAEA"])))))
+		:ARG2 (l / last-01 [16 = "last"]
+			:ARG1 v [5 = "visit"]
+			:ARG2 (t / temporal-quantity [19 = "week"]
+				:quant 1 [18 = "a"]
+				:unit (w / week [19 = "week"])
+				:ARG1-of (b / begin-01 [20 = "beginning"]
+					:time (d / date-entity [21 = "January"]
+						:year 2002 [24 = "2002"]
+						:month 1 [21 = "January"]
+						:day 12 [22 = "12"]))))))
+
+# ::id PROXY_AFP_ENG_20020106_0520.12 ::date 2013-05-09T14:39:24 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt IAEA also stated the lab is not one of the frozen facilities it wants to look into . 
+(s / state-01 [2 = "stated"]
+	:ARG0 (o / organization [0 = "IAEA"]
+		:name (n / name [0 = "IAEA"]
+			:op1 "IAEA" [0 = "IAEA"]))
+	:ARG1 (i / include-91 [8 = "of"]
+		:polarity - [6 = "not"]
+		:ARG1 (l / lab [4 = "lab"])
+		:ARG2 (f / facility [11 = "facilities"]
+			:ARG1-of (f2 / freeze-01 [10 = "frozen"])
+			:ARG1-of (l2 / look-01 [15 = "look"]
+				:ARG0 o [0 = "IAEA"]
+				:ARG1-of (w / want-01 [13 = "wants"]
+					:ARG0 o [0 = "IAEA"])))
+		:ARG3 (o2 / one [7 = "one"]))
+	:mod (a / also [1 = "also"]))
+
+# ::id PROXY_AFP_ENG_20020106_0520.17 ::date 2013-05-09T15:41:10 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Delays have pushed back the finish until at least 2008 . 
+(p / push-01 [2 = "pushed"]
+	:ARG0 (d / delay-01 [0 = "Delays"])
+	:ARG1 (f / finish-01 [5 = "finish"])
+	:ARG2 (b / back [3 = "back"])
+	:time (u / until [6 = "until"]
+		:op1 (a / at-least [7 = "at"]
+			:op1 (d2 / date-entity [9 = "2008"]
+				:year 2008 [9 = "2008"]))))
+
+# ::id PROXY_AFP_ENG_20020111_0093.4 ::date 2013-05-08T13:52:31 ::snt-type summary ::annotator LDC-AMR-14 ::preferred
+# ::snt South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
+(r / rally-01 [2 = "rallied"]
+	:ARG1 (p / person [1 = "Koreans"]
+		:source (c / country [0 = "South"]
+			:name (n / name [0 = "South"]
+				:op1 "South" [0 = "South"]
+				:op2 "Korea" [1 = "Koreans"])))
+	:ARG2 (s / support-01 [9 = "support"]
+		:ARG0 p [1 = "Koreans"]
+		:ARG1 (e2 / entitle-01 [12 = "right"]
+			:ARG1 (e / eat-01 [14 = "eat"]
+				:ARG0 p [1 = "Koreans"]
+				:ARG1 (m / meat [16 = "meat"]
+					:consist-of (d2 / dog [15 = "dog"])))
+			:ARG2 p [11 = "their"]))
+	:time (d / date-entity [4 = "January"]
+		:year 2002 [7 = "2002"]
+		:month 1 [4 = "January"]
+		:day 11 [5 = "11"]))
+
+# ::id PROXY_AFP_ENG_20020111_0093.9 ::date 2013-05-08T14:41:14 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The activists accuse the organizations of being culturally-biased and insulting . 
+(a / accuse-01 [2 = "accuse"]
+	:ARG0 (a2 / activist [1 = "activists"])
+	:ARG1 (o / organization [4 = "organizations"])
+	:ARG2 (a3 / and [8 = "and"]
+		:op1 (b / bias-01 [7 = "culturally-biased"]
+			:ARG1 o [4 = "organizations"]
+			:mod (c / cultural [7 = "culturally-biased"]))
+		:op2 (i / insult-01 [9 = "insulting"]
+			:ARG0 o [4 = "organizations"]
+			:ARG1 a2 [1 = "activists"])))
+
+# ::id PROXY_AFP_ENG_20020111_0093.14 ::date 2013-05-09T06:07:21 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The debate was partly fueled by FIFA , football 's international governing body . 
+(f / fuel-01 [4 = "fueled"]
+	:ARG0 (b / body [6 = "FIFA"]
+		:name (n / name [6 = "FIFA"]
+			:op1 "FIFA" [6 = "FIFA"])
+		:ARG0-of (g / govern-01 [11 = "governing"]
+			:ARG1 (f2 / football [8 = "football"]))
+		:mod (i / international [10 = "international"]))
+	:ARG1 (d / debate-01 [1 = "debate"])
+	:degree (p / partly [3 = "partly"]))
+
+# ::id PROXY_AFP_ENG_20020111_0093.19 ::date 2013-05-09T06:29:43 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The anti-Japan group stated that South Korean culture is under attack . 
+(s / state-01 [3 = "stated"]
+	:ARG0 (g / group [2 = "group"]
+		:ARG0-of (o / oppose-01 [1 = "anti-Japan"]
+			:ARG1 (c3 / country [1 = "anti-Japan"]
+				:name (n2 / name [1 = "anti-Japan"]
+					:op1 "Japan" [1 = "anti-Japan"]))))
+	:ARG1 (a / attack-01 [10 = "attack"]
+		:ARG1 (c / culture [7 = "culture"]
+			:source (c2 / country [5 = "South"]
+				:name (n / name [5 = "South"]
+					:op1 "South" [5 = "South"]
+					:op2 "Korea" [6 = "Korean"])))))
+
+# ::id PROXY_AFP_ENG_20020111_0093.24 ::date 2013-05-09T06:51:49 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The nationalist group was formed to campaign against Japan . 
+(f / form-01 [4 = "formed"]
+	:ARG1 (g / group [2 = "group"]
+		:mod (n / nationalist [1 = "nationalist"]))
+	:purpose (c / campaign-01 [6 = "campaign"]
+		:ARG0 g [2 = "group"]
+		:ARG1 (a / against [7 = "against"]
+			:op1 (c2 / country [8 = "Japan"]
+				:name (n2 / name [8 = "Japan"]
+					:op1 "Japan" [8 = "Japan"])))))
+
+# ::id PROXY_AFP_ENG_20020111_0093.29 ::date 2013-05-09T07:12:43 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Another group said they will launch an association next Monday of around 100 dog meat restaurant owners in the Seoul region and hold a seminar to promote the dish . 
+(s / say-01 [2 = "said"]
+	:ARG0 (g / group [1 = "group"]
+		:mod (a / another [0 = "Another"]))
+	:ARG1 (a2 / and [21 = "and"]
+		:op1 (l / launch-01 [5 = "launch"]
+			:ARG0 g [3 = "they"]
+			:ARG1 (a3 / association [7 = "association"]
+				:consist-of (p / person [16 = "owners"]
+					:quant (a4 / around [11 = "around"]
+						:op1 100 [12 = "100"])
+					:ARG0-of (o / own-01 [16 = "owners"]
+						:ARG1 (r / restaurant [15 = "restaurant"]
+							:mod (m / meat [14 = "meat"]
+								:consist-of (d2 / dog [13 = "dog"]))))
+					:location (r2 / region [20 = "region"]
+						:part (c / city [19 = "Seoul"]
+							:name (n2 / name [19 = "Seoul"]
+								:op1 "Seoul" [19 = "Seoul"])))))
+			:time (d / date-entity [9 = "Monday"]
+				:weekday (m2 / monday [9 = "Monday"])
+				:mod (n / next [8 = "next"])))
+		:op2 (h / hold-04 [22 = "hold"]
+			:ARG0 g [1 = "group"]
+			:ARG1 (s2 / seminar [24 = "seminar"]
+				:ARG0-of (p2 / promote-02 [26 = "promote"]
+					:ARG1 m [28 = "dish"])))))
+
+# ::id PROXY_AFP_ENG_20020111_0093.34 ::date 2013-05-09T09:11:00 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Head of the Korean Football Association and a FIFA vice president Chung Mong-Joon said FIFA should not intervene in the eating habits of a sovereign nation . 
+(s / say-01 [13 = "said"]
+	:ARG0 (p / person [11 = "Chung"]
+		:name (n / name [11 = "Chung"]
+			:op1 "Chung" [11 = "Chung"]
+			:op2 "Mong-Joon" [12 = "Mong-Joon"])
+		:ARG0-of (h / head-01 [0 = "Head"]
+			:ARG1 (o / organization [3 = "Korean"]
+				:name (n2 / name [3 = "Korean"]
+					:op1 "Korean" [3 = "Korean"]
+					:op2 "Football" [4 = "Football"]
+					:op3 "Association" [5 = "Association"])))
+		:ARG0-of (h3 / have-org-role-91 [0 = "Head"]
+			:ARG1 (o2 / organization [8 = "FIFA"]
+				:name (n3 / name [8 = "FIFA"]
+					:op1 "FIFA" [8 = "FIFA"]))
+			:ARG2 (p2 / president [10 = "president"]
+				:mod (v / vice [9 = "vice"]))))
+	:ARG1 (r / recommend-01 [15 = "should"]
+		:ARG1 (i / intervene-01 [17 = "intervene"]
+			:polarity - [16 = "not"]
+			:ARG0 o2 [8 = "FIFA"]
+			:ARG1 (h2 / habit [21 = "habits"]
+				:poss (n4 / nation [25 = "nation"]
+					:mod (s2 / sovereign [24 = "sovereign"]))
+				:topic (e / eat-01 [20 = "eating"])))))
+
+# ::id PROXY_AFP_ENG_20020111_0093.39 ::date 2013-05-09T09:33:50 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt No similar move is planned for the World Cup . 
+(p / plan-01 [4 = "planned"]
+	:polarity - [0 = "No"]
+	:ARG1 (m / move [2 = "move"]
+		:ARG1-of (r / resemble-01 [1 = "similar"]))
+	:ARG2 (g / game [7 = "World"]
+		:name (n / name [7 = "World"]
+			:op1 "World" [7 = "World"]
+			:op2 "Cup" [8 = "Cup"])))
+
+# ::id PROXY_AFP_ENG_20020115_0320.3 ::date 2013-05-09T15:59:49 ::snt-type topic ::annotator LDC-AMR-14 ::preferred
+# ::snt International ; Government ; terrorism ; war and conflict ; dissent ; leader 
+(a / and [1 = ";"]
+	:op1 (i / international [0 = "International"])
+	:op2 (g / government-organization [2 = "Government"]
+		:ARG0-of (g2 / govern-01 [2 = "Government"]))
+	:op3 (t / terrorism [4 = "terrorism"])
+	:op4 (a2 / and [7 = "and"]
+		:op1 (w / war-01 [6 = "war"])
+		:op2 (c / conflict-01 [8 = "conflict"]))
+	:op5 (d / dissent-01 [10 = "dissent"])
+	:op6 (p / person [12 = "leader"]
+		:ARG0-of (l / lead-02 [12 = "leader"])))
+
+# ::id PROXY_AFP_ENG_20020115_0320.8 ::date 2013-05-14T08:52:25 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The severe actions against militants and radicals came as Pervez Musharraf banned 5 Islamic groups . 
+(a / act-02 [2 = "actions"]
+	:prep-against (a2 / and [5 = "and"]
+		:op1 (m / militant [4 = "militants"])
+		:op2 (r / radical [6 = "radicals"]))
+	:mod (s / severe [1 = "severe"])
+	:time (b / ban-01 [11 = "banned"]
+		:ARG0 (p / person [9 = "Pervez"]
+			:name (n / name [9 = "Pervez"]
+				:op1 "Pervez" [9 = "Pervez"]
+				:op2 "Musharraf" [10 = "Musharraf"]))
+		:ARG1 (g / group [14 = "groups"]
+			:mod (r2 / religious-group [13 = "Islamic"]
+				:name (n2 / name [13 = "Islamic"]
+					:op1 "Islam" [13 = "Islamic"])
+				:quant 5 [12 = "5"]))))
+
+# ::id PROXY_AFP_ENG_20020115_0320.13 ::date 2013-05-14T12:41:11 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Iftikhar Ahmed is a Pakistani interior ministry official . 
+(p2 / person [0 = "Iftikhar"]
+	:domain (p / person [0 = "Iftikhar"]
+		:name (n2 / name [0 = "Iftikhar"]
+			:op1 "Iftikhar" [0 = "Iftikhar"]
+			:op2 "Ahmed" [1 = "Ahmed"]))
+	:ARG0-of (h / have-org-role-91 [7 = "official"]
+		:ARG1 (m / ministry [6 = "ministry"]
+			:topic (i / interior [5 = "interior"])
+			:poss (c / country [4 = "Pakistani"]
+				:name (n / name [4 = "Pakistani"]
+					:op1 "Pakistan" [4 = "Pakistani"])))
+		:ARG2 (o / official [7 = "official"])))
+
+# ::id PROXY_AFP_ENG_20020115_0320.18 ::date 2013-05-14T13:41:52 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The Lashkar-e-Taiba and Jaish-e-Mohammad are still distributing their message through a range of publications and magazines easily available in Karachi . 
+(d / distribute-01 [6 = "distributing"]
+	:ARG0 (a / and [2 = "and"]
+		:op1 (o / organization [1 = "Lashkar-e-Taiba"]
+			:name (n / name [1 = "Lashkar-e-Taiba"]
+				:op1 "Lashkar-e-Taiba" [1 = "Lashkar-e-Taiba"]))
+		:op2 (o2 / organization [3 = "Jaish-e-Mohammad"]
+			:name (n2 / name [3 = "Jaish-e-Mohammad"]
+				:op1 "Jaish-e-Mohammad" [3 = "Jaish-e-Mohammad"])))
+	:ARG1 (m / message [8 = "message"]
+		:poss a [7 = "their"])
+	:mod (s / still [5 = "still"])
+	:medium (a2 / and [14 = "and"]
+		:op1 (p / publication [13 = "publications"])
+		:op2 (m2 / magazine [15 = "magazines"])
+		:quant (r / range [11 = "range"])
+		:mod (a3 / available [17 = "available"]
+			:manner (e / easy [16 = "easily"])
+			:location (c / city [19 = "Karachi"]
+				:name (n3 / name [19 = "Karachi"]
+					:op1 "Karachi" [19 = "Karachi"])))))
+
+# ::id PROXY_AFP_ENG_20020115_0320.23 ::date 2013-05-16T14:16:39 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Qari Mohammad Zafar stated that himself and other people have been told by our elders to read pro-Jihad newspapers and magazines . 
+(s / state-01 [3 = "stated"]
+	:ARG0 (p / person [0 = "Qari"]
+		:name (n / name [0 = "Qari"]
+			:op1 "Qari" [0 = "Qari"]
+			:op2 "Mohammad" [1 = "Mohammad"]
+			:op3 "Zafar" [2 = "Zafar"]))
+	:ARG1 (t / tell-01 [11 = "told"]
+		:ARG0 (e / elder [14 = "elders"]
+			:poss (w / we [13 = "our"]))
+		:ARG1 (r / read-01 [16 = "read"]
+			:ARG0 a [6 = "and"]
+			:ARG1 (a2 / and [19 = "and"]
+				:op1 (n2 / newspaper [18 = "newspapers"])
+				:op2 (m / magazine [20 = "magazines"])
+				:ARG0-of (f / favor-01 [17 = "pro-Jihad"]
+					:ARG1 (w2 / war [17 = "pro-Jihad"]
+						:name (n3 / name [17 = "pro-Jihad"]
+							:op1 "Jihad" [17 = "pro-Jihad"])))))
+		:ARG2 (a / and [6 = "and"]
+			:op1 p [5 = "himself"]
+			:op2 (p2 / person [8 = "people"]
+				:mod (o / other [7 = "other"])))))
+
+# ::id PROXY_AFP_ENG_20020115_0320.28 ::date 2013-05-17T09:32:02 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
+(s / state-01 [11 = "stated"]
+	:ARG0 (h / headline [1 = "headline"]
+		:part-of (p / publication [4 = "Islam"]
+			:name (n / name [4 = "Islam"]
+				:op1 "Islam" [4 = "Islam"]
+				:op2 "Daily" [5 = "daily"])
+			:poss (o / organization [7 = "Al-Rashid"]
+				:name (n2 / name [7 = "Al-Rashid"]
+					:op1 "Al-Rashid" [7 = "Al-Rashid"]
+					:op2 "Trust" [8 = "Trust"])))
+		:time (d / date-entity [10 = "020115"]
+			:year 2002 [10 = "020115"]
+			:month 1 [10 = "020115"]
+			:day 15 [10 = "020115"]))
+	:ARG1 (a / action [12 = "action"]
+		:mod (e / extreme [13 = "extreme"])
+		:prep-against (e2 / extremism [15 = "extremism"]))
+	:location (a2 / above [16 = "above"]
+		:op1 (a3 / article [18 = "article"]
+			:ARG0-of (s2 / state-01 [19 = "stating"]
+				:ARG1 (r / recommend-01 [24 = "should"]
+					:ARG1 (d2 / domineer-00 [26 = "domineer"]
+						:polarity - [25 = "not"]
+						:ARG0 (g / government-organization [23 = "government"]
+							:ARG0-of (g2 / govern-01 [23 = "government"]
+								:ARG1 (c / country [22 = "Pakistani"]
+									:name (n3 / name [22 = "Pakistani"]
+										:op1 "Pakistan" [22 = "Pakistani"]))))
+						:ARG1 (s3 / section [29 = "section"]
+							:mod (l / large [28 = "large"])
+							:part-of (s4 / society [32 = "society"]
+								:mod c [31 = "Pakistani"])
+							:ARG0-of (s5 / support-01 [34 = "supported"]
+								:ARG1 (j / jihad [36 = "jihad"]
+									:prep-against (r2 / rule-03 [39 = "rule"]
+										:ARG0 (c2 / country [38 = "Indian"]
+											:name (n4 / name [38 = "Indian"]
+												:op1 "India" [38 = "Indian"]))
+										:ARG1 (s6 / state [46 = "Kashmir"]
+											:name (n5 / name [46 = "Kashmir"]
+												:op1 "Kashmir" [46 = "Kashmir"])
+											:ARG1-of (d3 / divide-02 [42 = "divided"])
+											:mod (w / world-region [43 = "Himalayan"]
+												:name (n6 / name [43 = "Himalayan"]
+													:op1 "Himalayas" [43 = "Himalayan"])))))))))))))
+
+# ::id PROXY_AFP_ENG_20020115_0320.33 ::date 2013-05-18T13:20:35 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
+(s / state-01 [1 = "stated"]
+	:ARG0 (p4 / person [0 = "Analysts"]
+		:ARG0-of (a / analyze-01 [0 = "Analysts"]))
+	:ARG1 (p / possible [6 = "may"]
+		:domain (t / trouble [8 = "trouble"]
+			:domain (e / explain-01 [9 = "explaining"]
+				:ARG0 (g / government-organization [5 = "government"]
+					:ARG0-of (g2 / govern-01 [5 = "government"]
+						:ARG1 (c / country [4 = "Pakistani"]
+							:name (n / name [4 = "Pakistani"]
+								:op1 "Pakistan" [4 = "Pakistani"]))))
+				:ARG1 (r / reason-01 [14 = "reasoning"]
+					:ARG0 g [12 = "government"])))
+		:condition (r2 / remove-01 [25 = "removed"]
+			:ARG1 (p2 / publication [22 = "publications"]
+				:poss (g3 / group [20 = "groups"]
+					:mod (e2 / extremism [19 = "extremist"]
+						:mod (r3 / religion [18 = "religious"]))
+					:ARG1-of (b / ban-01 [17 = "banned"])))
+			:ARG2 (n2 / newsstand [28 = "newsstands"])
+			:mod (s2 / sudden [24 = "suddenly"]))
+		:ARG1-of (c2 / cause-01 [29 = "because"]
+			:ARG0 (s3 / support-01 [34 = "supports"]
+				:ARG0 g [32 = "Government"]
+				:ARG1 (f / free-41 [36 = "freedom"]
+					:ARG1 (p3 / press [39 = "press"]))
+				:mod (g4 / general [33 = "generally"])))))
+
+# ::id PROXY_AFP_ENG_20020117_0270.4 ::date 2013-05-09T10:01:49 ::snt-type summary ::annotator LDC-AMR-14 ::preferred
+# ::snt Thirteen drug traffickers were killed and 10 arrested in Iran anti-drug sweeps . 
+(a / and [5 = "and"]
+	:op1 (k / kill-01 [4 = "killed"]
+		:ARG1 (p2 / person [2 = "traffickers"]
+			:quant 13 [0 = "Thirteen"]
+			:ARG0-of (t / traffic-00 [2 = "traffickers"]
+				:ARG1 (d / drug [1 = "drug"]))))
+	:op2 (a2 / arrest-01 [7 = "arrested"]
+		:ARG1 (p / person [2 = "traffickers"]
+			:quant 10 [6 = "10"]))
+	:location (c / country [9 = "Iran"]
+		:name (n / name [9 = "Iran"]
+			:op1 "Iran" [9 = "Iran"]))
+	:instrument (s / sweep-01 [11 = "sweeps"]
+		:purpose (c2 / counter-01 [10 = "anti-drug"]
+			:ARG1 (d2 / drug [10 = "anti-drug"]))))
+
+# ::id PROXY_AFP_ENG_20020117_0270.9 ::date 2013-05-09T10:32:08 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Val Fajr means swear to victory in Arabic and is a phrase from the Koran . 
+(a / and [8 = "and"]
+	:op1 (m / mean-01 [2 = "means"]
+		:ARG0 (e / event [0 = "Val"]
+			:name (n2 / name [0 = "Val"]
+				:op1 "Val" [0 = "Val"]
+				:op2 "Fajr" [1 = "Fajr"]))
+		:ARG1 (s / swear-01 [3 = "swear"]
+			:ARG1 (w / win-01 [5 = "victory"])
+			:medium (l / language [7 = "Arabic"]
+				:name (n3 / name [7 = "Arabic"]
+					:op1 "Arabic" [7 = "Arabic"]))))
+	:op2 (p / phrase [11 = "phrase"]
+		:domain e [0 = "Val"]
+		:source (b / book [14 = "Koran"]
+			:name (n4 / name [13 = "the"]
+				:op1 "The" [13 = "the"]
+				:op2 "Koran" [14 = "Koran"]))))
+
+# ::id PROXY_AFP_ENG_20020117_0270.14 ::date 2013-05-09T10:58:43 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking . 
+(r / report-01 [3 = "reported"]
+	:ARG0 (t / television [2 = "television"]
+		:source (c / country [1 = "Afghan"]
+			:name (n / name [1 = "Afghan"]
+				:op1 "Afghanistan" [1 = "Afghan"])))
+	:ARG1 (b / ban-01 [15 = "banned"]
+		:ARG0 (g / government-organization [13 = "administration"]
+			:mod (i / interim [12 = "interim"])
+			:ARG0-of (a / administrate-01 [13 = "administration"]
+				:ARG1 c [10 = "Afghanistan"]))
+		:ARG1 (c3 / cultivate-01 [17 = "cultivation"]
+			:ARG1 (p / poppy [20 = "poppies"]
+				:mod (o / opium [19 = "opium"])))
+		:purpose (e / end-01 [25 = "end"]
+			:ARG1 (t2 / traffic-00 [27 = "trafficking"]
+				:ARG1 (d2 / drug [26 = "drug"]))))
+	:time (d / date-entity [5 = "January"]
+		:year 2002 [8 = "2002"]
+		:month 1 [5 = "January"]
+		:day 16 [6 = "16"]))
+
+# ::id PROXY_AFP_ENG_20020117_0270.19 ::date 2013-05-09T11:22:27 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Iranian law states the death penalty for drug trafficking . 
+(s / state-01 [2 = "states"]
+	:ARG0 (l / law [1 = "law"]
+		:source (c / country [0 = "Iranian"]
+			:name (n / name [0 = "Iranian"]
+				:op1 "Iran" [0 = "Iranian"])))
+	:ARG1 (p / penalize-01 [5 = "penalty"]
+		:ARG0 l [1 = "law"]
+		:ARG2 (t / trafficking [8 = "trafficking"]
+			:mod (d / drug [7 = "drug"]))
+		:manner (d2 / die-01 [4 = "death"])))
+
+# ::id PROXY_AFP_ENG_20020123_0334.4 ::date 2013-05-18T13:47:43 ::snt-type summary ::annotator LDC-AMR-14 ::preferred
+# ::snt Iranian army arrests 1600 drug traffickers , kills 21 , and seizes 6 tons of drugs and weapons in large-scale operation along its borders with Afghanistan and Pakistan . 
+(a / and [10 = "and"]
+	:op1 (a2 / arrest-01 [2 = "arrests"]
+		:ARG0 (a3 / army [1 = "army"]
+			:mod (c / country [0 = "Iranian"]
+				:name (n / name [0 = "Iranian"]
+					:op1 "Iran" [0 = "Iranian"])))
+		:ARG1 (p / person [5 = "traffickers"]
+			:quant 1600 [3 = "1600"]
+			:ARG0-of (t / traffic-00 [5 = "traffickers"]
+				:ARG1 (d / drug [4 = "drug"]))))
+	:op2 (k / kill-01 [7 = "kills"]
+		:ARG0 a3 [1 = "army"]
+		:ARG1 (p2 / person [5 = "traffickers"]
+			:quant 21 [8 = "21"]))
+	:op3 (s / seize-01 [11 = "seizes"]
+		:ARG0 a3 [1 = "army"]
+		:ARG1 (m / mass-quantity [13 = "tons"]
+			:quant 6 [12 = "6"]
+			:unit (t2 / ton [13 = "tons"])
+			:domain (a4 / and [16 = "and"]
+				:op1 (d2 / drug [15 = "drugs"])
+				:op2 (w / weapon [17 = "weapons"]))))
+	:time (o / operation [20 = "operation"]
+		:mod (l / large-scale [19 = "large-scale"])
+		:location (a6 / along [21 = "along"]
+			:op1 (b / border-01 [23 = "borders"]
+				:ARG1 (a5 / and [26 = "and"]
+					:op1 (c2 / country [25 = "Afghanistan"]
+						:name (n2 / name [25 = "Afghanistan"]
+							:op1 "Afghanistan" [25 = "Afghanistan"]))
+					:op2 (c3 / country [27 = "Pakistan"]
+						:name (n3 / name [27 = "Pakistan"]
+							:op1 "Pakistan" [27 = "Pakistan"])))
+				:ARG2 c [22 = "its"]))))
+
+# ::id PROXY_AFP_ENG_20020123_0334.9 ::date 2013-05-18T14:30:48 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt In a separate dispatch IRNA stated that during the past 20 days in southern Iran 's Fars Province police had arrested 107 drug traffickers including 11 foreign nationals . 
+(s / state-01 [5 = "stated"]
+	:ARG0 (p5 / publication [4 = "IRNA"]
+		:name (n / name [4 = "IRNA"]
+			:op1 "IRNA" [4 = "IRNA"]))
+	:ARG1 (a / arrest-01 [20 = "arrested"]
+		:ARG0 (p / police [18 = "police"])
+		:ARG1 (p2 / person [23 = "traffickers"]
+			:quant 107 [21 = "107"]
+			:ARG0-of (t / traffic-00 [23 = "traffickers"]
+				:ARG1 (d2 / drug [22 = "drug"]))
+			:ARG2-of (i / include-91 [24 = "including"]
+				:ARG1 (n2 / national [27 = "nationals"]
+					:quant 11 [25 = "11"]
+					:mod (f / foreign [26 = "foreign"]))))
+		:time (p3 / past [9 = "past"]
+			:op1 (t2 / temporal-quantity [11 = "days"]
+				:quant 20 [10 = "20"]
+				:unit (d3 / day [11 = "days"])))
+		:location (p4 / province [17 = "Province"]
+			:name (n3 / name [16 = "Fars"]
+				:op1 "Fars" [16 = "Fars"]
+				:op2 "Province" [17 = "Province"])
+			:part-of (c2 / country [14 = "Iran"]
+				:name (n4 / name [14 = "Iran"]
+					:op1 "Iran" [14 = "Iran"])
+				:mod (s3 / south [13 = "southern"]))))
+	:medium (d / dispatch [3 = "dispatch"]
+		:mod (s2 / separate [2 = "separate"])))
+
+# ::id PROXY_AFP_ENG_20020123_0334.14 ::date 2013-05-18T15:23:29 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Last week Afghan Television reported that Afghanistan 's interim administration has banned cultivation of opium poppies in an attempt to end drug trafficking . 
+(r / report-01 [4 = "reported"]
+	:ARG0 (c / company [2 = "Afghan"]
+		:name (n / name [2 = "Afghan"]
+			:op1 "Afghan" [2 = "Afghan"]
+			:op2 "Television" [3 = "Television"]))
+	:ARG1 (b / ban-01 [11 = "banned"]
+		:ARG0 (g / government-organization [9 = "administration"]
+			:mod (i / interim [8 = "interim"])
+			:ARG0-of (a / administrate-01 [9 = "administration"]
+				:ARG1 (c2 / country [6 = "Afghanistan"]
+					:name (n2 / name [6 = "Afghanistan"]
+						:op1 "Afghanistan" [6 = "Afghanistan"]))))
+		:ARG1 (c3 / cultivate-01 [12 = "cultivation"]
+			:ARG1 (p / poppy [15 = "poppies"]
+				:mod (o / opium [14 = "opium"])))
+		:purpose (a2 / attempt-01 [18 = "attempt"]
+			:ARG0 g [9 = "administration"]
+			:ARG1 (e / end-01 [20 = "end"]
+				:ARG0 g [9 = "administration"]
+				:ARG1 (t / traffic-00 [22 = "trafficking"]
+					:ARG1 (d / drug [21 = "drug"])))))
+	:time (w / week [1 = "week"]
+		:mod (l / last [0 = "Last"])))
+
+# ::id PROXY_AFP_ENG_20020123_0334.19 ::date 2013-05-18T15:44:45 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Iranian law applies the death penalty for drug trafficking . 
+(a / apply-02 [2 = "applies"]
+	:ARG0 (l / law [1 = "law"]
+		:mod (c / country [0 = "Iranian"]
+			:name (n / name [0 = "Iranian"]
+				:op1 "Iran" [0 = "Iranian"])))
+	:ARG1 (p / penalty [5 = "penalty"]
+		:mod (d / death [4 = "death"]))
+	:ARG2 (t / traffic-00 [8 = "trafficking"]
+		:ARG1 (d2 / drug [7 = "drug"])))
+
+# ::id PROXY_AFP_ENG_20020123_0346.4 ::date 2013-05-13T14:45:14 ::snt-type summary ::annotator LDC-AMR-14 ::preferred
+# ::snt Canadian government 's warning of al-Qaeda 's capability to launch a cyberattack causes various industries to review their preparedness . 
+(c / cause-01 [12 = "causes"]
+	:ARG0 (w / warn-01 [3 = "warning"]
+		:ARG0 (g / government-organization [1 = "government"]
+			:ARG0-of (g2 / govern-01 [1 = "government"]
+				:ARG1 (c2 / country [0 = "Canadian"]
+					:name (n / name [0 = "Canadian"]
+						:op1 "Canada" [0 = "Canadian"]))))
+		:ARG1 (c3 / capable-41 [7 = "capability"]
+			:ARG1 (c5 / criminal-organization [5 = "al-Qaeda"]
+				:name (n2 / name [5 = "al-Qaeda"]
+					:op1 "al-Qaeda" [5 = "al-Qaeda"]))
+			:ARG2 (l / launch-01 [9 = "launch"]
+				:ARG0 c5 [5 = "al-Qaeda"]
+				:ARG1 (a / attack-01 [11 = "cyberattack"]
+					:mod (c4 / cyber [11 = "cyberattack"])))))
+	:ARG1 (r / review-01 [16 = "review"]
+		:ARG0 (i / industry [14 = "industries"]
+			:mod (v / various [13 = "various"]))
+		:ARG1 (p / prepare-02 [18 = "preparedness"]
+			:ARG1 i [14 = "industries"]
+			:ARG2 a [11 = "cyberattack"])))
+
+# ::id PROXY_AFP_ENG_20020123_0346.9 ::date 2013-05-13T15:46:34 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt In a recent interview Bradley stated that many utility firms perform a brief review of their multi-tiered response systems after such warnings are issued . 
+(s / state-01 [5 = "stated"]
+	:ARG0 (p / person [4 = "Bradley"]
+		:name (n / name [4 = "Bradley"]
+			:op1 "Bradley" [4 = "Bradley"]))
+	:ARG1 (p2 / perform-01 [10 = "perform"]
+		:ARG0 (f / firm [9 = "firms"]
+			:mod (u / utility [8 = "utility"])
+			:quant (m / many [7 = "many"]))
+		:ARG1 (r / review-01 [13 = "review"]
+			:ARG0 f [9 = "firms"]
+			:ARG1 (s2 / system [18 = "systems"]
+				:ARG0-of (r2 / respond-01 [17 = "response"])
+				:mod (m2 / multi-tiered [16 = "multi-tiered"]))
+			:duration (b / brief [12 = "brief"]))
+		:time (a / after [19 = "after"]
+			:op1 (i / issue-01 [23 = "issued"]
+				:ARG1 (w / warn-01 [21 = "warnings"]
+					:mod (s3 / such [20 = "such"])))))
+	:manner (i2 / interview-01 [3 = "interview"]
+		:ARG1 p [4 = "Bradley"]
+		:time (r3 / recent [2 = "recent"])))
+
+# ::id PROXY_AFP_ENG_20020123_0346.14 ::date 2013-05-13T16:33:58 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are known to have remained in Canada . 
+(k / know-01 [12 = "known"]
+	:ARG1 (r / remain-01 [15 = "remained"]
+		:ARG1 (i / include-91 [5 = "including"]
+			:ARG1 (p / person [9 = "Ahmed"]
+				:name (n3 / name [9 = "Ahmed"]
+					:op1 "Ahmed" [9 = "Ahmed"]
+					:op2 "Ressam" [10 = "Ressam"])
+				:ARG0-of (p2 / plot-01 [7 = "plot"]
+					:ARG1 (b / bomb-01 [8 = "bomber"]
+						:ARG0 p [8 = "bomber"])
+					:time (e / event [6 = "Millennium"]
+						:name (n4 / name [6 = "Millennium"]
+							:op1 "Millennium" [6 = "Millennium"]))))
+			:ARG2 (m / militant [4 = "militants"]
+				:ARG0-of (h / have-org-role-91 [4 = "militants"]
+					:ARG1 (c2 / criminal-organization [3 = "al-Qaeda"]
+						:name (n / name [3 = "al-Qaeda"]
+							:op1 "al-Qaeda" [3 = "al-Qaeda"]))))
+			:ARG3 (n2 / number [1 = "number"]))
+		:location (c / country [17 = "Canada"]
+			:name (n5 / name [17 = "Canada"]
+				:op1 "Canada" [17 = "Canada"]))))
+
+# ::id PROXY_AFP_ENG_20020123_0346.19 ::date 2013-05-14T15:09:52 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Many businesses began preparing for cyber incidents before the year 2000 . 
+(b / begin-01 [2 = "began"]
+	:ARG0 (b2 / business [1 = "businesses"]
+		:quant (m / many [0 = "Many"]))
+	:ARG1 (p / prepare-02 [3 = "preparing"]
+		:ARG0 b2 [1 = "businesses"]
+		:ARG1 (i / incident [6 = "incidents"]
+			:mod (c / cyber [5 = "cyber"])))
+	:time (b3 / before [7 = "before"]
+		:op1 (d / date-entity [10 = "2000"]
+			:year 2000 [10 = "2000"])))
+
+# ::id PROXY_AFP_ENG_20020123_0346.24 ::date 2013-05-14T15:42:08 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Bell Canada works very closely with the Government and the private sector to be aware of security concerns and to update accordingly . 
+(w / work-01 [2 = "works"]
+	:ARG0 (c / company [0 = "Bell"]
+		:name (n / name [0 = "Bell"]
+			:op1 "Bell" [0 = "Bell"]
+			:op2 "Canada" [1 = "Canada"]))
+	:ARG1 (a2 / and [18 = "and"]
+		:op1 (r / realize-01 [14 = "aware"]
+			:ARG0 c [0 = "Bell"]
+			:ARG1 (c2 / concern-01 [17 = "concerns"]
+				:ARG0 (s2 / security [16 = "security"])))
+		:op2 (u / update-01 [20 = "update"]
+			:ARG0 c [0 = "Bell"]
+			:manner (a3 / accordingly [21 = "accordingly"])))
+	:ARG3 (a / and [8 = "and"]
+		:op1 (g / government-organization [7 = "Government"]
+			:ARG0-of (g2 / govern-01 [7 = "Government"]))
+		:op2 (s / sector [11 = "sector"]
+			:mod (p / private [10 = "private"])))
+	:manner (c3 / close [4 = "closely"]
+		:degree (v / very [3 = "very"])))
+
+# ::id PROXY_AFP_ENG_20020123_0346.29 ::date 2013-05-14T16:12:38 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt There has not been a cyber event that has resulted in a loss of power for utility customers . 
+(r / result-01 [9 = "resulted"]
+	:ARG1 (e / event [6 = "event"]
+		:mod (c / cyber [5 = "cyber"]))
+	:ARG2 (l / lose-02 [12 = "loss"]
+		:ARG0 (c2 / customer [17 = "customers"]
+			:mod (u / utility [16 = "utility"]))
+		:ARG1 (p / power [14 = "power"]))
+	:polarity - [2 = "not"])
+
+# ::id PROXY_AFP_ENG_20020126_0161.2 ::date 2013-05-18T15:55:26 ::snt-type country ::annotator LDC-AMR-14 ::preferred
+# ::snt Russia -LRB- RU -RRB- 
+(c / country [0 = "Russia"]
+	:name (n / name [0 = "Russia"]
+		:op1 "Russia" [0 = "Russia"]))
+
+# ::id PROXY_AFP_ENG_20020126_0161.7 ::date 2013-05-18T16:23:35 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
+(a / and [23 = "and"]
+	:op1 (c / call-01 [11 = "called"]
+		:ARG0 (s / statement [1 = "statement"]
+			:source (s2 / service [8 = "services"]
+				:mod (p / press [7 = "press"])
+				:mod (m3 / military [4 = "Russian"]
+					:name (n / name [4 = "Russian"]
+						:op1 "Russian" [4 = "Russian"]
+						:op2 "Space" [5 = "Space"]
+						:op3 "Forces" [6 = "Forces"])))
+			:time (d / date-entity [10 = "020126"]
+				:year 2002 [10 = "020126"]
+				:month 1 [10 = "020126"]
+				:day 26 [10 = "020126"]))
+		:ARG1 (a2 / action [13 = "action"])
+		:ARG2 (v / violate-01 [16 = "violation"]
+			:ARG1 (d2 / decree [19 = "decrees"]
+				:mod (g / government-organization [18 = "government"]
+					:ARG0-of (g2 / govern-01 [18 = "government"]))
+				:topic (f / facility [22 = "facilities"]
+					:mod (d4 / defense [21 = "defense"])))
+			:mod (d3 / direct [15 = "direct"])))
+	:op2 (s3 / state-01 [24 = "stated"]
+		:ARG0 s [1 = "statement"]
+		:ARG1 (p2 / possible [27 = "could"]
+			:domain (l / lead-03 [29 = "led"]
+				:ARG0 a2 [26 = "it"]
+				:ARG2 (l2 / lose-02 [32 = "loss"]
+					:ARG1 (s4 / spacecraft [35 = "spacecraft"]
+						:ARG1-of (c2 / cost-01 [36 = "costing"]
+							:ARG2 (m / monetary-quantity [41 = "rubles"]
+								:unit (r / ruble [41 = "rubles"])
+								:quant (m2 / multiple [37 = "hundreds"]
+									:op1 100000000 [37 = "hundreds"])))))))))
+
+# ::id PROXY_AFP_ENG_20020126_0161.12 ::date 2013-05-19T13:47:36 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt United energy services argues that non-payment of bills has prevented it from maintaining supplies . 
+(a / argue-01 [3 = "argues"]
+	:ARG0 (c / company [0 = "United"]
+		:name (n / name [0 = "United"]
+			:op1 "United" [0 = "United"]
+			:op2 "Energy" [1 = "energy"]
+			:op3 "Services" [2 = "services"]))
+	:ARG1 (p / prevent-01 [9 = "prevented"]
+		:ARG0 (p2 / pay-01 [5 = "non-payment"]
+			:polarity - [5 = "non-payment"]
+			:ARG3 (b / bill [7 = "bills"]))
+		:ARG1 (m / maintain-01 [12 = "maintaining"]
+			:ARG0 c [10 = "it"]
+			:ARG1 (s / supply [13 = "supplies"]))))
+
+# ::id PROXY_AFP_ENG_20020128_0449.4 ::date 2013-05-15T07:23:19 ::snt-type summary ::annotator LDC-AMR-14 ::preferred
+# ::snt Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
+(w / warn-01 [3 = "warn"]
+	:ARG0 (p5 / person [2 = "officials"]
+		:ARG0-of (h / have-org-role-91 [2 = "officials"]
+			:ARG1 (c / country [0 = "Russian"]
+				:name (n / name [0 = "Russian"]
+					:op1 "Russia" [0 = "Russian"]))
+			:ARG2 (o / official [2 = "officials"]
+				:topic (s / space [1 = "space"]))))
+	:ARG1 (p / possible [34 = "could"]
+		:domain (c2 / consequence [37 = "consequences"]
+			:mod (c3 / catastrophic [36 = "catastrophic"])
+			:ARG1-of (c4 / cause-01 [35 = "have"]
+				:ARG0 (c5 / cut-02 [6 = "cuts"]
+					:ARG1 (p2 / power [5 = "power"])
+					:ARG1-of (c6 / cause-01 [10 = "for"]
+						:ARG0 (p3 / pay-01 [11 = "non-payment"]
+							:polarity - [11 = "non-payment"]
+							:ARG0 (m / military [9 = "military"])
+							:ARG3 (b / bill-01 [13 = "bills"])))
+					:prep-against m [9 = "military"]
+					:ARG1-of (r / resemble-01 [15 = "like"]
+						:ARG2 (c9 / cut-02 [17 = "one"]
+							:location (c7 / center [21 = "center"]
+								:purpose (c8 / command-02 [20 = "command"]
+									:ARG1 (m2 / military [30 = "Russian"]
+										:name (n2 / name [30 = "Russian"]
+											:op1 "Russian" [30 = "Russian"]
+											:op2 "Space" [31 = "Space"]
+											:op3 "Forces" [32 = "Forces"])))
+								:location (p4 / peninsula [27 = "Peninsula"]
+									:name (n3 / name [26 = "Kamchatka"]
+										:op1 "Kamchatka" [26 = "Kamchatka"]
+										:op2 "Peninsula" [27 = "Peninsula"])
+									:location (w2 / world-region [24 = "Far"]
+										:name (n4 / name [24 = "Far"]
+											:op1 "Far" [24 = "Far"]
+											:op2 "East" [25 = "East"])))))))))))
+
+# ::id PROXY_AFP_ENG_20020128_0449.9 ::date 2013-05-15T07:52:16 ::snt-type body subordinate ::annotator LDC-AMR-14 ::preferred
+# ::snt The Kamchatka command center plays a role in ISS operations . 
+(p / play-02 [4 = "plays"]
+	:ARG0 (c / center [3 = "center"]
+		:topic (c2 / command-02 [2 = "command"])
+		:location (p2 / peninsula [1 = "Kamchatka"]
+			:name (n / name [1 = "Kamchatka"]
+				:op1 "Kamchatka" [1 = "Kamchatka"])))
+	:ARG1 (o / operate-01 [9 = "operations"]
+		:ARG1 (s / spaceship [8 = "ISS"]
+			:name (n2 / name [8 = "ISS"]
+				:op1 "ISS" [8 = "ISS"]))))
+
+# ::id PROXY_AFP_ENG_20020128_0449.14 ::date 2013-05-15T08:15:16 ::snt-type body subordinate ::annotator LDC-AMR-14 ::preferred
+# ::snt The Government or UES or the Ministry of Defense must resolve the issue . 
+(o / obligate-01 [9 = "must"]
+	:ARG1 (o2 / or [4 = "or"]
+		:op1 (g / government-organization [1 = "Government"]
+			:ARG0-of (g2 / govern-01 [1 = "Government"]))
+		:op2 (c / company [3 = "UES"]
+			:name (n / name [3 = "UES"]
+				:op1 "UES" [3 = "UES"]))
+		:op3 (g3 / government-organization [6 = "Ministry"]
+			:name (n2 / name [6 = "Ministry"]
+				:op1 "Ministry" [6 = "Ministry"]
+				:op2 "of" [7 = "of"]
+				:op3 "Defense" [8 = "Defense"])))
+	:ARG2 (r / resolve-01 [10 = "resolve"]
+		:ARG0 o2 [4 = "or"]
+		:ARG1 (i / issue [12 = "issue"])))
+
+# ::id PROXY_AFP_ENG_20020128_0449.19 ::date 2013-05-16T13:26:16 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Kamchatenergo stated that non-payment of bills prevent it from maintaining power supplies . 
+(s / state-01 [1 = "stated"]
+	:ARG0 (c / company [0 = "Kamchatenergo"]
+		:name (n / name [0 = "Kamchatenergo"]
+			:op1 "Kamchatenergo" [0 = "Kamchatenergo"]))
+	:ARG1 (p / prevent-01 [6 = "prevent"]
+		:ARG0 (p2 / pay-01 [3 = "non-payment"]
+			:polarity - [3 = "non-payment"]
+			:ARG3 (b / bill-01 [5 = "bills"]))
+		:ARG1 (m / maintain-01 [9 = "maintaining"]
+			:ARG0 c [7 = "it"]
+			:ARG1 (s2 / supply-01 [11 = "supplies"]
+				:ARG1 (p3 / power [10 = "power"])))))
+
+# ::id PROXY_AFP_ENG_20020128_0449.24 ::date 2013-05-16T13:40:10 ::snt-type body subordinate ::annotator LDC-AMR-14 ::preferred
+# ::snt Russia provided several ISS modules including Zvezda and Zarya 
+(p / provide-01 [1 = "provided"]
+	:ARG0 (c / country [0 = "Russia"]
+		:name (n / name [0 = "Russia"]
+			:op1 "Russia" [0 = "Russia"]))
+	:ARG1 (m / module [4 = "modules"]
+		:poss (s3 / spaceship [3 = "ISS"]
+			:name (n4 / name [3 = "ISS"]
+				:op1 "ISS" [3 = "ISS"]))
+		:quant (s4 / several [2 = "several"])
+		:ARG2-of (i / include-91 [5 = "including"]
+			:ARG1 (a / and [7 = "and"]
+				:op1 (s / spaceship [6 = "Zvezda"]
+					:name (n2 / name [6 = "Zvezda"]
+						:op1 "Zvezda" [6 = "Zvezda"]))
+				:op2 (s2 / spaceship [8 = "Zarya"]
+					:name (n3 / name [8 = "Zarya"]
+						:op1 "Zarya" [8 = "Zarya"]))))))
+
+# ::id PROXY_AFP_ENG_20020201_0053.2 ::date 2013-07-11T08:14:05 ::snt-type country ::annotator LDC-AMR-14 ::preferred
+# ::snt Australia -LRB- AU -RRB- 
+(c / country [0 = "Australia"]
+	:name (n / name [0 = "Australia"]
+		:op1 "Australia" [0 = "Australia"]))
+
+# ::id PROXY_AFP_ENG_20020201_0053.7 ::date 2013-06-05T11:42:21 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The Great Olympic swindle was written by British journalist Andrew Jennings and published by Simon and Schuster . 
+(a / and [11 = "and"]
+	:op1 (w / write-01 [5 = "written"]
+		:ARG0 (j / journalist [8 = "journalist"]
+			:name (n / name [9 = "Andrew"]
+				:op1 "Andrew" [9 = "Andrew"]
+				:op2 "Jennings" [10 = "Jennings"])
+			:mod (c / country [7 = "British"]
+				:name (n2 / name [7 = "British"]
+					:op1 "Britain" [7 = "British"])))
+		:ARG1 (b / book [0 = "The"]
+			:name (n3 / name [0 = "The"]
+				:op1 "The" [0 = "The"]
+				:op2 "Great" [1 = "Great"]
+				:op3 "Olympic" [2 = "Olympic"]
+				:op4 "Swindle" [0 = "The"])))
+	:op2 (p / publish-01 [12 = "published"]
+		:ARG0 (c2 / company [14 = "Simon"]
+			:name (n4 / name [14 = "Simon"]
+				:op1 "Simon" [14 = "Simon"]
+				:op2 "and" [15 = "and"]
+				:op3 "Schuster" [16 = "Schuster"]))
+		:ARG1 b [0 = "The"]))
+
+# ::id PROXY_AFP_ENG_20020201_0053.12 ::date 2013-06-05T12:28:21 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Rakhimov was also said to have bribed members of the International Amateur Boxing Federation in the vote for the Federation Presidency . 
+(s / say-01 [3 = "said"]
+	:ARG1 (b / bribe-01 [6 = "bribed"]
+		:ARG0 (p / person [0 = "Rakhimov"]
+			:name (n / name [0 = "Rakhimov"]
+				:op1 "Rakhimov" [0 = "Rakhimov"]))
+		:ARG1 (m / member [7 = "members"]
+			:poss (o / organization [10 = "International"]
+				:name (n2 / name [10 = "International"]
+					:op1 "International" [10 = "International"]
+					:op2 "Amateur" [11 = "Amateur"]
+					:op3 "Boxing" [12 = "Boxing"]
+					:op4 "Federation" [13 = "Federation"])))
+		:purpose (v / vote-01 [16 = "vote"]
+			:ARG1 (p2 / presidency [20 = "Presidency"]
+				:poss o [10 = "International"])))
+	:mod (a / also [2 = "also"]))
+
+# ::id PROXY_AFP_ENG_20020201_0053.17 ::date 2013-06-05T13:56:05 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The SMH and Jennings were then sued over 3 articles published in the lead-up to the 000000 Olympics . 
+(s / sue-01 [6 = "sued"]
+	:ARG1 (a / and [2 = "and"]
+		:op1 (c / company [0 = "The"]
+			:name (n / name [0 = "The"]
+				:op1 "The" [0 = "The"]
+				:op2 "SMH" [1 = "SMH"]))
+		:op2 (p / person [3 = "Jennings"]
+			:name (n2 / name [4 = "were"]
+				:op1 "Jennings" [3 = "Jennings"])))
+	:ARG2 (a2 / article [9 = "articles"]
+		:quant 3 [8 = "3"]
+		:ARG1-of (p2 / publish-01 [10 = "published"]
+			:time (l / lead-05 [13 = "lead-up"]
+				:ARG2 (g / game [17 = "Olympics"]
+					:name (n3 / name [17 = "Olympics"]
+						:op1 "Olympics" [17 = "Olympics"])
+					:time (d2 / date-entity [16 = "000000"]
+						:year 2000 [16 = "000000"])))))
+	:mod (t / then [5 = "then"]))
+
+# ::id PROXY_AFP_ENG_20020210_0074.4 ::date 2013-05-16T14:14:48 ::snt-type summary ::annotator LDC-AMR-14 ::preferred
+# ::snt OSCE urges permanent end to Afghan terrorism and drug-trafficking to create long-term stability in Central Asia . 
+(u / urge-01 [1 = "urges"]
+	:ARG0 (o / organization [0 = "OSCE"]
+		:name (n / name [0 = "OSCE"]
+			:op1 "OSCE" [0 = "OSCE"]))
+	:ARG1 (e / end-01 [3 = "end"]
+		:ARG1 (a / and [7 = "and"]
+			:op1 (t / terrorism [6 = "terrorism"])
+			:op2 (t2 / trafficking [8 = "drug-trafficking"]
+				:mod (d / drug [8 = "drug-trafficking"]))
+			:location (c / country [5 = "Afghan"]
+				:name (n2 / name [5 = "Afghan"]
+					:op1 "Afghanistan" [5 = "Afghan"])))
+		:duration (p / permanent [2 = "permanent"])
+		:purpose (c2 / create-01 [10 = "create"]
+			:ARG1 (s / stability [12 = "stability"]
+				:duration (l / long-term [11 = "long-term"])
+				:location (w / world-region [14 = "Central"]
+					:name (n3 / name [14 = "Central"]
+						:op1 "Central" [14 = "Central"]
+						:op2 "Asia" [15 = "Asia"]))))))
+
+# ::id PROXY_AFP_ENG_20020210_0074.9 ::date 2013-05-16T14:55:24 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Both Tajikistan and Uzbekistan share a border with Afghanistan and have experienced raids by Taliban-backed Islamic militants in recent years . 
+(a / and [9 = "and"]
+	:op1 (s / share-01 [4 = "share"]
+		:ARG0 (a2 / and [2 = "and"]
+			:op1 (b2 / both [0 = "Both"]
+				:op1 (c / country [1 = "Tajikistan"]
+					:name (n / name [1 = "Tajikistan"]
+						:op1 "Tajikistan" [1 = "Tajikistan"]))
+				:op2 (c2 / country [3 = "Uzbekistan"]
+					:name (n2 / name [3 = "Uzbekistan"]
+						:op1 "Uzbekistan" [3 = "Uzbekistan"]))))
+		:ARG1 (b / border-01 [6 = "border"]
+			:ARG1 (c3 / country [8 = "Afghanistan"]
+				:name (n3 / name [8 = "Afghanistan"]
+					:op1 "Afghanistan" [8 = "Afghanistan"]))
+			:ARG2 a2 [2 = "and"]))
+	:op2 (e / experience-01 [11 = "experienced"]
+		:ARG0 a2 [2 = "and"]
+		:ARG1 (r / raid-01 [12 = "raids"]
+			:ARG0 (m / militant [16 = "militants"]
+				:ARG1-of (b3 / back-01 [14 = "Taliban-backed"]
+					:ARG0 (c4 / criminal-organization [14 = "Taliban-backed"]
+						:name (n4 / name [14 = "Taliban-backed"]
+							:op1 "Taliban" [14 = "Taliban-backed"])))
+				:mod (r2 / religious-group [15 = "Islamic"]
+					:name (n5 / name [15 = "Islamic"]
+						:op1 "Islam" [15 = "Islamic"]))))
+		:time (b4 / before [18 = "recent"]
+			:op1 (n6 / now [18 = "recent"]
+				:duration (m2 / multiple [19 = "years"]
+					:op1 (t / temporal-quantity [19 = "years"]
+						:quant 1 [19 = "years"]
+						:unit (y / year [19 = "years"])))))))
+
+# ::id PROXY_AFP_ENG_20020210_0074.14 ::date 2013-05-20T14:37:39 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Gilbert stated that Tajikistan 's positive and responsible approach to the crisis in Afghanistan has significantly improved the country 's image internationally . 
+(s / state-01 [1 = "stated"]
+	:ARG0 (p / person [0 = "Gilbert"]
+		:name (n / name [0 = "Gilbert"]
+			:op1 "Gilbert" [0 = "Gilbert"]))
+	:ARG1 (i / improve-01 [16 = "improved"]
+		:ARG0 (a / approach-02 [8 = "approach"]
+			:ARG0 (c / country [3 = "Tajikistan"]
+				:name (n2 / name [3 = "Tajikistan"]
+					:op1 "Tajikistan" [3 = "Tajikistan"]))
+			:ARG1 (c2 / crisis [11 = "crisis"]
+				:location (c3 / country [13 = "Afghanistan"]
+					:name (n3 / name [13 = "Afghanistan"]
+						:op1 "Afghanistan" [13 = "Afghanistan"])))
+			:ARG2 (a2 / and [6 = "and"]
+				:op1 (p2 / positive [5 = "positive"])
+				:op2 (r / responsible [7 = "responsible"])))
+		:ARG1 (i2 / image [20 = "image"]
+			:poss c [18 = "country"]
+			:location (i3 / international [21 = "internationally"]))
+		:degree (s2 / significant [15 = "significantly"])))
+
+# ::id PROXY_AFP_ENG_20020210_0074.19 ::date 2013-05-20T15:16:57 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Drug trafficking from Afghanistan resumed during a brief hiatus in the anti-terrorist operation . 
+(r / resume-01 [4 = "resumed"]
+	:ARG1 (t / trafficking [1 = "trafficking"]
+		:mod (d / drug [0 = "Drug"])
+		:source (c / country [3 = "Afghanistan"]
+			:name (n / name [3 = "Afghanistan"]
+				:op1 "Afghanistan" [3 = "Afghanistan"])))
+	:time (d2 / during [5 = "during"]
+		:op1 (h / hiatus [8 = "hiatus"]
+			:mod (b / brief [7 = "brief"])
+			:part-of (o / operation [12 = "operation"]
+				:purpose (c2 / counter-01 [11 = "anti-terrorist"]
+					:ARG1 (t2 / terrorist [11 = "anti-terrorist"]))))))
+
+# ::id PROXY_AFP_ENG_20020210_0074.24 ::date 2013-05-20T16:09:33 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Cultivation of raw opium provided the only source of income for much of the rural population . 
+(p / provide-01 [4 = "provided"]
+	:ARG0 (c / cultivate-01 [0 = "Cultivation"]
+		:ARG1 (o / opium [3 = "opium"]
+			:mod (r / raw [2 = "raw"])))
+	:ARG1 (s / source [7 = "source"]
+		:source-of (i / income [9 = "income"])
+		:frequency (o2 / only [6 = "only"]))
+	:ARG2 (m / much [11 = "much"]
+		:part-of (p2 / population [15 = "population"]
+			:location (r2 / rural [14 = "rural"]))))
+
+# ::id PROXY_AFP_ENG_20020301_0316.4 ::date 2013-06-05T14:04:48 ::snt-type summary ::annotator LDC-AMR-14 ::preferred
+# ::snt Afghan officials conducted talks with Russian officials asking for assistance in stopping Afghanistan 's large illegal opium and heroin trade . 
+(c / conduct-01 [2 = "conducted"]
+	:ARG0 (p / person [1 = "officials"]
+		:ARG0-of (h2 / have-org-role-91 [1 = "officials"]
+			:ARG1 (c2 / country [0 = "Afghan"]
+				:name (n / name [0 = "Afghan"]
+					:op1 "Afghanistan" [0 = "Afghan"]))
+			:ARG2 (o / official [1 = "officials"])))
+	:ARG1 (t / talk-01 [3 = "talks"]
+		:ARG0 p [6 = "officials"]
+		:ARG2 (p2 / person [6 = "officials"]
+			:ARG0-of (h3 / have-org-role-91 [6 = "officials"]
+				:ARG1 (c3 / country [5 = "Russian"]
+					:name (n2 / name [5 = "Russian"]
+						:op1 "Russia" [5 = "Russian"]))
+				:ARG2 (o2 / official [6 = "officials"]))))
+	:purpose (a / ask-02 [7 = "asking"]
+		:ARG0 p [1 = "officials"]
+		:ARG1 (a2 / assist-01 [9 = "assistance"]
+			:ARG0 p2 [1 = "officials"]
+			:ARG2 (s / stop-01 [11 = "stopping"]
+				:ARG1 (t2 / trade-01 [19 = "trade"]
+					:ARG1 (a3 / and [17 = "and"]
+						:op1 (o3 / opium [16 = "opium"])
+						:op2 (h / heroin [18 = "heroin"]))
+					:mod (l / large [14 = "large"])
+					:mod (l2 / legal [15 = "illegal"]
+						:polarity - [15 = "illegal"]))))
+		:ARG2 p2 [1 = "officials"]))
+
+# ::id PROXY_AFP_ENG_20020301_0316.9 ::date 2013-06-05T14:45:58 ::snt-type body subordinate ::annotator LDC-AMR-14 ::preferred
+# ::snt Unfortunately over the past six years , the rule of the Taliban turned Afghanistan into a center of terrorism and drugs . 
+(t2 / turn-02 [12 = "turned"]
+	:ARG0 (r / rule-03 [8 = "rule"]
+		:ARG0 (c3 / criminal-organization [11 = "Taliban"]
+			:name (n / name [11 = "Taliban"]
+				:op1 "Taliban" [11 = "Taliban"])))
+	:ARG1 (c / country [13 = "Afghanistan"]
+		:name (n2 / name [13 = "Afghanistan"]
+			:op1 "Afghanistan" [13 = "Afghanistan"]))
+	:ARG2 (c2 / center [16 = "center"]
+		:location-of (a / and [19 = "and"]
+			:op1 (t3 / terrorism [18 = "terrorism"])
+			:op2 (d / drug [20 = "drugs"])))
+	:time (o2 / over [1 = "over"]
+		:op1 (t4 / temporal-quantity [5 = "years"]
+			:quant 6 [4 = "six"]
+			:unit (y2 / year [5 = "years"])
+			:mod (p / past [3 = "past"])))
+	:mod (f / fortunate [0 = "Unfortunately"]
+		:polarity - [0 = "Unfortunately"]))
+
+# ::id PROXY_AFP_ENG_20020301_0316.14 ::date 2013-06-05T16:10:47 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Leader of Afghanistan 's interim government Hamid Karzai said the fight against poppy harvesting and the lucrative trafficking of opium and heroin will be a top priority . 
+(s / say-01 [8 = "said"]
+	:ARG0 (p / person [6 = "Hamid"]
+		:name (n / name [6 = "Hamid"]
+			:op1 "Hamid" [6 = "Hamid"]
+			:op2 "Karzai" [7 = "Karzai"])
+		:ARG0-of (l / lead-02 [0 = "Leader"]
+			:ARG1 (g / government-organization [5 = "government"]
+				:ARG0-of (g2 / govern-01 [5 = "government"]
+					:ARG1 (c / country [2 = "Afghanistan"]
+						:name (n2 / name [2 = "Afghanistan"]
+							:op1 "Afghanistan" [2 = "Afghanistan"])))
+				:duration (i / interim [4 = "interim"]))))
+	:ARG1 (p2 / priority [26 = "priority"]
+		:degree (t / top [25 = "top"])
+		:domain (f / fight-01 [10 = "fight"]
+			:ARG1 (a / and [14 = "and"]
+				:op1 (h / harvest-01 [13 = "harvesting"]
+					:ARG1 (p3 / poppy [12 = "poppy"]))
+				:op2 (t2 / traffic-00 [17 = "trafficking"]
+					:ARG1 (a2 / and [20 = "and"]
+						:op1 (o / opium [19 = "opium"])
+						:op2 (h2 / heroin [21 = "heroin"]))
+					:mod (l2 / lucrative [16 = "lucrative"]))))))
+
+# ::id PROXY_AFP_ENG_20020301_0316.19 ::date 2013-06-09T13:04:47 ::snt-type body subordinate ::annotator LDC-AMR-14 ::preferred
+# ::snt Afghan authorities will seek to ban poppy harvesting . 
+(s / seek-01 [3 = "seek"]
+	:ARG0 (a / authority [1 = "authorities"]
+		:mod (c / country [0 = "Afghan"]
+			:name (n / name [0 = "Afghan"]
+				:op1 "Afghanistan" [0 = "Afghan"])))
+	:ARG1 (b / ban-01 [5 = "ban"]
+		:ARG0 a [1 = "authorities"]
+		:ARG1 (h / harvest-01 [7 = "harvesting"]
+			:ARG1 (p / poppy [6 = "poppy"]))))
+
+# ::id PROXY_AFP_ENG_20020301_0316.24 ::date 2013-07-11T08:57:49 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The Northern Alliance opposes the Taliban but tolerated the harvest of poppy in territory it controlled . 
+(c2 / contrast-01 [6 = "but"]
+	:ARG1 (o2 / oppose-01 [3 = "opposes"]
+		:ARG0 (o / organization [1 = "Northern"]
+			:name (n / name [1 = "Northern"]
+				:op1 "Northern" [1 = "Northern"]
+				:op2 "Alliance" [2 = "Alliance"]))
+		:ARG1 (c / criminal-organization [5 = "Taliban"]
+			:name (n2 / name [5 = "Taliban"]
+				:op1 "Taliban" [5 = "Taliban"])))
+	:ARG2 (t / tolerate-01 [7 = "tolerated"]
+		:ARG0 o [1 = "Northern"]
+		:ARG1 (h / harvest-01 [9 = "harvest"]
+			:ARG1 (p / poppy [11 = "poppy"])
+			:location (t2 / territory [13 = "territory"]
+				:ARG1-of (c3 / control-01 [15 = "controlled"]
+					:ARG0 o [14 = "it"])))))
+
+# ::id PROXY_AFP_ENG_20020304_0028.4 ::date 2013-05-21T09:12:03 ::snt-type summary ::annotator LDC-AMR-14 ::preferred
+# ::snt South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
+(a / attack-01 [6 = "attack"]
+	:ARG1 (g / government-organization [3 = "defense"]
+		:name (n / name [3 = "defense"]
+			:op1 "Defense" [3 = "defense"]
+			:op2 "Ministry" [4 = "ministry"])
+		:poss (c4 / country [0 = "South"]
+			:name (n5 / name [0 = "South"]
+				:op1 "South" [0 = "South"]
+				:op2 "Korea" [1 = "Korea"])))
+	:location (g2 / government-organization [8 = "parliament"]
+		:name (n2 / name [8 = "parliament"]
+			:op1 "Parliament" [8 = "parliament"]))
+	:ARG1-of (c / cause-01 [9 = "over"]
+		:ARG0 (a2 / allege-01 [10 = "allegations"]
+			:ARG1 (f / favor-01 [13 = "favoring"]
+				:ARG0 g [11 = "it"]
+				:ARG1 (c2 / company [15 = "company"]
+					:name (n3 / name [16 = "Boeing"]
+						:op1 "Boeing" [16 = "Boeing"])
+					:source (c3 / country [14 = "U.S."]
+						:name (n4 / name [14 = "U.S."]
+							:op1 "U.S." [14 = "U.S."])))
+				:purpose (p / project [20 = "project"]
+					:mod (a3 / aircraft [19 = "fighter"]
+						:ARG0-of (f2 / fight-01 [19 = "fighter"]))
+					:mod (m / monetary-quantity [18 = "multi-billion-dollar"]
+						:unit (d / dollar [18 = "multi-billion-dollar"])
+						:quant (m2 / multi-billion [18 = "multi-billion-dollar"])))))))
+
+# ::id PROXY_AFP_ENG_20020304_0028.9 ::date 2013-05-21T09:48:21 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Award of the contract was temporarily suspended in February 2002 after the prices offered by 4 bidders were judged too high . 
+(s / suspend-01 [6 = "suspended"]
+	:ARG1 (a / award-01 [0 = "Award"]
+		:ARG1 (c / contract [3 = "contract"]))
+	:duration (t / temporary [5 = "temporarily"])
+	:time (d / date-entity [8 = "February"]
+		:year 2002 [9 = "2002"]
+		:month 2 [8 = "February"])
+	:time (a2 / after [10 = "after"]
+		:op1 (j / judge-01 [18 = "judged"]
+			:ARG1 (p / price [12 = "prices"]
+				:ARG1-of (o / offer-01 [13 = "offered"]
+					:ARG0 (p2 / person [16 = "bidders"]
+						:quant 4 [15 = "4"]
+						:ARG0-of (b / bid-01 [16 = "bidders"]))))
+			:ARG2 (h / high [20 = "high"]
+				:degree (t2 / too [19 = "too"])))))
+
+# ::id PROXY_AFP_ENG_20020304_0028.14 ::date 2013-05-21T18:58:55 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Dassault is seeking its first foreign order for the Rafale . 
+(s / seek-01 [2 = "seeking"]
+	:ARG0 (c / company [0 = "Dassault"]
+		:name (n / name [0 = "Dassault"]
+			:op1 "Dassault" [0 = "Dassault"]))
+	:ARG1 (o / order-02 [6 = "order"]
+		:ARG0 (f / foreign [5 = "foreign"])
+		:ARG1 (a / aircraft-type [9 = "Rafale"]
+			:name (n2 / name [9 = "Rafale"]
+				:op1 "Rafale" [9 = "Rafale"]))
+		:ARG3 c [3 = "its"]
+		:frequency (f2 / first [4 = "first"])))
+
+# ::id PROXY_AFP_ENG_20020304_0028.19 ::date 2013-05-21T19:21:03 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt There would be an investigation into how classified documents had been leaked . 
+(i / investigate-01 [4 = "investigation"]
+	:ARG1 (c / cause-01 [5 = "into"]
+		:ARG1 (l / leak-01 [11 = "leaked"]
+			:ARG1 (d / document [8 = "documents"]
+				:ARG1-of (c2 / classify-02 [7 = "classified"])))))
+
+# ::id PROXY_AFP_ENG_20020304_0028.24 ::date 2013-05-22T08:51:00 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Rafale reportedly offered more generous terms for technology transfer and subcontracts for South Korea 's aerospace industry . 
+(o / offer-01 [2 = "offered"]
+	:ARG0 (a / aircraft-type [0 = "Rafale"]
+		:name (n / name [0 = "Rafale"]
+			:op1 "Rafale" [0 = "Rafale"]))
+	:ARG1 (t / term [5 = "terms"]
+		:ARG2-of (g / generous-41 [4 = "generous"]
+			:ARG0 a [0 = "Rafale"]
+			:ARG1 (i / industry [16 = "industry"]
+				:mod (a3 / aerospace [15 = "aerospace"])
+				:poss (c / country [12 = "South"]
+					:name (n2 / name [12 = "South"]
+						:op1 "South" [12 = "South"]
+						:op2 "Korea" [13 = "Korea"])))
+			:degree (m / more [3 = "more"]))
+		:purpose (a2 / and [9 = "and"]
+			:op1 (t2 / transfer-01 [8 = "transfer"]
+				:ARG1 (t3 / technology [7 = "technology"]))
+			:op2 (s / subcontract-01 [10 = "subcontracts"])))
+	:ARG1-of (r / report-01 [1 = "reportedly"]))
+
+# ::id PROXY_AFP_ENG_20020304_0028.29 ::date 2013-05-22T09:25:07 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
+(s / state-01 [3 = "stated"]
+	:ARG0 (n / newspaper [1 = "Korea"]
+		:name (n2 / name [1 = "Korea"]
+			:op1 "Korea" [1 = "Korea"]
+			:op2 "Herald" [2 = "Herald"]))
+	:ARG1 (s2 / say-01 [6 = "say"]
+		:ARG0 (p / person [5 = "critics"]
+			:ARG0-of (c / criticize-01 [5 = "critics"]))
+		:ARG1 (b / benefit-01 [9 = "benefit"]
+			:ARG0 (m2 / minimum [14 = "minimum"]
+				:consist-of (p2 / point [13 = "points"]))
+			:ARG1 (c2 / company [7 = "Boeing"]
+				:name (n3 / name [7 = "Boeing"]
+					:op1 "Boeing" [7 = "Boeing"]))
+			:degree (m / most [10 = "most"])
+			:ARG1-of (c3 / cause-01 [15 = "because"]
+				:ARG0 (g / gain-02 [18 = "gain"]
+					:ARG0 c2 [16 = "it"]
+					:ARG1 (p3 / point [20 = "points"]
+						:mod (f / few [19 = "fewer"]
+							:degree (m3 / more [19 = "fewer"])
+							:compared-to (c4 / company [22 = "Dassault"]
+								:name (n4 / name [22 = "Dassault"]
+									:op1 "Dassault" [22 = "Dassault"]))))
+					:mod (t / term [24 = "terms"]
+						:mod (a / and [28 = "and"]
+							:op1 (t2 / transfer-01 [27 = "transfer"]
+								:ARG1 (t3 / technology [26 = "technology"]))
+							:op2 (s3 / subcontract-01 [29 = "subcontracts"]))))))))
+
+# ::id nw.chtb_0012.2 ::date 2012-11-01T12:24:32 ::annotator SDL-AMR-09 ::preferred
+# ::snt According to Taiwan 's '' Ministry of Economy '' statistics , the volume of trade between mainland and Taiwan last year was 20.9 billion US dollars . 
+(s / say-01 [0 = "According"]
+	:ARG0 (s2 / statistic [9 = "statistics"]
+		:source (g / government-organization [5 = "Ministry"]
+			:name (n / name [5 = "Ministry"]
+				:op1 "Ministry" [5 = "Ministry"]
+				:op2 "of" [6 = "of"]
+				:op3 "Economy" [7 = "Economy"])
+			:poss c [2 = "Taiwan"]))
+	:ARG1 (m2 / monetary-quantity [25 = "dollars"]
+		:quant 20900000000 [22 = "20.9"]
+		:unit (d / dollar [25 = "dollars"]
+			:mod (c2 / country [24 = "US"]
+				:name (n3 / name [24 = "US"]
+					:op1 "US" [24 = "US"])))
+		:domain (v / volume [12 = "volume"]
+			:quant-of (t / trade-01 [14 = "trade"]
+				:ARG0 (m / mainland [16 = "mainland"])
+				:ARG2 (c / country [18 = "Taiwan"]
+					:name (n2 / name [18 = "Taiwan"]
+						:op1 "Taiwan" [18 = "Taiwan"])))
+			:time (y / year [20 = "year"]
+				:mod (l / last [19 = "last"])))))
+
+# ::id nw.chtb_0012.7 ::date 2012-11-01T15:15:08 ::annotator SDL-AMR-09 ::preferred
+# ::snt The number of investment projects dropped by 444 as compared with last year , but the value of investments rose by more than 130 million US dollars as compared with last year . 
+(c / contrast-01 [14 = "but"]
+	:ARG1 (d / drop-01 [5 = "dropped"]
+		:ARG1 (n / number [1 = "number"]
+			:quant-of (p / project [4 = "projects"]
+				:mod (i / invest-01 [3 = "investment"])))
+		:ARG2 444 [7 = "444"]
+		:ARG1-of (c2 / compare-01 [9 = "compared"]
+			:ARG2 (y / year [12 = "year"]
+				:mod (l / last [11 = "last"]))))
+	:ARG2 (r / rise-01 [19 = "rose"]
+		:ARG1 (v / value [16 = "value"]
+			:mod (i2 / invest-01 [18 = "investments"]))
+		:ARG2 (m2 / more-than [22 = "than"]
+			:op1 (m / monetary-quantity [26 = "dollars"]
+				:quant 130000000 [23 = "130"]
+				:unit (d2 / dollar [26 = "dollars"]
+					:mod (c4 / country [25 = "US"]
+						:name (n2 / name [25 = "US"]
+							:op1 "US" [25 = "US"])))))
+		:ARG1-of (c3 / compare-01 [28 = "compared"]
+			:ARG2 y [31 = "year"])))
+
+# ::id nw.chtb_0021.4 ::date 2012-11-06T14:00:10 ::annotator SDL-AMR-09 ::preferred
+# ::snt The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
+(i / introduce-02 [10 = "introduce"]
+	:ARG0 (s / system [3 = "system"]
+		:mod (m / manage-01 [2 = "management"]
+			:ARG1 (p / project [1 = "project"]))
+		:poss (p6 / project [5 = "the"]
+			:name (n / name [5 = "the"]
+				:op1 "The" [5 = "the"]
+				:op2 "Three" [6 = "Three"]
+				:op3 "Gorges" [7 = "Gorges"])))
+	:ARG1 (a / and [14 = "and"]
+		:op1 (m2 / method [13 = "methods"]
+			:mod (m3 / manage-01 [12 = "management"])
+			:mod (s2 / science [11 = "scientific"]))
+		:op2 (t / technology [17 = "technology"]
+			:mod (c / computer [16 = "computer"])
+			:ARG1-of (a2 / advance-01 [15 = "advanced"])
+			:poss (c3 / company [20 = "MAI"]
+				:name (n3 / name [20 = "MAI"]
+					:op1 "MAI" [20 = "MAI"]
+					:op2 "Corp." [21 = "Corp."]
+					:op3 "of" [22 = "of"]
+					:op4 "Canada" [23 = "Canada"])
+				:ARG0-of (u / use-01 [26 = "uses"]
+					:ARG1 (s3 / system [31 = "system"]
+						:mod (m4 / manage-01 [30 = "management"]
+							:ARG1 (d / database [29 = "database"]
+								:mod (p3 / project [28 = "project"]))))
+					:ARG2 (a3 / and [39 = "and"]
+						:op1 (c6 / control-01 [38 = "control"]
+							:ARG0 t [17 = "technology"]
+							:ARG1 (p4 / process [44 = "process"]
+								:mod (w / whole [43 = "whole"])
+								:consist-of (a4 / and [55 = "and"]
+									:op1 (d2 / design-01 [46 = "designing"]
+										:ARG1 (s4 / subproject [65 = "subproject"]
+											:mod (e2 / each [64 = "each"])
+											:part-of p6 [70 = "project"]))
+									:op2 (p5 / plan-01 [48 = "planning"]
+										:ARG1 s4 [70 = "project"])
+									:op3 (c7 / contract-02 [50 = "contracting"]
+										:ARG1 s4 [70 = "project"])
+									:op4 (f / finance-01 [52 = "financing"]
+										:ARG1 s4 [23 = "Canada"])
+									:op5 (a5 / and [55 = "and"]
+										:op1 (g / good [0 = "The"])
+										:op2 (m6 / material [0 = "The"])
+										:part-of s4 [0 = "The"])
+									:op6 (e / equip-01 [0 = "The"]
+										:part-of s4 [0 = "The"])
+									:op7 (c8 / construct-01 [0 = "The"]
+										:part-of s4 [0 = "The"])
+									:op8 (i2 / install-01 [0 = "The"]
+										:part-of s4 [0 = "The"]))))
+						:op2 (m5 / manage-01 [0 = "The"]
+							:ARG0 t [0 = "The"]
+							:ARG1 p4 [0 = "The"]))
+					:prep-as (c4 / component [0 = "The"]
+						:mod (c5 / core [0 = "The"])))))))
+
+# ::id nw.chtb_0027.1 ::date 2012-11-07T15:13:57 ::annotator SDL-AMR-09 ::preferred
+# ::snt Xinhua News Agency , Rangoon , March 17th , by reporter Yunfei Zhang 
+(b / byline-91 [6 = "March"]
+	:ARG0 (p2 / publication [0 = "Xinhua"]
+		:name (n / name [0 = "Xinhua"]
+			:op1 "Xinhua" [0 = "Xinhua"]
+			:op2 "News" [1 = "News"]
+			:op3 "Agency" [2 = "Agency"]))
+	:ARG1 (p / person [11 = "Yunfei"]
+		:name (n2 / name [11 = "Yunfei"]
+			:op1 "Yunfei" [11 = "Yunfei"]
+			:op2 "Zhang" [12 = "Zhang"])
+		:ARG0-of (r / report-01 [10 = "reporter"]))
+	:time (d / date-entity [6 = "March"]
+		:month 3 [6 = "March"]
+		:day 17 [7 = "17th"])
+	:location (c2 / city [4 = "Rangoon"]
+		:name (n3 / name [4 = "Rangoon"]
+			:op1 "Rangoon" [4 = "Rangoon"])))
+
+# ::id nw.chtb_0027.6 ::date 2012-11-07T16:50:34 ::annotator SDL-AMR-09 ::preferred
+# ::snt Myanmaran officials revealed that the total trade volume between Myanmar and Thailand exceeded 300 million US dollars in 1995 . 
+(r / reveal-01 [2 = "revealed"]
+	:ARG0 (p / person [1 = "officials"]
+		:ARG0-of (h / have-org-role-91 [1 = "officials"]
+			:ARG1 (c / country [0 = "Myanmaran"]
+				:name (n / name [0 = "Myanmaran"]
+					:op1 "Myanmar" [0 = "Myanmaran"]))
+			:ARG2 (o / official [1 = "officials"])))
+	:ARG1 (e / exceed-01 [12 = "exceeded"]
+		:ARG0 (v / volume [7 = "volume"]
+			:quant-of (t / trade-01 [6 = "trade"]
+				:ARG0 c [9 = "Myanmar"]
+				:ARG2 (c2 / country [11 = "Thailand"]
+					:name (n2 / name [11 = "Thailand"]
+						:op1 "Thailand" [11 = "Thailand"])))
+			:ARG2-of (t2 / total-01 [5 = "total"]))
+		:ARG1 (m / monetary-quantity [16 = "dollars"]
+			:quant 300000000 [13 = "300"]
+			:unit (d / dollar [16 = "dollars"]
+				:mod (c3 / country [15 = "US"]
+					:name (n3 / name [15 = "US"]
+						:op1 "US" [15 = "US"]))))
+		:time (d2 / date-entity [18 = "1995"]
+			:year 1995 [18 = "1995"])))
+
+# ::id nw.chtb_0028.1 ::date 2012-11-07T17:46:01 ::annotator SDL-AMR-09 ::preferred
+# ::snt Xinhua News Agency , Beijing , March 18th 
+(b / byline-91 [6 = "March"]
+	:ARG0 (p / publication [0 = "Xinhua"]
+		:name (n / name [0 = "Xinhua"]
+			:op1 "Xinhua" [0 = "Xinhua"]
+			:op2 "News" [1 = "News"]
+			:op3 "Agency" [2 = "Agency"]))
+	:time (d / date-entity [7 = "18th"]
+		:month 3 [6 = "March"]
+		:day 18 [7 = "18th"])
+	:location (c2 / city [4 = "Beijing"]
+		:name (n2 / name [4 = "Beijing"]
+			:op1 "Beijing" [4 = "Beijing"])))
+
+# ::id nw.chtb_0028.6 ::date 2012-11-08T12:41:56 ::annotator SDL-AMR-09 ::preferred
+# ::snt Apart from setting up joint venture enterprises , GE also invested more than 1 billion US dollars in China by means of airplane and container leasing . 
+(i / invest-01 [10 = "invested"]
+	:ARG0 (c / company [8 = "GE"]
+		:name (n / name [8 = "GE"]
+			:op1 "GE" [8 = "GE"]))
+	:ARG1 (m2 / more-than [11 = "more"]
+		:op1 (m / monetary-quantity [16 = "dollars"]
+			:quant 1000000000 [13 = "1"]
+			:unit (d / dollar [16 = "dollars"]
+				:mod (c4 / country [15 = "US"]
+					:name (n3 / name [15 = "US"]
+						:op1 "US" [15 = "US"])))))
+	:ARG2 (c2 / country [18 = "China"]
+		:name (n2 / name [18 = "China"]
+			:op1 "China" [18 = "China"]))
+	:mod (a / also [9 = "also"])
+	:instrument (l / lease-02 [25 = "leasing"]
+		:ARG0 c [8 = "GE"]
+		:ARG1 (a2 / and [23 = "and"]
+			:op1 (a3 / airplane [22 = "airplane"])
+			:op2 (c3 / container [24 = "container"])))
+	:ARG2-of (e2 / except-00 [0 = "Apart"]
+		:ARG1 (s / set-03 [2 = "setting"]
+			:ARG0 c [8 = "GE"]
+			:ARG1 (e / enterprise [6 = "enterprises"]
+				:mod (v / venture [5 = "venture"]
+					:mod (j / joint [4 = "joint"]))))))
+

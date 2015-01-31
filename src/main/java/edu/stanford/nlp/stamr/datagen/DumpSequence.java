@@ -38,7 +38,10 @@ public class DumpSequence {
         AMR[] train = trainList.toArray(new AMR[trainList.size()]);
         AMR[] test = testList.toArray(new AMR[testList.size()]);
 
-        dumpSequences(train, "data/train-"+train.length+"-seq.txt");
+        AMRSlurp.burp("data/train-"+train.length+"-subset.txt", AMRSlurp.Format.LDC, train, AMR.AlignmentPrinting.ALL, false);
+        AMRSlurp.burp("data/test-"+test.length+"-subset.txt", AMRSlurp.Format.LDC, test, AMR.AlignmentPrinting.ALL, false);
+
+        dumpSequences(train, "data/train-" + train.length + "-seq.txt");
         dumpManygenDictionaries(train, "data/train-"+train.length+"-manygen.txt");
         dumpCONLL(train, "data/train-"+train.length+"-conll.txt");
 

@@ -81,6 +81,10 @@ public class LinearPipe<IN,OUT> {
         return classifier.classOf(new RVFDatum<OUT, String>(featurize(in)));
     }
 
+    public Counter<OUT> predictSoft(IN in) {
+        return classifier.scoresOf(new RVFDatum<OUT, String>(featurize(in)));
+    }
+
     public void analyze(List<Pair<IN,OUT>> train, List<Pair<IN,OUT>> test, String directory) throws IOException {
         File dir = new File(directory);
         if (dir.exists()) dir.delete();

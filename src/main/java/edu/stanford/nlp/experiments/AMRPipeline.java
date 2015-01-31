@@ -8,6 +8,8 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRParser;
 import edu.stanford.nlp.stamr.AMRSlurp;
+import edu.stanford.nlp.stamr.evaluation.Smatch;
+import edu.stanford.nlp.stamr.utils.MSTGraph;
 import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.Triple;
 
@@ -102,17 +104,15 @@ public class AMRPipeline {
         arcType.train(getArcTypeForClassifier(mstData));
     }
 
-    public AMR runPipeline(String[] tokens) {
+    public AMR runPipeline(String[] tokens, Annotation annotation) {
         LabeledSequence labeledSequence = new LabeledSequence();
         labeledSequence.tokens = tokens;
-        labeledSequence.annotation = new Annotation(); // TODO: generate CoreNLP annotation here
+        labeledSequence.annotation = annotation;
 
         String[] labels = new String[tokens.length];
         for (int i = 0; i < tokens.length; i++) {
             labels[i] = nerPlusPlus.predict(new Pair<>(labeledSequence, i));
         }
-
-        List<AMR> structures = new ArrayList<>();
 
         // First we get all adjacent DICT entries together...
 
@@ -151,21 +151,128 @@ public class AMRPipeline {
                         get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase()));
             }
             //
-            // else do nothing, no other tags generate any nodes
+            // else do nothing, no other tags generate any nodes, purely for MST
             //
         }
 
-        // Now add all the dict elements
+        // Add all the dict elements
 
         for (List<Integer> dict : adjacentDicts) {
+            int first = dict.get(0);
+            int last = dict.get(dict.size() - 1);
+            String amrString = dictionaryLookup.predict(new Triple<>(labeledSequence, first, last));
+            gen.add(AMRSlurp.parseAMRTree(amrString));
+        }
 
+        // Go through and pick out all the nodes
+
+        List<AMR.Node> genNodes = new ArrayList<>();
+        for (AMR amr : gen) {
+            genNodes.addAll(amr.nodes);
         }
 
         AMRNodeSet nodeSet = new AMRNodeSet();
         nodeSet.annotation = labeledSequence.annotation;
         nodeSet.tokens = labeledSequence.tokens;
+        int length = genNodes.size();
+        nodeSet.nodes = new AMR.Node[length+1];
+        for (int i = 0; i < genNodes.size(); i++) {
+            nodeSet.nodes[i+1] = genNodes.get(i);
+        }
+        nodeSet.correctArcs = new String[length+1][length+1];
+        nodeSet.forcedArcs = new String[length+1][length+1];
 
-        return new AMR();
+        // Get back all the forced arcs
+
+        for (AMR amr : gen) {
+            for (AMR.Arc arc : amr.arcs) {
+                for (int i = 1; i <= length; i++) {
+                    for (int j = 1; j <= length; j++) {
+                        if (arc.head == nodeSet.nodes[i] && arc.tail == nodeSet.nodes[j]) {
+                            nodeSet.forcedArcs[i][j] = arc.title;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Run MST on the arcs we've got
+
+        MSTGraph mstGraph = new MSTGraph();
+
+        for (int i = 0; i <= length; i++) {
+            for (int j = 1; j <= length; j++) {
+                if (i == j) continue;
+                if (nodeSet.forcedArcs[i][j] != null) {
+                    // Add this with such a high weight that it has to be included in the final MST
+                    mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], 10000);
+                }
+                else {
+                    double prob = arcExistence.predictSoft(new Triple<>(nodeSet, i, j)).getCount(true);
+                    mstGraph.addArc(i, j, "NO-LABEL", prob);
+                }
+            }
+        }
+
+        // Stitch based on the MST we got
+
+        Map<Integer,Set<Pair<String,Integer>>> arcMap = mstGraph.getMST(false);
+
+        assert(arcMap.containsKey(0));
+        assert(arcMap.get(0).size() == 1);
+
+        Map<Integer,AMR.Node> oldToNew = new HashMap<>();
+        AMR result = new AMR();
+
+        int root = arcMap.get(0).iterator().next().second;
+        AMR.Node rootNode = nodeSet.nodes[root];
+        if (rootNode.type == AMR.NodeType.ENTITY) {
+            oldToNew.put(root, result.addNode(rootNode.ref, rootNode.title, rootNode.alignment));
+        }
+        else {
+            oldToNew.put(root, result.addNode(rootNode.title, rootNode.type));
+        }
+
+        recursivelyAttach(arcMap, result, oldToNew, root, nodeSet);
+
+        return result;
+    }
+
+    private void recursivelyAttach(Map<Integer,Set<Pair<String,Integer>>> arcMap,
+                                   AMR result,
+                                   Map<Integer,AMR.Node> oldToNew,
+                                   int parent,
+                                   AMRNodeSet nodeSet) {
+        Set<Pair<String,Integer>> outgoingArcs = arcMap.get(parent);
+
+        for (Pair<String,Integer> arc : outgoingArcs) {
+            int child = arc.second;
+
+            String arcName;
+            if (arc.first.equals("NO-LABEL")) {
+                arcName = arcType.predict(new Triple<>(nodeSet, parent, child));
+            }
+            else {
+                arcName = arc.first;
+            }
+
+            AMR.Node childNode = nodeSet.nodes[child];
+            AMR.Node childNodeNew;
+            if (childNode.type == AMR.NodeType.ENTITY) {
+                childNodeNew = result.addNode(childNode.ref, childNode.title, childNode.alignment);
+            }
+            else {
+                childNodeNew = result.addNode(childNode.title, childNode.type);
+            }
+
+            oldToNew.put(child, childNodeNew);
+
+            AMR.Node parentNodeNew = oldToNew.get(parent);
+
+            result.addArc(parentNodeNew, childNodeNew, arcName);
+
+            recursivelyAttach(arcMap, result, oldToNew, child, nodeSet);
+        }
     }
 
     private AMR createAMRSingleton(String title) {
@@ -212,10 +319,37 @@ public class AMRPipeline {
                 "data/arc-type-analysis");
     }
 
-    public static void main(String[] args) throws IOException {
+    public void testCompletePipeline() throws IOException, InterruptedException {
+        analyzeAMRSubset("data/train-400-subset.txt", "data/amr-train-analysis");
+        analyzeAMRSubset("data/test-100-subset.txt", "data/amr-test-analysis");
+    }
+
+    private void analyzeAMRSubset(String path, String output) throws IOException, InterruptedException {
+        AMR[] bank = AMRSlurp.slurp(path, AMRSlurp.Format.LDC);
+        AMR[] recovered = new AMR[bank.length];
+        for (int i = 0; i < bank.length; i++) {
+            Annotation annotation = bank[i].multiSentenceAnnotationWrapper.sentences.get(0).annotation;
+            recovered[i] = runPipeline(bank[i].sourceText, annotation);
+        }
+
+        File out = new File(output);
+        if (out.exists()) out.delete();
+        out.mkdirs();
+
+        AMRSlurp.burp(output+"/gold.txt", AMRSlurp.Format.LDC, bank, AMR.AlignmentPrinting.ALL, false);
+        AMRSlurp.burp(output+"/recovered.txt", AMRSlurp.Format.LDC, recovered, AMR.AlignmentPrinting.ALL, false);
+
+        double smatch = Smatch.smatch(bank, recovered);
+        BufferedWriter bw = new BufferedWriter(new FileWriter(output+"/smatch.txt"));
+        bw.write("Smatch: "+smatch);
+        bw.close();
+    }
+
+    public static void main(String[] args) throws IOException, InterruptedException {
         AMRPipeline pipeline = new AMRPipeline();
         pipeline.trainStages();
         pipeline.analyzeStages();
+        pipeline.testCompletePipeline();
     }
 
     /////////////////////////////////////////////////////
