@@ -162,7 +162,16 @@ public class AMRPipeline {
             int first = dict.get(0);
             int last = dict.get(dict.size() - 1);
             String amrString = dictionaryLookup.predict(new Triple<>(labeledSequence, first, last));
-            gen.add(AMRSlurp.parseAMRTree(amrString));
+            if (amrString.startsWith("(")) {
+                assert(amrString.endsWith(")"));
+                gen.add(AMRSlurp.parseAMRTree(amrString));
+            }
+            else if (amrString.startsWith("\"")) {
+                gen.add(createAMRSingleton(amrString.substring(1, amrString.length()-1), AMR.NodeType.QUOTE));
+            }
+            else {
+                gen.add(createAMRSingleton(amrString, AMR.NodeType.VALUE));
+            }
         }
 
         // Go through and pick out all the nodes
@@ -202,7 +211,9 @@ public class AMRPipeline {
         MSTGraph mstGraph = new MSTGraph();
 
         for (int i = 0; i <= length; i++) {
+            if (nodeSet.nodes[i] == null) continue;
             for (int j = 1; j <= length; j++) {
+                if (nodeSet.nodes[j] == null) continue;
                 if (i == j) continue;
                 if (nodeSet.forcedArcs[i][j] != null) {
                     // Add this with such a high weight that it has to be included in the final MST
@@ -219,11 +230,14 @@ public class AMRPipeline {
 
         Map<Integer,Set<Pair<String,Integer>>> arcMap = mstGraph.getMST(false);
 
-        assert(arcMap.containsKey(0));
-        assert(arcMap.get(0).size() == 1);
-
         Map<Integer,AMR.Node> oldToNew = new HashMap<>();
         AMR result = new AMR();
+
+        if (!arcMap.containsKey(-1)) {
+            System.err.println("Got no MST!!!! Returning empty tree");
+            // TODO: Debt, why wouldn't it contain -1?
+            return result;
+        }
 
         int root = arcMap.get(-1).iterator().next().second;
         AMR.Node rootNode = nodeSet.nodes[root];
@@ -244,13 +258,16 @@ public class AMRPipeline {
                                    Map<Integer,AMR.Node> oldToNew,
                                    int parent,
                                    AMRNodeSet nodeSet) {
+        if (!arcMap.containsKey(parent)) return;
+
         Set<Pair<String,Integer>> outgoingArcs = arcMap.get(parent);
 
         for (Pair<String,Integer> arc : outgoingArcs) {
             int child = arc.second;
 
             String arcName;
-            if (arc.first.equals("NO-LABEL")) {
+            // TODO: how did this arc get to be null?
+            if (arc.first == null || arc.first.equals("NO-LABEL")) {
                 arcName = arcType.predict(new Triple<>(nodeSet, parent, child));
             }
             else {

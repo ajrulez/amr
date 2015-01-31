@@ -186,7 +186,7 @@ public class DumpSequence {
             for (AMR.Node node : clone.depthFirstSearch()) {
                 clone.giveNodeUniqueRef(node);
             }
-            String gen = clone.toString().replaceAll("\\n","").replaceAll("\\t","").replaceAll(" ", "");
+            String gen = clone.toString().replaceAll("\\n","").replaceAll("\\t","");
             String context = amr.formatSourceTokens();
 
             if (!dictionaries.containsKey(sourceTokens)) {
