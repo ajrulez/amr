@@ -2,6 +2,7 @@ package edu.stanford.nlp.experiments;
 
 import com.github.keenon.minimalml.cache.BatchCoreNLPCache;
 import com.github.keenon.minimalml.cache.CoreNLPCache;
+import com.github.keenon.minimalml.cache.LazyCoreNLPCache;
 import com.github.keenon.minimalml.word2vec.Word2VecLoader;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -224,7 +225,7 @@ public class AMRPipeline {
         Map<Integer,AMR.Node> oldToNew = new HashMap<>();
         AMR result = new AMR();
 
-        int root = arcMap.get(0).iterator().next().second;
+        int root = arcMap.get(-1).iterator().next().second;
         AMR.Node rootNode = nodeSet.nodes[root];
         if (rootNode.type == AMR.NodeType.ENTITY) {
             oldToNew.put(root, result.addNode(rootNode.ref, rootNode.title, rootNode.alignment));
@@ -326,11 +327,18 @@ public class AMRPipeline {
 
     private void analyzeAMRSubset(String path, String output) throws IOException, InterruptedException {
         AMR[] bank = AMRSlurp.slurp(path, AMRSlurp.Format.LDC);
+        String[] sentences = new String[bank.length];
+        for (int i = 0; i < bank.length; i++) {
+            sentences[i] = bank[i].formatSourceTokens();
+        }
+        CoreNLPCache cache = new LazyCoreNLPCache(path, sentences);
         AMR[] recovered = new AMR[bank.length];
         for (int i = 0; i < bank.length; i++) {
-            Annotation annotation = bank[i].multiSentenceAnnotationWrapper.sentences.get(0).annotation;
-            recovered[i] = runPipeline(bank[i].sourceText, annotation);
+            recovered[i] = runPipeline(bank[i].sourceText, cache.getAnnotation(i));
         }
+        cache.close();
+
+        System.out.println("Finished analyzing");
 
         File out = new File(output);
         if (out.exists()) out.delete();
@@ -340,6 +348,7 @@ public class AMRPipeline {
         AMRSlurp.burp(output+"/recovered.txt", AMRSlurp.Format.LDC, recovered, AMR.AlignmentPrinting.ALL, false);
 
         double smatch = Smatch.smatch(bank, recovered);
+        System.out.println("SMATCH for "+path+" = "+smatch);
         BufferedWriter bw = new BufferedWriter(new FileWriter(output+"/smatch.txt"));
         bw.write("Smatch: "+smatch);
         bw.close();
