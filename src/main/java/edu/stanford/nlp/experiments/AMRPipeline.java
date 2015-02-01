@@ -305,16 +305,23 @@ public class AMRPipeline {
         // First do all non-dict elements
 
         for (int i = 0; i < tokens.length; i++) {
+            AMR amr = null;
             if (labels[i].equals("VERB")) {
                 // TODO: Train a simple sense-tagger, or just use DICT for everything
-                gen.add(createAMRSingleton(tokens[i].toLowerCase()+"-01"));
+                amr = createAMRSingleton(tokens[i].toLowerCase()+"-01");
             }
             else if (labels[i].equals("IDENTITY")) {
-                gen.add(createAMRSingleton(tokens[i].toLowerCase()));
+                amr = createAMRSingleton(tokens[i].toLowerCase());
             }
             else if (labels[i].equals("LEMMA")) {
-                gen.add(createAMRSingleton(labeledSequence.annotation.get(CoreAnnotations.TokensAnnotation.class).
-                        get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase()));
+                amr = createAMRSingleton(labeledSequence.annotation.get(CoreAnnotations.TokensAnnotation.class).
+                        get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase());
+            }
+            if (amr != null) {
+                for (AMR.Node node : amr.nodes) {
+                    node.alignment = i;
+                }
+                gen.add(amr);
             }
             //
             // else do nothing, no other tags generate any nodes, purely for MST
@@ -327,16 +334,22 @@ public class AMRPipeline {
             int first = dict.get(0);
             int last = dict.get(dict.size() - 1);
             String amrString = dictionaryLookup.predict(new Triple<>(labeledSequence, first, last));
+
+            AMR amr;
             if (amrString.startsWith("(")) {
                 assert(amrString.endsWith(")"));
-                gen.add(AMRSlurp.parseAMRTree(amrString));
+                amr = AMRSlurp.parseAMRTree(amrString);
             }
             else if (amrString.startsWith("\"")) {
-                gen.add(createAMRSingleton(amrString.substring(1, amrString.length()-1), AMR.NodeType.QUOTE));
+                amr = createAMRSingleton(amrString.substring(1, amrString.length()-1), AMR.NodeType.QUOTE);
             }
             else {
-                gen.add(createAMRSingleton(amrString, AMR.NodeType.VALUE));
+                amr = createAMRSingleton(amrString, AMR.NodeType.VALUE);
             }
+            for (AMR.Node node : amr.nodes) {
+                node.alignment = first;
+            }
+            gen.add(amr);
         }
 
         // Go through and pick out all the nodes
@@ -414,6 +427,14 @@ public class AMRPipeline {
         }
 
         recursivelyAttach(arcMap, result, oldToNew, root, nodeSet);
+
+        // Give every node a unique ref, so we can decide how to handle coref
+
+        for (AMR.Node node : result.nodes) {
+            result.giveNodeUniqueRef(node);
+        }
+
+        // TODO: Do something about deliberate coref, maybe train a 5th classifier?
 
         return result;
     }
