@@ -72,7 +72,7 @@ public class AMRPipeline {
     );
 
     private String getPath(AMRNodeSet set, int head, int tail) {
-        if (head == 0) {
+        if (head == 0 || tail == 0) { // if tail == 0, then something else went fairly wrong
             return "ROOT:NOPATH";
         }
         if (head == tail) {
@@ -82,23 +82,26 @@ public class AMRPipeline {
         int tailToken = set.nodes[tail].alignment;
         SemanticGraph graph = set.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
                 .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
-        IndexedWord headIndexedWord = graph.getNodeByIndex(headToken);
-        IndexedWord tailIndexedWord = graph.getNodeByIndex(tailToken);
+        IndexedWord headIndexedWord = graph.getNodeByIndexSafe(headToken);
+        IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tailToken);
+        if (headIndexedWord == null || tailIndexedWord == null) {
+            return "NOTOKENS:NOPATH";
+        }
         List<SemanticGraphEdge> edges = graph.getShortestUndirectedPathEdges(headIndexedWord, tailIndexedWord);
 
         StringBuilder sb = new StringBuilder();
-        IndexedWord currentWord = tailIndexedWord;
+        IndexedWord currentWord = headIndexedWord;
         for (SemanticGraphEdge edge : edges) {
-            if (edge.getTarget() == currentWord) {
+            if (edge.getDependent().equals(currentWord)) {
                 sb.append(">");
-                currentWord = edge.getDependent();
+                currentWord = edge.getGovernor();
             }
             else {
-                if (edge.getDependent() != currentWord) {
+                if (!edge.getGovernor().equals(currentWord)) {
                     throw new IllegalStateException("Edges not in order");
                 }
                 sb.append("<");
-                currentWord = edge.getGovernor();
+                currentWord = edge.getDependent();
             }
             sb.append(edge.getRelation().getShortName());
             if (currentWord != headIndexedWord) {
@@ -794,17 +797,34 @@ public class AMRPipeline {
 
     public static List<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> getArcExistenceForClassifier(
             List<AMRNodeSet> mstData) {
-        List<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> arcExistenceData = new ArrayList<>();
+
+        List<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> arcExistenceTrue = new ArrayList<>();
+        List<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> arcExistenceFalse = new ArrayList<>();
+
         for (AMRNodeSet set : mstData) {
             for (int i = 0; i < set.correctArcs.length; i++) {
                 if (i != 0 && set.nodes[i] == null) continue;
                 for (int j = 1; j < set.correctArcs[i].length; j++) {
                     if (set.nodes[j] == null) continue;
                     boolean arcExists = set.correctArcs[i][j] != null;
-                    arcExistenceData.add(new Pair<>(new Triple<>(set, i, j), arcExists));
+                    if (arcExists) {
+                        arcExistenceTrue.add(new Pair<>(new Triple<>(set, i, j), true));
+                    }
+                    else {
+                        arcExistenceFalse.add(new Pair<>(new Triple<>(set, i, j), false));
+                    }
                 }
             }
         }
+
+        int numTrueClones = Math.max(1, arcExistenceFalse.size() / arcExistenceTrue.size());
+
+        List<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> arcExistenceData = new ArrayList<>();
+        arcExistenceData.addAll(arcExistenceFalse);
+        for (int i = 0; i < numTrueClones; i++) {
+            arcExistenceData.addAll(arcExistenceTrue);
+        }
+
         return arcExistenceData;
     }
 
