@@ -5,7 +5,11 @@ import com.github.keenon.minimalml.cache.CoreNLPCache;
 import com.github.keenon.minimalml.cache.LazyCoreNLPCache;
 import com.github.keenon.minimalml.word2vec.Word2VecLoader;
 import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.pipeline.Annotation;
+import edu.stanford.nlp.semgraph.SemanticGraph;
+import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
+import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRParser;
 import edu.stanford.nlp.stamr.AMRSlurp;
@@ -13,6 +17,7 @@ import edu.stanford.nlp.stamr.evaluation.Smatch;
 import edu.stanford.nlp.stamr.utils.MSTGraph;
 import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.Triple;
+import edu.stanford.nlp.wsd.WordNet;
 
 import java.io.*;
 import java.util.*;
@@ -66,25 +71,182 @@ public class AMRPipeline {
             AMRPipeline::writeDictionaryContext
     );
 
-    @SuppressWarnings("unchecked")
-    LinearPipe<Triple<AMRNodeSet,Integer,Integer>, Boolean> arcExistence = new LinearPipe<>(
-            new ArrayList<Function<Triple<AMRNodeSet,Integer,Integer>,Object>>(){{
+    private String getPath(AMRNodeSet set, int head, int tail) {
+        if (head == 0) {
+            return "ROOT:NOPATH";
+        }
+        if (head == tail) {
+            return "IDENTITY";
+        }
+        int headToken = set.nodes[head].alignment;
+        int tailToken = set.nodes[tail].alignment;
+        SemanticGraph graph = set.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+        IndexedWord headIndexedWord = graph.getNodeByIndex(headToken);
+        IndexedWord tailIndexedWord = graph.getNodeByIndex(tailToken);
+        List<SemanticGraphEdge> edges = graph.getShortestUndirectedPathEdges(headIndexedWord, tailIndexedWord);
 
+        StringBuilder sb = new StringBuilder();
+        IndexedWord currentWord = tailIndexedWord;
+        for (SemanticGraphEdge edge : edges) {
+            if (edge.getTarget() == currentWord) {
+                sb.append(">");
+                currentWord = edge.getDependent();
+            }
+            else {
+                if (edge.getDependent() != currentWord) {
+                    throw new IllegalStateException("Edges not in order");
+                }
+                sb.append("<");
+                currentWord = edge.getGovernor();
+            }
+            sb.append(edge.getRelation().getShortName());
+            if (currentWord != headIndexedWord) {
+                sb.append(":");
+                sb.append(currentWord.get(CoreAnnotations.PartOfSpeechAnnotation.class));
+            }
+        }
+
+        return sb.toString();
+    }
+
+    /**
+    Here's the list of CMU Features as seen in the ACL '14 paper:
+
+     - Self edge: 1 if edge is between two nodes in the same fragment
+     - Tail fragment root: 1 if the edge's tail is the root of its graph fragment
+     - Head fragment root: 1 if the edge's head is the root of its graph fragment
+     - Path: Dependency edge labels and parts of speech on the shortest syntactic path between any two words of the two spans
+     - Distance: Number of tokens (plus one) between the concept's spans
+     - Distance indicators: A feature for each distance value
+     - Log distance: Log of the distance feature + 1
+
+     Combos:
+
+     - Path & Head concept
+     - Path & Tail concept
+     - Path & Head word
+     - Path & Tail word
+     - Distance & Path
+
+     */
+
+    @SuppressWarnings("unchecked")
+    ArrayList<Function<Triple<AMRNodeSet,Integer,Integer>,Object>> cmuFeatures =
+            new ArrayList<Function<Triple<AMRNodeSet,Integer,Integer>,Object>>(){{
                 // Input triple is (Set, array offset for first node, array offset for second node)
 
-                add((triple) -> triple.second);
-            }},
+                // Self edge
+                add((triple) -> {
+                    if (triple.first.forcedArcs[triple.second][triple.third] != null) {
+                        return 1.0;
+                    }
+                    else return 0.0;
+                });
+                // Head fragment root
+                add((triple) -> {
+                    for (int i = 1; i < triple.first.nodes.length; i++) {
+                        // Any non-ROOT forced parents mean that this is not the head of the fragment
+                        if (triple.first.forcedArcs[i][triple.second] != null) {
+                            return 0.0;
+                        }
+                    }
+                    return 1.0;
+                });
+                // Tail fragment root
+                add((triple) -> {
+                    for (int i = 1; i < triple.first.nodes.length; i++) {
+                        // Any non-ROOT forced parents mean that this is not the head of the fragment
+                        if (triple.first.forcedArcs[i][triple.third] != null) {
+                            return 0.0;
+                        }
+                    }
+                    return 1.0;
+                });
+                // Path
+                add((triple) -> getPath(triple.first, triple.second, triple.third));
+                // Distance
+                add((triple) -> {
+                    if (triple.second != 0) {
+                        int headAlignment = triple.first.nodes[triple.second].alignment;
+                        int tailAlignment = triple.first.nodes[triple.third].alignment;
+                        return Math.abs(headAlignment - tailAlignment) + 1.0;
+                    }
+                    return 0.0;
+                });
+                // Distance Indicator
+                add((triple) -> {
+                    if (triple.second != 0) {
+                        int headAlignment = triple.first.nodes[triple.second].alignment;
+                        int tailAlignment = triple.first.nodes[triple.third].alignment;
+                        return "D:"+Math.abs(headAlignment - tailAlignment) + 1.0;
+                    }
+                    return "D:ROOT";
+                });
+                // Log distance
+                add((triple) -> {
+                    if (triple.second != 0) {
+                        int headAlignment = triple.first.nodes[triple.second].alignment;
+                        int tailAlignment = triple.first.nodes[triple.third].alignment;
+                        return Math.log(Math.abs(headAlignment - tailAlignment) + 1.0);
+                    }
+                    return 0.0;
+                });
+                // Path + Head concept
+                add((triple) -> {
+                    String headConcept;
+                    if (triple.second == 0) {
+                        headConcept = "ROOT";
+                    }
+                    else {
+                        headConcept = triple.first.nodes[triple.second].toString();
+                    }
+                    return headConcept + ":" + getPath(triple.first, triple.second, triple.third);
+                });
+                // Path + Tail concept
+                add((triple) -> {
+                    String tailConcept = triple.first.nodes[triple.third].toString();
+                    return tailConcept + ":" + getPath(triple.first, triple.second, triple.third);
+                });
+                // Path + Head word
+                add((triple) -> {
+                    String headWord;
+                    if (triple.second == 0) {
+                        headWord = "ROOT";
+                    }
+                    else {
+                        headWord = triple.first.tokens[triple.first.nodes[triple.second].alignment];
+                    }
+                    return headWord + ":" + getPath(triple.first, triple.second, triple.third);
+                });
+                // Path + Tail word
+                add((triple) -> {
+                    String tailWord = triple.first.tokens[triple.first.nodes[triple.third].alignment];
+                    return tailWord + ":" + getPath(triple.first, triple.second, triple.third);
+                });
+                // Path + Distance
+                add((triple) -> {
+                    String distanceIndicator;
+                    if (triple.second != 0) {
+                        int headAlignment = triple.first.nodes[triple.second].alignment;
+                        int tailAlignment = triple.first.nodes[triple.third].alignment;
+                        distanceIndicator = Integer.toString(Math.abs(headAlignment - tailAlignment));
+                    }
+                    else {
+                        distanceIndicator = "ROOT";
+                    }
+                    return distanceIndicator + ":" + getPath(triple.first, triple.second, triple.third);
+                });
+    }};
+
+    LinearPipe<Triple<AMRNodeSet,Integer,Integer>, Boolean> arcExistence = new LinearPipe<>(
+            cmuFeatures,
             AMRPipeline::writeArcContext
     );
 
     @SuppressWarnings("unchecked")
     LinearPipe<Triple<AMRNodeSet,Integer,Integer>, String> arcType = new LinearPipe<>(
-            new ArrayList<Function<Triple<AMRNodeSet,Integer,Integer>,Object>>(){{
-
-                // Input triple is (Set, array offset for first node, array offset for second node)
-
-                add((triple) -> triple.second);
-            }},
+            cmuFeatures,
             AMRPipeline::writeArcContext
     );
 
@@ -635,7 +797,9 @@ public class AMRPipeline {
         List<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> arcExistenceData = new ArrayList<>();
         for (AMRNodeSet set : mstData) {
             for (int i = 0; i < set.correctArcs.length; i++) {
-                for (int j = 0; j < set.correctArcs[i].length; j++) {
+                if (i != 0 && set.nodes[i] == null) continue;
+                for (int j = 1; j < set.correctArcs[i].length; j++) {
+                    if (set.nodes[j] == null) continue;
                     boolean arcExists = set.correctArcs[i][j] != null;
                     arcExistenceData.add(new Pair<>(new Triple<>(set, i, j), arcExists));
                 }
@@ -649,7 +813,9 @@ public class AMRPipeline {
         List<Pair<Triple<AMRNodeSet,Integer,Integer>,String>> arcTypeData = new ArrayList<>();
         for (AMRNodeSet set : mstData) {
             for (int i = 0; i < set.correctArcs.length; i++) {
-                for (int j = 0; j < set.correctArcs[i].length; j++) {
+                if (i != 0 && set.nodes[i] == null) continue;
+                for (int j = 1; j < set.correctArcs[i].length; j++) {
+                    if (set.nodes[j] == null) continue;
                     boolean arcExists = set.correctArcs[i][j] != null;
                     if (arcExists) {
                         arcTypeData.add(new Pair<>(new Triple<>(set, i, j), set.correctArcs[i][j]));
