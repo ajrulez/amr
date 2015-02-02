@@ -347,7 +347,7 @@ public class AMRPipeline {
                 amr = createAMRSingleton(amrString, AMR.NodeType.VALUE);
             }
             for (AMR.Node node : amr.nodes) {
-                node.alignment = first + node.alignment;
+                node.alignment = Math.min(first + node.alignment, tokens.length-1);
             }
             gen.add(amr);
         }
