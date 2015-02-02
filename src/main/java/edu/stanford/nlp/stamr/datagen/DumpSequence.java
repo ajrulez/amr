@@ -64,7 +64,8 @@ public class DumpSequence {
                     String senseTag = components[1];
                     try {
                         int ignored = Integer.parseInt(senseTag);
-                        return "VERB";
+                        // For now, we just fallback to DICT for these
+                        // return "VERB";
                     }
                     catch (Exception e) {
                         // do nothing

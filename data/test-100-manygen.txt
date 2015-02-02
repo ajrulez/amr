@@ -1,71 +1,53 @@
 bidders	Award of the contract was temporarily suspended in February 2002 after the prices offered by 4 bidders were judged too high . 
 (p / person [0 = "A"]:ARG0-of (b / bid-01 [0 = "A"]))	16	16
 
-u.s.	South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "U.S." [0 = "A"]))	14	14
-
-japan	The nationalist group was formed to campaign against Japan . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Japan" [0 = "A"]))	8	8
-
 owners	Another group said they will launch an association next Monday of around 100 dog meat restaurant owners in the Seoul region and hold a seminar to promote the dish . 
 (p / person [0 = "A"]:ARG0-of (o / own-01 [0 = "A"]))	16	16
 
-acorn	After seeing those bus tours to AIG execs homes , promoted on ACORN 's website , I am wondering why those same people are n't outraged at this . 
-(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "ACORN" [0 = "A"]))	12	12
-
-parliament	South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
-(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Parliament" [0 = "A"]))	8	8
+promoted	After seeing those bus tours to AIG execs homes , promoted on ACORN 's website , I am wondering why those same people are n't outraged at this . 
+(p / promote-02 [0 = "A"])	10	10
 
 kashmir	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
 (s / state [0 = "A"]:name (n / name [0 = "A"]:op1 "Kashmir" [0 = "A"]))	46	46
 
-properly	I had a look at my call register , and out of dozens of calls dialed only one was properly connected ! 
-(p / proper [0 = "A"])	19	19
+ban	Afghan authorities will seek to ban poppy harvesting . 
+(b / ban-01 [0 = "A"])	5	5
 
-traffickers	Thirteen drug traffickers were killed and 10 arrested in Iran anti-drug sweeps . 
-(p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]))	2	2
-
-traffickers	In a separate dispatch IRNA stated that during the past 20 days in southern Iran 's Fars Province police had arrested 107 drug traffickers including 11 foreign nationals . 
-(p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]))	23	23
+setting	Apart from setting up joint venture enterprises , GE also invested more than 1 billion US dollars in China by means of airplane and container leasing . 
+(s / set-03 [0 = "A"])	2	2
 
 al-rashid_trust	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
 (o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Al-Rashid" [0 = "A"]:op2 "Trust" [1 = "B"]))	7	8
 
-4_o'clock	I headed straight for the center of activities , but in actual fact traffic was being controlled as early as 4 o'clock , and they had already started limiting the crowds entering the sports center . 
-(d / date-entity [1 = "B"]:time "4:00" [0 = "A"])	20	21
-
-pakistani	Iftikhar Ahmed is a Pakistani interior ministry official . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	4	4
-
-n't	He 's right in some ways but it does n't translate into being right across the board . 
-- [0 = "A"]	9	9
-
 jennings_were	The SMH and Jennings were then sued over 3 articles published in the lead-up to the 000000 Olympics . 
 (p / person [0 = "A"]:name (n / name [1 = "B"]:op1 "Jennings" [0 = "A"]))	3	4
 
-hundreds	A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
-(m / multiple [0 = "A"]:op1 100000000 [0 = "A"])	37	37
+because	Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ? 
+(c / cause-01 [0 = "A"])	15	15
 
-rubles	A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
-(m / monetary-quantity [0 = "A"]:unit (r / ruble [0 = "A"]))	41	41
+because	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
+(c / cause-01 [0 = "A"])	29	29
+
+because	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
+(c / cause-01 [0 = "A"])	15	15
 
 march_18th	Xinhua News Agency , Beijing , March 18th 
 (b / byline-91 [0 = "A"]:time (d / date-entity [1 = "B"]:day 18 [1 = "B"]:month 3 [0 = "A"]))	6	7
 
-jaish-e-mohammad	The Lashkar-e-Taiba and Jaish-e-Mohammad are still distributing their message through a range of publications and magazines easily available in Karachi . 
-(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Jaish-e-Mohammad" [0 = "A"]))	3	3
+prevention	In regions where the earthquake risk is high , warning the public and spreading disaster prevention awareness could greatly reduce casualties during earthquakes ; this is the very minimum duty that any responsible government should undertake . 
+(p / prevent-01 [0 = "A"])	15	15
 
 addition	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
 (a / and [0 = "A"])	1	1
 
-closely	Bell Canada works very closely with the Government and the private sector to be aware of security concerns and to update accordingly . 
-(c / close [0 = "A"])	4	4
+dealing	Some specialize in dealing with kidnapping and hostage-taking scenarios . 
+(d / deal-01 [0 = "A"])	3	3
 
-south_korea	South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "South" [0 = "A"]))	0	1
+afghanistan_resumed	Drug trafficking from Afghanistan resumed during a brief hiatus in the anti-terrorist operation . 
+(r / resume-01 [1 = "B"])	3	4
 
-south_korea	Rafale reportedly offered more generous terms for technology transfer and subcontracts for South Korea 's aerospace industry . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	12	13
+spreading	In regions where the earthquake risk is high , warning the public and spreading disaster prevention awareness could greatly reduce casualties during earthquakes ; this is the very minimum duty that any responsible government should undertake . 
+(s / spread-03 [0 = "A"])	13	13
 
 grass-root	As soon as the earthquake occurred , grass-root organizations contacted their own people and average people also contacted their own systems or departments , in an interdependent manner . 
 (g / grass-roots [0 = "A"])	7	7
@@ -76,26 +58,29 @@ dassault	Dassault is seeking its first foreign order for the Rafale .
 dassault	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
 (c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Dassault" [0 = "A"]))	22	22
 
-australia	Australia -LRB- AU -RRB- 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Australia" [0 = "A"]))	0	0
+gain_fewer	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
+(g / gain-02 [0 = "A"])	18	19
+
+investment	The number of investment projects dropped by 444 as compared with last year , but the value of investments rose by more than 130 million US dollars as compared with last year . 
+(i / invest-01 [0 = "A"])	3	3
 
 ,	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
 (a / and [0 = "A"])	33	33
 
 ,	Democrats get it , minorities get it , white republican jurisdictions do n't . 
-(a / and [0 = "A"])	7	7
-
-rafale	Dassault is seeking its first foreign order for the Rafale . 
-(a / aircraft-type [0 = "A"]:name (n / name [0 = "A"]:op1 "Rafale" [0 = "A"]))	9	9
-
-rafale	Rafale reportedly offered more generous terms for technology transfer and subcontracts for South Korea 's aerospace industry . 
-(a / aircraft-type [0 = "A"]:name (n / name [0 = "A"]:op1 "Rafale" [0 = "A"]))	0	0
+(c / contrast-01 [0 = "A"])	7	7
 
 .	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
 (m / multi-sentence [0 = "A"])	15	15
 
+maintaining_supplies	United energy services argues that non-payment of bills has prevented it from maintaining supplies . 
+(m / maintain-01 [0 = "A"]:ARG1 (s / supply [1 = "B"]))	12	13
+
 fars_province	In a separate dispatch IRNA stated that during the past 20 days in southern Iran 's Fars Province police had arrested 107 drug traffickers including 11 foreign nationals . 
 (p / province [1 = "B"]:name (n / name [0 = "A"]:op2 "Province" [1 = "B"]:op1 "Fars" [0 = "A"]))	16	17
+
+planning	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
+(p / plan-01 [0 = "A"])	48	48
 
 as	As soon as the earthquake occurred , grass-root organizations contacted their own people and average people also contacted their own systems or departments , in an interdependent manner . 
 (a / as-soon-as [0 = "A"])	0	0
@@ -109,17 +94,17 @@ at	Delays have pushed back the finish until at least 2008 .
 non-payment	United energy services argues that non-payment of bills has prevented it from maintaining supplies . 
 (p / pay-01 [0 = "A"]:polarity - [0 = "A"])	5	5
 
-non-payment	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
-(p / pay-01 [0 = "A"]:polarity - [0 = "A"])	11	11
-
 non-payment	Kamchatenergo stated that non-payment of bills prevent it from maintaining power supplies . 
 (p / pay-01 [0 = "A"]:polarity - [0 = "A"])	3	3
 
-government_hamid_karzai	Leader of Afghanistan 's interim government Hamid Karzai said the fight against poppy harvesting and the lucrative trafficking of opium and heroin will be a top priority . 
-(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	5	7
+applies	Iranian law applies the death penalty for drug trafficking . 
+(a / apply-02 [0 = "A"])	2	2
 
-recent_years	Both Tajikistan and Uzbekistan share a border with Afghanistan and have experienced raids by Taliban-backed Islamic militants in recent years . 
-(b / before [0 = "A"]:op1 (n / now [0 = "A"]:duration (m / multiple [1 = "B"]:op1 (t / temporal-quantity [1 = "B"]:unit (y / year [1 = "B"]):quant 1 [1 = "B"]))))	18	19
+began_preparing	Many businesses began preparing for cyber incidents before the year 2000 . 
+(b / begin-01 [0 = "A"]:ARG1 (p / prepare-02 [1 = "B"]))	2	3
+
+bills_prevent	Kamchatenergo stated that non-payment of bills prevent it from maintaining power supplies . 
+(p / prevent-01 [1 = "B"])	5	6
 
 xinhua_news_agency	Xinhua News Agency , Rangoon , March 17th , by reporter Yunfei Zhang 
 (p / publication [0 = "A"]:name (n / name [0 = "A"]:op2 "News" [1 = "B"]:op3 "Agency" [2 = "C"]:op1 "Xinhua" [0 = "A"]))	0	2
@@ -130,56 +115,89 @@ xinhua_news_agency	Xinhua News Agency , Beijing , March 18th
 ;	In regions where the earthquake risk is high , warning the public and spreading disaster prevention awareness could greatly reduce casualties during earthquakes ; this is the very minimum duty that any responsible government should undertake . 
 (m / multi-sentence [0 = "A"])	23	23
 
+formed	The nationalist group was formed to campaign against Japan . 
+(f / form-01 [0 = "A"])	4	4
+
 ?	Am I being foolish in doing this ? 
 interrogative [0 = "A"]	7	7
 
 ?	How does one survive until the insurance -LRB- hopefully by a respectable company -RRB- claim comes through ? 
 (c / cause-01 [0 = "A"]:ARG0 (a / amr-unknown [0 = "A"]))	17	17
 
-?	Where is the morality when disease is spread ? 
-(a / amr-unknown [0 = "A"])	8	8
+deal	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
+(d / deal-01 [0 = "A"])	49	49
 
-guarantee	Without the guarantee from the contract signed with us , they would surely have been unable to deploy them ! 
-(t / thing [0 = "A"]:ARG1-of (g / guarantee-01 [0 = "A"]))	2	2
+iaea_safety_experts	A government source stated the visit by a group of IAEA safety experts is scheduled to last for a week beginning January 12 , 2002 . 
+(p / person [2 = "C"]:ARG1-of (e / expert-41 [2 = "C"]:ARG2 (s / safe-41 [1 = "B"])):ARG0-of (h / have-org-role-91 [0 = "A"]:ARG1 (o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "IAEA" [0 = "A"]))))	10	12
 
 karachi	The Lashkar-e-Taiba and Jaish-e-Mohammad are still distributing their message through a range of publications and magazines easily available in Karachi . 
 (c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Karachi" [0 = "A"]))	19	19
 
-pakistani_government	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
-(g / government-organization [1 = "B"]:ARG0-of (g2 / govern-01 [1 = "B"]:ARG1 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))))	22	23
+capability	Canadian government 's warning of al-Qaeda 's capability to launch a cyberattack causes various industries to review their preparedness . 
+(c / capable-41 [0 = "A"])	7	7
+
+same	Since the Tangshan Earthquake , the starting point for construction standards in the mainland is that under an earthquake of the same magnitude , buildings should preserve their basic frame without collapsing . 
+(s / same-41 [0 = "A"])	21	21
+
+lead-up	The SMH and Jennings were then sued over 3 articles published in the lead-up to the 000000 Olympics . 
+(l / lead-05 [0 = "A"])	13	13
+
+investments_rose	The number of investment projects dropped by 444 as compared with last year , but the value of investments rose by more than 130 million US dollars as compared with last year . 
+(r / rise-01 [1 = "B"])	18	19
+
+responsibility	No one should be expected to practice self sufficiency or concern themselves with personal responsibility . 
+(r / responsible-41 [0 = "A"])	14	14
+
+offered	Award of the contract was temporarily suspended in February 2002 after the prices offered by 4 bidders were judged too high . 
+(o / offer-01 [0 = "A"])	13	13
 
 korean_football_association	Head of the Korean Football Association and a FIFA vice president Chung Mong-Joon said FIFA should not intervene in the eating habits of a sovereign nation . 
 (o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Korean" [0 = "A"]:op2 "Football" [1 = "B"]:op3 "Association" [2 = "C"]))	3	5
 
-020115	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
-(d / date-entity [0 = "A"]:year 2002 [0 = "A"]:day 15 [0 = "A"]:month 1 [0 = "A"])	10	10
-
 mai_corp._of	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
 (c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "MAI" [0 = "A"]:op2 "Corp." [1 = "B"]:op3 "of" [2 = "C"]))	20	22
 
-though	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
-(h / have-concession-91 [0 = "A"])	42	42
+people_had	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
+(h / have-03 [1 = "B"]:ARG0 (p / person [0 = "A"]))	44	45
+
+compared	The number of investment projects dropped by 444 as compared with last year , but the value of investments rose by more than 130 million US dollars as compared with last year . 
+(c / compare-01 [0 = "A"])	9	9
+
+compared	The number of investment projects dropped by 444 as compared with last year , but the value of investments rose by more than 130 million US dollars as compared with last year . 
+(c / compare-01 [0 = "A"])	28	28
+
+temporarily_suspended	Award of the contract was temporarily suspended in February 2002 after the prices offered by 4 bidders were judged too high . 
+(s / suspend-01 [1 = "B"]:duration (t / temporary [0 = "A"]))	5	6
 
 democrats	Democrats get it , minorities get it , white republican jurisdictions do n't . 
 (p / political-party [0 = "A"]:name (n / name [0 = "A"]:op1 "Democrat" [0 = "A"]))	0	0
 
-people	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
-(p / person [0 = "A"])	44	44
+outraged	After seeing those bus tours to AIG execs homes , promoted on ACORN 's website , I am wondering why those same people are n't outraged at this . 
+(o / outrage-01 [0 = "A"])	25	25
 
-people	As soon as the earthquake occurred , grass-root organizations contacted their own people and average people also contacted their own systems or departments , in an interdependent manner . 
-(p / person [0 = "A"])	12	12
+right	He 's right in some ways but it does n't translate into being right across the board . 
+(r / right-41 [0 = "A"])	2	2
 
-people	After seeing those bus tours to AIG execs homes , promoted on ACORN 's website , I am wondering why those same people are n't outraged at this . 
-(p / person [0 = "A"])	22	22
+right	He 's right in some ways but it does n't translate into being right across the board . 
+(r / right-41 [0 = "A"])	13	13
 
-people	Qari Mohammad Zafar stated that himself and other people have been told by our elders to read pro-Jihad newspapers and magazines . 
-(p / person [0 = "A"])	8	8
+right	South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
+(e / entitle-01 [0 = "A"])	12	12
+
+eating	Head of the Korean Football Association and a FIFA vice president Chung Mong-Joon said FIFA should not intervene in the eating habits of a sovereign nation . 
+(e / eat-01 [0 = "A"])	20	20
 
 march	Xinhua News Agency , Rangoon , March 17th , by reporter Yunfei Zhang 
 (b / byline-91 [0 = "A"]:time (d / date-entity [0 = "A"]:month 3 [0 = "A"]))	6	6
 
-international_amateur_boxing_federation	Rakhimov was also said to have bribed members of the International Amateur Boxing Federation in the vote for the Federation Presidency . 
-(o / organization [0 = "A"]:name (n / name [0 = "A"]:op3 "Boxing" [2 = "C"]:op2 "Amateur" [1 = "B"]:op1 "International" [0 = "A"]:op4 "Federation" [3 = "D"]))	10	13
+entering	I headed straight for the center of activities , but in actual fact traffic was being controlled as early as 4 o'clock , and they had already started limiting the crowds entering the sports center . 
+(e / enter-01 [0 = "A"])	31	31
+
+could_greatly_reduce	In regions where the earthquake risk is high , warning the public and spreading disaster prevention awareness could greatly reduce casualties during earthquakes ; this is the very minimum duty that any responsible government should undertake . 
+(p / possible [0 = "A"]:domain (r / reduce-01 [2 = "C"]:extent (g / great [1 = "B"])))	17	19
+
+wondering_why_those_same_people	After seeing those bus tours to AIG execs homes , promoted on ACORN 's website , I am wondering why those same people are n't outraged at this . 
+(p / person [4 = "E"]:ARG1-of (s / same-41 [3 = "D"]):mod (t / this [2 = "C"]))	18	22
 
 afghanistan	Iranian army arrests 1600 drug traffickers , kills 21 , and seizes 6 tons of drugs and weapons in large-scale operation along its borders with Afghanistan and Pakistan . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	25	25
@@ -193,44 +211,20 @@ afghanistan	Both Tajikistan and Uzbekistan share a border with Afghanistan and h
 afghanistan	Gilbert stated that Tajikistan 's positive and responsible approach to the crisis in Afghanistan has significantly improved the country 's image internationally . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	13	13
 
-afghanistan	Drug trafficking from Afghanistan resumed during a brief hiatus in the anti-terrorist operation . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	3	3
-
-afghanistan	Unfortunately over the past six years , the rule of the Taliban turned Afghanistan into a center of terrorism and drugs . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	13	13
-
 afghanistan	Leader of Afghanistan 's interim government Hamid Karzai said the fight against poppy harvesting and the lucrative trafficking of opium and heroin will be a top priority . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	2	2
 
 days	In a separate dispatch IRNA stated that during the past 20 days in southern Iran 's Fars Province police had arrested 107 drug traffickers including 11 foreign nationals . 
 (t / temporal-quantity [0 = "A"]:unit (d / day [0 = "A"]))	11	11
 
-experts	A government source stated the visit by a group of IAEA safety experts is scheduled to last for a week beginning January 12 , 2002 . 
-(p / person [0 = "A"]:ARG1-of (e / expert-41 [0 = "A"]))	12	12
+fueled	The debate was partly fueled by FIFA , football 's international governing body . 
+(f / fuel-01 [0 = "A"])	4	4
+
+interview	In a recent interview Bradley stated that many utility firms perform a brief review of their multi-tiered response systems after such warnings are issued . 
+(i / interview-01 [0 = "A"])	3	3
 
 gop_nominee	Are n't you one of the assholes who assured us how Romney was inevitable as the GOP nominee ? 
 (h / have-org-role-91 [1 = "B"]:ARG2 (n / nominee [1 = "B"]):ARG1 (p / political-party [0 = "A"]:name (n2 / name [0 = "A"]:op1 "GOP" [0 = "A"])))	16	17
-
-insurance	How does one survive until the insurance -LRB- hopefully by a respectable company -RRB- claim comes through ? 
-(c / company [0 = "A"])	6	6
-
-surely	As long as we stick to this issue , Xinghui surely has no way of winning the lawsuit if it goes to court . 
-(s / sure [0 = "A"])	10	10
-
-surely	Without the guarantee from the contract signed with us , they would surely have been unable to deploy them ! 
-(s / sure [0 = "A"])	12	12
-
-japanese_yen	The low - cut gold swimsuit with a low back weighs 500 grams , with a sales price of 10 million Japanese yen . 
-(m / monetary-quantity [1 = "B"]:unit (y / yen [1 = "B"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Japan" [0 = "A"]))))	21	22
-
-korea_herald	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
-(n / newspaper [0 = "A"]:name (n2 / name [0 = "A"]:op2 "Herald" [1 = "B"]:op1 "Korea" [0 = "A"]))	1	2
-
-administration	An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking . 
-(g / government-organization [0 = "A"]:ARG0-of (a / administrate-01 [0 = "A"]))	13	13
-
-iss	The Kamchatka command center plays a role in ISS operations . 
-(s / spaceship [0 = "A"]:name (n / name [0 = "A"]:op1 "ISS" [0 = "A"]))	8	8
 
 iss	Russia provided several ISS modules including Zvezda and Zarya 
 (s / spaceship [0 = "A"]:name (n / name [0 = "A"]:op1 "ISS" [0 = "A"]))	3	3
@@ -238,11 +232,14 @@ iss	Russia provided several ISS modules including Zvezda and Zarya
 official	Iftikhar Ahmed is a Pakistani interior ministry official . 
 (h / have-org-role-91 [0 = "A"]:ARG2 (o / official [0 = "A"]))	7	7
 
-kamchatka	The Kamchatka command center plays a role in ISS operations . 
-(p / peninsula [0 = "A"]:name (n / name [0 = "A"]:op1 "Kamchatka" [0 = "A"]))	1	1
+do	Democrats get it , minorities get it , white republican jurisdictions do n't . 
+(u / understand-01 [0 = "A"])	11	11
 
-unable	Without the guarantee from the contract signed with us , they would surely have been unable to deploy them ! 
-(p / possible [0 = "A"]:polarity - [0 = "A"])	15	15
+deploy	Without the guarantee from the contract signed with us , they would surely have been unable to deploy them ! 
+(d / deploy-01 [0 = "A"])	17	17
+
+hold	Another group said they will launch an association next Monday of around 100 dog meat restaurant owners in the Seoul region and hold a seminar to promote the dish . 
+(h / hold-04 [0 = "A"])	22	22
 
 fifa	The debate was partly fueled by FIFA , football 's international governing body . 
 (b / body [0 = "A"]:name (n / name [0 = "A"]:op1 "FIFA" [0 = "A"]))	6	6
@@ -256,17 +253,20 @@ culturally-biased	The activists accuse the organizations of being culturally-bia
 zarya	Russia provided several ISS modules including Zvezda and Zarya 
 (s / spaceship [0 = "A"]:name (n / name [0 = "A"]:op1 "Zarya" [0 = "A"]))	8	8
 
-thailand	Myanmaran officials revealed that the total trade volume between Myanmar and Thailand exceeded 300 million US dollars in 1995 . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Thailand" [0 = "A"]))	11	11
+warning	In regions where the earthquake risk is high , warning the public and spreading disaster prevention awareness could greatly reduce casualties during earthquakes ; this is the very minimum duty that any responsible government should undertake . 
+(w / warn-01 [0 = "A"])	9	9
 
-northern_alliance	The Northern Alliance opposes the Taliban but tolerated the harvest of poppy in territory it controlled . 
-(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Northern" [0 = "A"]:op2 "Alliance" [1 = "B"]))	1	2
+warning	Canadian government 's warning of al-Qaeda 's capability to launch a cyberattack causes various industries to review their preparedness . 
+(w / warn-01 [0 = "A"])	3	3
 
-those	Anyone who suffers a loss as have those who lost everything over the weekend will not be made whole , and whatever claim they receive will not come soon or easy . 
-(p / person [0 = "A"])	7	7
+finish	Delays have pushed back the finish until at least 2008 . 
+(f / finish-01 [0 = "A"])	5	5
 
-myanmaran_officials	Myanmaran officials revealed that the total trade volume between Myanmar and Thailand exceeded 300 million US dollars in 1995 . 
-(p / person [1 = "B"]:ARG0-of (h / have-org-role-91 [1 = "B"]:ARG1 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Myanmar" [0 = "A"])):ARG2 (o / official [1 = "B"])))	0	1
+needs	He needs to conduct a beer summit between Palin and NBC . 
+(n / need-01 [0 = "A"])	1	1
+
+remained	A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are known to have remained in Canada . 
+(r / remain-01 [0 = "A"])	15	15
 
 2000	Many businesses began preparing for cyber incidents before the year 2000 . 
 (d / date-entity [0 = "A"]:year 2000 [0 = "A"])	10	10
@@ -277,50 +277,17 @@ internationally	Gilbert stated that Tajikistan 's positive and responsible appro
 north_korea	North Korea -LRB- KP -RRB- 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "North" [0 = "A"]:op2 "Korea" [1 = "B"]))	0	1
 
-boeing	South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
-(n / name [0 = "A"]:op1 "Boeing" [0 = "A"])	16	16
-
-boeing	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
-(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Boeing" [0 = "A"]))	7	7
-
-irna	In a separate dispatch IRNA stated that during the past 20 days in southern Iran 's Fars Province police had arrested 107 drug traffickers including 11 foreign nationals . 
-(p / publication [0 = "A"]:name (n / name [0 = "A"]:op1 "IRNA" [0 = "A"]))	4	4
-
-taiwan	According to Taiwan 's '' Ministry of Economy '' statistics , the volume of trade between mainland and Taiwan last year was 20.9 billion US dollars . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Taiwan" [0 = "A"]))	18	18
-
 canada	A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are known to have remained in Canada . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Canada" [0 = "A"]))	17	17
-
-canada	Bell Canada works very closely with the Government and the private sector to be aware of security concerns and to update accordingly . 
-"Canada" [0 = "A"]	1	1
-
-once	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
-(o / once-and-for-all [0 = "A"])	42	42
 
 canadian_government	Canadian government 's warning of al-Qaeda 's capability to launch a cyberattack causes various industries to review their preparedness . 
 (g / government-organization [1 = "B"]:ARG0-of (g2 / govern-01 [1 = "B"]:ARG1 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Canada" [0 = "A"]))))	0	1
 
-some	Some specialize in dealing with kidnapping and hostage-taking scenarios . 
-(p / person [0 = "A"]:quant (s / some [0 = "A"]))	0	0
+breakdown	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
+(b / break-12 [0 = "A"])	4	4
 
-analysts	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
-(p / person [0 = "A"]:ARG0-of (a / analyze-01 [0 = "A"]))	0	0
-
-millennium	A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are known to have remained in Canada . 
-(e / event [0 = "A"]:name (n / name [0 = "A"]:op1 "Millennium" [0 = "A"]))	6	6
-
-ron_paul	I get what Ron Paul is saying . 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Paul" [1 = "B"]:op1 "Ron" [0 = "A"]))	3	4
-
-beijing	Xinhua News Agency , Beijing , March 18th 
-(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Beijing" [0 = "A"]))	4	4
-
-summit	He needs to conduct a beer summit between Palin and NBC . 
-(m / meet-03 [0 = "A"]:mod (s / summit [0 = "A"]))	6	6
-
-aig_execs	After seeing those bus tours to AIG execs homes , promoted on ACORN 's website , I am wondering why those same people are n't outraged at this . 
-(p / person [1 = "B"]:ARG0-of (h / have-org-role-91 [1 = "B"]:ARG2 (e / executive [1 = "B"]):ARG1 (c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "AIG" [0 = "A"]))))	6	7
+provided	Cultivation of raw opium provided the only source of income for much of the rural population . 
+(p / provide-01 [0 = "A"])	4	4
 
 us_dollars	According to Taiwan 's '' Ministry of Economy '' statistics , the volume of trade between mainland and Taiwan last year was 20.9 billion US dollars . 
 (m / monetary-quantity [1 = "B"]:unit (d / dollar [1 = "B"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "US" [0 = "A"]))))	24	25
@@ -334,47 +301,80 @@ us_dollars	Myanmaran officials revealed that the total trade volume between Myan
 us_dollars	Apart from setting up joint venture enterprises , GE also invested more than 1 billion US dollars in China by means of airplane and container leasing . 
 (m / monetary-quantity [1 = "B"]:unit (d / dollar [1 = "B"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "US" [0 = "A"]))))	15	16
 
+states	Iranian law states the death penalty for drug trafficking . 
+(s / state-01 [0 = "A"])	2	2
+
 2008	Delays have pushed back the finish until at least 2008 . 
 (d / date-entity [0 = "A"]:year 2008 [0 = "A"])	9	9
 
-not	He is not lying to call it stimulus . 
-- [0 = "A"]	2	2
+afghan_television_reported	Last week Afghan Television reported that Afghanistan 's interim administration has banned cultivation of opium poppies in an attempt to end drug trafficking . 
+(r / report-01 [2 = "C"]:ARG0 (c / company [0 = "A"]:name (n / name [0 = "A"]:op2 "Television" [1 = "B"]:op1 "Afghan" [0 = "A"])))	2	4
 
-not	There has not been a cyber event that has resulted in a loss of power for utility customers . 
-- [0 = "A"]	2	2
+harvesting	Leader of Afghanistan 's interim government Hamid Karzai said the fight against poppy harvesting and the lucrative trafficking of opium and heroin will be a top priority . 
+(h / harvest-01 [0 = "A"])	13	13
+
+harvesting	Afghan authorities will seek to ban poppy harvesting . 
+(h / harvest-01 [0 = "A"])	7	7
 
 nonfactor	He 's a nonfactor at this point and only in out of spite . 
 (f / factor [0 = "A"]:polarity - [0 = "A"])	3	3
 
-taliban	Unfortunately over the past six years , the rule of the Taliban turned Afghanistan into a center of terrorism and drugs . 
-(c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Taliban" [0 = "A"]))	11	11
+end	An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking . 
+(e / end-01 [0 = "A"])	25	25
 
-taliban	The Northern Alliance opposes the Taliban but tolerated the harvest of poppy in territory it controlled . 
-(c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Taliban" [0 = "A"]))	5	5
+end	Last week Afghan Television reported that Afghanistan 's interim administration has banned cultivation of opium poppies in an attempt to end drug trafficking . 
+(e / end-01 [0 = "A"])	20	20
 
-world_cup	No similar move is planned for the World Cup . 
-(g / game [0 = "A"]:name (n / name [0 = "A"]:op2 "Cup" [1 = "B"]:op1 "World" [0 = "A"]))	7	8
+end	OSCE urges permanent end to Afghan terrorism and drug-trafficking to create long-term stability in Central Asia . 
+(e / end-01 [0 = "A"])	3	3
 
-drug-trafficking	OSCE urges permanent end to Afghan terrorism and drug-trafficking to create long-term stability in Central Asia . 
-(t / trafficking [0 = "A"]:mod (d / drug [0 = "A"]))	8	8
+bills	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
+(b / bill-01 [0 = "A"])	13	13
 
 central_asia	OSCE urges permanent end to Afghan terrorism and drug-trafficking to create long-term stability in Central Asia . 
 (w / world-region [0 = "A"]:name (n / name [0 = "A"]:op1 "Central" [0 = "A"]:op2 "Asia" [1 = "B"]))	14	15
 
-suddenly	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
-(s / sudden [0 = "A"])	24	24
+victory	Val Fajr means swear to victory in Arabic and is a phrase from the Koran . 
+(w / win-01 [0 = "A"])	5	5
+
+perform	In a recent interview Bradley stated that many utility firms perform a brief review of their multi-tiered response systems after such warnings are issued . 
+(p / perform-01 [0 = "A"])	10	10
+
+introduce_scientific_management	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
+(s / science [1 = "B"])	10	12
+
+concerns	Bell Canada works very closely with the Government and the private sector to be aware of security concerns and to update accordingly . 
+(c / concern-01 [0 = "A"])	17	17
+
+killed	Thirteen drug traffickers were killed and 10 arrested in Iran anti-drug sweeps . 
+(k / kill-01 [0 = "A"])	4	4
+
+northern_alliance_opposes	The Northern Alliance opposes the Taliban but tolerated the harvest of poppy in territory it controlled . 
+(o2 / oppose-01 [2 = "C"]:ARG0 (o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Northern" [0 = "A"]:op2 "Alliance" [1 = "B"])))	1	3
 
 lashkar-e-taiba	The Lashkar-e-Taiba and Jaish-e-Mohammad are still distributing their message through a range of publications and magazines easily available in Karachi . 
 (o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Lashkar-e-Taiba" [0 = "A"]))	1	1
 
+officials_warn	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
+(w / warn-01 [1 = "B"]:ARG0 (p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (o / official [0 = "A"]))))	2	3
+
 china	Apart from setting up joint venture enterprises , GE also invested more than 1 billion US dollars in China by means of airplane and container leasing . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "China" [0 = "A"]))	18	18
 
-significantly	Gilbert stated that Tajikistan 's positive and responsible approach to the crisis in Afghanistan has significantly improved the country 's image internationally . 
-(s / significant [0 = "A"])	15	15
+management	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
+(m / manage-01 [0 = "A"])	2	2
 
-leader	International ; Government ; terrorism ; war and conflict ; dissent ; leader 
-(p / person [0 = "A"]:ARG0-of (l / lead-02 [0 = "A"]))	12	12
+management	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
+(m / manage-01 [0 = "A"])	30	30
+
+industrial_innovation	Establishing Models in Industrial Innovation 
+(i / innovate-01 [1 = "B"]:ARG1 (i2 / industry [0 = "A"]))	3	4
+
+pushed	Delays have pushed back the finish until at least 2008 . 
+(p / push-01 [0 = "A"])	2	2
+
+contracting	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
+(c / contract-02 [0 = "A"])	50	50
 
 iranian	Iranian law states the death penalty for drug trafficking . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	0	0
@@ -385,47 +385,41 @@ iranian	Iranian army arrests 1600 drug traffickers , kills 21 , and seizes 6 ton
 iranian	Iranian law applies the death penalty for drug trafficking . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	0	0
 
+practice	No one should be expected to practice self sufficiency or concern themselves with personal responsibility . 
+(p / practice-01 [0 = "A"])	6	6
+
 islamic	The severe actions against militants and radicals came as Pervez Musharraf banned 5 Islamic groups . 
 (r / religious-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Islam" [0 = "A"]))	13	13
-
-;_government	International ; Government ; terrorism ; war and conflict ; dissent ; leader 
-(a / and [0 = "A"]:op2 (g / government-organization [1 = "B"]:ARG0-of (g2 / govern-01 [1 = "B"])))	1	2
-
-romney	I think Romney wins big today and obviously stays in . 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Romney" [0 = "A"]))	2	2
 
 romney	Are n't you one of the assholes who assured us how Romney was inevitable as the GOP nominee ? 
 (p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Romney" [0 = "A"]))	11	11
 
-islam_daily	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
-(p / publication [0 = "A"]:name (n / name [0 = "A"]:op2 "Daily" [1 = "B"]:op1 "Islam" [0 = "A"]))	4	5
+told	Qari Mohammad Zafar stated that himself and other people have been told by our elders to read pro-Jihad newspapers and magazines . 
+(t / tell-01 [0 = "A"])	11	11
 
-%_impossible	Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ? 
-(p2 / possible [1 = "B"]:degree (p / percentage-entity [0 = "A"]):polarity - [1 = "B"])	5	6
+advanced	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
+(a / advance-01 [0 = "A"])	15	15
 
-the_smh	The SMH and Jennings were then sued over 3 articles published in the lead-up to the 000000 Olympics . 
-(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "The" [0 = "A"]:op2 "SMH" [1 = "B"]))	0	1
+dropped	The number of investment projects dropped by 444 as compared with last year , but the value of investments rose by more than 130 million US dollars as compared with last year . 
+(d / drop-01 [0 = "A"])	5	5
 
-kamchatenergo	Kamchatenergo stated that non-payment of bills prevent it from maintaining power supplies . 
-(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Kamchatenergo" [0 = "A"]))	0	0
+attempt	Last week Afghan Television reported that Afghanistan 's interim administration has banned cultivation of opium poppies in an attempt to end drug trafficking . 
+(a / attempt-01 [0 = "A"])	18	18
+
+approach	Gilbert stated that Tajikistan 's positive and responsible approach to the crisis in Afghanistan has significantly improved the country 's image internationally . 
+(a / approach-02 [0 = "A"])	8	8
 
 years	Unfortunately over the past six years , the rule of the Taliban turned Afghanistan into a center of terrorism and drugs . 
 (t / temporal-quantity [0 = "A"]:unit (y / year [0 = "A"]))	5	5
 
+favoring_u.s.	South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
+(f / favor-01 [0 = "A"])	13	14
+
 russia	Russia -LRB- RU -RRB- 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Russia" [0 = "A"]))	0	0
 
-russia	Russia provided several ISS modules including Zvezda and Zarya 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Russia" [0 = "A"]))	0	0
-
-supplies	United energy services argues that non-payment of bills has prevented it from maintaining supplies . 
-(s / supply [0 = "A"])	13	13
-
-pro-jihad	Qari Mohammad Zafar stated that himself and other people have been told by our elders to read pro-Jihad newspapers and magazines . 
-(f / favor-01 [0 = "A"]:ARG1 (w / war [0 = "A"]:name (n / name [0 = "A"]:op1 "Jihad" [0 = "A"])))	17	17
-
-officials	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
-(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (o / official [0 = "A"])))	2	2
+supplies	Kamchatenergo stated that non-payment of bills prevent it from maintaining power supplies . 
+(s / supply-01 [0 = "A"])	11	11
 
 easily	The Lashkar-e-Taiba and Jaish-e-Mohammad are still distributing their message through a range of publications and magazines easily available in Karachi . 
 (e / easy [0 = "A"])	16	16
@@ -442,6 +436,15 @@ saudi_arabia	Saudi Arabia -LRB- SA -RRB-
 grams	The low - cut gold swimsuit with a low back weighs 500 grams , with a sales price of 10 million Japanese yen . 
 (m / mass-quantity [0 = "A"]:unit (g / gram [0 = "A"]))	12	12
 
+osce_urges	OSCE urges permanent end to Afghan terrorism and drug-trafficking to create long-term stability in Central Asia . 
+(u / urge-01 [1 = "B"]:ARG0 (o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "OSCE" [0 = "A"])))	0	1
+
+government_hamid_karzai_said	Leader of Afghanistan 's interim government Hamid Karzai said the fight against poppy harvesting and the lucrative trafficking of opium and heroin will be a top priority . 
+(s / say-01 [3 = "D"]:ARG0 (p / person [1 = "B"]:name (n / name [1 = "B"]:op2 "Karzai" [2 = "C"]:op1 "Hamid" [1 = "B"])))	5	8
+
+order	Dassault is seeking its first foreign order for the Rafale . 
+(o / order-02 [0 = "A"])	6	6
+
 afghan	An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	1	1
 
@@ -454,20 +457,26 @@ afghan	Afghan officials conducted talks with Russian officials asking for assist
 afghan	Afghan authorities will seek to ban poppy harvesting . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	0	0
 
-bomber_ahmed_ressam	A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are known to have remained in Canada . 
-(p2 / person [1 = "B"]:name (n / name [1 = "B"]:op1 "Ahmed" [1 = "B"]:op2 "Ressam" [2 = "C"]))	8	10
+similar	No similar move is planned for the World Cup . 
+(r / resemble-01 [0 = "A"])	1	1
 
-russian	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Russia" [0 = "A"]))	0	0
-
-russian	Afghan officials conducted talks with Russian officials asking for assistance in stopping Afghanistan 's large illegal opium and heroin trade . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Russia" [0 = "A"]))	5	5
+made	Anyone who suffers a loss as have those who lost everything over the weekend will not be made whole , and whatever claim they receive will not come soon or easy . 
+(m / make-18 [0 = "A"])	17	17
 
 literally	Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ? 
 (l / literal [0 = "A"])	3	3
 
-rangoon	Xinhua News Agency , Rangoon , March 17th , by reporter Yunfei Zhang 
-(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Rangoon" [0 = "A"]))	4	4
+understand	Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ? 
+(u / understand-01 [0 = "A"])	12	12
+
+signed	Without the guarantee from the contract signed with us , they would surely have been unable to deploy them ! 
+(s / sign-02 [0 = "A"])	6	6
+
+classified	There would be an investigation into how classified documents had been leaked . 
+(c / classify-02 [0 = "A"])	7	7
+
+communication_failure	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
+(f / fail-01 [1 = "B"]:ARG0 (c / communicate-01 [0 = "A"]))	52	53
 
 nbc	He needs to conduct a beer summit between Palin and NBC . 
 (p / publication [0 = "A"]:name (n / name [0 = "A"]:op1 "NBC" [0 = "A"]))	10	10
@@ -475,35 +484,41 @@ nbc	He needs to conduct a beer summit between Palin and NBC .
 seoul	Another group said they will launch an association next Monday of around 100 dog meat restaurant owners in the Seoul region and hold a seminar to promote the dish . 
 (c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Seoul" [0 = "A"]))	19	19
 
-could_greatly	In regions where the earthquake risk is high , warning the public and spreading disaster prevention awareness could greatly reduce casualties during earthquakes ; this is the very minimum duty that any responsible government should undertake . 
-(g / great [1 = "B"])	17	18
+united_energy_services_argues	United energy services argues that non-payment of bills has prevented it from maintaining supplies . 
+(a / argue-01 [3 = "D"]:ARG0 (c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "United" [0 = "A"]:op3 "Services" [2 = "C"]:op2 "Energy" [1 = "B"])))	0	3
 
-naif_arab_academy_for_security_sciences	Naif Arab Academy for Security Sciences is run by an Arab Interior Ministers ' Council . 
-(u / university [0 = "A"]:name (n / name [0 = "A"]:op5 "Security" [4 = "E"]:op3 "Academy" [2 = "C"]:op1 "Naif" [0 = "A"]:op6 "Sciences" [5 = "F"]:op4 "for" [3 = "D"]:op2 "Arab" [1 = "B"]))	0	5
+served	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
+(s / serve-01 [0 = "A"])	18	18
 
-south	South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]))	0	0
+taliban_turned_afghanistan	Unfortunately over the past six years , the rule of the Taliban turned Afghanistan into a center of terrorism and drugs . 
+(c2 / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Taliban" [0 = "A"]))	11	13
 
-republican	Democrats get it , minorities get it , white republican jurisdictions do n't . 
-(p / political-party [0 = "A"]:name (n / name [0 = "A"]:op1 "Republican" [0 = "A"]))	9	9
+brought	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
+(b / bring-01 [0 = "A"])	8	8
 
-himalayan	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
-(w / world-region [0 = "A"]:name (n / name [0 = "A"]:op1 "Himalayas" [0 = "A"]))	43	43
+invested_more	Apart from setting up joint venture enterprises , GE also invested more than 1 billion US dollars in China by means of airplane and container leasing . 
+(i / invest-01 [0 = "A"]:ARG1 (m / more-than [1 = "B"]))	10	11
+
+against	Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ? 
+(o / oppose-01 [0 = "A"])	29	29
+
+leaked	There would be an investigation into how classified documents had been leaked . 
+(l / leak-01 [0 = "A"])	11	11
+
+headed	I headed straight for the center of activities , but in actual fact traffic was being controlled as early as 4 o'clock , and they had already started limiting the crowds entering the sports center . 
+(h / head-02 [0 = "A"])	1	1
+
+experienced_raids	Both Tajikistan and Uzbekistan share a border with Afghanistan and have experienced raids by Taliban-backed Islamic militants in recent years . 
+(e / experience-01 [0 = "A"]:ARG1 (r / raid-01 [1 = "B"]))	11	12
 
 pakistani_government_may	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
-(g / government-organization [1 = "B"]:ARG0-of (g2 / govern-01 [1 = "B"]:ARG1 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))))	4	6
+(p / possible [2 = "C"])	4	6
+
+020126_called	A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
+(d / date-entity [0 = "A"]:year 2002 [0 = "A"]:month 1 [0 = "A"]:day 26 [0 = "A"])	10	11
 
 arab_interior_ministers	Naif Arab Academy for Security Sciences is run by an Arab Interior Ministers ' Council . 
 (o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Arab" [0 = "A"]:op2 "Interior" [1 = "B"]:op3 "Ministers'" [2 = "C"]))	10	12
-
-defense_ministry	South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
-(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op2 "Ministry" [1 = "B"]:op1 "Defense" [0 = "A"]))	3	4
-
-government	In regions where the earthquake risk is high , warning the public and spreading disaster prevention awareness could greatly reduce casualties during earthquakes ; this is the very minimum duty that any responsible government should undertake . 
-(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	33	33
-
-government	Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ? 
-(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	20	20
 
 government	A government source stated the visit by a group of IAEA safety experts is scheduled to last for a week beginning January 12 , 2002 . 
 (g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	1	1
@@ -517,53 +532,29 @@ government	A statement from the Russian Space Forces press services on 020126 ca
 government	The Government or UES or the Ministry of Defense must resolve the issue . 
 (g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	1	1
 
-1995	Myanmaran officials revealed that the total trade volume between Myanmar and Thailand exceeded 300 million US dollars in 1995 . 
-(d / date-entity [0 = "A"]:year 1995 [0 = "A"])	18	18
+including_zvezda	Russia provided several ISS modules including Zvezda and Zarya 
+(i / include-91 [0 = "A"])	5	6
 
-low	The low - cut gold swimsuit with a low back weighs 500 grams , with a sales price of 10 million Japanese yen . 
-(l / low-cut [0 = "A"])	1	1
+composed	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
+(c / compose-01 [0 = "A"])	26	26
 
-arabic	Val Fajr means swear to victory in Arabic and is a phrase from the Koran . 
-(l / language [0 = "A"]:name (n / name [0 = "A"]:op1 "Arabic" [0 = "A"]))	7	7
+known	A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are known to have remained in Canada . 
+(k / know-01 [0 = "A"])	12	12
 
 palin	He needs to conduct a beer summit between Palin and NBC . 
 (p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Palin" [0 = "A"]))	8	8
 
-cannibalistic	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
-(c / cannibal [0 = "A"])	48	48
-
-religious_extremist	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
-(e / extremism [1 = "B"]:mod (r / religion [0 = "A"]))	18	19
-
 monday	Another group said they will launch an association next Monday of around 100 dog meat restaurant owners in the Seoul region and hold a seminar to promote the dish . 
 (d / date-entity [0 = "A"]:weekday (m / monday [0 = "A"]))	9	9
 
-far_east_kamchatka_peninsula	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
-(p / peninsula [3 = "D"]:name (n / name [2 = "C"]:op1 "Kamchatka" [2 = "C"]:op2 "Peninsula" [3 = "D"]):location (w / world-region [0 = "A"]:name (n2 / name [0 = "A"]:op2 "East" [1 = "B"]:op1 "Far" [0 = "A"])))	24	27
-
-gilbert	Gilbert stated that Tajikistan 's positive and responsible approach to the crisis in Afghanistan has significantly improved the country 's image internationally . 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Gilbert" [0 = "A"]))	0	0
-
-saharan_african	This will ultimately accelerate the speed of desertification in sub - Saharan African countries and other areas of the world . 
-(c / country [1 = "B"]:location (w / world-region [1 = "B"]:name (n / name [1 = "B"]:op2 "Africa" [1 = "B"]:op1 "sub-Saharan" [0 = "A"])))	11	12
+020115_stated	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
+(s / state-01 [1 = "B"])	10	11
 
 could	A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
 (p / possible [0 = "A"])	27	27
 
-could	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
-(p / possible [0 = "A"])	34	34
-
-more	Apart from setting up joint venture enterprises , GE also invested more than 1 billion US dollars in China by means of airplane and container leasing . 
-(m / more-than [0 = "A"])	11	11
-
-unfortunately	Unfortunately over the past six years , the rule of the Taliban turned Afghanistan into a center of terrorism and drugs . 
-(f / fortunate [0 = "A"]:polarity - [0 = "A"])	0	0
-
-the_koran	Val Fajr means swear to victory in Arabic and is a phrase from the Koran . 
-(b / book [1 = "B"]:name (n / name [0 = "A"]:op1 "The" [0 = "A"]:op2 "Koran" [1 = "B"]))	13	14
-
-fajr	Val Fajr means swear to victory in Arabic and is a phrase from the Koran . 
-"Fajr" [0 = "A"]	1	1
+exposed_once	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
+(e / expose-01 [0 = "A"]:manner (o / once-and-for-all [1 = "B"]))	41	42
 
 tajikistan	Both Tajikistan and Uzbekistan share a border with Afghanistan and have experienced raids by Taliban-backed Islamic militants in recent years . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Tajikistan" [0 = "A"]))	1	1
@@ -571,86 +562,56 @@ tajikistan	Both Tajikistan and Uzbekistan share a border with Afghanistan and ha
 tajikistan	Gilbert stated that Tajikistan 's positive and responsible approach to the crisis in Afghanistan has significantly improved the country 's image internationally . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Tajikistan" [0 = "A"]))	3	3
 
-generally	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
-(g / general [0 = "A"])	33	33
+cultivation	An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking . 
+(c / cultivate-01 [0 = "A"])	17	17
 
-united_energy_services	United energy services argues that non-payment of bills has prevented it from maintaining supplies . 
-(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "United" [0 = "A"]:op3 "Services" [2 = "C"]:op2 "Energy" [1 = "B"]))	0	2
-
-osce	OSCE urges permanent end to Afghan terrorism and drug-trafficking to create long-term stability in Central Asia . 
-(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "OSCE" [0 = "A"]))	0	0
-
-afghan_television	Last week Afghan Television reported that Afghanistan 's interim administration has banned cultivation of opium poppies in an attempt to end drug trafficking . 
-(c / company [0 = "A"]:name (n / name [0 = "A"]:op2 "Television" [1 = "B"]:op1 "Afghan" [0 = "A"]))	2	3
-
-january	A government source stated the visit by a group of IAEA safety experts is scheduled to last for a week beginning January 12 , 2002 . 
-(d / date-entity [0 = "A"]:month 1 [0 = "A"])	21	21
-
-january	South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
-(d / date-entity [0 = "A"]:month 1 [0 = "A"])	4	4
-
-january	An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking . 
-(d / date-entity [0 = "A"]:month 1 [0 = "A"])	5	5
+cultivation	Cultivation of raw opium provided the only source of income for much of the rural population . 
+(c / cultivate-01 [0 = "A"])	0	0
 
 able	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
 (p / possible [0 = "A"])	24	24
 
-qari_mohammad_zafar	Qari Mohammad Zafar stated that himself and other people have been told by our elders to read pro-Jihad newspapers and magazines . 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Qari" [0 = "A"]:op3 "Zafar" [2 = "C"]:op2 "Mohammad" [1 = "B"]))	0	2
-
-indian	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "India" [0 = "A"]))	38	38
-
-statistics	According to Taiwan 's '' Ministry of Economy '' statistics , the volume of trade between mainland and Taiwan last year was 20.9 billion US dollars . 
-(s / statistic [0 = "A"])	9	9
-
-iaea	A government source stated the visit by a group of IAEA safety experts is scheduled to last for a week beginning January 12 , 2002 . 
-(h / have-org-role-91 [0 = "A"]:ARG1 (o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "IAEA" [0 = "A"])))	10	10
-
-iaea	IAEA also stated the lab is not one of the frozen facilities it wants to look into . 
-(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "IAEA" [0 = "A"]))	0	0
-
-pervez_musharraf	The severe actions against militants and radicals came as Pervez Musharraf banned 5 Islamic groups . 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Pervez" [0 = "A"]:op2 "Musharraf" [1 = "B"]))	9	10
-
-fewer	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
-(f / few [0 = "A"]:degree (m / more [0 = "A"]))	19	19
-
-the_three_gorges	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
-(p / project [0 = "A"]:name (n / name [0 = "A"]:op1 "The" [0 = "A"]:op3 "Gorges" [2 = "C"]:op2 "Three" [1 = "B"]))	5	7
-
-pakistan	Iranian army arrests 1600 drug traffickers , kills 21 , and seizes 6 tons of drugs and weapons in large-scale operation along its borders with Afghanistan and Pakistan . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	27	27
+for_non-payment	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
+(c / cause-01 [0 = "A"]:ARG0 (p / pay-01 [1 = "B"]:polarity - [1 = "B"]))	10	11
 
 british	The Great Olympic swindle was written by British journalist Andrew Jennings and published by Simon and Schuster . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Britain" [0 = "A"]))	7	7
 
-al-qaeda_militants	A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are known to have remained in Canada . 
-(m / militant [1 = "B"]:ARG0-of (h / have-org-role-91 [1 = "B"]:ARG1 (c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "al-Qaeda" [0 = "A"]))))	3	4
+banned_cultivation	Last week Afghan Television reported that Afghanistan 's interim administration has banned cultivation of opium poppies in an attempt to end drug trafficking . 
+(b / ban-01 [0 = "A"]:ARG1 (c / cultivate-01 [1 = "B"]))	11	12
 
-anti-terrorist	Drug trafficking from Afghanistan resumed during a brief hiatus in the anti-terrorist operation . 
-(c / counter-01 [0 = "A"]:ARG1 (t / terrorist [0 = "A"]))	11	11
+contacted_their	As soon as the earthquake occurred , grass-root organizations contacted their own people and average people also contacted their own systems or departments , in an interdependent manner . 
+(c / contact-01 [0 = "A"])	9	10
 
-iftikhar_ahmed	Iftikhar Ahmed is a Pakistani interior ministry official . 
-(n / name [0 = "A"]:op1 "Iftikhar" [0 = "A"]:op2 "Ahmed" [1 = "B"])	0	1
+chung_mong-joon_said	Head of the Korean Football Association and a FIFA vice president Chung Mong-Joon said FIFA should not intervene in the eating habits of a sovereign nation . 
+(s / say-01 [2 = "C"]:ARG0 (p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Chung" [0 = "A"]:op2 "Mong-Joon" [1 = "B"])))	11	13
+
+sufficiency	No one should be expected to practice self sufficiency or concern themselves with personal responsibility . 
+(s / suffice-01 [0 = "A"])	8	8
+
+strip	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
+(s / strip-01 [0 = "A"])	20	20
 
 than	The number of investment projects dropped by 444 as compared with last year , but the value of investments rose by more than 130 million US dollars as compared with last year . 
 (m / more-than [0 = "A"])	22	22
 
-claim	How does one survive until the insurance -LRB- hopefully by a respectable company -RRB- claim comes through ? 
-(c / claim-01 [0 = "A"]:ARG1 (i / insurance [0 = "A"]))	14	14
+communication	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
+(c / communicate-01 [0 = "A"])	6	6
 
-andrew_jennings	The Great Olympic swindle was written by British journalist Andrew Jennings and published by Simon and Schuster . 
-(n / name [0 = "A"]:op2 "Jennings" [1 = "B"]:op1 "Andrew" [0 = "A"])	9	10
+trafficking	An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking . 
+(t / traffic-00 [0 = "A"])	27	27
 
-not_totally	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
-(t / total [1 = "B"]:polarity - [0 = "A"])	3	4
+trafficking	Last week Afghan Television reported that Afghanistan 's interim administration has banned cultivation of opium poppies in an attempt to end drug trafficking . 
+(t / traffic-00 [0 = "A"])	22	22
 
-uzbekistan	Both Tajikistan and Uzbekistan share a border with Afghanistan and have experienced raids by Taliban-backed Islamic militants in recent years . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Uzbekistan" [0 = "A"]))	3	3
+trafficking	Iranian law applies the death penalty for drug trafficking . 
+(t / traffic-00 [0 = "A"])	8	8
 
-000000_olympics	The SMH and Jennings were then sued over 3 articles published in the lead-up to the 000000 Olympics . 
-(g / game [1 = "B"]:name (n / name [1 = "B"]:op1 "Olympics" [1 = "B"]):time (d / date-entity [0 = "A"]:year 2000 [0 = "A"]))	16	17
+trafficking	Leader of Afghanistan 's interim government Hamid Karzai said the fight against poppy harvesting and the lucrative trafficking of opium and heroin will be a top priority . 
+(t / traffic-00 [0 = "A"])	17	17
+
+border	Both Tajikistan and Uzbekistan share a border with Afghanistan and have experienced raids by Taliban-backed Islamic militants in recent years . 
+(b / border-01 [0 = "A"])	6	6
 
 red_army	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
 (m / military [0 = "A"]:name (n / name [0 = "A"]:op2 "Army" [1 = "B"]:op1 "Red" [0 = "A"]))	20	21
@@ -658,53 +619,782 @@ red_army	In addition , the breakdown in communication also brought a serious pro
 anti-japan	The anti-Japan group stated that South Korean culture is under attack . 
 (o / oppose-01 [0 = "A"]:ARG1 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Japan" [0 = "A"])))	1	1
 
-temporarily	Award of the contract was temporarily suspended in February 2002 after the prices offered by 4 bidders were judged too high . 
-(t / temporary [0 = "A"])	5	5
+maintaining	Kamchatenergo stated that non-payment of bills prevent it from maintaining power supplies . 
+(m / maintain-01 [0 = "A"])	9	9
 
-illegal	Afghan officials conducted talks with Russian officials asking for assistance in stopping Afghanistan 's large illegal opium and heroin trade . 
-(l / legal [0 = "A"]:polarity - [0 = "A"])	15	15
-
-council	Naif Arab Academy for Security Sciences is run by an Arab Interior Ministers ' Council . 
-"Council" [0 = "A"]	14	14
+arrests	Iranian army arrests 1600 drug traffickers , kills 21 , and seizes 6 tons of drugs and weapons in large-scale operation along its borders with Afghanistan and Pakistan . 
+(a / arrest-01 [0 = "A"])	2	2
 
 tons	Iranian army arrests 1600 drug traffickers , kills 21 , and seizes 6 tons of drugs and weapons in large-scale operation along its borders with Afghanistan and Pakistan . 
 (m / mass-quantity [0 = "A"]:unit (t / ton [0 = "A"]))	13	13
 
-020126	A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
-(d / date-entity [0 = "A"]:year 2002 [0 = "A"]:month 1 [0 = "A"]:day 26 [0 = "A"])	10	10
+violation	A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
+(v / violate-01 [0 = "A"])	16	16
+
+surely_has	As long as we stick to this issue , Xinghui surely has no way of winning the lawsuit if it goes to court . 
+(s / sure [0 = "A"]:domain (h / have-03 [1 = "B"]))	10	11
+
+greatest_benefit	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
+(b / benefit-01 [1 = "B"]:mod (g / great [0 = "A"]:degree (m / most [0 = "A"])))	13	14
 
 no	No one 
 (n / no-one [0 = "A"])	0	0
 
-dozens	I had a look at my call register , and out of dozens of calls dialed only one was properly connected ! 
-(m / multiple [0 = "A"]:op1 12 [0 = "A"])	12	12
+arrested	Thirteen drug traffickers were killed and 10 arrested in Iran anti-drug sweeps . 
+(a / arrest-01 [0 = "A"])	7	7
 
-week	A government source stated the visit by a group of IAEA safety experts is scheduled to last for a week beginning January 12 , 2002 . 
-(t / temporal-quantity [0 = "A"]:unit (w / week [0 = "A"]))	19	19
+arrested	In a separate dispatch IRNA stated that during the past 20 days in southern Iran 's Fars Province police had arrested 107 drug traffickers including 11 foreign nationals . 
+(a / arrest-01 [0 = "A"])	20	20
 
-hostage-taking	Some specialize in dealing with kidnapping and hostage-taking scenarios . 
-(t / take-01 [0 = "A"]:ARG1 (h / hostage [0 = "A"]))	7	7
+borders	Iranian army arrests 1600 drug traffickers , kills 21 , and seizes 6 tons of drugs and weapons in large-scale operation along its borders with Afghanistan and Pakistan . 
+(b / border-01 [0 = "A"])	23	23
 
-scientific	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
-(s / science [0 = "A"])	11	11
+started_limiting	I headed straight for the center of activities , but in actual fact traffic was being controlled as early as 4 o'clock , and they had already started limiting the crowds entering the sports center . 
+(s / start-01 [0 = "A"]:ARG1 (l / limit-01 [1 = "B"]))	27	28
 
-their	As soon as the earthquake occurred , grass-root organizations contacted their own people and average people also contacted their own systems or departments , in an interdependent manner . 
-(h / have-org-role-91 [0 = "A"])	10	10
-
-why	Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ? 
-(c / cause-01 [0 = "A"]:ARG0 (a / amr-unknown [0 = "A"]))	0	0
-
-chung_mong-joon	Head of the Korean Football Association and a FIFA vice president Chung Mong-Joon said FIFA should not intervene in the eating habits of a sovereign nation . 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Chung" [0 = "A"]:op2 "Mong-Joon" [1 = "B"]))	11	12
+generally_supports	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
+(s / support-01 [1 = "B"]:mod (g / general [0 = "A"]))	33	34
 
 rakhimov	Rakhimov was also said to have bribed members of the International Amateur Boxing Federation in the vote for the Federation Presidency . 
 (p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Rakhimov" [0 = "A"]))	0	0
 
+n't_translate	He 's right in some ways but it does n't translate into being right across the board . 
+(t / translate-01 [1 = "B"]:polarity - [0 = "A"])	9	10
+
+call_register	I had a look at my call register , and out of dozens of calls dialed only one was properly connected ! 
+(r / register-02 [1 = "B"]:ARG1 (c / call-02 [0 = "A"]))	6	7
+
+of	IAEA also stated the lab is not one of the frozen facilities it wants to look into . 
+(i / include-91 [0 = "A"])	8	8
+
+generous	Rafale reportedly offered more generous terms for technology transfer and subcontracts for South Korea 's aerospace industry . 
+(g / generous-41 [0 = "A"])	4	4
+
+construction	Since the Tangshan Earthquake , the starting point for construction standards in the mainland is that under an earthquake of the same magnitude , buildings should preserve their basic frame without collapsing . 
+(c / construct-01 [0 = "A"])	9	9
+
 saying	I get what Ron Paul is saying . 
 (t / thing [0 = "A"]:ARG1-of (s / say-01 [0 = "A"]))	6	6
 
-greatest	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
-(g / great [0 = "A"]:degree (m / most [0 = "A"]))	13	13
+fight	Leader of Afghanistan 's interim government Hamid Karzai said the fight against poppy harvesting and the lucrative trafficking of opium and heroin will be a top priority . 
+(f / fight-01 [0 = "A"])	10	10
+
+calls_dialed	I had a look at my call register , and out of dozens of calls dialed only one was properly connected ! 
+(c / call-02 [0 = "A"])	14	15
+
+plays	The Kamchatka command center plays a role in ISS operations . 
+(p / play-02 [0 = "A"])	4	4
+
+warnings	In a recent interview Bradley stated that many utility firms perform a brief review of their multi-tiered response systems after such warnings are issued . 
+(w / warn-01 [0 = "A"])	21	21
+
+relying	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
+(r / rely-01 [0 = "A"])	32	32
+
+south_korean	The anti-Japan group stated that South Korean culture is under attack . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	5	6
+
+control	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
+(c / control-01 [0 = "A"])	38	38
+
+taliban_but_tolerated	The Northern Alliance opposes the Taliban but tolerated the harvest of poppy in territory it controlled . 
+(c2 / contrast-01 [1 = "B"]:ARG2 (t / tolerate-01 [2 = "C"]))	5	7
+
+tangshan	Since the Tangshan Earthquake , the starting point for construction standards in the mainland is that under an earthquake of the same magnitude , buildings should preserve their basic frame without collapsing . 
+(e / earthquake [0 = "A"]:name (n / name [0 = "A"]:op1 "Tangshan" [0 = "A"]))	2	2
+
+conduct	He needs to conduct a beer summit between Palin and NBC . 
+(c / conduct-01 [0 = "A"])	3	3
+
+conducted_talks	Afghan officials conducted talks with Russian officials asking for assistance in stopping Afghanistan 's large illegal opium and heroin trade . 
+(c / conduct-01 [0 = "A"]:ARG1 (t / talk-01 [1 = "B"]))	2	3
+
+ultimately_accelerate	This will ultimately accelerate the speed of desertification in sub - Saharan African countries and other areas of the world . 
+(a / accelerate-01 [1 = "B"]:time (u / ultimate [0 = "A"]))	2	3
+
+japan	The nationalist group was formed to campaign against Japan . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Japan" [0 = "A"]))	8	8
+
+establishing	Establishing Models in Industrial Innovation 
+(e / establish-01 [0 = "A"])	0	0
+
+led	A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
+(l / lead-03 [0 = "A"])	29	29
+
+acorn	After seeing those bus tours to AIG execs homes , promoted on ACORN 's website , I am wondering why those same people are n't outraged at this . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "ACORN" [0 = "A"]))	12	12
+
+reporter_yunfei_zhang	Xinhua News Agency , Rangoon , March 17th , by reporter Yunfei Zhang 
+(p / person [1 = "B"]:name (n / name [1 = "B"]:op1 "Yunfei" [1 = "B"]:op2 "Zhang" [2 = "C"]):ARG0-of (r / report-01 [0 = "A"]))	10	12
+
+concern	No one should be expected to practice self sufficiency or concern themselves with personal responsibility . 
+(c / concern-02 [0 = "A"])	10	10
+
+traffickers	Thirteen drug traffickers were killed and 10 arrested in Iran anti-drug sweeps . 
+(p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]))	2	2
+
+4_o'clock	I headed straight for the center of activities , but in actual fact traffic was being controlled as early as 4 o'clock , and they had already started limiting the crowds entering the sports center . 
+(d / date-entity [1 = "B"]:time "4:00" [0 = "A"])	20	21
+
+pakistani	Iftikhar Ahmed is a Pakistani interior ministry official . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	4	4
+
+stick	As long as we stick to this issue , Xinghui surely has no way of winning the lawsuit if it goes to court . 
+(s / stick-01 [0 = "A"])	4	4
+
+maintain_contact	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
+(m / maintain-01 [0 = "A"]:ARG1 (c / contact-01 [1 = "B"]))	26	27
+
+think_romney_wins	I think Romney wins big today and obviously stays in . 
+(w / win-01 [2 = "C"]:ARG0 (p / person [1 = "B"]:name (n / name [1 = "B"]:op1 "Romney" [1 = "B"])))	1	3
+
+rubles	A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
+(m / monetary-quantity [0 = "A"]:unit (r / ruble [0 = "A"]))	41	41
+
+jaish-e-mohammad	The Lashkar-e-Taiba and Jaish-e-Mohammad are still distributing their message through a range of publications and magazines easily available in Karachi . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Jaish-e-Mohammad" [0 = "A"]))	3	3
+
+closely	Bell Canada works very closely with the Government and the private sector to be aware of security concerns and to update accordingly . 
+(c / close [0 = "A"])	4	4
+
+expected	No one should be expected to practice self sufficiency or concern themselves with personal responsibility . 
+(e / expect-01 [0 = "A"])	4	4
+
+south_korea	South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "South" [0 = "A"]))	0	1
+
+south_korea	Rafale reportedly offered more generous terms for technology transfer and subcontracts for South Korea 's aerospace industry . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	12	13
+
+myanmaran_officials_revealed	Myanmaran officials revealed that the total trade volume between Myanmar and Thailand exceeded 300 million US dollars in 1995 . 
+(r / reveal-01 [2 = "C"]:ARG0 (p / person [1 = "B"]:ARG0-of (h / have-org-role-91 [1 = "B"]:ARG1 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Myanmar" [0 = "A"])):ARG2 (o / official [1 = "B"]))))	0	2
+
+frozen	IAEA also stated the lab is not one of the frozen facilities it wants to look into . 
+(f / freeze-01 [0 = "A"])	10	10
+
+australia	Australia -LRB- AU -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Australia" [0 = "A"]))	0	0
+
+rafale	Dassault is seeking its first foreign order for the Rafale . 
+(a / aircraft-type [0 = "A"]:name (n / name [0 = "A"]:op1 "Rafale" [0 = "A"]))	9	9
+
+benefit	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
+(b / benefit-01 [0 = "A"])	9	9
+
+stopping	Afghan officials conducted talks with Russian officials asking for assistance in stopping Afghanistan 's large illegal opium and heroin trade . 
+(s / stop-01 [0 = "A"])	11	11
+
+recent_years	Both Tajikistan and Uzbekistan share a border with Afghanistan and have experienced raids by Taliban-backed Islamic militants in recent years . 
+(b / before [0 = "A"]:op1 (n / now [0 = "A"]:duration (m / multiple [1 = "B"]:op1 (t / temporal-quantity [1 = "B"]:unit (y / year [1 = "B"]):quant 1 [1 = "B"]))))	18	19
+
+starting	Since the Tangshan Earthquake , the starting point for construction standards in the mainland is that under an earthquake of the same magnitude , buildings should preserve their basic frame without collapsing . 
+(s / start-01 [0 = "A"])	6	6
+
+actions	The severe actions against militants and radicals came as Pervez Musharraf banned 5 Islamic groups . 
+(a / act-02 [0 = "A"])	2	2
+
+accuse	The activists accuse the organizations of being culturally-biased and insulting . 
+(a / accuse-01 [0 = "A"])	2	2
+
+qari_mohammad_zafar_stated	Qari Mohammad Zafar stated that himself and other people have been told by our elders to read pro-Jihad newspapers and magazines . 
+(s / state-01 [3 = "D"]:ARG0 (p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Qari" [0 = "A"]:op3 "Zafar" [2 = "C"]:op2 "Mohammad" [1 = "B"])))	0	3
+
+respectable	How does one survive until the insurance -LRB- hopefully by a respectable company -RRB- claim comes through ? 
+(r / respect-01 [0 = "A"])	11	11
+
+rallied	South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
+(r / rally-01 [0 = "A"])	2	2
+
+guarantee	Without the guarantee from the contract signed with us , they would surely have been unable to deploy them ! 
+(t / thing [0 = "A"]:ARG1-of (g / guarantee-01 [0 = "A"]))	2	2
+
+believe	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
+(b / believe-01 [0 = "A"])	10	10
+
+seek	Afghan authorities will seek to ban poppy harvesting . 
+(s / seek-01 [0 = "A"])	3	3
+
+critics_say_boeing	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
+(s / say-01 [1 = "B"]:ARG0 (p / person [0 = "A"]:ARG0-of (c / criticize-01 [0 = "A"])))	5	7
+
+promote	Another group said they will launch an association next Monday of around 100 dog meat restaurant owners in the Seoul region and hold a seminar to promote the dish . 
+(p / promote-02 [0 = "A"])	26	26
+
+read_pro-jihad	Qari Mohammad Zafar stated that himself and other people have been told by our elders to read pro-Jihad newspapers and magazines . 
+(f / favor-01 [1 = "B"]:ARG1 (w / war [1 = "B"]:name (n / name [1 = "B"]:op1 "Jihad" [1 = "B"])))	16	17
+
+attack	The anti-Japan group stated that South Korean culture is under attack . 
+(a / attack-01 [0 = "A"])	10	10
+
+attack	South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
+(a / attack-01 [0 = "A"])	6	6
+
+reported	An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking . 
+(r / report-01 [0 = "A"])	3	3
+
+prevented	United energy services argues that non-payment of bills has prevented it from maintaining supplies . 
+(p / prevent-01 [0 = "A"])	9	9
+
+cuts	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
+(c / cut-02 [0 = "A"])	6	6
+
+apart	Apart from setting up joint venture enterprises , GE also invested more than 1 billion US dollars in China by means of airplane and container leasing . 
+(e / except-00 [0 = "A"])	0	0
+
+receive	Anyone who suffers a loss as have those who lost everything over the weekend will not be made whole , and whatever claim they receive will not come soon or easy . 
+(r / receive-01 [0 = "A"])	24	24
+
+death_penalty	Iranian law states the death penalty for drug trafficking . 
+(p / penalize-01 [1 = "B"]:manner (d / die-01 [0 = "A"]))	4	5
+
+though	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
+(h / have-concession-91 [0 = "A"])	42	42
+
+one	Are n't you one of the assholes who assured us how Romney was inevitable as the GOP nominee ? 
+(i / include-91 [0 = "A"])	3	3
+
+one	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
+(c / cut-02 [0 = "A"])	17	17
+
+not_lying	He is not lying to call it stimulus . 
+(l / lie-02 [1 = "B"]:polarity - [0 = "A"])	2	3
+
+launch	Another group said they will launch an association next Monday of around 100 dog meat restaurant owners in the Seoul region and hold a seminar to promote the dish . 
+(l / launch-01 [0 = "A"])	5	5
+
+launch	Canadian government 's warning of al-Qaeda 's capability to launch a cyberattack causes various industries to review their preparedness . 
+(l / launch-01 [0 = "A"])	9	9
+
+people	As soon as the earthquake occurred , grass-root organizations contacted their own people and average people also contacted their own systems or departments , in an interdependent manner . 
+(p / person [0 = "A"])	12	12
+
+people	Qari Mohammad Zafar stated that himself and other people have been told by our elders to read pro-Jihad newspapers and magazines . 
+(p / person [0 = "A"])	8	8
+
+designing	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
+(d / design-01 [0 = "A"])	46	46
+
+not_totally_without_benefits	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
+(l / lack-01 [2 = "C"]:degree (t / total [1 = "B"]:polarity - [0 = "A"]):ARG1 (b / benefit-01 [3 = "D"]))	3	6
+
+controlled	I headed straight for the center of activities , but in actual fact traffic was being controlled as early as 4 o'clock , and they had already started limiting the crowds entering the sports center . 
+(c / control-01 [0 = "A"])	16	16
+
+controlled	The Northern Alliance opposes the Taliban but tolerated the harvest of poppy in territory it controlled . 
+(c / control-01 [0 = "A"])	15	15
+
+call	He is not lying to call it stimulus . 
+(c / call-01 [0 = "A"])	5	5
+
+international_amateur_boxing_federation	Rakhimov was also said to have bribed members of the International Amateur Boxing Federation in the vote for the Federation Presidency . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op3 "Boxing" [2 = "C"]:op2 "Amateur" [1 = "B"]:op1 "International" [0 = "A"]:op4 "Federation" [3 = "D"]))	10	13
+
+properly_connected	I had a look at my call register , and out of dozens of calls dialed only one was properly connected ! 
+(c / connect-01 [1 = "B"]:manner (p / proper [0 = "A"]))	19	20
+
+bribed	Rakhimov was also said to have bribed members of the International Amateur Boxing Federation in the vote for the Federation Presidency . 
+(b / bribe-01 [0 = "A"])	6	6
+
+should_preserve	Since the Tangshan Earthquake , the starting point for construction standards in the mainland is that under an earthquake of the same magnitude , buildings should preserve their basic frame without collapsing . 
+(r / recommend-01 [0 = "A"]:ARG1 (p / preserve-01 [1 = "B"]))	25	26
+
+intervene	Head of the Korean Football Association and a FIFA vice president Chung Mong-Joon said FIFA should not intervene in the eating habits of a sovereign nation . 
+(i / intervene-01 [0 = "A"])	17	17
+
+battered	In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
+(b / batter-01 [0 = "A"])	36	36
+
+supported	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
+(s / support-01 [0 = "A"])	34	34
+
+but	But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
+(c / contrast-01 [0 = "A"])	0	0
+
+but	I headed straight for the center of activities , but in actual fact traffic was being controlled as early as 4 o'clock , and they had already started limiting the crowds entering the sports center . 
+(c / contrast-01 [0 = "A"])	9	9
+
+but	He 's right in some ways but it does n't translate into being right across the board . 
+(c / contrast-01 [0 = "A"])	6	6
+
+but	The number of investment projects dropped by 444 as compared with last year , but the value of investments rose by more than 130 million US dollars as compared with last year . 
+(c / contrast-01 [0 = "A"])	14	14
+
+insurance	How does one survive until the insurance -LRB- hopefully by a respectable company -RRB- claim comes through ? 
+(c / company [0 = "A"])	6	6
+
+dissent	International ; Government ; terrorism ; war and conflict ; dissent ; leader 
+(d / dissent-01 [0 = "A"])	10	10
+
+resulted	There has not been a cyber event that has resulted in a loss of power for utility customers . 
+(r / result-01 [0 = "A"])	9	9
+
+responsible_government_should_undertake	In regions where the earthquake risk is high , warning the public and spreading disaster prevention awareness could greatly reduce casualties during earthquakes ; this is the very minimum duty that any responsible government should undertake . 
+(u / undertake-01 [3 = "D"]:ARG1-of (r / recommend-01 [2 = "C"]):ARG0 (g / government-organization [1 = "B"]:ARG0-of (g2 / govern-01 [1 = "B"]):ARG1-of (r2 / responsible-41 [0 = "A"])))	32	35
+
+surely	Without the guarantee from the contract signed with us , they would surely have been unable to deploy them ! 
+(s / sure [0 = "A"])	12	12
+
+russia_provided	Russia provided several ISS modules including Zvezda and Zarya 
+(p / provide-01 [1 = "B"]:ARG0 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Russia" [0 = "A"])))	0	1
+
+japanese_yen	The low - cut gold swimsuit with a low back weighs 500 grams , with a sales price of 10 million Japanese yen . 
+(m / monetary-quantity [1 = "B"]:unit (y / yen [1 = "B"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Japan" [0 = "A"]))))	21	22
+
+administration	An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking . 
+(g / government-organization [0 = "A"]:ARG0-of (a / administrate-01 [0 = "A"]))	13	13
+
+run	Naif Arab Academy for Security Sciences is run by an Arab Interior Ministers ' Council . 
+(r / run-01 [0 = "A"])	7	7
+
+pervez_musharraf_banned	The severe actions against militants and radicals came as Pervez Musharraf banned 5 Islamic groups . 
+(b / ban-01 [2 = "C"]:ARG0 (p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Pervez" [0 = "A"]:op2 "Musharraf" [1 = "B"])))	9	11
+
+irna_stated	In a separate dispatch IRNA stated that during the past 20 days in southern Iran 's Fars Province police had arrested 107 drug traffickers including 11 foreign nationals . 
+(s / state-01 [1 = "B"]:ARG0 (p / publication [0 = "A"]:name (n / name [0 = "A"]:op1 "IRNA" [0 = "A"])))	4	5
+
+debate	The debate was partly fueled by FIFA , football 's international governing body . 
+(d / debate-01 [0 = "A"])	1	1
+
+unable	Without the guarantee from the contract signed with us , they would surely have been unable to deploy them ! 
+(p / possible [0 = "A"]:polarity - [0 = "A"])	15	15
+
+written	The Great Olympic swindle was written by British journalist Andrew Jennings and published by Simon and Schuster . 
+(w / write-01 [0 = "A"])	5	5
+
+those	Anyone who suffers a loss as have those who lost everything over the weekend will not be made whole , and whatever claim they receive will not come soon or easy . 
+(p / person [0 = "A"])	7	7
+
+last	A government source stated the visit by a group of IAEA safety experts is scheduled to last for a week beginning January 12 , 2002 . 
+(l / last-01 [0 = "A"])	16	16
+
+weighs	The low - cut gold swimsuit with a low back weighs 500 grams , with a sales price of 10 million Japanese yen . 
+(w / weigh-01 [0 = "A"])	10	10
+
+boeing	South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
+(n / name [0 = "A"]:op1 "Boeing" [0 = "A"])	16	16
+
+look	I had a look at my call register , and out of dozens of calls dialed only one was properly connected ! 
+(l / look-01 [0 = "A"])	3	3
+
+look	IAEA also stated the lab is not one of the frozen facilities it wants to look into . 
+(l / look-01 [0 = "A"])	15	15
+
+claim_comes	How does one survive until the insurance -LRB- hopefully by a respectable company -RRB- claim comes through ? 
+(c / come-17 [1 = "B"]:ARG1 (c2 / claim-01 [0 = "A"]:ARG1 (i / insurance [0 = "A"])))	14	15
+
+costing_hundreds	A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
+(c / cost-01 [0 = "A"])	36	37
+
+taiwan	According to Taiwan 's '' Ministry of Economy '' statistics , the volume of trade between mainland and Taiwan last year was 20.9 billion US dollars . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Taiwan" [0 = "A"]))	18	18
+
+sued	The SMH and Jennings were then sued over 3 articles published in the lead-up to the 000000 Olympics . 
+(s / sue-01 [0 = "A"])	6	6
+
+campaign	The nationalist group was formed to campaign against Japan . 
+(c / campaign-01 [0 = "A"])	6	6
+
+subcontracts	Rafale reportedly offered more generous terms for technology transfer and subcontracts for South Korea 's aerospace industry . 
+(s / subcontract-01 [0 = "A"])	10	10
+
+subcontracts	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
+(s / subcontract-01 [0 = "A"])	29	29
+
+support	South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
+(s / support-01 [0 = "A"])	9	9
+
+conflict	International ; Government ; terrorism ; war and conflict ; dissent ; leader 
+(c / conflict-01 [0 = "A"])	8	8
+
+kills	Iranian army arrests 1600 drug traffickers , kills 21 , and seizes 6 tons of drugs and weapons in large-scale operation along its borders with Afghanistan and Pakistan . 
+(k / kill-01 [0 = "A"])	7	7
+
+kamchatenergo_stated	Kamchatenergo stated that non-payment of bills prevent it from maintaining power supplies . 
+(s / state-01 [1 = "B"]:ARG0 (c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Kamchatenergo" [0 = "A"])))	0	1
+
+doing	Am I being foolish in doing this ? 
+(d / do-02 [0 = "A"])	5	5
+
+week_beginning_january	A government source stated the visit by a group of IAEA safety experts is scheduled to last for a week beginning January 12 , 2002 . 
+(t / temporal-quantity [0 = "A"]:unit (w / week [0 = "A"]):ARG1-of (b / begin-01 [1 = "B"]:time (d / date-entity [2 = "C"]:month 1 [2 = "C"])))	19	21
+
+asking	Afghan officials conducted talks with Russian officials asking for assistance in stopping Afghanistan 's large illegal opium and heroin trade . 
+(a / ask-02 [0 = "A"])	7	7
+
+scheduled	A government source stated the visit by a group of IAEA safety experts is scheduled to last for a week beginning January 12 , 2002 . 
+(s / schedule-01 [0 = "A"])	14	14
+
+update	Bell Canada works very closely with the Government and the private sector to be aware of security concerns and to update accordingly . 
+(u / update-01 [0 = "A"])	20	20
+
+rule	Unfortunately over the past six years , the rule of the Taliban turned Afghanistan into a center of terrorism and drugs . 
+(r / rule-03 [0 = "A"])	8	8
+
+ron_paul	I get what Ron Paul is saying . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Paul" [1 = "B"]:op1 "Ron" [0 = "A"]))	3	4
+
+beijing	Xinhua News Agency , Beijing , March 18th 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Beijing" [0 = "A"]))	4	4
+
+summit	He needs to conduct a beer summit between Palin and NBC . 
+(m / meet-03 [0 = "A"]:mod (s / summit [0 = "A"]))	6	6
+
+assistance	Afghan officials conducted talks with Russian officials asking for assistance in stopping Afghanistan 's large illegal opium and heroin trade . 
+(a / assist-01 [0 = "A"])	9	9
+
+aig_execs	After seeing those bus tours to AIG execs homes , promoted on ACORN 's website , I am wondering why those same people are n't outraged at this . 
+(p / person [1 = "B"]:ARG0-of (h / have-org-role-91 [1 = "B"]:ARG2 (e / executive [1 = "B"]):ARG1 (c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "AIG" [0 = "A"]))))	6	7
+
+speed	This will ultimately accelerate the speed of desertification in sub - Saharan African countries and other areas of the world . 
+(s / speed-01 [0 = "A"])	5	5
+
+traffickers_including	In a separate dispatch IRNA stated that during the past 20 days in southern Iran 's Fars Province police had arrested 107 drug traffickers including 11 foreign nationals . 
+(p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]):ARG2-of (i / include-91 [1 = "B"]))	23	24
+
+not	There has not been a cyber event that has resulted in a loss of power for utility customers . 
+- [0 = "A"]	2	2
+
+ministry_of_defense_must_resolve	The Government or UES or the Ministry of Defense must resolve the issue . 
+(o / obligate-01 [3 = "D"]:ARG2 (r / resolve-01 [4 = "E"]))	6	10
+
+wants	IAEA also stated the lab is not one of the frozen facilities it wants to look into . 
+(w / want-01 [0 = "A"])	13	13
+
+some_specialize	Some specialize in dealing with kidnapping and hostage-taking scenarios . 
+(s / specialize-01 [1 = "B"]:ARG0 (p / person [0 = "A"]:quant (s2 / some [0 = "A"])))	0	1
+
+vote	Rakhimov was also said to have bribed members of the International Amateur Boxing Federation in the vote for the Federation Presidency . 
+(v / vote-01 [0 = "A"])	16	16
+
+world_cup	No similar move is planned for the World Cup . 
+(g / game [0 = "A"]:name (n / name [0 = "A"]:op2 "Cup" [1 = "B"]:op1 "World" [0 = "A"]))	7	8
+
+drug-trafficking	OSCE urges permanent end to Afghan terrorism and drug-trafficking to create long-term stability in Central Asia . 
+(t / trafficking [0 = "A"]:mod (d / drug [0 = "A"]))	8	8
+
+harvest	The Northern Alliance opposes the Taliban but tolerated the harvest of poppy in territory it controlled . 
+(h / harvest-01 [0 = "A"])	9	9
+
+winning	As long as we stick to this issue , Xinghui surely has no way of winning the lawsuit if it goes to court . 
+(w / win-01 [0 = "A"])	15	15
+
+war	International ; Government ; terrorism ; war and conflict ; dissent ; leader 
+(w / war-01 [0 = "A"])	6	6
+
+significantly_improved	Gilbert stated that Tajikistan 's positive and responsible approach to the crisis in Afghanistan has significantly improved the country 's image internationally . 
+(i / improve-01 [1 = "B"]:degree (s / significant [0 = "A"]))	15	16
+
+risk	In regions where the earthquake risk is high , warning the public and spreading disaster prevention awareness could greatly reduce casualties during earthquakes ; this is the very minimum duty that any responsible government should undertake . 
+(r / risk-01 [0 = "A"])	5	5
+
+leader	International ; Government ; terrorism ; war and conflict ; dissent ; leader 
+(p / person [0 = "A"]:ARG0-of (l / lead-02 [0 = "A"]))	12	12
+
+leader	Leader of Afghanistan 's interim government Hamid Karzai said the fight against poppy harvesting and the lucrative trafficking of opium and heroin will be a top priority . 
+(l / lead-02 [0 = "A"])	0	0
+
+kidnapping	Some specialize in dealing with kidnapping and hostage-taking scenarios . 
+(k / kidnap-01 [0 = "A"])	5	5
+
+;_government	International ; Government ; terrorism ; war and conflict ; dissent ; leader 
+(a / and [0 = "A"]:op2 (g / government-organization [1 = "B"]:ARG0-of (g2 / govern-01 [1 = "B"])))	1	2
+
+islam_daily	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
+(p / publication [0 = "A"]:name (n / name [0 = "A"]:op2 "Daily" [1 = "B"]:op1 "Islam" [0 = "A"]))	4	5
+
+%_impossible	Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ? 
+(p2 / possible [1 = "B"]:degree (p / percentage-entity [0 = "A"]):polarity - [1 = "B"])	5	6
+
+reasoning	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
+(r / reason-01 [0 = "A"])	14	14
+
+the_smh	The SMH and Jennings were then sued over 3 articles published in the lead-up to the 000000 Olympics . 
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "The" [0 = "A"]:op2 "SMH" [1 = "B"]))	0	1
+
+could_have	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
+(p / possible [0 = "A"])	34	35
+
+seizes	Iranian army arrests 1600 drug traffickers , kills 21 , and seizes 6 tons of drugs and weapons in large-scale operation along its borders with Afghanistan and Pakistan . 
+(s / seize-01 [0 = "A"])	11	11
+
+loss	There has not been a cyber event that has resulted in a loss of power for utility customers . 
+(l / lose-02 [0 = "A"])	12	12
+
+loss	A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
+(l / lose-02 [0 = "A"])	32	32
+
+lost	Anyone who suffers a loss as have those who lost everything over the weekend will not be made whole , and whatever claim they receive will not come soon or easy . 
+(l / lose-02 [0 = "A"])	9	9
+
+review	Canadian government 's warning of al-Qaeda 's capability to launch a cyberattack causes various industries to review their preparedness . 
+(r / review-01 [0 = "A"])	16	16
+
+review	In a recent interview Bradley stated that many utility firms perform a brief review of their multi-tiered response systems after such warnings are issued . 
+(r / review-01 [0 = "A"])	13	13
+
+issued	In a recent interview Bradley stated that many utility firms perform a brief review of their multi-tiered response systems after such warnings are issued . 
+(i / issue-01 [0 = "A"])	23	23
+
+russian	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Russia" [0 = "A"]))	0	0
+
+russian	Afghan officials conducted talks with Russian officials asking for assistance in stopping Afghanistan 's large illegal opium and heroin trade . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Russia" [0 = "A"]))	5	5
+
+come	Anyone who suffers a loss as have those who lost everything over the weekend will not be made whole , and whatever claim they receive will not come soon or easy . 
+(c / come-01 [0 = "A"])	27	27
+
+rangoon	Xinhua News Agency , Rangoon , March 17th , by reporter Yunfei Zhang 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Rangoon" [0 = "A"]))	4	4
+
+collapsing	Since the Tangshan Earthquake , the starting point for construction standards in the mainland is that under an earthquake of the same magnitude , buildings should preserve their basic frame without collapsing . 
+(c / collapse-01 [0 = "A"])	31	31
+
+delays	Delays have pushed back the finish until at least 2008 . 
+(d / delay-01 [0 = "A"])	0	0
+
+canada_works	Bell Canada works very closely with the Government and the private sector to be aware of security concerns and to update accordingly . 
+(w / work-01 [1 = "B"])	1	2
+
+pakistani_government_should	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
+(r / recommend-01 [2 = "C"])	22	24
+
+stated	A government source stated the visit by a group of IAEA safety experts is scheduled to last for a week beginning January 12 , 2002 . 
+(s / state-01 [0 = "A"])	3	3
+
+stated	IAEA also stated the lab is not one of the frozen facilities it wants to look into . 
+(s / state-01 [0 = "A"])	2	2
+
+stated	The anti-Japan group stated that South Korean culture is under attack . 
+(s / state-01 [0 = "A"])	3	3
+
+stated	In a recent interview Bradley stated that many utility firms perform a brief review of their multi-tiered response systems after such warnings are issued . 
+(s / state-01 [0 = "A"])	5	5
+
+stated	A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
+(s / state-01 [0 = "A"])	24	24
+
+fajr_means_swear	Val Fajr means swear to victory in Arabic and is a phrase from the Koran . 
+"Fajr" [0 = "A"]	1	3
+
+naif_arab_academy_for_security_sciences	Naif Arab Academy for Security Sciences is run by an Arab Interior Ministers ' Council . 
+(u / university [0 = "A"]:name (n / name [0 = "A"]:op5 "Security" [4 = "E"]:op3 "Academy" [2 = "C"]:op1 "Naif" [0 = "A"]:op6 "Sciences" [5 = "F"]:op4 "for" [3 = "D"]:op2 "Arab" [1 = "B"]))	0	5
+
+south	South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]))	0	0
+
+analysts_stated	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
+(s / state-01 [1 = "B"]:ARG0 (p / person [0 = "A"]:ARG0-of (a / analyze-01 [0 = "A"])))	0	1
+
+republican	Democrats get it , minorities get it , white republican jurisdictions do n't . 
+(p / political-party [0 = "A"]:name (n / name [0 = "A"]:op1 "Republican" [0 = "A"]))	9	9
+
+al-qaeda_militants_including_millennium_plot_bomber_ahmed_ressam	A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are known to have remained in Canada . 
+(i / include-91 [2 = "C"]:ARG2 (m / militant [1 = "B"]:ARG0-of (h / have-org-role-91 [1 = "B"]:ARG1 (c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "al-Qaeda" [0 = "A"])))):ARG1 (p3 / person [6 = "G"]:name (n2 / name [6 = "G"]:op1 "Ahmed" [6 = "G"]:op2 "Ressam" [7 = "H"]):ARG0-of (p2 / plot-01 [4 = "E"]:time (e / event [3 = "D"]:name (n3 / name [3 = "D"]:op1 "Millennium" [3 = "D"])):ARG1 (b / bomb-01 [5 = "F"]:ARG0 (p / person [5 = "F"])))))	3	10
+
+planned	No similar move is planned for the World Cup . 
+(p / plan-01 [0 = "A"])	4	4
+
+out	He 's a nonfactor at this point and only in out of spite . 
+(c / cause-01 [0 = "A"])	10	10
+
+domineer	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
+(d / domineer-00 [0 = "A"])	26	26
+
+defense_ministry	South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op2 "Ministry" [1 = "B"]:op1 "Defense" [0 = "A"]))	3	4
+
+seeing	After seeing those bus tours to AIG execs homes , promoted on ACORN 's website , I am wondering why those same people are n't outraged at this . 
+(s / see-01 [0 = "A"])	1	1
+
+1995	Myanmaran officials revealed that the total trade volume between Myanmar and Thailand exceeded 300 million US dollars in 1995 . 
+(d / date-entity [0 = "A"]:year 1995 [0 = "A"])	18	18
+
+freedom	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
+(f / free-41 [0 = "A"])	36	36
+
+low	The low - cut gold swimsuit with a low back weighs 500 grams , with a sales price of 10 million Japanese yen . 
+(l / low-cut [0 = "A"])	1	1
+
+arabic	Val Fajr means swear to victory in Arabic and is a phrase from the Koran . 
+(l / language [0 = "A"]:name (n / name [0 = "A"]:op1 "Arabic" [0 = "A"]))	7	7
+
+get	Democrats get it , minorities get it , white republican jurisdictions do n't . 
+(u / understand-01 [0 = "A"])	5	5
+
+get	I get what Ron Paul is saying . 
+(u / understand-01 [0 = "A"])	1	1
+
+causes	Canadian government 's warning of al-Qaeda 's capability to launch a cyberattack causes various industries to review their preparedness . 
+(c / cause-01 [0 = "A"])	12	12
+
+financing	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
+(f / finance-01 [0 = "A"])	52	52
+
+eat	South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
+(e / eat-01 [0 = "A"])	14	14
+
+far_east_kamchatka_peninsula	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
+(p / peninsula [3 = "D"]:name (n / name [2 = "C"]:op1 "Kamchatka" [2 = "C"]:op2 "Peninsula" [3 = "D"]):location (w / world-region [0 = "A"]:name (n2 / name [0 = "A"]:op2 "East" [1 = "B"]:op1 "Far" [0 = "A"])))	24	27
+
+survive	How does one survive until the insurance -LRB- hopefully by a respectable company -RRB- claim comes through ? 
+(s / survive-01 [0 = "A"])	3	3
+
+suffers	Anyone who suffers a loss as have those who lost everything over the weekend will not be made whole , and whatever claim they receive will not come soon or easy . 
+(s / suffer-01 [0 = "A"])	2	2
+
+saharan_african	This will ultimately accelerate the speed of desertification in sub - Saharan African countries and other areas of the world . 
+(c / country [1 = "B"]:location (w / world-region [1 = "B"]:name (n / name [1 = "B"]:op2 "Africa" [1 = "B"]:op1 "sub-Saharan" [0 = "A"])))	11	12
+
+unfortunately	Unfortunately over the past six years , the rule of the Taliban turned Afghanistan into a center of terrorism and drugs . 
+(f / fortunate [0 = "A"]:polarity - [0 = "A"])	0	0
+
+the_koran	Val Fajr means swear to victory in Arabic and is a phrase from the Koran . 
+(b / book [1 = "B"]:name (n / name [0 = "A"]:op1 "The" [0 = "A"]:op2 "Koran" [1 = "B"]))	13	14
+
+of_dozens	I had a look at my call register , and out of dozens of calls dialed only one was properly connected ! 
+(m / multiple [1 = "B"]:op1 12 [1 = "B"])	11	12
+
+korea_herald_stated	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
+(s / state-01 [2 = "C"]:ARG0 (n / newspaper [0 = "A"]:name (n2 / name [0 = "A"]:op2 "Herald" [1 = "B"]:op1 "Korea" [0 = "A"])))	1	3
+
+preparedness	Canadian government 's warning of al-Qaeda 's capability to launch a cyberattack causes various industries to review their preparedness . 
+(p / prepare-02 [0 = "A"])	18	18
+
+january	South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
+(d / date-entity [0 = "A"]:month 1 [0 = "A"])	4	4
+
+january	An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking . 
+(d / date-entity [0 = "A"]:month 1 [0 = "A"])	5	5
+
+insulting	The activists accuse the organizations of being culturally-biased and insulting . 
+(i / insult-01 [0 = "A"])	9	9
+
+statistics	According to Taiwan 's '' Ministry of Economy '' statistics , the volume of trade between mainland and Taiwan last year was 20.9 billion US dollars . 
+(s / statistic [0 = "A"])	9	9
+
+iaea	IAEA also stated the lab is not one of the frozen facilities it wants to look into . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "IAEA" [0 = "A"]))	0	0
+
+the_three_gorges	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
+(p / project [0 = "A"]:name (n / name [0 = "A"]:op1 "The" [0 = "A"]:op3 "Gorges" [2 = "C"]:op2 "Three" [1 = "B"]))	5	7
+
+pakistan	Iranian army arrests 1600 drug traffickers , kills 21 , and seizes 6 tons of drugs and weapons in large-scale operation along its borders with Afghanistan and Pakistan . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	27	27
+
+suddenly_removed	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
+(r / remove-01 [1 = "B"]:mod (s / sudden [0 = "A"]))	24	25
+
+sales	The low - cut gold swimsuit with a low back weighs 500 grams , with a sales price of 10 million Japanese yen . 
+(s / sell-01 [0 = "A"])	16	16
+
+anti-terrorist	Drug trafficking from Afghanistan resumed during a brief hiatus in the anti-terrorist operation . 
+(c / counter-01 [0 = "A"]:ARG1 (t / terrorist [0 = "A"]))	11	11
+
+leasing	Apart from setting up joint venture enterprises , GE also invested more than 1 billion US dollars in China by means of airplane and container leasing . 
+(l / lease-02 [0 = "A"])	25	25
+
+iftikhar_ahmed	Iftikhar Ahmed is a Pakistani interior ministry official . 
+(p / person [0 = "A"])	0	1
+
+gilbert_stated	Gilbert stated that Tajikistan 's positive and responsible approach to the crisis in Afghanistan has significantly improved the country 's image internationally . 
+(s / state-01 [1 = "B"]:ARG0 (p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Gilbert" [0 = "A"])))	0	1
+
+distributing	The Lashkar-e-Taiba and Jaish-e-Mohammad are still distributing their message through a range of publications and magazines easily available in Karachi . 
+(d / distribute-01 [0 = "A"])	6	6
+
+should	No one should be expected to practice self sufficiency or concern themselves with personal responsibility . 
+(r / recommend-01 [0 = "A"])	2	2
+
+should	Head of the Korean Football Association and a FIFA vice president Chung Mong-Joon said FIFA should not intervene in the eating habits of a sovereign nation . 
+(r / recommend-01 [0 = "A"])	15	15
+
+create	OSCE urges permanent end to Afghan terrorism and drug-trafficking to create long-term stability in Central Asia . 
+(c / create-01 [0 = "A"])	10	10
+
+andrew_jennings	The Great Olympic swindle was written by British journalist Andrew Jennings and published by Simon and Schuster . 
+(n / name [0 = "A"]:op2 "Jennings" [1 = "B"]:op1 "Andrew" [0 = "A"])	9	10
+
+000000_olympics	The SMH and Jennings were then sued over 3 articles published in the lead-up to the 000000 Olympics . 
+(g / game [1 = "B"]:name (n / name [1 = "B"]:op1 "Olympics" [1 = "B"]):time (d / date-entity [0 = "A"]:year 2000 [0 = "A"]))	16	17
+
+like	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
+(r / resemble-01 [0 = "A"])	15	15
+
+goes	As long as we stick to this issue , Xinghui surely has no way of winning the lawsuit if it goes to court . 
+(g / go-01 [0 = "A"])	20	20
+
+published	The Great Olympic swindle was written by British journalist Andrew Jennings and published by Simon and Schuster . 
+(p / publish-01 [0 = "A"])	12	12
+
+published	The SMH and Jennings were then sued over 3 articles published in the lead-up to the 000000 Olympics . 
+(p / publish-01 [0 = "A"])	10	10
+
+judged	Award of the contract was temporarily suspended in February 2002 after the prices offered by 4 bidders were judged too high . 
+(j / judge-01 [0 = "A"])	18	18
+
+illegal	Afghan officials conducted talks with Russian officials asking for assistance in stopping Afghanistan 's large illegal opium and heroin trade . 
+(l / legal [0 = "A"]:polarity - [0 = "A"])	15	15
+
+transfer	Rafale reportedly offered more generous terms for technology transfer and subcontracts for South Korea 's aerospace industry . 
+(t / transfer-01 [0 = "A"])	8	8
+
+transfer	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
+(t / transfer-01 [0 = "A"])	27	27
+
+council	Naif Arab Academy for Security Sciences is run by an Arab Interior Ministers ' Council . 
+"Council" [0 = "A"]	14	14
+
+explaining	Analysts stated that the Pakistani government may have trouble explaining the Pakistani government 's reasoning if the banned religious extremist groups ' publications are suddenly removed from the newsstands because the Pakistani Government generally supports the freedom of the press . 
+(e / explain-01 [0 = "A"])	9	9
+
+government_involved	Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ? 
+(i / involve-01 [1 = "B"]:ARG1 (g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"])))	20	21
+
+thailand_exceeded	Myanmaran officials revealed that the total trade volume between Myanmar and Thailand exceeded 300 million US dollars in 1995 . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Thailand" [0 = "A"]))	11	12
+
+contacted	As soon as the earthquake occurred , grass-root organizations contacted their own people and average people also contacted their own systems or departments , in an interdependent manner . 
+(c / contact-01 [0 = "A"])	17	17
+
+hostage-taking	Some specialize in dealing with kidnapping and hostage-taking scenarios . 
+(t / take-01 [0 = "A"]:ARG1 (h / hostage [0 = "A"]))	7	7
+
+according	According to Taiwan 's '' Ministry of Economy '' statistics , the volume of trade between mainland and Taiwan last year was 20.9 billion US dollars . 
+(s / say-01 [0 = "A"])	0	0
+
+why	Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ? 
+(c / cause-01 [0 = "A"]:ARG0 (a / amr-unknown [0 = "A"]))	0	0
+
+rafale_reportedly_offered	Rafale reportedly offered more generous terms for technology transfer and subcontracts for South Korea 's aerospace industry . 
+(o / offer-01 [2 = "C"]:ARG0 (a / aircraft-type [0 = "A"]:name (n / name [0 = "A"]:op1 "Rafale" [0 = "A"])):ARG1-of (r / report-01 [1 = "B"]))	0	2
+
+aware	Bell Canada works very closely with the Government and the private sector to be aware of security concerns and to update accordingly . 
+(r / realize-01 [0 = "A"])	14	14
+
+award	Award of the contract was temporarily suspended in February 2002 after the prices offered by 4 bidders were judged too high . 
+(a / award-01 [0 = "A"])	0	0
+
+investigation_into	There would be an investigation into how classified documents had been leaked . 
+(i / investigate-01 [0 = "A"]:ARG1 (c / cause-01 [1 = "B"]))	4	5
+
+loss_as	Anyone who suffers a loss as have those who lost everything over the weekend will not be made whole , and whatever claim they receive will not come soon or easy . 
+(l / lose-02 [0 = "A"])	4	5
+
+banned	An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking . 
+(b / ban-01 [0 = "A"])	15	15
+
+said	Another group said they will launch an association next Monday of around 100 dog meat restaurant owners in the Seoul region and hold a seminar to promote the dish . 
+(s / say-01 [0 = "A"])	2	2
+
+said	Rakhimov was also said to have bribed members of the International Amateur Boxing Federation in the vote for the Federation Presidency . 
+(s / say-01 [0 = "A"])	3	3
+
+iss_operations	The Kamchatka command center plays a role in ISS operations . 
+(o / operate-01 [1 = "B"]:ARG1 (s / spaceship [0 = "A"]:name (n / name [0 = "A"]:op1 "ISS" [0 = "A"])))	8	9
+
+stating	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
+(s / state-01 [0 = "A"])	19	19
 
 ues	The Government or UES or the Ministry of Defense must resolve the issue . 
 (c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "UES" [0 = "A"]))	3	3
@@ -715,33 +1405,45 @@ ministry_of_economy	According to Taiwan 's '' Ministry of Economy '' statistics 
 february	Award of the contract was temporarily suspended in February 2002 after the prices offered by 4 bidders were judged too high . 
 (d / date-entity [0 = "A"]:month 2 [0 = "A"])	8	8
 
-south_korean	The anti-Japan group stated that South Korean culture is under attack . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	5	6
-
-ministry_of_defense	The Government or UES or the Ministry of Defense must resolve the issue . 
-(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op3 "Defense" [2 = "C"]:op1 "Ministry" [0 = "A"]:op2 "of" [1 = "B"]))	6	8
-
 simon_and_schuster	The Great Olympic swindle was written by British journalist Andrew Jennings and published by Simon and Schuster . 
 (c / company [0 = "A"]:name (n / name [0 = "A"]:op3 "Schuster" [2 = "C"]:op2 "and" [1 = "B"]:op1 "Simon" [0 = "A"]))	14	16
 
-ultimately	This will ultimately accelerate the speed of desertification in sub - Saharan African countries and other areas of the world . 
-(u / ultimate [0 = "A"])	2	2
+seeking	Dassault is seeking its first foreign order for the Rafale . 
+(s / seek-01 [0 = "A"])	2	2
 
-critics	The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
-(p / person [0 = "A"]:ARG0-of (c / criticize-01 [0 = "A"]))	5	5
+command	Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
+(c / command-02 [0 = "A"])	20	20
 
-industrial	Establishing Models in Industrial Innovation 
-(i / industry [0 = "A"])	3	3
+indian_rule	The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
+(r / rule-03 [1 = "B"]:ARG0 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "India" [0 = "A"])))	38	39
 
-tangshan	Since the Tangshan Earthquake , the starting point for construction standards in the mainland is that under an earthquake of the same magnitude , buildings should preserve their basic frame without collapsing . 
-(e / earthquake [0 = "A"]:name (n / name [0 = "A"]:op1 "Tangshan" [0 = "A"]))	2	2
+governing	The debate was partly fueled by FIFA , football 's international governing body . 
+(g / govern-01 [0 = "A"])	11	11
 
-zvezda	Russia provided several ISS modules including Zvezda and Zarya 
-(s / spaceship [0 = "A"]:name (n / name [0 = "A"]:op1 "Zvezda" [0 = "A"]))	6	6
+obviously_stays	I think Romney wins big today and obviously stays in . 
+(s / stay-01 [1 = "B"]:ARG1-of (o / obvious-41 [0 = "A"]))	7	8
+
+trade	Afghan officials conducted talks with Russian officials asking for assistance in stopping Afghanistan 's large illegal opium and heroin trade . 
+(t / trade-01 [0 = "A"])	19	19
+
+trade	According to Taiwan 's '' Ministry of Economy '' statistics , the volume of trade between mainland and Taiwan last year was 20.9 billion US dollars . 
+(t / trade-01 [0 = "A"])	14	14
+
+mean	Why is it literally 100 % impossible for the liberal mind to understand that just because you do n't want government involved in something does n't mean you 're against it ? 
+(m / mean-01 [0 = "A"])	26	26
+
+response	In a recent interview Bradley stated that many utility firms perform a brief review of their multi-tiered response systems after such warnings are issued . 
+(r / respond-01 [0 = "A"])	17	17
+
+uzbekistan_share	Both Tajikistan and Uzbekistan share a border with Afghanistan and have experienced raids by Taliban-backed Islamic militants in recent years . 
+(s / share-01 [1 = "B"])	3	4
+
+assured	Are n't you one of the assholes who assured us how Romney was inevitable as the GOP nominee ? 
+(a / assure-01 [0 = "A"])	8	8
 
 southern_iran	In a separate dispatch IRNA stated that during the past 20 days in southern Iran 's Fars Province police had arrested 107 drug traffickers including 11 foreign nationals . 
 (c / country [1 = "B"]:name (n / name [1 = "B"]:op1 "Iran" [1 = "B"]):mod (s / south [0 = "A"]))	13	14
 
-yunfei_zhang	Xinhua News Agency , Rangoon , March 17th , by reporter Yunfei Zhang 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Yunfei" [0 = "A"]:op2 "Zhang" [1 = "B"]))	11	12
+uses	The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
+(u / use-01 [0 = "A"])	26	26
 
