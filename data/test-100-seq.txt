@@ -96,7 +96,7 @@ In	NONE
 the	NONE
 past	IDENTITY
 ,	NONE
-Red	DISJOINT
+Red	DICT
 Army	DICT
 regiments	COREF
 were	NONE
@@ -233,7 +233,7 @@ to	NONE
 this	IDENTITY
 issue	IDENTITY
 ,	NONE
-Xinghui	DICT
+Xinghui	DISJOINT
 surely	DICT
 has	VERB
 no	COREF
@@ -661,7 +661,7 @@ Ministers	DICT
 Council	DICT
 .	NONE
 
-Some	DISJOINT
+Some	DICT
 specialize	VERB
 in	NONE
 dealing	VERB
@@ -705,7 +705,7 @@ January	DICT
 2002	IDENTITY
 .	NONE
 
-IAEA	DISJOINT
+IAEA	DICT
 also	IDENTITY
 stated	VERB
 the	NONE
@@ -1055,7 +1055,7 @@ press	IDENTITY
 
 Thirteen	COREF
 drug	IDENTITY
-traffickers	DISJOINT
+traffickers	DICT
 were	NONE
 killed	VERB
 and	IDENTITY
@@ -1067,7 +1067,7 @@ anti-drug	DICT
 sweeps	VERB
 .	NONE
 
-Val	DICT
+Val	DISJOINT
 Fajr	DICT
 means	VERB
 swear	VERB
@@ -1194,7 +1194,7 @@ that	NONE
 Afghanistan	DICT
 's	NONE
 interim	IDENTITY
-administration	DICT
+administration	DISJOINT
 has	NONE
 banned	VERB
 cultivation	VERB
@@ -1226,13 +1226,13 @@ government	DICT
 's	NONE
 warning	VERB
 of	NONE
-al-Qaeda	DICT
+al-Qaeda	DISJOINT
 's	NONE
 capability	VERB
 to	NONE
 launch	VERB
 a	NONE
-cyberattack	DICT
+cyberattack	DISJOINT
 causes	VERB
 various	IDENTITY
 industries	LEMMA
@@ -1246,7 +1246,7 @@ In	NONE
 a	NONE
 recent	IDENTITY
 interview	VERB
-Bradley	DICT
+Bradley	DISJOINT
 stated	VERB
 that	NONE
 many	IDENTITY
@@ -1301,7 +1301,7 @@ year	NONE
 2000	DICT
 .	NONE
 
-Bell	DICT
+Bell	DISJOINT
 Canada	DICT
 works	VERB
 very	IDENTITY
@@ -1666,12 +1666,12 @@ population	IDENTITY
 .	NONE
 
 Afghan	DICT
-officials	DICT
+officials	DISJOINT
 conducted	VERB
 talks	VERB
 with	NONE
 Russian	DICT
-officials	DICT
+officials	DISJOINT
 asking	VERB
 for	NONE
 assistance	VERB
@@ -1750,7 +1750,7 @@ harvesting	VERB
 .	NONE
 
 The	NONE
-Northern	DISJOINT
+Northern	DICT
 Alliance	DICT
 opposes	VERB
 the	NONE

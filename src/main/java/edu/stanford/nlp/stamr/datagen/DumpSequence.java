@@ -183,14 +183,40 @@ public class DumpSequence {
 
         if (amr.nodeSetConnected(nodes)) {
             AMR clone = amr.cloneConnectedSubset(nodes).first;
+            int minAlignment = 1000;
+            for (AMR.Node node : clone.nodes) {
+                if (node.alignment < minAlignment) minAlignment = node.alignment;
+            }
+
             for (AMR.Node node : clone.depthFirstSearch()) {
                 clone.giveNodeUniqueRef(node);
+                node.alignment = node.alignment - minAlignment;
             }
-            String gen = clone.toString().replaceAll("\\n","").replaceAll("\\t","");
+
+            clone.sourceText = new String[]{
+                    "A",
+                    "B",
+                    "C",
+                    "D",
+                    "E",
+                    "F",
+                    "G",
+                    "H",
+                    "I",
+                    "J",
+                    "K",
+                    "L",
+                    "M",
+                    "N",
+                    "O",
+                    "P",
+            };
+
+            String gen = clone.toString(AMR.AlignmentPrinting.ALL).replaceAll("\\n","").replaceAll("\\t","");
             String context = amr.formatSourceTokens();
 
             if (!dictionaries.containsKey(sourceTokens)) {
-                dictionaries.put(sourceTokens, new ArrayList<String>());
+                dictionaries.put(sourceTokens, new ArrayList<>());
             }
 
             dictionaries.get(sourceTokens).add(context+"\n"+gen+"\t"+start+"\t"+end+"\n");

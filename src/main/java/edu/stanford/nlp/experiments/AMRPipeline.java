@@ -347,7 +347,7 @@ public class AMRPipeline {
                 amr = createAMRSingleton(amrString, AMR.NodeType.VALUE);
             }
             for (AMR.Node node : amr.nodes) {
-                node.alignment = first;
+                node.alignment = first + node.alignment;
             }
             gen.add(amr);
         }
@@ -435,6 +435,19 @@ public class AMRPipeline {
         }
 
         // TODO: Do something about deliberate coref, maybe train a 5th classifier?
+
+        // Simple coref solution, match based on identical source tokens
+
+        for (AMR.Node node : result.nodes) {
+            for (AMR.Node node2 : result.nodes) {
+                if (node == node2) continue;
+                String token1 = tokens[node.alignment];
+                String token2 = tokens[node2.alignment];
+                if (token1.equalsIgnoreCase(token2)) {
+                    node.ref = node2.ref;
+                }
+            }
+        }
 
         return result;
     }
