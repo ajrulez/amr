@@ -197,5 +197,6 @@
     <orderEntry type="library" name="Maven: edu.washington.cs.knowitall:opennlp-tokenize-models:1.5" level="project" />
     <orderEntry type="library" name="Maven: edu.washington.cs.knowitall:opennlp-sent-models:1.5" level="project" />
     <orderEntry type="library" name="Maven: net.sf.opencsv:opencsv:2.3" level="project" />
+    <orderEntry type="library" name="gurobi" level="project" />
   </component>
 </module>
