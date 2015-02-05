@@ -56,7 +56,7 @@ public class ConstrainedSequence {
                 for (int i = 0; i < probabilities.length; i++) {
                     expr.addTerm(1.0, vars[i][j]);
                 }
-                model.addConstr(expr, GRB.LESS_EQUAL, 1.0, "d"+j);
+                model.addConstr(expr, GRB.LESS_EQUAL, allowedClassOccupants[j], "d"+j);
             }
 
             // Add the goal

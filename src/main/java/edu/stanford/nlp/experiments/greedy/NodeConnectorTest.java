@@ -6,6 +6,7 @@ import edu.stanford.nlp.util.Pair;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -38,8 +39,11 @@ public class NodeConnectorTest {
         state.originalParent = new int[nodes.length];
 
         for (AMR.Arc arc : amr.arcs) {
-            arcs[nodeList.indexOf(arc.head)+1][nodeList.indexOf(arc.tail)] = arc.title;
+            arcs[nodeList.indexOf(arc.head)+1][nodeList.indexOf(arc.tail)+1] = arc.title;
         }
+        arcs[0][nodeList.indexOf(amr.head)+1] = "ROOT";
+
+        System.out.println(Arrays.deepToString(arcs));
 
         Pair<GreedyState,String[][]> pair = new Pair<>(state, arcs);
         list.add(pair);
@@ -48,7 +52,11 @@ public class NodeConnectorTest {
 
         String[][] recoveredArcs = nodeConnector.connect(nodes);
         for (int j = 0; j < recoveredArcs.length; j++) {
-            assertArrayEquals(arcs[i],recoveredArcs[i]);
+            for (int k = 0; k < recoveredArcs[j].length; k++) {
+                if (arcs[j][k] == null) arcs[j][k] = "NONE";
+                if (recoveredArcs[j][k] == null) recoveredArcs[j][k] = "NONE";
+                assertEquals(arcs[j][k], recoveredArcs[j][k]);
+            }
         }
     }
 }

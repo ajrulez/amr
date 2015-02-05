@@ -18,13 +18,17 @@ import java.util.function.Function;
 public class NodeConnector {
 
     List<String> classes = new ArrayList<>();
+    Map<String, Integer> classSizeOverride = new HashMap<String,Integer>(){{
+        put("NONE",-1);
+    }};
 
     LinearPipe<Pair<GreedyState,Integer>,String> arcTypePrediction = new LinearPipe<>(
             new ArrayList<Function<Pair<GreedyState,Integer>,Object>>(){{
                 add((pair) -> {
                     GreedyState state = pair.first;
-                    int cursor = pair.second;
                     StringBuilder sb = new StringBuilder();
+                    sb.append(state.nodes[pair.second].toString());
+                    int cursor = state.head;
                     while (cursor != 0) {
                         sb.append(state.nodes[cursor].toString());
                         cursor = state.originalParent[cursor];
@@ -82,6 +86,7 @@ public class NodeConnector {
         GreedyState state = new GreedyState();
         state.nodes = nodes;
         state.arcs = new String[nodes.length][nodes.length];
+        state.originalParent = new int[nodes.length];
 
         while (!q.isEmpty()) {
             int head = q.poll();
@@ -90,6 +95,22 @@ public class NodeConnector {
 
             double[][] probs = new double[nodes.length][classes.size()];
             int[] maxCounts = new int[classes.size()];
+
+            for (int i = 0; i < classes.size(); i++) {
+                if (classSizeOverride.containsKey(classes.get(i))) {
+                    int count = classSizeOverride.get(classes.get(i));
+                    if (count == -1) {
+                        maxCounts[i] = nodes.length+1;
+                    }
+                    else {
+                        maxCounts[i] = count;
+                    }
+                }
+                else {
+                    maxCounts[i] = 1;
+                }
+                System.out.println("Max count for "+classes.get(i)+" = "+maxCounts[i]);
+            }
 
             for (int i = 1; i < nodes.length; i++) {
                 if (i == head) continue;
