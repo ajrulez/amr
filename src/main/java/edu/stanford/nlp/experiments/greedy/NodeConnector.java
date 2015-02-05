@@ -109,7 +109,6 @@ public class NodeConnector {
                 else {
                     maxCounts[i] = 1;
                 }
-                System.out.println("Max count for "+classes.get(i)+" = "+maxCounts[i]);
             }
 
             for (int i = 1; i < nodes.length; i++) {
