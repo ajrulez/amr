@@ -5,6 +5,7 @@ import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.util.Triple;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**

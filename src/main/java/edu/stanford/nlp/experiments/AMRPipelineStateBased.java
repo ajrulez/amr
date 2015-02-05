@@ -11,13 +11,11 @@ import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
 import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 import edu.stanford.nlp.stamr.AMR;
-import edu.stanford.nlp.stamr.AMRParser;
 import edu.stanford.nlp.stamr.AMRSlurp;
 import edu.stanford.nlp.stamr.evaluation.Smatch;
-import edu.stanford.nlp.stamr.utils.MSTGraph;
+import edu.stanford.nlp.stats.Counter;
 import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.Triple;
-import edu.stanford.nlp.wsd.WordNet;
 
 import java.io.*;
 import java.util.*;
@@ -28,7 +26,7 @@ import java.util.function.Function;
  *
  * Holds and trains several pipes, which can be analyzed separately or together to give results about AMR.
  */
-public class AMRPipeline {
+public class AMRPipelineStateBased {
 
     /////////////////////////////////////////////////////
     // FEATURE SPECS
@@ -57,7 +55,7 @@ public class AMRPipeline {
                 add((pair) -> pair.first.tokens[pair.second]);
                 add((pair) -> embeddings.get(pair.first.tokens[pair.second]));
             }},
-            AMRPipeline::writeNerPlusPlusContext
+            AMRPipelineStateBased::writeNerPlusPlusContext
     );
 
     @SuppressWarnings("unchecked")
@@ -68,10 +66,10 @@ public class AMRPipeline {
 
                 add((triple) -> triple.first.tokens[triple.second]);
             }},
-            AMRPipeline::writeDictionaryContext
+            AMRPipelineStateBased::writeDictionaryContext
     );
 
-    private String getPath(AMRNodeSet set, int head, int tail) {
+    private String getPath(AMRNodeStateBased set, int head, int tail) {
         if (head == 0 || tail == 0) { // if tail == 0, then something else went fairly wrong
             return "ROOT:NOPATH";
         }
@@ -135,8 +133,8 @@ public class AMRPipeline {
      */
 
     @SuppressWarnings("unchecked")
-    ArrayList<Function<Triple<AMRNodeSet,Integer,Integer>,Object>> cmuFeatures =
-            new ArrayList<Function<Triple<AMRNodeSet,Integer,Integer>,Object>>(){{
+    ArrayList<Function<Triple<AMRNodeStateBased,Integer,Integer>,Object>> cmuFeatures =
+            new ArrayList<Function<Triple<AMRNodeStateBased,Integer,Integer>,Object>>(){{
                 // Input triple is (Set, array offset for first node, array offset for second node)
 
                 // Self edge
@@ -242,15 +240,10 @@ public class AMRPipeline {
                 });
     }};
 
-    LinearPipe<Triple<AMRNodeSet,Integer,Integer>, Boolean> arcExistence = new LinearPipe<>(
-            cmuFeatures,
-            AMRPipeline::writeArcContext
-    );
-
     @SuppressWarnings("unchecked")
-    LinearPipe<Triple<AMRNodeSet,Integer,Integer>, String> arcType = new LinearPipe<>(
+    LinearPipe<Triple<AMRNodeStateBased,Integer,Integer>, String> arcType = new LinearPipe<>(
             cmuFeatures,
-            AMRPipeline::writeArcContext
+            AMRPipelineStateBased::writeArcContext
     );
 
     /////////////////////////////////////////////////////
@@ -261,13 +254,12 @@ public class AMRPipeline {
         System.out.println("Loading training data");
         List<LabeledSequence> nerPlusPlusData = loadSequenceData("data/train-400-seq.txt");
         List<LabeledSequence> dictionaryData = loadManygenData("data/train-400-manygen.txt");
-        List<AMRNodeSet> mstData = loadCoNLLData("data/train-400-conll.txt");
+        AMR[] bank = AMRSlurp.slurp("data/train-400-subset.txt", AMRSlurp.Format.LDC);
 
         System.out.println("Training");
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
         dictionaryLookup.train(getDictionaryForClassifier(dictionaryData));
-        arcExistence.train(getArcExistenceForClassifier(mstData));
-        arcType.train(getArcTypeForClassifier(mstData));
+        arcType.train(getArcTypeForClassifier(bank, nerPlusPlusData, dictionaryData));
     }
 
     private Pair<AMR.Node[],String[][]> predictNodes(String[] tokens, Annotation annotation) {
@@ -386,45 +378,39 @@ public class AMRPipeline {
         return new Pair<>(nodes, forcedArcs);
     }
 
-    public AMR runMSTPipeline(String[] tokens, Annotation annotation, AMRNodeSet nodeSet) {
+    private AMR greedilyConstruct(AMRNodeStateBased state) {
+        Queue<Integer> visitQueue = new ArrayDeque<>();
+        Set<Integer> visited = new HashSet<>();
+        visitQueue.add(0);
 
-        // Run MST on the arcs we've got
+        Map<Integer,Set<Pair<String,Integer>>> arcMap = new HashMap<>();
 
-        MSTGraph mstGraph = new MSTGraph();
+        while (!visitQueue.isEmpty()) {
+            state.currentParent = visitQueue.poll();
+            visited.add(state.currentParent);
+            arcMap.put(state.currentParent, new HashSet<>());
+            for (int i = 1; i < state.nodes.length; i++) {
+                if (i == state.currentParent) continue;
+                // TODO: come up with something clever for doing the greedy construction globally
+                Counter<String> counter = arcType.predictSoft(new Triple<>(state, state.currentParent, i));
 
-        int length = nodeSet.nodes.length-1;
-
-        for (int i = 0; i <= length; i++) {
-            if (nodeSet.nodes[i] == null) continue;
-            for (int j = 1; j <= length; j++) {
-                if (nodeSet.nodes[j] == null) continue;
-                if (i == j) continue;
-                if (nodeSet.forcedArcs[i][j] != null) {
-                    // Add this with such a high weight that it has to be included in the final MST
-                    mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], 10000);
-                }
-                else {
-                    double prob = arcExistence.predictSoft(new Triple<>(nodeSet, i, j)).getCount(true);
-                    mstGraph.addArc(i, j, "NO-LABEL", prob);
+                // TODO: Temporary, just do the greedy thing
+                state.partialArcs[state.currentParent][i] = arcType.predict(new Triple<>(state, state.currentParent, i));
+                if (!state.partialArcs[state.currentParent][i].equals("NONE")) {
+                    if (!visited.contains(i)) {
+                        visitQueue.add(i);
+                    }
+                    arcMap.get(state.currentParent).add(new Pair<>(state.partialArcs[state.currentParent][i], i));
                 }
             }
         }
 
-        // Stitch based on the MST we got
-
-        Map<Integer,Set<Pair<String,Integer>>> arcMap = mstGraph.getMST(false);
-
         Map<Integer,AMR.Node> oldToNew = new HashMap<>();
         AMR result = new AMR();
-        result.sourceText = tokens;
+        result.sourceText = state.tokens;
 
-        if (!arcMap.containsKey(-1)) {
-            System.err.println("Got no parse for \""+result.formatSourceTokens()+"\"! Returning empty tree");
-            return result;
-        }
-
-        int root = arcMap.get(-1).iterator().next().second;
-        AMR.Node rootNode = nodeSet.nodes[root];
+        int root = arcMap.get(0).iterator().next().second;
+        AMR.Node rootNode = state.nodes[root];
         if (rootNode.type == AMR.NodeType.ENTITY) {
             oldToNew.put(root, result.addNode(rootNode.ref, rootNode.title, rootNode.alignment));
         }
@@ -432,39 +418,19 @@ public class AMRPipeline {
             oldToNew.put(root, result.addNode(rootNode.title, rootNode.type));
         }
 
-        recursivelyAttach(arcMap, result, oldToNew, root, nodeSet);
-
-        // Give every node a unique ref, so we can decide how to handle coref
+        recursivelyAttach(arcMap, result, oldToNew, root, state);
 
         for (AMR.Node node : result.nodes) {
             result.giveNodeUniqueRef(node);
         }
-
-        // Enforce that nodes are generally included when we want them to be
-
-        if (result.nodes.size() > nodeSet.nodes.length) {
-            System.out.println(result.toString());
-            System.out.println("Num nodes in result: "+result.nodes.size());
-            System.out.println("Num nodes in nodeSet: "+nodeSet.nodes.length);
-            List<AMR.Node> resultNodes = new ArrayList<>();
-            resultNodes.addAll(resultNodes);
-            resultNodes.removeAll(Arrays.asList(nodeSet.nodes));
-            for (AMR.Node node : resultNodes) {
-                System.out.println(node.toString());
-            }
-            System.out.println("Break");
-            throw new IllegalStateException("Can't have included the wrong number of nodes! "+result.toString());
-        }
-
-        // TODO: Do something about deliberate coref, maybe train a 5th classifier?
 
         // Simple coref solution, match based on identical source tokens
 
         for (AMR.Node node : result.nodes) {
             for (AMR.Node node2 : result.nodes) {
                 if (node == node2) continue;
-                String token1 = tokens[node.alignment];
-                String token2 = tokens[node2.alignment];
+                String token1 = state.tokens[node.alignment];
+                String token2 = state.tokens[node2.alignment];
                 if (token1.equalsIgnoreCase(token2)) {
                     node.ref = node2.ref;
                 }
@@ -474,23 +440,11 @@ public class AMRPipeline {
         return result;
     }
 
-    public AMR runPipeline(String[] tokens, Annotation annotation) {
-        AMRNodeSet nodeSet = new AMRNodeSet();
-        nodeSet.annotation = annotation;
-        nodeSet.tokens = tokens;
-        Pair<AMR.Node[], String[][]> nodesAndArcs = predictNodes(tokens, annotation);
-        nodeSet.nodes = nodesAndArcs.first;
-        nodeSet.correctArcs = new String[nodeSet.nodes.length][nodeSet.nodes.length];
-        nodeSet.forcedArcs = nodesAndArcs.second;
-
-        return runMSTPipeline(tokens, annotation, nodeSet);
-    }
-
     private void recursivelyAttach(Map<Integer,Set<Pair<String,Integer>>> arcMap,
                                    AMR result,
                                    Map<Integer,AMR.Node> oldToNew,
                                    int parent,
-                                   AMRNodeSet nodeSet) {
+                                   AMRNodeStateBased nodeSet) {
         if (!arcMap.containsKey(parent)) return;
 
         Set<Pair<String,Integer>> outgoingArcs = arcMap.get(parent);
@@ -528,6 +482,15 @@ public class AMRPipeline {
         }
     }
 
+    public AMR runPipeline(String[] tokens, Annotation annotation) {
+        Pair<AMR.Node[], String[][]> nodesAndArcs = predictNodes(tokens, annotation);
+        AMRNodeStateBased nodeSet = new AMRNodeStateBased(nodesAndArcs.first.length-1, annotation);
+        nodeSet.nodes = nodesAndArcs.first;
+        nodeSet.forcedArcs = nodesAndArcs.second;
+
+        return greedilyConstruct(nodeSet);
+    }
+
     private AMR createAMRSingleton(String title) {
         return createAMRSingleton(title, AMR.NodeType.ENTITY);
     }
@@ -547,12 +510,12 @@ public class AMRPipeline {
         System.out.println("Loading training data");
         List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData("data/train-400-seq.txt");
         List<LabeledSequence> dictionaryDataTrain = loadManygenData("data/train-400-manygen.txt");
-        List<AMRNodeSet> mstDataTrain = loadCoNLLData("data/train-400-conll.txt");
+        AMR[] trainBank = AMRSlurp.slurp("data/train-400-subset.txt", AMRSlurp.Format.LDC);
 
         System.out.println("Loading testing data");
         List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData("data/test-100-seq.txt");
         List<LabeledSequence> dictionaryDataTest = loadManygenData("data/test-100-manygen.txt");
-        List<AMRNodeSet> mstDataTest = loadCoNLLData("data/test-100-conll.txt");
+        AMR[] testBank = AMRSlurp.slurp("data/test-100-subset.txt", AMRSlurp.Format.LDC);
 
         System.out.println("Running analysis");
         nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain),
@@ -563,12 +526,8 @@ public class AMRPipeline {
                 getDictionaryForClassifier(dictionaryDataTest),
                 "data/dictionary-lookup-analysis");
 
-        arcExistence.analyze(getArcExistenceForClassifier(mstDataTrain),
-                getArcExistenceForClassifier(mstDataTest),
-                "data/arc-existence-analysis");
-
-        arcType.analyze(getArcTypeForClassifier(mstDataTrain),
-                getArcTypeForClassifier(mstDataTest),
+        arcType.analyze(getArcTypeForClassifier(trainBank, nerPlusPlusDataTrain, dictionaryDataTrain),
+                getArcTypeForClassifier(testBank, nerPlusPlusDataTest, dictionaryDataTest),
                 "data/arc-type-analysis");
     }
 
@@ -579,7 +538,6 @@ public class AMRPipeline {
 
     private void analyzeAMRSubset(String path, String coNLLPath, String output) throws IOException, InterruptedException {
         AMR[] bank = AMRSlurp.slurp(path, AMRSlurp.Format.LDC);
-        List<AMRNodeSet> mstDataTest = loadCoNLLData(coNLLPath);
 
         String[] sentences = new String[bank.length];
         for (int i = 0; i < bank.length; i++) {
@@ -588,11 +546,9 @@ public class AMRPipeline {
         CoreNLPCache cache = new LazyCoreNLPCache(path, sentences);
 
         AMR[] recovered = new AMR[bank.length];
-        AMR[] recoveredPerfectDict = new AMR[bank.length];
         for (int i = 0; i < bank.length; i++) {
             Annotation annotation = cache.getAnnotation(i);
             recovered[i] = runPipeline(bank[i].sourceText, annotation);
-            recoveredPerfectDict[i] = runMSTPipeline(bank[i].sourceText, annotation, mstDataTest.get(i));
         }
         cache.close();
 
@@ -604,23 +560,16 @@ public class AMRPipeline {
 
         AMRSlurp.burp(output+"/gold.txt", AMRSlurp.Format.LDC, bank, AMR.AlignmentPrinting.ALL, false);
         AMRSlurp.burp(output+"/recovered.txt", AMRSlurp.Format.LDC, recovered, AMR.AlignmentPrinting.ALL, false);
-        AMRSlurp.burp(output+"/recovered-perfect-dict.txt", AMRSlurp.Format.LDC, recoveredPerfectDict, AMR.AlignmentPrinting.ALL, false);
 
         double smatch = Smatch.smatch(bank, recovered);
         System.out.println("SMATCH for overall "+path+" = "+smatch);
         BufferedWriter bw = new BufferedWriter(new FileWriter(output+"/smatch.txt"));
         bw.write("Smatch: "+smatch);
         bw.close();
-
-        double smatchPerfectDict = Smatch.smatch(bank, recoveredPerfectDict);
-        System.out.println("SMATCH for perfect dict "+path+" = "+smatchPerfectDict);
-        bw = new BufferedWriter(new FileWriter(output+"/smatch-perfect-dict.txt"));
-        bw.write("Smatch: "+smatch);
-        bw.close();
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        AMRPipeline pipeline = new AMRPipeline();
+        AMRPipelineStateBased pipeline = new AMRPipelineStateBased();
         pipeline.trainStages();
         pipeline.analyzeStages();
         pipeline.testCompletePipeline();
@@ -750,94 +699,6 @@ public class AMRPipeline {
         return seqList;
     }
 
-    private List<AMRNodeSet> loadCoNLLData(String path) throws IOException {
-        List<AMRNodeSet> setList = new ArrayList<>();
-
-        BufferedReader br = new BufferedReader(new FileReader(path));
-
-        // Read the TSV file
-
-        int stage = 0;
-
-        AMRNodeSet currentNodeSet = null;
-
-        String line;
-        while ((line = br.readLine()) != null) {
-
-            stage++;
-
-            if (line.length() == 0) {
-                // a newline to flush out old stuff
-                stage = 0;
-                setList.add(currentNodeSet);
-                currentNodeSet = null;
-            }
-
-            else if (stage == 1) {
-                // read a sentence
-                assert(currentNodeSet == null);
-                currentNodeSet = new AMRNodeSet();
-
-                String[] parts = line.split("\t");
-                int length = Integer.parseInt(parts[0]);
-
-                currentNodeSet.tokens = parts[1].split(" ");
-
-                currentNodeSet.correctArcs = new String[length+1][length+1];
-                currentNodeSet.forcedArcs = new String[length+1][length+1];
-                currentNodeSet.nodes = new AMR.Node[length+1];
-            }
-            else {
-                String[] parts = line.split("\t");
-                assert(parts.length == 5);
-
-                // Format layout:
-                // NODE_INDEX, NODE, PARENT_INDEX, ARC_NAME, ALIGNMENT
-
-                int index = Integer.parseInt(parts[0]);
-                String node = parts[1];
-                int parentIndex = Integer.parseInt(parts[2]);
-                String arcName = parts[3];
-                int alignment = Integer.parseInt(parts[4]);
-
-                // Parse out the node
-
-                AMR.Node parsedNode;
-                if (node.startsWith("\"")) {
-                    String dequoted = node.substring(1, node.length()-1);
-                    parsedNode = new AMR.Node(""+dequoted.toLowerCase().charAt(0), dequoted, AMR.NodeType.QUOTE);
-                }
-                else if (node.startsWith("(")) {
-                    String[] debracedParts = node.substring(1, node.length()-1).split("/");
-                    parsedNode = new AMR.Node(debracedParts[0], debracedParts[1], AMR.NodeType.ENTITY);
-                }
-                else {
-                    parsedNode = new AMR.Node("x", node, AMR.NodeType.VALUE);
-                }
-                parsedNode.alignment = alignment;
-
-                assert(currentNodeSet != null);
-
-                currentNodeSet.nodes[index] = parsedNode;
-                currentNodeSet.correctArcs[parentIndex][index] = arcName;
-            }
-        }
-        if (currentNodeSet != null) {
-            setList.add(currentNodeSet);
-        }
-
-        String[] sentences = new String[setList.size()];
-        for (int i = 0; i < setList.size(); i++) {
-            sentences[i] = setList.get(i).formatTokens();
-        }
-        CoreNLPCache coreNLPCache = new BatchCoreNLPCache(path, sentences);
-        for (int i = 0; i < setList.size(); i++) {
-            setList.get(i).annotation = coreNLPCache.getAnnotation(i);
-        }
-
-        return setList;
-    }
-
     /////////////////////////////////////////////////////
     // DATA TRANSFORMS
     /////////////////////////////////////////////////////
@@ -878,55 +739,52 @@ public class AMRPipeline {
         return dictionaryTrainingData;
     }
 
-    public static List<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> getArcExistenceForClassifier(
-            List<AMRNodeSet> mstData) {
+    public static List<Pair<Triple<AMRNodeStateBased,Integer,Integer>,String>> getArcTypeForClassifier(AMR[] bank,
+                                                                                                       List<LabeledSequence> genSequences,
+                                                                                                       List<LabeledSequence> dictSequences) {
+        List<Pair<Triple<AMRNodeStateBased,Integer,Integer>,String>> trainingData = new ArrayList<>();
+        for (int i = 0; i < bank.length; i++) {
+            AMR amr = bank[i];
+            AMRNodeStateBased state = new AMRNodeStateBased(amr.nodes.size(), dictSequences.get(i).annotation);
+            state.tokens = amr.sourceText;
 
-        List<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> arcExistenceTrue = new ArrayList<>();
-        List<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> arcExistenceFalse = new ArrayList<>();
+            // We reserve index 0 for ROOT
+            int j = 1;
+            List<AMR.Node> nodeList = new ArrayList<>();
+            for (AMR.Node node : amr.nodes) {
+                state.nodes[j] = node;
+                nodeList.add(node);
+                j++;
+            }
 
-        for (AMRNodeSet set : mstData) {
-            for (int i = 0; i < set.correctArcs.length; i++) {
-                if (i != 0 && set.nodes[i] == null) continue;
-                for (int j = 1; j < set.correctArcs[i].length; j++) {
-                    if (set.nodes[j] == null) continue;
-                    boolean arcExists = set.correctArcs[i][j] != null;
-                    if (arcExists) {
-                        arcExistenceTrue.add(new Pair<>(new Triple<>(set, i, j), true));
+            state.correctArcs[0][nodeList.indexOf(amr.head)+1] = "ROOT";
+            for (AMR.Arc arc : amr.arcs) {
+                state.correctArcs[nodeList.indexOf(arc.head)+1][nodeList.indexOf(arc.tail)+1] = arc.title;
+            }
+
+            Queue<Integer> visitQueue = new ArrayDeque<>();
+            Set<Integer> visited = new HashSet<>();
+            visitQueue.add(0);
+
+            while (!visitQueue.isEmpty()) {
+                state = new AMRNodeStateBased(state);
+                state.currentParent = visitQueue.poll();
+                visited.add(state.currentParent);
+                for (int k = 1; k < state.correctArcs[state.currentParent].length; k++) {
+                    if (k == state.currentParent) continue;
+                    String arc = state.correctArcs[state.currentParent][k];
+                    if (arc == null) {
+                        arc = "NONE";
                     }
-                    else {
-                        arcExistenceFalse.add(new Pair<>(new Triple<>(set, i, j), false));
+                    else if (!visited.contains(k)) {
+                        visitQueue.add(k);
                     }
+                    trainingData.add(new Pair<>(new Triple<>(state, state.currentParent, k), arc));
                 }
             }
         }
 
-        int numTrueClones = Math.max(1, arcExistenceFalse.size() / arcExistenceTrue.size());
-
-        List<Pair<Triple<AMRNodeSet,Integer,Integer>,Boolean>> arcExistenceData = new ArrayList<>();
-        arcExistenceData.addAll(arcExistenceFalse);
-        for (int i = 0; i < numTrueClones; i++) {
-            arcExistenceData.addAll(arcExistenceTrue);
-        }
-
-        return arcExistenceData;
-    }
-
-    public static List<Pair<Triple<AMRNodeSet,Integer,Integer>,String>> getArcTypeForClassifier(
-            List<AMRNodeSet> mstData) {
-        List<Pair<Triple<AMRNodeSet,Integer,Integer>,String>> arcTypeData = new ArrayList<>();
-        for (AMRNodeSet set : mstData) {
-            for (int i = 0; i < set.correctArcs.length; i++) {
-                if (i != 0 && set.nodes[i] == null) continue;
-                for (int j = 1; j < set.correctArcs[i].length; j++) {
-                    if (set.nodes[j] == null) continue;
-                    boolean arcExists = set.correctArcs[i][j] != null;
-                    if (arcExists) {
-                        arcTypeData.add(new Pair<>(new Triple<>(set, i, j), set.correctArcs[i][j]));
-                    }
-                }
-            }
-        }
-        return arcTypeData;
+        return trainingData;
     }
 
     /////////////////////////////////////////////////////
@@ -961,8 +819,8 @@ public class AMRPipeline {
         }
     }
 
-    public static void writeArcContext(Triple<AMRNodeSet, Integer, Integer> triple, BufferedWriter bw) {
-        AMRNodeSet set = triple.first;
+    public static void writeArcContext(Triple<AMRNodeStateBased, Integer, Integer> triple, BufferedWriter bw) {
+        AMRNodeStateBased set = triple.first;
 
         AMR.Node source = set.nodes[triple.second];
         AMR.Node sink = set.nodes[triple.third];
