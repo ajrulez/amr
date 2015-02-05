@@ -21,22 +21,32 @@ public class NodeConnector {
 
     LinearPipe<Pair<GreedyState,Integer>,String> arcTypePrediction = new LinearPipe<>(
             new ArrayList<Function<Pair<GreedyState,Integer>,Object>>(){{
+                add((pair) -> {
+                    GreedyState state = pair.first;
+                    int cursor = pair.second;
+                    StringBuilder sb = new StringBuilder();
+                    while (cursor != 0) {
+                        sb.append(state.nodes[cursor].toString());
+                        cursor = state.originalParent[cursor];
+                    }
+                    return sb.toString();
+                });
             }}, null);
 
-    public void train(List<Pair<AMR.Node[],String[][]>> trainingData) {
+    public void train(List<Pair<GreedyState,String[][]>> trainingData) {
         List<Pair<Pair<GreedyState,Integer>, String>> trainingExamples = new ArrayList<>();
 
-        for (Pair<AMR.Node[],String[][]> pair : trainingData) {
-            AMR.Node[] nodes = pair.first;
+        for (Pair<GreedyState,String[][]> pair : trainingData) {
+            AMR.Node[] nodes = pair.first.nodes;
             String[][] arcs = pair.second;
 
             Queue<Integer> q = new ArrayDeque<>();
             Set<Integer> visited = new HashSet<>();
             q.add(0);
 
-            GreedyState state = new GreedyState();
-            state.nodes = nodes;
+            GreedyState state = pair.first.deepClone();
             state.arcs = new String[arcs.length][arcs[0].length];
+            state.originalParent = new int[nodes.length];
 
             GreedyState nextState = state.deepClone();
 
@@ -47,6 +57,9 @@ public class NodeConnector {
                 for (int i = 1; i < nodes.length; i++) {
                     if (i == head) continue;
                     if (arcs[head][i] != null && !visited.contains(i)) q.add(i);
+                    if (arcs[head][i] != null && state.originalParent[i] == 0) {
+                        state.originalParent[i] = head;
+                    }
 
                     String arcName = arcs[head][i] == null ? "NONE" : arcs[head][i];
                     if (!classes.contains(arcName)) classes.add(arcName);

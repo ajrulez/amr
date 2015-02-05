@@ -1,5 +1,6 @@
 package edu.stanford.nlp.experiments.greedy;
 
+import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.stamr.AMR;
 
 /**
@@ -11,6 +12,10 @@ public class GreedyState {
     int head;
     AMR.Node[] nodes;
     String[][] arcs;
+    int[] originalParent;
+
+    Annotation annotation;
+    String[] tokens;
 
     public GreedyState deepClone() {
         GreedyState clone = new GreedyState();
@@ -19,6 +24,12 @@ public class GreedyState {
         for (int i = 0; i < arcs.length; i++) {
             System.arraycopy(arcs[i], 0, clone.arcs[i], 0, arcs[i].length);
         }
+        clone.originalParent = new int[nodes.length];
+        System.arraycopy(originalParent, 0, clone.originalParent, 0, originalParent.length);
+
+        clone.annotation = annotation;
+        clone.tokens = tokens;
+
         return clone;
     }
 }
