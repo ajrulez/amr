@@ -270,7 +270,7 @@ public class AMRPipeline {
         arcType.train(getArcTypeForClassifier(mstData));
     }
 
-    public AMR runPipeline(String[] tokens, Annotation annotation) {
+    private Pair<AMR.Node[],String[][]> predictNodes(String[] tokens, Annotation annotation) {
         LabeledSequence labeledSequence = new LabeledSequence();
         labeledSequence.tokens = tokens;
         labeledSequence.annotation = annotation;
@@ -346,6 +346,7 @@ public class AMRPipeline {
             else {
                 amr = createAMRSingleton(amrString, AMR.NodeType.VALUE);
             }
+
             for (AMR.Node node : amr.nodes) {
                 node.alignment = Math.min(first + node.alignment, tokens.length-1);
             }
@@ -359,16 +360,14 @@ public class AMRPipeline {
             genNodes.addAll(amr.nodes);
         }
 
-        AMRNodeSet nodeSet = new AMRNodeSet();
-        nodeSet.annotation = labeledSequence.annotation;
-        nodeSet.tokens = labeledSequence.tokens;
-        int length = genNodes.size();
-        nodeSet.nodes = new AMR.Node[length+1];
+        AMR.Node[] nodes = new AMR.Node[genNodes.size()+1];
         for (int i = 0; i < genNodes.size(); i++) {
-            nodeSet.nodes[i+1] = genNodes.get(i);
+            nodes[i+1] = genNodes.get(i);
         }
-        nodeSet.correctArcs = new String[length+1][length+1];
-        nodeSet.forcedArcs = new String[length+1][length+1];
+
+        int length = nodes.length-1;
+
+        String[][] forcedArcs = new String[length+1][length+1];
 
         // Get back all the forced arcs
 
@@ -376,17 +375,24 @@ public class AMRPipeline {
             for (AMR.Arc arc : amr.arcs) {
                 for (int i = 1; i <= length; i++) {
                     for (int j = 1; j <= length; j++) {
-                        if (arc.head == nodeSet.nodes[i] && arc.tail == nodeSet.nodes[j]) {
-                            nodeSet.forcedArcs[i][j] = arc.title;
+                        if (arc.head == nodes[i] && arc.tail == nodes[j]) {
+                            forcedArcs[i][j] = arc.title;
                         }
                     }
                 }
             }
         }
 
+        return new Pair<>(nodes, forcedArcs);
+    }
+
+    public AMR runMSTPipeline(String[] tokens, Annotation annotation, AMRNodeSet nodeSet) {
+
         // Run MST on the arcs we've got
 
         MSTGraph mstGraph = new MSTGraph();
+
+        int length = nodeSet.nodes.length-1;
 
         for (int i = 0; i <= length; i++) {
             if (nodeSet.nodes[i] == null) continue;
@@ -452,6 +458,18 @@ public class AMRPipeline {
         return result;
     }
 
+    public AMR runPipeline(String[] tokens, Annotation annotation) {
+        AMRNodeSet nodeSet = new AMRNodeSet();
+        nodeSet.annotation = annotation;
+        nodeSet.tokens = tokens;
+        Pair<AMR.Node[], String[][]> nodesAndArcs = predictNodes(tokens, annotation);
+        nodeSet.nodes = nodesAndArcs.first;
+        nodeSet.correctArcs = new String[nodeSet.nodes.length][nodeSet.nodes.length];
+        nodeSet.forcedArcs = nodesAndArcs.second;
+
+        return runMSTPipeline(tokens, annotation, nodeSet);
+    }
+
     private void recursivelyAttach(Map<Integer,Set<Pair<String,Integer>>> arcMap,
                                    AMR result,
                                    Map<Integer,AMR.Node> oldToNew,
@@ -481,6 +499,8 @@ public class AMRPipeline {
             else {
                 childNodeNew = result.addNode(childNode.title, childNode.type);
             }
+
+            if (oldToNew.containsKey(child)) throw new IllegalStateException("Can't add the same node twice");
 
             oldToNew.put(child, childNodeNew);
 
@@ -537,20 +557,26 @@ public class AMRPipeline {
     }
 
     public void testCompletePipeline() throws IOException, InterruptedException {
-        analyzeAMRSubset("data/train-400-subset.txt", "data/amr-train-analysis");
-        analyzeAMRSubset("data/test-100-subset.txt", "data/amr-test-analysis");
+        analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/amr-train-analysis");
+        analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/amr-test-analysis");
     }
 
-    private void analyzeAMRSubset(String path, String output) throws IOException, InterruptedException {
+    private void analyzeAMRSubset(String path, String coNLLPath, String output) throws IOException, InterruptedException {
         AMR[] bank = AMRSlurp.slurp(path, AMRSlurp.Format.LDC);
+        List<AMRNodeSet> mstDataTest = loadCoNLLData(coNLLPath);
+
         String[] sentences = new String[bank.length];
         for (int i = 0; i < bank.length; i++) {
             sentences[i] = bank[i].formatSourceTokens();
         }
         CoreNLPCache cache = new LazyCoreNLPCache(path, sentences);
+
         AMR[] recovered = new AMR[bank.length];
+        AMR[] recoveredPerfectDict = new AMR[bank.length];
         for (int i = 0; i < bank.length; i++) {
-            recovered[i] = runPipeline(bank[i].sourceText, cache.getAnnotation(i));
+            Annotation annotation = cache.getAnnotation(i);
+            recovered[i] = runPipeline(bank[i].sourceText, annotation);
+            recoveredPerfectDict[i] = runMSTPipeline(bank[i].sourceText, annotation, mstDataTest.get(i));
         }
         cache.close();
 
@@ -562,10 +588,17 @@ public class AMRPipeline {
 
         AMRSlurp.burp(output+"/gold.txt", AMRSlurp.Format.LDC, bank, AMR.AlignmentPrinting.ALL, false);
         AMRSlurp.burp(output+"/recovered.txt", AMRSlurp.Format.LDC, recovered, AMR.AlignmentPrinting.ALL, false);
+        AMRSlurp.burp(output+"/recovered-perfectDict.txt", AMRSlurp.Format.LDC, recoveredPerfectDict, AMR.AlignmentPrinting.ALL, false);
 
         double smatch = Smatch.smatch(bank, recovered);
-        System.out.println("SMATCH for "+path+" = "+smatch);
+        System.out.println("SMATCH for overall "+path+" = "+smatch);
         BufferedWriter bw = new BufferedWriter(new FileWriter(output+"/smatch.txt"));
+        bw.write("Smatch: "+smatch);
+        bw.close();
+
+        double smatchPerfectDict = Smatch.smatch(bank, recoveredPerfectDict);
+        System.out.println("SMATCH for perfect dict "+path+" = "+smatchPerfectDict);
+        bw = new BufferedWriter(new FileWriter(output+"/smatch-perfect-dict.txt"));
         bw.write("Smatch: "+smatch);
         bw.close();
     }
