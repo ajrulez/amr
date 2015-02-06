@@ -2,6 +2,11 @@ package edu.stanford.nlp.experiments.greedy;
 
 import edu.stanford.nlp.experiments.ConstrainedSequence;
 import edu.stanford.nlp.experiments.LinearPipe;
+import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.ling.IndexedWord;
+import edu.stanford.nlp.semgraph.SemanticGraph;
+import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
+import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stats.Counter;
 import edu.stanford.nlp.util.Pair;
@@ -22,8 +27,74 @@ public class NodeConnector {
         put("NONE",-1);
     }};
 
+    /**
+     Here's the list of CMU Features as seen in the ACL '14 paper:
+
+     - Self edge: 1 if edge is between two nodes in the same fragment
+     - Tail fragment root: 1 if the edge's tail is the root of its graph fragment
+     - Head fragment root: 1 if the edge's head is the root of its graph fragment
+     - Path: Dependency edge labels and parts of speech on the shortest syntactic path between any two words of the two spans
+     - Distance: Number of tokens (plus one) between the concept's spans
+     - Distance indicators: A feature for each distance value
+     - Log distance: Log of the distance feature + 1
+
+     Combos:
+
+     - Path & Head concept
+     - Path & Tail concept
+     - Path & Head word
+     - Path & Tail word
+     - Distance & Path
+
+     */
+
+    private String getPath(GreedyState state, int tail) {
+        if (state.head == 0 || tail == 0) { // if tail == 0, then something else went fairly wrong
+            return "ROOT:NOPATH";
+        }
+        if (state.head == tail) {
+            return "IDENTITY";
+        }
+        int headToken = state.nodes[state.head].alignment;
+        int tailToken = state.nodes[tail].alignment;
+        SemanticGraph graph = state.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+        IndexedWord headIndexedWord = graph.getNodeByIndexSafe(headToken);
+        IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tailToken);
+        if (headIndexedWord == null || tailIndexedWord == null) {
+            return "NOTOKENS:NOPATH";
+        }
+        List<SemanticGraphEdge> edges = graph.getShortestUndirectedPathEdges(headIndexedWord, tailIndexedWord);
+
+        StringBuilder sb = new StringBuilder();
+        IndexedWord currentWord = headIndexedWord;
+        for (SemanticGraphEdge edge : edges) {
+            if (edge.getDependent().equals(currentWord)) {
+                sb.append(">");
+                currentWord = edge.getGovernor();
+            }
+            else {
+                if (!edge.getGovernor().equals(currentWord)) {
+                    throw new IllegalStateException("Edges not in order");
+                }
+                sb.append("<");
+                currentWord = edge.getDependent();
+            }
+            sb.append(edge.getRelation().getShortName());
+            if (currentWord != headIndexedWord) {
+                sb.append(":");
+                sb.append(currentWord.get(CoreAnnotations.PartOfSpeechAnnotation.class));
+            }
+        }
+
+        return sb.toString();
+    }
+
     LinearPipe<Pair<GreedyState,Integer>,String> arcTypePrediction = new LinearPipe<>(
             new ArrayList<Function<Pair<GreedyState,Integer>,Object>>(){{
+
+                // Builds a completely lexicalized (on nodes) path to the root of the AMR tree so far
+
                 add((pair) -> {
                     GreedyState state = pair.first;
                     StringBuilder sb = new StringBuilder();
@@ -35,6 +106,11 @@ public class NodeConnector {
                     }
                     return sb.toString();
                 });
+
+                // Builds a simple dependency path between the two nodes
+
+                // add((pair) -> getPath(pair.first, pair.second));
+
             }}, null);
 
     public static Pair<GreedyState,String[][]> amrToContextAndArcs(AMR amr) {

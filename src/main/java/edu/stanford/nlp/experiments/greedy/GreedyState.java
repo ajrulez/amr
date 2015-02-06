@@ -9,13 +9,13 @@ import edu.stanford.nlp.stamr.AMR;
  * Holds the state necessary for a greedy linking of AMR nodes.
  */
 public class GreedyState {
-    int head;
-    AMR.Node[] nodes;
-    String[][] arcs;
-    int[] originalParent;
+    public int head;
+    public AMR.Node[] nodes;
+    public String[][] arcs;
+    public int[] originalParent;
 
-    Annotation annotation;
-    String[] tokens;
+    public Annotation annotation;
+    public String[] tokens;
 
     public GreedyState deepClone() {
         GreedyState clone = new GreedyState();

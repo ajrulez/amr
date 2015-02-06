@@ -71,177 +71,6 @@ public class AMRPipelineStateBased {
             AMRPipelineStateBased::writeDictionaryContext
     );
 
-    private String getPath(AMRNodeStateBased set, int head, int tail) {
-        if (head == 0 || tail == 0) { // if tail == 0, then something else went fairly wrong
-            return "ROOT:NOPATH";
-        }
-        if (head == tail) {
-            return "IDENTITY";
-        }
-        int headToken = set.nodes[head].alignment;
-        int tailToken = set.nodes[tail].alignment;
-        SemanticGraph graph = set.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
-                .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
-        IndexedWord headIndexedWord = graph.getNodeByIndexSafe(headToken);
-        IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tailToken);
-        if (headIndexedWord == null || tailIndexedWord == null) {
-            return "NOTOKENS:NOPATH";
-        }
-        List<SemanticGraphEdge> edges = graph.getShortestUndirectedPathEdges(headIndexedWord, tailIndexedWord);
-
-        StringBuilder sb = new StringBuilder();
-        IndexedWord currentWord = headIndexedWord;
-        for (SemanticGraphEdge edge : edges) {
-            if (edge.getDependent().equals(currentWord)) {
-                sb.append(">");
-                currentWord = edge.getGovernor();
-            }
-            else {
-                if (!edge.getGovernor().equals(currentWord)) {
-                    throw new IllegalStateException("Edges not in order");
-                }
-                sb.append("<");
-                currentWord = edge.getDependent();
-            }
-            sb.append(edge.getRelation().getShortName());
-            if (currentWord != headIndexedWord) {
-                sb.append(":");
-                sb.append(currentWord.get(CoreAnnotations.PartOfSpeechAnnotation.class));
-            }
-        }
-
-        return sb.toString();
-    }
-
-    /**
-    Here's the list of CMU Features as seen in the ACL '14 paper:
-
-     - Self edge: 1 if edge is between two nodes in the same fragment
-     - Tail fragment root: 1 if the edge's tail is the root of its graph fragment
-     - Head fragment root: 1 if the edge's head is the root of its graph fragment
-     - Path: Dependency edge labels and parts of speech on the shortest syntactic path between any two words of the two spans
-     - Distance: Number of tokens (plus one) between the concept's spans
-     - Distance indicators: A feature for each distance value
-     - Log distance: Log of the distance feature + 1
-
-     Combos:
-
-     - Path & Head concept
-     - Path & Tail concept
-     - Path & Head word
-     - Path & Tail word
-     - Distance & Path
-
-     */
-
-    @SuppressWarnings("unchecked")
-    ArrayList<Function<Triple<AMRNodeStateBased,Integer,Integer>,Object>> cmuFeatures =
-            new ArrayList<Function<Triple<AMRNodeStateBased,Integer,Integer>,Object>>(){{
-                // Input triple is (Set, array offset for first node, array offset for second node)
-
-                // Self edge
-                add((triple) -> {
-                    if (triple.first.forcedArcs[triple.second][triple.third] != null) {
-                        return 1.0;
-                    }
-                    else return 0.0;
-                });
-                // Head fragment root
-                add((triple) -> {
-                    for (int i = 1; i < triple.first.nodes.length; i++) {
-                        // Any non-ROOT forced parents mean that this is not the head of the fragment
-                        if (triple.first.forcedArcs[i][triple.second] != null) {
-                            return 0.0;
-                        }
-                    }
-                    return 1.0;
-                });
-                // Tail fragment root
-                add((triple) -> {
-                    for (int i = 1; i < triple.first.nodes.length; i++) {
-                        // Any non-ROOT forced parents mean that this is not the head of the fragment
-                        if (triple.first.forcedArcs[i][triple.third] != null) {
-                            return 0.0;
-                        }
-                    }
-                    return 1.0;
-                });
-                // Path
-                add((triple) -> getPath(triple.first, triple.second, triple.third));
-                // Distance
-                add((triple) -> {
-                    if (triple.second != 0) {
-                        int headAlignment = triple.first.nodes[triple.second].alignment;
-                        int tailAlignment = triple.first.nodes[triple.third].alignment;
-                        return Math.abs(headAlignment - tailAlignment) + 1.0;
-                    }
-                    return 0.0;
-                });
-                // Distance Indicator
-                add((triple) -> {
-                    if (triple.second != 0) {
-                        int headAlignment = triple.first.nodes[triple.second].alignment;
-                        int tailAlignment = triple.first.nodes[triple.third].alignment;
-                        return "D:"+Math.abs(headAlignment - tailAlignment) + 1.0;
-                    }
-                    return "D:ROOT";
-                });
-                // Log distance
-                add((triple) -> {
-                    if (triple.second != 0) {
-                        int headAlignment = triple.first.nodes[triple.second].alignment;
-                        int tailAlignment = triple.first.nodes[triple.third].alignment;
-                        return Math.log(Math.abs(headAlignment - tailAlignment) + 1.0);
-                    }
-                    return 0.0;
-                });
-                // Path + Head concept
-                add((triple) -> {
-                    String headConcept;
-                    if (triple.second == 0) {
-                        headConcept = "ROOT";
-                    }
-                    else {
-                        headConcept = triple.first.nodes[triple.second].toString();
-                    }
-                    return headConcept + ":" + getPath(triple.first, triple.second, triple.third);
-                });
-                // Path + Tail concept
-                add((triple) -> {
-                    String tailConcept = triple.first.nodes[triple.third].toString();
-                    return tailConcept + ":" + getPath(triple.first, triple.second, triple.third);
-                });
-                // Path + Head word
-                add((triple) -> {
-                    String headWord;
-                    if (triple.second == 0) {
-                        headWord = "ROOT";
-                    }
-                    else {
-                        headWord = triple.first.tokens[triple.first.nodes[triple.second].alignment];
-                    }
-                    return headWord + ":" + getPath(triple.first, triple.second, triple.third);
-                });
-                // Path + Tail word
-                add((triple) -> {
-                    String tailWord = triple.first.tokens[triple.first.nodes[triple.third].alignment];
-                    return tailWord + ":" + getPath(triple.first, triple.second, triple.third);
-                });
-                // Path + Distance
-                add((triple) -> {
-                    String distanceIndicator;
-                    if (triple.second != 0) {
-                        int headAlignment = triple.first.nodes[triple.second].alignment;
-                        int tailAlignment = triple.first.nodes[triple.third].alignment;
-                        distanceIndicator = Integer.toString(Math.abs(headAlignment - tailAlignment));
-                    }
-                    else {
-                        distanceIndicator = "ROOT";
-                    }
-                    return distanceIndicator + ":" + getPath(triple.first, triple.second, triple.third);
-                });
-    }};
-
     NodeConnector nodeConnector = new NodeConnector();
 
     /////////////////////////////////////////////////////
@@ -258,7 +87,7 @@ public class AMRPipelineStateBased {
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
         dictionaryLookup.train(getDictionaryForClassifier(dictionaryData));
 
-        nodeConnector.train(getArcStitchingForNodeConnect(bank));
+        nodeConnector.train(getArcStitchingForNodeConnect(bank, nerPlusPlusData));
     }
 
     private Pair<AMR.Node[],String[][]> predictNodes(String[] tokens, Annotation annotation) {
@@ -441,16 +270,18 @@ public class AMRPipelineStateBased {
 
             AMR.Node childNode = nodeSet.nodes[child];
             AMR.Node childNodeNew;
-            if (childNode.type == AMR.NodeType.ENTITY) {
-                childNodeNew = result.addNode(childNode.ref, childNode.title, childNode.alignment);
+
+            if (oldToNew.containsKey(child)) {
+                childNodeNew = oldToNew.get(child);
             }
             else {
-                childNodeNew = result.addNode(childNode.title, childNode.type);
+                if (childNode.type == AMR.NodeType.ENTITY) {
+                    childNodeNew = result.addNode(childNode.ref, childNode.title, childNode.alignment);
+                } else {
+                    childNodeNew = result.addNode(childNode.title, childNode.type);
+                }
+                oldToNew.put(child, childNodeNew);
             }
-
-            if (oldToNew.containsKey(child)) throw new IllegalStateException("Can't add the same node twice");
-
-            oldToNew.put(child, childNodeNew);
 
             AMR.Node parentNodeNew = oldToNew.get(parent);
 
@@ -694,11 +525,15 @@ public class AMRPipelineStateBased {
         return nerPlusPlusTrainingData;
     }
 
-    public static List<Pair<GreedyState, String[][]>> getArcStitchingForNodeConnect(AMR[] bank) {
+    public static List<Pair<GreedyState, String[][]>> getArcStitchingForNodeConnect(AMR[] bank, List<LabeledSequence> nerPlusPlusData) {
         List<Pair<GreedyState, String[][]>> list = new ArrayList<>();
 
-        for (AMR amr : bank) {
-            list.add(NodeConnector.amrToContextAndArcs(amr));
+        for (int i = 0; i < bank.length; i++) {
+            AMR amr = bank[i];
+
+            Pair<GreedyState, String[][]> pair = NodeConnector.amrToContextAndArcs(amr);
+            pair.first.annotation = nerPlusPlusData.get(i).annotation;
+            list.add(pair);
         }
 
         return list;
