@@ -18,7 +18,8 @@ import java.util.*;
 public class DumpSequence {
     public static void main(String[] args) throws IOException {
         // dumpMicrodata();
-        dumpPreAlignedSplit();
+        // dumpPreAlignedSplit();
+        dumpGiantdata();
     }
 
     public static void dumpPreAligned() throws IOException {
@@ -26,6 +27,22 @@ public class DumpSequence {
         dumpSequences(train, "data/training-500-seq.txt");
         dumpManygenDictionaries(train, "data/training-500-manygen.txt");
         dumpCONLL(train, "data/training-500-conll.txt");
+    }
+
+    public static void dumpGiantdata() throws IOException {
+        AMR[] train = AMRSlurp.slurp("realdata/train-aligned.txt", AMRSlurp.Format.LDC);
+        AMR[] test = AMRSlurp.slurp("realdata/dev-aligned.txt", AMRSlurp.Format.LDC);
+
+        AMRSlurp.burp("realdata/train-subset.txt", AMRSlurp.Format.LDC, train, AMR.AlignmentPrinting.ALL, false);
+        AMRSlurp.burp("realdata/test-subset.txt", AMRSlurp.Format.LDC, test, AMR.AlignmentPrinting.ALL, false);
+
+        dumpSequences(train, "realdata/train-seq.txt");
+        dumpManygenDictionaries(train, "realdata/train-manygen.txt");
+        dumpCONLL(train, "realdata/train-conll.txt");
+
+        dumpSequences(test, "realdata/test-seq.txt");
+        dumpManygenDictionaries(test, "realdata/test-manygen.txt");
+        dumpCONLL(test, "realdata/test-conll.txt");
     }
 
     public static void dumpMicrodata() throws IOException {
@@ -87,7 +104,10 @@ public class DumpSequence {
 
             if (node.title.equalsIgnoreCase(amr.sourceText[i])) return "IDENTITY";
 
-            if (node.title.equalsIgnoreCase(amr.multiSentenceAnnotationWrapper.sentences.get(0).getLemmaAtIndex(i))) return "LEMMA";
+            if (amr.multiSentenceAnnotationWrapper != null) {
+                if (node.title.equalsIgnoreCase(amr.multiSentenceAnnotationWrapper.sentences.get(0).getLemmaAtIndex(i)))
+                    return "LEMMA";
+            }
 
             for (AMR.Node otherNode : amr.nodes) {
                 if (otherNode != node) {

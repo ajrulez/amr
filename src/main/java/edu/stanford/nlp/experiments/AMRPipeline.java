@@ -30,6 +30,8 @@ import java.util.function.Function;
  */
 public class AMRPipeline {
 
+    public static boolean FULL_DATA = true;
+
     /////////////////////////////////////////////////////
     // FEATURE SPECS
     //
@@ -259,9 +261,9 @@ public class AMRPipeline {
 
     public void trainStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusData = loadSequenceData("data/train-400-seq.txt");
-        List<LabeledSequence> dictionaryData = loadManygenData("data/train-400-manygen.txt");
-        List<AMRNodeSet> mstData = loadCoNLLData("data/train-400-conll.txt");
+        List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : "data/train-400-seq.txt");
+        List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : "data/train-400-manygen.txt");
+        List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : "data/train-400-conll.txt");
 
         System.out.println("Training");
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
@@ -551,36 +553,42 @@ public class AMRPipeline {
 
     public void analyzeStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData("data/train-400-seq.txt");
-        List<LabeledSequence> dictionaryDataTrain = loadManygenData("data/train-400-manygen.txt");
-        List<AMRNodeSet> mstDataTrain = loadCoNLLData("data/train-400-conll.txt");
+        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : "data/train-400-seq.txt");
+        List<LabeledSequence> dictionaryDataTrain = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : "data/train-400-manygen.txt");
+        List<AMRNodeSet> mstDataTrain = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : "data/train-400-conll.txt");
 
         System.out.println("Loading testing data");
-        List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData("data/test-100-seq.txt");
-        List<LabeledSequence> dictionaryDataTest = loadManygenData("data/test-100-manygen.txt");
-        List<AMRNodeSet> mstDataTest = loadCoNLLData("data/test-100-conll.txt");
+        List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData(FULL_DATA ? "realdata/test-seq.txt" : "data/test-100-seq.txt");
+        List<LabeledSequence> dictionaryDataTest = loadManygenData(FULL_DATA ? "realdata/test-manygen.txt" : "data/test-100-manygen.txt");
+        List<AMRNodeSet> mstDataTest = loadCoNLLData(FULL_DATA ? "realdata/test-conll.txt" : "data/test-100-conll.txt");
 
         System.out.println("Running analysis");
         nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain),
                 getNERPlusPlusForClassifier(nerPlusPlusDataTest),
-                "data/ner-plus-plus-analysis");
+                FULL_DATA ? "realdata/ner-plus-plus-analysis" : "data/ner-plus-plus-analysis");
 
         dictionaryLookup.analyze(getDictionaryForClassifier(dictionaryDataTrain),
                 getDictionaryForClassifier(dictionaryDataTest),
-                "data/dictionary-lookup-analysis");
+                FULL_DATA ? "realdata/dictionary-lookup-analysis" : "data/dictionary-lookup-analysis");
 
         arcExistence.analyze(getArcExistenceForClassifier(mstDataTrain),
                 getArcExistenceForClassifier(mstDataTest),
-                "data/arc-existence-analysis");
+                FULL_DATA ? "realdata/arc-existence-analysis" : "data/arc-existence-analysis");
 
         arcType.analyze(getArcTypeForClassifier(mstDataTrain),
                 getArcTypeForClassifier(mstDataTest),
-                "data/arc-type-analysis");
+                FULL_DATA ? "realdata/arc-type-analysis" : "data/arc-type-analysis");
     }
 
     public void testCompletePipeline() throws IOException, InterruptedException {
-        analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/amr-train-analysis");
-        analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/amr-test-analysis");
+        if (FULL_DATA) {
+            analyzeAMRSubset("realdata/train-subset.txt", "realdata/train-conll.txt", "realdata/amr-train-analysis");
+            analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "realdata/amr-test-analysis");
+        }
+        else {
+            analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/amr-train-analysis");
+            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/amr-test-analysis");
+        }
     }
 
     private void analyzeAMRSubset(String path, String coNLLPath, String output) throws IOException, InterruptedException {

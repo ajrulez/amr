@@ -126,7 +126,10 @@ public class NodeConnector {
                     }
                     sb.append("(ROOT)");
                     sb.append(":");
-                    sb.append(state.annotation.toString());
+                    if (pair.first.tokens == null) {
+                        throw new IllegalStateException("Can't have null tokens");
+                    }
+                    sb.append(pair.first.tokens[0]+":"+pair.first.tokens[1]);
                     return sb.toString();
                 });
 
@@ -187,8 +190,6 @@ public class NodeConnector {
             AMR.Node[] nodes = pair.first.nodes;
             String[][] arcs = pair.second;
 
-            System.out.println(Arrays.deepToString(arcs));
-
             Queue<Integer> q = new ArrayDeque<>();
             Set<Integer> visited = new HashSet<>();
             q.add(0);
@@ -225,12 +226,13 @@ public class NodeConnector {
         arcTypePrediction.train(trainingExamples);
     }
 
-    public String[][] connect(AMR.Node[] nodes, String[][] forcedArcs, Annotation annotation) {
+    public String[][] connect(AMR.Node[] nodes, String[][] forcedArcs, Annotation annotation, String[] tokens) {
         Queue<Integer> q = new ArrayDeque<>();
         Set<Integer> visited = new HashSet<>();
         q.add(0);
 
         GreedyState state = new GreedyState();
+        state.tokens = tokens;
         state.nodes = nodes;
         state.arcs = new String[nodes.length][nodes.length];
         state.originalParent = new int[nodes.length];
@@ -276,8 +278,11 @@ public class NodeConnector {
                     probs[i][j] = Math.exp(counter.getCount(classes.get(j)));
                     sum += probs[i][j];
                 }
+
+                // We want to maximize the product of probabilities, so that's the sum of the logs
+
                 for (int j = 0; j < classes.size(); j++) {
-                    probs[i][j] /= sum;
+                    probs[i][j] = Math.log(probs[i][j] / sum);
                 }
             }
 

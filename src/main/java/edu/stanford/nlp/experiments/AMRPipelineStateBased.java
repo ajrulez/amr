@@ -214,7 +214,7 @@ public class AMRPipelineStateBased {
 
     private AMR greedilyConstruct(AMRNodeStateBased state) {
 
-        String[][] arcs = nodeConnector.connect(state.nodes, state.forcedArcs, state.annotation);
+        String[][] arcs = nodeConnector.connect(state.nodes, state.forcedArcs, state.annotation, state.tokens);
 
         System.out.println(Arrays.deepToString(arcs));
 
@@ -555,6 +555,7 @@ public class AMRPipelineStateBased {
 
             Pair<GreedyState, String[][]> pair = NodeConnector.amrToContextAndArcs(amr);
             pair.first.annotation = nerPlusPlusData.get(i).annotation;
+            pair.first.tokens = amr.sourceText;
             list.add(pair);
         }
 
