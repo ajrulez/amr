@@ -297,6 +297,9 @@ public class AMRPipeline {
                 currentDict = null;
             }
         }
+        if (currentDict != null) {
+            adjacentDicts.add(currentDict);
+        }
 
         // Now we can go through and start to generate components as a list of AMR's
 
@@ -461,6 +464,7 @@ public class AMRPipeline {
         // Simple coref solution, match based on identical source tokens
 
         for (AMR.Node node : result.nodes) {
+            if (node.title.equals("name")) continue;
             for (AMR.Node node2 : result.nodes) {
                 if (node == node2) continue;
                 String token1 = tokens[node.alignment];

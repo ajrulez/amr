@@ -49,7 +49,7 @@ public class NodeConnectorTest {
 
         String[][] forcedArcs = new String[nodes.length][nodes.length];
 
-        String[][] recoveredArcs = nodeConnector.connect(nodes, forcedArcs);
+        String[][] recoveredArcs = nodeConnector.connect(nodes, forcedArcs, amr.multiSentenceAnnotationWrapper.sentences.get(0).annotation);
         for (int j = 0; j < recoveredArcs.length; j++) {
             for (int k = 0; k < recoveredArcs[j].length; k++) {
                 if (arcs[j][k] == null) arcs[j][k] = "NONE";

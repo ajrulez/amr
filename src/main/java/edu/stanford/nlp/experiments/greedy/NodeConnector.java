@@ -4,13 +4,13 @@ import edu.stanford.nlp.experiments.ConstrainedSequence;
 import edu.stanford.nlp.experiments.LinearPipe;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.IndexedWord;
+import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
 import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stats.Counter;
 import edu.stanford.nlp.util.Pair;
-import edu.stanford.nlp.util.Triple;
 
 import java.util.*;
 import java.util.function.Function;
@@ -48,15 +48,35 @@ public class NodeConnector {
 
      */
 
-    private String getPath(GreedyState state, int tail) {
-        if (state.head == 0 || tail == 0) { // if tail == 0, then something else went fairly wrong
+    private int getRootNode(GreedyState state) {
+        SemanticGraph graph = state.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+
+        int rootToken = graph.getFirstRoot().index();
+
+        System.out.println("Root token: "+rootToken);
+
+        for (int i = 0; i < state.nodes.length; i++) {
+            if (state.nodes[i] != null && state.nodes[i].alignment == rootToken) return i;
+        }
+        return -1;
+    }
+
+    private String getPath(GreedyState state, int head, int tail) {
+        if (head == 0) {
             return "ROOT:NOPATH";
         }
-        if (state.head == tail) {
+        if (head == tail) {
             return "IDENTITY";
         }
-        int headToken = state.nodes[state.head].alignment;
+        if (head == -1) {
+            return "OOB:NOPATH";
+        }
+        int headToken = state.nodes[head].alignment;
         int tailToken = state.nodes[tail].alignment;
+        if (state.annotation == null) {
+            throw new IllegalStateException("Can't have a null annotation for our greedy state!");
+        }
         SemanticGraph graph = state.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
                 .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
         IndexedWord headIndexedWord = graph.getNodeByIndexSafe(headToken);
@@ -104,13 +124,27 @@ public class NodeConnector {
                         sb.append(state.nodes[cursor].toString());
                         cursor = state.originalParent[cursor];
                     }
+                    sb.append("(ROOT)");
                     return sb.toString();
                 });
 
                 // Builds a simple dependency path between the two nodes
 
-                // add((pair) -> getPath(pair.first, pair.second));
+                add((pair) -> getPath(pair.first, pair.first.head, pair.second));
 
+                // Path to root for the target node
+
+                add((pair) -> getPath(pair.first, getRootNode(pair.first), pair.second));
+
+                // Gets the fraction of the way you are into the sentence, into a couple of buckets
+
+                add((pair) -> {
+                    double frac = (double)pair.second / pair.first.nodes.length;
+
+                    int buckets = 8;
+
+                    return "BUCKET "+Math.round(frac * buckets);
+                });
             }}, null);
 
     public static Pair<GreedyState,String[][]> amrToContextAndArcs(AMR amr) {
@@ -145,6 +179,8 @@ public class NodeConnector {
             AMR.Node[] nodes = pair.first.nodes;
             String[][] arcs = pair.second;
 
+            System.out.println(Arrays.deepToString(arcs));
+
             Queue<Integer> q = new ArrayDeque<>();
             Set<Integer> visited = new HashSet<>();
             q.add(0);
@@ -168,7 +204,9 @@ public class NodeConnector {
 
                     String arcName = arcs[head][i] == null ? "NONE" : arcs[head][i];
                     if (!classes.contains(arcName)) classes.add(arcName);
+                    // Add this arc to the context for future states
                     nextState.arcs[head][i] = arcName;
+                    // Add this actual classification to the existing context
                     trainingExamples.add(new Pair<>(new Pair<>(state, i), arcName));
                 }
                 state = nextState;
@@ -179,7 +217,7 @@ public class NodeConnector {
         arcTypePrediction.train(trainingExamples);
     }
 
-    public String[][] connect(AMR.Node[] nodes, String[][] forcedArcs) {
+    public String[][] connect(AMR.Node[] nodes, String[][] forcedArcs, Annotation annotation) {
         Queue<Integer> q = new ArrayDeque<>();
         Set<Integer> visited = new HashSet<>();
         q.add(0);
@@ -188,6 +226,7 @@ public class NodeConnector {
         state.nodes = nodes;
         state.arcs = new String[nodes.length][nodes.length];
         state.originalParent = new int[nodes.length];
+        state.annotation = annotation;
 
         while (!q.isEmpty()) {
             int head = q.poll();
@@ -197,32 +236,45 @@ public class NodeConnector {
             double[][] probs = new double[nodes.length][classes.size()];
             int[] maxCounts = new int[classes.size()];
 
-            for (int i = 0; i < classes.size(); i++) {
-                if (classSizeOverride.containsKey(classes.get(i))) {
-                    int count = classSizeOverride.get(classes.get(i));
-                    if (count == -1) {
-                        maxCounts[i] = nodes.length+1;
-                    }
-                    else {
-                        maxCounts[i] = count;
-                    }
+            // Class count constraints at ROOT are special
+            if (head == 0) {
+                for (int i = 0; i < classes.size(); i++) {
+                    if (classes.get(i).equals("NONE")) maxCounts[i] = nodes.length-1;
+                    if (classes.get(i).equals("ROOT")) maxCounts[i] = 1;
                 }
-                else {
-                    maxCounts[i] = 1;
+            }
+            else {
+                for (int i = 0; i < classes.size(); i++) {
+                    if (classSizeOverride.containsKey(classes.get(i))) {
+                        int count = classSizeOverride.get(classes.get(i));
+                        if (count == -1) {
+                            maxCounts[i] = nodes.length;
+                        } else {
+                            maxCounts[i] = count;
+                        }
+                    } else {
+                        maxCounts[i] = 1;
+                    }
                 }
             }
 
             for (int i = 1; i < nodes.length; i++) {
                 if (i == head) continue;
-                // Fill in probs for each transition type
+                // This comes out as unnormalized log-probability
                 Counter<String> counter = arcTypePrediction.predictSoft(new Pair<>(state, i));
+
+                double sum = 0.0;
                 for (int j = 0; j < classes.size(); j++) {
-                    probs[i][j] = counter.getCount(classes.get(j));
+                    probs[i][j] = Math.exp(counter.getCount(classes.get(j)));
+                }
+                for (int j = 0; j < classes.size(); j++) {
+                    probs[i][j] /= sum;
                 }
             }
 
             int[] forcedClasses = new int[nodes.length];
-            for (int i = 0; i < nodes.length; i++) {
+            forcedClasses[0] = classes.indexOf("NONE");
+            for (int i = 1; i < nodes.length; i++) {
                 if (forcedArcs[head][i] != null) {
                     forcedClasses[i] = classes.indexOf(forcedArcs[head][i]);
                 }

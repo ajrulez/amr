@@ -119,6 +119,9 @@ public class AMRPipelineStateBased {
                 currentDict = null;
             }
         }
+        if (currentDict != null) {
+            adjacentDicts.add(currentDict);
+        }
 
         // Now we can go through and start to generate components as a list of AMR's
 
@@ -210,14 +213,16 @@ public class AMRPipelineStateBased {
 
     private AMR greedilyConstruct(AMRNodeStateBased state) {
 
-        String[][] arcs = nodeConnector.connect(state.nodes, state.forcedArcs);
+        String[][] arcs = nodeConnector.connect(state.nodes, state.forcedArcs, state.annotation);
+
+        System.out.println(Arrays.deepToString(arcs));
 
         Map<Integer,Set<Pair<String,Integer>>> arcMap = new HashMap<>();
 
         for (int i = 0; i < arcs.length; i++) {
             arcMap.put(i, new HashSet<>());
             for (int j = 0; j < arcs[i].length; j++) {
-                if (arcs[i][j] != null) {
+                if (arcs[i][j] != null && !arcs[i][j].equals("NONE")) {
                     arcMap.get(i).add(new Pair<>(arcs[i][j], j));
                 }
             }
@@ -245,6 +250,7 @@ public class AMRPipelineStateBased {
         // Simple coref solution, match based on identical source tokens
 
         for (AMR.Node node : result.nodes) {
+            if (node.title.equals("name")) continue;
             for (AMR.Node node2 : result.nodes) {
                 if (node == node2) continue;
                 String token1 = state.tokens[node.alignment];
@@ -546,7 +552,7 @@ public class AMRPipelineStateBased {
             AMR amr = bank[i];
 
             Pair<GreedyState, String[][]> pair = NodeConnector.amrToContextAndArcs(amr);
-            // pair.first.annotation = nerPlusPlusData.get(i).annotation;
+            pair.first.annotation = nerPlusPlusData.get(i).annotation;
             list.add(pair);
         }
 
@@ -573,54 +579,6 @@ public class AMRPipelineStateBased {
             dictionaryTrainingData.add(pair);
         }
         return dictionaryTrainingData;
-    }
-
-    public static List<Pair<Triple<AMRNodeStateBased,Integer,Integer>,String>> getArcTypeForClassifier(AMR[] bank,
-                                                                                                       List<LabeledSequence> genSequences,
-                                                                                                       List<LabeledSequence> dictSequences) {
-        List<Pair<Triple<AMRNodeStateBased,Integer,Integer>,String>> trainingData = new ArrayList<>();
-        for (int i = 0; i < bank.length; i++) {
-            AMR amr = bank[i];
-            AMRNodeStateBased state = new AMRNodeStateBased(amr.nodes.size(), dictSequences.get(i).annotation);
-            state.tokens = amr.sourceText;
-
-            // We reserve index 0 for ROOT
-            int j = 1;
-            List<AMR.Node> nodeList = new ArrayList<>();
-            for (AMR.Node node : amr.nodes) {
-                state.nodes[j] = node;
-                nodeList.add(node);
-                j++;
-            }
-
-            state.correctArcs[0][nodeList.indexOf(amr.head)+1] = "ROOT";
-            for (AMR.Arc arc : amr.arcs) {
-                state.correctArcs[nodeList.indexOf(arc.head)+1][nodeList.indexOf(arc.tail)+1] = arc.title;
-            }
-
-            Queue<Integer> visitQueue = new ArrayDeque<>();
-            Set<Integer> visited = new HashSet<>();
-            visitQueue.add(0);
-
-            while (!visitQueue.isEmpty()) {
-                state = new AMRNodeStateBased(state);
-                state.currentParent = visitQueue.poll();
-                visited.add(state.currentParent);
-                for (int k = 1; k < state.correctArcs[state.currentParent].length; k++) {
-                    if (k == state.currentParent) continue;
-                    String arc = state.correctArcs[state.currentParent][k];
-                    if (arc == null) {
-                        arc = "NONE";
-                    }
-                    else if (!visited.contains(k)) {
-                        visitQueue.add(k);
-                    }
-                    trainingData.add(new Pair<>(new Triple<>(state, state.currentParent, k), arc));
-                }
-            }
-        }
-
-        return trainingData;
     }
 
     /////////////////////////////////////////////////////
