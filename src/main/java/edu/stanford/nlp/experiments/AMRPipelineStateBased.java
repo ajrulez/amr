@@ -133,7 +133,8 @@ public class AMRPipelineStateBased {
             AMR amr = null;
             if (labels[i].equals("VERB")) {
                 // TODO: Train a simple sense-tagger, or just use DICT for everything
-                amr = createAMRSingleton(tokens[i].toLowerCase()+"-01");
+                amr = createAMRSingleton(labeledSequence.annotation.get(CoreAnnotations.TokensAnnotation.class).
+                        get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase()+"-01");
             }
             else if (labels[i].equals("IDENTITY")) {
                 amr = createAMRSingleton(tokens[i].toLowerCase());
@@ -252,6 +253,7 @@ public class AMRPipelineStateBased {
         for (AMR.Node node : result.nodes) {
             if (node.title.equals("name")) continue;
             for (AMR.Node node2 : result.nodes) {
+                if (node2.title.equals("name")) continue;
                 if (node == node2) continue;
                 String token1 = state.tokens[node.alignment];
                 String token2 = state.tokens[node2.alignment];

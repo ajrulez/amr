@@ -125,9 +125,12 @@ public class NodeConnector {
                         cursor = state.originalParent[cursor];
                     }
                     sb.append("(ROOT)");
+                    sb.append(":");
+                    sb.append(state.annotation.toString());
                     return sb.toString();
                 });
 
+                /*
                 // Builds a simple dependency path between the two nodes
 
                 add((pair) -> getPath(pair.first, pair.first.head, pair.second));
@@ -135,6 +138,10 @@ public class NodeConnector {
                 // Path to root for the target node
 
                 add((pair) -> getPath(pair.first, getRootNode(pair.first), pair.second));
+
+                // Path to root and lexicalize
+
+                add((pair) -> getPath(pair.first, getRootNode(pair.first), pair.second) + pair.first.nodes[pair.second].toString());
 
                 // Gets the fraction of the way you are into the sentence, into a couple of buckets
 
@@ -145,6 +152,7 @@ public class NodeConnector {
 
                     return "BUCKET "+Math.round(frac * buckets);
                 });
+                */
             }}, null);
 
     public static Pair<GreedyState,String[][]> amrToContextAndArcs(AMR amr) {
@@ -266,6 +274,7 @@ public class NodeConnector {
                 double sum = 0.0;
                 for (int j = 0; j < classes.size(); j++) {
                     probs[i][j] = Math.exp(counter.getCount(classes.get(j)));
+                    sum += probs[i][j];
                 }
                 for (int j = 0; j < classes.size(); j++) {
                     probs[i][j] /= sum;

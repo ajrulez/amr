@@ -17,8 +17,8 @@ import java.util.*;
  */
 public class DumpSequence {
     public static void main(String[] args) throws IOException {
-        dumpMicrodata();
-        // dumpPreAlignedSplit();
+        // dumpMicrodata();
+        dumpPreAlignedSplit();
     }
 
     public static void dumpPreAligned() throws IOException {
@@ -77,8 +77,7 @@ public class DumpSequence {
                     String senseTag = components[1];
                     try {
                         int ignored = Integer.parseInt(senseTag);
-                        // For now, we just fallback to DICT for these
-                        // return "VERB";
+                        return "VERB";
                     }
                     catch (Exception e) {
                         // do nothing
