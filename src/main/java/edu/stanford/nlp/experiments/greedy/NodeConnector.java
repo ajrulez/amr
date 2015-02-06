@@ -301,6 +301,7 @@ public class NodeConnector {
             for (int i = 1; i < nodes.length; i++) {
                 state.arcs[state.head][i] = classes.get(solvedClasses[i]);
                 if (!state.arcs[state.head][i].equals("NONE") && !visited.contains(i)) {
+                    state.originalParent[i] = state.head;
                     q.add(i);
                 }
             }
