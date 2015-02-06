@@ -271,8 +271,11 @@ public class AMRPipelineStateBased {
             AMR.Node childNode = nodeSet.nodes[child];
             AMR.Node childNodeNew;
 
+            boolean newlyCreated;
+
             if (oldToNew.containsKey(child)) {
                 childNodeNew = oldToNew.get(child);
+                newlyCreated = false;
             }
             else {
                 if (childNode.type == AMR.NodeType.ENTITY) {
@@ -281,13 +284,16 @@ public class AMRPipelineStateBased {
                     childNodeNew = result.addNode(childNode.title, childNode.type);
                 }
                 oldToNew.put(child, childNodeNew);
+                newlyCreated = true;
             }
 
             AMR.Node parentNodeNew = oldToNew.get(parent);
 
             result.addArc(parentNodeNew, childNodeNew, arc.first);
 
-            recursivelyAttach(arcMap, result, oldToNew, child, nodeSet);
+            if (newlyCreated) {
+                recursivelyAttach(arcMap, result, oldToNew, child, nodeSet);
+            }
         }
     }
 
@@ -532,7 +538,7 @@ public class AMRPipelineStateBased {
             AMR amr = bank[i];
 
             Pair<GreedyState, String[][]> pair = NodeConnector.amrToContextAndArcs(amr);
-            pair.first.annotation = nerPlusPlusData.get(i).annotation;
+            // pair.first.annotation = nerPlusPlusData.get(i).annotation;
             list.add(pair);
         }
 
