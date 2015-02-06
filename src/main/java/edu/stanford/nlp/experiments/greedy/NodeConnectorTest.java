@@ -20,11 +20,14 @@ public class NodeConnectorTest {
 
         List<Pair<GreedyState,String[][]>> list = new ArrayList<>();
 
-        list.add(NodeConnector.amrToContextAndArcs(bank[0]));
+        list.add(NodeConnector.amrToContextAndArcs(bank[1]));
 
         nodeConnector.train(list);
 
-        AMR amr = bank[0];
+        AMR amr = bank[1];
+
+        System.out.println("Trying to get:");
+        System.out.println(amr.toString());
 
         AMR.Node[] nodes = new AMR.Node[amr.nodes.size()+1];
         List<AMR.Node> nodeList = new ArrayList<>();
@@ -51,8 +54,12 @@ public class NodeConnectorTest {
 
         String[][] recoveredArcs = nodeConnector.connect(nodes,
                 forcedArcs,
-                amr.multiSentenceAnnotationWrapper.sentences.get(0).annotation,
+                null, //amr.multiSentenceAnnotationWrapper.sentences.get(0).annotation,
                 amr.sourceText);
+
+        System.out.println("Original arcs: "+Arrays.deepToString(arcs));
+        System.out.println("Recovered arcs: "+Arrays.deepToString(recoveredArcs));
+
         for (int j = 0; j < recoveredArcs.length; j++) {
             for (int k = 0; k < recoveredArcs[j].length; k++) {
                 if (arcs[j][k] == null) arcs[j][k] = "NONE";

@@ -36,6 +36,14 @@ public class LinearPipe<IN,OUT> {
         this.debugErrorContext = debugErrorContext;
     }
 
+    public void debugFeatures(IN in) {
+        Counter<String> features = featurize(in);
+        System.out.println("Debugging features for "+in.toString());
+        for (String s : features.keySet()) {
+            System.out.println(s+":"+features.getCount(s));
+        }
+    }
+
     private Counter<String> featurize(IN in) {
         Counter<String> featureCounts = new ClassicCounter<>();
 

@@ -126,10 +126,7 @@ public class NodeConnector {
                     }
                     sb.append("(ROOT)");
                     sb.append(":");
-                    if (pair.first.tokens == null) {
-                        throw new IllegalStateException("Can't have null tokens");
-                    }
-                    sb.append(pair.first.tokens[0]+":"+pair.first.tokens[1]);
+                    sb.append(pair.first.tokens[0] + ":" + pair.first.tokens[1]);
                     return sb.toString();
                 });
 
@@ -158,27 +155,33 @@ public class NodeConnector {
                 */
             }}, null);
 
+    private static int identityIndexOf(Object[] arr, Object o) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == o) return i;
+        }
+        return -1;
+    }
+
     public static Pair<GreedyState,String[][]> amrToContextAndArcs(AMR amr) {
         AMR.Node[] nodes = new AMR.Node[amr.nodes.size()+1];
-        List<AMR.Node> nodeList = new ArrayList<>();
         int i = 1;
         for (AMR.Node node : amr.nodes) {
             nodes[i] = node;
-            nodeList.add(node);
             i++;
         }
 
         GreedyState state = new GreedyState();
         state.nodes = nodes;
+        state.tokens = amr.sourceText;
 
         String[][] arcs = new String[nodes.length][nodes.length];
         state.arcs = new String[nodes.length][nodes.length];
         state.originalParent = new int[nodes.length];
 
         for (AMR.Arc arc : amr.arcs) {
-            arcs[nodeList.indexOf(arc.head)+1][nodeList.indexOf(arc.tail)+1] = arc.title;
+            arcs[identityIndexOf(nodes, arc.head)][identityIndexOf(nodes, arc.tail)] = arc.title;
         }
-        arcs[0][nodeList.indexOf(amr.head)+1] = "ROOT";
+        arcs[0][identityIndexOf(nodes, amr.head)] = "ROOT";
 
         return new Pair<>(state, arcs);
     }
@@ -204,11 +207,13 @@ public class NodeConnector {
                 int head = q.poll();
                 visited.add(head);
                 state.head = head;
+                System.out.println("New state: " + head);
+                System.out.println("Original parents: "+Arrays.toString(state.originalParent));
                 for (int i = 1; i < nodes.length; i++) {
                     if (i == head) continue;
                     if (arcs[head][i] != null && !visited.contains(i)) q.add(i);
-                    if (arcs[head][i] != null && state.originalParent[i] == 0) {
-                        state.originalParent[i] = head;
+                    if (arcs[head][i] != null && nextState.originalParent[i] == 0) {
+                        nextState.originalParent[i] = head;
                     }
 
                     String arcName = arcs[head][i] == null ? "NONE" : arcs[head][i];
@@ -216,7 +221,12 @@ public class NodeConnector {
                     // Add this arc to the context for future states
                     nextState.arcs[head][i] = arcName;
                     // Add this actual classification to the existing context
-                    trainingExamples.add(new Pair<>(new Pair<>(state, i), arcName));
+                    Pair<GreedyState,Integer> featurizable = new Pair<>(state, i);
+                    trainingExamples.add(new Pair<>(featurizable, arcName));
+                    if (!arcName.equals("NONE")) {
+                        System.out.println("Adding training example: "+arcName);
+                        arcTypePrediction.debugFeatures(featurizable);
+                    }
                 }
                 state = nextState;
                 nextState = state.deepClone();
@@ -270,8 +280,13 @@ public class NodeConnector {
 
             for (int i = 1; i < nodes.length; i++) {
                 if (i == head) continue;
+
+                Pair<GreedyState, Integer> featurizable = new Pair<>(state, i);
+                System.out.println("Testing features: ");
+                arcTypePrediction.debugFeatures(featurizable);
+
                 // This comes out as unnormalized log-probability
-                Counter<String> counter = arcTypePrediction.predictSoft(new Pair<>(state, i));
+                Counter<String> counter = arcTypePrediction.predictSoft(featurizable);
 
                 double sum = 0.0;
                 for (int j = 0; j < classes.size(); j++) {
