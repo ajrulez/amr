@@ -37,6 +37,31 @@ public class NodeConnector {
                 });
             }}, null);
 
+    public static Pair<GreedyState,String[][]> amrToContextAndArcs(AMR amr) {
+        AMR.Node[] nodes = new AMR.Node[amr.nodes.size()+1];
+        List<AMR.Node> nodeList = new ArrayList<>();
+        int i = 1;
+        for (AMR.Node node : amr.nodes) {
+            nodes[i] = node;
+            nodeList.add(node);
+            i++;
+        }
+
+        GreedyState state = new GreedyState();
+        state.nodes = nodes;
+
+        String[][] arcs = new String[nodes.length][nodes.length];
+        state.arcs = new String[nodes.length][nodes.length];
+        state.originalParent = new int[nodes.length];
+
+        for (AMR.Arc arc : amr.arcs) {
+            arcs[nodeList.indexOf(arc.head)+1][nodeList.indexOf(arc.tail)+1] = arc.title;
+        }
+        arcs[0][nodeList.indexOf(amr.head)+1] = "ROOT";
+
+        return new Pair<>(state, arcs);
+    }
+
     public void train(List<Pair<GreedyState,String[][]>> trainingData) {
         List<Pair<Pair<GreedyState,Integer>, String>> trainingExamples = new ArrayList<>();
 
@@ -78,7 +103,7 @@ public class NodeConnector {
         arcTypePrediction.train(trainingExamples);
     }
 
-    public String[][] connect(AMR.Node[] nodes) {
+    public String[][] connect(AMR.Node[] nodes, String[][] forcedArcs) {
         Queue<Integer> q = new ArrayDeque<>();
         Set<Integer> visited = new HashSet<>();
         q.add(0);
@@ -120,7 +145,17 @@ public class NodeConnector {
                 }
             }
 
-            int[] solvedClasses = ConstrainedSequence.solve(probs, maxCounts);
+            int[] forcedClasses = new int[nodes.length];
+            for (int i = 0; i < nodes.length; i++) {
+                if (forcedArcs[head][i] != null) {
+                    forcedClasses[i] = classes.indexOf(forcedArcs[head][i]);
+                }
+                else {
+                    forcedClasses[i] = -1;
+                }
+            }
+
+            int[] solvedClasses = ConstrainedSequence.solve(probs, maxCounts, forcedClasses);
             for (int i = 1; i < nodes.length; i++) {
                 state.arcs[state.head][i] = classes.get(solvedClasses[i]);
                 if (!state.arcs[state.head][i].equals("NONE") && !visited.contains(i)) {

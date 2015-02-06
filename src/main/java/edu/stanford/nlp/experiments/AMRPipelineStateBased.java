@@ -4,6 +4,8 @@ import com.github.keenon.minimalml.cache.BatchCoreNLPCache;
 import com.github.keenon.minimalml.cache.CoreNLPCache;
 import com.github.keenon.minimalml.cache.LazyCoreNLPCache;
 import com.github.keenon.minimalml.word2vec.Word2VecLoader;
+import edu.stanford.nlp.experiments.greedy.GreedyState;
+import edu.stanford.nlp.experiments.greedy.NodeConnector;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -240,11 +242,7 @@ public class AMRPipelineStateBased {
                 });
     }};
 
-    @SuppressWarnings("unchecked")
-    LinearPipe<Triple<AMRNodeStateBased,Integer,Integer>, String> arcType = new LinearPipe<>(
-            cmuFeatures,
-            AMRPipelineStateBased::writeArcContext
-    );
+    NodeConnector nodeConnector = new NodeConnector();
 
     /////////////////////////////////////////////////////
     // PIPELINE
@@ -259,7 +257,8 @@ public class AMRPipelineStateBased {
         System.out.println("Training");
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
         dictionaryLookup.train(getDictionaryForClassifier(dictionaryData));
-        arcType.train(getArcTypeForClassifier(bank, nerPlusPlusData, dictionaryData));
+
+        nodeConnector.train(getArcStitchingForNodeConnect(bank));
     }
 
     private Pair<AMR.Node[],String[][]> predictNodes(String[] tokens, Annotation annotation) {
@@ -379,28 +378,16 @@ public class AMRPipelineStateBased {
     }
 
     private AMR greedilyConstruct(AMRNodeStateBased state) {
-        Queue<Integer> visitQueue = new ArrayDeque<>();
-        Set<Integer> visited = new HashSet<>();
-        visitQueue.add(0);
+
+        String[][] arcs = nodeConnector.connect(state.nodes, state.forcedArcs);
 
         Map<Integer,Set<Pair<String,Integer>>> arcMap = new HashMap<>();
 
-        while (!visitQueue.isEmpty()) {
-            state.currentParent = visitQueue.poll();
-            visited.add(state.currentParent);
-            arcMap.put(state.currentParent, new HashSet<>());
-            for (int i = 1; i < state.nodes.length; i++) {
-                if (i == state.currentParent) continue;
-                // TODO: come up with something clever for doing the greedy construction globally
-                Counter<String> counter = arcType.predictSoft(new Triple<>(state, state.currentParent, i));
-
-                // TODO: Temporary, just do the greedy thing
-                state.partialArcs[state.currentParent][i] = arcType.predict(new Triple<>(state, state.currentParent, i));
-                if (!state.partialArcs[state.currentParent][i].equals("NONE")) {
-                    if (!visited.contains(i)) {
-                        visitQueue.add(i);
-                    }
-                    arcMap.get(state.currentParent).add(new Pair<>(state.partialArcs[state.currentParent][i], i));
+        for (int i = 0; i < arcs.length; i++) {
+            arcMap.put(i, new HashSet<>());
+            for (int j = 0; j < arcs[i].length; j++) {
+                if (arcs[i][j] != null) {
+                    arcMap.get(i).add(new Pair<>(arcs[i][j], j));
                 }
             }
         }
@@ -452,15 +439,6 @@ public class AMRPipelineStateBased {
         for (Pair<String,Integer> arc : outgoingArcs) {
             int child = arc.second;
 
-            String arcName;
-            // TODO: how did this arc get to be null?
-            if (arc.first == null || arc.first.equals("NO-LABEL")) {
-                arcName = arcType.predict(new Triple<>(nodeSet, parent, child));
-            }
-            else {
-                arcName = arc.first;
-            }
-
             AMR.Node childNode = nodeSet.nodes[child];
             AMR.Node childNodeNew;
             if (childNode.type == AMR.NodeType.ENTITY) {
@@ -476,7 +454,7 @@ public class AMRPipelineStateBased {
 
             AMR.Node parentNodeNew = oldToNew.get(parent);
 
-            result.addArc(parentNodeNew, childNodeNew, arcName);
+            result.addArc(parentNodeNew, childNodeNew, arc.first);
 
             recursivelyAttach(arcMap, result, oldToNew, child, nodeSet);
         }
@@ -510,12 +488,10 @@ public class AMRPipelineStateBased {
         System.out.println("Loading training data");
         List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData("data/train-400-seq.txt");
         List<LabeledSequence> dictionaryDataTrain = loadManygenData("data/train-400-manygen.txt");
-        AMR[] trainBank = AMRSlurp.slurp("data/train-400-subset.txt", AMRSlurp.Format.LDC);
 
         System.out.println("Loading testing data");
         List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData("data/test-100-seq.txt");
         List<LabeledSequence> dictionaryDataTest = loadManygenData("data/test-100-manygen.txt");
-        AMR[] testBank = AMRSlurp.slurp("data/test-100-subset.txt", AMRSlurp.Format.LDC);
 
         System.out.println("Running analysis");
         nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain),
@@ -526,9 +502,10 @@ public class AMRPipelineStateBased {
                 getDictionaryForClassifier(dictionaryDataTest),
                 "data/dictionary-lookup-analysis");
 
-        arcType.analyze(getArcTypeForClassifier(trainBank, nerPlusPlusDataTrain, dictionaryDataTrain),
-                getArcTypeForClassifier(testBank, nerPlusPlusDataTest, dictionaryDataTest),
-                "data/arc-type-analysis");
+        /*
+        AMR[] trainBank = AMRSlurp.slurp("data/train-400-subset.txt", AMRSlurp.Format.LDC);
+        AMR[] testBank = AMRSlurp.slurp("data/test-100-subset.txt", AMRSlurp.Format.LDC);
+        */
     }
 
     public void testCompletePipeline() throws IOException, InterruptedException {
@@ -715,6 +692,16 @@ public class AMRPipelineStateBased {
             }
         }
         return nerPlusPlusTrainingData;
+    }
+
+    public static List<Pair<GreedyState, String[][]>> getArcStitchingForNodeConnect(AMR[] bank) {
+        List<Pair<GreedyState, String[][]>> list = new ArrayList<>();
+
+        for (AMR amr : bank) {
+            list.add(NodeConnector.amrToContextAndArcs(amr));
+        }
+
+        return list;
     }
 
     public static List<Pair<Triple<LabeledSequence,Integer,Integer>,String>> getDictionaryForClassifier(

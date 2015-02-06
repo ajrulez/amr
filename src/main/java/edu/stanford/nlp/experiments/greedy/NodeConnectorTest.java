@@ -18,9 +18,13 @@ public class NodeConnectorTest {
         AMR[] bank = AMRSlurp.slurp("data/test-100-subset.txt", AMRSlurp.Format.LDC);
         NodeConnector nodeConnector = new NodeConnector();
 
-        AMR amr = bank[0];
-
         List<Pair<GreedyState,String[][]>> list = new ArrayList<>();
+
+        list.add(NodeConnector.amrToContextAndArcs(bank[0]));
+
+        nodeConnector.train(list);
+
+        AMR amr = bank[0];
 
         AMR.Node[] nodes = new AMR.Node[amr.nodes.size()+1];
         List<AMR.Node> nodeList = new ArrayList<>();
@@ -43,14 +47,9 @@ public class NodeConnectorTest {
         }
         arcs[0][nodeList.indexOf(amr.head)+1] = "ROOT";
 
-        System.out.println(Arrays.deepToString(arcs));
+        String[][] forcedArcs = new String[nodes.length][nodes.length];
 
-        Pair<GreedyState,String[][]> pair = new Pair<>(state, arcs);
-        list.add(pair);
-
-        nodeConnector.train(list);
-
-        String[][] recoveredArcs = nodeConnector.connect(nodes);
+        String[][] recoveredArcs = nodeConnector.connect(nodes, forcedArcs);
         for (int j = 0; j < recoveredArcs.length; j++) {
             for (int k = 0; k < recoveredArcs[j].length; k++) {
                 if (arcs[j][k] == null) arcs[j][k] = "NONE";

@@ -14,12 +14,12 @@ public class ConstrainedSequence {
         int[] classes = solve(new double[][]{
                 new double[]{1.0, 4.0},
                 new double[]{2.0, 3.5}
-        }, new int[]{1, 1});
+        }, new int[]{1, 1}, new int[]{-1, -1});
 
         System.out.println(classes[0]+","+classes[1]);
     }
 
-    public static int[] solve(double[][] probabilities, int[] allowedClassOccupants) {
+    public static int[] solve(double[][] probabilities, int[] allowedClassOccupants, int[] forcedClasses) {
         assert(probabilities[0].length == allowedClassOccupants.length);
 
         int[] classes = new int[probabilities.length];
@@ -57,6 +57,23 @@ public class ConstrainedSequence {
                     expr.addTerm(1.0, vars[i][j]);
                 }
                 model.addConstr(expr, GRB.LESS_EQUAL, allowedClassOccupants[j], "d"+j);
+            }
+
+            // Constrain any forced classes
+
+            for (int i = 0; i < forcedClasses.length; i++) {
+                if (forcedClasses[i] != -1) {
+                    for (int j = 0; j < probabilities[i].length; j++) {
+                        GRBLinExpr expr = new GRBLinExpr();
+                        expr.addTerm(1.0, vars[i][j]);
+                        if (forcedClasses[i] == j) {
+                            model.addConstr(expr, GRB.EQUAL, 1.0, "f"+i+j);
+                        }
+                        else {
+                            model.addConstr(expr, GRB.EQUAL, 0.0, "f"+i+j);
+                        }
+                    }
+                }
             }
 
             // Add the goal
