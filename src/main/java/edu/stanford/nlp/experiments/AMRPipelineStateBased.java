@@ -30,6 +30,8 @@ import java.util.function.Function;
  */
 public class AMRPipelineStateBased {
 
+    static boolean REAL_DATA = false;
+
     /////////////////////////////////////////////////////
     // FEATURE SPECS
     //
@@ -79,9 +81,9 @@ public class AMRPipelineStateBased {
 
     public void trainStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusData = loadSequenceData("data/train-400-seq.txt");
-        List<LabeledSequence> dictionaryData = loadManygenData("data/train-400-manygen.txt");
-        AMR[] bank = AMRSlurp.slurp("data/train-400-subset.txt", AMRSlurp.Format.LDC);
+        List<LabeledSequence> nerPlusPlusData = loadSequenceData(REAL_DATA ? "data/train-400-seq.txt" : "data/train-3-seq.txt");
+        List<LabeledSequence> dictionaryData = loadManygenData(REAL_DATA ? "data/train-400-manygen.txt" : "data/train-3-manygen.txt");
+        AMR[] bank = AMRSlurp.slurp(REAL_DATA ? "data/train-400-subset.txt" : "data/train-3-subset.txt", AMRSlurp.Format.LDC);
 
         System.out.println("Training");
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
@@ -302,6 +304,7 @@ public class AMRPipelineStateBased {
         AMRNodeStateBased nodeSet = new AMRNodeStateBased(nodesAndArcs.first.length-1, annotation);
         nodeSet.nodes = nodesAndArcs.first;
         nodeSet.forcedArcs = nodesAndArcs.second;
+        nodeSet.tokens = tokens;
 
         return greedilyConstruct(nodeSet);
     }
@@ -346,8 +349,13 @@ public class AMRPipelineStateBased {
     }
 
     public void testCompletePipeline() throws IOException, InterruptedException {
-        analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/amr-train-analysis");
-        analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/amr-test-analysis");
+        if (REAL_DATA) {
+            analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/amr-train-analysis");
+            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/amr-test-analysis");
+        }
+        else {
+            analyzeAMRSubset("data/train-3-subset.txt", "data/train-3-conll.txt", "data/amr-train-micro-overfit");
+        }
     }
 
     private void analyzeAMRSubset(String path, String coNLLPath, String output) throws IOException, InterruptedException {
@@ -385,7 +393,7 @@ public class AMRPipelineStateBased {
     public static void main(String[] args) throws IOException, InterruptedException {
         AMRPipelineStateBased pipeline = new AMRPipelineStateBased();
         pipeline.trainStages();
-        pipeline.analyzeStages();
+        if (REAL_DATA) pipeline.analyzeStages();
         pipeline.testCompletePipeline();
     }
 

@@ -1,0 +1,39 @@
+innovation	After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(i / innovate-01 [0 = "A"])	27	27
+
+innovation	After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(i / innovate-01 [0 = "A"])	34	34
+
+innovation	1 . Establish an innovation fund with a maximum amount of 1,000 U.S. dollars . 
+(i / innovate-01 [0 = "A"])	4	4
+
+amount	1 . Establish an innovation fund with a maximum amount of 1,000 U.S. dollars . 
+(a / amount-01 [0 = "A"])	9	9
+
+u.s._dollars	1 . Establish an innovation fund with a maximum amount of 1,000 U.S. dollars . 
+(m / monetary-quantity [1 = "B"]:unit (d / dollar [1 = "B"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "States" [0 = "A"]:op1 "United" [0 = "A"]))))	12	13
+
+formulated_strategic	After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(s / strategy [1 = "B"])	30	31
+
+establishing	Establishing Models in Industrial Innovation 
+(e / establish-01 [0 = "A"])	0	0
+
+american	After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "States" [0 = "A"]:op1 "United" [0 = "A"]))	14	14
+
+industrial_innovation	Establishing Models in Industrial Innovation 
+(i / innovate-01 [1 = "B"]:ARG1 (i2 / industry [0 = "A"]))	3	4
+
+believed	After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(b / believe-01 [0 = "A"])	17	17
+
+ability	After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(c / capable-41 [0 = "A"])	25	25
+
+competitor_invented	After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(i / invent-01 [1 = "B"]:ARG0 (c / company [0 = "A"]:ARG0-of (c2 / compete-01 [0 = "A"])))	2	3
+
+establish	1 . Establish an innovation fund with a maximum amount of 1,000 U.S. dollars . 
+(e / establish-01 [0 = "A"])	2	2
+

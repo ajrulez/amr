@@ -1,0 +1,57 @@
+4	Establishing Models in Industrial Innovation
+1	(m/model)	3	ARG1	1
+2	(i2/industry)	4	ARG1	3
+3	(e/establish-01)	0	ROOT	0
+4	(i/innovate-01)	1	mod	4
+
+34	After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry .
+1	(n2/name)	9	name	14
+2	(c8/capable-41)	13	ARG1	25
+3	(c2/company)	7	ARG0	15
+4	(c/ceo)	29	ARG0	11
+5	(c7/CEO)	31	ARG2	11
+6	(c6/compete-01)	3	ARG0-of	2
+7	(e/employ-01)	14	ARG1-of	22
+8	(a3/after)	21	time	0
+9	(c3/country)	3	mod	14
+10	(i3/industry)	19	prep-in	37
+11	"United"	1	op1	14
+12	(w/wash-01)	26	ARG0-of	7
+13	(b/believe-01)	21	op1	17
+14	(p/person)	19	ARG0	22
+15	(p2/person)	13	ARG0	11
+16	(c2/company)	6	ARG1	15
+17	(f2/front)	27	mod	5
+18	(p/person)	2	ARG1	22
+19	(i/innovate-01)	2	ARG2	27
+20	(i4/invent-01)	8	op1	3
+21	(a/and)	0	ROOT	29
+22	(c4/countermeasure)	29	ARG1	32
+23	(i2/innovate-01)	22	purpose	34
+24	(n/name)	3	name	15
+25	"States"	1	op2	14
+26	(m/machine)	20	ARG1	8
+27	(l/load-01)	26	ARG1-of	6
+28	(c2/company)	31	ARG1	15
+29	(f/formulate-01)	21	op2	30
+30	(c5/company)	20	ARG0	2
+31	(h2/have-org-role-91)	14	ARG0-of	11
+32	(e2/each)	14	mod	19
+33	(s/strategy)	22	mod	31
+34	"IM"	1	op1	15
+
+13	1 . Establish an innovation fund with a maximum amount of 1,000 U.S. dollars .
+1	(f2/fund)	7	ARG1	5
+2	(a/amount-01)	1	ARG1-of	9
+3	"United"	4	op1	12
+4	(n/name)	12	name	12
+5	(m2/maximum)	2	ARG2	8
+6	1000	9	quant	11
+7	(e/establish-01)	0	ROOT	2
+8	(i/innovate-01)	1	purpose	4
+9	(m/monetary-quantity)	5	op1	13
+10	"States"	4	op2	12
+11	(x/1)	7	li	0
+12	(c/country)	13	mod	12
+13	(d/dollar)	9	unit	13
+

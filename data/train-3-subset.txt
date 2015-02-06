@@ -1,0 +1,60 @@
+# ::id bolt12_07_4800.1 ::date 2012-12-19T12:53:14 ::annotator SDL-AMR-09 ::preferred
+# ::snt Establishing Models in Industrial Innovation 
+(e / establish-01 [0 = "Establishing"]
+	:ARG1 (m / model [1 = "Models"]
+		:mod (i / innovate-01 [4 = "Innovation"]
+			:ARG1 (i2 / industry [3 = "Industrial"]))))
+
+# ::id bolt12_07_4800.2 ::date 2012-12-19T14:01:36 ::annotator SDL-AMR-09 ::preferred
+# ::snt After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(a / and [29 = "and"]
+	:op1 (b / believe-01 [17 = "believed"]
+		:ARG0 (p2 / person [11 = "CEO"]
+			:ARG0-of (h2 / have-org-role-91 [11 = "CEO"]
+				:ARG1 (c2 / company [15 = "IM"]
+					:name (n / name [15 = "IM"]
+						:op1 "IM" [15 = "IM"])
+					:mod (c3 / country [14 = "American"]
+						:name (n2 / name [14 = "American"]
+							:op1 "United" [14 = "American"]
+							:op2 "States" [14 = "American"])))
+				:ARG2 (c7 / CEO [11 = "CEO"])))
+		:ARG1 (c8 / capable-41 [25 = "ability"]
+			:ARG1 (p / person [22 = "employees"]
+				:ARG1-of (e / employ-01 [22 = "employees"]
+					:ARG0 c2 [15 = "IM"])
+				:mod (e2 / each [19 = "each"]))
+			:ARG2 (i / innovate-01 [27 = "innovation"]
+				:ARG0 p [22 = "employees"])))
+	:op2 (f / formulate-01 [30 = "formulated"]
+		:ARG0 (c / ceo [11 = "CEO"])
+		:ARG1 (c4 / countermeasure [32 = "countermeasures"]
+			:mod (s / strategy [31 = "strategic"])
+			:purpose (i2 / innovate-01 [34 = "innovation"]
+				:prep-in (i3 / industry [37 = "industry"]))))
+	:time (a3 / after [0 = "After"]
+		:op1 (i4 / invent-01 [3 = "invented"]
+			:ARG0 (c5 / company [2 = "competitor"]
+				:ARG0-of (c6 / compete-01 [2 = "competitor"]
+					:ARG1 c2 [15 = "IM"]))
+			:ARG1 (m / machine [8 = "machine"]
+				:ARG0-of (w / wash-01 [7 = "washing"])
+				:ARG1-of (l / load-01 [6 = "loading"]
+					:mod (f2 / front [5 = "front"]))))))
+
+# ::id bolt12_07_4800.3 ::date 2012-12-20T08:37:49 ::annotator SDL-AMR-09 ::preferred
+# ::snt 1 . Establish an innovation fund with a maximum amount of 1,000 U.S. dollars . 
+(e / establish-01 [2 = "Establish"]
+	:ARG1 (f2 / fund [5 = "fund"]
+		:purpose (i / innovate-01 [4 = "innovation"])
+		:ARG1-of (a / amount-01 [9 = "amount"]
+			:ARG2 (m2 / maximum [8 = "maximum"]
+				:op1 (m / monetary-quantity [13 = "dollars"]
+					:quant 1000 [11 = "1,000"]
+					:unit (d / dollar [13 = "dollars"]
+						:mod (c / country [12 = "U.S."]
+							:name (n / name [12 = "U.S."]
+								:op1 "United" [12 = "U.S."]
+								:op2 "States" [12 = "U.S."])))))))
+	:li (x / 1 [0 = "1"]))
+

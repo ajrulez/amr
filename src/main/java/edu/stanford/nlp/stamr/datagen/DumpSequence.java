@@ -17,7 +17,8 @@ import java.util.*;
  */
 public class DumpSequence {
     public static void main(String[] args) throws IOException {
-        dumpPreAlignedSplit();
+        dumpMicrodata();
+        // dumpPreAlignedSplit();
     }
 
     public static void dumpPreAligned() throws IOException {
@@ -25,6 +26,18 @@ public class DumpSequence {
         dumpSequences(train, "data/training-500-seq.txt");
         dumpManygenDictionaries(train, "data/training-500-manygen.txt");
         dumpCONLL(train, "data/training-500-conll.txt");
+    }
+
+    public static void dumpMicrodata() throws IOException {
+        AMR[] bank = AMRSlurp.slurp("data/training-500-subset.txt", AMRSlurp.Format.LDC);
+
+        AMR[] train = new AMR[]{bank[0], bank[1], bank[2]};
+
+        AMRSlurp.burp("data/train-"+train.length+"-subset.txt", AMRSlurp.Format.LDC, train, AMR.AlignmentPrinting.ALL, false);
+
+        dumpSequences(train, "data/train-" + train.length + "-seq.txt");
+        dumpManygenDictionaries(train, "data/train-"+train.length+"-manygen.txt");
+        dumpCONLL(train, "data/train-"+train.length+"-conll.txt");
     }
 
     public static void dumpPreAlignedSplit() throws IOException {
