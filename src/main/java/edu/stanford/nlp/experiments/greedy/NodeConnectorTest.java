@@ -20,22 +20,29 @@ public class NodeConnectorTest {
 
         List<Pair<GreedyState,String[][]>> list = new ArrayList<>();
 
-        list.add(NodeConnector.amrToContextAndArcs(bank[1]));
+        AMR amr = bank[8];
 
-        nodeConnector.train(list);
-
-        AMR amr = bank[1];
+        Pair<GreedyState,String[][]> train = NodeConnector.amrToContextAndArcs(amr);
+        list.add(train);
 
         System.out.println("Trying to get:");
         System.out.println(amr.toString());
 
-        AMR.Node[] nodes = new AMR.Node[amr.nodes.size()+1];
+        /**
+         * (f / foolish
+             :mode interrogative
+             :domain (i / i)
+             :condition (d / do-02
+                 :ARG0 i
+                 :ARG1 (t / this)))
+         */
+
+        nodeConnector.train(list);
+
+        AMR.Node[] nodes = NodeConnector.filterNodes(amr.nodes);
         List<AMR.Node> nodeList = new ArrayList<>();
-        int i = 1;
-        for (AMR.Node node : amr.nodes) {
-            nodes[i] = node;
-            nodeList.add(node);
-            i++;
+        for (AMR.Node node : nodes) {
+            if (node != null) nodeList.add(node);
         }
 
         GreedyState state = new GreedyState();
@@ -51,6 +58,16 @@ public class NodeConnectorTest {
         arcs[0][nodeList.indexOf(amr.head)+1] = "ROOT";
 
         String[][] forcedArcs = new String[nodes.length][nodes.length];
+
+        nodeConnector.testValid = arcs;
+
+        for (int j = 0; j < arcs.length; j++) {
+            for (int k = 0; k < arcs[j].length; k++) {
+                if (arcs[j][k] == null) arcs[j][k] = "NONE";
+                if (train.second[j][k] == null) train.second[j][k] = "NONE";
+                assertEquals(train.second[j][k], arcs[j][k]);
+            }
+        }
 
         String[][] recoveredArcs = nodeConnector.connect(nodes,
                 forcedArcs,

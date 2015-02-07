@@ -22,6 +22,8 @@ import java.util.function.Function;
  */
 public class NodeConnector {
 
+    String[][] testValid = null;
+
     List<String> classes = new ArrayList<>();
     Map<String, Integer> classSizeOverride = new HashMap<String,Integer>(){{
         put("NONE",-1);
@@ -119,6 +121,7 @@ public class NodeConnector {
                     GreedyState state = pair.first;
                     StringBuilder sb = new StringBuilder();
                     sb.append(state.nodes[pair.second].toString());
+                    sb.append(state.nodes[pair.second].alignment);
                     int cursor = state.head;
                     while (cursor != 0) {
                         sb.append(state.nodes[cursor].toString());
@@ -155,20 +158,43 @@ public class NodeConnector {
                 */
             }}, null);
 
-    private static int identityIndexOf(Object[] arr, Object o) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == o) return i;
+    private static boolean nodesConsideredIdentical(AMR.Node n1, AMR.Node n2) {
+        if (n1.type != AMR.NodeType.ENTITY && n2.type != AMR.NodeType.ENTITY) {
+            if (n1.title.equals(n2.title)) return true;
+        }
+        else {
+            if (n1.ref.equals(n2.ref)) return true;
+        }
+        return false;
+    }
+
+    public static AMR.Node[] filterNodes(Iterable<AMR.Node> arr) {
+        List<AMR.Node> nodeList = new ArrayList<>();
+        outer: for (AMR.Node node : arr) {
+            for (AMR.Node oldNode : nodeList) {
+                if (nodesConsideredIdentical(node, oldNode)) continue outer;
+            }
+            nodeList.add(node);
+        }
+
+        AMR.Node[] nodes = new AMR.Node[nodeList.size()+1];
+        int i = 1;
+        for (AMR.Node node : nodeList) {
+            nodes[i] = node;
+            i++;
+        }
+        return nodes;
+    }
+
+    private static int refIdentityOf(AMR.Node[] arr, AMR.Node o) {
+        for (int i = 1; i < arr.length; i++) {
+            if (nodesConsideredIdentical(arr[i], o)) return i;
         }
         return -1;
     }
 
     public static Pair<GreedyState,String[][]> amrToContextAndArcs(AMR amr) {
-        AMR.Node[] nodes = new AMR.Node[amr.nodes.size()+1];
-        int i = 1;
-        for (AMR.Node node : amr.nodes) {
-            nodes[i] = node;
-            i++;
-        }
+        AMR.Node[] nodes = filterNodes(amr.nodes);
 
         GreedyState state = new GreedyState();
         state.nodes = nodes;
@@ -179,9 +205,9 @@ public class NodeConnector {
         state.originalParent = new int[nodes.length];
 
         for (AMR.Arc arc : amr.arcs) {
-            arcs[identityIndexOf(nodes, arc.head)][identityIndexOf(nodes, arc.tail)] = arc.title;
+            arcs[refIdentityOf(nodes, arc.head)][refIdentityOf(nodes, arc.tail)] = arc.title;
         }
-        arcs[0][identityIndexOf(nodes, amr.head)] = "ROOT";
+        arcs[0][refIdentityOf(nodes, amr.head)] = "ROOT";
 
         return new Pair<>(state, arcs);
     }
@@ -211,9 +237,10 @@ public class NodeConnector {
                 System.out.println("Original parents: "+Arrays.toString(state.originalParent));
                 for (int i = 1; i < nodes.length; i++) {
                     if (i == head) continue;
-                    if (arcs[head][i] != null && !visited.contains(i)) q.add(i);
+                    // if (arcs[head][i] != null && !visited.contains(i)) q.add(i);
                     if (arcs[head][i] != null && nextState.originalParent[i] == 0) {
                         nextState.originalParent[i] = head;
+                        q.add(i);
                     }
 
                     String arcName = arcs[head][i] == null ? "NONE" : arcs[head][i];
@@ -232,6 +259,10 @@ public class NodeConnector {
                 nextState = state.deepClone();
             }
         }
+
+        // If we're doing a training run, we often want to guarantee that the data we're getting is completely
+        // memorizable
+        arcTypePrediction.guaranteeMemorizable(trainingExamples);
 
         arcTypePrediction.train(trainingExamples);
     }
@@ -252,6 +283,14 @@ public class NodeConnector {
             int head = q.poll();
             visited.add(head);
             state.head = head;
+
+            if (head != 0) {
+                if (state.arcs[state.originalParent[head]][head] == null) {
+                    throw new IllegalStateException("Can't have a NULL arc");
+                } else if (state.arcs[state.originalParent[head]][head].equals("NONE")) {
+                    throw new IllegalStateException("Can't have a NONE arc");
+                }
+            }
 
             double[][] probs = new double[nodes.length][classes.size()];
             int[] maxCounts = new int[classes.size()];
@@ -282,8 +321,6 @@ public class NodeConnector {
                 if (i == head) continue;
 
                 Pair<GreedyState, Integer> featurizable = new Pair<>(state, i);
-                System.out.println("Testing features: ");
-                arcTypePrediction.debugFeatures(featurizable);
 
                 // This comes out as unnormalized log-probability
                 Counter<String> counter = arcTypePrediction.predictSoft(featurizable);
@@ -294,10 +331,33 @@ public class NodeConnector {
                     sum += probs[i][j];
                 }
 
-                // We want to maximize the product of probabilities, so that's the sum of the logs
+                // We want to maximize the product of probabilities, so that's the sum in log-space
 
                 for (int j = 0; j < classes.size(); j++) {
                     probs[i][j] = Math.log(probs[i][j] / sum);
+                }
+
+                // If we know what the valid arc outputs are already, bc somebody gave them to us, then double check
+                // that we're trivially correct here
+
+                if (testValid != null) {
+                    int max = 0;
+                    double maxVal = Double.NEGATIVE_INFINITY;
+                    for (int j = 0; j < classes.size(); j++) {
+                        if (probs[i][j] > maxVal) {
+                            max = j;
+                            maxVal = probs[i][j];
+                        }
+                    }
+
+                    if (testValid[head][i] == null) testValid[head][i] = "NONE";
+                    if (classes.indexOf(testValid[head][i]) != max) {
+                        System.out.println("Testing features: ");
+                        arcTypePrediction.debugFeatures(featurizable);
+                        System.out.println("Gave class: "+classes.get(max));
+                        System.out.println("Correct class: "+testValid[head][i]);
+                        throw new IllegalStateException("Giving higher weight to the wrong output");
+                    }
                 }
             }
 
@@ -315,9 +375,19 @@ public class NodeConnector {
             int[] solvedClasses = ConstrainedSequence.solve(probs, maxCounts, forcedClasses);
             for (int i = 1; i < nodes.length; i++) {
                 state.arcs[state.head][i] = classes.get(solvedClasses[i]);
-                if (!state.arcs[state.head][i].equals("NONE") && !visited.contains(i)) {
+                if (!state.arcs[state.head][i].equals("NONE") && state.originalParent[i] == 0) {
                     state.originalParent[i] = state.head;
                     q.add(i);
+                }
+
+                // If we know what the valid arc outputs are, bc somebody gave them to us for testing,
+                // then do the trivial double check
+
+                if (testValid != null) {
+                    if (testValid[state.head][i] == null) testValid[state.head][i] = "NONE";
+                    if (!state.arcs[state.head][i].equals(testValid[state.head][i])) {
+                        throw new IllegalStateException("Missed a test at real time");
+                    }
                 }
             }
         }

@@ -75,9 +75,21 @@ public class LinearPipe<IN,OUT> {
         return new RVFDatum<>(featurize(in), out);
     }
 
+    public void guaranteeMemorizable(List<Pair<IN,OUT>> data) {
+        Set<String> set = new HashSet<>();
+        for (Pair<IN,OUT> pair : data) {
+            Counter<String> f = featurize(pair.first);
+            for (String s : f.keySet()) {
+                if (set.contains(s)) throw new IllegalArgumentException("Can't have the same feature appear twice!\n"+
+                s);
+                set.add(s);
+            }
+        }
+    }
+
     public void train(List<Pair<IN,OUT>> data) {
         LinearClassifierFactory<OUT,String> factory = new LinearClassifierFactory<>();
-        factory.setSigma(2.0);  // higher -> less regularization (default=1)
+        factory.setSigma(0.01);  // higher -> less regularization (default=1)
         RVFDataset<OUT, String> dataset = new RVFDataset<>();
         for (Pair<IN,OUT> pair : data) {
             dataset.add(toDatum(pair.first, pair.second));
