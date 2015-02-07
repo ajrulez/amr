@@ -52,11 +52,13 @@ public class ConstrainedSequence {
             // Make sure that all the classes have no more than the allowed number of occupants
 
             for (int j = 0; j < allowedClassOccupants.length; j++) {
-                GRBLinExpr expr = new GRBLinExpr();
-                for (int i = 0; i < probabilities.length; i++) {
-                    expr.addTerm(1.0, vars[i][j]);
+                if (allowedClassOccupants[j] != -1) {
+                    GRBLinExpr expr = new GRBLinExpr();
+                    for (int i = 0; i < probabilities.length; i++) {
+                        expr.addTerm(1.0, vars[i][j]);
+                    }
+                    model.addConstr(expr, GRB.LESS_EQUAL, allowedClassOccupants[j], "d" + j);
                 }
-                model.addConstr(expr, GRB.LESS_EQUAL, allowedClassOccupants[j], "d"+j);
             }
 
             // Constrain any forced classes
