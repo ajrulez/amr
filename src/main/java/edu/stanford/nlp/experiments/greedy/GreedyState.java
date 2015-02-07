@@ -113,6 +113,14 @@ public class GreedyState {
         return true;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Head: ").append(head).append("\n");
+        sb.append("Q: ").append(Arrays.toString(q.toArray())).append("\n");
+        return sb.toString();
+    }
+
     public GreedyState transition(String[] headArcs) {
 
         // Put in all the arcs

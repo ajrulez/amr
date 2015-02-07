@@ -14,10 +14,7 @@ import org.junit.contrib.theories.Theory;
 import org.junit.runner.RunWith;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 
 import static org.junit.Assert.*;
@@ -71,11 +68,12 @@ public class TrainableOracleTest {
                     new GreedyState(GoldOracle.prepareForParse(amr.nodes), amr.sourceText, null),
                     new GoldOracle(amr));
 
-            assertEquals(goldDerivation.size(), derivation.size());
-
-            for (int j = 0; j < derivation.size(); j++) {
+            for (int j = 0; j < Math.min(derivation.size(), goldDerivation.size()); j++) {
+                assertArrayEquals(goldDerivation.get(j).second, derivation.get(j).second);
                 assertEquals(goldDerivation.get(j).first, derivation.get(j).first);
             }
+
+            assertEquals(goldDerivation.size(), derivation.size());
         }
     }
 }

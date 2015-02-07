@@ -67,14 +67,14 @@ public class TrainableOracle extends Oracle {
         for (int i = 0; i < state.nodes.length-1; i++) {
             Counter<String> arcTypeUnnormalizedLogLikelihoods = classifier.predictSoft(new Pair<>(state, i+1));
 
-            // We still want everything in log space, but we want it normalized, so we do that
-            double sum = 0.0;
+            // We don't want to get nasty numerical errors with the log-roundoff, so we adjust all the logs to the mean
+            double sum = 0;
             for (int j = 0; j < arcTypes.size(); j++) {
                 probs[i][j] = Math.exp(arcTypeUnnormalizedLogLikelihoods.getCount(arcTypes.get(j)));
                 sum += probs[i][j];
             }
             for (int j = 0; j < arcTypes.size(); j++) {
-                probs[i][j] = Math.log(probs[i][j]/sum);
+                probs[i][j] = Math.log(probs[i][j] / sum);
             }
         }
 
@@ -93,6 +93,7 @@ public class TrainableOracle extends Oracle {
         int[] solvedClasses = ConstrainedSequence.solve(probs, maxClassCounts, forcedClasses);
 
         String[] arcs = new String[state.nodes.length];
+        arcs[0] = "NONE";
         for (int i = 0; i < solvedClasses.length; i++) {
             arcs[i+1] = arcTypes.get(solvedClasses[i]);
         }
