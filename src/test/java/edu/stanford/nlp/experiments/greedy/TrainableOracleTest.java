@@ -45,7 +45,7 @@ public class TrainableOracleTest {
                 sb.append(pair.first.tokens[0] + ":" + pair.first.tokens[1]);
                 return sb.toString();
             });
-        }});
+        }}, null);
 
         for (int i = 0; i < bank.length; i++) {
             AMR amr = bank[i];

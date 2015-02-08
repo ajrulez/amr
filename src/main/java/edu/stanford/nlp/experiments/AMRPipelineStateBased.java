@@ -29,7 +29,7 @@ import java.util.function.Function;
  */
 public class AMRPipelineStateBased {
 
-    static boolean REAL_DATA = false;
+    static boolean REAL_DATA = true;
 
     /////////////////////////////////////////////////////
     // FEATURE SPECS
@@ -73,29 +73,231 @@ public class AMRPipelineStateBased {
     );
 
     TrainableOracle bfsOracle;
+
     private static String headOrRoot(GreedyState state) {
         if (state.head == 0) return "ROOT";
         else return state.nodes[state.head].toString();
     }
 
+    private String getDependencyPath(GreedyState state, int head, int tail) {
+        if (head == 0 || tail == 0) { // if tail == 0, then something else went fairly wrong
+            return "ROOT:NOPATH";
+        }
+        if (head == tail) {
+            return "IDENTITY";
+        }
+        int headToken = state.nodes[head].alignment;
+        int tailToken = state.nodes[tail].alignment;
+        SemanticGraph graph = state.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+        IndexedWord headIndexedWord = graph.getNodeByIndexSafe(headToken);
+        IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tailToken);
+        if (headIndexedWord == null || tailIndexedWord == null) {
+            return "NOTOKENS:NOPATH";
+        }
+        List<SemanticGraphEdge> edges = graph.getShortestUndirectedPathEdges(headIndexedWord, tailIndexedWord);
+
+        StringBuilder sb = new StringBuilder();
+        IndexedWord currentWord = headIndexedWord;
+        for (SemanticGraphEdge edge : edges) {
+            if (edge.getDependent().equals(currentWord)) {
+                sb.append(">");
+                currentWord = edge.getGovernor();
+            }
+            else {
+                if (!edge.getGovernor().equals(currentWord)) {
+                    throw new IllegalStateException("Edges not in order");
+                }
+                sb.append("<");
+                currentWord = edge.getDependent();
+            }
+            sb.append(edge.getRelation().getShortName());
+            if (currentWord != headIndexedWord) {
+                sb.append(":");
+                sb.append(currentWord.get(CoreAnnotations.PartOfSpeechAnnotation.class));
+            }
+        }
+
+        return sb.toString();
+    }
+
+    private static List<Integer> getParents(GreedyState state, int i) {
+        List<Integer> parents = new ArrayList<>();
+        int cursor = i;
+        while (cursor > 0) {
+            parents.add(cursor);
+            cursor = state.originalParent[cursor];
+        }
+        return parents;
+    }
+
+    private static String getAMRPath(GreedyState state, int head, int tail) {
+        if (state.originalParent[tail] == 0) return "NOPATH";
+        StringBuilder sb = new StringBuilder();
+
+        List<Integer> headParents = getParents(state, head);
+        List<Integer> tailParents = getParents(state, tail);
+
+        int cursor = tail;
+        for (int i = 0; i < tailParents.size(); i++) {
+            sb.append("<").append(state.arcs[tailParents.get(i)][cursor]);
+            if (headParents.contains(tailParents.get(i))) break;
+            cursor = tailParents.get(i);
+        }
+        for (int i = headParents.indexOf(cursor)-1; i >= 0; i--) {
+            sb.append(">").append(state.arcs[cursor][headParents.get(i)]);
+            cursor = headParents.get(i);
+        }
+
+        return sb.toString();
+    }
+
     List<Function<Pair<GreedyState,Integer>,Object>> bfsOracleFeatures =
             new ArrayList<Function<Pair<GreedyState,Integer>,Object>>(){{
+
+                /**
+                 * CMU features
+                 */
+
+                /**
+                 Here's the list of CMU Features as seen in the ACL '14 paper:
+
+                 - Self edge: 1 if edge is between two nodes in the same fragment
+                 - Tail fragment root: 1 if the edge's tail is the root of its graph fragment
+                 - Head fragment root: 1 if the edge's head is the root of its graph fragment
+                 - Path: Dependency edge labels and parts of speech on the shortest syntactic path between any two words of the two spans
+                 - Distance: Number of tokens (plus one) between the concept's spans
+                 - Distance indicators: A feature for each distance value
+                 - Log distance: Log of the distance feature + 1
+
+                 Combos:
+
+                 - Path & Head concept
+                 - Path & Tail concept
+                 - Path & Head word
+                 - Path & Tail word
+                 - Distance & Path
+
+                 */
+
+                // Tail fragment root
                 add(pair -> {
                     GreedyState state = pair.first;
-                    StringBuilder sb = new StringBuilder();
-                    sb.append(state.nodes[pair.second].toString());
-                    sb.append(state.nodes[pair.second].alignment);
-                    int cursor = state.head;
-                    while (cursor != 0) {
-                        sb.append(state.nodes[cursor].toString());
-                        cursor = state.originalParent[cursor];
+                    for (int i = 1; i < state.nodes.length; i++) {
+                        if (state.forcedArcs[i][pair.second] != null) return 0.0;
                     }
-                    sb.append("(ROOT)");
-                    sb.append(":");
-                    sb.append(pair.first.tokens[0] + ":" + pair.first.tokens[1]);
-                    return sb.toString();
+                    return 1.0;
                 });
-    }};
+                // Head fragment root
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    for (int i = 1; i < state.nodes.length; i++) {
+                        if (state.forcedArcs[i][state.head] != null) return 0.0;
+                    }
+                    return 1.0;
+                });
+                // Path
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    return getDependencyPath(state, state.head, pair.second);
+                });
+                // Distance
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    if (state.head == 0) return 0.0;
+                    return Math.abs(state.nodes[state.head].alignment - state.nodes[pair.second].alignment)+1.0;
+                });
+                // Log Distance
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    if (state.head == 0) return 0.0;
+                    return Math.log(Math.abs(state.nodes[state.head].alignment - state.nodes[pair.second].alignment)+1.0);
+                });
+                // Distance Indicator
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    if (state.head == 0) return Integer.toString(0);
+                    return Integer.toString(Math.abs(state.nodes[state.head].alignment - state.nodes[pair.second].alignment) + 1);
+                });
+                // Path + Head concept
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    String headConcept;
+                    if (state.head == 0) headConcept = "ROOT";
+                    else headConcept = state.nodes[state.head].toString();
+                    return getDependencyPath(state, state.head, pair.second)+":"+headConcept;
+                });
+                // Path + Tail concept
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    String tailConcept;
+                    return getDependencyPath(state, state.head, pair.second)+":"+state.nodes[pair.second].toString();
+                });
+                // Path + Head word
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    String headWord;
+                    if (state.head == 0) headWord = "ROOT";
+                    else headWord = state.tokens[state.nodes[state.head].alignment];
+                    return getDependencyPath(state, state.head, pair.second)+":"+headWord;
+                });
+                // Path + Tail word
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    return getDependencyPath(state, state.head, pair.second)+":"+state.tokens[state.nodes[pair.second].alignment];
+                });
+                // Path + Distance Indicator
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    String dist;
+                    if (state.head == 0) dist = "0";
+                    else dist = Integer.toString(Math.abs(state.nodes[state.head].alignment - state.nodes[pair.second].alignment) + 1);
+                    return getDependencyPath(state, state.head, pair.second)+":"+dist;
+                });
+
+                /**
+                 * New features, because we have tons of context info available
+                 */
+
+                // Depth into partial AMR tree
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    return (double)getParents(state, state.head).size()+1;
+                });
+                // Log depth into partial AMR tree
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    return Math.log((double) getParents(state, state.head).size() + 1);
+                });
+                // Depth into partial AMR tree Indicator
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    return Integer.toString(getParents(state, state.head).size()+1);
+                });
+                // Indicator for the node we're linking to already having a parent somewhere in the tree
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    if (state.originalParent[pair.second] == 0) {
+                        return 0.0;
+                    }
+                    return 1.0;
+                });
+                // Path from the head to the child through the tree, if it exists
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    return getAMRPath(state, state.head, pair.second);
+                });
+                // Parents of the current head token
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    return getAMRPath(state, 0, state.head);
+                });
+                // Parents of the current tail token
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    return getAMRPath(state, 0, pair.second);
+                });
+            }};
 
     /////////////////////////////////////////////////////
     // PIPELINE
@@ -103,7 +305,8 @@ public class AMRPipelineStateBased {
 
     public void trainStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusData = loadSequenceData(REAL_DATA ? "data/train-400-seq.txt" : "data/train-3-seq.txt");
+        Pair<List<LabeledSequence>,CoreNLPCache> pair = loadSequenceData(REAL_DATA ? "data/train-400-seq.txt" : "data/train-3-seq.txt");
+        List<LabeledSequence> nerPlusPlusData = pair.first;
         List<LabeledSequence> dictionaryData = loadManygenData(REAL_DATA ? "data/train-400-manygen.txt" : "data/train-3-manygen.txt");
         AMR[] bank = AMRSlurp.slurp(REAL_DATA ? "data/train-400-subset.txt" : "data/train-3-subset.txt", AMRSlurp.Format.LDC);
 
@@ -111,7 +314,7 @@ public class AMRPipelineStateBased {
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
         dictionaryLookup.train(getDictionaryForClassifier(dictionaryData));
 
-        bfsOracle = new TrainableOracle(bank, bfsOracleFeatures);
+        bfsOracle = new TrainableOracle(bank, bfsOracleFeatures, pair.second);
     }
 
     private Pair<AMR.Node[],String[][]> predictNodes(String[] tokens, Annotation annotation) {
@@ -247,6 +450,7 @@ public class AMRPipelineStateBased {
 
     public AMR runPipeline(String[] tokens, Annotation annotation) {
         Pair<AMR.Node[], String[][]> nodesAndArcs = predictNodes(tokens, annotation);
+
         AMRNodeStateBased nodeSet = new AMRNodeStateBased(nodesAndArcs.first.length-1, annotation);
         nodeSet.nodes = nodesAndArcs.first;
         nodeSet.forcedArcs = nodesAndArcs.second;
@@ -272,14 +476,16 @@ public class AMRPipelineStateBased {
 
     public void analyzeStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusDataTrain =
+        Pair<List<LabeledSequence>, CoreNLPCache> pairTrain =
                 loadSequenceData(REAL_DATA ? "data/train-400-seq.txt" : "data/train-3-seq.txt");
+        List<LabeledSequence> nerPlusPlusDataTrain = pairTrain.first;
         List<LabeledSequence> dictionaryDataTrain =
                 loadManygenData(REAL_DATA ? "data/train-400-manygen.txt" : "data/train-3-manygen.txt");
 
         System.out.println("Loading testing data");
-        List<LabeledSequence> nerPlusPlusDataTest =
+        Pair<List<LabeledSequence>, CoreNLPCache> pairTest =
                 loadSequenceData(REAL_DATA ? "data/test-100-seq.txt" : "data/train-3-seq.txt");
+        List<LabeledSequence> nerPlusPlusDataTest = pairTest.first;
         List<LabeledSequence> dictionaryDataTest =
                 loadManygenData(REAL_DATA ? "data/test-100-manygen.txt" : "data/train-3-manygen.txt");
 
@@ -295,7 +501,7 @@ public class AMRPipelineStateBased {
         AMR[] trainBank = AMRSlurp.slurp(REAL_DATA ? "data/train-400-subset.txt" : "data/train-3-subset.txt", AMRSlurp.Format.LDC);
         AMR[] testBank = AMRSlurp.slurp(REAL_DATA ? "data/test-100-subset.txt" : "data/train-3-subset.txt", AMRSlurp.Format.LDC);
 
-        bfsOracle.analyze(trainBank, testBank, "data/bfs-oracle-analysis");
+        bfsOracle.analyze(trainBank, pairTrain.second, testBank, pairTest.second, "data/bfs-oracle-analysis");
     }
 
     public void testCompletePipeline() throws IOException, InterruptedException {
@@ -310,6 +516,7 @@ public class AMRPipelineStateBased {
 
     private void analyzeAMRSubset(String path, String coNLLPath, String output) throws IOException, InterruptedException {
         AMR[] bank = AMRSlurp.slurp(path, AMRSlurp.Format.LDC);
+        List<AMRNodeSet> mstDataTest = AMRPipeline.loadCoNLLData(coNLLPath);
 
         String[] sentences = new String[bank.length];
         for (int i = 0; i < bank.length; i++) {
@@ -318,9 +525,19 @@ public class AMRPipelineStateBased {
         CoreNLPCache cache = new LazyCoreNLPCache(path, sentences);
 
         AMR[] recovered = new AMR[bank.length];
+        AMR[] recoveredPerfectDict = new AMR[bank.length];
+
         for (int i = 0; i < bank.length; i++) {
             Annotation annotation = cache.getAnnotation(i);
             recovered[i] = runPipeline(bank[i].sourceText, annotation);
+
+            AMRNodeSet set = mstDataTest.get(i);
+            AMRNodeStateBased nodeSet = new AMRNodeStateBased(set.nodes.length-1, annotation);
+            nodeSet.nodes = set.nodes;
+            nodeSet.forcedArcs = set.forcedArcs;
+            nodeSet.tokens = set.tokens;
+            set.annotation = annotation;
+            recoveredPerfectDict[i] = greedilyConstruct(nodeSet);
         }
         cache.close();
 
@@ -332,11 +549,18 @@ public class AMRPipelineStateBased {
 
         AMRSlurp.burp(output+"/gold.txt", AMRSlurp.Format.LDC, bank, AMR.AlignmentPrinting.ALL, false);
         AMRSlurp.burp(output+"/recovered.txt", AMRSlurp.Format.LDC, recovered, AMR.AlignmentPrinting.ALL, false);
+        AMRSlurp.burp(output+"/recovered-perfect-dict.txt", AMRSlurp.Format.LDC, recoveredPerfectDict, AMR.AlignmentPrinting.ALL, false);
 
         double smatch = Smatch.smatch(bank, recovered);
         System.out.println("SMATCH for overall "+path+" = "+smatch);
         BufferedWriter bw = new BufferedWriter(new FileWriter(output+"/smatch.txt"));
         bw.write("Smatch: "+smatch);
+        bw.close();
+
+        double smatchPerfectDict = Smatch.smatch(bank, recoveredPerfectDict);
+        System.out.println("SMATCH for perfect dict "+path+" = "+smatchPerfectDict);
+        bw = new BufferedWriter(new FileWriter(output+"/smatch-perfect-dict.txt"));
+        bw.write("Smatch: "+smatchPerfectDict);
         bw.close();
     }
 
@@ -351,7 +575,7 @@ public class AMRPipelineStateBased {
     // LOADERS
     /////////////////////////////////////////////////////
 
-    private List<LabeledSequence> loadSequenceData(String path) throws IOException {
+    private Pair<List<LabeledSequence>,CoreNLPCache> loadSequenceData(String path) throws IOException {
         List<LabeledSequence> seqList = new ArrayList<>();
 
         BufferedReader br = new BufferedReader(new FileReader(path));
@@ -400,7 +624,7 @@ public class AMRPipelineStateBased {
 
         br.close();
 
-        return seqList;
+        return new Pair<>(seqList, coreNLPCache);
     }
 
     private List<LabeledSequence> loadManygenData(String path) throws IOException {

@@ -26,6 +26,7 @@ public class ConstrainedSequence {
 
         try {
             GRBEnv env = new GRBEnv();
+            env.set(GRB.IntParam.OutputFlag, 0);
             GRBModel model = new GRBModel(env);
 
             GRBVar[][] vars = new GRBVar[probabilities.length][];

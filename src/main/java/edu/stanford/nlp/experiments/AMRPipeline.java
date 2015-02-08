@@ -582,7 +582,7 @@ public class AMRPipeline {
 
     public void testCompletePipeline() throws IOException, InterruptedException {
         if (FULL_DATA) {
-            analyzeAMRSubset("realdata/train-subset.txt", "realdata/train-conll.txt", "realdata/amr-train-analysis");
+            analyzeAMRSubset("realdata/train-subset.txt", "dabta/train-conll.txt", "realdata/amr-train-analysis");
             analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "realdata/amr-test-analysis");
         }
         else {
@@ -764,7 +764,7 @@ public class AMRPipeline {
         return seqList;
     }
 
-    private List<AMRNodeSet> loadCoNLLData(String path) throws IOException {
+    public static List<AMRNodeSet> loadCoNLLData(String path) throws IOException {
         List<AMRNodeSet> setList = new ArrayList<>();
 
         BufferedReader br = new BufferedReader(new FileReader(path));

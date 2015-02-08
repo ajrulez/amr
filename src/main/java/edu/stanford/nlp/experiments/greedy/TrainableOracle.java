@@ -1,5 +1,6 @@
 package edu.stanford.nlp.experiments.greedy;
 
+import com.github.keenon.minimalml.cache.CoreNLPCache;
 import edu.stanford.nlp.experiments.ConstrainedSequence;
 import edu.stanford.nlp.experiments.LinearPipe;
 import edu.stanford.nlp.stamr.AMR;
@@ -27,19 +28,22 @@ public class TrainableOracle extends Oracle {
         put("NONE", -1);
     }};
 
-    private static List<Pair<Pair<GreedyState,Integer>, String>> toTrainingExamples(AMR[] bank) {
+    private static List<Pair<Pair<GreedyState,Integer>, String>> toTrainingExamples(AMR[] bank, CoreNLPCache cache) {
         List<Pair<Pair<GreedyState,Integer>, String>> trainingExamples = new ArrayList<>();
-        for (AMR amr : bank) {
+        for (int i = 0; i < bank.length; i++) {
+            AMR amr = bank[i];
             // Run the gold oracle over the AMR
-            List<Pair<GreedyState,String[]>> derivation = TransitionRunner.run(
-                    new GreedyState(GoldOracle.prepareForParse(amr.nodes), amr.sourceText, null),
+            List<Pair<GreedyState, String[]>> derivation = TransitionRunner.run(
+                    new GreedyState(GoldOracle.prepareForParse(amr.nodes),
+                            amr.sourceText,
+                            cache == null ? null : cache.getAnnotation(i)),
                     new GoldOracle(amr));
 
             // Generate the training instances by examining the derivation
             for (Pair<GreedyState,String[]> pair : derivation) {
                 if (pair.first.finished) continue;
-                for (int i = 1; i < pair.second.length; i++) {
-                    trainingExamples.add(new Pair<>(new Pair<>(pair.first, i), pair.second[i]));
+                for (int j = 1; j < pair.second.length; j++) {
+                    trainingExamples.add(new Pair<>(new Pair<>(pair.first, j), pair.second[j]));
                 }
             }
         }
@@ -48,7 +52,7 @@ public class TrainableOracle extends Oracle {
     }
 
 
-    public TrainableOracle(AMR[] bank, List<Function<Pair<GreedyState,Integer>,Object>> features) {
+    public TrainableOracle(AMR[] bank, List<Function<Pair<GreedyState,Integer>,Object>> features, CoreNLPCache cache) {
         // Keep a list of all the arcTypes in the training data, for interning later
         arcTypes.add("NONE");
         arcTypes.add("ROOT");
@@ -69,10 +73,13 @@ public class TrainableOracle extends Oracle {
         }
 
         // Go through and count all the arcTypes, so we don't accidentally clip too aggressively
-        for (AMR amr : bank) {
+        for (int i = 0; i < bank.length; i++) {
+            AMR amr = bank[i];
             // Run the gold oracle over the AMR
             List<Pair<GreedyState, String[]>> derivation = TransitionRunner.run(
-                    new GreedyState(GoldOracle.prepareForParse(amr.nodes), amr.sourceText, null),
+                    new GreedyState(GoldOracle.prepareForParse(amr.nodes),
+                            amr.sourceText,
+                            cache == null ? null : cache.getAnnotation(i)),
                     new GoldOracle(amr));
 
             for (Pair<GreedyState,String[]> pair : derivation) {
@@ -82,17 +89,18 @@ public class TrainableOracle extends Oracle {
                     arcTypeCounter.incrementCount(arc);
                 }
                 for (String arc : arcTypeCounter.keySet()) {
-                    int i = arcTypes.indexOf(arc);
-                    if (maxClassCounts[i] > -1 && maxClassCounts[i] < arcTypeCounter.getCount(arc)) {
-                        maxClassCounts[i] = (int) arcTypeCounter.getCount(arc);
+                    int j = arcTypes.indexOf(arc);
+                    if (maxClassCounts[j] > -1 && maxClassCounts[j] < arcTypeCounter.getCount(arc)) {
+                        maxClassCounts[j] = (int) arcTypeCounter.getCount(arc);
                     }
                 }
             }
         }
 
-        List<Pair<Pair<GreedyState,Integer>, String>> trainingExamples = toTrainingExamples(bank);
+        List<Pair<Pair<GreedyState,Integer>, String>> trainingExamples = toTrainingExamples(bank, cache);
 
         classifier = new LinearPipe<>(features, TrainableOracle::debugOracleState);
+        classifier.automaticallyReweightTrainingData = true;
         classifier.train(trainingExamples);
     }
 
@@ -136,8 +144,12 @@ public class TrainableOracle extends Oracle {
         }
     }
 
-    public void analyze(AMR[] train, AMR[] test, String directory) throws IOException {
-        classifier.analyze(toTrainingExamples(train), toTrainingExamples(test), directory);
+    public void analyze(AMR[] train,
+                        CoreNLPCache trainCache,
+                        AMR[] test,
+                        CoreNLPCache testCache,
+                        String directory) throws IOException {
+        classifier.analyze(toTrainingExamples(train, trainCache), toTrainingExamples(test, testCache), directory);
     }
 
     public AMR cheat = null;

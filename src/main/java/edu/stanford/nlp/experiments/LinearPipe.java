@@ -29,7 +29,7 @@ public class LinearPipe<IN,OUT> {
     public BiConsumer<IN, BufferedWriter> debugErrorContext;
 
     public boolean automaticallyReweightTrainingData = true;
-    public double sigma = 5.0;
+    public double sigma = 4.0;
 
     @SuppressWarnings("unchecked")
     public LinearPipe(List<Function<IN,Object>> features, BiConsumer<IN, BufferedWriter> debugErrorContext) {
@@ -58,14 +58,14 @@ public class LinearPipe<IN,OUT> {
             if (obj instanceof double[]) {
                 double[] arr = (double[])obj;
                 for (int j = 0; j < arr.length; j++) {
-                    featureCounts.setCount(i + ":" + j, arr[j]);
+                    featureCounts.setCount(i + "->" + j, arr[j]);
                 }
             }
             else if (obj instanceof Double) {
                 featureCounts.setCount(Integer.toString(i), (double)obj);
             }
             else {
-                featureCounts.setCount(obj.toString(), 1.0);
+                featureCounts.setCount(Integer.toString(i) + "->" + obj.toString(), 1.0);
             }
         }
 
@@ -91,6 +91,7 @@ public class LinearPipe<IN,OUT> {
     public void train(List<Pair<IN,OUT>> data) {
         LinearClassifierFactory<OUT,String> factory = new LinearClassifierFactory<>();
         factory.setSigma(sigma);  // higher -> less regularization (default=1)
+        factory.setVerbose(true);
         RVFDataset<OUT, String> dataset = new RVFDataset<>();
         for (Pair<IN,OUT> pair : data) {
             dataset.add(toDatum(pair.first, pair.second));

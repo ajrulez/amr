@@ -55,6 +55,12 @@ public class Generator {
             }
         }
 
+        for (AMR.Node node : amr.nodes) {
+            amr.giveNodeUniqueRef(node);
+        }
+
+        amr.treeify();
+
         return amr;
     }
 }
