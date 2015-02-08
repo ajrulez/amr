@@ -272,12 +272,16 @@ public class AMRPipelineStateBased {
 
     public void analyzeStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData("data/train-400-seq.txt");
-        List<LabeledSequence> dictionaryDataTrain = loadManygenData("data/train-400-manygen.txt");
+        List<LabeledSequence> nerPlusPlusDataTrain =
+                loadSequenceData(REAL_DATA ? "data/train-400-seq.txt" : "data/train-3-seq.txt");
+        List<LabeledSequence> dictionaryDataTrain =
+                loadManygenData(REAL_DATA ? "data/train-400-manygen.txt" : "data/train-3-manygen.txt");
 
         System.out.println("Loading testing data");
-        List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData("data/test-100-seq.txt");
-        List<LabeledSequence> dictionaryDataTest = loadManygenData("data/test-100-manygen.txt");
+        List<LabeledSequence> nerPlusPlusDataTest =
+                loadSequenceData(REAL_DATA ? "data/test-100-seq.txt" : "data/train-3-seq.txt");
+        List<LabeledSequence> dictionaryDataTest =
+                loadManygenData(REAL_DATA ? "data/test-100-manygen.txt" : "data/train-3-manygen.txt");
 
         System.out.println("Running analysis");
         nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain),
@@ -288,10 +292,10 @@ public class AMRPipelineStateBased {
                 getDictionaryForClassifier(dictionaryDataTest),
                 "data/dictionary-lookup-analysis");
 
-        /*
-        AMR[] trainBank = AMRSlurp.slurp("data/train-400-subset.txt", AMRSlurp.Format.LDC);
-        AMR[] testBank = AMRSlurp.slurp("data/test-100-subset.txt", AMRSlurp.Format.LDC);
-        */
+        AMR[] trainBank = AMRSlurp.slurp(REAL_DATA ? "data/train-400-subset.txt" : "data/train-3-subset.txt", AMRSlurp.Format.LDC);
+        AMR[] testBank = AMRSlurp.slurp(REAL_DATA ? "data/test-100-subset.txt" : "data/train-3-subset.txt", AMRSlurp.Format.LDC);
+
+        bfsOracle.analyze(trainBank, testBank, "data/bfs-oracle-analysis");
     }
 
     public void testCompletePipeline() throws IOException, InterruptedException {
@@ -339,7 +343,7 @@ public class AMRPipelineStateBased {
     public static void main(String[] args) throws IOException, InterruptedException {
         AMRPipelineStateBased pipeline = new AMRPipelineStateBased();
         pipeline.trainStages();
-        if (REAL_DATA) pipeline.analyzeStages();
+        pipeline.analyzeStages();
         pipeline.testCompletePipeline();
     }
 

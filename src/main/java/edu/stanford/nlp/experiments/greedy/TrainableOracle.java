@@ -7,6 +7,8 @@ import edu.stanford.nlp.stats.ClassicCounter;
 import edu.stanford.nlp.stats.Counter;
 import edu.stanford.nlp.util.Pair;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +26,27 @@ public class TrainableOracle extends Oracle {
     Map<String,Integer> specialClassExemptions = new HashMap<String,Integer>(){{
         put("NONE", -1);
     }};
+
+    private static List<Pair<Pair<GreedyState,Integer>, String>> toTrainingExamples(AMR[] bank) {
+        List<Pair<Pair<GreedyState,Integer>, String>> trainingExamples = new ArrayList<>();
+        for (AMR amr : bank) {
+            // Run the gold oracle over the AMR
+            List<Pair<GreedyState,String[]>> derivation = TransitionRunner.run(
+                    new GreedyState(GoldOracle.prepareForParse(amr.nodes), amr.sourceText, null),
+                    new GoldOracle(amr));
+
+            // Generate the training instances by examining the derivation
+            for (Pair<GreedyState,String[]> pair : derivation) {
+                if (pair.first.finished) continue;
+                for (int i = 1; i < pair.second.length; i++) {
+                    trainingExamples.add(new Pair<>(new Pair<>(pair.first, i), pair.second[i]));
+                }
+            }
+        }
+
+        return trainingExamples;
+    }
+
 
     public TrainableOracle(AMR[] bank, List<Function<Pair<GreedyState,Integer>,Object>> features) {
         // Keep a list of all the arcTypes in the training data, for interning later
@@ -45,20 +68,15 @@ public class TrainableOracle extends Oracle {
             }
         }
 
-        List<Pair<Pair<GreedyState,Integer>, String>> trainingExamples = new ArrayList<>();
+        // Go through and count all the arcTypes, so we don't accidentally clip too aggressively
         for (AMR amr : bank) {
             // Run the gold oracle over the AMR
-            List<Pair<GreedyState,String[]>> derivation = TransitionRunner.run(
+            List<Pair<GreedyState, String[]>> derivation = TransitionRunner.run(
                     new GreedyState(GoldOracle.prepareForParse(amr.nodes), amr.sourceText, null),
                     new GoldOracle(amr));
 
-            // Generate the training instances by examining the derivation
             for (Pair<GreedyState,String[]> pair : derivation) {
                 if (pair.first.finished) continue;
-                for (int i = 1; i < pair.second.length; i++) {
-                    trainingExamples.add(new Pair<>(new Pair<>(pair.first, i), pair.second[i]));
-                }
-                // Go through and count all the arcTypes, so we don't accidentally clip too aggressively
                 Counter<String> arcTypeCounter = new ClassicCounter<>();
                 for (String arc : pair.second) {
                     arcTypeCounter.incrementCount(arc);
@@ -66,14 +84,60 @@ public class TrainableOracle extends Oracle {
                 for (String arc : arcTypeCounter.keySet()) {
                     int i = arcTypes.indexOf(arc);
                     if (maxClassCounts[i] > -1 && maxClassCounts[i] < arcTypeCounter.getCount(arc)) {
-                        maxClassCounts[i] = (int)arcTypeCounter.getCount(arc);
+                        maxClassCounts[i] = (int) arcTypeCounter.getCount(arc);
                     }
                 }
             }
         }
 
-        classifier = new LinearPipe<>(features, null);
+        List<Pair<Pair<GreedyState,Integer>, String>> trainingExamples = toTrainingExamples(bank);
+
+        classifier = new LinearPipe<>(features, TrainableOracle::debugOracleState);
         classifier.train(trainingExamples);
+    }
+
+    public static void debugOracleState(Pair<GreedyState,Integer> pair, BufferedWriter bw) {
+        try {
+            GreedyState state = pair.first;
+            AMR.Node headNode = state.nodes[state.head];
+            bw.write("Head Node: ");
+            if (headNode == null) bw.write("ROOT");
+            else bw.write(headNode.toString());
+            bw.write("\n");
+
+            AMR.Node tailNode = state.nodes[pair.second];
+            bw.write("Tail Node: "+tailNode.toString()+"\n");
+
+            int focus = tailNode.alignment;
+            int headFocus = -1;
+            if (headNode != null) headFocus = headNode.alignment;
+
+            for (int i = 0; i < state.tokens.length; i++) {
+                if (i == focus) bw.write(">TAIL>");
+                if (i == headFocus) bw.write(">HEAD>");
+                bw.write(state.tokens[i]);
+                if (i == headFocus) bw.write("<HEAD<");
+                if (i == focus) bw.write("<TAIL<");
+                if (i != state.tokens.length-1) bw.write(" ");
+            }
+            bw.write("\n");
+            bw.write("Stack: [");
+            for (int i : state.q) {
+                bw.write(" ");
+                bw.write("\""+state.nodes[i].toString()+"\"");
+            }
+            bw.write(" ]\n");
+            bw.write("Partial AMR:\n");
+            AMR partial = Generator.generateAMR(state);
+            bw.write(partial.toString(AMR.AlignmentPrinting.ALL));
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void analyze(AMR[] train, AMR[] test, String directory) throws IOException {
+        classifier.analyze(toTrainingExamples(train), toTrainingExamples(test), directory);
     }
 
     public AMR cheat = null;

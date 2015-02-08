@@ -28,6 +28,9 @@ public class LinearPipe<IN,OUT> {
     LinearClassifier<OUT,String> classifier;
     public BiConsumer<IN, BufferedWriter> debugErrorContext;
 
+    public boolean automaticallyReweightTrainingData = true;
+    public double sigma = 5.0;
+
     @SuppressWarnings("unchecked")
     public LinearPipe(List<Function<IN,Object>> features, BiConsumer<IN, BufferedWriter> debugErrorContext) {
         this.features = features.toArray(new Function[features.size()]);
@@ -87,7 +90,7 @@ public class LinearPipe<IN,OUT> {
 
     public void train(List<Pair<IN,OUT>> data) {
         LinearClassifierFactory<OUT,String> factory = new LinearClassifierFactory<>();
-        factory.setSigma(200);  // higher -> less regularization (default=1)
+        factory.setSigma(sigma);  // higher -> less regularization (default=1)
         RVFDataset<OUT, String> dataset = new RVFDataset<>();
         for (Pair<IN,OUT> pair : data) {
             dataset.add(toDatum(pair.first, pair.second));
@@ -95,16 +98,20 @@ public class LinearPipe<IN,OUT> {
 
         // Create a data-weighting array to downweight super frequent tags and upweight infrequent ones
 
-        float[] dataWeights = new float[dataset.size()];
-        Counter<OUT> labelCounts = new ClassicCounter<>();
-        for (int i = 0; i < dataset.size(); i++) {
-            labelCounts.incrementCount(dataset.getDatum(i).label());
+        if (automaticallyReweightTrainingData) {
+            float[] dataWeights = new float[dataset.size()];
+            Counter<OUT> labelCounts = new ClassicCounter<>();
+            for (int i = 0; i < dataset.size(); i++) {
+                labelCounts.incrementCount(dataset.getDatum(i).label());
+            }
+            for (int i = 0; i < dataset.size(); i++) {
+                dataWeights[i] = (float) (dataset.size() / labelCounts.getCount(dataset.getDatum(i).label()));
+            }
+            classifier = (LinearClassifier<OUT, String>) factory.trainClassifier(dataset, dataWeights, new LogPrior());
         }
-        for (int i = 0; i < dataset.size(); i++) {
-            dataWeights[i] = (float)(dataset.size() / labelCounts.getCount(dataset.getDatum(i).label()));
+        else {
+            classifier = factory.trainClassifier(dataset);
         }
-
-        classifier = (LinearClassifier<OUT,String>)factory.trainClassifier(dataset, dataWeights, new LogPrior());
 
         System.out.println("Trained classifier");
         int correct = 0;
