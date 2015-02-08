@@ -1,8 +1,6 @@
 package edu.stanford.nlp.experiments;
 
-import edu.stanford.nlp.classify.LinearClassifier;
-import edu.stanford.nlp.classify.LinearClassifierFactory;
-import edu.stanford.nlp.classify.RVFDataset;
+import edu.stanford.nlp.classify.*;
 import edu.stanford.nlp.ling.RVFDatum;
 import edu.stanford.nlp.stats.ClassicCounter;
 import edu.stanford.nlp.stats.Counter;
@@ -94,7 +92,27 @@ public class LinearPipe<IN,OUT> {
         for (Pair<IN,OUT> pair : data) {
             dataset.add(toDatum(pair.first, pair.second));
         }
-        classifier = factory.trainClassifier(dataset);
+
+        // Create a data-weighting array to downweight super frequent tags and upweight infrequent ones
+
+        float[] dataWeights = new float[dataset.size()];
+        Counter<OUT> labelCounts = new ClassicCounter<>();
+        for (int i = 0; i < dataset.size(); i++) {
+            labelCounts.incrementCount(dataset.getDatum(i).label());
+        }
+        for (int i = 0; i < dataset.size(); i++) {
+            dataWeights[i] = (float)(dataset.size() / labelCounts.getCount(dataset.getDatum(i).label()));
+        }
+
+        classifier = (LinearClassifier<OUT,String>)factory.trainClassifier(dataset, dataWeights, new LogPrior());
+
+        System.out.println("Trained classifier");
+        int correct = 0;
+        for (int i = 0; i < dataset.size(); i++) {
+            OUT predicted = classifier.classOf(dataset.getRVFDatum(i));
+            if (predicted.equals(dataset.getRVFDatum(i).label())) correct++;
+        }
+        System.out.println("Accuracy: "+((double)correct/dataset.size())+" ("+correct+"/"+dataset.size()+")");
     }
 
     public OUT predict(IN in) {
