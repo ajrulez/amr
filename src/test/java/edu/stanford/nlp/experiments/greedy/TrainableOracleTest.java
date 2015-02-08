@@ -27,7 +27,7 @@ public class TrainableOracleTest {
 
     @Theory
     public void testWildlyOverfit() throws IOException {
-        AMR[] bank = AMRSlurp.slurp("data/test-100-subset.txt", AMRSlurp.Format.LDC);
+        AMR[] bank = AMRSlurp.slurp("data/train-3-subset.txt", AMRSlurp.Format.LDC);
 
         TrainableOracle oracle = new TrainableOracle(bank, new ArrayList<Function<Pair<GreedyState,Integer>,Object>>(){{
             add(pair -> {
@@ -50,6 +50,7 @@ public class TrainableOracleTest {
         for (int i = 0; i < bank.length; i++) {
             AMR amr = bank[i];
 
+            oracle.cheat = amr;
             List<Pair<GreedyState,String[]>> derivation = TransitionRunner.run(
                     new GreedyState(GoldOracle.prepareForParse(amr.nodes), amr.sourceText, null),
                     oracle);

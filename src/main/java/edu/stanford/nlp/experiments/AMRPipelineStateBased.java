@@ -4,8 +4,7 @@ import com.github.keenon.minimalml.cache.BatchCoreNLPCache;
 import com.github.keenon.minimalml.cache.CoreNLPCache;
 import com.github.keenon.minimalml.cache.LazyCoreNLPCache;
 import com.github.keenon.minimalml.word2vec.Word2VecLoader;
-import edu.stanford.nlp.experiments.greedy.GreedyState;
-import edu.stanford.nlp.experiments.greedy.NodeConnector;
+import edu.stanford.nlp.experiments.greedy.*;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -73,7 +72,30 @@ public class AMRPipelineStateBased {
             AMRPipelineStateBased::writeDictionaryContext
     );
 
-    NodeConnector nodeConnector = new NodeConnector();
+    TrainableOracle bfsOracle;
+    private static String headOrRoot(GreedyState state) {
+        if (state.head == 0) return "ROOT";
+        else return state.nodes[state.head].toString();
+    }
+
+    List<Function<Pair<GreedyState,Integer>,Object>> bfsOracleFeatures =
+            new ArrayList<Function<Pair<GreedyState,Integer>,Object>>(){{
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(state.nodes[pair.second].toString());
+                    sb.append(state.nodes[pair.second].alignment);
+                    int cursor = state.head;
+                    while (cursor != 0) {
+                        sb.append(state.nodes[cursor].toString());
+                        cursor = state.originalParent[cursor];
+                    }
+                    sb.append("(ROOT)");
+                    sb.append(":");
+                    sb.append(pair.first.tokens[0] + ":" + pair.first.tokens[1]);
+                    return sb.toString();
+                });
+    }};
 
     /////////////////////////////////////////////////////
     // PIPELINE
@@ -89,7 +111,7 @@ public class AMRPipelineStateBased {
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
         dictionaryLookup.train(getDictionaryForClassifier(dictionaryData));
 
-        nodeConnector.train(getArcStitchingForNodeConnect(bank, nerPlusPlusData));
+        bfsOracle = new TrainableOracle(bank, bfsOracleFeatures);
     }
 
     private Pair<AMR.Node[],String[][]> predictNodes(String[] tokens, Annotation annotation) {
@@ -213,98 +235,14 @@ public class AMRPipelineStateBased {
     }
 
     private AMR greedilyConstruct(AMRNodeStateBased state) {
+        Set<AMR.Node> nodes = new HashSet<>();
+        Collections.addAll(nodes, state.nodes);
 
-        String[][] arcs = nodeConnector.connect(state.nodes, state.forcedArcs, state.annotation, state.tokens);
+        assert(state.tokens != null);
+        GreedyState startState = new GreedyState(GoldOracle.prepareForParse(nodes), state.tokens, state.annotation);
 
-        System.out.println(Arrays.deepToString(arcs));
-
-        Map<Integer,Set<Pair<String,Integer>>> arcMap = new HashMap<>();
-
-        for (int i = 0; i < arcs.length; i++) {
-            arcMap.put(i, new HashSet<>());
-            for (int j = 0; j < arcs[i].length; j++) {
-                if (arcs[i][j] != null && !arcs[i][j].equals("NONE")) {
-                    arcMap.get(i).add(new Pair<>(arcs[i][j], j));
-                }
-            }
-        }
-
-        Map<Integer,AMR.Node> oldToNew = new HashMap<>();
-        AMR result = new AMR();
-        result.sourceText = state.tokens;
-
-        int root = arcMap.get(0).iterator().next().second;
-        AMR.Node rootNode = state.nodes[root];
-        if (rootNode.type == AMR.NodeType.ENTITY) {
-            oldToNew.put(root, result.addNode(rootNode.ref, rootNode.title, rootNode.alignment));
-        }
-        else {
-            oldToNew.put(root, result.addNode(rootNode.title, rootNode.type));
-        }
-
-        recursivelyAttach(arcMap, result, oldToNew, root, state);
-
-        for (AMR.Node node : result.nodes) {
-            result.giveNodeUniqueRef(node);
-        }
-
-        // Simple coref solution, match based on identical source tokens
-
-        for (AMR.Node node : result.nodes) {
-            if (node.title.equals("name")) continue;
-            for (AMR.Node node2 : result.nodes) {
-                if (node2.title.equals("name")) continue;
-                if (node == node2) continue;
-                String token1 = state.tokens[node.alignment];
-                String token2 = state.tokens[node2.alignment];
-                if (token1.equalsIgnoreCase(token2)) {
-                    node.ref = node2.ref;
-                }
-            }
-        }
-
-        return result;
-    }
-
-    private void recursivelyAttach(Map<Integer,Set<Pair<String,Integer>>> arcMap,
-                                   AMR result,
-                                   Map<Integer,AMR.Node> oldToNew,
-                                   int parent,
-                                   AMRNodeStateBased nodeSet) {
-        if (!arcMap.containsKey(parent)) return;
-
-        Set<Pair<String,Integer>> outgoingArcs = arcMap.get(parent);
-
-        for (Pair<String,Integer> arc : outgoingArcs) {
-            int child = arc.second;
-
-            AMR.Node childNode = nodeSet.nodes[child];
-            AMR.Node childNodeNew;
-
-            boolean newlyCreated;
-
-            if (oldToNew.containsKey(child)) {
-                childNodeNew = oldToNew.get(child);
-                newlyCreated = false;
-            }
-            else {
-                if (childNode.type == AMR.NodeType.ENTITY) {
-                    childNodeNew = result.addNode(childNode.ref, childNode.title, childNode.alignment);
-                } else {
-                    childNodeNew = result.addNode(childNode.title, childNode.type);
-                }
-                oldToNew.put(child, childNodeNew);
-                newlyCreated = true;
-            }
-
-            AMR.Node parentNodeNew = oldToNew.get(parent);
-
-            result.addArc(parentNodeNew, childNodeNew, arc.first);
-
-            if (newlyCreated) {
-                recursivelyAttach(arcMap, result, oldToNew, child, nodeSet);
-            }
-        }
+        List<Pair<GreedyState,String[]>> derivation = TransitionRunner.run(startState, bfsOracle);
+        return Generator.generateAMR(derivation.get(derivation.size()-1).first);
     }
 
     public AMR runPipeline(String[] tokens, Annotation annotation) {
@@ -545,21 +483,6 @@ public class AMRPipelineStateBased {
             }
         }
         return nerPlusPlusTrainingData;
-    }
-
-    public static List<Pair<GreedyState, String[][]>> getArcStitchingForNodeConnect(AMR[] bank, List<LabeledSequence> nerPlusPlusData) {
-        List<Pair<GreedyState, String[][]>> list = new ArrayList<>();
-
-        for (int i = 0; i < bank.length; i++) {
-            AMR amr = bank[i];
-
-            Pair<GreedyState, String[][]> pair = NodeConnector.amrToContextAndArcs(amr);
-            pair.first.annotation = nerPlusPlusData.get(i).annotation;
-            pair.first.tokens = amr.sourceText;
-            list.add(pair);
-        }
-
-        return list;
     }
 
     public static List<Pair<Triple<LabeledSequence,Integer,Integer>,String>> getDictionaryForClassifier(
