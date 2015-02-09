@@ -86,14 +86,13 @@ public class Test1 {
                     GreedyState state = pair.first;
                     String headConcept;
                     if (state.head == 0) headConcept = "ROOT";
-                    else headConcept = state.nodes[state.head].toString();
+                    else headConcept = state.nodes[state.head].title;
                     return AMRPipelineStateBased.getDependencyPath(state, state.head, pair.second)+":"+headConcept;
                 });
                 // Path + Tail concept
                 add(pair -> {
                     GreedyState state = pair.first;
-                    String tailConcept;
-                    return AMRPipelineStateBased.getDependencyPath(state, state.head, pair.second)+":"+state.nodes[pair.second].toString();
+                    return AMRPipelineStateBased.getDependencyPath(state, state.head, pair.second)+":"+state.nodes[pair.second].title;
                 });
                 // Path + Head word
                 add(pair -> {
