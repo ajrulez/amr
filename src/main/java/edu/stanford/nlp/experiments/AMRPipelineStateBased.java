@@ -49,6 +49,8 @@ public class AMRPipelineStateBased {
         }
     }
 
+    FrameManager frameManager;
+
     @SuppressWarnings("unchecked")
     LinearPipe<Pair<LabeledSequence,Integer>, String> nerPlusPlus = new LinearPipe<>(
             new ArrayList<Function<Pair<LabeledSequence,Integer>,Object>>(){{
@@ -304,6 +306,9 @@ public class AMRPipelineStateBased {
     /////////////////////////////////////////////////////
 
     public void trainStages(List<Function<Pair<GreedyState,Integer>,Object>> bfsOracleFeatures) throws IOException {
+        System.out.println("Loading frames");
+        frameManager = new FrameManager("data/frames");
+
         System.out.println("Loading training data");
         Pair<List<LabeledSequence>,CoreNLPCache> pair = loadSequenceData(REAL_DATA ? "data/train-400-seq.txt" : "data/train-3-seq.txt");
         List<LabeledSequence> nerPlusPlusData = pair.first;
@@ -357,9 +362,9 @@ public class AMRPipelineStateBased {
         for (int i = 0; i < tokens.length; i++) {
             AMR amr = null;
             if (labels[i].equals("VERB")) {
-                // TODO: Train a simple sense-tagger, or just use DICT for everything
-                amr = createAMRSingleton(labeledSequence.annotation.get(CoreAnnotations.TokensAnnotation.class).
-                        get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase()+"-01");
+                String stem = labeledSequence.annotation.get(CoreAnnotations.TokensAnnotation.class).
+                        get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase();
+                amr = createAMRSingleton(frameManager.getClosestFrame(stem));
             }
             else if (labels[i].equals("IDENTITY")) {
                 amr = createAMRSingleton(tokens[i].toLowerCase());
