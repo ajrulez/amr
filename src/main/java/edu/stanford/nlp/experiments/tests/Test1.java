@@ -2,6 +2,7 @@ package edu.stanford.nlp.experiments.tests;
 
 import edu.stanford.nlp.experiments.AMRPipelineStateBased;
 import edu.stanford.nlp.experiments.greedy.GreedyState;
+import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.util.Pair;
 
 import java.io.IOException;
@@ -117,7 +118,27 @@ public class Test1 {
                 });
 
                 /**
-                 * New features, because we have tons of context info available
+                 * New features, silly additions
+                 */
+                // name -> QUOTE indicator
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    if (state.head != 0) {
+                        if (state.nodes[state.head].title.equals("name") && state.nodes[pair.second].type == AMR.NodeType.QUOTE) return 1.0;
+                    }
+                    return 0.0;
+                });
+                // name -> NON-QUOTE indicator
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    if (state.head != 0) {
+                        if (state.nodes[state.head].title.equals("name") && state.nodes[pair.second].type != AMR.NodeType.QUOTE) return 1.0;
+                    }
+                    return 0.0;
+                });
+
+                /**
+                 * New features only possible for context, because we have tons of context info available
                  */
 
                 // Depth into partial AMR tree

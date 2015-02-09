@@ -18,14 +18,14 @@ public class Test0 {
                 add(pair -> {
                     GreedyState state = pair.first;
                     StringBuilder sb = new StringBuilder();
-                    sb.append(state.nodes[pair.second].toString());
+                    sb.append(state.nodes[pair.second].title.substring(0,Math.min(state.nodes[pair.second].title.length(),6)));
                     sb.append(state.nodes[pair.second].alignment);
                     int cursor = state.head;
                     while (cursor > 0) {
                         if (state.nodes[cursor] == null) {
                             System.out.println("Got a NULL");
                         }
-                        sb.append(state.nodes[cursor].toString());
+                        sb.append(state.nodes[cursor].title.substring(0,Math.min(state.nodes[cursor].title.length(),6)));
                         cursor = state.originalParent[cursor];
                     }
                     sb.append("(ROOT)");
