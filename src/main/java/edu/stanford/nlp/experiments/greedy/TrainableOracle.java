@@ -24,6 +24,11 @@ public class TrainableOracle extends Oracle {
     List<String> arcTypes = new ArrayList<>();
 
     int[] maxClassCounts;
+    int[] minClassCounts;
+
+    int[] rootMaxClassCounts;
+    int[] rootMinClassCounts;
+
     Map<String,Integer> specialClassExemptions = new HashMap<String,Integer>(){{
         put("NONE", -1);
     }};
@@ -63,12 +68,30 @@ public class TrainableOracle extends Oracle {
         }
 
         maxClassCounts = new int[arcTypes.size()];
+        minClassCounts = new int[arcTypes.size()];
+        rootMaxClassCounts = new int[arcTypes.size()];
+        rootMinClassCounts = new int[arcTypes.size()];
         for (int i = 0; i < arcTypes.size(); i++) {
+            minClassCounts[i] = -1;
+
             if (specialClassExemptions.containsKey(arcTypes.get(i))) {
                 maxClassCounts[i] = specialClassExemptions.get(arcTypes.get(i));
             }
             else {
                 maxClassCounts[i] = 1;
+            }
+
+            if (arcTypes.get(i).equals("ROOT")) {
+                rootMaxClassCounts[i] = 1;
+                rootMinClassCounts[i] = 1;
+            }
+            else if (arcTypes.get(i).equals("NONE")) {
+                rootMaxClassCounts[i] = -1;
+                rootMinClassCounts[i] = -1;
+            }
+            else {
+                rootMaxClassCounts[i] = 0;
+                rootMinClassCounts[i] = 0;
             }
         }
 
@@ -203,7 +226,13 @@ public class TrainableOracle extends Oracle {
 
         // Run a Boolean LP to figure out the constrained maximization problem :)
 
-        int[] solvedClasses = ConstrainedSequence.solve(probs, maxClassCounts, forcedClasses);
+        int[] solvedClasses;
+        if (state.head == 0) {
+            solvedClasses = ConstrainedSequence.solve(probs, rootMaxClassCounts, rootMinClassCounts, forcedClasses);
+        }
+        else {
+            solvedClasses = ConstrainedSequence.solve(probs, maxClassCounts, minClassCounts, forcedClasses);
+        }
 
         String[] arcs = new String[state.nodes.length];
         arcs[0] = "NONE";

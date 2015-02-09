@@ -131,6 +131,9 @@ public class GreedyState {
             if (!headArcs[i].equals("NONE")) {
                 if (next.originalParent[i] == -1) {
                     next.originalParent[i] = head;
+                    if (next.q.contains(i)) {
+                        throw new IllegalStateException("Can't visit the same node twice!");
+                    }
                     next.q.add(i);
                 }
             }

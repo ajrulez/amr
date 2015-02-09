@@ -29,7 +29,7 @@ import java.util.function.Function;
  */
 public class AMRPipelineStateBased {
 
-    static boolean REAL_DATA = true;
+    static boolean REAL_DATA = false;
 
     /////////////////////////////////////////////////////
     // FEATURE SPECS
@@ -74,12 +74,12 @@ public class AMRPipelineStateBased {
 
     TrainableOracle bfsOracle;
 
-    private static String headOrRoot(GreedyState state) {
+    public static String headOrRoot(GreedyState state) {
         if (state.head == 0) return "ROOT";
         else return state.nodes[state.head].toString();
     }
 
-    private String getDependencyPath(GreedyState state, int head, int tail) {
+    public static String getDependencyPath(GreedyState state, int head, int tail) {
         if (head == 0 || tail == 0) { // if tail == 0, then something else went fairly wrong
             return "ROOT:NOPATH";
         }
@@ -121,7 +121,7 @@ public class AMRPipelineStateBased {
         return sb.toString();
     }
 
-    private static List<Integer> getParents(GreedyState state, int i) {
+    public static List<Integer> getParents(GreedyState state, int i) {
         List<Integer> parents = new ArrayList<>();
         int cursor = i;
         while (cursor > 0) {
@@ -131,7 +131,7 @@ public class AMRPipelineStateBased {
         return parents;
     }
 
-    private static String getAMRPath(GreedyState state, int head, int tail) {
+    public static String getAMRPath(GreedyState state, int head, int tail) {
         if (state.originalParent[tail] == 0) return "NOPATH";
         StringBuilder sb = new StringBuilder();
 
@@ -152,7 +152,7 @@ public class AMRPipelineStateBased {
         return sb.toString();
     }
 
-    List<Function<Pair<GreedyState,Integer>,Object>> bfsOracleFeatures =
+    static List<Function<Pair<GreedyState,Integer>,Object>> bfsOracleFeatures =
             new ArrayList<Function<Pair<GreedyState,Integer>,Object>>(){{
 
                 /**
@@ -303,7 +303,7 @@ public class AMRPipelineStateBased {
     // PIPELINE
     /////////////////////////////////////////////////////
 
-    public void trainStages() throws IOException {
+    public void trainStages(List<Function<Pair<GreedyState,Integer>,Object>> bfsOracleFeatures) throws IOException {
         System.out.println("Loading training data");
         Pair<List<LabeledSequence>,CoreNLPCache> pair = loadSequenceData(REAL_DATA ? "data/train-400-seq.txt" : "data/train-3-seq.txt");
         List<LabeledSequence> nerPlusPlusData = pair.first;
@@ -442,7 +442,8 @@ public class AMRPipelineStateBased {
         Collections.addAll(nodes, state.nodes);
 
         assert(state.tokens != null);
-        GreedyState startState = new GreedyState(GoldOracle.prepareForParse(nodes), state.tokens, state.annotation);
+        // GoldOracle.prepareForParse(nodes)
+        GreedyState startState = new GreedyState(state.nodes, state.tokens, state.annotation);
 
         List<Pair<GreedyState,String[]>> derivation = TransitionRunner.run(startState, bfsOracle);
         return Generator.generateAMR(derivation.get(derivation.size()-1).first);
@@ -474,7 +475,7 @@ public class AMRPipelineStateBased {
         return amr;
     }
 
-    public void analyzeStages() throws IOException {
+    public void analyzeStages(String testPrefix) throws IOException {
         System.out.println("Loading training data");
         Pair<List<LabeledSequence>, CoreNLPCache> pairTrain =
                 loadSequenceData(REAL_DATA ? "data/train-400-seq.txt" : "data/train-3-seq.txt");
@@ -492,25 +493,25 @@ public class AMRPipelineStateBased {
         System.out.println("Running analysis");
         nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain),
                 getNERPlusPlusForClassifier(nerPlusPlusDataTest),
-                "data/ner-plus-plus-analysis");
+                "data/"+testPrefix+"/ner-plus-plus-analysis");
 
         dictionaryLookup.analyze(getDictionaryForClassifier(dictionaryDataTrain),
                 getDictionaryForClassifier(dictionaryDataTest),
-                "data/dictionary-lookup-analysis");
+                "data/"+testPrefix+"/dictionary-lookup-analysis");
 
         AMR[] trainBank = AMRSlurp.slurp(REAL_DATA ? "data/train-400-subset.txt" : "data/train-3-subset.txt", AMRSlurp.Format.LDC);
         AMR[] testBank = AMRSlurp.slurp(REAL_DATA ? "data/test-100-subset.txt" : "data/train-3-subset.txt", AMRSlurp.Format.LDC);
 
-        bfsOracle.analyze(trainBank, pairTrain.second, testBank, pairTest.second, "data/bfs-oracle-analysis");
+        bfsOracle.analyze(trainBank, pairTrain.second, testBank, pairTest.second, "data/"+testPrefix+"/bfs-oracle-analysis");
     }
 
-    public void testCompletePipeline() throws IOException, InterruptedException {
+    public void testCompletePipeline(String testPrefix) throws IOException, InterruptedException {
         if (REAL_DATA) {
-            analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/amr-train-analysis");
-            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/amr-test-analysis");
+            analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/"+testPrefix+"/amr-train-analysis");
+            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/"+testPrefix+"/amr-test-analysis");
         }
         else {
-            analyzeAMRSubset("data/train-3-subset.txt", "data/train-3-conll.txt", "data/amr-train-micro-overfit");
+            analyzeAMRSubset("data/train-3-subset.txt", "data/train-3-conll.txt", "data/"+testPrefix+"/amr-train-micro-overfit");
         }
     }
 
@@ -565,10 +566,16 @@ public class AMRPipelineStateBased {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
+        testPipeline("mainTest", bfsOracleFeatures);
+    }
+
+    public static void testPipeline(String testPrefix,
+                                    List<Function<Pair<GreedyState,Integer>,Object>> bfsOracleFeatures)
+            throws IOException, InterruptedException {
         AMRPipelineStateBased pipeline = new AMRPipelineStateBased();
-        pipeline.trainStages();
-        pipeline.analyzeStages();
-        pipeline.testCompletePipeline();
+        pipeline.trainStages(bfsOracleFeatures);
+        pipeline.analyzeStages(testPrefix);
+        pipeline.testCompletePipeline(testPrefix);
     }
 
     /////////////////////////////////////////////////////

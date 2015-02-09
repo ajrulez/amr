@@ -35,24 +35,37 @@ public class Generator {
             int head = q.poll();
             visited.add(head);
             for (int i = 0; i < state.nodes.length; i++) {
+                if (head == i) continue;
                 if (head == 0) {
                     if (state.arcs[head][i] != null && !state.arcs[head][i].equals("NONE")) {
                         // Generate node, becomes root
                         lazyGenNode(amr, newNodes, state, i);
-                        q.add(i);
+                        if (!visited.contains(i) && !q.contains(i)) {
+                            q.add(i);
+                        }
+                        break;
                     }
                 }
                 else {
                     if (state.arcs[head][i] != null && !state.arcs[head][i].equals("NONE")) {
                         AMR.Node newHead = lazyGenNode(amr, newNodes, state, head);
                         AMR.Node newTail = lazyGenNode(amr, newNodes, state, i);
+                        for (AMR.Arc arc : amr.arcs) {
+                            if (arc.head == newHead && arc.tail == newTail) {
+                                throw new IllegalStateException("Can't add an arc between same two nodes twice");
+                            }
+                        }
                         amr.addArc(newHead, newTail, state.arcs[head][i]);
-                        if (!visited.contains(i)) {
+                        if (!visited.contains(i) && !q.contains(i)) {
                             q.add(i);
                         }
                     }
                 }
             }
+        }
+
+        if (amr.nodes.size() > visited.size()-1) {
+            throw new IllegalStateException("Can't have more nodes than visited during construction!");
         }
 
         for (AMR.Node node : amr.nodes) {

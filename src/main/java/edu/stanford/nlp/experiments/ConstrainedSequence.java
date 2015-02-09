@@ -2,6 +2,8 @@ package edu.stanford.nlp.experiments;
 
 import gurobi.*;
 
+import java.util.Arrays;
+
 /**
  * Created by keenon on 2/4/15.
  *
@@ -14,12 +16,12 @@ public class ConstrainedSequence {
         int[] classes = solve(new double[][]{
                 new double[]{1.0, 4.0},
                 new double[]{2.0, 3.5}
-        }, new int[]{1, 1}, new int[]{-1, -1});
+        }, new int[]{1, 1}, new int[]{-1, -1}, new int[]{-1, -1});
 
         System.out.println(classes[0]+","+classes[1]);
     }
 
-    public static int[] solve(double[][] probabilities, int[] allowedClassOccupants, int[] forcedClasses) {
+    public static int[] solve(double[][] probabilities, int[] allowedClassOccupants, int[] minClassOccupants, int[] forcedClasses) {
         assert(probabilities[0].length == allowedClassOccupants.length);
 
         int[] classes = new int[probabilities.length];
@@ -53,12 +55,23 @@ public class ConstrainedSequence {
             // Make sure that all the classes have no more than the allowed number of occupants
 
             for (int j = 0; j < allowedClassOccupants.length; j++) {
-                if (allowedClassOccupants[j] != -1) {
-                    GRBLinExpr expr = new GRBLinExpr();
-                    for (int i = 0; i < probabilities.length; i++) {
-                        expr.addTerm(1.0, vars[i][j]);
+                GRBLinExpr expr = new GRBLinExpr();
+                for (int i = 0; i < probabilities.length; i++) {
+                    expr.addTerm(1.0, vars[i][j]);
+                }
+                if (allowedClassOccupants[j] == minClassOccupants[j]) {
+                    int equals = allowedClassOccupants[j];
+                    if (equals != -1) {
+                        model.addConstr(expr, GRB.EQUAL, equals, "e" + j);
                     }
-                    model.addConstr(expr, GRB.LESS_EQUAL, allowedClassOccupants[j], "d" + j);
+                }
+                else {
+                    if (allowedClassOccupants[j] != -1) {
+                        model.addConstr(expr, GRB.LESS_EQUAL, allowedClassOccupants[j], "d" + j);
+                    }
+                    if (minClassOccupants[j] != -1) {
+                        model.addConstr(expr, GRB.GREATER_EQUAL, minClassOccupants[j], "m" + j);
+                    }
                 }
             }
 

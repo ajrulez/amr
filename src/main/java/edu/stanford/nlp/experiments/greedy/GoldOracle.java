@@ -18,7 +18,12 @@ public class GoldOracle extends Oracle{
     }
 
     public static boolean nodesConsideredEqual(AMR.Node n1, AMR.Node n2) {
-        return n1 == n2;
+        if (n1 == null && n2 == null) return true;
+        else if (n1 == null || n2 == null) return false;
+        else if (n1.type == n2.type) {
+            return (n1.alignment == n2.alignment) && n1.title.equals(n2.title);
+        }
+        return false;
     }
 
     private int indexOfNode(AMR.Node node, AMR.Node[] nodes) {
