@@ -1,18 +1,32 @@
 package edu.stanford.nlp.experiments.tests;
 
+import com.github.keenon.minimalml.word2vec.Word2VecLoader;
 import edu.stanford.nlp.experiments.AMRPipelineStateBased;
 import edu.stanford.nlp.experiments.greedy.GreedyState;
+import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.util.Pair;
+import org.netlib.util.doubleW;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
 /**
  * Created by keenon on 2/8/15.
  */
 public class Test2 {
+    static Map<String,double[]> embeddings;
+
+    static {
+        try {
+            embeddings = Word2VecLoader.loadData("data/google-300-trimmed.ser.gz");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     static List<Function<Pair<GreedyState,Integer>,Object>> bfsOracleFeatures =
             new ArrayList<Function<Pair<GreedyState,Integer>,Object>>(){{
 
@@ -117,9 +131,46 @@ public class Test2 {
                 });
 
                 /**
-                 * New features, because we have tons of context info available
+                 * New features, silly additions
+                 */
+                // name -> QUOTE indicator
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    if (state.head != 0) {
+                        if (state.nodes[state.head].title.equals("name") && state.nodes[pair.second].type == AMR.NodeType.QUOTE) return 1.0;
+                    }
+                    return 0.0;
+                });
+                // name -> NON-QUOTE indicator
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    if (state.head != 0) {
+                        if (state.nodes[state.head].title.equals("name") && state.nodes[pair.second].type != AMR.NodeType.QUOTE) return 1.0;
+                    }
+                    return 0.0;
+                });
+                // head embedding
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    if (state.head == 0) return new double[300];
+                    return embeddings.get(state.tokens[state.nodes[state.head].alignment]);
+                });
+                // tail embedding
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    return embeddings.get(state.tokens[state.nodes[pair.second].alignment]);
+                });
+
+                /**
+                 * New features only possible for context, because we have tons of context info available
                  */
 
+                // Head-head embedding
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    if (state.head == 0 || state.originalParent[state.head] == 0) return new double[300];
+                    return embeddings.get(state.tokens[state.nodes[state.originalParent[state.head]].alignment]);
+                });
                 // Depth into partial AMR tree
                 add(pair -> {
                     GreedyState state = pair.first;
@@ -161,6 +212,6 @@ public class Test2 {
             }};
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        AMRPipelineStateBased.testPipeline("test1", bfsOracleFeatures);
+        AMRPipelineStateBased.testPipeline("test2", bfsOracleFeatures);
     }
 }
