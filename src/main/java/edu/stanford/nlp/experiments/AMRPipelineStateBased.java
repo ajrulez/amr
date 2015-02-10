@@ -582,7 +582,8 @@ public class AMRPipelineStateBased {
         );
         System.out.println("Loading training data");
         List<LabeledSequence> nerPlusPlusDataTrain =
-                loadSequenceData(REAL_DATA ? "data/train-400-seq.txt" : "data/train-3-seq.txt").first;
+                // loadSequenceData(REAL_DATA ? "data/train-400-seq.txt" : "data/train-3-seq.txt").first;
+                loadSequenceData(REAL_DATA ? "realdata/train-seq.txt" : "data/train-3-seq.txt").first;
         System.out.println("Loading testing data");
         List<LabeledSequence> nerPlusPlusDataTest =
                 loadSequenceData(REAL_DATA ? "data/test-100-seq.txt" : "data/train-3-seq.txt").first;
