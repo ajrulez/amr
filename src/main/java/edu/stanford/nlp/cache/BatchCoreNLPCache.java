@@ -2,6 +2,7 @@ package edu.stanford.nlp.cache;
 
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
+import edu.stanford.nlp.curator.CuratorClient;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.CoreNLPProtos;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -55,9 +56,25 @@ public class BatchCoreNLPCache extends CoreNLPCache {
                 }
             }
             else {
+
                 Properties props = new Properties();
-                props.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref, srl, nom, prep");
-                StanfordCoreNLP coreNLP = new StanfordCoreNLP(props);
+                props.put("annotators", "tokenize, ssplit, pos, lemma, ner, regexner1, regexner2, parse, dcoref, srl, nom, prep");
+                props.put("curator.host", "localhost"); // point to the curator host
+                props.put("curator.port", "9010"); // point to the curator port
+
+                props.put("customAnnotatorClass.regexner1", "edu.stanford.nlp.pipeline.TokensRegexNERAnnotator");
+                props.put("regexner1.mapping", "data/kbp_regexner_mapping_nocase.tab");
+                props.put("regexner1.validpospattern", "^(NN|JJ).*");
+                props.put("regexner1.ignorecase", "true");
+                props.put("regexner1.noDefaultOverwriteLabels", "CITY");
+
+                props.put("customAnnotatorClass.regexner2", "edu.stanford.nlp.pipeline.TokensRegexNERAnnotator");
+                props.put("regexner2.mapping", "data/kbp_regexner_mapping.tab");
+                props.put("regexner2.ignorecase", "false");
+                props.put("regexner2.noDefaultOverwriteLabels", "CITY");
+
+                StanfordCoreNLP coreNLP = new CuratorClient(props, false);
+
                 Properties propsFallback = new Properties();
                 propsFallback.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
                 StanfordCoreNLP coreNLPFallback = new StanfordCoreNLP(propsFallback);

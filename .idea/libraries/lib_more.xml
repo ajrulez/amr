@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="lib-more">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/lib-more" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib/lib-more" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lib-more" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/lib-more" recursive="false" type="SOURCES" />
+  </library>
+</component>

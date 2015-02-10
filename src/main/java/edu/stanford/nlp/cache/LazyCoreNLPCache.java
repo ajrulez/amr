@@ -3,6 +3,7 @@ package edu.stanford.nlp.cache;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
+import edu.stanford.nlp.curator.CuratorClient;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.ProtobufAnnotationSerializer;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -54,11 +55,26 @@ public class LazyCoreNLPCache extends CoreNLPCache {
             else {
                 os = new GZIPOutputStream(new FileOutputStream(cacheFile));
                 Properties props = new Properties();
-                props.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref, nom, srl, prep");
-                coreNLP = new StanfordCoreNLP(props);
+                props.put("annotators", "tokenize, ssplit, pos, lemma, ner, regexner1, regexner2, parse, dcoref, srl, nom, prep");
+                props.put("curator.host", "localhost"); // point to the curator host
+                props.put("curator.port", "9010"); // point to the curator port
+
+                props.put("customAnnotatorClass.regexner1", "edu.stanford.nlp.pipeline.TokensRegexNERAnnotator");
+                props.put("regexner1.mapping", "data/kbp_regexner_mapping_nocase.tab");
+                props.put("regexner1.validpospattern", "^(NN|JJ).*");
+                props.put("regexner1.ignorecase", "true");
+                props.put("regexner1.noDefaultOverwriteLabels", "CITY");
+
+                props.put("customAnnotatorClass.regexner2", "edu.stanford.nlp.pipeline.TokensRegexNERAnnotator");
+                props.put("regexner2.mapping", "data/kbp_regexner_mapping.tab");
+                props.put("regexner2.ignorecase", "false");
+                props.put("regexner2.noDefaultOverwriteLabels", "CITY");
+
+                coreNLP = new CuratorClient(props, false);
+
                 Properties propsFallback = new Properties();
                 propsFallback.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
-                coreNLP = new StanfordCoreNLP(propsFallback);
+                coreNLPFallback = new StanfordCoreNLP(propsFallback);
 
                 TransferMap<Integer, Annotation> writerMap = new TransferMap<>();
                 int numThreads = Runtime.getRuntime().availableProcessors();
