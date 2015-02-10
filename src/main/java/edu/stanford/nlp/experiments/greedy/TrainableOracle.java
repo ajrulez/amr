@@ -1,6 +1,6 @@
 package edu.stanford.nlp.experiments.greedy;
 
-import com.github.keenon.minimalml.cache.CoreNLPCache;
+import edu.stanford.nlp.cache.CoreNLPCache;
 import edu.stanford.nlp.experiments.ConstrainedSequence;
 import edu.stanford.nlp.experiments.LinearPipe;
 import edu.stanford.nlp.stamr.AMR;

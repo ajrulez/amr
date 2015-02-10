@@ -1,9 +1,8 @@
 package edu.stanford.nlp.experiments;
 
-import com.github.keenon.minimalml.cache.BatchCoreNLPCache;
-import com.github.keenon.minimalml.cache.CoreNLPCache;
-import com.github.keenon.minimalml.cache.LazyCoreNLPCache;
-import com.github.keenon.minimalml.word2vec.Word2VecLoader;
+import edu.stanford.nlp.cache.BatchCoreNLPCache;
+import edu.stanford.nlp.cache.CoreNLPCache;
+import edu.stanford.nlp.cache.LazyCoreNLPCache;
 import edu.stanford.nlp.experiments.greedy.*;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.IndexedWord;
@@ -17,6 +16,7 @@ import edu.stanford.nlp.stamr.evaluation.Smatch;
 import edu.stanford.nlp.stats.Counter;
 import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.Triple;
+import edu.stanford.nlp.word2vec.Word2VecLoader;
 
 import java.io.*;
 import java.util.*;
