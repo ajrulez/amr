@@ -29,7 +29,7 @@ import java.util.function.Function;
  */
 public class AMRPipelineStateBased {
 
-    static boolean REAL_DATA = true;
+    static boolean REAL_DATA = false;
 
     /////////////////////////////////////////////////////
     // FEATURE SPECS

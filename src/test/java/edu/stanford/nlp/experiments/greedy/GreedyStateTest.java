@@ -3,7 +3,6 @@ package edu.stanford.nlp.experiments.greedy;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-import com.github.keenon.minimalml.kernels.LinearKernel;
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.generator.InRange;
 import edu.stanford.nlp.stamr.AMR;

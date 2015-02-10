@@ -1,10 +1,10 @@
 package edu.stanford.nlp.experiments.sequencetests;
 
-import com.github.keenon.minimalml.word2vec.Word2VecLoader;
 import edu.stanford.nlp.experiments.AMRPipelineStateBased;
 import edu.stanford.nlp.experiments.LabeledSequence;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.util.Pair;
+import edu.stanford.nlp.word2vec.Word2VecLoader;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -4,7 +4,7 @@ import edu.stanford.nlp.experiments.AMRPipelineStateBased;
 import edu.stanford.nlp.experiments.greedy.GreedyState;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.util.Pair;
-import org.netlib.util.doubleW;
+import edu.stanford.nlp.word2vec.Word2VecLoader;
 
 import java.io.IOException;
 import java.util.ArrayList;
