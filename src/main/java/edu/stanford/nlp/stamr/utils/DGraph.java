@@ -408,7 +408,7 @@ class DGraph {
     }
 
     /** randomly attach each node to different parents */
-    private boolean testOptimality() {
+    public boolean testOptimality() {
         int cycleNum = -1;
         for (int child = 1; child < size; child++) {
             int trueParent = parents[child];

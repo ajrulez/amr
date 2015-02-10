@@ -1,5 +1,6 @@
 package edu.stanford.nlp.stamr.datagen;
 
+import com.mysql.jdbc.Buffer;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRSlurp;
 import edu.stanford.nlp.util.IdentityHashSet;
@@ -256,6 +257,47 @@ public class DumpSequence {
         }
     }
 
+    public static void dumpCoNLLAMR(AMR amr, BufferedWriter bw) throws IOException {
+        AMR.Node[] nodes = new AMR.Node[amr.nodes.size()];
+
+        int i = 0;
+        for (AMR.Node node : amr.nodes) {
+            nodes[i++] = node;
+        }
+        assert(i == nodes.length);
+
+        bw.append(nodes.length+"\t");
+
+        for (int j = 0; j < amr.sourceText.length; j++) {
+            if (j != 0) bw.append(" ");
+            bw.append(amr.sourceText[j]);
+        }
+        bw.append("\n");
+
+        for (int j = 0; j < nodes.length; j++) {
+            bw.append(""+(j+1)).append("\t");
+            bw.append(nodes[j].toString().replaceAll(" ","")).append("\t");
+
+            if (amr.incomingArcs.containsKey(nodes[j])) {
+                List<AMR.Arc> incoming = amr.incomingArcs.get(nodes[j]);
+
+                assert(incoming.size() > 0);
+
+                // Multiheaded (incoming.size() > 1) can just pick one and should still be a tree.
+
+                AMR.Arc parent = incoming.get(0);
+                int parentId = Arrays.asList(nodes).indexOf(parent.head)+1;
+                bw.append(""+parentId).append("\t").append(parent.title);
+            }
+            else {
+                bw.append("0\tROOT");
+            }
+            bw.append("\t"+nodes[j].alignment);
+            bw.append("\n");
+        }
+        bw.append("\n");
+    }
+
     // Dumps:
     //
     // node \t head \t dep_rel
@@ -265,43 +307,7 @@ public class DumpSequence {
     public static void dumpCONLL(AMR[] bank, String path) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(path));
         for (AMR amr : bank) {
-            AMR.Node[] nodes = new AMR.Node[amr.nodes.size()];
-            int i = 0;
-            for (AMR.Node node : amr.nodes) {
-                nodes[i++] = node;
-            }
-            assert(i == nodes.length);
-
-            bw.append(nodes.length+"\t");
-
-            for (int j = 0; j < amr.sourceText.length; j++) {
-                if (j != 0) bw.append(" ");
-                bw.append(amr.sourceText[j]);
-            }
-            bw.append("\n");
-
-            for (int j = 0; j < nodes.length; j++) {
-                bw.append(""+(j+1)).append("\t");
-                bw.append(nodes[j].toString().replaceAll(" ","")).append("\t");
-
-                if (amr.incomingArcs.containsKey(nodes[j])) {
-                    List<AMR.Arc> incoming = amr.incomingArcs.get(nodes[j]);
-
-                    assert(incoming.size() > 0);
-
-                    // Multiheaded (incoming.size() > 1) can just pick one and should still be a tree.
-
-                    AMR.Arc parent = incoming.get(0);
-                    int parentId = Arrays.asList(nodes).indexOf(parent.head)+1;
-                    bw.append(""+parentId).append("\t").append(parent.title);
-                }
-                else {
-                    bw.append("0\tROOT");
-                }
-                bw.append("\t"+nodes[j].alignment);
-                bw.append("\n");
-            }
-            bw.append("\n");
+            dumpCoNLLAMR(amr, bw);
         }
         bw.close();
     }

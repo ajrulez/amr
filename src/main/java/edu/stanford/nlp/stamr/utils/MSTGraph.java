@@ -85,6 +85,9 @@ public class MSTGraph {
             }
             DGraph dGraph = new DGraph(weights, arcLabels);
             Pair<int[], Object[]> possibleArcs = dGraph.chuLiuEdmonds();
+            if (!dGraph.testOptimality()) {
+                throw new IllegalStateException("Can't have a non-optimal graph solution!");
+            }
 
             double score = 0.0;
             for (int i = 0; i < numNodes; i++) {

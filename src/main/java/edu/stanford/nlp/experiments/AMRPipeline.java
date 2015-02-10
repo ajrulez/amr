@@ -14,8 +14,11 @@ import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRParser;
 import edu.stanford.nlp.stamr.AMRSlurp;
+import edu.stanford.nlp.stamr.datagen.DumpSequence;
 import edu.stanford.nlp.stamr.evaluation.Smatch;
 import edu.stanford.nlp.stamr.utils.MSTGraph;
+import edu.stanford.nlp.stats.Counter;
+import edu.stanford.nlp.stats.Counters;
 import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.Triple;
 import edu.stanford.nlp.word2vec.Word2VecLoader;
@@ -33,6 +36,7 @@ import java.util.function.Function;
 public class AMRPipeline {
 
     public static boolean FULL_DATA = false;
+    public static boolean TINY_DATA = true;
 
     /////////////////////////////////////////////////////
     // FEATURE SPECS
@@ -343,9 +347,9 @@ public class AMRPipeline {
 
     public void trainStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : "data/train-400-seq.txt");
-        List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : "data/train-400-manygen.txt");
-        List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : "data/train-400-conll.txt");
+        List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-400-seq.txt"));
+        List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-400-manygen.txt"));
+        List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-400-manygen.txt"));
 
         System.out.println("Training");
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
@@ -487,13 +491,25 @@ public class AMRPipeline {
             for (int j = 1; j <= length; j++) {
                 if (nodeSet.nodes[j] == null) continue;
                 if (i == j) continue;
-                if (nodeSet.forcedArcs[i][j] != null) {
-                    // Add this with such a high weight that it has to be included in the final MST
-                    mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], 10000);
+                int forcedParent = -1;
+                for (int k = 0; k <= length; k++) {
+                    if (nodeSet.forcedArcs[k][j] != null) {
+                        // Add this with such a high weight that it has to be included in the final MST
+                        forcedParent = k;
+                        break;
+                    }
+                }
+
+                if (forcedParent != -1) {
+                    if (forcedParent == i)
+                        mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], 1);
+                    else
+                        mstGraph.addArc(i, j, "NO-ARC", Double.NEGATIVE_INFINITY);
                 }
                 else {
-                    double prob = arcExistence.predictSoft(new Triple<>(nodeSet, i, j)).getCount(true);
-                    mstGraph.addArc(i, j, "NO-LABEL", prob);
+                    Counter<Boolean> counter = arcExistence.predictSoft(new Triple<>(nodeSet, i, j));
+                    Counters.logNormalizeInPlace(counter);
+                    mstGraph.addArc(i, j, "NO-LABEL", counter.getCount(true));
                 }
             }
         }
@@ -544,14 +560,14 @@ public class AMRPipeline {
 
     public void analyzeStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : "data/train-400-seq.txt");
-        List<LabeledSequence> dictionaryDataTrain = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : "data/train-400-manygen.txt");
-        List<AMRNodeSet> mstDataTrain = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : "data/train-400-conll.txt");
+        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-400-seq.txt"));
+        List<LabeledSequence> dictionaryDataTrain = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-400-manygen.txt"));
+        List<AMRNodeSet> mstDataTrain = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-400-conll.txt"));
 
         System.out.println("Loading testing data");
-        List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData(FULL_DATA ? "realdata/test-seq.txt" : "data/test-100-seq.txt");
-        List<LabeledSequence> dictionaryDataTest = loadManygenData(FULL_DATA ? "realdata/test-manygen.txt" : "data/test-100-manygen.txt");
-        List<AMRNodeSet> mstDataTest = loadCoNLLData(FULL_DATA ? "realdata/test-conll.txt" : "data/test-100-conll.txt");
+        List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData(FULL_DATA ? "realdata/test-seq.txt" : (TINY_DATA ? "data/train-3-seq.txt" : "data/test-100-seq.txt"));
+        List<LabeledSequence> dictionaryDataTest = loadManygenData(FULL_DATA ? "realdata/test-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "data/test-100-manygen.txt"));
+        List<AMRNodeSet> mstDataTest = loadCoNLLData(FULL_DATA ? "realdata/test-conll.txt" : (TINY_DATA ? "data/train-3-conll.txt" : "data/test-100-conll.txt"));
 
         System.out.println("Running analysis");
         nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain),
@@ -577,8 +593,13 @@ public class AMRPipeline {
             analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "realdata/amr-test-analysis");
         }
         else {
-            analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/amr-train-analysis");
-            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/amr-test-analysis");
+            if (TINY_DATA) {
+                analyzeAMRSubset("data/train-3-subset.txt", "data/train-3-conll.txt", "data/amr-train-analysis");
+            }
+            else {
+                analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/amr-train-analysis");
+                analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/amr-test-analysis");
+            }
         }
     }
 
@@ -610,6 +631,9 @@ public class AMRPipeline {
         AMRSlurp.burp(output+"/gold.txt", AMRSlurp.Format.LDC, bank, AMR.AlignmentPrinting.ALL, false);
         AMRSlurp.burp(output+"/recovered.txt", AMRSlurp.Format.LDC, recovered, AMR.AlignmentPrinting.ALL, false);
         AMRSlurp.burp(output+"/recovered-perfect-dict.txt", AMRSlurp.Format.LDC, recoveredPerfectDict, AMR.AlignmentPrinting.ALL, false);
+
+        DumpSequence.dumpCONLL(recovered, output+"/recovered-conll.txt");
+        DumpSequence.dumpCONLL(recoveredPerfectDict, output + "/recovered-perfect-dict-conll.txt");
 
         double smatch = Smatch.smatch(bank, recovered);
         System.out.println("SMATCH for overall "+path+" = "+smatch);
