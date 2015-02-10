@@ -29,7 +29,7 @@ import java.util.function.Function;
  */
 public class AMRPipelineStateBased {
 
-    static boolean REAL_DATA = false;
+    static boolean REAL_DATA = true;
 
     /////////////////////////////////////////////////////
     // FEATURE SPECS
@@ -40,16 +40,16 @@ public class AMRPipelineStateBased {
     /////////////////////////////////////////////////////
 
     static Map<String,double[]> embeddings;
+    static FrameManager frameManager;
 
     static {
         try {
             embeddings = Word2VecLoader.loadData("data/google-300-trimmed.ser.gz");
+            frameManager = new FrameManager("data/frames");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    FrameManager frameManager;
 
     @SuppressWarnings("unchecked")
     LinearPipe<Pair<LabeledSequence,Integer>, String> nerPlusPlus = new LinearPipe<>(
@@ -59,6 +59,84 @@ public class AMRPipelineStateBased {
 
                 add((pair) -> pair.first.tokens[pair.second]);
                 add((pair) -> embeddings.get(pair.first.tokens[pair.second]));
+
+                // Left context
+                add((pair) -> {
+                    if (pair.second == 0) return "^";
+                    else return pair.first.tokens[pair.second-1];
+                });
+                // Right context
+                add((pair) -> {
+                    if (pair.second == pair.first.tokens.length-1) return "$";
+                    else return pair.first.tokens[pair.second+1];
+                });
+
+                // POS
+                add((pair) -> pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class)
+                        .get(pair.second).get(CoreAnnotations.PartOfSpeechAnnotation.class));
+                // Left POS
+                add((pair) -> {
+                    if (pair.second == 0) return "^";
+                    else return pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class)
+                            .get(pair.second-1).get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                });
+                // Right POS
+                add((pair) -> {
+                    if (pair.second == pair.first.tokens.length-1) return "$";
+                    else return pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class)
+                            .get(pair.second+1).get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                });
+
+                // Token dependency parent
+                add((pair) -> {
+                    SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
+                    if (indexedWord == null) return "NON-DEP";
+                    List<IndexedWord> l = graph.getPathToRoot(indexedWord);
+                    if (l.size() > 0) {
+                        return l.get(0).word();
+                    }
+                    else return "ROOT";
+                });
+                // Token dependency parent POS
+                add((pair) -> {
+                    SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
+                    if (indexedWord == null) return "NON-DEP";
+                    List<IndexedWord> l = graph.getPathToRoot(indexedWord);
+                    if (l.size() > 0) {
+                        return l.get(0).get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                    }
+                    else return "ROOT";
+                });
+                // Dependency parent arc
+                add((pair) -> {
+                    SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
+                    if (indexedWord == null) return "NON-DEP";
+                    IndexedWord parent = graph.getParent(indexedWord);
+                    if (parent == null) return "ROOT";
+                    return graph.getAllEdges(parent, indexedWord).get(0).getRelation().getShortName();
+                });
+                // Dependency parent arc + Parent POS
+                add((pair) -> {
+                    SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
+                    if (indexedWord == null) return "NON-DEP";
+                    IndexedWord parent = graph.getParent(indexedWord);
+                    if (parent == null) return "ROOT";
+                    return graph.getAllEdges(parent, indexedWord).get(0).getRelation().getShortName()+
+                            parent.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                });
+
+                // Closest frame similarity
+                add((pair) -> frameManager.getMaxSimilarity(pair.first.tokens[pair.second].toLowerCase()));
+                // Closest frame token
+                add((pair) -> frameManager.getClosestFrame(pair.first.tokens[pair.second].toLowerCase()));
             }},
             AMRPipelineStateBased::writeNerPlusPlusContext
     );
@@ -307,7 +385,6 @@ public class AMRPipelineStateBased {
 
     public void trainStages(List<Function<Pair<GreedyState,Integer>,Object>> bfsOracleFeatures) throws IOException {
         System.out.println("Loading frames");
-        frameManager = new FrameManager("data/frames");
 
         System.out.println("Loading training data");
         Pair<List<LabeledSequence>,CoreNLPCache> pair = loadSequenceData(REAL_DATA ? "data/train-400-seq.txt" : "data/train-3-seq.txt");

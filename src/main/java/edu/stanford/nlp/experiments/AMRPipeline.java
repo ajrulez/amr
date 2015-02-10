@@ -3,6 +3,8 @@ package edu.stanford.nlp.experiments;
 import edu.stanford.nlp.cache.BatchCoreNLPCache;
 import edu.stanford.nlp.cache.CoreNLPCache;
 import edu.stanford.nlp.cache.LazyCoreNLPCache;
+import edu.stanford.nlp.experiments.greedy.Generator;
+import edu.stanford.nlp.experiments.greedy.GreedyState;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -30,7 +32,7 @@ import java.util.function.Function;
  */
 public class AMRPipeline {
 
-    public static boolean FULL_DATA = true;
+    public static boolean FULL_DATA = false;
 
     /////////////////////////////////////////////////////
     // FEATURE SPECS
@@ -41,10 +43,12 @@ public class AMRPipeline {
     /////////////////////////////////////////////////////
 
     static Map<String,double[]> embeddings;
+    static FrameManager frameManager;
 
     static {
         try {
             embeddings = Word2VecLoader.loadData("data/google-300-trimmed.ser.gz");
+            frameManager = new FrameManager("data/frames");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -58,6 +62,84 @@ public class AMRPipeline {
 
                 add((pair) -> pair.first.tokens[pair.second]);
                 add((pair) -> embeddings.get(pair.first.tokens[pair.second]));
+
+                // Left context
+                add((pair) -> {
+                    if (pair.second == 0) return "^";
+                    else return pair.first.tokens[pair.second-1];
+                });
+                // Right context
+                add((pair) -> {
+                    if (pair.second == pair.first.tokens.length-1) return "$";
+                    else return pair.first.tokens[pair.second+1];
+                });
+
+                // POS
+                add((pair) -> pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class)
+                        .get(pair.second).get(CoreAnnotations.PartOfSpeechAnnotation.class));
+                // Left POS
+                add((pair) -> {
+                    if (pair.second == 0) return "^";
+                    else return pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class)
+                            .get(pair.second-1).get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                });
+                // Right POS
+                add((pair) -> {
+                    if (pair.second == pair.first.tokens.length-1) return "$";
+                    else return pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class)
+                            .get(pair.second+1).get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                });
+
+                // Token dependency parent
+                add((pair) -> {
+                    SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
+                    if (indexedWord == null) return "NON-DEP";
+                    List<IndexedWord> l = graph.getPathToRoot(indexedWord);
+                    if (l.size() > 0) {
+                        return l.get(0).word();
+                    }
+                    else return "ROOT";
+                });
+                // Token dependency parent POS
+                add((pair) -> {
+                    SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
+                    if (indexedWord == null) return "NON-DEP";
+                    List<IndexedWord> l = graph.getPathToRoot(indexedWord);
+                    if (l.size() > 0) {
+                        return l.get(0).get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                    }
+                    else return "ROOT";
+                });
+                // Dependency parent arc
+                add((pair) -> {
+                    SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
+                    if (indexedWord == null) return "NON-DEP";
+                    IndexedWord parent = graph.getParent(indexedWord);
+                    if (parent == null) return "ROOT";
+                    return graph.getAllEdges(parent, indexedWord).get(0).getRelation().getShortName();
+                });
+                // Dependency parent arc + Parent POS
+                add((pair) -> {
+                    SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
+                    if (indexedWord == null) return "NON-DEP";
+                    IndexedWord parent = graph.getParent(indexedWord);
+                    if (parent == null) return "ROOT";
+                    return graph.getAllEdges(parent, indexedWord).get(0).getRelation().getShortName()+
+                            parent.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                });
+
+                // Closest frame similarity
+                add((pair) -> frameManager.getMaxSimilarity(pair.first.tokens[pair.second].toLowerCase()));
+                // Closest frame token
+                add((pair) -> frameManager.getClosestFrame(pair.first.tokens[pair.second].toLowerCase()));
             }},
             AMRPipeline::writeNerPlusPlusContext
     );
@@ -420,66 +502,17 @@ public class AMRPipeline {
 
         Map<Integer,Set<Pair<String,Integer>>> arcMap = mstGraph.getMST(false);
 
-        Map<Integer,AMR.Node> oldToNew = new HashMap<>();
-        AMR result = new AMR();
-        result.sourceText = tokens;
-
-        if (!arcMap.containsKey(-1)) {
-            System.err.println("Got no parse for \""+result.formatSourceTokens()+"\"! Returning empty tree");
-            return result;
-        }
-
-        int root = arcMap.get(-1).iterator().next().second;
-        AMR.Node rootNode = nodeSet.nodes[root];
-        if (rootNode.type == AMR.NodeType.ENTITY) {
-            oldToNew.put(root, result.addNode(rootNode.ref, rootNode.title, rootNode.alignment));
-        }
-        else {
-            oldToNew.put(root, result.addNode(rootNode.title, rootNode.type));
-        }
-
-        recursivelyAttach(arcMap, result, oldToNew, root, nodeSet);
-
-        // Give every node a unique ref, so we can decide how to handle coref
-
-        for (AMR.Node node : result.nodes) {
-            result.giveNodeUniqueRef(node);
-        }
-
-        // Enforce that nodes are generally included when we want them to be
-
-        if (result.nodes.size() > nodeSet.nodes.length) {
-            System.out.println(result.toString());
-            System.out.println("Num nodes in result: "+result.nodes.size());
-            System.out.println("Num nodes in nodeSet: "+nodeSet.nodes.length);
-            List<AMR.Node> resultNodes = new ArrayList<>();
-            resultNodes.addAll(resultNodes);
-            resultNodes.removeAll(Arrays.asList(nodeSet.nodes));
-            for (AMR.Node node : resultNodes) {
-                System.out.println(node.toString());
-            }
-            System.out.println("Break");
-            throw new IllegalStateException("Can't have included the wrong number of nodes! "+result.toString());
-        }
-
-        // TODO: Do something about deliberate coref, maybe train a 5th classifier?
-
-        // Simple coref solution, match based on identical source tokens
-
-        for (AMR.Node node : result.nodes) {
-            if (node.title.equals("name")) continue;
-            for (AMR.Node node2 : result.nodes) {
-                if (node2.title.equals("name")) continue;
-                if (node == node2) continue;
-                String token1 = tokens[node.alignment];
-                String token2 = tokens[node2.alignment];
-                if (token1.equalsIgnoreCase(token2)) {
-                    node.ref = node2.ref;
+        GreedyState state = new GreedyState(nodeSet.nodes, tokens, annotation);
+        for (int i : arcMap.keySet()) {
+            for (Pair<String,Integer> arc : arcMap.get(i)) {
+                int head = i == -1 ? 0 : i;
+                if (arc.first.equals("NO-LABEL")) {
+                    arc.first = arcType.predict(new Triple<>(nodeSet, head, arc.second));
                 }
+                state.arcs[head][arc.second] = arc.first;
             }
         }
-
-        return result;
+        return Generator.generateAMR(state);
     }
 
     public AMR runPipeline(String[] tokens, Annotation annotation) {
@@ -492,48 +525,6 @@ public class AMRPipeline {
         nodeSet.forcedArcs = nodesAndArcs.second;
 
         return runMSTPipeline(tokens, annotation, nodeSet);
-    }
-
-    private void recursivelyAttach(Map<Integer,Set<Pair<String,Integer>>> arcMap,
-                                   AMR result,
-                                   Map<Integer,AMR.Node> oldToNew,
-                                   int parent,
-                                   AMRNodeSet nodeSet) {
-        if (!arcMap.containsKey(parent)) return;
-
-        Set<Pair<String,Integer>> outgoingArcs = arcMap.get(parent);
-
-        for (Pair<String,Integer> arc : outgoingArcs) {
-            int child = arc.second;
-
-            String arcName;
-            // TODO: how did this arc get to be null?
-            if (arc.first == null || arc.first.equals("NO-LABEL")) {
-                arcName = arcType.predict(new Triple<>(nodeSet, parent, child));
-            }
-            else {
-                arcName = arc.first;
-            }
-
-            AMR.Node childNode = nodeSet.nodes[child];
-            AMR.Node childNodeNew;
-            if (childNode.type == AMR.NodeType.ENTITY) {
-                childNodeNew = result.addNode(childNode.ref, childNode.title, childNode.alignment);
-            }
-            else {
-                childNodeNew = result.addNode(childNode.title, childNode.type);
-            }
-
-            if (oldToNew.containsKey(child)) throw new IllegalStateException("Can't add the same node twice");
-
-            oldToNew.put(child, childNodeNew);
-
-            AMR.Node parentNodeNew = oldToNew.get(parent);
-
-            result.addArc(parentNodeNew, childNodeNew, arcName);
-
-            recursivelyAttach(arcMap, result, oldToNew, child, nodeSet);
-        }
     }
 
     private AMR createAMRSingleton(String title) {

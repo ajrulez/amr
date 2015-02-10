@@ -229,6 +229,13 @@ public class AMR implements Serializable {
         }
 
         String baseRef = node.title.charAt(0)+"";
+        try {
+            Integer.parseInt(baseRef);
+            baseRef = "x";
+        }
+        catch (Exception e) {
+            // do nothing
+        }
         String ref = baseRef;
         int offset = 2;
         while (takenRefs.contains(ref)) {

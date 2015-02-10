@@ -119,11 +119,6 @@ public class Test6 {
                 add((pair) -> frameManager.getMaxSimilarity(pair.first.tokens[pair.second].toLowerCase()));
                 // Closest frame token
                 add((pair) -> frameManager.getClosestFrame(pair.first.tokens[pair.second].toLowerCase()));
-
-                add((pair) -> {
-                    int shapeType = WordShapeClassifier.WORDSHAPECHRIS4;
-                    return WordShapeClassifier.wordShape(pair.first.tokens[pair.second], shapeType);
-                });
             }};
 
     public static void main(String[] args) throws IOException {

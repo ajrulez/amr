@@ -2,6 +2,7 @@ package edu.stanford.nlp.cache;
 
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
+import com.google.protobuf.CodedOutputStream;
 import edu.stanford.nlp.curator.CuratorClient;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.CoreNLPProtos;
@@ -106,7 +107,7 @@ public class BatchCoreNLPCache extends CoreNLPCache {
                     BinaryUtils.writeInt(os, annotations.length);
                     for (int i = 0; i < annotations.length; i++) {
                         CoreNLPProtos.Document serialized = protobufAnnotationSerializer.toProto(annotations[i]);
-                        // serialized.writeTo(new CodedOutputStream(os));
+                        serialized.writeTo(os);
                     }
                     os.close();
                 }
@@ -162,6 +163,7 @@ public class BatchCoreNLPCache extends CoreNLPCache {
             for (int i = threadIdx; i < sentences.length; i += numThreads) {
                 Annotation annotation = new Annotation(sentences[i]);
                 try {
+                    System.out.println("Annotating "+i+"/"+sentences.length);
                     coreNLP.annotate(annotation);
                 }
                 catch (Exception e) {
