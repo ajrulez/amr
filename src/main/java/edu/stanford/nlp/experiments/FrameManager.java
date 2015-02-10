@@ -70,6 +70,17 @@ public class FrameManager {
         return frames;
     }
 
+    public double getMaxSimilarity(String token) {
+        double maxSimilarity = 0;
+        for (Frame f : frames) {
+            double dist = JaroWinklerDistance.distance(token.toLowerCase(), f.lemma.toLowerCase());
+            if (dist > maxSimilarity) {
+                maxSimilarity = dist;
+            }
+        }
+        return maxSimilarity;
+    }
+
     public String getClosestFrame(String token) {
         return getClosestFrame(token, frames);
     }
