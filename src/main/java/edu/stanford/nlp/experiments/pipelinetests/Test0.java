@@ -1,4 +1,4 @@
-package edu.stanford.nlp.experiments.tests;
+package edu.stanford.nlp.experiments.pipelinetests;
 
 import edu.stanford.nlp.experiments.AMRPipelineStateBased;
 import edu.stanford.nlp.experiments.greedy.GreedyState;

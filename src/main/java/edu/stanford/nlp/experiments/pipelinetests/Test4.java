@@ -1,10 +1,10 @@
-package edu.stanford.nlp.experiments.tests;
+package edu.stanford.nlp.experiments.pipelinetests;
 
+import com.github.keenon.minimalml.word2vec.Word2VecLoader;
 import edu.stanford.nlp.experiments.AMRPipelineStateBased;
 import edu.stanford.nlp.experiments.greedy.GreedyState;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.util.Pair;
-import edu.stanford.nlp.word2vec.Word2VecLoader;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.function.Function;
 /**
  * Created by keenon on 2/8/15.
  */
-public class Test2 {
+public class Test4 {
     static Map<String,double[]> embeddings;
 
     static {
@@ -98,14 +98,13 @@ public class Test2 {
                     GreedyState state = pair.first;
                     String headConcept;
                     if (state.head == 0) headConcept = "ROOT";
-                    else headConcept = state.nodes[state.head].toString();
+                    else headConcept = state.nodes[state.head].title;
                     return AMRPipelineStateBased.getDependencyPath(state, state.head, pair.second)+":"+headConcept;
                 });
                 // Path + Tail concept
                 add(pair -> {
                     GreedyState state = pair.first;
-                    String tailConcept;
-                    return AMRPipelineStateBased.getDependencyPath(state, state.head, pair.second)+":"+state.nodes[pair.second].toString();
+                    return AMRPipelineStateBased.getDependencyPath(state, state.head, pair.second)+":"+state.nodes[pair.second].title;
                 });
                 // Path + Head word
                 add(pair -> {
@@ -159,6 +158,23 @@ public class Test2 {
                     GreedyState state = pair.first;
                     return embeddings.get(state.tokens[state.nodes[pair.second].alignment]);
                 });
+                // head->tail delta embedding
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    double[] head = new double[300];
+                    if (state.head != 0) head = embeddings.get(state.tokens[state.nodes[state.head].alignment]);
+                    double[] tail = embeddings.get(state.tokens[state.nodes[pair.second].alignment]);
+
+                    double[] mix = new double[300];
+
+                    if (head == null || tail == null) return mix;
+
+                    for (int i = 0; i < head.length; i++) {
+                        mix[i] -= head[i];
+                        mix[i] += tail[i];
+                    }
+                    return mix;
+                });
 
                 /**
                  * New features only possible for context, because we have tons of context info available
@@ -211,6 +227,6 @@ public class Test2 {
             }};
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        AMRPipelineStateBased.testPipeline("test2", bfsOracleFeatures);
+        AMRPipelineStateBased.testPipeline("test4", bfsOracleFeatures);
     }
 }

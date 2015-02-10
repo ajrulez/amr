@@ -1,5 +1,6 @@
-package edu.stanford.nlp.experiments.tests;
+package edu.stanford.nlp.experiments.pipelinetests;
 
+import com.github.keenon.minimalml.word2vec.Word2VecLoader;
 import edu.stanford.nlp.experiments.AMRPipelineStateBased;
 import edu.stanford.nlp.experiments.greedy.GreedyState;
 import edu.stanford.nlp.stamr.AMR;
@@ -8,12 +9,23 @@ import edu.stanford.nlp.util.Pair;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
 /**
  * Created by keenon on 2/8/15.
  */
-public class Test1 {
+public class Test3 {
+    static Map<String,double[]> embeddings;
+
+    static {
+        try {
+            embeddings = Word2VecLoader.loadData("data/google-300-trimmed.ser.gz");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     static List<Function<Pair<GreedyState,Integer>,Object>> bfsOracleFeatures =
             new ArrayList<Function<Pair<GreedyState,Integer>,Object>>(){{
 
@@ -86,14 +98,13 @@ public class Test1 {
                     GreedyState state = pair.first;
                     String headConcept;
                     if (state.head == 0) headConcept = "ROOT";
-                    else headConcept = state.nodes[state.head].toString();
+                    else headConcept = state.nodes[state.head].title;
                     return AMRPipelineStateBased.getDependencyPath(state, state.head, pair.second)+":"+headConcept;
                 });
                 // Path + Tail concept
                 add(pair -> {
                     GreedyState state = pair.first;
-                    String tailConcept;
-                    return AMRPipelineStateBased.getDependencyPath(state, state.head, pair.second)+":"+state.nodes[pair.second].toString();
+                    return AMRPipelineStateBased.getDependencyPath(state, state.head, pair.second)+":"+state.nodes[pair.second].title;
                 });
                 // Path + Head word
                 add(pair -> {
@@ -135,6 +146,23 @@ public class Test1 {
                         if (state.nodes[state.head].title.equals("name") && state.nodes[pair.second].type != AMR.NodeType.QUOTE) return 1.0;
                     }
                     return 0.0;
+                });
+                // head->tail delta embedding
+                add(pair -> {
+                    GreedyState state = pair.first;
+                    double[] head = new double[300];
+                    if (state.head != 0) head = embeddings.get(state.tokens[state.nodes[state.head].alignment]);
+                    double[] tail = embeddings.get(state.tokens[state.nodes[pair.second].alignment]);
+
+                    double[] mix = new double[300];
+
+                    if (head == null || tail == null) return mix;
+
+                    for (int i = 0; i < head.length; i++) {
+                        mix[i] -= head[i];
+                        mix[i] += tail[i];
+                    }
+                    return mix;
                 });
 
                 /**
@@ -182,6 +210,6 @@ public class Test1 {
             }};
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        AMRPipelineStateBased.testPipeline("test1", bfsOracleFeatures);
+        AMRPipelineStateBased.testPipeline("test3", bfsOracleFeatures);
     }
 }

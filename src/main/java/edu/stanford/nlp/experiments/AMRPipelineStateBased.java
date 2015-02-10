@@ -574,6 +574,23 @@ public class AMRPipelineStateBased {
         testPipeline("mainTest", bfsOracleFeatures);
     }
 
+    public static void testSequenceTagger(String testPrefix,
+                                          List<Function<Pair<LabeledSequence,Integer>,Object>> nerPlusPlusFeatures) throws IOException {
+        LinearPipe<Pair<LabeledSequence,Integer>, String> nerPlusPlus = new LinearPipe<>(
+                nerPlusPlusFeatures,
+                AMRPipelineStateBased::writeNerPlusPlusContext
+        );
+        System.out.println("Loading training data");
+        List<LabeledSequence> nerPlusPlusDataTrain =
+                // loadSequenceData(REAL_DATA ? "data/train-400-seq.txt" : "data/train-3-seq.txt").first;
+                loadSequenceData(REAL_DATA ? "realdata/train-seq.txt" : "data/train-3-seq.txt").first;
+        System.out.println("Loading testing data");
+        List<LabeledSequence> nerPlusPlusDataTest =
+                loadSequenceData(REAL_DATA ? "data/test-100-seq.txt" : "data/train-3-seq.txt").first;
+        nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusDataTrain));
+        nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain), getNERPlusPlusForClassifier(nerPlusPlusDataTest), "data/"+testPrefix+"/ner-plus-plus-analysis");
+    }
+
     public static void testPipeline(String testPrefix,
                                     List<Function<Pair<GreedyState,Integer>,Object>> bfsOracleFeatures)
             throws IOException, InterruptedException {
@@ -587,7 +604,7 @@ public class AMRPipelineStateBased {
     // LOADERS
     /////////////////////////////////////////////////////
 
-    private Pair<List<LabeledSequence>,CoreNLPCache> loadSequenceData(String path) throws IOException {
+    private static Pair<List<LabeledSequence>,CoreNLPCache> loadSequenceData(String path) throws IOException {
         List<LabeledSequence> seqList = new ArrayList<>();
 
         BufferedReader br = new BufferedReader(new FileReader(path));

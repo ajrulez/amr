@@ -25,11 +25,18 @@ import java.util.function.Function;
 public class LinearPipe<IN,OUT> {
 
     Function<IN,Object>[] features;
-    LinearClassifier<OUT,String> classifier;
+    Classifier<OUT,String> classifier;
     public BiConsumer<IN, BufferedWriter> debugErrorContext;
 
     public boolean automaticallyReweightTrainingData = true;
     public double sigma = 4.0;
+
+    public enum ClassifierType {
+        LINEAR,
+        SVM
+    }
+
+    public ClassifierType type = ClassifierType.LINEAR;
 
     @SuppressWarnings("unchecked")
     public LinearPipe(List<Function<IN,Object>> features, BiConsumer<IN, BufferedWriter> debugErrorContext) {
@@ -89,18 +96,16 @@ public class LinearPipe<IN,OUT> {
     }
 
     public void train(List<Pair<IN,OUT>> data) {
-        LinearClassifierFactory<OUT,String> factory = new LinearClassifierFactory<>();
-        factory.setSigma(sigma);  // higher -> less regularization (default=1)
-        factory.setVerbose(true);
         RVFDataset<OUT, String> dataset = new RVFDataset<>();
         for (Pair<IN,OUT> pair : data) {
             dataset.add(toDatum(pair.first, pair.second));
         }
 
-        // Create a data-weighting array to downweight super frequent tags and upweight infrequent ones
+        // Create a data-weighting array to down-weight super frequent tags and upweight infrequent ones
 
+        float[] dataWeights = null;
         if (automaticallyReweightTrainingData) {
-            float[] dataWeights = new float[dataset.size()];
+            dataWeights = new float[dataset.size()];
             Counter<OUT> labelCounts = new ClassicCounter<>();
             for (int i = 0; i < dataset.size(); i++) {
                 labelCounts.incrementCount(dataset.getDatum(i).label());
@@ -108,10 +113,17 @@ public class LinearPipe<IN,OUT> {
             for (int i = 0; i < dataset.size(); i++) {
                 dataWeights[i] = (float) (dataset.size() / labelCounts.getCount(dataset.getDatum(i).label()));
             }
-            classifier = (LinearClassifier<OUT, String>) factory.trainClassifier(dataset, dataWeights, new LogPrior());
         }
-        else {
-            classifier = factory.trainClassifier(dataset);
+
+        if (type == ClassifierType.LINEAR) {
+            LinearClassifierFactory<OUT, String> factory = new LinearClassifierFactory<>();
+            factory.setSigma(sigma);  // higher -> less regularization (default=1)
+            factory.setVerbose(true);
+            if (automaticallyReweightTrainingData) {
+                classifier = factory.trainClassifier(dataset, dataWeights, new LogPrior());
+            } else {
+                classifier = factory.trainClassifier(dataset);
+            }
         }
 
         System.out.println("Trained classifier");
