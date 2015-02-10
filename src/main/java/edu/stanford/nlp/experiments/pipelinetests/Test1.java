@@ -1,6 +1,5 @@
-package edu.stanford.nlp.experiments.tests;
+package edu.stanford.nlp.experiments.pipelinetests;
 
-import com.github.keenon.minimalml.word2vec.Word2VecLoader;
 import edu.stanford.nlp.experiments.AMRPipelineStateBased;
 import edu.stanford.nlp.experiments.greedy.GreedyState;
 import edu.stanford.nlp.stamr.AMR;
@@ -9,23 +8,12 @@ import edu.stanford.nlp.util.Pair;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
 
 /**
  * Created by keenon on 2/8/15.
  */
-public class Test3 {
-    static Map<String,double[]> embeddings;
-
-    static {
-        try {
-            embeddings = Word2VecLoader.loadData("data/google-300-trimmed.ser.gz");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+public class Test1 {
     static List<Function<Pair<GreedyState,Integer>,Object>> bfsOracleFeatures =
             new ArrayList<Function<Pair<GreedyState,Integer>,Object>>(){{
 
@@ -147,23 +135,6 @@ public class Test3 {
                     }
                     return 0.0;
                 });
-                // head->tail delta embedding
-                add(pair -> {
-                    GreedyState state = pair.first;
-                    double[] head = new double[300];
-                    if (state.head != 0) head = embeddings.get(state.tokens[state.nodes[state.head].alignment]);
-                    double[] tail = embeddings.get(state.tokens[state.nodes[pair.second].alignment]);
-
-                    double[] mix = new double[300];
-
-                    if (head == null || tail == null) return mix;
-
-                    for (int i = 0; i < head.length; i++) {
-                        mix[i] -= head[i];
-                        mix[i] += tail[i];
-                    }
-                    return mix;
-                });
 
                 /**
                  * New features only possible for context, because we have tons of context info available
@@ -210,6 +181,6 @@ public class Test3 {
             }};
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        AMRPipelineStateBased.testPipeline("test3", bfsOracleFeatures);
+        AMRPipelineStateBased.testPipeline("test1", bfsOracleFeatures);
     }
 }

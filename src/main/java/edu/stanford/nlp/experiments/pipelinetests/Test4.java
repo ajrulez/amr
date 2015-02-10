@@ -1,4 +1,4 @@
-package edu.stanford.nlp.experiments.tests;
+package edu.stanford.nlp.experiments.pipelinetests;
 
 import com.github.keenon.minimalml.word2vec.Word2VecLoader;
 import edu.stanford.nlp.experiments.AMRPipelineStateBased;
