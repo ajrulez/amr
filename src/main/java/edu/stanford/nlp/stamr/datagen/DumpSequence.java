@@ -18,8 +18,8 @@ import java.util.*;
  */
 public class DumpSequence {
     public static void main(String[] args) throws IOException {
-        dumpMicrodata();
-        // dumpPreAlignedSplit();
+        // dumpMicrodata();
+        dumpPreAlignedSplit();
         // dumpGiantdata();
     }
 

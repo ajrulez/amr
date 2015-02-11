@@ -3,11 +3,9 @@ package edu.stanford.nlp.stamr.utils;
 import edu.stanford.nlp.util.IdentityHashSet;
 import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.Triple;
+import net.didion.jwnl.data.Exc;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Managed a graph of nodes, and stitching them together with Edmonds' algorithm
@@ -49,6 +47,14 @@ public class MSTGraph {
         double[][] weights = new double[numNodes+1][numNodes+1];
         String[][] arcLabels = new String[numNodes+1][numNodes+1];
 
+        // Initialize all arcs to "impossible"
+
+        for (int i = 0; i < weights.length; i++) {
+            for (int j = 0; j < weights.length; j++) {
+                weights[i][j] = Double.NEGATIVE_INFINITY;
+            }
+        }
+
         // Set the weights for the graph into the arrays.
 
         for (int a : arcs.keySet()) {
@@ -63,6 +69,18 @@ public class MSTGraph {
             }
         }
 
+        for (int node : nodesToSequenceMap.keySet()) {
+            int i = nodesToSequenceMap.get(node);
+            double max = Double.NEGATIVE_INFINITY;
+            for (int j = 0; j < weights.length; j++) {
+                if (weights[j][i+1] > max) max = weights[j][i+1];
+            }
+            if (max == Double.NEGATIVE_INFINITY) {
+                System.out.println("Broke on node "+node);
+                assert(max > Double.NEGATIVE_INFINITY);
+            }
+        }
+
         // Add root arcs
 
         for (int i = 0; i < numNodes; i++) {
@@ -71,7 +89,7 @@ public class MSTGraph {
 
         double[] rootWeights = new double[numNodes];
         for (int i = 0; i < numNodes; i++) {
-            rootWeights[i] = weights[0][i+1];
+            rootWeights[i] = Math.max(-1000.0,weights[0][i+1]);
         }
 
         Pair<int[], Object[]> arcs = new Pair<int[], Object[]>();
@@ -83,19 +101,31 @@ public class MSTGraph {
             for (int i = 0; i < numNodes; i++) {
                 weights[0][i+1] = i == r ? rootWeights[i] : Double.NEGATIVE_INFINITY;
             }
-            DGraph dGraph = new DGraph(weights, arcLabels);
-            Pair<int[], Object[]> possibleArcs = dGraph.chuLiuEdmonds();
-            if (!dGraph.testOptimality()) {
-                throw new IllegalStateException("Can't have a non-optimal graph solution!");
-            }
-
-            double score = 0.0;
+            double max = Double.NEGATIVE_INFINITY;
             for (int i = 0; i < numNodes; i++) {
-                score += weights[possibleArcs.first[i]+1][i+1];
+                if (weights[r+1][i+1] > max) max = weights[r+1][i+1];
             }
-            if (score > maxScore) {
-                maxScore = score;
-                arcs = possibleArcs;
+            if (max == Double.NEGATIVE_INFINITY) continue;
+            try {
+                DGraph dGraph = new DGraph(weights, arcLabels);
+                Pair<int[], Object[]> possibleArcs = dGraph.chuLiuEdmonds();
+                if (!dGraph.testOptimality()) {
+                    throw new IllegalStateException("Can't have a non-optimal graph solution!");
+                }
+
+                double score = 0.0;
+                for (int i = 0; i < numNodes; i++) {
+                    score += weights[possibleArcs.first[i] + 1][i + 1];
+                }
+                if (score > maxScore) {
+                    maxScore = score;
+                    arcs = possibleArcs;
+                }
+            }
+            catch (Exception e) {
+                System.err.println("Got error trying root "+r);
+                e.printStackTrace();
+                // wasn't a root that could possibly work
             }
         }
 

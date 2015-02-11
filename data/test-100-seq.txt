@@ -28,7 +28,7 @@ the	NONE
 same	VERB
 magnitude	IDENTITY
 ,	NONE
-buildings	DISJOINT
+buildings	DICT
 should	VERB
 preserve	VERB
 their	COREF
@@ -96,7 +96,7 @@ In	NONE
 the	NONE
 past	IDENTITY
 ,	NONE
-Red	DISJOINT
+Red	DICT
 Army	DICT
 regiments	COREF
 were	NONE
@@ -233,7 +233,7 @@ to	NONE
 this	IDENTITY
 issue	IDENTITY
 ,	NONE
-Xinghui	DISJOINT
+Xinghui	DICT
 surely	DICT
 has	VERB
 no	COREF
@@ -345,7 +345,7 @@ NBC	DICT
 
 I	IDENTITY
 think	VERB
-Romney	DISJOINT
+Romney	DICT
 wins	VERB
 big	IDENTITY
 today	IDENTITY
@@ -412,7 +412,7 @@ until	IDENTITY
 the	NONE
 insurance	DICT
 -LRB-	NONE
-hopefully	DISJOINT
+hopefully	DICT
 by	NONE
 a	NONE
 respectable	VERB
@@ -574,7 +574,7 @@ it	IDENTITY
 stimulus	IDENTITY
 .	NONE
 
-No	DISJOINT
+No	DICT
 one	NONE
 should	VERB
 be	NONE
@@ -661,7 +661,7 @@ Ministers	DICT
 Council	DICT
 .	NONE
 
-Some	DISJOINT
+Some	DICT
 specialize	VERB
 in	NONE
 dealing	VERB
@@ -705,7 +705,7 @@ January	DICT
 2002	IDENTITY
 .	NONE
 
-IAEA	DISJOINT
+IAEA	DICT
 also	IDENTITY
 stated	VERB
 the	NONE
@@ -837,7 +837,7 @@ the	NONE
 dish	COREF
 .	NONE
 
-Head	DISJOINT
+Head	DICT
 of	NONE
 the	NONE
 Korean	DICT
@@ -945,7 +945,7 @@ Zafar	DICT
 stated	VERB
 that	NONE
 himself	COREF
-and	DISJOINT
+and	DICT
 other	IDENTITY
 people	DICT
 have	NONE
@@ -1130,7 +1130,7 @@ army	IDENTITY
 arrests	VERB
 1600	IDENTITY
 drug	IDENTITY
-traffickers	DISJOINT
+traffickers	DICT
 ,	NONE
 kills	VERB
 21	IDENTITY
@@ -1194,7 +1194,7 @@ that	NONE
 Afghanistan	DICT
 's	NONE
 interim	IDENTITY
-administration	DISJOINT
+administration	DICT
 has	NONE
 banned	VERB
 cultivation	VERB
@@ -1226,13 +1226,13 @@ government	DICT
 's	NONE
 warning	VERB
 of	NONE
-al-Qaeda	DISJOINT
+al-Qaeda	DICT
 's	NONE
 capability	VERB
 to	NONE
 launch	VERB
 a	NONE
-cyberattack	DISJOINT
+cyberattack	DICT
 causes	VERB
 various	IDENTITY
 industries	LEMMA
@@ -1246,7 +1246,7 @@ In	NONE
 a	NONE
 recent	IDENTITY
 interview	VERB
-Bradley	DISJOINT
+Bradley	DICT
 stated	VERB
 that	NONE
 many	IDENTITY
@@ -1301,7 +1301,7 @@ year	NONE
 2000	DICT
 .	NONE
 
-Bell	DISJOINT
+Bell	DICT
 Canada	DICT
 works	VERB
 very	IDENTITY
@@ -1506,7 +1506,7 @@ Australia	DICT
 AU	NONE
 -RRB-	NONE
 
-The	DISJOINT
+The	DICT
 Great	DICT
 Olympic	DICT
 swindle	NONE
@@ -1535,7 +1535,7 @@ bribed	VERB
 members	LEMMA
 of	NONE
 the	NONE
-International	DISJOINT
+International	DICT
 Amateur	DICT
 Boxing	DICT
 Federation	DICT
@@ -1666,7 +1666,7 @@ population	IDENTITY
 .	NONE
 
 Afghan	DICT
-officials	DISJOINT
+officials	DICT
 conducted	VERB
 talks	VERB
 with	NONE
@@ -1750,7 +1750,7 @@ harvesting	VERB
 .	NONE
 
 The	NONE
-Northern	DISJOINT
+Northern	DICT
 Alliance	DICT
 opposes	VERB
 the	NONE
@@ -1839,7 +1839,7 @@ been	NONE
 leaked	VERB
 .	NONE
 
-Rafale	DISJOINT
+Rafale	DICT
 reportedly	VERB
 offered	VERB
 more	IDENTITY
@@ -1952,7 +1952,7 @@ last	NONE
 year	IDENTITY
 .	NONE
 
-The	DISJOINT
+The	DICT
 project	IDENTITY
 management	VERB
 system	IDENTITY
@@ -1975,7 +1975,7 @@ the	NONE
 MAI	DICT
 Corp.	DICT
 of	DICT
-Canada	DISJOINT
+Canada	DICT
 ,	NONE
 which	NONE
 uses	VERB
@@ -2022,7 +2022,7 @@ of	NONE
 the	NONE
 Three	NONE
 Gorges	NONE
-project	DISJOINT
+project	DICT
 .	NONE
 
 Xinhua	DICT
@@ -2077,7 +2077,7 @@ joint	IDENTITY
 venture	IDENTITY
 enterprises	LEMMA
 ,	NONE
-GE	DISJOINT
+GE	DICT
 also	IDENTITY
 invested	VERB
 more	DICT

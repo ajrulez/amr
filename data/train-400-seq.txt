@@ -9,18 +9,18 @@ washing	VERB
 machine	IDENTITY
 ,	NONE
 the	NONE
-CEO	DISJOINT
+CEO	DICT
 of	NONE
 the	NONE
 American	DICT
-IM	DISJOINT
+IM	DICT
 company	NONE
 believed	VERB
 that	NONE
 each	IDENTITY
 of	NONE
 its	NONE
-employees	DISJOINT
+employees	DICT
 had	NONE
 the	NONE
 ability	VERB
@@ -62,7 +62,7 @@ innovative	VERB
 concepts	DICT
 to	NONE
 encourage	VERB
-employees	DISJOINT
+employees	DICT
 to	NONE
 conduct	NONE
 research	VERB
@@ -139,7 +139,7 @@ Tangshan	DICT
 magnitude	DICT
 could	DICT
 leave	VERB
-authorities	DISJOINT
+authorities	DICT
 with	NONE
 some	IDENTITY
 breathing	VERB
@@ -245,7 +245,7 @@ In	NONE
 the	NONE
 past	IDENTITY
 the	NONE
-CCP	DISJOINT
+CCP	DICT
 has	NONE
 done	VERB
 a	NONE
@@ -396,7 +396,7 @@ within	NONE
 expectations	VERB
 .	NONE
 
-Instead	DISJOINT
+Instead	DICT
 in	NONE
 this	IDENTITY
 instance	IDENTITY
@@ -780,7 +780,7 @@ embarrassed	VERB
 .	NONE
 
 The	NONE
-experts	DISJOINT
+experts	DICT
 had	NONE
 just	IDENTITY
 finished	VERB
@@ -843,7 +843,7 @@ to	NONE
 be	NONE
 flashing	VERB
 through	NONE
-people	DISJOINT
+people	DICT
 's	NONE
 minds	LEMMA
 :	NONE
@@ -1058,7 +1058,7 @@ in	NONE
 Australia	DICT
 .	NONE
 
-Xinghui	DISJOINT
+Xinghui	DICT
 accepted	VERB
 this	IDENTITY
 order	DICT
@@ -1100,7 +1100,7 @@ the	NONE
 consulate	IDENTITY
 that	NONE
 the	NONE
-government	DISJOINT
+government	DICT
 took	NONE
 this	IDENTITY
 matter	IDENTITY
@@ -1114,15 +1114,15 @@ to	NONE
 allocate	VERB
 funds	DICT
 to	NONE
-compensate	DISJOINT
+compensate	DICT
 the	NONE
-students	DISJOINT
+students	DICT
 who	NONE
 had	NONE
 used	VERB
 their	NONE
 own	NONE
-money	DISJOINT
+money	DICT
 instead	IDENTITY
 that	IDENTITY
 night	IDENTITY
@@ -1378,7 +1378,7 @@ around	IDENTITY
 
 I	IDENTITY
 think	VERB
-Gingrich	DISJOINT
+Gingrich	DICT
 's	NONE
 sole	IDENTITY
 win	VERB
@@ -1405,7 +1405,7 @@ sector	IDENTITY
 I	IDENTITY
 think	VERB
 the	NONE
-Good	DISJOINT
+Good	DICT
 Doctor	DICT
 is	NONE
 too	IDENTITY
@@ -1500,7 +1500,7 @@ going	VERB
 to	NONE
 help	VERB
 the	NONE
-survivors	DISJOINT
+survivors	DICT
 rebuild	VERB
 their	COREF
 lives	LEMMA
@@ -1593,7 +1593,7 @@ Even	DICT
 if	NONE
 someone	IDENTITY
 has	VERB
-insurance	DISJOINT
+insurance	DICT
 to	NONE
 cover	VERB
 their	COREF
@@ -1671,7 +1671,7 @@ ANYTHING	IDENTITY
 
 So	NONE
 while	NONE
-libertarianism	DISJOINT
+libertarianism	DICT
 attracts	VERB
 people	COREF
 who	NONE
@@ -1835,7 +1835,7 @@ insurance	IDENTITY
 ,	NONE
 but	VERB
 Federal	IDENTITY
-Aid	DISJOINT
+Aid	DICT
 is	NONE
 necessary	VERB
 to	NONE
@@ -1886,7 +1886,7 @@ making	VERB
 money	IDENTITY
 .	NONE
 
-Ron	DISJOINT
+Ron	DICT
 Paul	DICT
 and	IDENTITY
 his	NONE
@@ -2138,7 +2138,7 @@ up	NONE
 with	NONE
 a	NONE
 strong	IDENTITY
-VP	DISJOINT
+VP	DICT
 to	NONE
 help	VERB
 make	VERB
@@ -2249,7 +2249,7 @@ who	NONE
 promises	VERB
 to	NONE
 pay	VERB
-their	DISJOINT
+their	DICT
 mortgages	LEMMA
 ,	NONE
 put	VERB
@@ -2301,7 +2301,7 @@ they	NONE
 care	VERB
 ?	NONE
 
-This	DISJOINT
+This	DICT
 is	NONE
 not	COREF
 surprising	VERB
@@ -2311,7 +2311,7 @@ to	NONE
 me	LEMMA
 .	NONE
 
-Obama	DISJOINT
+Obama	DICT
 must	VERB
 pay	VERB
 off	NONE
@@ -2378,7 +2378,7 @@ in	IDENTITY
 and	IDENTITY
 show	VERB
 these	DICT
-people	DISJOINT
+people	DICT
 that	NONE
 government	COREF
 dependency	VERB
@@ -2441,7 +2441,7 @@ it	IDENTITY
 .	NONE
 
 If	NONE
-some	DISJOINT
+some	DICT
 on	NONE
 the	NONE
 left	IDENTITY
@@ -2794,7 +2794,7 @@ Riyadh	DICT
 In	NONE
 a	NONE
 statement	DICT
-Naif	DISJOINT
+Naif	DICT
 Arab	DICT
 Academy	DICT
 for	DICT
@@ -2957,7 +2957,7 @@ A	NONE
 United	DICT
 Nation	DICT
 nuclear	COREF
-team	DISJOINT
+team	DICT
 will	NONE
 make	NONE
 a	NONE
@@ -2992,7 +2992,7 @@ a	NONE
 united	DICT
 nation	DICT
 nuclear	COREF
-team	DISJOINT
+team	DICT
 will	NONE
 make	NONE
 a	NONE
@@ -3023,7 +3023,7 @@ as	NONE
 part	IDENTITY
 of	NONE
 the	NONE
-International	DISJOINT
+International	DICT
 Atomic	DICT
 Energy	DICT
 Agency	DICT
@@ -3108,7 +3108,7 @@ November	DICT
 2001	IDENTITY
 .	NONE
 
-IAEA	DISJOINT
+IAEA	DICT
 accepted	VERB
 North	DICT
 Korea	DICT
@@ -3146,7 +3146,7 @@ Korea	DICT
 has	NONE
 denied	VERB
 the	NONE
-IAEA	DISJOINT
+IAEA	DICT
 full	IDENTITY
 access	VERB
 to	NONE
@@ -3154,7 +3154,7 @@ its	NONE
 facilities	LEMMA
 .	NONE
 
-North	DISJOINT
+North	DICT
 Korea	DICT
 froze	VERB
 its	NONE
@@ -3394,7 +3394,7 @@ year	IDENTITY
 
 FIFA	DICT
 urged	VERB
-South	DISJOINT
+South	DICT
 Korea	DICT
 to	NONE
 prevent	VERB
@@ -3578,7 +3578,7 @@ group	IDENTITY
 said	VERB
 the	NONE
 foreign	IDENTITY
-broadcasters	DISJOINT
+broadcasters	DICT
 do	NONE
 not	DICT
 show	VERB
@@ -3767,7 +3767,7 @@ tender	IDENTITY
 .	NONE
 
 Dog	IDENTITY
-restaurants	DISJOINT
+restaurants	DICT
 were	NONE
 told	VERB
 to	NONE
@@ -4068,7 +4068,7 @@ that	NONE
 Pakistan	DICT
 's	NONE
 provincial	DICT
-governments	DISJOINT
+governments	DICT
 have	NONE
 been	NONE
 asked	VERB
@@ -4122,7 +4122,7 @@ any	IDENTITY
 way	IDENTITY
 .	NONE
 
-Tariq	DISJOINT
+Tariq	DICT
 Jamil	DICT
 stated	VERB
 that	NONE
@@ -4200,7 +4200,7 @@ of	NONE
 Islam	DICT
 .	NONE
 
-Qari	DISJOINT
+Qari	DICT
 Mohammad	DICT
 Zafar	DICT
 stated	VERB
@@ -4747,7 +4747,7 @@ tons	DICT
 .	NONE
 
 Afghan	DICT
-farmers	DISJOINT
+farmers	DICT
 resumed	VERB
 growing	VERB
 opium	IDENTITY
@@ -4843,7 +4843,7 @@ forces	LEMMA
 killed	VERB
 21	IDENTITY
 drug	IDENTITY
-traffickers	DISJOINT
+traffickers	DICT
 and	IDENTITY
 arrested	VERB
 more	DICT
@@ -5042,7 +5042,7 @@ tons	DICT
 
 Desperate	IDENTITY
 Afghan	DICT
-farmers	DISJOINT
+farmers	DICT
 resumed	VERB
 growing	VERB
 opium	IDENTITY
@@ -5210,7 +5210,7 @@ specific	IDENTITY
 threat	IDENTITY
 .	NONE
 
-Director	DISJOINT
+Director	DICT
 of	NONE
 threat	VERB
 analysis	VERB
@@ -5269,7 +5269,7 @@ has	NONE
 no	COREF
 knowledge	VERB
 of	NONE
-Al-Qaeda	DISJOINT
+Al-Qaeda	DICT
 having	NONE
 engaged	VERB
 in	NONE
@@ -5519,7 +5519,7 @@ Canada	DICT
 worked	VERB
 closely	DICT
 with	NONE
-U.S.	DISJOINT
+U.S.	DICT
 officials	DICT
 and	IDENTITY
 firms	LEMMA
@@ -5557,7 +5557,7 @@ Bradley	DICT
 stated	VERB
 --	NONE
 
-Electricity	DISJOINT
+Electricity	DICT
 firms	LEMMA
 have	VERB
 strong	IDENTITY
@@ -5632,7 +5632,7 @@ on	NONE
 September	DICT
 11	IDENTITY
 and	IDENTITY
-many	DISJOINT
+many	DICT
 still	IDENTITY
 have	VERB
 an	NONE
@@ -5712,7 +5712,7 @@ early	DICT
 Saturday	IDENTITY
 ,	NONE
 the	NONE
-Russian	DISJOINT
+Russian	DICT
 Space	DICT
 Forces	DICT
 press	IDENTITY
@@ -5764,7 +5764,7 @@ platform	IDENTITY
 Alfa	DICT
 .	NONE
 
-Officials	DISJOINT
+Officials	DICT
 at	NONE
 the	NONE
 command	VERB
@@ -5804,7 +5804,7 @@ were	NONE
 affected	VERB
 .	NONE
 
-The	DISJOINT
+The	DICT
 State	IDENTITY
 power	IDENTITY
 monopoly	IDENTITY
@@ -5986,7 +5986,7 @@ craft	DICT
 .	NONE
 
 The	NONE
-ISS	DISJOINT
+ISS	DICT
 could	DICT
 function	VERB
 for	NONE
@@ -6000,7 +6000,7 @@ control	VERB
 by	NONE
 using	VERB
 standby	IDENTITY
-systems	DISJOINT
+systems	DICT
 .	NONE
 
 A	NONE
@@ -6171,7 +6171,7 @@ in	NONE
 a	NONE
 book	IDENTITY
 about	NONE
-alleged	DISJOINT
+alleged	DICT
 Olympic	DICT
 corruption	VERB
 in	NONE
@@ -6230,7 +6230,7 @@ an	NONE
 Uzbekistan	DICT
 Olympic	DICT
 boxing	IDENTITY
-official	DISJOINT
+official	DICT
 and	NONE
 was	NONE
 depicted	VERB
@@ -6240,7 +6240,7 @@ book	IDENTITY
 as	NONE
 a	NONE
 major	IDENTITY
-international	DISJOINT
+international	DICT
 heroin	IDENTITY
 dealer	VERB
 and	IDENTITY
@@ -6455,7 +6455,7 @@ in	NONE
 that	IDENTITY
 case	IDENTITY
 found	VERB
-Rakhimov	DISJOINT
+Rakhimov	DICT
 had	NONE
 been	NONE
 painted	VERB
@@ -6567,7 +6567,7 @@ and	IDENTITY
 drug-trafficking	DICT
 .	NONE
 
-The	DISJOINT
+The	DICT
 OSCE	DICT
 envoy	DICT
 in	NONE
@@ -6588,7 +6588,7 @@ are	NONE
 now	IDENTITY
 hopes	VERB
 that	NONE
-Afghanistan	DISJOINT
+Afghanistan	DICT
 will	NONE
 develop	VERB
 its	NONE
@@ -6895,7 +6895,7 @@ narcotics	IDENTITY
 ;	NONE
 terrorism	IDENTITY
 
-Afghanistan	DISJOINT
+Afghanistan	DICT
 seeks	VERB
 to	NONE
 end	VERB
@@ -6917,7 +6917,7 @@ minister	DICT
 of	NONE
 Afghanistan	DICT
 Yunus	DICT
-Qanooni	DISJOINT
+Qanooni	DICT
 asked	VERB
 Russian	DICT
 officials	DICT
@@ -7117,7 +7117,7 @@ February	DICT
 28	IDENTITY
 ,	NONE
 2002	IDENTITY
-Qanooni	DISJOINT
+Qanooni	DICT
 stated	VERB
 in	NONE
 talks	VERB
@@ -7418,7 +7418,7 @@ that	NONE
 the	NONE
 South	DICT
 Korean	DICT
-government	DISJOINT
+government	DICT
 might	DICT
 yield	VERB
 to	NONE
@@ -7444,7 +7444,7 @@ Kim	DICT
 Dong-Shin	DICT
 stressed	VERB
 that	NONE
-South	DISJOINT
+South	DICT
 Korea	DICT
 should	VERB
 consider	VERB
@@ -7528,7 +7528,7 @@ Party	DICT
 also	IDENTITY
 accused	VERB
 the	NONE
-Ministry	DISJOINT
+Ministry	DICT
 of	NONE
 favoring	VERB
 the	NONE
@@ -7594,7 +7594,7 @@ Newspapers	LEMMA
 stated	VERB
 that	NONE
 the	NONE
-F-15	DISJOINT
+F-15	DICT
 k	NONE
 was	NONE
 rated	VERB
@@ -7632,7 +7632,7 @@ reliability	DICT
 categories	LEMMA
 but	VERB
 the	NONE
-Rafale	DISJOINT
+Rafale	DICT
 also	IDENTITY
 earned	VERB
 the	NONE
@@ -7744,7 +7744,7 @@ Herald	DICT
 stated	VERB
 that	NONE
 when	NONE
-evaluators	DISJOINT
+evaluators	DICT
 were	NONE
 conducting	VERB
 their	NONE
@@ -7757,7 +7757,7 @@ them	NONE
 to	NONE
 give	VERB
 each	IDENTITY
-bidder	DISJOINT
+bidder	DICT
 grades	VERB
 within	NONE
 a	NONE
@@ -7818,7 +7818,7 @@ was	NONE
 17.8	COREF
 billion	NONE
 US	DICT
-dollars	DISJOINT
+dollars	DICT
 ,	NONE
 having	NONE
 increased	VERB
@@ -7837,7 +7837,7 @@ was	NONE
 3.1	COREF
 billion	NONE
 US	COREF
-dollars	DISJOINT
+dollars	DICT
 ,	DICT
 having	NONE
 increased	VERB
@@ -7994,7 +7994,7 @@ October	DICT
 of	NONE
 1995	IDENTITY
 ,	NONE
-Youmei	DISJOINT
+Youmei	DICT
 Lu	DICT
 ,	NONE
 the	NONE
@@ -8097,7 +8097,7 @@ afternoon	IDENTITY
 the	NONE
 Myanmaran	DICT
 and	NONE
-Thai	DISJOINT
+Thai	DICT
 governments	DICT
 signed	VERB
 an	NONE
@@ -8134,7 +8134,7 @@ a	NONE
 visit	VERB
 ,	NONE
 and	NONE
-Than	DISJOINT
+Than	DICT
 Shwe	DICT
 ,	NONE
 chairman	DICT
@@ -8181,7 +8181,7 @@ of	DICT
 Foreign	DICT
 Affairs	DICT
 of	NONE
-Thailand	DISJOINT
+Thailand	DICT
 ,	NONE
 signed	VERB
 the	NONE
@@ -8261,11 +8261,11 @@ co-operation	VERB
 and	NONE
 to	NONE
 expand	VERB
-Thailand	DISJOINT
+Thailand	DICT
 's	NONE
 investment	VERB
 in	NONE
-Myanmar	DISJOINT
+Myanmar	DICT
 .	NONE
 
 Yesterday	IDENTITY
@@ -8307,7 +8307,7 @@ the	NONE
 US	DICT
 and	IDENTITY
 the	NONE
-Southwest	DISJOINT
+Southwest	DICT
 Medical	DICT
 Equipment	DICT
 Factory	DICT

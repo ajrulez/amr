@@ -76,7 +76,7 @@ public class Test6 {
                     IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
                     if (indexedWord == null) return "NON-DEP";
                     List<IndexedWord> l = graph.getPathToRoot(indexedWord);
-                    if (l.size() > 0) {
+                    if (l != null && l.size() > 0) {
                         return l.get(0).word();
                     }
                     else return "ROOT";
@@ -88,7 +88,7 @@ public class Test6 {
                     IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
                     if (indexedWord == null) return "NON-DEP";
                     List<IndexedWord> l = graph.getPathToRoot(indexedWord);
-                    if (l.size() > 0) {
+                    if (l != null && l.size() > 0) {
                         return l.get(0).get(CoreAnnotations.PartOfSpeechAnnotation.class);
                     }
                     else return "ROOT";

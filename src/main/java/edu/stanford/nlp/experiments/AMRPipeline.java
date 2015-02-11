@@ -36,7 +36,7 @@ import java.util.function.Function;
 public class AMRPipeline {
 
     public static boolean FULL_DATA = false;
-    public static boolean TINY_DATA = true;
+    public static boolean TINY_DATA = false;
 
     /////////////////////////////////////////////////////
     // FEATURE SPECS
@@ -154,7 +154,13 @@ public class AMRPipeline {
 
                 // Input triple is (Seq, index into Seq for start of expression, index into Seq for end of expression)
 
-                add((triple) -> triple.first.tokens[triple.second]);
+                add((triple) -> {
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = triple.second; i <= triple.third; i++) {
+                        sb.append(triple.first.annotation.get(CoreAnnotations.TokensAnnotation.class).get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase());
+                    }
+                    return sb.toString();
+                });
             }},
             AMRPipeline::writeDictionaryContext
     );
@@ -349,7 +355,7 @@ public class AMRPipeline {
         System.out.println("Loading training data");
         List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-400-seq.txt"));
         List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-400-manygen.txt"));
-        List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-400-manygen.txt"));
+        List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-400-conll.txt"));
 
         System.out.println("Training");
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
@@ -426,7 +432,8 @@ public class AMRPipeline {
             int first = dict.get(0);
             int last = dict.get(dict.size() - 1);
 
-            for (String amrString : getBestAMRChunks(labeledSequence, first, last)) {
+            for (Pair<String,Integer> amrPair : getBestAMRChunks(labeledSequence, first, last)) {
+                String amrString = amrPair.first;
                 AMR amr;
                 if (amrString.startsWith("(")) {
                     assert (amrString.endsWith(")"));
@@ -438,7 +445,7 @@ public class AMRPipeline {
                 }
 
                 for (AMR.Node node : amr.nodes) {
-                    node.alignment = Math.min(first + node.alignment, tokens.length - 1);
+                    node.alignment = Math.min(amrPair.second + node.alignment, tokens.length - 1);
                 }
                 gen.add(amr);
             }
@@ -477,8 +484,8 @@ public class AMRPipeline {
         return new Pair<>(nodes, forcedArcs);
     }
 
-    private List<String> getBestAMRChunks(LabeledSequence labeledSequence, int first, int last) {
-        List<String> bestChunks = new ArrayList<>();
+    private List<Pair<String,Integer>> getBestAMRChunks(LabeledSequence labeledSequence, int first, int last) {
+        List<Pair<String,Integer>> bestChunks = new ArrayList<>();
 
         Counter<String> amrStrings = dictionaryLookup.predictSoft(new Triple<>(labeledSequence, first, last));
 
@@ -493,7 +500,7 @@ public class AMRPipeline {
         }
 
         if (bestCount > 0) {
-            bestChunks.add(amrString);
+            bestChunks.add(new Pair<String, Integer>(amrString, first));
             return bestChunks;
         }
         else {
@@ -503,8 +510,8 @@ public class AMRPipeline {
             }
 
             for (int pivot = first; pivot < last; pivot++) {
-                List<String> part1 = getBestAMRChunks(labeledSequence, first, pivot);
-                List<String> part2 = getBestAMRChunks(labeledSequence, pivot+1, last);
+                List<Pair<String,Integer>> part1 = getBestAMRChunks(labeledSequence, first, pivot);
+                List<Pair<String,Integer>> part2 = getBestAMRChunks(labeledSequence, pivot+1, last);
 
                 if (part1.size() + part2.size() > bestChunks.size()) {
                     bestChunks = new ArrayList<>();
@@ -525,30 +532,41 @@ public class AMRPipeline {
 
         int length = nodeSet.nodes.length-1;
 
+        // Parent Node
         for (int i = 0; i <= length; i++) {
             if (nodeSet.nodes[i] == null) continue;
-            for (int j = 1; j <= length; j++) {
-                if (nodeSet.nodes[j] == null) continue;
-                if (i == j) continue;
-                int forcedParent = -1;
-                for (int k = 0; k <= length; k++) {
-                    if (nodeSet.forcedArcs[k][j] != null) {
-                        // Add this with such a high weight that it has to be included in the final MST
-                        forcedParent = k;
-                        break;
-                    }
-                }
+            // Can't have outgoing arcs from a non-entity type node
+            if (nodeSet.nodes[i].type == AMR.NodeType.ENTITY) {
+                // Child Node
+                for (int j = 1; j <= length; j++) {
+                    if (nodeSet.nodes[j] == null) continue;
+                    if (i == j) continue;
 
-                if (forcedParent != -1) {
-                    if (forcedParent == i)
-                        mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], 1);
-                    else
-                        mstGraph.addArc(i, j, "NO-ARC", Double.NEGATIVE_INFINITY);
-                }
-                else {
-                    Counter<Boolean> counter = arcExistence.predictSoft(new Triple<>(nodeSet, i, j));
-                    Counters.logNormalizeInPlace(counter);
-                    mstGraph.addArc(i, j, "NO-LABEL", counter.getCount(true));
+                    if (nodeSet.forcedArcs[i][j] != null) {
+                        mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], 1000.0);
+                    }
+
+                    /*
+                    // Check if there's a forcedArc that corresponds to this child
+                    int forcedParent = -1;
+                    for (int k = 0; k <= length; k++) {
+                        if (nodeSet.forcedArcs[k][j] != null) {
+                            forcedParent = k;
+                            break;
+                        }
+                    }
+
+                    // If there is a forcedParent, then set arcs accordingly
+                    if (forcedParent != -1) {
+                        if (forcedParent == i)
+                            mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], 1000.0);
+                    }
+                    */
+                    else {
+                        Counter<Boolean> counter = arcExistence.predictSoft(new Triple<>(nodeSet, i, j));
+                        Counters.logNormalizeInPlace(counter);
+                        mstGraph.addArc(i, j, "NO-LABEL", counter.getCount(true));
+                    }
                 }
             }
         }
@@ -561,13 +579,12 @@ public class AMRPipeline {
         Set<Integer> seenNodes = new HashSet<>();
         Queue<Integer> visitQueue = new ArrayDeque<>();
         visitQueue.add(-1);
-
         while (!visitQueue.isEmpty()) {
             int i = visitQueue.poll();
             seenNodes.add(i);
             if (arcMap.containsKey(i)) {
                 for (Pair<String, Integer> arc : arcMap.get(i)) {
-                    if (!seenNodes.contains(arc.second)) {
+                    if (!arc.first.equals("NONE") && !seenNodes.contains(arc.second)) {
                         visitQueue.add(arc.second);
                     }
                 }
@@ -596,25 +613,35 @@ public class AMRPipeline {
             if (nodeSet.nodes[i] != null) {
                 boolean hasIncoming = false;
                 for (int j = 0; j < nodeSet.nodes.length; j++) {
-                    if (state.arcs[i][j] != null && !state.arcs[i][j].equals("NONE")) {
+                    if (state.arcs[j][i] != null && !state.arcs[j][i].equals("NONE")) {
                         hasIncoming = true;
                         break;
                     }
                 }
                 if (!hasIncoming) {
+                    List<Triple<Integer,String,Integer>> parentArcs = new ArrayList<>();
+                    for (int j : arcMap.keySet()) {
+                        for (Pair<String,Integer> arc : arcMap.get(j)) {
+                            if (arc.second == i) parentArcs.add(new Triple<>(j, arc.first, arc.second));
+                        }
+                    }
                     throw new IllegalStateException("Must have incoming arcs for all nodes. Missing: "+nodeSet.nodes[i]);
                 }
             }
         }
 
         AMR generated = Generator.generateAMR(state);
+        List<AMR.Node> generatedConnectedNodes = generated.breadthFirstSearch();
 
         // Verify the generated AMR has all relevant nodes
         for (int i = 0; i < nodeSet.nodes.length; i++) {
             if (nodeSet.nodes[i] != null) {
                 boolean containsAnEqual = false;
-                for (AMR.Node node : generated.nodes) {
+                for (AMR.Node node : generatedConnectedNodes) {
                     if (nodeSet.nodes[i].title.equals(node.title)) containsAnEqual = true;
+                }
+                if (nodeSet.nodes[i].title.equals("United")) {
+                    System.out.println("Break");
                 }
                 if (!containsAnEqual) {
                     throw new IllegalStateException("Must contain all nodes we arc'd for. Missing: "+nodeSet.nodes[i]);
@@ -726,7 +753,7 @@ public class AMRPipeline {
         AMRSlurp.burp(output+"/recovered.txt", AMRSlurp.Format.LDC, recovered, AMR.AlignmentPrinting.ALL, false);
         AMRSlurp.burp(output+"/recovered-perfect-dict.txt", AMRSlurp.Format.LDC, recoveredPerfectDict, AMR.AlignmentPrinting.ALL, false);
 
-        DumpSequence.dumpCONLL(recovered, output+"/recovered-conll.txt");
+        DumpSequence.dumpCONLL(recovered, output + "/recovered-conll.txt");
         DumpSequence.dumpCONLL(recoveredPerfectDict, output + "/recovered-perfect-dict-conll.txt");
 
         double smatch = Smatch.smatch(bank, recovered);
@@ -838,7 +865,7 @@ public class AMRPipeline {
             }
             else {
                 String[] parts = line.split("\t");
-                assert(parts.length == 4);
+                assert(parts.length == 3);
                 assert(currentSeq != null);
 
                 // Format layout:
@@ -899,7 +926,7 @@ public class AMRPipeline {
                             if (currentNodeSet.nodes[i] == null || currentNodeSet.nodes[j] == null) continue;
                             if (currentNodeSet.nodes[i].alignment == currentNodeSet.nodes[j].alignment) {
                                 currentNodeSet.forcedArcs[i][j] = currentNodeSet.correctArcs[i][j];
-                                currentNodeSet.correctArcs[i][j] = "NONE";
+                                currentNodeSet.correctArcs[i][j] = null;
                             }
                         }
                     }
@@ -914,7 +941,15 @@ public class AMRPipeline {
                 currentNodeSet = new AMRNodeSet();
 
                 String[] parts = line.split("\t");
-                int length = Integer.parseInt(parts[0]);
+                int length = 0;
+                try {
+                    length = Integer.parseInt(parts[0]);
+                }
+                catch (Exception e) {
+                    System.out.println(line);
+                    System.out.println(Arrays.toString(parts));
+                    System.out.println("Break");
+                }
 
                 currentNodeSet.tokens = parts[1].split(" ");
 
@@ -922,6 +957,7 @@ public class AMRPipeline {
                 currentNodeSet.forcedArcs = new String[length+1][length+1];
                 currentNodeSet.nodes = new AMR.Node[length+1];
             }
+
             else {
                 String[] parts = line.split("\t");
                 assert(parts.length == 5);
