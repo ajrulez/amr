@@ -439,6 +439,7 @@ public class AMRPipeline {
                     assert (amrString.endsWith(")"));
                     amr = AMRSlurp.parseAMRTree(amrString);
                 } else if (amrString.startsWith("\"")) {
+                    if (amrString.split(" ").length > 1) amrString = amrString.split(" ")[0];
                     amr = createAMRSingleton(amrString.substring(1, amrString.length() - 1), AMR.NodeType.QUOTE);
                 } else {
                     amr = createAMRSingleton(amrString, AMR.NodeType.VALUE);
@@ -575,25 +576,27 @@ public class AMRPipeline {
 
         Map<Integer,Set<Pair<String,Integer>>> arcMap = mstGraph.getMST(false);
 
-        // Just a validity check on the graph
-        Set<Integer> seenNodes = new HashSet<>();
-        Queue<Integer> visitQueue = new ArrayDeque<>();
-        visitQueue.add(-1);
-        while (!visitQueue.isEmpty()) {
-            int i = visitQueue.poll();
-            seenNodes.add(i);
-            if (arcMap.containsKey(i)) {
-                for (Pair<String, Integer> arc : arcMap.get(i)) {
-                    if (!arc.first.equals("NONE") && !seenNodes.contains(arc.second)) {
-                        visitQueue.add(arc.second);
+        final boolean VALIDITY_CHECKS = false;
+
+        if (VALIDITY_CHECKS) {
+            Set<Integer> seenNodes = new HashSet<>();
+            Queue<Integer> visitQueue = new ArrayDeque<>();
+            visitQueue.add(-1);
+            while (!visitQueue.isEmpty()) {
+                int i = visitQueue.poll();
+                seenNodes.add(i);
+                if (arcMap.containsKey(i)) {
+                    for (Pair<String, Integer> arc : arcMap.get(i)) {
+                        if (!arc.first.equals("NONE") && !seenNodes.contains(arc.second)) {
+                            visitQueue.add(arc.second);
+                        }
                     }
                 }
             }
-        }
-
-        for (int i = 0; i < nodeSet.nodes.length; i++) {
-            if (nodeSet.nodes[i] != null && !seenNodes.contains(i)) {
-                throw new IllegalStateException("Must contain all relevant nodes!");
+            for (int i = 0; i < nodeSet.nodes.length; i++) {
+                if (nodeSet.nodes[i] != null && !seenNodes.contains(i)) {
+                    throw new IllegalStateException("Must contain all relevant nodes!");
+                }
             }
         }
 
@@ -608,43 +611,44 @@ public class AMRPipeline {
             }
         }
 
-        // Verify that the arcs are all present that need to be
-        for (int i = 0; i < nodeSet.nodes.length; i++) {
-            if (nodeSet.nodes[i] != null) {
-                boolean hasIncoming = false;
-                for (int j = 0; j < nodeSet.nodes.length; j++) {
-                    if (state.arcs[j][i] != null && !state.arcs[j][i].equals("NONE")) {
-                        hasIncoming = true;
-                        break;
-                    }
-                }
-                if (!hasIncoming) {
-                    List<Triple<Integer,String,Integer>> parentArcs = new ArrayList<>();
-                    for (int j : arcMap.keySet()) {
-                        for (Pair<String,Integer> arc : arcMap.get(j)) {
-                            if (arc.second == i) parentArcs.add(new Triple<>(j, arc.first, arc.second));
+        if (VALIDITY_CHECKS) {
+            // Verify that the arcs are all present that need to be
+            for (int i = 0; i < nodeSet.nodes.length; i++) {
+                if (nodeSet.nodes[i] != null) {
+                    boolean hasIncoming = false;
+                    for (int j = 0; j < nodeSet.nodes.length; j++) {
+                        if (state.arcs[j][i] != null && !state.arcs[j][i].equals("NONE")) {
+                            hasIncoming = true;
+                            break;
                         }
                     }
-                    throw new IllegalStateException("Must have incoming arcs for all nodes. Missing: "+nodeSet.nodes[i]);
+                    if (!hasIncoming) {
+                        List<Triple<Integer, String, Integer>> parentArcs = new ArrayList<>();
+                        for (int j : arcMap.keySet()) {
+                            for (Pair<String, Integer> arc : arcMap.get(j)) {
+                                if (arc.second == i) parentArcs.add(new Triple<>(j, arc.first, arc.second));
+                            }
+                        }
+                        // throw new IllegalStateException("Must have incoming arcs for all nodes. Missing: "+nodeSet.nodes[i]);
+                    }
                 }
             }
         }
 
         AMR generated = Generator.generateAMR(state);
-        List<AMR.Node> generatedConnectedNodes = generated.breadthFirstSearch();
 
-        // Verify the generated AMR has all relevant nodes
-        for (int i = 0; i < nodeSet.nodes.length; i++) {
-            if (nodeSet.nodes[i] != null) {
-                boolean containsAnEqual = false;
-                for (AMR.Node node : generatedConnectedNodes) {
-                    if (nodeSet.nodes[i].title.equals(node.title)) containsAnEqual = true;
-                }
-                if (nodeSet.nodes[i].title.equals("United")) {
-                    System.out.println("Break");
-                }
-                if (!containsAnEqual) {
-                    throw new IllegalStateException("Must contain all nodes we arc'd for. Missing: "+nodeSet.nodes[i]);
+        if (VALIDITY_CHECKS) {
+            // Verify the generated AMR has all relevant nodes
+            List<AMR.Node> generatedConnectedNodes = generated.breadthFirstSearch();
+            for (int i = 0; i < nodeSet.nodes.length; i++) {
+                if (nodeSet.nodes[i] != null) {
+                    boolean containsAnEqual = false;
+                    for (AMR.Node node : generatedConnectedNodes) {
+                        if (nodeSet.nodes[i].title.equals(node.title)) containsAnEqual = true;
+                    }
+                    if (!containsAnEqual) {
+                        throw new IllegalStateException("Must contain all nodes we arc'd for. Missing: " + nodeSet.nodes[i]);
+                    }
                 }
             }
         }
@@ -669,9 +673,12 @@ public class AMRPipeline {
     }
 
     private AMR createAMRSingleton(String title, AMR.NodeType type) {
+        if (title.split(" ").length > 1) {
+            title = title.split(" ")[0];
+        }
         AMR amr = new AMR();
         if (type == AMR.NodeType.ENTITY) {
-            amr.addNode("" + title.charAt(0), title);
+            amr.addNode("" + title.toLowerCase().charAt(0), title);
         }
         else {
             amr.addNode(title, type);
@@ -690,25 +697,29 @@ public class AMRPipeline {
         List<LabeledSequence> dictionaryDataTest = loadManygenData(FULL_DATA ? "realdata/test-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "data/test-100-manygen.txt"));
         List<AMRNodeSet> mstDataTest = loadCoNLLData(FULL_DATA ? "realdata/test-conll.txt" : (TINY_DATA ? "data/train-3-conll.txt" : "data/test-100-conll.txt"));
 
-        System.out.println("Running analysis");
+        System.out.println("Running NER++ analysis");
         nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain),
                 getNERPlusPlusForClassifier(nerPlusPlusDataTest),
                 FULL_DATA ? "realdata/ner-plus-plus-analysis" : "data/ner-plus-plus-analysis");
 
+        System.out.println("Running Dictionary analysis");
         dictionaryLookup.analyze(getDictionaryForClassifier(dictionaryDataTrain),
                 getDictionaryForClassifier(dictionaryDataTest),
                 FULL_DATA ? "realdata/dictionary-lookup-analysis" : "data/dictionary-lookup-analysis");
 
+        System.out.println("Running Arc Existence analysis");
         arcExistence.analyze(getArcExistenceForClassifier(mstDataTrain),
                 getArcExistenceForClassifier(mstDataTest),
                 FULL_DATA ? "realdata/arc-existence-analysis" : "data/arc-existence-analysis");
 
+        System.out.println("Running Arc Type analysis");
         arcType.analyze(getArcTypeForClassifier(mstDataTrain),
                 getArcTypeForClassifier(mstDataTest),
                 FULL_DATA ? "realdata/arc-type-analysis" : "data/arc-type-analysis");
     }
 
     public void testCompletePipeline() throws IOException, InterruptedException {
+        System.out.println("Testing complete pipeline");
         if (FULL_DATA) {
             analyzeAMRSubset("realdata/train-subset.txt", "dabta/train-conll.txt", "realdata/amr-train-analysis");
             analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "realdata/amr-test-analysis");
@@ -718,7 +729,9 @@ public class AMRPipeline {
                 analyzeAMRSubset("data/train-3-subset.txt", "data/train-3-conll.txt", "data/amr-train-analysis");
             }
             else {
+                System.out.println("Testing training set");
                 analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/amr-train-analysis");
+                System.out.println("Testing test set");
                 analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/amr-test-analysis");
             }
         }

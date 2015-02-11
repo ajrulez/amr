@@ -51,7 +51,7 @@ public class MSTGraph {
 
         for (int i = 0; i < weights.length; i++) {
             for (int j = 0; j < weights.length; j++) {
-                weights[i][j] = Double.NEGATIVE_INFINITY;
+                weights[i][j] = i == 0 ? -1000.0 : Double.NEGATIVE_INFINITY;
             }
         }
 
@@ -89,7 +89,7 @@ public class MSTGraph {
 
         double[] rootWeights = new double[numNodes];
         for (int i = 0; i < numNodes; i++) {
-            rootWeights[i] = Math.max(-1000.0,weights[0][i+1]);
+            rootWeights[i] = weights[0][i+1];
         }
 
         Pair<int[], Object[]> arcs = new Pair<int[], Object[]>();
