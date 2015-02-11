@@ -37,6 +37,7 @@ public class AMRPipeline {
 
     public static boolean FULL_DATA = false;
     public static boolean TINY_DATA = false;
+    public static int trainDataSize = 400;
 
     /////////////////////////////////////////////////////
     // FEATURE SPECS
@@ -375,9 +376,10 @@ public class AMRPipeline {
 
     public void trainStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-400-seq.txt"));
-        List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-400-manygen.txt"));
-        List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-400-conll.txt"));
+        List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-"+trainDataSize+"-seq.txt"));
+        List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-"+trainDataSize+"-manygen.txt"));
+        // List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
+        List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "realdata/train-conll.txt"));
 
         System.out.println("Training");
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
@@ -710,9 +712,9 @@ public class AMRPipeline {
 
     public void analyzeStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-400-seq.txt"));
-        List<LabeledSequence> dictionaryDataTrain = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-400-manygen.txt"));
-        List<AMRNodeSet> mstDataTrain = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-400-conll.txt"));
+        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-"+trainDataSize+"-seq.txt"));
+        List<LabeledSequence> dictionaryDataTrain = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-"+trainDataSize+"-manygen.txt"));
+        List<AMRNodeSet> mstDataTrain = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
 
         System.out.println("Loading testing data");
         List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData(FULL_DATA ? "realdata/test-seq.txt" : (TINY_DATA ? "data/train-3-seq.txt" : "data/test-100-seq.txt"));
@@ -722,22 +724,22 @@ public class AMRPipeline {
         System.out.println("Running NER++ analysis");
         nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain),
                 getNERPlusPlusForClassifier(nerPlusPlusDataTest),
-                FULL_DATA ? "realdata/ner-plus-plus-analysis" : "data/ner-plus-plus-analysis");
+                FULL_DATA ? "realdata/ner-plus-plus-analysis" : "data/train-"+trainDataSize+"/ner-plus-plus-analysis");
 
         System.out.println("Running Dictionary analysis");
         dictionaryLookup.analyze(getDictionaryForClassifier(dictionaryDataTrain),
                 getDictionaryForClassifier(dictionaryDataTest),
-                FULL_DATA ? "realdata/dictionary-lookup-analysis" : "data/dictionary-lookup-analysis");
+                FULL_DATA ? "realdata/dictionary-lookup-analysis" : "data/train-"+trainDataSize+"/dictionary-lookup-analysis");
 
         System.out.println("Running Arc Existence analysis");
         arcExistence.analyze(getArcExistenceForClassifier(mstDataTrain),
                 getArcExistenceForClassifier(mstDataTest),
-                FULL_DATA ? "realdata/arc-existence-analysis" : "data/arc-existence-analysis");
+                FULL_DATA ? "realdata/arc-existence-analysis" : "data/train-"+trainDataSize+"/arc-existence-analysis");
 
         System.out.println("Running Arc Type analysis");
         arcType.analyze(getArcTypeForClassifier(mstDataTrain),
                 getArcTypeForClassifier(mstDataTest),
-                FULL_DATA ? "realdata/arc-type-analysis" : "data/arc-type-analysis");
+                FULL_DATA ? "realdata/arc-type-analysis" : "data/train-"+trainDataSize+"/arc-type-analysis");
     }
 
     public void testCompletePipeline() throws IOException, InterruptedException {
@@ -752,11 +754,11 @@ public class AMRPipeline {
             }
             else {
                 System.out.println("Testing training set");
-                analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/amr-train-analysis");
+                analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/train-"+trainDataSize+"/amr-train-analysis");
                 System.out.println("Testing test set");
-                analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/amr-test-analysis");
+                analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/train-"+trainDataSize+"/amr-test-analysis");
                 System.out.println("Testing on REAL TEST set");
-                analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "data/amr-real-test-analysis");
+                analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "data/train-"+trainDataSize+"/amr-real-test-analysis");
             }
         }
     }

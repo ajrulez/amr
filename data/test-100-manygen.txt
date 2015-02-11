@@ -23,7 +23,7 @@ I had a look at my call register , and out of dozens of calls dialed only one wa
 (p / proper [0 = "A"])	19	19
 
 Thirteen drug traffickers were killed and 10 arrested in Iran anti-drug sweeps . 
-(t / traffic-00 [0 = "A"])	2	2
+(p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]))	2	2
 
 Iranian army arrests 1600 drug traffickers , kills 21 , and seizes 6 tons of drugs and weapons in large-scale operation along its borders with Afghanistan and Pakistan . 
 (p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]))	5	5
@@ -32,7 +32,7 @@ In a separate dispatch IRNA stated that during the past 20 days in southern Iran
 (p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]))	23	23
 
 The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
-(o / organization [0 = "A"]:name (n / name [0 = "A"]:op2 "Trust" [1 = "B"]:op1 "Al-Rashid" [0 = "A"]))	7	8
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Al-Rashid" [0 = "A"]:op2 "Trust" [1 = "B"]))	7	8
 
 I headed straight for the center of activities , but in actual fact traffic was being controlled as early as 4 o'clock , and they had already started limiting the crowds entering the sports center . 
 (d / date-entity [1 = "B"]:time "4:00" [0 = "A"])	20	21
@@ -77,10 +77,10 @@ Why is it literally 100 % impossible for the liberal mind to understand that jus
 (p / percentage-entity [0 = "A"])	5	5
 
 South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	0	1
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "South" [0 = "A"]))	0	1
 
 Rafale reportedly offered more generous terms for technology transfer and subcontracts for South Korea 's aerospace industry . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "South" [0 = "A"]))	12	13
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	12	13
 
 As soon as the earthquake occurred , grass-root organizations contacted their own people and average people also contacted their own systems or departments , in an interdependent manner . 
 (g / grass-roots [0 = "A"])	7	7
@@ -104,13 +104,13 @@ Dassault is seeking its first foreign order for the Rafale .
 (a / aircraft-type [0 = "A"]:name (n / name [0 = "A"]:op1 "Rafale" [0 = "A"]))	9	9
 
 Rafale reportedly offered more generous terms for technology transfer and subcontracts for South Korea 's aerospace industry . 
-(a / aircraft-type [0 = "A"]:name (n / name [0 = "A"]:op1 "Rafale" [0 = "A"]))	0	0
+(n / name [0 = "A"]:op1 "Rafale" [0 = "A"])	0	0
 
 In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
 (m / multi-sentence [0 = "A"])	15	15
 
 In a separate dispatch IRNA stated that during the past 20 days in southern Iran 's Fars Province police had arrested 107 drug traffickers including 11 foreign nationals . 
-(p / province [1 = "B"]:name (n / name [0 = "A"]:op1 "Fars" [0 = "A"]:op2 "Province" [1 = "B"]))	16	17
+(p / province [1 = "B"]:name (n / name [0 = "A"]:op2 "Province" [1 = "B"]:op1 "Fars" [0 = "A"]))	16	17
 
 As soon as the earthquake occurred , grass-root organizations contacted their own people and average people also contacted their own systems or departments , in an interdependent manner . 
 (a / as-soon-as [0 = "A"])	0	0
@@ -137,7 +137,7 @@ Both Tajikistan and Uzbekistan share a border with Afghanistan and have experien
 (b / before [0 = "A"]:op1 (n / now [0 = "A"]:duration (m / multiple [1 = "B"]:op1 (t / temporal-quantity [1 = "B"]:quant 1 [1 = "B"]:unit (y / year [1 = "B"])))))	18	19
 
 Xinhua News Agency , Rangoon , March 17th , by reporter Yunfei Zhang 
-(p / publication [0 = "A"]:name (n / name [0 = "A"]:op1 "Xinhua" [0 = "A"]:op2 "News" [1 = "B"]:op3 "Agency" [2 = "C"]))	0	2
+(p / publication [0 = "A"]:name (n / name [0 = "A"]:op2 "News" [1 = "B"]:op1 "Xinhua" [0 = "A"]:op3 "Agency" [2 = "C"]))	0	2
 
 Xinhua News Agency , Beijing , March 18th 
 (p / publication [0 = "A"]:name (n / name [0 = "A"]:op2 "News" [1 = "B"]:op3 "Agency" [2 = "C"]:op1 "Xinhua" [0 = "A"]))	0	2
@@ -182,10 +182,10 @@ The Lashkar-e-Taiba and Jaish-e-Mohammad are still distributing their message th
 (c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Karachi" [0 = "A"]))	19	19
 
 Head of the Korean Football Association and a FIFA vice president Chung Mong-Joon said FIFA should not intervene in the eating habits of a sovereign nation . 
-(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Korean" [0 = "A"]:op2 "Football" [1 = "B"]:op3 "Association" [2 = "C"]))	3	5
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op3 "Association" [2 = "C"]:op2 "Football" [1 = "B"]:op1 "Korean" [0 = "A"]))	3	5
 
 The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
-(d / date-entity [0 = "A"]:year 2002 [0 = "A"]:month 1 [0 = "A"]:day 15 [0 = "A"])	10	10
+(d / date-entity [0 = "A"]:month 1 [0 = "A"]:year 2002 [0 = "A"]:day 15 [0 = "A"])	10	10
 
 South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	0	1
@@ -221,7 +221,7 @@ The project management system of the Three Gorges project will introduce scienti
 (p / project [0 = "A"]:name (n / name [0 = "A"]:op1 "The" [0 = "A"]))	5	5
 
 Rakhimov was also said to have bribed members of the International Amateur Boxing Federation in the vote for the Federation Presidency . 
-(n / name [0 = "A"]:op3 "Boxing" [2 = "C"]:op4 "Federation" [3 = "D"]:op2 "Amateur" [1 = "B"]:op1 "International" [0 = "A"])	10	13
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op4 "Federation" [3 = "D"]:op2 "Amateur" [1 = "B"]:op3 "Boxing" [2 = "C"]:op1 "International" [0 = "A"]))	10	13
 
 The Great Olympic swindle was written by British journalist Andrew Jennings and published by Simon and Schuster . 
 (c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Simon" [0 = "A"]))	14	14
@@ -266,13 +266,13 @@ The low - cut gold swimsuit with a low back weighs 500 grams , with a sales pric
 (m / monetary-quantity [1 = "B"]:unit (y / yen [1 = "B"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Japan" [0 = "A"]))))	21	22
 
 The Korea Herald stated that critics say Boeing would benefit most from the points minimum because it would gain fewer points than Dassault in terms of technology transfer and subcontracts . 
-(n / newspaper [0 = "A"]:name (n2 / name [0 = "A"]:op2 "Herald" [1 = "B"]:op1 "Korea" [0 = "A"]))	1	2
+(n / newspaper [0 = "A"]:name (n2 / name [0 = "A"]:op1 "Korea" [0 = "A"]:op2 "Herald" [1 = "B"]))	1	2
 
 An Afghan television reported on January 16 , 2002 that Afghanistan 's interim administration has banned the cultivation of opium poppies in a bid to end drug trafficking . 
 (g / government-organization [0 = "A"]:ARG0-of (a / administrate-01 [0 = "A"]))	13	13
 
 Last week Afghan Television reported that Afghanistan 's interim administration has banned cultivation of opium poppies in an attempt to end drug trafficking . 
-(g / government-organization [0 = "A"])	9	9
+(g / government-organization [0 = "A"]:ARG0-of (a / administrate-01 [0 = "A"]))	9	9
 
 The Kamchatka command center plays a role in ISS operations . 
 (s / spaceship [0 = "A"]:name (n / name [0 = "A"]:op1 "ISS" [0 = "A"]))	8	8
@@ -305,7 +305,7 @@ The debate was partly fueled by FIFA , football 's international governing body 
 (b / body [0 = "A"]:name (n / name [0 = "A"]:op1 "FIFA" [0 = "A"]))	6	6
 
 Head of the Korean Football Association and a FIFA vice president Chung Mong-Joon said FIFA should not intervene in the eating habits of a sovereign nation . 
-(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "FIFA" [0 = "A"]))	8	8
+(n / name [0 = "A"]:op1 "FIFA" [0 = "A"])	8	8
 
 The activists accuse the organizations of being culturally-biased and insulting . 
 (b / bias-01 [0 = "A"]:mod (c / cultural [0 = "A"]))	7	7
@@ -347,7 +347,7 @@ Gilbert stated that Tajikistan 's positive and responsible approach to the crisi
 (i / international [0 = "A"])	21	21
 
 North Korea -LRB- KP -RRB- 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "North" [0 = "A"]:op2 "Korea" [1 = "B"]))	0	1
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "North" [0 = "A"]))	0	1
 
 South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
 (n / name [0 = "A"]:op1 "Boeing" [0 = "A"])	16	16
@@ -365,7 +365,7 @@ A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Canada" [0 = "A"]))	17	17
 
 The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
-(s / subproject [0 = "A"])	23	23
+"Canada" [0 = "A"]	23	23
 
 But it was not totally without benefits , and I believe that its greatest benefit was that it served to strip off the false benevolence that composed the outer skin of the elitists , the politicians , the capitalists , and exposed once and for all the rotten cannibalistic core within . 
 (o / once-and-for-all [0 = "A"])	42	42
@@ -386,7 +386,7 @@ A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are
 (e / event [0 = "A"]:name (n / name [0 = "A"]:op1 "Millennium" [0 = "A"]))	6	6
 
 I get what Ron Paul is saying . 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Paul" [1 = "B"]:op1 "Ron" [0 = "A"]))	3	4
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Ron" [0 = "A"]:op2 "Paul" [1 = "B"]))	3	4
 
 Xinhua News Agency , Beijing , March 18th 
 (c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Beijing" [0 = "A"]))	4	4
@@ -419,7 +419,7 @@ Apart from setting up joint venture enterprises , GE also invested more than 1 b
 (n / name [0 = "A"]:op1 "GE" [0 = "A"])	8	8
 
 No similar move is planned for the World Cup . 
-(g / game [0 = "A"]:name (n / name [0 = "A"]:op2 "Cup" [1 = "B"]:op1 "World" [0 = "A"]))	7	8
+(g / game [0 = "A"]:name (n / name [0 = "A"]:op1 "World" [0 = "A"]:op2 "Cup" [1 = "B"]))	7	8
 
 OSCE urges permanent end to Afghan terrorism and drug-trafficking to create long-term stability in Central Asia . 
 (t / trafficking [0 = "A"]:mod (d / drug [0 = "A"]))	8	8
@@ -446,7 +446,7 @@ This will ultimately accelerate the speed of desertification in sub - Saharan Af
 (c / country [0 = "A"]:location (w / world-region [0 = "A"]:name (n / name [0 = "A"]:op2 "Africa" [0 = "A"])))	12	12
 
 In a recent interview Bradley stated that many utility firms perform a brief review of their multi-tiered response systems after such warnings are issued . 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Bradley" [0 = "A"]))	4	4
+(n / name [0 = "A"]:op1 "Bradley" [0 = "A"])	4	4
 
 Gilbert stated that Tajikistan 's positive and responsible approach to the crisis in Afghanistan has significantly improved the country 's image internationally . 
 (s / significant [0 = "A"])	15	15
@@ -473,7 +473,7 @@ As long as we stick to this issue , Xinghui surely has no way of winning the law
 (c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Xinghui" [0 = "A"]))	9	9
 
 I think Romney wins big today and obviously stays in . 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Romney" [0 = "A"]))	2	2
+(n / name [0 = "A"]:op1 "Romney" [0 = "A"])	2	2
 
 Are n't you one of the assholes who assured us how Romney was inevitable as the GOP nominee ? 
 (p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Romney" [0 = "A"]))	11	11
@@ -512,7 +512,7 @@ Afghan officials conducted talks with Russian officials asking for assistance in
 (p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (o / official [0 = "A"])))	1	1
 
 Afghan officials conducted talks with Russian officials asking for assistance in stopping Afghanistan 's large illegal opium and heroin trade . 
-(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (o / official [0 = "A"])))	6	6
+(h / have-org-role-91 [0 = "A"]:ARG2 (o / official [0 = "A"]))	6	6
 
 Myanmaran officials revealed that the total trade volume between Myanmar and Thailand exceeded 300 million US dollars in 1995 . 
 (p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (o / official [0 = "A"])))	1	1
@@ -584,7 +584,7 @@ After seeing those bus tours to AIG execs homes , promoted on ACORN 's website ,
 (c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "AIG" [0 = "A"]))	6	6
 
 Naif Arab Academy for Security Sciences is run by an Arab Interior Ministers ' Council . 
-(u / university [0 = "A"]:name (n / name [0 = "A"]:op4 "for" [3 = "D"]:op6 "Sciences" [5 = "F"]:op3 "Academy" [2 = "C"]:op1 "Naif" [0 = "A"]:op5 "Security" [4 = "E"]:op2 "Arab" [1 = "B"]))	0	5
+(u / university [0 = "A"]:name (n / name [0 = "A"]:op1 "Naif" [0 = "A"]:op2 "Arab" [1 = "B"]:op6 "Sciences" [5 = "F"]:op3 "Academy" [2 = "C"]:op5 "Security" [4 = "E"]:op4 "for" [3 = "D"]))	0	5
 
 A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are known to have remained in Canada . 
 (b / bomb-01 [0 = "A"]:ARG0 (p / person [0 = "A"]))	8	8
@@ -599,7 +599,7 @@ A number of al-Qaeda militants including Millennium plot bomber Ahmed Ressam are
 (p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Ressam" [1 = "B"]:op1 "Ahmed" [0 = "A"]))	9	10
 
 Naif Arab Academy for Security Sciences is run by an Arab Interior Ministers ' Council . 
-(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Arab" [0 = "A"]:op3 "Ministers'" [2 = "C"]:op2 "Interior" [1 = "B"]))	10	12
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op3 "Ministers'" [2 = "C"]:op2 "Interior" [1 = "B"]:op1 "Arab" [0 = "A"]))	10	12
 
 South Korea 's defense ministry under attack in parliament over allegations it is favoring U.S. company Boeing for multi-billion-dollar fighter project . 
 (g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Defense" [0 = "A"]:op2 "Ministry" [1 = "B"]))	3	4
@@ -659,7 +659,7 @@ Another group said they will launch an association next Monday of around 100 dog
 (d / date-entity [0 = "A"]:weekday (m / monday [0 = "A"]))	9	9
 
 Russian space officials warn that power cuts against the military for non-payment of bills , like the one at a command center in the Far East Kamchatka Peninsula of the Russian Space Forces , could have catastrophic consequences . 
-(p / peninsula [3 = "D"]:location (w / world-region [0 = "A"]:name (n / name [0 = "A"]:op1 "Far" [0 = "A"]:op2 "East" [1 = "B"])):name (n2 / name [2 = "C"]:op1 "Kamchatka" [2 = "C"]:op2 "Peninsula" [3 = "D"]))	24	27
+(p / peninsula [3 = "D"]:name (n / name [2 = "C"]:op2 "Peninsula" [3 = "D"]:op1 "Kamchatka" [2 = "C"]):location (w / world-region [0 = "A"]:name (n2 / name [0 = "A"]:op1 "Far" [0 = "A"]:op2 "East" [1 = "B"])))	24	27
 
 Gilbert stated that Tajikistan 's positive and responsible approach to the crisis in Afghanistan has significantly improved the country 's image internationally . 
 (p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Gilbert" [0 = "A"]))	0	0
@@ -692,7 +692,7 @@ Analysts stated that the Pakistani government may have trouble explaining the Pa
 (g / general [0 = "A"])	33	33
 
 United energy services argues that non-payment of bills has prevented it from maintaining supplies . 
-(c / company [0 = "A"]:name (n / name [0 = "A"]:op2 "Energy" [1 = "B"]:op3 "Services" [2 = "C"]:op1 "United" [0 = "A"]))	0	2
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "United" [0 = "A"]:op2 "Energy" [1 = "B"]:op3 "Services" [2 = "C"]))	0	2
 
 OSCE urges permanent end to Afghan terrorism and drug-trafficking to create long-term stability in Central Asia . 
 (o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "OSCE" [0 = "A"]))	0	0
@@ -713,7 +713,7 @@ In addition , the breakdown in communication also brought a serious problem to t
 (p / possible [0 = "A"])	24	24
 
 Qari Mohammad Zafar stated that himself and other people have been told by our elders to read pro-Jihad newspapers and magazines . 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op3 "Zafar" [2 = "C"]:op1 "Qari" [0 = "A"]:op2 "Mohammad" [1 = "B"]))	0	2
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Mohammad" [1 = "B"]:op3 "Zafar" [2 = "C"]:op1 "Qari" [0 = "A"]))	0	2
 
 The headline in the Islam daily of Al-Rashid Trust on 020115 stated action extreme against extremism above an article stating that the Pakistani government should not domineer a large section of Pakistani society which supported the jihad against Indian rule in the divided Himalayan state of Kashmir . 
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "India" [0 = "A"]))	38	38
@@ -725,7 +725,7 @@ A government source stated the visit by a group of IAEA safety experts is schedu
 (h / have-org-role-91 [0 = "A"]:ARG1 (o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "IAEA" [0 = "A"])))	10	10
 
 IAEA also stated the lab is not one of the frozen facilities it wants to look into . 
-(n / name [0 = "A"]:op1 "IAEA" [0 = "A"])	0	0
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "IAEA" [0 = "A"]))	0	0
 
 The severe actions against militants and radicals came as Pervez Musharraf banned 5 Islamic groups . 
 (p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Pervez" [0 = "A"]:op2 "Musharraf" [1 = "B"]))	9	10
@@ -749,7 +749,7 @@ Drug trafficking from Afghanistan resumed during a brief hiatus in the anti-terr
 (c / counter-01 [0 = "A"]:ARG1 (t / terrorist [0 = "A"]))	11	11
 
 Iftikhar Ahmed is a Pakistani interior ministry official . 
-(n / name [0 = "A"]:op2 "Ahmed" [1 = "B"]:op1 "Iftikhar" [0 = "A"])	0	1
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Iftikhar" [0 = "A"]:op2 "Ahmed" [1 = "B"]))	0	1
 
 The number of investment projects dropped by 444 as compared with last year , but the value of investments rose by more than 130 million US dollars as compared with last year . 
 (m / more-than [0 = "A"])	22	22
@@ -767,7 +767,7 @@ Both Tajikistan and Uzbekistan share a border with Afghanistan and have experien
 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Uzbekistan" [0 = "A"]))	3	3
 
 In addition , the breakdown in communication also brought a serious problem to the surface . In the past , Red Army regiments were able to maintain contact with central headquarters by relying on just one battered radio . On this occasion though , people had no way to deal with the communication failure . 
-(m / military [0 = "A"]:name (n / name [0 = "A"]:op2 "Army" [1 = "B"]:op1 "Red" [0 = "A"]))	20	21
+(n / name [0 = "A"]:op1 "Red" [0 = "A"]:op2 "Army" [1 = "B"])	20	21
 
 The anti-Japan group stated that South Korean culture is under attack . 
 (o / oppose-01 [0 = "A"]:ARG1 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Japan" [0 = "A"])))	1	1
@@ -794,7 +794,7 @@ South Korea 's defense ministry under attack in parliament over allegations it i
 (m / monetary-quantity [0 = "A"]:quant (m2 / multi-billion [0 = "A"]):unit (d / dollar [0 = "A"]))	18	19
 
 A statement from the Russian Space Forces press services on 020126 called the action a direct violation of government decrees on defense facilities and stated that it could have led to the loss of a spacecraft costing hundreds of millions of rubles . 
-(d / date-entity [0 = "A"]:year 2002 [0 = "A"]:day 26 [0 = "A"]:month 1 [0 = "A"])	10	10
+(d / date-entity [0 = "A"]:month 1 [0 = "A"]:year 2002 [0 = "A"]:day 26 [0 = "A"])	10	10
 
 No one 
 (n / no-one [0 = "A"])	0	0
@@ -815,7 +815,7 @@ After seeing those bus tours to AIG execs homes , promoted on ACORN 's website ,
 (p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (e / executive [0 = "A"])))	7	7
 
 Bell Canada works very closely with the Government and the private sector to be aware of security concerns and to update accordingly . 
-(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Bell" [0 = "A"]:op2 "Canada" [1 = "B"]))	0	1
+(n / name [0 = "A"]:op2 "Canada" [1 = "B"]:op1 "Bell" [0 = "A"])	0	1
 
 The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
 (s / science [0 = "A"])	11	11
@@ -863,19 +863,19 @@ The Government or UES or the Ministry of Defense must resolve the issue .
 (c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "UES" [0 = "A"]))	3	3
 
 Leader of Afghanistan 's interim government Hamid Karzai said the fight against poppy harvesting and the lucrative trafficking of opium and heroin will be a top priority . 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Karzai" [1 = "B"]:op1 "Hamid" [0 = "A"]))	6	7
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Hamid" [0 = "A"]:op2 "Karzai" [1 = "B"]))	6	7
 
 According to Taiwan 's '' Ministry of Economy '' statistics , the volume of trade between mainland and Taiwan last year was 20.9 billion US dollars . 
-(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Ministry" [0 = "A"]:op3 "Economy" [2 = "C"]:op2 "of" [1 = "B"]))	5	7
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op2 "of" [1 = "B"]:op3 "Economy" [2 = "C"]:op1 "Ministry" [0 = "A"]))	5	7
 
 Award of the contract was temporarily suspended in February 2002 after the prices offered by 4 bidders were judged too high . 
 (d / date-entity [0 = "A"]:month 2 [0 = "A"])	8	8
 
 The anti-Japan group stated that South Korean culture is under attack . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "South" [0 = "A"]))	5	6
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	5	6
 
 The Government or UES or the Ministry of Defense must resolve the issue . 
-(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Ministry" [0 = "A"]:op2 "of" [1 = "B"]:op3 "Defense" [2 = "C"]))	6	8
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op3 "Defense" [2 = "C"]:op2 "of" [1 = "B"]:op1 "Ministry" [0 = "A"]))	6	8
 
 This will ultimately accelerate the speed of desertification in sub - Saharan African countries and other areas of the world . 
 (u / ultimate [0 = "A"])	2	2
@@ -896,8 +896,8 @@ Russia provided several ISS modules including Zvezda and Zarya
 (s / spaceship [0 = "A"]:name (n / name [0 = "A"]:op1 "Zvezda" [0 = "A"]))	6	6
 
 Xinhua News Agency , Rangoon , March 17th , by reporter Yunfei Zhang 
-(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Zhang" [1 = "B"]:op1 "Yunfei" [0 = "A"]))	11	12
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Yunfei" [0 = "A"]:op2 "Zhang" [1 = "B"]))	11	12
 
 The project management system of the Three Gorges project will introduce scientific management methods and advanced computer technology of the MAI Corp. of Canada , which uses the project database management system as the core component in its control and management of the whole process of designing , planning , contracting , financing , goods and materials , equipment , construction and installation of each subproject of the Three Gorges project . 
-(c / company [0 = "A"]:name (n / name [0 = "A"]:op2 "Corp." [1 = "B"]:op1 "MAI" [0 = "A"]))	20	21
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "MAI" [0 = "A"]:op2 "Corp." [1 = "B"]))	20	21
 

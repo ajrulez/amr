@@ -19,8 +19,8 @@ import java.util.*;
 public class DumpSequence {
     public static void main(String[] args) throws IOException {
         // dumpMicrodata();
-        // dumpPreAlignedSplit();
-        dumpGiantdata();
+        dumpPreAlignedSplit();
+        // dumpGiantdata();
     }
 
     public static void dumpPreAligned() throws IOException {
@@ -62,9 +62,14 @@ public class DumpSequence {
         AMR[] bank = AMRSlurp.slurp("data/training-500-subset.txt", AMRSlurp.Format.LDC);
         List<AMR> trainList = new ArrayList<>();
         List<AMR> testList = new ArrayList<>();
+        int clipTrainListSize = 250;
         for (int i = 0; i < bank.length; i++) {
             if (i % 5 == 0) testList.add(bank[i]);
-            else trainList.add(bank[i]);
+            else {
+                if (clipTrainListSize == -1 || trainList.size() < clipTrainListSize) {
+                    trainList.add(bank[i]);
+                }
+            }
         }
         AMR[] train = trainList.toArray(new AMR[trainList.size()]);
         AMR[] test = testList.toArray(new AMR[testList.size()]);

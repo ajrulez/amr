@@ -1,0 +1,2367 @@
+The cyber attack is to show the power of South Koreans and Asians against the West 's sense of superiority and ignorance of South Korea 's history . 
+(p / person [0 = "A"]:source (c / continent [0 = "A"]:name (n / name [0 = "A"]:op1 "Asia" [0 = "A"])))	12	12
+
+A recent survey stated that about one million dogs are sold every year for food in South Korea and 92 percent of men aged 20 and above and 68 percent of adult women have tasted dog meat . 
+(t / temporal-quantity [0 = "A"]:quant 1 [0 = "A"]:unit (y / year [0 = "A"]))	12	12
+
+A spokesperson for the company said , '' The dress and swimsuit can be worn just like ordinary clothing , but must be treated the same as jewelry , and can not be washed in a washing machine . '' 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (s / spokesperson [0 = "A"])))	1	1
+
+Parliament approved plans in May 2001 to build an anti-drugs wall along the 925-kilometre -LRB- 560-mile -RRB- border with Afghanistan . 
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Parliament" [0 = "A"]))	0	0
+
+In May 2001 the Iranian parliament approved plans to build a wall equipped with electronic detection devices along the 560-mile border with Afghanistan to deter drug trafficking . 
+(p / parliament [0 = "A"]:ARG0-of (g / govern-01 [0 = "A"]))	5	5
+
+Newspapers and magazines extolling the virtues of Islamic holy war in Kashmir continue to fill the newstands in Pakistan despite the Pakistani military Government 's attempt at a large scale containment of religious extremism . 
+(w / world-region [0 = "A"]:name (n / name [0 = "A"]:op1 "Kashmir" [0 = "A"]))	11	11
+
+The banned 5 Islamic groups included the 2 hardline militant groups fighting Indian rule in Kashmir which the Indian government accuses of staging the violent 011213 attack on the Indian parliament . 
+(w / world-region [0 = "A"]:name (n / name [0 = "A"]:op1 "Kashmir" [0 = "A"]))	15	15
+
+The 2 hardline militant groups fighting Indian rule in Kashmir are the Lashkar-e-Taiba and Jaish-e-Mohammad . 
+(w / world-region [0 = "A"]:name (n / name [0 = "A"]:op1 "Kashmir" [0 = "A"]))	9	9
+
+In the past the CCP has done a lot of these sorts of things , but on this occasion not only did nothing , but in response to queries from the public pulled out some whopping lies , playing syntax games with words like `` geological disaster '' and `` earthquake disaster '' . 
+(g / geology [0 = "A"])	45	45
+
+In the past the CCP has done a lot of these sorts of things , but on this occasion not only did nothing , but in response to queries from the public pulled out some whopping lies , playing syntax games with words like `` geological disaster '' and `` earthquake disaster '' . 
+(t / this [0 = "A"])	10	10
+
+Temporarily laid aside these abstract things and avoided speaking at length , saying only a few details that left the elitists , the politicians and capitalists highly embarrassed . 
+(t / this [0 = "A"])	3	3
+
+This was mere chicanery , to the point where before engaging in life-saving , donation to charity , these sorts of behaviors , an idea had to be flashing through people 's minds : 
+(t / this [0 = "A"])	18	18
+
+`` Why is it that these capitalists instead of those capitalists get the big order forms , surely there could n't be anything fishy involved ? 
+(t / this [0 = "A"])	5	5
+
+The tour was a surprise offer made by North Korea in November 2001 . 
+(t / thing [0 = "A"]:ARG1-of (o / offer-01 [0 = "A"]))	5	5
+
+According to information leaked from numerous channels , we can say for certain that before the earthquake struck , the serious earthquake risk in the Ngawa region was already well known to the CCP . 
+(p / political-party [0 = "A"]:name (n / name [0 = "A"]:op1 "CCP" [0 = "A"]))	33	33
+
+In the past the CCP has done a lot of these sorts of things , but on this occasion not only did nothing , but in response to queries from the public pulled out some whopping lies , playing syntax games with words like `` geological disaster '' and `` earthquake disaster '' . 
+(p / political-party [0 = "A"]:name (n / name [0 = "A"]:op1 "CCP" [0 = "A"]))	4	4
+
+I 'm in favor of feeding , clothing , and giving shelter to the poor . I 'm against all the gov ' t institutions that tax our brains out and who inefficiently attempt to provide some of these things . 
+(b / brain [1 = "B"]:poss (w / we [0 = "A"]))	27	28
+
+Qari Mohammad Zafar stated that his elders urged him to read about Jihad through the Islam daily published by the Al-Rashid Trust and Lashkar-i-Taiba 's zarb-e-Taiba weekly . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op2 "Trust" [1 = "B"]:op1 "Al-Rashid" [0 = "A"]))	20	21
+
+The al-Rashid Trust and Lashkar-i-Taiba are on the United States Terrorist Exclusion List and the Al-Rashid Trust 's and Lashkar-i-Taiba 's assets frozen in Pakistan . 
+(a / and [0 = "A"]:op1 (o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "al-Rashid" [0 = "A"]:op2 "Trust" [1 = "B"])))	1	2
+
+The Al-Rashid Trust has not been officially banned in Pakistan . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Al-Rashid" [0 = "A"]:op2 "Trust" [1 = "B"]))	1	2
+
+The primary editorial in The Islam daily of Al-Rashid Trust on 020115 carried a warning to the Pakistani government . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Al-Rashid" [0 = "A"]:op2 "Trust" [1 = "B"]))	8	9
+
+The Islam daily of Al-Rashid Trust supports the Taliban Fund linked to Osama bin Laden 's al-Qaeda network . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op2 "Trust" [1 = "B"]:op1 "Al-Rashid" [0 = "A"]))	4	5
+
+Mohammad Farooq stated that the publication of the Islam daily of Al-Rashid Trust has not been affected yet by Pervez Musharraf 's clamp-down on extremism and the circulation of the Islam daily of Al-Rashid Trust has increased in the past couple of days . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op2 "Trust" [1 = "B"]:op1 "Al-Rashid" [0 = "A"]))	11	12
+
+A reporter who did not want to be named from the publication of the Islam daily of Al-Rashid Trust stated that it would not be easy for the Pakistani government to ban the religious extremist publications and make over 500 employees jobless . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Al-Rashid" [0 = "A"]:op2 "Trust" [1 = "B"]))	17	18
+
+Hensler-Hobbs cited the example of the Montreal-based Hacker known as mafiaboy who attacked U.S. websites including Amazon.com in 2000 . 
+(b / base-01 [0 = "A"]:location (c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Montreal" [0 = "A"])))	6	6
+
+Hensler-Hobbs cited the example of the Montreal-based Hacker known as mafiaboy who attacked U.S. websites including Amazon.com in 2000 . 
+(u / url-entity [0 = "A"]:value "amazon.com" [0 = "A"])	16	16
+
+Consequently , experts have predicted that the world has at least ten years within which to lower the volume of greenhouse gas emissions before it is too late to redeem the situation . 
+10 [0 = "A"]	11	11
+
+He could call it the APOLOGIES ON BEER tour . 
+"BEER" [0 = "A"]	7	7
+
+Ron Paul says tornado victims should not get aid 
+(p / person [0 = "A"]:ARG1-of (v / victimize-01 [0 = "A"]))	4	4
+
+In addition , there was something else that was very suspicious . 
+(a / and [0 = "A"])	1	1
+
+This announcement was in response to increasing foreign criticism of the way dogs are slaughtered in South Korea . 
+(t / thing [0 = "A"]:ARG1-of (a / announce-01 [0 = "A"]))	1	1
+
+I know , you get into your pickup and drive over to the next town -- if you can find your damn pickup !! 
+expressive [0 = "A"]	23	23
+
+The IAEA tour of the isotope production laboratory will unlikely give a full picture of North Korea 's suspected nuclear weapons ambitions . 
+(l / likely [0 = "A"]:polarity - [0 = "A"])	9	9
+
+Mohammad Farooq stated that the publication of the Islam daily of Al-Rashid Trust has not been affected yet by Pervez Musharraf 's clamp-down on extremism and the circulation of the Islam daily of Al-Rashid Trust has increased in the past couple of days . 
+(b / before [0 = "A"]:op1 (n / now [0 = "A"]))	39	39
+
+More than 3,000 policemen have been killed in anti-drugs raids in the past 20 years . 
+(b / before [0 = "A"]:op1 (n / now [0 = "A"]))	12	12
+
+In July 2000 the Taliban militia also banned production of opium . 
+(d / date-entity [0 = "A"]:month 7 [0 = "A"])	1	1
+
+The now-ousted Taliban militia in July 2000 also banned production of opium . 
+(d / date-entity [0 = "A"]:month 7 [0 = "A"])	5	5
+
+However , most of the buildings in this hard-hit area did not meet these requirements , with the widespread collapse of school buildings in particular arousing intense public disgust . 
+(a / and [0 = "A"])	15	15
+
+Although current forecasting standards can not give us an accurate prediction of the exact time , place , and strength of an earthquake , there is considerable experience accumulated both in China and overseas in predicting to within the timeframe of a month , and the area of a province . 
+(a / and [0 = "A"])	15	15
+
+In the past the CCP has done a lot of these sorts of things , but on this occasion not only did nothing , but in response to queries from the public pulled out some whopping lies , playing syntax games with words like `` geological disaster '' and `` earthquake disaster '' . 
+(a / and [0 = "A"])	37	37
+
+Instead in this instance the Liberation Army headquarters emergency contingency plan obviously was not a contingency plan designed with earthquakes as the assumed condition , as the soldiers all rushed straight to Wenchuan , without immediately sending out troops in the direction of badly-hit areas Beichuan , Qingchuan and Gansu 's Longnan ; only 24 hours later was the full extent of the disaster area taken into consideration . 
+(a / and [0 = "A"])	33	33
+
+While it should have been a disaster relief command that takes overall leadership , it has suddenly come face-to-face with the broad base of disaster victims , directly dealing with them . 
+(a / and [0 = "A"])	26	26
+
+Many people died , much property was destroyed , it was quite clearly a great disaster . 
+(a / and [0 = "A"])	3	3
+
+This was mere chicanery , to the point where before engaging in life-saving , donation to charity , these sorts of behaviors , an idea had to be flashing through people 's minds : 
+(a / and [0 = "A"])	13	13
+
+`` Why is it that these capitalists instead of those capitalists get the big order forms , surely there could n't be anything fishy involved ? 
+(a / and [0 = "A"])	16	16
+
+Yesterday afternoon I went back to check out the torch relay , but even the flame was practically impossible to see , let alone the guys carrying the torch . 
+(a / and [0 = "A"])	21	21
+
+I do n't follow , why should he apologize to Palin ? 
+(a / and [0 = "A"])	4	4
+
+Everything is gone , the entire infrastructure is gone . 
+(a / and [0 = "A"])	3	3
+
+Even if someone has insurance to cover their loss , that wo n't extend to the roads , power lines , sewers , public buildings . 
+(o / or [0 = "A"])	17	17
+
+Homeowners generally have insurance , but Federal Aid is necessary to provide for the clean up , repairs of electrical and water systems , roads , schools , buses , etc. etc. . 
+(a / and [0 = "A"])	16	16
+
+I do n't think Standtorum will tank , its going to be a close one till the very end , I am still rooting for a Romney/McDonnell ticket . 
+(a / and [0 = "A"])	7	7
+
+Over 12 publications including dailies , weeklies and monthlies of various extremist groups including those banned on 020112 still sell in large numbers in the markets and bazaars of Karachi . 
+(a / and [0 = "A"])	5	5
+
+This would have been unimaginable during the Great Tangshan Earthquake . A time without volunteers or mental workers , such petty things as directly dealing with average people were performed by the most primary Party branches , as well as enterprises and public institutions . 
+(p / person [0 = "A"]:ARG0-of (v / volunteer-01 [0 = "A"]))	14	14
+
+Food scientist at Chung Chong College an Yong-geun said he would introduce some 350 different kinds of culinary art with dog meat . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "An" [0 = "A"]))	6	6
+
+Raising standards to in excess of Tangshan 's 8.0 magnitude could leave authorities with some breathing space for explanation , and alleviate public anger . 
+a3 [0 = "A"]	12	12
+
+This would have been unimaginable during the Great Tangshan Earthquake . A time without volunteers or mental workers , such petty things as directly dealing with average people were performed by the most primary Party branches , as well as enterprises and public institutions . 
+(m / multi-sentence [0 = "A"])	10	10
+
+However , what greatly surprised me was the attitude of the student union in this appeal . They seemed very reluctant to make the contract public . 
+(m / multi-sentence [0 = "A"])	16	16
+
+There were so many people there it was frightening . Some had even climbed onto the roofs of buses ! 
+(m / multi-sentence [0 = "A"])	9	9
+
+I guessed the carrying capacity of the base station towers was totally overloaded , and I could n't get through at all . I was only able to find a signal , not a chance of connecting to the Internet . 
+(m / multi-sentence [0 = "A"])	22	22
+
+I 'm in favor of feeding , clothing , and giving shelter to the poor . I 'm against all the gov ' t institutions that tax our brains out and who inefficiently attempt to provide some of these things . 
+(m / multi-sentence [0 = "A"])	15	15
+
+Increase the welfare rolls till the takers outweigh the givers . Only then can socialism creep in . 
+(m / multi-sentence [0 = "A"])	10	10
+
+Everything Obama has done is straight from Alinsky 's Rules for Radicals . All of it . 
+(m / multi-sentence [0 = "A"])	12	12
+
+A United Nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(s / state [0 = "A"]:manner (p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Stalin" [0 = "A"])))	18	18
+
+Government sources said on January 7 , 2002 that a united nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Stalin" [0 = "A"]))	27	27
+
+IRNA stated that approximately 1 ton of various drugs including hashish as well as fire arms were seized . 
+(a / and [0 = "A"])	11	11
+
+I heard from a friend at the consulate that the government took this matter very seriously and had promptly agreed to allocate funds to compensate the students who had used their own money instead that night . 
+(h / have-org-role-91 [0 = "A"])	5	5
+
+I guessed the carrying capacity of the base station towers was totally overloaded , and I could n't get through at all . I was only able to find a signal , not a chance of connecting to the Internet . 
+(a / at-all [0 = "A"])	20	20
+
+Consequently , experts have predicted that the world has at least ten years within which to lower the volume of greenhouse gas emissions before it is too late to redeem the situation . 
+(a / at-least [0 = "A"])	9	9
+
+Did Palin apologize to Giffords ? 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Giffords" [0 = "A"]))	4	4
+
+On 5 January 2002 pan-Arab anti-terror academy Naif Arab Academy for Security Sciences reopened for the first time since the September 2001 terror attacks on the US . 
+(d / date-entity [0 = "A"]:day 5 [0 = "A"])	1	1
+
+This would have been unimaginable during the Great Tangshan Earthquake . A time without volunteers or mental workers , such petty things as directly dealing with average people were performed by the most primary Party branches , as well as enterprises and public institutions . 
+(p / possible [0 = "A"]:polarity - [0 = "A"]:domain (i / imagine-01 [0 = "A"]))	4	4
+
+A recent government warning that al-Qaeda terrorists could launch a cyberattack on Canadian interests or critical infrastructure has caused many concerned industries to review their security systems . 
+(a / attack-01 [0 = "A"]:mod (c / cyber [0 = "A"]))	10	10
+
+Dog restaurants were told to close or go into the backstreets when Seoul hosted the 1988 Olympics . 
+r [0 = "A"]	1	1
+
+I think Gingrich 's sole win in GA is enough to hang it up and go back to making millions in the private sector . 
+(m / multiple [0 = "A"]:op1 (m2 / monetary-quantity [0 = "A"]:unit (d / dollar [0 = "A"]):quant 1000000 [0 = "A"]))	19	19
+
+Instead in this instance the Liberation Army headquarters emergency contingency plan obviously was not a contingency plan designed with earthquakes as the assumed condition , as the soldiers all rushed straight to Wenchuan , without immediately sending out troops in the direction of badly-hit areas Beichuan , Qingchuan and Gansu 's Longnan ; only 24 hours later was the full extent of the disaster area taken into consideration . 
+(m / multi-sentence [0 = "A"])	52	52
+
+International ; military ; terrorism 
+(a / and [0 = "A"])	1	1
+
+proliferation ; international 
+(a / and [0 = "A"])	1	1
+
+International ; politics ; Telecom 
+(a / and [0 = "A"])	1	1
+
+Pakistan -LRB- PK -RRB- ; India -LRB- IN -RRB- 
+(a / and [0 = "A"])	4	4
+
+Narcotics ; military 
+(a / and [0 = "A"])	1	1
+
+Iran -LRB- IR -RRB- ; Afghanistan -LRB- AF -RRB- ; Pakistan -LRB- PK -RRB- 
+(a / and [0 = "A"])	4	4
+
+Narcotics ; military 
+(a / and [0 = "A"])	1	1
+
+International ; terrorism 
+(a / and [0 = "A"])	1	1
+
+However , what greatly surprised me was the attitude of the student union in this appeal . They seemed very reluctant to make the contract public . 
+(g / great [0 = "A"])	3	3
+
+I do n't follow , why should he apologize to Palin ? 
+(a / amr-unknown [0 = "A"])	11	11
+
+Who Drops Out After Super Tuesday ? 
+(a / amr-unknown [0 = "A"])	6	6
+
+How does one survive when you have the funds but the people you need to buy the goods from has no address ? 
+(c / cause-01 [0 = "A"]:ARG0 (a / amr-unknown [0 = "A"]))	22	22
+
+Where is the morality in creating a life when food and clean water are rare commodities ? 
+(a / amr-unknown [0 = "A"])	16	16
+
+Where is the morality when a women is the victim of domestic violence ? 
+(a / amr-unknown [0 = "A"])	13	13
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(e / ethnic-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Arab" [0 = "A"]))	8	8
+
+The workshop 's anti-terrorism experts belong to anti-terror squads in Arab security agencies and Anti-Organized Crime Units . 
+(e / ethnic-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Arab" [0 = "A"]))	10	10
+
+In April 1998 Arab countries signed an anti-terrorism agreement that binds the signatories to coordinate to fight terrorism . 
+(e / ethnic-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Arab" [0 = "A"]))	3	3
+
+Director of threat analysis at the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service Brenda hensler-Hobbs stated that following the attacks of 11 September 2001 the Canadian Government specifically examined the potential cyber-capability of al-Qaeda and Osama bin Laden 's followers . 
+(c / capable-41 [0 = "A"]:ARG2 (c2 / cyber [0 = "A"]))	38	38
+
+Instead in this instance the Liberation Army headquarters emergency contingency plan obviously was not a contingency plan designed with earthquakes as the assumed condition , as the soldiers all rushed straight to Wenchuan , without immediately sending out troops in the direction of badly-hit areas Beichuan , Qingchuan and Gansu 's Longnan ; only 24 hours later was the full extent of the disaster area taken into consideration . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Qingchuan" [0 = "A"]))	47	47
+
+Instead in this instance the Liberation Army headquarters emergency contingency plan obviously was not a contingency plan designed with earthquakes as the assumed condition , as the soldiers all rushed straight to Wenchuan , without immediately sending out troops in the direction of badly-hit areas Beichuan , Qingchuan and Gansu 's Longnan ; only 24 hours later was the full extent of the disaster area taken into consideration . 
+(i / immediate [0 = "A"])	35	35
+
+Karachi police chief Tariq Jamil stated that the 5 banned Islamic groups would not be allowed to operate in any way . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Karachi" [0 = "A"]))	0	0
+
+Over 12 publications including dailies , weeklies and monthlies of various extremist groups including those banned on 020112 still sell in large numbers in the markets and bazaars of Karachi . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Karachi" [0 = "A"]))	29	29
+
+After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (C / CEO [0 = "A"])))	11	11
+
+It is clear that preparations prior to the event were not constructed on the basis of an earthquake disaster simulation . 
+(t / thing [0 = "A"]:ARG1-of (p / prepare-01 [0 = "A"]:time (p2 / prior-to [1 = "B"])))	4	5
+
+Iftikhar Ahmed stated that under the notification that was issued late at night on 020114 all publications , newspapers , weekly magazines , monthlies , etc of the 5 banned Islamic groups are banned and confiscated . 
+(t / temporal-quantity [0 = "A"]:quant 1 [0 = "A"]:unit (w / week [0 = "A"]))	20	20
+
+Qari Mohammad Zafar stated that his elders urged him to read about Jihad through the Islam daily published by the Al-Rashid Trust and Lashkar-i-Taiba 's zarb-e-Taiba weekly . 
+"Weekly" [0 = "A"]	26	26
+
+Hensler-Hobbs stated that the Canadian government has no knowledge of Al-Qaeda having engaged in cyberattacks in the past but that leader bin Laden has suggested that if he chose to launch cyberattacks he could have the means available to him . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Hensler-Hobbs" [0 = "A"]))	0	0
+
+In summary of the recent warning stating that such an attack could be executed in the very near future hensler-Hobbs stated that bin Laden 's location was irrelevant because bin Laden possesses the money and supporters necessary to have such an attack executed by others . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Hensler-Hobbs" [0 = "A"]))	19	19
+
+Hensler-Hobbs stated that the proliferation and availability of Hacker tools and the low skill level needed to conduct cyberattacks demonstrate the ease of launching an attack anywhere . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Hensler-Hobbs" [0 = "A"]))	0	0
+
+Hensler-Hobbs cited the example of the Montreal-based Hacker known as mafiaboy who attacked U.S. websites including Amazon.com in 2000 . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Hensler-Hobbs" [0 = "A"]))	0	0
+
+If some on the left want to remain ignorant and not read Alinky 's book to prove it , that is on them . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Alinsky" [0 = "A"]))	12	12
+
+The primary editorial in The Islam daily of Al-Rashid Trust on 020115 carried a warning to the Pakistani government . 
+(d / date-entity [0 = "A"]:day 15 [0 = "A"]:year 2002 [0 = "A"]:month 1 [0 = "A"])	11	11
+
+Rockström said that when rich countries increase their consumption , they also accelerate the exploitation of the world 's national resources , with the result that they emit more greenhouse gases . 
+(n / nation [0 = "A"])	19	19
+
+FIFA urged South Korea to prevent the inhumane killing of dogs . 
+(h / humane [0 = "A"]:polarity - [0 = "A"])	7	7
+
+Iftikhar Ahmed stated that under the notification that was issued late at night on 020114 all publications , newspapers , weekly magazines , monthlies , etc of the 5 banned Islamic groups are banned and confiscated . 
+(d / date-entity [0 = "A"]:month 1 [0 = "A"]:day 14 [0 = "A"]:year 2002 [0 = "A"])	14	14
+
+Iftikhar Ahmed stated that Pakistan 's provincial governments have been asked to implement the orders in the notification that was issued on 020114 and that Pakistan 's provincial governments are in the process of taking action . 
+(d / date-entity [0 = "A"]:year 2002 [0 = "A"]:day 14 [0 = "A"]:month 1 [0 = "A"])	22	22
+
+Around 1400 alleged religious extremists have been arrested since 020112 under severe actions against Islamic militants and sectarian radicals announced by President Pervez Musharraf during the weekend . 
+(d / date-entity [0 = "A"]:year 2002 [0 = "A"]:month 1 [0 = "A"]:day 12 [0 = "A"])	9	9
+
+Over 12 publications including dailies , weeklies and monthlies of various extremist groups including those banned on 020112 still sell in large numbers in the markets and bazaars of Karachi . 
+(d / date-entity [0 = "A"]:year 2002 [0 = "A"]:day 12 [0 = "A"]:month 1 [0 = "A"])	17	17
+
+During this process , there were again talks about filing a complaint against the Xinghui Travel Agency . 
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op2 "Travel" [1 = "B"]:op3 "Agency" [2 = "C"]:op1 "Xinghui" [0 = "A"]))	14	16
+
+Under the centralized leadership of higher-level organizations , everyone acted to make the rescue efforts very outstanding and successful , such that the Great Tangshan Earthquake , which happened just a few years ago , was forgotten all together in the subsequent reform and opening-up . 
+(e / earthquake [0 = "A"]:name (n / name [0 = "A"]:op2 "Tangshan" [1 = "B"]:op3 "Earthquake" [2 = "C"]:op1 "Great" [0 = "A"]))	23	25
+
+Obama must pay off his supporters by way of cash infusions and call it `` stimulus '' money . 
+(p / person [0 = "A"]:ARG0-of (s / support-01 [0 = "A"]))	5	5
+
+The statement was made to gain supporters to join the lobbying . 
+(p / person [0 = "A"]:ARG0-of (s / support-01 [0 = "A"]))	6	6
+
+In summary of the recent warning stating that such an attack could be executed in the very near future hensler-Hobbs stated that bin Laden 's location was irrelevant because bin Laden possesses the money and supporters necessary to have such an attack executed by others . 
+(p / person [0 = "A"]:ARG0-of (s / support-01 [0 = "A"]))	35	35
+
+I do n't think Standtorum will tank , its going to be a close one till the very end , I am still rooting for a Romney/McDonnell ticket . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Standtorum" [0 = "A"]))	4	4
+
+There were so many people there it was frightening . Some had even climbed onto the roofs of buses ! 
+(r / roof [0 = "A"])	16	16
+
+In the past the CCP has done a lot of these sorts of things , but on this occasion not only did nothing , but in response to queries from the public pulled out some whopping lies , playing syntax games with words like `` geological disaster '' and `` earthquake disaster '' . 
+(t / thing [0 = "A"]:ARG2-of (q / query-01 [0 = "A"]))	28	28
+
+The lack or serious shortage of intermediate layers of Party organizations and units between the two has resulted in its inability to consider major issues with endless minor issues on hand , such that even if it is highly capable , it wo n't last long , as it will be dragged down by numerous petty things . 
+(t / thing [0 = "A"])	14	14
+
+The primary editorial in The Islam daily of Al-Rashid Trust on 020115 carried a warning to the Pakistani government . 
+(n / name [0 = "A"])	0	0
+
+The primary editorial in The Islam daily of Al-Rashid Trust on 020115 carried a warning to the Pakistani government . 
+"The" [0 = "A"]	4	4
+
+The Islam daily of Al-Rashid Trust supports the Taliban Fund linked to Osama bin Laden 's al-Qaeda network . 
+(p / publication [0 = "A"]:name (n / name [0 = "A"]:op2 "Islam" [0 = "A"]:op1 "The" [0 = "A"]))	0	0
+
+So while libertarianism attracts people who want to be `` free '' it also attracts cheap assholes who do n't want to pay their fair share . 
+(l / libertarianism [0 = "A"])	2	2
+
+Police officer Mohammad Iqbal stated that the police so far have not received any instructions to take action against any banned religious extremist publications . 
+(h / have-org-role-91 [0 = "A"]:ARG1 (p / police [0 = "A"]))	0	0
+
+The Iranian army launched a huge sweep against traffickers along the borders with Afghanistan and Pakistan . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	13	13
+
+The Iranian army launched a huge sweep against traffickers along the borders with Afghanistan and Pakistan . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	13	13
+
+In December 2002 police announced than an armed corps with Afghanistan , Pakistan and Turkmenistan was being assembled specifically to combat drug trafficking along Iran 's borders . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	10	10
+
+Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	10	10
+
+Parliament approved plans in May 2001 to build an anti-drugs wall along the 925-kilometre -LRB- 560-mile -RRB- border with Afghanistan . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	19	19
+
+Iran -LRB- IR -RRB- ; Afghanistan -LRB- AF -RRB- ; Pakistan -LRB- PK -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	5	5
+
+IRNA stated that in the large-scale army operation along the eastern borders with Afghanistan and Pakistan 21 drug traffickers were killed , 1500 arrested and approximately 5 tons of drugs seized . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	13	13
+
+Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	10	10
+
+In May 2001 the Iranian parliament approved plans to build a wall equipped with electronic detection devices along the 560-mile border with Afghanistan to deter drug trafficking . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	22	22
+
+Mohammad Farooq stated that the publication of the Islam daily of Al-Rashid Trust has not been affected yet by Pervez Musharraf 's clamp-down on extremism and the circulation of the Islam daily of Al-Rashid Trust has increased in the past couple of days . 
+(t / temporal-quantity [0 = "A"]:unit (d / day [0 = "A"]):quant 1 [0 = "A"])	42	42
+
+Kind of hard to build a house over night , Mr Paul . 
+"Paul" [0 = "A"]	11	11
+
+The tour was a surprise offer made by North Korea in November 2001 . 
+(d / date-entity [0 = "A"]:month 11 [0 = "A"])	11	11
+
+FIFA president Sepp Blatter sent a letter last November to South Korea 's World Cup organizing committee calling for immediate and decisive measures against cruelty to dogs . 
+(d / date-entity [0 = "A"]:month 11 [0 = "A"])	8	8
+
+The banned 5 Islamic groups included the 2 hardline militant groups fighting Indian rule in Kashmir which the Indian government accuses of staging the violent 011213 attack on the Indian parliament . 
+(v / violence [0 = "A"])	24	24
+
+The London emergency services said that altogether 11 people had been sent to hospital for treatment due to minor wounds . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "London" [0 = "A"]))	1	1
+
+And an additional benefit was that many people who had been deluded came to their senses . 
+(s / sense [0 = "A"])	15	15
+
+A nationalist group has vowed cyber hostilities against U.S. based media company Warner Bros. and one of France 's state-run television channels . 
+(n / name [0 = "A"]:op1 "Warner" [0 = "A"]:op2 "Bros." [1 = "B"])	12	13
+
+The organizers of South Korean website antijapan.wo.ro vowed to paralyze the websites of Warner Bros. -LRB- www.wpix.com -RRB- and the French state television network -LRB- www.francetv.fr -RRB- on January 19 , 2002 . 
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Warner" [0 = "A"]:op2 "Bros." [1 = "B"]))	13	14
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Bahrain" [0 = "A"]))	13	13
+
+There were so many people there it was frightening . Some had even climbed onto the roofs of buses ! 
+(b / be-located-at-91 [1 = "B"]:ARG2 (t / there [1 = "B"]):ARG1 (p / person [0 = "A"]))	4	5
+
+The government will rush in and show these people that government dependency is better than working and providing for themselves . 
+(p / person [1 = "B"]:mod (t / this [0 = "A"]))	7	8
+
+I think the Good Doctor is too crazy to hang it up . 
+(n / name [0 = "A"]:op1 "Good" [0 = "A"])	3	3
+
+I 'm in favor of feeding , clothing , and giving shelter to the poor . I 'm against all the gov ' t institutions that tax our brains out and who inefficiently attempt to provide some of these things . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	21	21
+
+Hell , sell tickets and hire the Chinese to cater the event . 
+(p / person [0 = "A"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "China" [0 = "A"])))	7	7
+
+FIFA urged South Korea to prevent the inhumane killing of dogs . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "FIFA" [0 = "A"]))	0	0
+
+FIFA president Sepp Blatter sent a letter last November to South Korea 's World Cup organizing committee calling for immediate and decisive measures against cruelty to dogs . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "FIFA" [0 = "A"]))	0	0
+
+It is obvious that no social or political problems were left then , nor were sequelae that cause headaches to later generations . 
+(l / late [0 = "A"]:degree (m / more [0 = "A"]))	20	20
+
+South Korean cyber campaigners disabled Japanese education ministry websites last year in a protest against history books accused of skimming Japan 's wartime record in Asia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Japan" [0 = "A"]))	5	5
+
+A nationalist group has vowed cyber hostilities against U.S. based media company Warner Bros. and one of France 's state-run television channels . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "France" [0 = "A"]))	17	17
+
+In summary of the recent warning stating that such an attack could be executed in the very near future hensler-Hobbs stated that bin Laden 's location was irrelevant because bin Laden possesses the money and supporters necessary to have such an attack executed by others . 
+(p / person [0 = "A"]:mod (o / other [0 = "A"]))	44	44
+
+Yesterday afternoon I went back to check out the torch relay , but even the flame was practically impossible to see , let alone the guys carrying the torch . 
+(p / possible [1 = "B"]:polarity - [1 = "B"]:mod (p2 / practical [0 = "A"]))	17	18
+
+Rockström said that when rich countries increase their consumption , they also accelerate the exploitation of the world 's national resources , with the result that they emit more greenhouse gases . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Rockström" [0 = "A"]))	0	0
+
+Instead in this instance the Liberation Army headquarters emergency contingency plan obviously was not a contingency plan designed with earthquakes as the assumed condition , as the soldiers all rushed straight to Wenchuan , without immediately sending out troops in the direction of badly-hit areas Beichuan , Qingchuan and Gansu 's Longnan ; only 24 hours later was the full extent of the disaster area taken into consideration . 
+(c / county [0 = "A"]:name (n / name [0 = "A"]:op1 "Wenchuan" [0 = "A"]))	32	32
+
+I do n't think Standtorum will tank , its going to be a close one till the very end , I am still rooting for a Romney/McDonnell ticket . 
+(i / it [0 = "A"])	8	8
+
+Hensler-Hobbs cited the example of the Montreal-based Hacker known as mafiaboy who attacked U.S. websites including Amazon.com in 2000 . 
+(d / date-entity [0 = "A"]:year 2000 [0 = "A"])	18	18
+
+It will sponsor a 2-week workshop for 50 anti-terrorism experts . 
+(t / temporal-quantity [0 = "A"]:quant 2 [0 = "A"]:unit (w / week [0 = "A"]))	4	4
+
+A United Nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "North" [0 = "A"]:op2 "Korea" [1 = "B"]))	11	12
+
+Government sources said on January 7 , 2002 that a united nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "North" [0 = "A"]:op2 "Korea" [1 = "B"]))	20	21
+
+The upcoming visit is viewed as part of the International Atomic Energy Agency -LRB- IAEA -RRB- drive to clarify North Korea 's nuclear ambitions . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "North" [0 = "A"]:op2 "Korea" [1 = "B"]))	19	20
+
+The source stated that the inspection would focus on an isotope production laboratory in the Yongbyon nuclear complex which is north of North Korea 's capital Pyongyang . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "North" [0 = "A"]:op2 "Korea" [1 = "B"]))	22	23
+
+The IAEA tour of the isotope production laboratory will unlikely give a full picture of North Korea 's suspected nuclear weapons ambitions . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "North" [0 = "A"]:op2 "Korea" [1 = "B"]))	15	16
+
+The tour was a surprise offer made by North Korea in November 2001 . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "North" [0 = "A"]))	8	9
+
+IAEA accepted North Korea 's proposal last month but cautioned that the proposal is not a breakthrough . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "North" [0 = "A"]:op2 "Korea" [1 = "B"]))	2	3
+
+North Korea has denied the IAEA full access to its facilities . 
+(n / name [0 = "A"]:op1 "North" [0 = "A"]:op2 "Korea" [1 = "B"])	0	1
+
+North Korea froze its suspected nuclear weapons program at Yongbyon in exchange for receiving two nuclear reactors producing less weapons-grade plutonium under a 1994 accord with the United States . 
+(n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "North" [0 = "A"])	0	1
+
+According to information leaked from numerous channels , we can say for certain that before the earthquake struck , the serious earthquake risk in the Ngawa region was already well known to the CCP . 
+(l / local-region [0 = "A"]:name (n / name [0 = "A"]:op1 "Ngawa" [0 = "A"]))	25	25
+
+Iran 's state news agency IRNA reported 23 January 2002 that Iranian security forces killed 21 drug traffickers and arrested more than 1600 in operations in the east and south of Iran in recent days . 
+(n / name [0 = "A"]:op1 "IRNA" [0 = "A"])	5	5
+
+IRNA stated that in the large-scale army operation along the eastern borders with Afghanistan and Pakistan 21 drug traffickers were killed , 1500 arrested and approximately 5 tons of drugs seized . 
+(p / publication [0 = "A"]:name (n / name [0 = "A"]:op1 "IRNA" [0 = "A"]))	0	0
+
+IRNA stated that the 10-day-old operation would continue until all the traffickers were killed or arrested . 
+(p / publication [0 = "A"]:name (n / name [0 = "A"]:op1 "IRNA" [0 = "A"]))	0	0
+
+IRNA stated that approximately 1 ton of various drugs including hashish as well as fire arms were seized . 
+(p / publication [0 = "A"]:name (n / name [0 = "A"]:op1 "IRNA" [0 = "A"]))	0	0
+
+1 . Establish an innovation fund with a maximum amount of 1,000 U.S. dollars . 
+(m / monetary-quantity [1 = "B"]:unit (d / dollar [1 = "B"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "States" [0 = "A"]:op1 "United" [0 = "A"]))))	12	13
+
+Although current forecasting standards can not give us an accurate prediction of the exact time , place , and strength of an earthquake , there is considerable experience accumulated both in China and overseas in predicting to within the timeframe of a month , and the area of a province . 
+(t / temporal-quantity [0 = "A"]:unit (m / month [0 = "A"]))	42	42
+
+Canada -LRB- CA -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Canada" [0 = "A"]))	0	0
+
+My heart goes out to the people in tornado alley and I have no problem with my tax dollars going to help the survivors rebuild their lives . 
+(p / person [0 = "A"]:ARG0-of (s / survive-01 [0 = "A"]))	23	23
+
+I do n't think Standtorum will tank , its going to be a close one till the very end , I am still rooting for a Romney/McDonnell ticket . 
+(s / slash [0 = "A"]:op2 (p / person [0 = "A"]))	26	26
+
+Other groups linked to terrorism and included on the United States Terrorist Exclusion List are also publishing regular newspapers and journals containing rhetoric that is against Western countries and calls for war in the name of Islam . 
+(w / world-region [0 = "A"]:name (n / name [0 = "A"]:op1 "West" [0 = "A"]))	26	26
+
+Raising standards to in excess of Tangshan 's 8.0 magnitude could leave authorities with some breathing space for explanation , and alleviate public anger . 
+(p / possible [0 = "A"])	9	10
+
+I 'm in favor of feeding , clothing , and giving shelter to the poor . I 'm against all the gov ' t institutions that tax our brains out and who inefficiently attempt to provide some of these things . 
+(s / some [0 = "A"]:ARG1-of (i / include-91 [0 = "A"]))	36	36
+
+If some on the left want to remain ignorant and not read Alinky 's book to prove it , that is on them . 
+(s / some [0 = "A"])	1	1
+
+I 'm in favor of feeding , clothing , and giving shelter to the poor . I 'm against all the gov ' t institutions that tax our brains out and who inefficiently attempt to provide some of these things . 
+(t / thing [1 = "B"]:mod (t2 / this [0 = "A"]))	38	39
+
+He ca n't seem to help himself from apologizing for anything and everything . 
+(p / possible [0 = "A"]:polarity - [1 = "B"])	1	2
+
+Naif Arab Academy for Security Sciences is based in Riyadh . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Riyadh" [0 = "A"]))	9	9
+
+Pakistan -LRB- PK -RRB- ; India -LRB- IN -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "India" [0 = "A"]))	5	5
+
+The 4.6-billion-dollar project was due to be completed by 2003 . 
+(m / monetary-quantity [0 = "A"]:quant 4600000000 [0 = "A"]:unit (d / dollar [0 = "A"]))	1	1
+
+Perhaps when Libertarians figure out a way to differentiate between the two , I 'll vote for them . 
+(p / possible [0 = "A"])	0	0
+
+Increase the welfare rolls till the takers outweigh the givers . Only then can socialism creep in . 
+(p / person [0 = "A"]:ARG0-of (g / give-01 [0 = "A"]))	9	9
+
+Iran 's state news agency IRNA reported 23 January 2002 that Iranian security forces killed 21 drug traffickers and arrested more than 1600 in operations in the east and south of Iran in recent days . 
+(b / before [0 = "A"]:duration (m / multiple [1 = "B"]:op1 (t / temporal-quantity [1 = "B"]:quant 1 [1 = "B"]:unit (d / day [1 = "B"]))):op1 (n / now [0 = "A"]))	33	34
+
+A nationalist group has vowed cyber hostilities against U.S. based media company Warner Bros. and one of France 's state-run television channels . 
+(r / run-01 [0 = "A"]:ARG0 (s / state [0 = "A"]))	19	19
+
+The 4.6-billion-dollar project was due to be completed by 2003 . 
+(d / date-entity [0 = "A"]:year 2003 [0 = "A"])	9	9
+
+Hensler-Hobbs stated that the proliferation and availability of Hacker tools and the low skill level needed to conduct cyberattacks demonstrate the ease of launching an attack anywhere . 
+(s / skill-level [0 = "A"])	13	13
+
+Instead in this instance the Liberation Army headquarters emergency contingency plan obviously was not a contingency plan designed with earthquakes as the assumed condition , as the soldiers all rushed straight to Wenchuan , without immediately sending out troops in the direction of badly-hit areas Beichuan , Qingchuan and Gansu 's Longnan ; only 24 hours later was the full extent of the disaster area taken into consideration . 
+(m / military [0 = "A"]:name (n / name [0 = "A"]:op2 "Army" [1 = "B"]:op1 "Liberation" [0 = "A"]))	5	6
+
+The Islam daily of Al-Rashid Trust supports the Taliban Fund linked to Osama bin Laden 's al-Qaeda network . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Taliban" [0 = "A"]))	8	8
+
+In July 2000 the Taliban militia also banned production of opium . 
+(c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Taliban" [0 = "A"]))	4	4
+
+The now-ousted Taliban militia in July 2000 also banned production of opium . 
+(c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Taliban" [0 = "A"]))	2	2
+
+I think Gingrich 's sole win in GA is enough to hang it up and go back to making millions in the private sector . 
+(s / state [0 = "A"]:name (n / name [0 = "A"]:op1 "Georgia" [0 = "A"]))	7	7
+
+The upcoming visit is viewed as part of the International Atomic Energy Agency -LRB- IAEA -RRB- drive to clarify North Korea 's nuclear ambitions . 
+(n / nucleus [0 = "A"])	22	22
+
+The source stated that the inspection would focus on an isotope production laboratory in the Yongbyon nuclear complex which is north of North Korea 's capital Pyongyang . 
+(n / nucleus [0 = "A"])	16	16
+
+The IAEA tour of the isotope production laboratory will unlikely give a full picture of North Korea 's suspected nuclear weapons ambitions . 
+(n / nucleus [0 = "A"])	19	19
+
+IAEA is based in Vienna and is the UN 's nuclear supervisor . 
+(n / nucleus [0 = "A"])	10	10
+
+North Korea froze its suspected nuclear weapons program at Yongbyon in exchange for receiving two nuclear reactors producing less weapons-grade plutonium under a 1994 accord with the United States . 
+(n / nucleus [0 = "A"])	5	5
+
+North Korea froze its suspected nuclear weapons program at Yongbyon in exchange for receiving two nuclear reactors producing less weapons-grade plutonium under a 1994 accord with the United States . 
+(n / nucleus [0 = "A"])	15	15
+
+Director of threat analysis at the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service Brenda hensler-Hobbs stated that following the attacks of 11 September 2001 the Canadian Government specifically examined the potential cyber-capability of al-Qaeda and Osama bin Laden 's followers . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Hensler-Hobbs" [1 = "B"]:op1 "Brenda" [0 = "A"]))	20	21
+
+Ok , my answer is no one and Obama wins the GE . 
+(e / event [0 = "A"]:name (n / name [0 = "A"]:op1 "GE" [0 = "A"]))	11	11
+
+A separate report issued recently by the U.S. government-funded research group computer science and telecommunications Board stated that cyber security needs considerable improvement . 
+(g / group [0 = "A"]:name (n / name [0 = "A"]:op1 "Computer" [0 = "A"]:op5 "Board" [4 = "E"]:op4 "Telecommunications" [3 = "D"]:op2 "Science" [1 = "B"]:op3 "and" [2 = "C"]))	11	15
+
+A jeweler 's shop in Tokyo displayed a swimsuit , dress and shawl to go with it made of pure gold thread today . These were made by a workshop in the ancient capital , Kyoto . 
+(c / capital [0 = "A"]:name (n / name [0 = "A"]:op1 "Kyoto" [0 = "A"]))	35	35
+
+Instead in this instance the Liberation Army headquarters emergency contingency plan obviously was not a contingency plan designed with earthquakes as the assumed condition , as the soldiers all rushed straight to Wenchuan , without immediately sending out troops in the direction of badly-hit areas Beichuan , Qingchuan and Gansu 's Longnan ; only 24 hours later was the full extent of the disaster area taken into consideration . 
+(h / hit-01 [0 = "A"]:manner (b / bad [0 = "A"]))	43	43
+
+South Korean cyber campaigners disabled Japanese education ministry websites last year in a protest against history books accused of skimming Japan 's wartime record in Asia . 
+(c / continent [0 = "A"]:name (n / name [0 = "A"]:op1 "Asia" [0 = "A"]))	25	25
+
+Temporarily laid aside these abstract things and avoided speaking at length , saying only a few details that left the elitists , the politicians and capitalists highly embarrassed . 
+(l / long [0 = "A"])	10	10
+
+The warning from the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service was quietly released on 20 December 2001 and cited no specific threat . 
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op3 "Critical" [2 = "C"]:op7 "Emergency" [6 = "G"]:op6 "and" [5 = "F"]:op8 "Service" [7 = "H"]:op1 "Office" [0 = "A"]:op2 "of" [1 = "B"]:op4 "Infrastructure" [3 = "D"]:op5 "Protection" [4 = "E"]))	10	17
+
+Director of threat analysis at the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service Brenda hensler-Hobbs stated that following the attacks of 11 September 2001 the Canadian Government specifically examined the potential cyber-capability of al-Qaeda and Osama bin Laden 's followers . 
+(n / name [0 = "A"]:op3 "Critical" [2 = "C"]:op4 "Infrastructure" [3 = "D"]:op7 "Emergency" [6 = "G"]:op5 "Protection" [4 = "E"]:op8 "Service" [7 = "H"]:op6 "and" [5 = "F"]:op2 "of" [1 = "B"]:op1 "Office" [0 = "A"])	12	19
+
+The ban was strictly enforced with opium production decreasing from 3,200 tons to 185 tons . 
+(s / strict [0 = "A"])	3	3
+
+The ban was strictly enforced and resulted in a decrease in opium production from 3200 tons to 185 tons . 
+(s / strict [0 = "A"])	3	3
+
+The government will rush in and show these people that government dependency is better than working and providing for themselves . 
+(g / good-42 [0 = "A"]:degree (m / more [0 = "A"]))	13	13
+
+North Korea froze its suspected nuclear weapons program at Yongbyon in exchange for receiving two nuclear reactors producing less weapons-grade plutonium under a 1994 accord with the United States . 
+(c / country [0 = "A"])	25	25
+
+The 2 hardline militant groups fighting Indian rule in Kashmir are the Lashkar-e-Taiba and Jaish-e-Mohammad . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Lashkar-e-Taiba" [0 = "A"]))	12	12
+
+Although current forecasting standards can not give us an accurate prediction of the exact time , place , and strength of an earthquake , there is considerable experience accumulated both in China and overseas in predicting to within the timeframe of a month , and the area of a province . 
+(h / have-concession-91 [0 = "A"])	0	0
+
+Although current forecasting standards can not give us an accurate prediction of the exact time , place , and strength of an earthquake , there is considerable experience accumulated both in China and overseas in predicting to within the timeframe of a month , and the area of a province . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "China" [0 = "A"]))	31	31
+
+Some guys were really insane , banding together in groups and yelling out `` Go China ! '' 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "China" [0 = "A"]))	15	15
+
+IRNA stated that in the large-scale army operation along the eastern borders with Afghanistan and Pakistan 21 drug traffickers were killed , 1500 arrested and approximately 5 tons of drugs seized . 
+(a / approximate [0 = "A"])	25	25
+
+IRNA stated that approximately 1 ton of various drugs including hashish as well as fire arms were seized . 
+(a / approximate [0 = "A"])	3	3
+
+Wow , another Solyndra-type company who took our money and failed in their goal . 
+(r / resemble-01 [0 = "A"]:ARG2 (c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Solyndra" [0 = "A"])))	3	3
+
+According to information leaked from numerous channels , we can say for certain that before the earthquake struck , the serious earthquake risk in the Ngawa region was already well known to the CCP . 
+(g / good [0 = "A"])	29	29
+
+If the simulation program was well designed , circumstances like debris blocking roads , heavy rainfall obstructing parachute drops , power and communication outages should all have been within expectations . 
+(g / good [0 = "A"])	5	5
+
+Bradley stated that the company has been significantly focused on prevention of cyberattacks . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Bradley" [0 = "A"]))	0	0
+
+Bradley stated that the company has been significantly focused on prevention of cyberattacks . 
+(s / significant [0 = "A"])	7	7
+
+FIFA president Sepp Blatter sent a letter last November to South Korea 's World Cup organizing committee calling for immediate and decisive measures against cruelty to dogs . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (p2 / president [0 = "A"])))	1	1
+
+Around 1400 alleged religious extremists have been arrested since 020112 under severe actions against Islamic militants and sectarian radicals announced by President Pervez Musharraf during the weekend . 
+(h / have-org-role-91 [0 = "A"]:ARG2 (p / president [0 = "A"]))	21	21
+
+However , most of the buildings in this hard-hit area did not meet these requirements , with the widespread collapse of school buildings in particular arousing intense public disgust . 
+(t / thing [1 = "B"]:mod (t2 / this [0 = "A"]):ARG1-of (r / require-01 [1 = "B"]))	13	14
+
+I 'm in favor of feeding , clothing , and giving shelter to the poor . I 'm against all the gov ' t institutions that tax our brains out and who inefficiently attempt to provide some of these things . 
+(i / inefficient [0 = "A"])	32	32
+
+The Iranian army launched a huge sweep against traffickers along the borders with Afghanistan and Pakistan . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	1	1
+
+The Iranian army launched a huge sweep against traffickers along the borders with Afghanistan and Pakistan . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	1	1
+
+Iran 's state news agency IRNA reported 23 January 2002 that Iranian security forces killed 21 drug traffickers and arrested more than 1600 in operations in the east and south of Iran in recent days . 
+(h / have-org-role-91 [0 = "A"]:ARG1 (c / country [0 = "A"]))	11	11
+
+In May 2001 the Iranian parliament approved plans to build a wall equipped with electronic detection devices along the 560-mile border with Afghanistan to deter drug trafficking . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	4	4
+
+Newspapers and magazines extolling the virtues of Islamic holy war in Kashmir continue to fill the newstands in Pakistan despite the Pakistani military Government 's attempt at a large scale containment of religious extremism . 
+(r / religious-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Islam" [0 = "A"]))	7	7
+
+Around 1400 alleged religious extremists have been arrested since 020112 under severe actions against Islamic militants and sectarian radicals announced by President Pervez Musharraf during the weekend . 
+(r / religious-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Islam" [0 = "A"]))	14	14
+
+The banned 5 Islamic groups included the 2 hardline militant groups fighting Indian rule in Kashmir which the Indian government accuses of staging the violent 011213 attack on the Indian parliament . 
+(r / religious-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Islam" [0 = "A"]))	3	3
+
+Pakistani authorities have stated that no statements or literature from the 5 banned Islamic groups would be tolerated after Pervez Musharraf 's speech banning the 5 Islamic groups . 
+(r / religious-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Islam" [0 = "A"]))	13	13
+
+Pervez Musharraf 's speech banning the 5 Islamic groups was applauded by the United States . 
+(r / religious-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Islam" [0 = "A"]))	7	7
+
+Iftikhar Ahmed stated that under the notification that was issued late at night on 020114 all publications , newspapers , weekly magazines , monthlies , etc of the 5 banned Islamic groups are banned and confiscated . 
+(r / religious-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Islam" [0 = "A"]))	30	30
+
+Karachi police chief Tariq Jamil stated that the 5 banned Islamic groups would not be allowed to operate in any way . 
+(r / religious-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Islam" [0 = "A"]))	10	10
+
+In summary of the recent warning stating that such an attack could be executed in the very near future hensler-Hobbs stated that bin Laden 's location was irrelevant because bin Laden possesses the money and supporters necessary to have such an attack executed by others . 
+(r / relevant-41 [0 = "A"]:polarity - [0 = "A"])	27	27
+
+They even lied , saying that they and Xinghui initially felt that signing a contract would rather make each other feel like strangers since they were both doing it for the sake of the motherland . 
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Xinghui" [0 = "A"]))	8	8
+
+Xinghui accepted this order of ours and deployed all the buses of other travel agencies in Sydney . 
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Xinghui" [0 = "A"]))	0	0
+
+Will they try to prop Romney up with a strong VP to help make him more palatable - or will they bring in a new face ? 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Romney" [0 = "A"]))	5	5
+
+A recent government warning that al-Qaeda terrorists could launch a cyberattack on Canadian interests or critical infrastructure has caused many concerned industries to review their security systems . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Canada" [0 = "A"]))	12	12
+
+Vice President of Canadian electricity Association Francis Bradley stated that the company has a warning system for both physical and cyberattacks . 
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Canadian" [0 = "A"]))	3	3
+
+The warning from the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service was quietly released on 20 December 2001 and cited no specific threat . 
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Canadian" [0 = "A"]))	4	4
+
+Director of threat analysis at the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service Brenda hensler-Hobbs stated that following the attacks of 11 September 2001 the Canadian Government specifically examined the potential cyber-capability of al-Qaeda and Osama bin Laden 's followers . 
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Canadian" [0 = "A"]))	6	6
+
+Director of threat analysis at the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service Brenda hensler-Hobbs stated that following the attacks of 11 September 2001 the Canadian Government specifically examined the potential cyber-capability of al-Qaeda and Osama bin Laden 's followers . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Canada" [0 = "A"]))	32	32
+
+Hensler-Hobbs stated that the Canadian government has no knowledge of Al-Qaeda having engaged in cyberattacks in the past but that leader bin Laden has suggested that if he chose to launch cyberattacks he could have the means available to him . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Canada" [0 = "A"]))	4	4
+
+For example , according to a Canadian government estimate the love bug launched in May 2000 caused 6.7 billion U.S. dollars in damage and disrupted Canadian government systems . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Canada" [0 = "A"]))	6	6
+
+After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "States" [0 = "A"]:op1 "United" [0 = "A"]))	14	14
+
+More than 3,000 policemen have been killed in anti-drugs raids in the past 20 years . 
+(t / temporal-quantity [0 = "A"]:unit (y / year [0 = "A"]))	14	14
+
+In the past 20 years more than 3000 police officers have been killed in anti-drug raids . 
+(t / temporal-quantity [0 = "A"]:unit (y / year [0 = "A"]))	4	4
+
+A United Nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "United" [0 = "A"]:op2 "Nations" [1 = "B"]))	1	2
+
+Government sources said on January 7 , 2002 that a united nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "United" [0 = "A"]:op2 "Nations" [1 = "B"]))	10	11
+
+This was mere chicanery , to the point where before engaging in life-saving , donation to charity , these sorts of behaviors , an idea had to be flashing through people 's minds : 
+(s / save-02 [0 = "A"]:ARG1 (l / life [0 = "A"]))	12	12
+
+Everything Obama has done is straight from Alinsky 's Rules for Radicals . All of it . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Alinsky" [0 = "A"]))	7	7
+
+The Riyadh-based Naif Arab Academy for Security Sciences said in a statement that it was running a two-week workshop for 50 anti-terrorism experts . 
+(p / person [1 = "B"]:ARG1-of (e / expert-41 [1 = "B"]:ARG2 (c / counter-01 [0 = "A"]:ARG1 (t / terrorism [0 = "A"]))))	21	22
+
+It will sponsor a 2-week workshop for 50 anti-terrorism experts . 
+(p / person [1 = "B"]:ARG1-of (e / expert-41 [1 = "B"]:ARG2 (o / oppose-01 [0 = "A"]:ARG1 (t / terrorism [0 = "A"]))))	8	9
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(p / person [1 = "B"]:ARG1-of (e / expert-41 [1 = "B"]:ARG2 (o / oppose-01 [0 = "A"]:ARG1 (t / terrorism [0 = "A"]))))	3	4
+
+The workshop 's anti-terrorism experts belong to anti-terror squads in Arab security agencies and Anti-Organized Crime Units . 
+(p / person [1 = "B"]:ARG1-of (e / expert-41 [1 = "B"]:ARG2 (c / counter-01 [0 = "A"]:ARG1 (t / terrorism [0 = "A"]))))	3	4
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Saudi" [0 = "A"]:op2 "Arabia" [1 = "B"]))	25	26
+
+The lack or serious shortage of intermediate layers of Party organizations and units between the two has resulted in its inability to consider major issues with endless minor issues on hand , such that even if it is highly capable , it wo n't last long , as it will be dragged down by numerous petty things . 
+(e / even-if [0 = "A"])	35	35
+
+The organizers of South Korean website antijapan.wo.ro vowed to paralyze the websites of Warner Bros. -LRB- www.wpix.com -RRB- and the French state television network -LRB- www.francetv.fr -RRB- on January 19 , 2002 . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "France" [0 = "A"]))	20	20
+
+French actress-turned activist Brigitte Bardot and other animal rights campaigners call to stop the South Korean practice of eating dogs . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "France" [0 = "A"]))	0	0
+
+Xinghui accepted this order of ours and deployed all the buses of other travel agencies in Sydney . 
+(t / thing [0 = "A"]:ARG1-of (o / order-02 [0 = "A"]))	3	3
+
+In December 2002 police announced than an armed corps with Afghanistan , Pakistan and Turkmenistan was being assembled specifically to combat drug trafficking along Iran 's borders . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Turkmenistan" [0 = "A"]))	14	14
+
+Afghan farmers resumed growing opium poppies after the militia was overthrown in December 2001 . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	0	0
+
+Desperate Afghan farmers resumed growing opium poppies soon after the hard-line militia lost power in December 2001 . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	1	1
+
+The workshop will address several terrorism-related issues including political factors leading to terror , the role of religion in fighting terrorists and economic factors that support crime and terrorism . 
+(r / relate-01 [0 = "A"]:ARG2 (t / terrorism [0 = "A"]))	5	5
+
+After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(n / name [0 = "A"]:op1 "IM" [0 = "A"])	15	15
+
+Newspapers and magazines extolling the virtues of Islamic holy war in Kashmir continue to fill the newstands in Pakistan despite the Pakistani military Government 's attempt at a large scale containment of religious extremism . 
+(l / large-scale [0 = "A"])	28	28
+
+Kind of hard to import food considering that the stores are probably wiped out too . 
+(c / cause-01 [0 = "A"]:ARG0 (c2 / consider-01 [0 = "A"]))	6	6
+
+Director of threat analysis at the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service Brenda hensler-Hobbs stated that following the attacks of 11 September 2001 the Canadian Government specifically examined the potential cyber-capability of al-Qaeda and Osama bin Laden 's followers . 
+(f / follow-01 [0 = "A"]:ARG2 (a / attack-01 [0 = "A"]:time (d / date-entity [0 = "A"]:month 9 [0 = "A"]:day 11 [0 = "A"]:year 2001 [0 = "A"])))	0	0
+
+Dog restaurants were told to close or go into the backstreets when Seoul hosted the 1988 Olympics . 
+(g / game [0 = "A"]:name (n / name [0 = "A"]:op1 "Olympics" [0 = "A"]))	16	16
+
+Homeowners generally have insurance , but Federal Aid is necessary to provide for the clean up , repairs of electrical and water systems , roads , schools , buses , etc. etc. . 
+(e / electricity [0 = "A"])	19	19
+
+The organizers of South Korean website antijapan.wo.ro vowed to paralyze the websites of Warner Bros. -LRB- www.wpix.com -RRB- and the French state television network -LRB- www.francetv.fr -RRB- on January 19 , 2002 . 
+(u / url-entity [0 = "A"]:value "antijapan.wo.ro" [0 = "A"])	6	6
+
+Parliament approved plans in May 2001 to build an anti-drugs wall along the 925-kilometre -LRB- 560-mile -RRB- border with Afghanistan . 
+(d / distance-quantity [0 = "A"]:quant 925 [0 = "A"]:unit (k / kilometer [0 = "A"]))	13	13
+
+A spokesperson for the company said , '' The dress and swimsuit can be worn just like ordinary clothing , but must be treated the same as jewelry , and can not be washed in a washing machine . '' 
+(p / possible [0 = "A"]:polarity - [1 = "B"])	30	31
+
+I think Mitt drops out ... 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Mitt" [0 = "A"]))	2	2
+
+He had to win there to stay in , so ultimately this helps Mitt keep the vote split . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Mitt" [0 = "A"]))	13	13
+
+Dog restaurants were told to close or go into the backstreets when Seoul hosted the 1988 Olympics . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Seoul" [0 = "A"]))	12	12
+
+The reason for filing the complaint is that even if we owed their hourly fees , they still should fulfill their obligation on the contract they signed : driving people from Canberra back to Sydney . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Sydney" [0 = "A"]))	34	34
+
+Xinghui accepted this order of ours and deployed all the buses of other travel agencies in Sydney . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Sydney" [0 = "A"]))	16	16
+
+Under the centralized leadership of higher-level organizations , everyone acted to make the rescue efforts very outstanding and successful , such that the Great Tangshan Earthquake , which happened just a few years ago , was forgotten all together in the subsequent reform and opening-up . 
+(c / cause-01 [0 = "A"]:ARG0 (a / act-02 [0 = "A"]))	9	9
+
+The reason for filing the complaint is that even if we owed their hourly fees , they still should fulfill their obligation on the contract they signed : driving people from Canberra back to Sydney . 
+(e / even-if [0 = "A"])	8	8
+
+Even if someone has insurance to cover their loss , that wo n't extend to the roads , power lines , sewers , public buildings . 
+(e / even-if [0 = "A"])	0	0
+
+Homeowners generally have insurance , but Federal Aid is necessary to provide for the clean up , repairs of electrical and water systems , roads , schools , buses , etc. etc. . 
+(e / et-cetera [0 = "A"])	30	30
+
+The banned 5 Islamic groups included the 2 hardline militant groups fighting Indian rule in Kashmir which the Indian government accuses of staging the violent 011213 attack on the Indian parliament . 
+(d / date-entity [0 = "A"]:year 2001 [0 = "A"]:month 12 [0 = "A"]:day 13 [0 = "A"])	25	25
+
+A jeweler 's shop in Tokyo displayed a swimsuit , dress and shawl to go with it made of pure gold thread today . These were made by a workshop in the ancient capital , Kyoto . 
+(t / this [0 = "A"])	23	24
+
+Homeowners generally have insurance , but Federal Aid is necessary to provide for the clean up , repairs of electrical and water systems , roads , schools , buses , etc. etc. . 
+a [0 = "A"]	7	7
+
+Of course , the people on the AIG bus tours likely did n't get soaked with high taxes to pay for this scam , so why should they care ? 
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "AIG" [0 = "A"]))	7	7
+
+Thats what a Hardcore Libertarian would say . 
+(t / thing [0 = "A"]:domain (t2 / that [0 = "A"]))	0	0
+
+Ok , my answer is no one and Obama wins the GE . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Obama" [0 = "A"]))	8	8
+
+Obama must pay off his supporters by way of cash infusions and call it `` stimulus '' money . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Obama" [0 = "A"]))	0	0
+
+Everything Obama has done is straight from Alinsky 's Rules for Radicals . All of it . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Obama" [0 = "A"]))	1	1
+
+Everything Obama has done is straight from Alinsky 's Rules for Radicals . All of it . 
+(b / book [0 = "A"]:name (n / name [0 = "A"]:op2 "for" [1 = "B"]:op3 "Radicals" [2 = "C"]:op1 "Rules" [0 = "A"]))	9	11
+
+IRNA stated that approximately 1 ton of various drugs including hashish as well as fire arms were seized . 
+(m / mass-quantity [0 = "A"]:unit (t / ton [0 = "A"]))	5	5
+
+I heard from a friend at the consulate that the government took this matter very seriously and had promptly agreed to allocate funds to compensate the students who had used their own money instead that night . 
+(g / government-organization [0 = "A"])	10	10
+
+The government will rush in and show these people that government dependency is better than working and providing for themselves . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	1	1
+
+Government sources said on January 7 , 2002 that a united nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	0	0
+
+Religious extremism continues in Pakistan despite the banning of militant groups by the Pakistani Government . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	14	14
+
+Newspapers and magazines extolling the virtues of Islamic holy war in Kashmir continue to fill the newstands in Pakistan despite the Pakistani military Government 's attempt at a large scale containment of religious extremism . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	23	23
+
+The banned 5 Islamic groups included the 2 hardline militant groups fighting Indian rule in Kashmir which the Indian government accuses of staging the violent 011213 attack on the Indian parliament . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	19	19
+
+Qari Mohammad Zafar stated that he did not know whether the Pakistani government will also ban the publications encouraging Jihad . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	12	12
+
+The primary editorial in The Islam daily of Al-Rashid Trust on 020115 carried a warning to the Pakistani government . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	18	18
+
+A reporter who did not want to be named from the publication of the Islam daily of Al-Rashid Trust stated that it would not be easy for the Pakistani government to ban the religious extremist publications and make over 500 employees jobless . 
+(g / government-organization [0 = "A"])	29	29
+
+The Government has banned cultivation of opium poppies and plans to build a wall along its border in an attempt to end drug trafficking . 
+(g / government-organization [0 = "A"])	1	1
+
+Critical infrastructures including energy and transportation providers cite close work with Government to remain aware of threats and to update accordingly . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	11	11
+
+A recent government warning that al-Qaeda terrorists could launch a cyberattack on Canadian interests or critical infrastructure has caused many concerned industries to review their security systems . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	2	2
+
+Director of threat analysis at the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service Brenda hensler-Hobbs stated that following the attacks of 11 September 2001 the Canadian Government specifically examined the potential cyber-capability of al-Qaeda and Osama bin Laden 's followers . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	33	33
+
+Hensler-Hobbs stated that the Canadian government has no knowledge of Al-Qaeda having engaged in cyberattacks in the past but that leader bin Laden has suggested that if he chose to launch cyberattacks he could have the means available to him . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	5	5
+
+For example , according to a Canadian government estimate the love bug launched in May 2000 caused 6.7 billion U.S. dollars in damage and disrupted Canadian government systems . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	7	7
+
+For example , according to a Canadian government estimate the love bug launched in May 2000 caused 6.7 billion U.S. dollars in damage and disrupted Canadian government systems . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	26	26
+
+Under the centralized leadership of higher-level organizations , everyone acted to make the rescue efforts very outstanding and successful , such that the Great Tangshan Earthquake , which happened just a few years ago , was forgotten all together in the subsequent reform and opening-up . 
+(t / temporal-quantity [0 = "A"]:quant 1 [0 = "A"]:unit (y / year [0 = "A"]))	32	33
+
+French actress-turned activist Brigitte Bardot and other animal rights campaigners call to stop the South Korean practice of eating dogs . 
+(r / right [0 = "A"])	8	8
+
+I do n't follow , why should he apologize to Palin ? 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Palin" [0 = "A"]))	10	10
+
+Did Palin apologize to Giffords ? 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Palin" [0 = "A"]))	1	1
+
+In May 2001 the Iranian parliament approved plans to build a wall equipped with electronic detection devices along the 560-mile border with Afghanistan to deter drug trafficking . 
+(e / electronics [0 = "A"])	14	14
+
+I heard from a friend at the consulate that the government took this matter very seriously and had promptly agreed to allocate funds to compensate the students who had used their own money instead that night . 
+(p / prompt [0 = "A"])	18	18
+
+In December 2002 police announced than an armed corps with Afghanistan , Pakistan and Turkmenistan was being assembled specifically to combat drug trafficking along Iran 's borders . 
+(d / date-entity [0 = "A"]:month 12 [0 = "A"])	1	1
+
+Afghan farmers resumed growing opium poppies after the militia was overthrown in December 2001 . 
+(d / date-entity [0 = "A"]:month 12 [0 = "A"])	12	12
+
+Desperate Afghan farmers resumed growing opium poppies soon after the hard-line militia lost power in December 2001 . 
+(d / date-entity [0 = "A"]:month 12 [0 = "A"])	15	15
+
+The warning from the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service was quietly released on 20 December 2001 and cited no specific threat . 
+(d / date-entity [0 = "A"]:month 12 [0 = "A"])	23	23
+
+I think that if our Earthquake Administration had been able beforehand to do a simulation of big earthquakes on this Longmenshan mountain earthquake belt , then on that day of May 12 , once the Earthquake Administration had measured the quake at a magnitude of 7.8 , we would have been able to broadly judge the extent of damage and destruction in the earthquake disaster zone . 
+(d / date-entity [0 = "A"]:month 5 [0 = "A"])	30	30
+
+It stimulates others to be big contributors so they may be in on the next wave of free cash from the boy king . 
+(p / possible [0 = "A"])	9	9
+
+It was ahead of the World Cup which starts May 31 , 2002 . 
+(d / date-entity [0 = "A"]:month 5 [0 = "A"])	9	9
+
+Parliament approved plans in May 2001 to build an anti-drugs wall along the 925-kilometre -LRB- 560-mile -RRB- border with Afghanistan . 
+(d / date-entity [0 = "A"]:month 05 [0 = "A"])	4	4
+
+In May 2001 the Iranian parliament approved plans to build a wall equipped with electronic detection devices along the 560-mile border with Afghanistan to deter drug trafficking . 
+(d / date-entity [0 = "A"]:month 5 [0 = "A"])	1	1
+
+For example , according to a Canadian government estimate the love bug launched in May 2000 caused 6.7 billion U.S. dollars in damage and disrupted Canadian government systems . 
+(d / date-entity [0 = "A"]:month 5 [0 = "A"])	14	14
+
+IRNA stated that the 10-day-old operation would continue until all the traffickers were killed or arrested . 
+(t / temporal-quantity [0 = "A"]:quant 10 [0 = "A"]:unit (d / day [0 = "A"]))	4	4
+
+`` Why is it that these capitalists instead of those capitalists get the big order forms , surely there could n't be anything fishy involved ? 
+(p / possible [0 = "A"])	19	19
+
+He could call it the APOLOGIES ON BEER tour . 
+(p / possible [0 = "A"])	1	1
+
+Hensler-Hobbs stated that the Canadian government has no knowledge of Al-Qaeda having engaged in cyberattacks in the past but that leader bin Laden has suggested that if he chose to launch cyberattacks he could have the means available to him . 
+(p / possible [0 = "A"])	33	33
+
+In summary of the recent warning stating that such an attack could be executed in the very near future hensler-Hobbs stated that bin Laden 's location was irrelevant because bin Laden possesses the money and supporters necessary to have such an attack executed by others . 
+(p / possible [0 = "A"])	11	11
+
+The organizers of South Korean website antijapan.wo.ro vowed to paralyze the websites of Warner Bros. -LRB- www.wpix.com -RRB- and the French state television network -LRB- www.francetv.fr -RRB- on January 19 , 2002 . 
+(n / network [0 = "A"]:medium (t / television [0 = "A"]))	22	22
+
+However , most of the buildings in this hard-hit area did not meet these requirements , with the widespread collapse of school buildings in particular arousing intense public disgust . 
+(h / hit-01 [0 = "A"]:manner (h2 / hard [0 = "A"]))	8	8
+
+Hallmark could make a fortune off of this guy . 
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Hallmark" [0 = "A"]))	0	1
+
+Hensler-Hobbs cited the example of the Montreal-based Hacker known as mafiaboy who attacked U.S. websites including Amazon.com in 2000 . 
+(p / person [0 = "A"]:ARG0-of (h / hack-04 [0 = "A"]))	7	7
+
+I think that if our Earthquake Administration had been able beforehand to do a simulation of big earthquakes on this Longmenshan mountain earthquake belt , then on that day of May 12 , once the Earthquake Administration had measured the quake at a magnitude of 7.8 , we would have been able to broadly judge the extent of damage and destruction in the earthquake disaster zone . 
+(p / possible [0 = "A"])	9	9
+
+I guessed the carrying capacity of the base station towers was totally overloaded , and I could n't get through at all . I was only able to find a signal , not a chance of connecting to the Internet . 
+(p / possible [0 = "A"])	26	26
+
+Qari Mohammad Zafar is an 18-year-old student of a religious seminary . 
+(t / temporal-quantity [0 = "A"]:unit (y / year [0 = "A"]):quant 18 [0 = "A"])	5	5
+
+Qari Mohammad Zafar stated that his elders urged him to read about Jihad through the Islam daily published by the Al-Rashid Trust and Lashkar-i-Taiba 's zarb-e-Taiba weekly . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Qari" [0 = "A"]:op2 "Mohammad" [1 = "B"]:op3 "Zafar" [2 = "C"]))	0	2
+
+Qari Mohammad Zafar is an 18-year-old student of a religious seminary . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Qari" [0 = "A"]:op3 "Zafar" [2 = "C"]:op2 "Mohammad" [1 = "B"]))	0	2
+
+Qari Mohammad Zafar stated that he did not know whether the Pakistani government will also ban the publications encouraging Jihad . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Mohammad" [1 = "B"]:op3 "Zafar" [2 = "C"]:op1 "Qari" [0 = "A"]))	0	2
+
+I heard from a friend at the consulate that the government took this matter very seriously and had promptly agreed to allocate funds to compensate the students who had used their own money instead that night . 
+c2 [0 = "A"]	24	24
+
+Hensler-Hobbs cited the example of the Montreal-based Hacker known as mafiaboy who attacked U.S. websites including Amazon.com in 2000 . 
+(n / name [0 = "A"]:op1 "MafiaBoy" [0 = "A"])	10	10
+
+A recent government warning that al-Qaeda terrorists could launch a cyberattack on Canadian interests or critical infrastructure has caused many concerned industries to review their security systems . 
+(t / terrorist [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]))	6	7
+
+The problem with this regime is aid is not distributed equally . 
+(e / equal [0 = "A"])	10	10
+
+Many are located in Montreal . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Montreal" [0 = "A"]))	4	4
+
+The experts had just finished saying `` Sacrificing yourself to help others is a foolish idea '' , when the leaders had no choice but to call once again for selfless devotion . 
+(t / thing [1 = "B"]:polarity - [0 = "A"]:ARG1-of (c / choose-01 [1 = "B"]))	22	23
+
+It is obvious that no social or political problems were left then , nor were sequelae that cause headaches to later generations . 
+(p / politics [0 = "A"])	7	7
+
+This would have been unimaginable during the Great Tangshan Earthquake . A time without volunteers or mental workers , such petty things as directly dealing with average people were performed by the most primary Party branches , as well as enterprises and public institutions . 
+(e / enterprise [0 = "A"])	40	40
+
+Karachi police chief Tariq Jamil stated that the 5 banned Islamic groups would not be allowed to operate in any way . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Jamil" [1 = "B"]:op1 "Tariq" [0 = "A"]))	3	4
+
+Tariq Jamil stated that he would examine if the baned literature is still available in the market despite the ban . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Tariq" [0 = "A"]:op2 "Jamil" [1 = "B"]))	0	1
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Yemen" [0 = "A"]))	32	32
+
+The ice sheet has melted earlier this season . 
+(e / early [0 = "A"]:degree (m / more [0 = "A"]))	5	5
+
+Iftikhar Ahmed stated that under the notification that was issued late at night on 020114 all publications , newspapers , weekly magazines , monthlies , etc of the 5 banned Islamic groups are banned and confiscated . 
+(e / et-cetera [0 = "A"])	25	25
+
+The cyber attack is to show the power of South Koreans and Asians against the West 's sense of superiority and ignorance of South Korea 's history . 
+(w / world-region [0 = "A"]:name (n / name [0 = "A"]:op1 "West" [0 = "A"]))	15	15
+
+However , most of the buildings in this hard-hit area did not meet these requirements , with the widespread collapse of school buildings in particular arousing intense public disgust . 
+(s / spread-02 [0 = "A"]:extent (w / wide [0 = "A"]))	18	18
+
+While it should have been a disaster relief command that takes overall leadership , it has suddenly come face-to-face with the broad base of disaster victims , directly dealing with them . 
+(d / direct [0 = "A"])	27	27
+
+This would have been unimaginable during the Great Tangshan Earthquake . A time without volunteers or mental workers , such petty things as directly dealing with average people were performed by the most primary Party branches , as well as enterprises and public institutions . 
+(d / direct [0 = "A"])	23	23
+
+The Al-Rashid Trust has not been officially banned in Pakistan . 
+(o / official [0 = "A"])	6	6
+
+Under the centralized leadership of higher-level organizations , everyone acted to make the rescue efforts very outstanding and successful , such that the Great Tangshan Earthquake , which happened just a few years ago , was forgotten all together in the subsequent reform and opening-up . 
+(a / altogether [0 = "A"])	37	37
+
+Is n't it interesting how Libertarians ' desire for `` freedom '' correspond so neatly with skinflints who do n't want to give ANYONE , ANYTHING . 
+(p / political-party [0 = "A"]:name (n / name [0 = "A"]:op1 "Libertarian" [0 = "A"]))	5	5
+
+Perhaps when Libertarians figure out a way to differentiate between the two , I 'll vote for them . 
+(n / name [0 = "A"]:op1 "Libertarian" [0 = "A"])	2	2
+
+They laid off 125 employees , but gave big raises to executives . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (e / executive [0 = "A"])))	11	11
+
+Kind of hard to build a house over night , Mr Paul . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Mr." [0 = "A"]))	10	10
+
+Ok , my answer is no one and Obama wins the GE . 
+(i / i [0 = "A"])	2	2
+
+Newspaper seller Mohammad Farooq stated that Pervez Musharraf 's clamp-down on extremism had done little to limit the demand for banned religious extremist publications . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Mohammad" [0 = "A"]:op2 "Farooq" [1 = "B"]))	2	3
+
+Mohammad Farooq stated that the publication of the Islam daily of Al-Rashid Trust has not been affected yet by Pervez Musharraf 's clamp-down on extremism and the circulation of the Islam daily of Al-Rashid Trust has increased in the past couple of days . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Farooq" [1 = "B"]:op1 "Mohammad" [0 = "A"]))	0	1
+
+This would have been unimaginable during the Great Tangshan Earthquake . A time without volunteers or mental workers , such petty things as directly dealing with average people were performed by the most primary Party branches , as well as enterprises and public institutions . 
+(i / institution [0 = "A"])	43	43
+
+I 'm in favor of feeding , clothing , and giving shelter to the poor . I 'm against all the gov ' t institutions that tax our brains out and who inefficiently attempt to provide some of these things . 
+(i / institution [0 = "A"])	24	24
+
+Director of threat analysis at the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service Brenda hensler-Hobbs stated that following the attacks of 11 September 2001 the Canadian Government specifically examined the potential cyber-capability of al-Qaeda and Osama bin Laden 's followers . 
+(p / person [0 = "A"]:ARG0-of (f / follow-02 [0 = "A"]))	46	46
+
+The reason for filing the complaint is that even if we owed their hourly fees , they still should fulfill their obligation on the contract they signed : driving people from Canberra back to Sydney . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Canberra" [0 = "A"]))	31	31
+
+The reason for filing the complaint is that even if we owed their hourly fees , they still should fulfill their obligation on the contract they signed : driving people from Canberra back to Sydney . 
+(t / thing [0 = "A"]:ARG2-of (o / obligate-01 [0 = "A"]))	21	21
+
+The radio said the first day of Val Fajr accumulated more than four tons of drugs and 50 guns in southeast Iran on January 16 , 2002 . 
+(m / mass-quantity [0 = "A"]:unit (t / ton [0 = "A"]))	13	13
+
+The ban was strictly enforced with opium production decreasing from 3,200 tons to 185 tons . 
+(m / mass-quantity [0 = "A"]:unit (t / ton [0 = "A"]))	11	11
+
+The ban was strictly enforced with opium production decreasing from 3,200 tons to 185 tons . 
+(m / mass-quantity [0 = "A"]:unit (t / ton [0 = "A"]))	14	14
+
+IRNA stated that in the large-scale army operation along the eastern borders with Afghanistan and Pakistan 21 drug traffickers were killed , 1500 arrested and approximately 5 tons of drugs seized . 
+(m / mass-quantity [0 = "A"]:unit (t / ton [0 = "A"]))	27	27
+
+The ban was strictly enforced and resulted in a decrease in opium production from 3200 tons to 185 tons . 
+(m / mass-quantity [0 = "A"]:unit (t / ton [0 = "A"]))	15	15
+
+The ban was strictly enforced and resulted in a decrease in opium production from 3200 tons to 185 tons . 
+(m / mass-quantity [0 = "A"]:unit (t / ton [0 = "A"]))	18	18
+
+The reason for filing the complaint is that even if we owed their hourly fees , they still should fulfill their obligation on the contract they signed : driving people from Canberra back to Sydney . 
+(h / hour [0 = "A"])	13	13
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Morocco" [0 = "A"]))	23	23
+
+Ok , my answer is no one and Obama wins the GE . 
+(n / no-one [0 = "A"])	5	5
+
+How does one survive when you have the funds but the people you need to buy the goods from has no address ? 
+- [0 = "A"]	20	20
+
+No surprise there . 
+- [0 = "A"]	0	0
+
+Qari Mohammad Zafar stated that his elders urged him to read about Jihad through the Islam daily published by the Al-Rashid Trust and Lashkar-i-Taiba 's zarb-e-Taiba weekly . 
+(p / publication [0 = "A"]:name (n / name [0 = "A"]:op1 "Zarb-e-Taiba" [0 = "A"]))	25	25
+
+However , what greatly surprised me was the attitude of the student union in this appeal . They seemed very reluctant to make the contract public . 
+(p / person [0 = "A"]:ARG0-of (s / study-01 [0 = "A"]))	11	11
+
+Qari Mohammad Zafar is an 18-year-old student of a religious seminary . 
+(p / person [0 = "A"]:ARG0-of (s / study-01 [0 = "A"]))	6	6
+
+The Iranian army launched a huge sweep against traffickers along the borders with Afghanistan and Pakistan . 
+(l / location [0 = "A"]:ARG2-of (b / border-01 [0 = "A"]))	11	11
+
+The Iranian army launched a huge sweep against traffickers along the borders with Afghanistan and Pakistan . 
+(l / location [0 = "A"]:ARG2-of (b / border-01 [0 = "A"]))	11	11
+
+Many think that security must be improved at North American critical infrastructures including energy and transportation providers and the financial services sector that are largely interconnected . 
+(f / finance [0 = "A"])	19	19
+
+Ron Paul and his Libertarian ideas are at best impractical . 
+(g / good [0 = "A"]:degree (m / most [0 = "A"]))	8	8
+
+Best outcome of the night would have been Newt losing there . 
+(g / good [0 = "A"]:degree (m / most [0 = "A"]))	0	0
+
+Other groups linked to terrorism and included on the United States Terrorist Exclusion List are also publishing regular newspapers and journals containing rhetoric that is against Western countries and calls for war in the name of Islam . 
+(r / religious-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Islam" [0 = "A"]))	36	36
+
+Qari Mohammad Zafar stated that his elders urged him to read about Jihad through the Islam daily published by the Al-Rashid Trust and Lashkar-i-Taiba 's zarb-e-Taiba weekly . 
+(n / name [0 = "A"]:op1 "Islam" [0 = "A"])	15	15
+
+The primary editorial in The Islam daily of Al-Rashid Trust on 020115 carried a warning to the Pakistani government . 
+"Islam" [0 = "A"]	5	5
+
+The Islam daily of Al-Rashid Trust supports the Taliban Fund linked to Osama bin Laden 's al-Qaeda network . 
+"Daily" [0 = "A"]	1	1
+
+After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(c / company [0 = "A"]:ARG0-of (c2 / compete-01 [0 = "A"]))	2	2
+
+Instead in this instance the Liberation Army headquarters emergency contingency plan obviously was not a contingency plan designed with earthquakes as the assumed condition , as the soldiers all rushed straight to Wenchuan , without immediately sending out troops in the direction of badly-hit areas Beichuan , Qingchuan and Gansu 's Longnan ; only 24 hours later was the full extent of the disaster area taken into consideration . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Longnan" [0 = "A"]))	51	51
+
+Of course , the people on the AIG bus tours likely did n't get soaked with high taxes to pay for this scam , so why should they care ? 
+(o / of-course [0 = "A"])	0	0
+
+I think that if our Earthquake Administration had been able beforehand to do a simulation of big earthquakes on this Longmenshan mountain earthquake belt , then on that day of May 12 , once the Earthquake Administration had measured the quake at a magnitude of 7.8 , we would have been able to broadly judge the extent of damage and destruction in the earthquake disaster zone . 
+(s / seismic-quantity [0 = "A"])	43	43
+
+The lack or serious shortage of intermediate layers of Party organizations and units between the two has resulted in its inability to consider major issues with endless minor issues on hand , such that even if it is highly capable , it wo n't last long , as it will be dragged down by numerous petty things . 
+(h / high [0 = "A"])	38	38
+
+Temporarily laid aside these abstract things and avoided speaking at length , saying only a few details that left the elitists , the politicians and capitalists highly embarrassed . 
+(h / high [0 = "A"])	26	26
+
+He could call it the APOLOGIES ON BEER tour . 
+"ON" [0 = "A"]	6	6
+
+On January 17 , 2002 a state radio reported that thirteen drug traffickers were killed and 10 arrested in Iran anti-drug sweeps . 
+(d / date-entity [0 = "A"])	0	0
+
+Santorum gets enough of a boost to do the Huckabee hangs around . 
+(n / name [0 = "A"]:op1 "Santorum" [0 = "A"])	0	0
+
+If he were out of the race , Santorum might have had a chance . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Santorum" [0 = "A"]))	8	8
+
+I guessed the carrying capacity of the base station towers was totally overloaded , and I could n't get through at all . I was only able to find a signal , not a chance of connecting to the Internet . 
+(p / possible [0 = "A"])	34	34
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Egypt" [0 = "A"]))	15	15
+
+It is obvious that no social or political problems were left then , nor were sequelae that cause headaches to later generations . 
+(s / society [0 = "A"])	5	5
+
+Thats what a Hardcore Libertarian would say . 
+(p / person [0 = "A"]:mod (h / hardcore [0 = "A"]))	3	3
+
+Karachi police chief Tariq Jamil stated that the 5 banned Islamic groups would not be allowed to operate in any way . 
+(h / have-org-role-91 [0 = "A"]:ARG2 (c / chief [0 = "A"]))	2	2
+
+A South Korean group has announced a campaign backed by food scientists to promote the eating of dog meat . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "South" [0 = "A"]))	1	2
+
+The organizers of South Korean website antijapan.wo.ro vowed to paralyze the websites of Warner Bros. -LRB- www.wpix.com -RRB- and the French state television network -LRB- www.francetv.fr -RRB- on January 19 , 2002 . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	3	4
+
+The organizers of the South Korean website accused the broadcasters of falsely describing South Koreans and their food culture as barbaric . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	4	5
+
+South Korean cyber campaigners disabled Japanese education ministry websites last year in a protest against history books accused of skimming Japan 's wartime record in Asia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "South" [0 = "A"]))	0	1
+
+French actress-turned activist Brigitte Bardot and other animal rights campaigners call to stop the South Korean practice of eating dogs . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "South" [0 = "A"]))	14	15
+
+South Korean officials said most dogs used for eating were killed instantly by electrocution . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	0	1
+
+He could call it the APOLOGIES ON BEER tour . 
+(t / tour [0 = "A"]:name (n / name [0 = "A"]:op1 "APOLOGIES" [0 = "A"]))	5	5
+
+Instead in this instance the Liberation Army headquarters emergency contingency plan obviously was not a contingency plan designed with earthquakes as the assumed condition , as the soldiers all rushed straight to Wenchuan , without immediately sending out troops in the direction of badly-hit areas Beichuan , Qingchuan and Gansu 's Longnan ; only 24 hours later was the full extent of the disaster area taken into consideration . 
+(p / province [0 = "A"]:name (n / name [0 = "A"]:op1 "Gansu" [0 = "A"]))	49	49
+
+I think the Good Doctor is too crazy to hang it up . 
+"Doctor" [0 = "A"]	4	4
+
+Raising standards to in excess of Tangshan 's 8.0 magnitude could leave authorities with some breathing space for explanation , and alleviate public anger . 
+(e / earthquake [0 = "A"]:name (n / name [0 = "A"]:op1 "Tangshan" [0 = "A"]))	6	6
+
+On January 17 , 2002 a state radio reported that thirteen drug traffickers were killed and 10 arrested in Iran anti-drug sweeps . 
+(c / counter-01 [0 = "A"]:ARG1 (d / drug [0 = "A"]))	20	20
+
+In the past 20 years more than 3000 police officers have been killed in anti-drug raids . 
+(c / counter-01 [0 = "A"]:ARG1 (d / drug [0 = "A"]))	14	14
+
+French actress-turned activist Brigitte Bardot and other animal rights campaigners call to stop the South Korean practice of eating dogs . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Brigitte" [0 = "A"]:op2 "Bardot" [1 = "B"]))	3	4
+
+Hensler-Hobbs stated that the Canadian government has no knowledge of Al-Qaeda having engaged in cyberattacks in the past but that leader bin Laden has suggested that if he chose to launch cyberattacks he could have the means available to him . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Laden" [1 = "B"]:op1 "bin" [0 = "A"]))	21	22
+
+In summary of the recent warning stating that such an attack could be executed in the very near future hensler-Hobbs stated that bin Laden 's location was irrelevant because bin Laden possesses the money and supporters necessary to have such an attack executed by others . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Laden" [1 = "B"]:op1 "bin" [0 = "A"]))	22	23
+
+The organizers of South Korean website antijapan.wo.ro vowed to paralyze the websites of Warner Bros. -LRB- www.wpix.com -RRB- and the French state television network -LRB- www.francetv.fr -RRB- on January 19 , 2002 . 
+(p / person [0 = "A"]:ARG0-of (o / organize-01 [0 = "A"]))	1	1
+
+The organizers of the South Korean website accused the broadcasters of falsely describing South Koreans and their food culture as barbaric . 
+(p / person [0 = "A"]:ARG0-of (o / organize-01 [0 = "A"]))	1	1
+
+Vice President of Canadian electricity Association Francis Bradley stated that the company has a warning system for both physical and cyberattacks . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Francis" [0 = "A"]:op2 "Bradley" [1 = "B"]))	6	7
+
+Vice President of Canadian electricity Association Francis Bradley stated that the company has a warning system for both physical and cyberattacks . 
+"Association" [0 = "A"]	4	5
+
+The warning from the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service was quietly released on 20 December 2001 and cited no specific threat . 
+(q / quiet [0 = "A"])	19	19
+
+A nationalist group has vowed cyber hostilities against U.S. based media company Warner Bros. and one of France 's state-run television channels . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "U.S." [0 = "A"]))	8	8
+
+Hensler-Hobbs cited the example of the Montreal-based Hacker known as mafiaboy who attacked U.S. websites including Amazon.com in 2000 . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "U.S." [0 = "A"]))	13	13
+
+A separate report issued recently by the U.S. government-funded research group computer science and telecommunications Board stated that cyber security needs considerable improvement . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]:ARG1 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "U.S." [0 = "A"]))))	7	7
+
+For example , according to a Canadian government estimate the love bug launched in May 2000 caused 6.7 billion U.S. dollars in damage and disrupted Canadian government systems . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "U.S." [0 = "A"]))	19	19
+
+After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(s / strategy [0 = "A"])	31	31
+
+The World Cup finals are to be co-hosted by South Korea and Japan this year . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Japan" [0 = "A"]))	12	12
+
+The Iranian army launched a huge sweep against traffickers along the borders with Afghanistan and Pakistan . 
+(p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]))	8	8
+
+On January 17 , 2002 a state radio reported that thirteen drug traffickers were killed and 10 arrested in Iran anti-drug sweeps . 
+(p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]))	12	12
+
+The Iranian army launched a huge sweep against traffickers along the borders with Afghanistan and Pakistan . 
+(p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]))	8	8
+
+Iran 's state news agency IRNA reported 23 January 2002 that Iranian security forces killed 21 drug traffickers and arrested more than 1600 in operations in the east and south of Iran in recent days . 
+(p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]))	17	17
+
+IRNA stated that in the large-scale army operation along the eastern borders with Afghanistan and Pakistan 21 drug traffickers were killed , 1500 arrested and approximately 5 tons of drugs seized . 
+(p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]))	18	18
+
+IRNA stated that the 10-day-old operation would continue until all the traffickers were killed or arrested . 
+(p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]))	11	11
+
+If some on the left want to remain ignorant and not read Alinky 's book to prove it , that is on them . 
+(k / know-01 [0 = "A"]:polarity - [0 = "A"])	8	8
+
+A recent survey stated that about one million dogs are sold every year for food in South Korea and 92 percent of men aged 20 and above and 68 percent of adult women have tasted dog meat . 
+(a / at-least [0 = "A"])	26	26
+
+Pakistani authorities have stated that no statements or literature from the 5 banned Islamic groups would be tolerated after Pervez Musharraf 's speech banning the 5 Islamic groups . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	0	0
+
+Qari Mohammad Zafar stated that he did not know whether the Pakistani government will also ban the publications encouraging Jihad . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	11	11
+
+The primary editorial in The Islam daily of Al-Rashid Trust on 020115 carried a warning to the Pakistani government . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	17	17
+
+A reporter who did not want to be named from the publication of the Islam daily of Al-Rashid Trust stated that it would not be easy for the Pakistani government to ban the religious extremist publications and make over 500 employees jobless . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	28	28
+
+IRNA stated that approximately 1 ton of various drugs including hashish as well as fire arms were seized . 
+(f / fire-arm [0 = "A"])	14	14
+
+Yesterday afternoon I went back to check out the torch relay , but even the flame was practically impossible to see , let alone the guys carrying the torch . 
+(l / let-alone [0 = "A"])	22	22
+
+This is n't like someone 's house burning down and they make an insurance claim . 
+- [0 = "A"]	2	2
+
+On 5 January 2002 pan-Arab anti-terror academy Naif Arab Academy for Security Sciences reopened for the first time since the September 2001 terror attacks on the US . 
+(o / oppose-01 [0 = "A"]:ARG1 (t / terror [0 = "A"]))	5	5
+
+The workshop 's anti-terrorism experts belong to anti-terror squads in Arab security agencies and Anti-Organized Crime Units . 
+(c / counter-01 [0 = "A"]:ARG1 (t / terrorism [0 = "A"]))	7	7
+
+IAEA is based in Vienna and is the UN 's nuclear supervisor . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Vienna" [0 = "A"]))	4	4
+
+The 2 hardline militant groups fighting Indian rule in Kashmir are the Lashkar-e-Taiba and Jaish-e-Mohammad . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Jaish-e-Mohammad" [0 = "A"]))	14	14
+
+IAEA accepted North Korea 's proposal last month but cautioned that the proposal is not a breakthrough . 
+(p / propose-01 [0 = "A"])	5	5
+
+South Korea -LRB- KR -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	0	1
+
+This announcement was in response to increasing foreign criticism of the way dogs are slaughtered in South Korea . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	16	17
+
+The World Cup finals are to be co-hosted by South Korea and Japan this year . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	9	10
+
+FIFA urged South Korea to prevent the inhumane killing of dogs . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	2	3
+
+FIFA president Sepp Blatter sent a letter last November to South Korea 's World Cup organizing committee calling for immediate and decisive measures against cruelty to dogs . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "South" [0 = "A"]))	10	11
+
+A recent survey stated that about one million dogs are sold every year for food in South Korea and 92 percent of men aged 20 and above and 68 percent of adult women have tasted dog meat . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"]))	16	17
+
+3 . From among them , pick out 50 for submission to an assessment committee to assess . 
+(t / they [0 = "A"])	4	4
+
+As you know , this type of logic absolutely wo n't work in Australia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Australia" [0 = "A"]))	13	13
+
+The group said the foreign broadcasters are battering the eating dogmeat culture and that it is insulting behavior . 
+(m / meat [0 = "A"]:consist-of (d / dog [0 = "A"]))	10	10
+
+FIFA president Sepp Blatter sent a letter last November to South Korea 's World Cup organizing committee calling for immediate and decisive measures against cruelty to dogs . 
+(n / name [0 = "A"]:op2 "Blatter" [1 = "B"]:op1 "Sepp" [0 = "A"])	2	3
+
+2 . Choose 100 innovative concepts to encourage employees to conduct research and development during their work time or spare time . 
+(c / concept [0 = "A"])	5	5
+
+Over 12 publications including dailies , weeklies and monthlies of various extremist groups including those banned on 020112 still sell in large numbers in the markets and bazaars of Karachi . 
+(e / extremism [0 = "A"])	11	11
+
+A recent survey stated that about one million dogs are sold every year for food in South Korea and 92 percent of men aged 20 and above and 68 percent of adult women have tasted dog meat . 
+(t / temporal-quantity [0 = "A"]:unit (y / year [0 = "A"]):quant 20 [0 = "A"])	24	24
+
+Religious extremism continues in Pakistan despite the banning of militant groups . 
+(r / religion [0 = "A"])	0	0
+
+Religious extremism continues in Pakistan despite the banning of militant groups by the Pakistani Government . 
+(r / religion [0 = "A"])	0	0
+
+Newspapers and magazines extolling the virtues of Islamic holy war in Kashmir continue to fill the newstands in Pakistan despite the Pakistani military Government 's attempt at a large scale containment of religious extremism . 
+(r / religion [0 = "A"])	32	32
+
+Around 1400 alleged religious extremists have been arrested since 020112 under severe actions against Islamic militants and sectarian radicals announced by President Pervez Musharraf during the weekend . 
+(r / religion [0 = "A"])	3	3
+
+Qari Mohammad Zafar is an 18-year-old student of a religious seminary . 
+(r / religion [0 = "A"])	9	9
+
+The organizers of South Korean website antijapan.wo.ro vowed to paralyze the websites of Warner Bros. -LRB- www.wpix.com -RRB- and the French state television network -LRB- www.francetv.fr -RRB- on January 19 , 2002 . 
+(u / url-entity [0 = "A"]:value "www.wpix.com" [0 = "A"])	16	16
+
+The cyber attack is to show the power of South Koreans and Asians against the West 's sense of superiority and ignorance of South Korea 's history . 
+(s / superior [0 = "A"])	19	19
+
+And when people saw on CCTV those private firms manufacturing tents in Jiangsu and Zhejiang working overtime to produce more tents , the first idea that popped to mind I 'm afraid was probably `` This time these capitalists have struck it big ! '' 
+(p / probable [0 = "A"])	33	33
+
+Kind of hard to import food considering that the stores are probably wiped out too . 
+(p / probable [0 = "A"])	11	11
+
+Is n't it interesting how Libertarians ' desire for `` freedom '' correspond so neatly with skinflints who do n't want to give ANYONE , ANYTHING . 
+(n / neat [0 = "A"])	14	14
+
+I heard from a friend at the consulate that the government took this matter very seriously and had promptly agreed to allocate funds to compensate the students who had used their own money instead that night . 
+(p / person [0 = "A"]:ARG0-of (s / study-01 [0 = "A"]))	26	26
+
+For example , according to a Canadian government estimate the love bug launched in May 2000 caused 6.7 billion U.S. dollars in damage and disrupted Canadian government systems . 
+(m / monetary-quantity [0 = "A"]:unit (d / dollar [0 = "A"]))	20	20
+
+Hensler-Hobbs stated that the proliferation and availability of Hacker tools and the low skill level needed to conduct cyberattacks demonstrate the ease of launching an attack anywhere . 
+(a / available [0 = "A"])	6	6
+
+Raising standards to in excess of Tangshan 's 8.0 magnitude could leave authorities with some breathing space for explanation , and alleviate public anger . 
+(i / in-excess-of [0 = "A"])	4	4
+
+Where poverty exists and educational opportunities are non existent ? 
+(l / location [0 = "A"])	0	0
+
+Tokyo 's Ginza Tanaka Jewelry Company said that the hand - woven gold dress weighs 1.1 kilograms , with a value of 30 million Japanese yen -LRB- about 8.06 million NT dollars -RRB- . 
+(m / mass-quantity [0 = "A"]:unit (k / kilogram [0 = "A"]))	16	16
+
+South Koreans are angered by the international pressure on their traditional cuisine . 
+(p / person [1 = "B"]:source (c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "South" [0 = "A"])))	0	1
+
+Cyber warfare has become a common weapon for South Koreans . 
+(p / person [0 = "A"]:source (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"])))	8	9
+
+The cyber attack is to show the power of South Koreans and Asians against the West 's sense of superiority and ignorance of South Korea 's history . 
+(p / person [1 = "B"]:source (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [1 = "B"])))	9	10
+
+Police officer Mohammad Iqbal stated that the police so far have not received any instructions to take action against any banned religious extremist publications . 
+(s / so-far [0 = "A"])	8	8
+
+This would have been unimaginable during the Great Tangshan Earthquake . A time without volunteers or mental workers , such petty things as directly dealing with average people were performed by the most primary Party branches , as well as enterprises and public institutions . 
+(p / person [0 = "A"]:ARG0-of (w / work-01 [0 = "A"]))	17	17
+
+Qari Mohammad Zafar stated that his elders urged him to read about Jihad through the Islam daily published by the Al-Rashid Trust and Lashkar-i-Taiba 's zarb-e-Taiba weekly . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Lashkar-i-Taiba" [0 = "A"]))	23	23
+
+The al-Rashid Trust and Lashkar-i-Taiba are on the United States Terrorist Exclusion List and the Al-Rashid Trust 's and Lashkar-i-Taiba 's assets frozen in Pakistan . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Lashkar-i-Taiba" [0 = "A"]))	4	4
+
+Vice President of Canadian electricity Association Francis Bradley stated that the company has a warning system for both physical and cyberattacks . 
+(c / cyber [0 = "A"])	20	20
+
+Bradley stated that the company has been significantly focused on prevention of cyberattacks . 
+(a / attack-01 [0 = "A"]:mod (c / cyber [0 = "A"]))	12	12
+
+Hensler-Hobbs stated that the Canadian government has no knowledge of Al-Qaeda having engaged in cyberattacks in the past but that leader bin Laden has suggested that if he chose to launch cyberattacks he could have the means available to him . 
+(a / attack-01 [0 = "A"]:mod (c / cyber [0 = "A"]))	14	14
+
+Hensler-Hobbs stated that the proliferation and availability of Hacker tools and the low skill level needed to conduct cyberattacks demonstrate the ease of launching an attack anywhere . 
+(a / attack-01 [0 = "A"]:mod (c / cyber [0 = "A"]))	18	18
+
+South Korean cyber campaigners disabled Japanese education ministry websites last year in a protest against history books accused of skimming Japan 's wartime record in Asia . 
+(p / person [0 = "A"]:ARG0-of (c / campaign-01 [0 = "A"]))	3	3
+
+French actress-turned activist Brigitte Bardot and other animal rights campaigners call to stop the South Korean practice of eating dogs . 
+(p / person [0 = "A"]:ARG0-of (c / campaign-01 [0 = "A"]))	9	9
+
+Vice President of Canadian electricity Association Francis Bradley stated that the company has a warning system for both physical and cyberattacks . 
+(v / vice [0 = "A"])	0	0
+
+The company is also displaying a relatively inconspicuous gold wall tapestry , which can be used to decorate the living room , at a price of 50 million Japanese yen -LRB- about 13.42 million NT dollars -RRB- . 
+(c / conspicuous [1 = "B"]:polarity - [1 = "B"]:mod (r / relative [0 = "A"]))	6	7
+
+FIFA president Sepp Blatter sent a letter last November to South Korea 's World Cup organizing committee calling for immediate and decisive measures against cruelty to dogs . 
+(c / cruel [0 = "A"])	24	24
+
+Only one phone call I made there got through - that was calling home . 
+1 [0 = "A"]	1	1
+
+It tramples on a tradition of one country . 
+1 [0 = "A"]	6	6
+
+If you have no problem with your tax dollars going to aid them then you 'd have no problem donating to them of your own free will . 
+(c / cause-01 [0 = "A"]:ARG0 (d / donate-01 [0 = "A"]))	19	19
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Syria" [0 = "A"]))	30	30
+
+A reporter who did not want to be named from the publication of the Islam daily of Al-Rashid Trust stated that it would not be easy for the Pakistani government to ban the religious extremist publications and make over 500 employees jobless . 
+(r / report-01 [0 = "A"])	1	1
+
+A United Nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(h / have-org-role-91 [0 = "A"])	4	4
+
+Government sources said on January 7 , 2002 that a united nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(h / have-org-role-91 [0 = "A"])	13	13
+
+Many are located in Montreal . 
+(p / person [0 = "A"]:quant (m / many [0 = "A"]))	0	0
+
+Many think that security must be improved at North American critical infrastructures including energy and transportation providers and the financial services sector that are largely interconnected . 
+(p / person [0 = "A"]:quant (m / many [0 = "A"]))	0	0
+
+This would have been unimaginable during the Great Tangshan Earthquake . A time without volunteers or mental workers , such petty things as directly dealing with average people were performed by the most primary Party branches , as well as enterprises and public institutions . 
+(p / person [0 = "A"])	27	27
+
+Many people died , much property was destroyed , it was quite clearly a great disaster . 
+(p / person [0 = "A"])	1	1
+
+This was mere chicanery , to the point where before engaging in life-saving , donation to charity , these sorts of behaviors , an idea had to be flashing through people 's minds : 
+p [0 = "A"]	30	30
+
+And when people saw on CCTV those private firms manufacturing tents in Jiangsu and Zhejiang working overtime to produce more tents , the first idea that popped to mind I 'm afraid was probably `` This time these capitalists have struck it big ! '' 
+(p / person [0 = "A"])	2	2
+
+The reason for filing the complaint is that even if we owed their hourly fees , they still should fulfill their obligation on the contract they signed : driving people from Canberra back to Sydney . 
+(p / person [0 = "A"])	29	29
+
+My heart goes out to the people in tornado alley and I have no problem with my tax dollars going to help the survivors rebuild their lives . 
+(p / person [0 = "A"])	6	6
+
+But the rest of us are thinking about the people that do not have insurance and/or need help right now . 
+(p / person [0 = "A"])	9	9
+
+How does one survive when you have the funds but the people you need to buy the goods from has no address ? 
+(p / person [0 = "A"])	11	11
+
+Of course , the people on the AIG bus tours likely did n't get soaked with high taxes to pay for this scam , so why should they care ? 
+(p / person [0 = "A"])	4	4
+
+Another victory for the left because there are more people in need . 
+(p / person [0 = "A"])	9	9
+
+Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(p / person [0 = "A"]:ARG0-of (p2 / produce-01 [0 = "A"]))	8	8
+
+Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(p / person [0 = "A"]:ARG0-of (p2 / produce-01 [0 = "A"]))	8	8
+
+I actually had some other classmates there , and was going to call them . 
+(a / actual [0 = "A"])	1	1
+
+Obama must pay off his supporters by way of cash infusions and call it `` stimulus '' money . 
+(c / call-01 [0 = "A"]:ARG1 (p / pay-02 [0 = "A"]))	12	12
+
+Narcotics ; military 
+(n / narcotic [0 = "A"])	0	0
+
+Increase the welfare rolls till the takers outweigh the givers . Only then can socialism creep in . 
+(p / person [0 = "A"]:ARG0-of (t / take-01 [0 = "A"]))	6	6
+
+The experts had just finished saying `` Sacrificing yourself to help others is a foolish idea '' , when the leaders had no choice but to call once again for selfless devotion . 
+(p / person [0 = "A"])	1	1
+
+Consequently , experts have predicted that the world has at least ten years within which to lower the volume of greenhouse gas emissions before it is too late to redeem the situation . 
+(p / person [0 = "A"]:ARG1-of (e / expert-41 [0 = "A"]))	2	2
+
+The Islam daily of Al-Rashid Trust supports the Taliban Fund linked to Osama bin Laden 's al-Qaeda network . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op3 "Laden" [2 = "C"]:op2 "bin" [1 = "B"]:op1 "Osama" [0 = "A"]))	12	14
+
+Director of threat analysis at the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service Brenda hensler-Hobbs stated that following the attacks of 11 September 2001 the Canadian Government specifically examined the potential cyber-capability of al-Qaeda and Osama bin Laden 's followers . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Osama" [0 = "A"]:op2 "Bin" [1 = "B"]:op3 "Laden" [2 = "C"]))	42	44
+
+In the past the CCP has done a lot of these sorts of things , but on this occasion not only did nothing , but in response to queries from the public pulled out some whopping lies , playing syntax games with words like `` geological disaster '' and `` earthquake disaster '' . 
+(h / have-concession-91 [0 = "A"])	15	15
+
+In the past the CCP has done a lot of these sorts of things , but on this occasion not only did nothing , but in response to queries from the public pulled out some whopping lies , playing syntax games with words like `` geological disaster '' and `` earthquake disaster '' . 
+(a / and [0 = "A"])	24	24
+
+Even if someone has insurance to cover their loss , that wo n't extend to the roads , power lines , sewers , public buildings . 
+(i / insurance [0 = "A"])	4	4
+
+`` Why is it that these capitalists instead of those capitalists get the big order forms , surely there could n't be anything fishy involved ? 
+(s / sure [0 = "A"])	17	17
+
+Tokyo 's Ginza Tanaka Jewelry Company said that the hand - woven gold dress weighs 1.1 kilograms , with a value of 30 million Japanese yen -LRB- about 8.06 million NT dollars -RRB- . 
+(m / monetary-quantity [1 = "B"]:unit (y / yen [1 = "B"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Japan" [0 = "A"]))))	24	25
+
+The company is also displaying a relatively inconspicuous gold wall tapestry , which can be used to decorate the living room , at a price of 50 million Japanese yen -LRB- about 13.42 million NT dollars -RRB- . 
+(m / monetary-quantity [1 = "B"]:unit (y / yen [1 = "B"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Japan" [0 = "A"]))))	28	29
+
+Increase the welfare rolls till the takers outweigh the givers . Only then can socialism creep in . 
+(u / until [0 = "A"])	4	4
+
+I think that if our Earthquake Administration had been able beforehand to do a simulation of big earthquakes on this Longmenshan mountain earthquake belt , then on that day of May 12 , once the Earthquake Administration had measured the quake at a magnitude of 7.8 , we would have been able to broadly judge the extent of damage and destruction in the earthquake disaster zone . 
+"Administration" [0 = "A"]	6	6
+
+How does one survive when you have the funds but the people you need to buy the goods from has no address ? 
+(g / good [0 = "A"])	17	17
+
+If you cant feed , house and take care of a baby you have no business having one . 
+(p / possible [0 = "A"]:polarity - [0 = "A"])	2	2
+
+South Korean officials said most dogs used for eating were killed instantly by electrocution . 
+(i / instant [0 = "A"])	11	11
+
+And when people saw on CCTV those private firms manufacturing tents in Jiangsu and Zhejiang working overtime to produce more tents , the first idea that popped to mind I 'm afraid was probably `` This time these capitalists have struck it big ! '' 
+(p / province [0 = "A"]:name (n / name [0 = "A"]:op1 "Zhejiang" [0 = "A"]))	14	14
+
+Xinghui accepted this order of ours and deployed all the buses of other travel agencies in Sydney . 
+(w / we [0 = "A"])	5	5
+
+The workshop 's anti-terrorism experts belong to anti-terror squads in Arab security agencies and Anti-Organized Crime Units . 
+(c2 / counter-01 [0 = "A"]:ARG1 (c / crime [0 = "A"]:ARG1-of (o / organize-01 [0 = "A"])))	14	14
+
+The source stated that the inspection would focus on an isotope production laboratory in the Yongbyon nuclear complex which is north of North Korea 's capital Pyongyang . 
+(c / county [0 = "A"]:name (n / name [0 = "A"]:op1 "Yongbyon" [0 = "A"]))	15	15
+
+North Korea froze its suspected nuclear weapons program at Yongbyon in exchange for receiving two nuclear reactors producing less weapons-grade plutonium under a 1994 accord with the United States . 
+(c / county [0 = "A"]:name (n / name [0 = "A"]:op1 "Yongbyon" [0 = "A"]))	9	9
+
+This would have been unimaginable during the Great Tangshan Earthquake . A time without volunteers or mental workers , such petty things as directly dealing with average people were performed by the most primary Party branches , as well as enterprises and public institutions . 
+(t / thing [0 = "A"])	21	21
+
+IAEA is based in Vienna and is the UN 's nuclear supervisor . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "UN" [0 = "A"]))	8	8
+
+The organizers of the South Korean website accused the broadcasters of falsely describing South Koreans and their food culture as barbaric . 
+(f / false [0 = "A"])	11	11
+
+Parliament approved plans in May 2001 to build an anti-drugs wall along the 925-kilometre -LRB- 560-mile -RRB- border with Afghanistan . 
+(o / oppose-01 [0 = "A"]:ARG1 (d / drug [0 = "A"]))	9	9
+
+More than 3,000 policemen have been killed in anti-drugs raids in the past 20 years . 
+(c / counter-01 [0 = "A"]:ARG1 (d / drug [0 = "A"]))	8	8
+
+Under the centralized leadership of higher-level organizations , everyone acted to make the rescue efforts very outstanding and successful , such that the Great Tangshan Earthquake , which happened just a few years ago , was forgotten all together in the subsequent reform and opening-up . 
+(l / level [0 = "A"]:mod (h / high [0 = "A"]:degree (m / more [0 = "A"])))	5	5
+
+And when people saw on CCTV those private firms manufacturing tents in Jiangsu and Zhejiang working overtime to produce more tents , the first idea that popped to mind I 'm afraid was probably `` This time these capitalists have struck it big ! '' 
+(t / that [0 = "A"])	6	6
+
+`` Why is it that these capitalists instead of those capitalists get the big order forms , surely there could n't be anything fishy involved ? 
+(t / that [0 = "A"])	9	9
+
+Over 12 publications including dailies , weeklies and monthlies of various extremist groups including those banned on 020112 still sell in large numbers in the markets and bazaars of Karachi . 
+(t / that [0 = "A"])	14	14
+
+On 5 January 2002 pan-Arab anti-terror academy Naif Arab Academy for Security Sciences reopened for the first time since the September 2001 terror attacks on the US . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "US" [0 = "A"]))	26	26
+
+IRNA stated that in the large-scale army operation along the eastern borders with Afghanistan and Pakistan 21 drug traffickers were killed , 1500 arrested and approximately 5 tons of drugs seized . 
+(e / east [0 = "A"])	10	10
+
+If he were out of the race , Santorum might have had a chance . 
+(p / possible [0 = "A"])	9	9
+
+This is not surprising or shocking to me . 
+t [0 = "A"]	0	0
+
+Pyongyang insists it will allow full IAEA inspections only when a significant portion of the project as defined in the 1994 accord is completed . 
+(s / significance [0 = "A"])	11	11
+
+Food scientist at Chung Chong College an Yong-geun said he would introduce some 350 different kinds of culinary art with dog meat . 
+(u / university [0 = "A"]:name (n / name [0 = "A"]:op2 "Chong" [1 = "B"]:op3 "College" [2 = "C"]:op1 "Chung" [0 = "A"]))	3	5
+
+Iftikhar Ahmed stated that Pakistan 's provincial governments have been asked to implement the orders in the notification that was issued on 020114 and that Pakistan 's provincial governments are in the process of taking action . 
+(g / government-organization [1 = "B"]:ARG0-of (g2 / govern-01 [1 = "B"]:ARG1 (p / province [0 = "A"])))	6	7
+
+The authorities say the practice is slowly disappearing in Korea . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Korea" [0 = "A"]))	9	9
+
+Will they try to prop Romney up with a strong VP to help make him more palatable - or will they bring in a new face ? 
+(h / have-org-role-91 [0 = "A"]:ARG2 (p / president [0 = "A"]:mod (v / vice [0 = "A"])))	10	10
+
+The upcoming visit is viewed as part of the International Atomic Energy Agency -LRB- IAEA -RRB- drive to clarify North Korea 's nuclear ambitions . 
+(n / name [0 = "A"]:op3 "Energy" [2 = "C"]:op1 "International" [0 = "A"]:op2 "Atomic" [1 = "B"]:op4 "Agency" [3 = "D"])	9	12
+
+After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
+(p / person [0 = "A"])	22	22
+
+2 . Choose 100 innovative concepts to encourage employees to conduct research and development during their work time or spare time . 
+(p / person [0 = "A"])	8	8
+
+They laid off 125 employees , but gave big raises to executives . 
+(p / person [0 = "A"]:ARG1-of (e / employ-01 [0 = "A"]))	4	4
+
+A reporter who did not want to be named from the publication of the Islam daily of Al-Rashid Trust stated that it would not be easy for the Pakistani government to ban the religious extremist publications and make over 500 employees jobless . 
+(p / person [0 = "A"]:ARG1-of (e / employ-01 [0 = "A"]))	40	40
+
+Food scientist at Chung Chong College an Yong-geun said he would introduce some 350 different kinds of culinary art with dog meat . 
+(h / have-org-role-91 [0 = "A"]:ARG2 (s / scientist [0 = "A"]))	1	1
+
+Ron Paul says tornado victims should not get aid 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Ron" [0 = "A"]:op2 "Paul" [1 = "B"]))	0	1
+
+Ron Paul is not quite bright . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Paul" [1 = "B"]:op1 "Ron" [0 = "A"]))	0	1
+
+Ron Paul and his Libertarian ideas are at best impractical . 
+(n / name [0 = "A"]:op2 "Paul" [1 = "B"]:op1 "Ron" [0 = "A"])	0	1
+
+Afghan farmers resumed growing opium poppies after the militia was overthrown in December 2001 . 
+(p / person [0 = "A"]:ARG0-of (f / farm-01 [0 = "A"]))	1	1
+
+Desperate Afghan farmers resumed growing opium poppies soon after the hard-line militia lost power in December 2001 . 
+(p / person [0 = "A"]:ARG0-of (f / farm-01 [0 = "A"]))	2	2
+
+And when people saw on CCTV those private firms manufacturing tents in Jiangsu and Zhejiang working overtime to produce more tents , the first idea that popped to mind I 'm afraid was probably `` This time these capitalists have struck it big ! '' 
+(p / publication [0 = "A"]:name (n / name [0 = "A"]:op1 "CCTV" [0 = "A"]))	5	5
+
+Where poverty exists and educational opportunities are non existent ? 
+- [0 = "A"]	7	7
+
+The Riyadh-based Naif Arab Academy for Security Sciences said in a statement that it was running a two-week workshop for 50 anti-terrorism experts . 
+(b / base-01 [0 = "A"]:location (c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Riyadh" [0 = "A"])))	1	1
+
+The organizers of South Korean website antijapan.wo.ro vowed to paralyze the websites of Warner Bros. -LRB- www.wpix.com -RRB- and the French state television network -LRB- www.francetv.fr -RRB- on January 19 , 2002 . 
+(u / url-entity [0 = "A"]:value "www.francetv.fr" [0 = "A"])	25	25
+
+It is obvious that no social or political problems were left then , nor were sequelae that cause headaches to later generations . 
+(a / and [0 = "A"])	13	13
+
+However , most of the buildings in this hard-hit area did not meet these requirements , with the widespread collapse of school buildings in particular arousing intense public disgust . 
+- [0 = "A"]	11	11
+
+It is clear that preparations prior to the event were not constructed on the basis of an earthquake disaster simulation . 
+- [0 = "A"]	10	10
+
+I guessed the carrying capacity of the base station towers was totally overloaded , and I could n't get through at all . I was only able to find a signal , not a chance of connecting to the Internet . 
+(c / contrast-01 [0 = "A"])	32	32
+
+Not to mention that he 's absolutely right that they should have insurance to cover them . 
+- [0 = "A"]	0	0
+
+The problem with this regime is aid is not distributed equally . 
+- [0 = "A"]	8	8
+
+But the rest of us are thinking about the people that do not have insurance and/or need help right now . 
+- [0 = "A"]	12	12
+
+Keep in mind insurance companies are not in the business of paying claims , they are in the business of making money . 
+- [0 = "A"]	6	6
+
+The group said the foreign broadcasters do not show any remorse for their culture of eating snails and horses . 
+- [0 = "A"]	7	7
+
+Activists contend many slaughterhouses in the countryside are not controlled . 
+- [0 = "A"]	8	8
+
+The nationalities of the foreigners were not mentioned . 
+- [0 = "A"]	6	6
+
+In a statement Naif Arab Academy for Security Sciences announced -- 
+(t / thing [0 = "A"]:ARG1-of (s / state-01 [0 = "A"]))	2	2
+
+Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(w / world-region [0 = "A"]:name (n / name [0 = "A"]:op1 "Gulf" [0 = "A"]))	20	20
+
+Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(w / world-region [0 = "A"]:name (n / name [0 = "A"]:op1 "Gulf" [0 = "A"]))	20	20
+
+In the past the CCP has done a lot of these sorts of things , but on this occasion not only did nothing , but in response to queries from the public pulled out some whopping lies , playing syntax games with words like `` geological disaster '' and `` earthquake disaster '' . 
+(t / thing [0 = "A"]:ARG1-of (l / lie-02 [0 = "A"]))	36	36
+
+But the rest of us are thinking about the people that do not have insurance and/or need help right now . 
+(a / and-or [0 = "A"])	15	15
+
+North Korea froze its suspected nuclear weapons program at Yongbyon in exchange for receiving two nuclear reactors producing less weapons-grade plutonium under a 1994 accord with the United States . 
+(n / name [0 = "A"]:op2 "States" [1 = "B"]:op1 "United" [0 = "A"])	27	28
+
+Pervez Musharraf 's speech banning the 5 Islamic groups was applauded by the United States . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "States" [1 = "B"]:op1 "United" [0 = "A"]))	13	14
+
+Other groups linked to terrorism and included on the United States Terrorist Exclusion List are also publishing regular newspapers and journals containing rhetoric that is against Western countries and calls for war in the name of Islam . 
+(t / thing [0 = "A"]:name (n / name [0 = "A"]:op1 "United" [0 = "A"]:op2 "States" [1 = "B"]))	9	10
+
+The al-Rashid Trust and Lashkar-i-Taiba are on the United States Terrorist Exclusion List and the Al-Rashid Trust 's and Lashkar-i-Taiba 's assets frozen in Pakistan . 
+(t / thing [0 = "A"]:name (n / name [0 = "A"]:op2 "States" [1 = "B"]:op1 "United" [0 = "A"]))	8	9
+
+The killing of dogs for restaurants has become a more popular topic than the football World Cup finals . 
+(g / game [0 = "A"]:name (n / name [0 = "A"]:op2 "Cup" [1 = "B"]:op1 "World" [0 = "A"]))	15	16
+
+The World Cup finals are to be co-hosted by South Korea and Japan this year . 
+(g / game [0 = "A"]:name (n / name [0 = "A"]:op1 "World" [0 = "A"]:op2 "Cup" [1 = "B"]))	1	2
+
+FIFA president Sepp Blatter sent a letter last November to South Korea 's World Cup organizing committee calling for immediate and decisive measures against cruelty to dogs . 
+(g / game [0 = "A"]:name (n / name [0 = "A"]:op1 "World" [0 = "A"]:op2 "Cup" [1 = "B"]))	13	14
+
+It was ahead of the World Cup which starts May 31 , 2002 . 
+(g / game [0 = "A"]:name (n / name [0 = "A"]:op2 "Cup" [1 = "B"]:op1 "World" [0 = "A"]))	5	6
+
+A separate report issued recently by the U.S. government-funded research group computer science and telecommunications Board stated that cyber security needs considerable improvement . 
+(r / recent [0 = "A"])	4	4
+
+The only one with any reason to will be Newt , but I do n't think that he will . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Newt" [0 = "A"]))	9	9
+
+Best outcome of the night would have been Newt losing there . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Newt" [0 = "A"]))	8	8
+
+I think Gingrich 's sole win in GA is enough to hang it up and go back to making millions in the private sector . 
+(n / name [0 = "A"]:op1 "Gingrich" [0 = "A"])	2	2
+
+While it should have been a disaster relief command that takes overall leadership , it has suddenly come face-to-face with the broad base of disaster victims , directly dealing with them . 
+(s / sudden [0 = "A"])	16	16
+
+During a time of prosperity and happiness , such a big earthquake suddenly struck . 
+(s / sudden [0 = "A"])	12	12
+
+A jeweler 's shop in Tokyo displayed a swimsuit , dress and shawl to go with it made of pure gold thread today . These were made by a workshop in the ancient capital , Kyoto . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Tokyo" [0 = "A"]))	5	5
+
+Tokyo 's Ginza Tanaka Jewelry Company said that the hand - woven gold dress weighs 1.1 kilograms , with a value of 30 million Japanese yen -LRB- about 8.06 million NT dollars -RRB- . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Tokyo" [0 = "A"]))	0	0
+
+I heard from a friend at the consulate that the government took this matter very seriously and had promptly agreed to allocate funds to compensate the students who had used their own money instead that night . 
+(m / money [0 = "A"])	32	32
+
+The Islam daily of Al-Rashid Trust supports the Taliban Fund linked to Osama bin Laden 's al-Qaeda network . 
+"Fund" [0 = "A"]	9	9
+
+They even lied , saying that they and Xinghui initially felt that signing a contract would rather make each other feel like strangers since they were both doing it for the sake of the motherland . 
+(i / initial [0 = "A"])	9	9
+
+Newspaper seller Mohammad Farooq stated that Pervez Musharraf 's clamp-down on extremism had done little to limit the demand for banned religious extremist publications . 
+(t / thing [1 = "B"]:ARG1-of (p / publish-01 [1 = "B"]):mod (e / extremism [0 = "A"]))	22	23
+
+Mohammad Farooq stated that the publication of the Islam daily of Al-Rashid Trust has not been affected yet by Pervez Musharraf 's clamp-down on extremism and the circulation of the Islam daily of Al-Rashid Trust has increased in the past couple of days . 
+(p / publication [0 = "A"]:name (n / name [0 = "A"]:op2 "Daily" [1 = "B"]:op1 "Islam" [0 = "A"]))	8	9
+
+A reporter who did not want to be named from the publication of the Islam daily of Al-Rashid Trust stated that it would not be easy for the Pakistani government to ban the religious extremist publications and make over 500 employees jobless . 
+(n / name [0 = "A"]:op2 "Daily" [1 = "B"]:op1 "Islam" [0 = "A"])	14	15
+
+A United Nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(t / temporal-quantity [0 = "A"]:unit (w / week [0 = "A"]):quant 1 [0 = "A"])	8	8
+
+Government sources said on January 7 , 2002 that a united nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(t / temporal-quantity [0 = "A"]:quant 1 [0 = "A"]:unit (w / week [0 = "A"]))	17	17
+
+Instead in this instance the Liberation Army headquarters emergency contingency plan obviously was not a contingency plan designed with earthquakes as the assumed condition , as the soldiers all rushed straight to Wenchuan , without immediately sending out troops in the direction of badly-hit areas Beichuan , Qingchuan and Gansu 's Longnan ; only 24 hours later was the full extent of the disaster area taken into consideration . 
+(t / troop [0 = "A"])	38	38
+
+When a women is forced to conceive and then trapped as the child become a lever to gain more power and more control ? 
+(t / time [0 = "A"])	0	0
+
+In April 1998 Arab countries signed an anti-terrorism agreement that binds the signatories to coordinate to fight terrorism . 
+(d / date-entity [0 = "A"]:month 4 [0 = "A"])	1	1
+
+Police officer Mohammad Iqbal stated that the police so far have not received any instructions to take action against any banned religious extremist publications . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Mohammad" [0 = "A"]:op2 "Iqbal" [1 = "B"]))	2	3
+
+Mohammad Farooq stated that the publication of the Islam daily of Al-Rashid Trust has not been affected yet by Pervez Musharraf 's clamp-down on extremism and the circulation of the Islam daily of Al-Rashid Trust has increased in the past couple of days . 
+(c / clamp-01 [0 = "A"]:direction (d / down [0 = "A"]))	22	22
+
+The now-ousted Taliban militia in July 2000 also banned production of opium . 
+(o / oust-01 [0 = "A"]:time (n / now [0 = "A"]))	1	1
+
+Many think that security must be improved at North American critical infrastructures including energy and transportation providers and the financial services sector that are largely interconnected . 
+(l / large [0 = "A"])	24	24
+
+South Korean officials said most dogs used for eating were killed instantly by electrocution . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (o / official [0 = "A"])))	2	2
+
+A United Nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(c / controversy [0 = "A"])	21	21
+
+Government sources said on January 7 , 2002 that a united nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(c / controversy [0 = "A"])	30	30
+
+In December 2002 police announced than an armed corps with Afghanistan , Pakistan and Turkmenistan was being assembled specifically to combat drug trafficking along Iran 's borders . 
+(s / specific [0 = "A"])	18	18
+
+The radio said the first day of Val Fajr accumulated more than four tons of drugs and 50 guns in southeast Iran on January 16 , 2002 . 
+(e / event [0 = "A"]:name (n / name [0 = "A"]:op2 "Fajr" [1 = "B"]:op1 "Val" [0 = "A"]))	7	8
+
+That is the plan with all the liberal policies . 
+(t / thing [0 = "A"]:ARG1-of (p / plan-01 [0 = "A"]))	3	3
+
+The lack or serious shortage of intermediate layers of Party organizations and units between the two has resulted in its inability to consider major issues with endless minor issues on hand , such that even if it is highly capable , it wo n't last long , as it will be dragged down by numerous petty things . 
+(p / possible [0 = "A"]:polarity - [0 = "A"])	20	20
+
+Many think that security must be improved at North American critical infrastructures including energy and transportation providers and the financial services sector that are largely interconnected . 
+(c / continent [0 = "A"]:name (n / name [0 = "A"]:op1 "North" [0 = "A"]:op2 "America" [1 = "B"]))	8	9
+
+Iran -LRB- IR -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	0	0
+
+On January 17 , 2002 a state radio reported that thirteen drug traffickers were killed and 10 arrested in Iran anti-drug sweeps . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	19	19
+
+The radio said the first day of Val Fajr accumulated more than four tons of drugs and 50 guns in southeast Iran on January 16 , 2002 . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	21	21
+
+In December 2002 police announced than an armed corps with Afghanistan , Pakistan and Turkmenistan was being assembled specifically to combat drug trafficking along Iran 's borders . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	24	24
+
+Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	0	0
+
+Iran -LRB- IR -RRB- ; Afghanistan -LRB- AF -RRB- ; Pakistan -LRB- PK -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	0	0
+
+Iran 's state news agency IRNA reported 23 January 2002 that Iranian security forces killed 21 drug traffickers and arrested more than 1600 in operations in the east and south of Iran in recent days . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]:ARG1 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))))	0	0
+
+Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	0	0
+
+IRNA stated that in the large-scale army operation along the eastern borders with Afghanistan and Pakistan 21 drug traffickers were killed , 1500 arrested and approximately 5 tons of drugs seized . 
+(p / person [0 = "A"]:quant 1500 [0 = "A"])	22	22
+
+The warning from the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service was quietly released on 20 December 2001 and cited no specific threat . 
+"Department" [0 = "A"]	5	8
+
+Director of threat analysis at the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service Brenda hensler-Hobbs stated that following the attacks of 11 September 2001 the Canadian Government specifically examined the potential cyber-capability of al-Qaeda and Osama bin Laden 's followers . 
+"Department" [0 = "A"]	7	10
+
+Tokyo 's Ginza Tanaka Jewelry Company said that the hand - woven gold dress weighs 1.1 kilograms , with a value of 30 million Japanese yen -LRB- about 8.06 million NT dollars -RRB- . 
+(c / company [3 = "D"]:name (n / name [0 = "A"]:op1 "Ginza" [0 = "A"]:op4 "Company" [3 = "D"]:op3 "Jewelry" [2 = "C"]:op2 "Tanaka" [1 = "B"]))	2	5
+
+Dog restaurants were told to close or go into the backstreets when Seoul hosted the 1988 Olympics . 
+(d / date-entity [0 = "A"]:year 1988 [0 = "A"])	15	15
+
+This would have been unimaginable during the Great Tangshan Earthquake . A time without volunteers or mental workers , such petty things as directly dealing with average people were performed by the most primary Party branches , as well as enterprises and public institutions . 
+(e / earthquake [0 = "A"]:name (n / name [0 = "A"]:op1 "Great" [0 = "A"]:op2 "Tangshan" [1 = "B"]))	7	8
+
+The Riyadh-based Naif Arab Academy for Security Sciences said in a statement that it was running a two-week workshop for 50 anti-terrorism experts . 
+(n / name [0 = "A"]:op6 "Sciences" [5 = "F"]:op3 "Academy" [2 = "C"]:op4 "for" [3 = "D"]:op5 "Security" [4 = "E"]:op2 "Arab" [1 = "B"]:op1 "Naif" [0 = "A"])	2	7
+
+On 5 January 2002 pan-Arab anti-terror academy Naif Arab Academy for Security Sciences reopened for the first time since the September 2001 terror attacks on the US . 
+(u / university [0 = "A"]:name (n / name [0 = "A"]:op3 "Academy" [2 = "C"]:op5 "Security" [4 = "E"]:op4 "for" [3 = "D"]:op1 "Naif" [0 = "A"]:op2 "Arab" [1 = "B"]:op6 "Sciences" [5 = "F"]))	7	12
+
+Naif Arab Academy for Security Sciences is based in Riyadh . 
+(u / university [0 = "A"]:name (n / name [0 = "A"]:op4 "for" [3 = "D"]:op5 "Security" [4 = "E"]:op2 "Arab" [1 = "B"]:op3 "Academy" [2 = "C"]:op6 "Sciences" [5 = "F"]:op1 "Naif" [0 = "A"]))	0	5
+
+In a statement Naif Arab Academy for Security Sciences announced -- 
+(n / name [0 = "A"]:op4 "for" [3 = "D"]:op2 "Arab" [1 = "B"]:op6 "Sciences" [5 = "F"]:op3 "Academy" [2 = "C"]:op1 "Naif" [0 = "A"]:op5 "Security" [4 = "E"])	3	8
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Mauritania" [0 = "A"]))	21	21
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Algeria" [0 = "A"]))	11	11
+
+South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "South" [0 = "A"]:op2 "Korea" [0 = "A"]))	0	0
+
+The source stated that the inspection would focus on an isotope production laboratory in the Yongbyon nuclear complex which is north of North Korea 's capital Pyongyang . 
+(r / relative-position [0 = "A"]:direction (n / north [0 = "A"]))	20	20
+
+North Korea froze its suspected nuclear weapons program at Yongbyon in exchange for receiving two nuclear reactors producing less weapons-grade plutonium under a 1994 accord with the United States . 
+(d / date-entity [0 = "A"]:year 1994 [0 = "A"])	23	23
+
+Pyongyang insists it will allow full IAEA inspections only when a significant portion of the project as defined in the 1994 accord is completed . 
+(d / date-entity [0 = "A"]:year 1994 [0 = "A"])	20	20
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Lebanon" [0 = "A"]))	19	19
+
+Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(c / continent [0 = "A"]:name (n / name [0 = "A"]:op1 "Europe" [0 = "A"]))	17	17
+
+Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(c / continent [0 = "A"]:name (n / name [0 = "A"]:op1 "Europe" [0 = "A"]))	17	17
+
+Police officer Mohammad Iqbal stated that the police so far have not received any instructions to take action against any banned religious extremist publications . 
+(e / extremism [1 = "B"]:mod (r / religion [0 = "A"]))	21	22
+
+A reporter who did not want to be named from the publication of the Islam daily of Al-Rashid Trust stated that it would not be easy for the Pakistani government to ban the religious extremist publications and make over 500 employees jobless . 
+(e / extremism [1 = "B"]:mod (r / religion [0 = "A"]))	33	34
+
+On 5 January 2002 pan-Arab anti-terror academy Naif Arab Academy for Security Sciences reopened for the first time since the September 2001 terror attacks on the US . 
+(e / ethnic-group [0 = "A"]:mod (p / pan [0 = "A"]):name (n / name [0 = "A"]:op1 "Arab" [0 = "A"]))	4	4
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Sudan" [0 = "A"]))	28	28
+
+The radio said the first day of Val Fajr accumulated more than four tons of drugs and 50 guns in southeast Iran on January 16 , 2002 . 
+(m / more-than [0 = "A"])	10	10
+
+More than 3,000 policemen have been killed in anti-drugs raids in the past 20 years . 
+(m / more-than [0 = "A"])	0	0
+
+Iran 's state news agency IRNA reported 23 January 2002 that Iranian security forces killed 21 drug traffickers and arrested more than 1600 in operations in the east and south of Iran in recent days . 
+(m / more-than [0 = "A"])	20	20
+
+In the past 20 years more than 3000 police officers have been killed in anti-drug raids . 
+(m / more-than [0 = "A"])	5	5
+
+Government sources said on January 7 , 2002 that a united nation nuclear team will make a week-long visit to North Korea this weekend to inspect the Stalinist state 's controversial nuclear site . 
+(d / date-entity [0 = "A"]:month 1 [0 = "A"])	4	4
+
+South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
+(d / date-entity [0 = "A"]:month 1 [0 = "A"])	4	4
+
+The organizers of South Korean website antijapan.wo.ro vowed to paralyze the websites of Warner Bros. -LRB- www.wpix.com -RRB- and the French state television network -LRB- www.francetv.fr -RRB- on January 19 , 2002 . 
+(d / date-entity [0 = "A"]:month 1 [0 = "A"])	28	28
+
+The radio said the first day of Val Fajr accumulated more than four tons of drugs and 50 guns in southeast Iran on January 16 , 2002 . 
+(d / date-entity [0 = "A"]:month 1 [0 = "A"])	23	23
+
+Iran 's state news agency IRNA reported 23 January 2002 that Iranian security forces killed 21 drug traffickers and arrested more than 1600 in operations in the east and south of Iran in recent days . 
+(d / date-entity [0 = "A"]:month 1 [0 = "A"])	8	8
+
+3 . From among them , pick out 50 for submission to an assessment committee to assess . 
+(s / submit-01 [0 = "A"])	10	10
+
+I think that if our Earthquake Administration had been able beforehand to do a simulation of big earthquakes on this Longmenshan mountain earthquake belt , then on that day of May 12 , once the Earthquake Administration had measured the quake at a magnitude of 7.8 , we would have been able to broadly judge the extent of damage and destruction in the earthquake disaster zone . 
+(b / broad [0 = "A"])	53	53
+
+And when people saw on CCTV those private firms manufacturing tents in Jiangsu and Zhejiang working overtime to produce more tents , the first idea that popped to mind I 'm afraid was probably `` This time these capitalists have struck it big ! '' 
+(o / ordinal-entity [0 = "A"]:value 1 [0 = "A"])	23	23
+
+The radio said the first day of Val Fajr accumulated more than four tons of drugs and 50 guns in southeast Iran on January 16 , 2002 . 
+(o / ordinal-entity [0 = "A"]:value 1 [0 = "A"])	4	4
+
+The banned 5 Islamic groups included the 2 hardline militant groups fighting Indian rule in Kashmir which the Indian government accuses of staging the violent 011213 attack on the Indian parliament . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "India" [0 = "A"]))	12	12
+
+The 2 hardline militant groups fighting Indian rule in Kashmir are the Lashkar-e-Taiba and Jaish-e-Mohammad . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "India" [0 = "A"]))	6	6
+
+In April 1998 Arab countries signed an anti-terrorism agreement that binds the signatories to coordinate to fight terrorism . 
+(c / counter-01 [0 = "A"]:ARG1 (t / terrorism [0 = "A"]))	7	7
+
+Santorum gets enough of a boost to do the Huckabee hangs around . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Huckabee" [0 = "A"]))	9	9
+
+The IAEA tour of the isotope production laboratory will unlikely give a full picture of North Korea 's suspected nuclear weapons ambitions . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "IAEA" [0 = "A"]))	1	1
+
+IAEA accepted North Korea 's proposal last month but cautioned that the proposal is not a breakthrough . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "IAEA" [0 = "A"]))	0	0
+
+IAEA is based in Vienna and is the UN 's nuclear supervisor . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "IAEA" [0 = "A"]))	0	0
+
+North Korea has denied the IAEA full access to its facilities . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "IAEA" [0 = "A"]))	5	5
+
+Pyongyang insists it will allow full IAEA inspections only when a significant portion of the project as defined in the 1994 accord is completed . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "IAEA" [0 = "A"]))	6	6
+
+Around 1400 alleged religious extremists have been arrested since 020112 under severe actions against Islamic militants and sectarian radicals announced by President Pervez Musharraf during the weekend . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Musharraf" [1 = "B"]:op1 "Pervez" [0 = "A"]))	22	23
+
+Pakistani authorities have stated that no statements or literature from the 5 banned Islamic groups would be tolerated after Pervez Musharraf 's speech banning the 5 Islamic groups . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Musharraf" [1 = "B"]:op1 "Pervez" [0 = "A"]))	19	20
+
+Pervez Musharraf 's speech banning the 5 Islamic groups was applauded by the United States . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Musharraf" [1 = "B"]:op1 "Pervez" [0 = "A"]))	0	1
+
+Newspaper seller Mohammad Farooq stated that Pervez Musharraf 's clamp-down on extremism had done little to limit the demand for banned religious extremist publications . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Musharraf" [1 = "B"]:op1 "Pervez" [0 = "A"]))	6	7
+
+Mohammad Farooq stated that the publication of the Islam daily of Al-Rashid Trust has not been affected yet by Pervez Musharraf 's clamp-down on extremism and the circulation of the Islam daily of Al-Rashid Trust has increased in the past couple of days . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Pervez" [0 = "A"]:op2 "Musharraf" [1 = "B"]))	19	20
+
+Other groups linked to terrorism and included on the United States Terrorist Exclusion List are also publishing regular newspapers and journals containing rhetoric that is against Western countries and calls for war in the name of Islam . 
+"Exclusion" [0 = "A"]	11	13
+
+The al-Rashid Trust and Lashkar-i-Taiba are on the United States Terrorist Exclusion List and the Al-Rashid Trust 's and Lashkar-i-Taiba 's assets frozen in Pakistan . 
+"Exclusion" [0 = "A"]	10	12
+
+Pakistan -LRB- PK -RRB- ; India -LRB- IN -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	0	0
+
+Religious extremism continues in Pakistan despite the banning of militant groups . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	4	4
+
+Religious extremism continues in Pakistan despite the banning of militant groups by the Pakistani Government . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	4	4
+
+Newspapers and magazines extolling the virtues of Islamic holy war in Kashmir continue to fill the newstands in Pakistan despite the Pakistani military Government 's attempt at a large scale containment of religious extremism . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	18	18
+
+Iftikhar Ahmed stated that Pakistan 's provincial governments have been asked to implement the orders in the notification that was issued on 020114 and that Pakistan 's provincial governments are in the process of taking action . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	4	4
+
+The al-Rashid Trust and Lashkar-i-Taiba are on the United States Terrorist Exclusion List and the Al-Rashid Trust 's and Lashkar-i-Taiba 's assets frozen in Pakistan . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	24	24
+
+The Al-Rashid Trust has not been officially banned in Pakistan . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	9	9
+
+The Iranian army launched a huge sweep against traffickers along the borders with Afghanistan and Pakistan . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	15	15
+
+The Iranian army launched a huge sweep against traffickers along the borders with Afghanistan and Pakistan . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	15	15
+
+In December 2002 police announced than an armed corps with Afghanistan , Pakistan and Turkmenistan was being assembled specifically to combat drug trafficking along Iran 's borders . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	12	12
+
+Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	12	12
+
+Iran -LRB- IR -RRB- ; Afghanistan -LRB- AF -RRB- ; Pakistan -LRB- PK -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	10	10
+
+IRNA stated that in the large-scale army operation along the eastern borders with Afghanistan and Pakistan 21 drug traffickers were killed , 1500 arrested and approximately 5 tons of drugs seized . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	15	15
+
+Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Pakistan" [0 = "A"]))	12	12
+
+The experts had just finished saying `` Sacrificing yourself to help others is a foolish idea '' , when the leaders had no choice but to call once again for selfless devotion . 
+(p / person [0 = "A"])	20	20
+
+Many people died , much property was destroyed , it was quite clearly a great disaster . 
+(c / clear [0 = "A"])	12	12
+
+Iftikhar Ahmed stated that under the notification that was issued late at night on 020114 all publications , newspapers , weekly magazines , monthlies , etc of the 5 banned Islamic groups are banned and confiscated . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Ahmed" [1 = "B"]:op1 "Iftikhar" [0 = "A"]))	0	1
+
+Iftikhar Ahmed stated that Pakistan 's provincial governments have been asked to implement the orders in the notification that was issued on 020114 and that Pakistan 's provincial governments are in the process of taking action . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Ahmed" [1 = "B"]:op1 "Iftikhar" [0 = "A"]))	0	1
+
+The Catholic Church is opposed to contraception for moral reasons . 
+(r / religious-group [0 = "A"]:name (n / name [0 = "A"]:op1 "Catholic" [0 = "A"]:op2 "Church" [1 = "B"]))	1	2
+
+The workshop 's anti-terrorism experts are from 11 Arab countries including Algeria , Bahrain , Egypt , Jordan , Lebanon , Mauritania , Morocco , Saudi Arabia , Sudan , Syria and Yemen . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Jordan" [0 = "A"]))	17	17
+
+I heard from a friend at the consulate that the government took this matter very seriously and had promptly agreed to allocate funds to compensate the students who had used their own money instead that night . 
+(t / thing [0 = "A"]:ARG2-of (f / fund-01 [0 = "A"]))	22	22
+
+I guessed the carrying capacity of the base station towers was totally overloaded , and I could n't get through at all . I was only able to find a signal , not a chance of connecting to the Internet . 
+(t / total [0 = "A"])	11	11
+
+2002-01-23 
+(d / date-entity [0 = "A"]:year 2002 [0 = "A"]:day 23 [0 = "A"]:month 1 [0 = "A"])	0	0
+
+Kind of hard to build a house over night , Mr Paul . 
+(k / kind-of [0 = "A"])	0	0
+
+Kind of hard to import food considering that the stores are probably wiped out too . 
+(k / kind-of [0 = "A"])	0	0
+
+A jeweler 's shop in Tokyo displayed a swimsuit , dress and shawl to go with it made of pure gold thread today . These were made by a workshop in the ancient capital , Kyoto . 
+(p / person [0 = "A"]:location (w / workshop [0 = "A"]))	29	29
+
+Temporarily laid aside these abstract things and avoided speaking at length , saying only a few details that left the elitists , the politicians and capitalists highly embarrassed . 
+(t / temporary [0 = "A"])	0	0
+
+I think that if our Earthquake Administration had been able beforehand to do a simulation of big earthquakes on this Longmenshan mountain earthquake belt , then on that day of May 12 , once the Earthquake Administration had measured the quake at a magnitude of 7.8 , we would have been able to broadly judge the extent of damage and destruction in the earthquake disaster zone . 
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Earthquake" [0 = "A"]))	5	5
+
+This would have been unimaginable during the Great Tangshan Earthquake . A time without volunteers or mental workers , such petty things as directly dealing with average people were performed by the most primary Party branches , as well as enterprises and public institutions . 
+"Earthquake" [0 = "A"]	9	9
+
+Thats what a Hardcore Libertarian would say . 
+(h / have-org-role-91 [0 = "A"]:ARG2 (p / political-party [0 = "A"]:name (n / name [0 = "A"]:op1 "Libertarian" [0 = "A"])))	4	4
+
+Ron Paul and his Libertarian ideas are at best impractical . 
+(p / political-party [0 = "A"]:name (n / name [0 = "A"]:op1 "Libertarian" [0 = "A"]))	4	4
+
+The organizers of the South Korean website accused the broadcasters of falsely describing South Koreans and their food culture as barbaric . 
+(b / broadcast-01 [0 = "A"])	9	9
+
+The group said the foreign broadcasters are battering the eating dogmeat culture and that it is insulting behavior . 
+(p / person [0 = "A"]:ARG0-of (b / broadcast-01 [0 = "A"]))	5	5
+
+The group said the foreign broadcasters do not show any remorse for their culture of eating snails and horses . 
+(p / person [0 = "A"]:ARG0-of (b / broadcast-01 [0 = "A"]))	5	5
+
+Qari Mohammad Zafar stated that his elders urged him to read about Jihad through the Islam daily published by the Al-Rashid Trust and Lashkar-i-Taiba 's zarb-e-Taiba weekly . 
+(p / publication [0 = "A"]:ARG1-of (p2 / publish-01 [0 = "A"]))	17	17
+
+This would have been unimaginable during the Great Tangshan Earthquake . A time without volunteers or mental workers , such petty things as directly dealing with average people were performed by the most primary Party branches , as well as enterprises and public institutions . 
+(b / branch [0 = "A"])	35	35
+
+As you know , this type of logic absolutely wo n't work in Australia . 
+(a / absolute [0 = "A"])	8	8
+
+Not to mention that he 's absolutely right that they should have insurance to cover them . 
+(a / absolute [0 = "A"])	6	6
+
+He had to win there to stay in , so ultimately this helps Mitt keep the vote split . 
+(k / keep-02 [0 = "A"]:ARG0 (p / person [0 = "A"]))	14	14
+
+The primary editorial in The Islam daily of Al-Rashid Trust on 020115 carried a warning to the Pakistani government . 
+"Daily" [0 = "A"]	6	6
+
+Parliament approved plans in May 2001 to build an anti-drugs wall along the 925-kilometre -LRB- 560-mile -RRB- border with Afghanistan . 
+(d / distance-quantity [0 = "A"]:unit (m / mile [0 = "A"]):quant 560 [0 = "A"])	15	15
+
+In May 2001 the Iranian parliament approved plans to build a wall equipped with electronic detection devices along the 560-mile border with Afghanistan to deter drug trafficking . 
+(d / distance-quantity [0 = "A"]:quant 560 [0 = "A"]:unit (m / mile [0 = "A"]))	19	19
+
+French actress-turned activist Brigitte Bardot and other animal rights campaigners call to stop the South Korean practice of eating dogs . 
+(t / turn-02 [0 = "A"]:ARG3 (p / person [0 = "A"]:ARG0-of (a / act-01 [0 = "A"])))	1	1
+
+2002-01-15 
+(d / date-entity [0 = "A"]:year 2002 [0 = "A"]:day 15 [0 = "A"]:month 1 [0 = "A"])	0	0
+
+Homeowners generally have insurance , but Federal Aid is necessary to provide for the clean up , repairs of electrical and water systems , roads , schools , buses , etc. etc. . 
+(p / person [0 = "A"]:ARG0-of (o / own-01 [0 = "A"]:ARG1 (h / home [0 = "A"])))	0	1
+
+2002-01-17 
+(d / date-entity [0 = "A"]:year 2002 [0 = "A"]:month 1 [0 = "A"]:day 17 [0 = "A"])	0	0
+
+`` Why is it that these capitalists instead of those capitalists get the big order forms , surely there could n't be anything fishy involved ? 
+(c / cause-01 [0 = "A"]:ARG0 (a / amr-unknown [0 = "A"]))	1	1
+
+Of course , the people on the AIG bus tours likely did n't get soaked with high taxes to pay for this scam , so why should they care ? 
+(c / cause-01 [0 = "A"]:ARG0 (a / amr-unknown [0 = "A"]))	25	25
+
+Maybe because it would look bad for the guy who promises to pay their mortgages , put gas in their tanks , gave them free cell phones and increased the welfare rolls . 
+t [0 = "A"]	13	13
+
+Pakistani authorities have stated that no statements or literature from the 5 banned Islamic groups would be tolerated after Pervez Musharraf 's speech banning the 5 Islamic groups . 
+(t / thing [0 = "A"]:ARG1-of (s / state-01 [0 = "A"]))	6	6
+
+The source stated that the inspection would focus on an isotope production laboratory in the Yongbyon nuclear complex which is north of North Korea 's capital Pyongyang . 
+(n / name [0 = "A"]:op1 "Pyongyang" [0 = "A"])	26	26
+
+Pyongyang insists it will allow full IAEA inspections only when a significant portion of the project as defined in the 1994 accord is completed . 
+(n / name [0 = "A"]:op1 "Pyongyang" [0 = "A"])	0	0
+
+A recent survey stated that about one million dogs are sold every year for food in South Korea and 92 percent of men aged 20 and above and 68 percent of adult women have tasted dog meat . 
+(p / percentage-entity [0 = "A"])	20	20
+
+A recent survey stated that about one million dogs are sold every year for food in South Korea and 92 percent of men aged 20 and above and 68 percent of adult women have tasted dog meat . 
+(p / percentage-entity [0 = "A"])	29	29
+
+Instead in this instance the Liberation Army headquarters emergency contingency plan obviously was not a contingency plan designed with earthquakes as the assumed condition , as the soldiers all rushed straight to Wenchuan , without immediately sending out troops in the direction of badly-hit areas Beichuan , Qingchuan and Gansu 's Longnan ; only 24 hours later was the full extent of the disaster area taken into consideration . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Beichuan" [0 = "A"]))	45	45
+
+According to information leaked from numerous channels , we can say for certain that before the earthquake struck , the serious earthquake risk in the Ngawa region was already well known to the CCP . 
+(p / possible [0 = "A"])	9	9
+
+Although current forecasting standards can not give us an accurate prediction of the exact time , place , and strength of an earthquake , there is considerable experience accumulated both in China and overseas in predicting to within the timeframe of a month , and the area of a province . 
+(p / possible [0 = "A"])	4	4
+
+I know , you get into your pickup and drive over to the next town -- if you can find your damn pickup !! 
+(p / possible [0 = "A"])	18	18
+
+Increase the welfare rolls till the takers outweigh the givers . Only then can socialism creep in . 
+(p / possible [0 = "A"])	13	13
+
+A spokesperson for the company said , '' The dress and swimsuit can be worn just like ordinary clothing , but must be treated the same as jewelry , and can not be washed in a washing machine . '' 
+(p / possible [0 = "A"])	12	12
+
+The company is also displaying a relatively inconspicuous gold wall tapestry , which can be used to decorate the living room , at a price of 50 million Japanese yen -LRB- about 13.42 million NT dollars -RRB- . 
+(p / possible [0 = "A"])	13	13
+
+On 5 January 2002 pan-Arab anti-terror academy Naif Arab Academy for Security Sciences reopened for the first time since the September 2001 terror attacks on the US . 
+(d / date-entity [0 = "A"]:month 9 [0 = "A"])	20	20
+
+The Islam daily of Al-Rashid Trust supports the Taliban Fund linked to Osama bin Laden 's al-Qaeda network . 
+(n / name [0 = "A"]:op1 "al-Qaeda" [0 = "A"])	16	16
+
+A recent government warning that al-Qaeda terrorists could launch a cyberattack on Canadian interests or critical infrastructure has caused many concerned industries to review their security systems . 
+(c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "al-Qaeda" [0 = "A"]))	5	5
+
+Director of threat analysis at the Canadian Department of National Defense 's office of critical infrastructure protection and emergency service Brenda hensler-Hobbs stated that following the attacks of 11 September 2001 the Canadian Government specifically examined the potential cyber-capability of al-Qaeda and Osama bin Laden 's followers . 
+(c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "al-Qaeda" [0 = "A"]))	40	40
+
+Hensler-Hobbs stated that the Canadian government has no knowledge of Al-Qaeda having engaged in cyberattacks in the past but that leader bin Laden has suggested that if he chose to launch cyberattacks he could have the means available to him . 
+(n / name [0 = "A"]:op1 "Al-Qaeda" [0 = "A"])	10	10
+
+And when people saw on CCTV those private firms manufacturing tents in Jiangsu and Zhejiang working overtime to produce more tents , the first idea that popped to mind I 'm afraid was probably `` This time these capitalists have struck it big ! '' 
+(p / province [0 = "A"]:name (n / name [0 = "A"]:op1 "Jiangsu" [0 = "A"]))	12	12
+
+2001-12-20 
+(d / date-entity [0 = "A"]:day 20 [0 = "A"]:year 2001 [0 = "A"]:month 12 [0 = "A"])	0	0
+
+If the simulation program was well designed , circumstances like debris blocking roads , heavy rainfall obstructing parachute drops , power and communication outages should all have been within expectations . 
+(f / fall-01 [0 = "A"]:ARG1 (r / rain [0 = "A"]))	15	15
+
+Food scientist at Chung Chong College an Yong-geun said he would introduce some 350 different kinds of culinary art with dog meat . 
+"Yong-Geun" [0 = "A"]	7	7
+
+I think that if our Earthquake Administration had been able beforehand to do a simulation of big earthquakes on this Longmenshan mountain earthquake belt , then on that day of May 12 , once the Earthquake Administration had measured the quake at a magnitude of 7.8 , we would have been able to broadly judge the extent of damage and destruction in the earthquake disaster zone . 
+(m / mountain [0 = "A"]:name (n / name [0 = "A"]:op1 "Longmenshan" [0 = "A"]))	20	20
+
+2002-01-07 
+(d / date-entity [0 = "A"]:month 1 [0 = "A"]:day 7 [0 = "A"]:year 2002 [0 = "A"])	0	0
+
+2002-01-05 
+(d / date-entity [0 = "A"]:day 5 [0 = "A"]:month 1 [0 = "A"]:year 2002 [0 = "A"])	0	0
+
+Instead in this instance the Liberation Army headquarters emergency contingency plan obviously was not a contingency plan designed with earthquakes as the assumed condition , as the soldiers all rushed straight to Wenchuan , without immediately sending out troops in the direction of badly-hit areas Beichuan , Qingchuan and Gansu 's Longnan ; only 24 hours later was the full extent of the disaster area taken into consideration . 
+(c / consider-02 [0 = "A"]:ARG1 (e / extent [0 = "A"]:mod (f / full [0 = "A"]):extent-of (a / area [0 = "A"]:mod (d / disaster [0 = "A"]))):time (l / late [0 = "A"]:degree (m / more [0 = "A"]):op1 (t / temporal-quantity [0 = "A"]:quant 24 [0 = "A"]:mod (o / only [0 = "A"]):unit (h / hour [0 = "A"]))))	0	0
+
+`` Why is it that these capitalists instead of those capitalists get the big order forms , surely there could n't be anything fishy involved ? 
+(c / contrast-01 [0 = "A"])	7	7
+
+Newspapers and magazines extolling the virtues of Islamic holy war in Kashmir continue to fill the newstands in Pakistan despite the Pakistani military Government 's attempt at a large scale containment of religious extremism . 
+(n / newsstand [0 = "A"])	16	16
+
+He had to win there to stay in , so ultimately this helps Mitt keep the vote split . 
+(u / ultimate [0 = "A"])	10	10
+
+Who Drops Out After Super Tuesday ? 
+(d / date-entity [0 = "A"]:weekday (t / tuesday [0 = "A"]))	5	5
+
+The organizers of the South Korean website accused the broadcasters of falsely describing South Koreans and their food culture as barbaric . 
+(c / country [0 = "A"])	14	14
+
+The Riyadh-based Naif Arab Academy for Security Sciences said in a statement that it was running a two-week workshop for 50 anti-terrorism experts . 
+(t / temporal-quantity [0 = "A"]:unit (w / week [0 = "A"]):quant 2 [0 = "A"])	17	17
+
+2002-01-11 
+(d / date-entity [0 = "A"]:year 2002 [0 = "A"]:day 11 [0 = "A"]:month 1 [0 = "A"])	0	0
+
+Critical infrastructures including energy and transportation providers cite close work with Government to remain aware of threats and to update accordingly . 
+(p / provide-01 [0 = "A"])	6	6
+
+Many think that security must be improved at North American critical infrastructures including energy and transportation providers and the financial services sector that are largely interconnected . 
+(c / company [0 = "A"]:ARG0-of (p / provide-01 [0 = "A"]))	16	16
+

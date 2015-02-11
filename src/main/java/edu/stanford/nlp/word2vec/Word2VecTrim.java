@@ -48,8 +48,9 @@ public class Word2VecTrim {
     }
 
     public static void main(String[] args) throws IOException {
-        trimToSequenceData("data/google-300.ser.gz", "data/google-300-trimmed.ser.gz", new String[]{
-                "data/training-500-seq.txt"
+        trimToSequenceData("data/google-300.ser.gz", "realdata/google-300-fulldata.ser.gz", new String[]{
+                "realdata/train-seq.txt",
+                "realdata/test-seq.txt"
         });
     }
 }
