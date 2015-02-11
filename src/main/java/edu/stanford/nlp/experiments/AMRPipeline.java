@@ -334,6 +334,28 @@ public class AMRPipeline {
                     }
                     return distanceIndicator + ":" + getPath(triple.first, triple.second, triple.third);
                 });
+
+                /*
+                // Some embeddings, just for fun
+                add((triple) -> {
+                    double[] head = null;
+                    if (triple.second != 0) {
+                        head = embeddings.get(triple.first.tokens[triple.first.nodes[triple.second].alignment]);
+                    }
+                    double[] tail = embeddings.get(triple.first.tokens[triple.first.nodes[triple.third].alignment]);
+
+                    if (head == null || tail == null) {
+                        return new double[300];
+                    }
+                    else {
+                        double[] diff = new double[300];
+                        for (int i = 0; i < 300; i++) {
+                            diff[i] = head[i] - tail[i];
+                        }
+                        return diff;
+                    }
+                });
+                */
     }};
 
     LinearPipe<Triple<AMRNodeSet,Integer,Integer>, Boolean> arcExistence = new LinearPipe<>(
@@ -404,9 +426,9 @@ public class AMRPipeline {
         for (int i = 0; i < tokens.length; i++) {
             AMR amr = null;
             if (labels[i].equals("VERB")) {
-                // TODO: Train a simple sense-tagger, or just use DICT for everything
-                amr = createAMRSingleton(labeledSequence.annotation.get(CoreAnnotations.TokensAnnotation.class).
-                        get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase()+"-01");
+                String stem = labeledSequence.annotation.get(CoreAnnotations.TokensAnnotation.class).
+                        get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase();
+                amr = createAMRSingleton(frameManager.getClosestFrame(stem));
             }
             else if (labels[i].equals("IDENTITY")) {
                 amr = createAMRSingleton(tokens[i].toLowerCase());
@@ -733,6 +755,8 @@ public class AMRPipeline {
                 analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/amr-train-analysis");
                 System.out.println("Testing test set");
                 analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/amr-test-analysis");
+                System.out.println("Testing on REAL TEST set");
+                analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "data/amr-real-test-analysis");
             }
         }
     }
