@@ -27,6 +27,8 @@ import edu.stanford.nlp.wsd.WordNet;
 import java.io.*;
 import java.util.*;
 import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by keenon on 1/27/15.
@@ -700,6 +702,18 @@ public class AMRPipeline {
         if (title.split(" ").length > 1) {
             title = title.split(" ")[0];
         }
+        if (title.contains("\\") || title.contains(":")) {
+            title = "and";
+        }
+
+        // Quick dose of fix so that smatch will run properly
+
+        Pattern p = Pattern.compile("[a-zA-Z0-9].*");
+        Matcher matcher = p.matcher(title);
+        if (!matcher.matches()) {
+            title = "x"; // Illegal character replacement
+        }
+
         AMR amr = new AMR();
         if (type == AMR.NodeType.ENTITY) {
             amr.addNode("" + title.toLowerCase().charAt(0), title);
@@ -804,7 +818,7 @@ public class AMRPipeline {
         double smatchPerfectDict = Smatch.smatch(bank, recoveredPerfectDict);
         System.out.println("SMATCH for perfect dict "+path+" = "+smatchPerfectDict);
         bw = new BufferedWriter(new FileWriter(output+"/smatch-perfect-dict.txt"));
-        bw.write("Smatch: "+smatch);
+        bw.write("Smatch: "+smatchPerfectDict);
         bw.close();
     }
 
