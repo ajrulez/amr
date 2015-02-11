@@ -594,6 +594,51 @@ public class AMR implements Serializable {
         return true;
     }
 
+    public Set<Node> getLargestConnectedSet(Collection<Node> subset) {
+        Set<Set<Node>> sets = getConnectedSets(subset);
+        Set<Node> largest = null;
+        for (Set<Node> set : sets) {
+            if (largest == null || set.size() > largest.size()) largest = set;
+        }
+        return largest;
+    }
+
+    public Set<Set<Node>> getConnectedSets(Collection<Node> subset) {
+        Set<Set<Node>> sets = new HashSet<>();
+
+        for (Node n : subset) {
+            sets.add(new IdentityHashSet<Node>(){{
+                add(n);
+            }});
+        }
+
+        while (true) {
+            Pair<Set<Node>,Set<Node>> adjacentSet = null;
+
+            outer: for (Set<Node> s1 : sets) {
+                for (Set<Node> s2 : sets) {
+                    if (s1 == s2) continue;
+                    for (Node n1 : s1) {
+                        for (Node n2 : s2) {
+                            if (nodesAdjacent(n1, n2)) {
+                                adjacentSet = new Pair<>(s1, s2);
+                                break outer;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (adjacentSet != null) {
+                sets.remove(adjacentSet.second);
+                adjacentSet.first.addAll(adjacentSet.second);
+            }
+            else break;
+        }
+
+        return sets;
+    }
+
     public Pair<AMR,Map<Node,Node>> cloneConnectedSubset(Collection<Node> subset) {
         AMR clone = new AMR();
         clone.multiSentenceAnnotationWrapper = multiSentenceAnnotationWrapper;

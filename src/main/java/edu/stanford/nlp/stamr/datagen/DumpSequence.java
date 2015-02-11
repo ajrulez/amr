@@ -18,9 +18,9 @@ import java.util.*;
  */
 public class DumpSequence {
     public static void main(String[] args) throws IOException {
-        // dumpMicrodata();
+        dumpMicrodata();
         // dumpPreAlignedSplit();
-        dumpGiantdata();
+        // dumpGiantdata();
     }
 
     public static void dumpPreAligned() throws IOException {
@@ -121,12 +121,7 @@ public class DumpSequence {
             return "DICT";
         }
 
-        if (amr.nodeSetConnected(nodes)) {
-            return "DICT";
-        }
-        else {
-            return "DISJOINT";
-        }
+        return "DICT";
     }
 
     public static void dumpSequences(AMR[] bank, String path) throws IOException {
@@ -146,28 +141,26 @@ public class DumpSequence {
 
         int tokens = 0;
         for (AMR amr : bank) {
-            boolean lastDict = false;
             int dictStart = -1;
+            String lastType = "";
 
             for (int i = 0; i < amr.sourceText.length; i++) {
-                String type = getType(amr, i);
-                if (type.equals("DICT")) {
-                    if (!lastDict) {
-                        lastDict = true;
-                        dictStart = i;
+                String type = getType(amr, i)+":"+amr.multiSentenceAnnotationWrapper.sentences.get(0).getNERSenseAtIndex(i);
+
+                if (!type.equals(lastType)) {
+                    if (lastType.startsWith("DICT")) {
+                        addToDict(dictStart, i-1, amr, dictionaries);
                     }
+                    if (type.startsWith("DICT")) dictStart = i;
                 }
-                else if (lastDict) {
-                    addToDict(dictStart, i-1, amr, dictionaries);
-                    lastDict = false;
-                }
+
+                lastType = type;
 
                 tokens++;
             }
 
-            if (lastDict) {
+            if (lastType.startsWith("DICT")) {
                 addToDict(dictStart, amr.sourceText.length-1, amr, dictionaries);
-                lastDict = false;
             }
         }
 
@@ -179,7 +172,7 @@ public class DumpSequence {
 
             for (int i = 0; i < dictionaries.get(s).size(); i++) {
                 if (i != 0) bw.write("\n");
-                bw.write(s+"\t");
+                // bw.write(s+"\t");
                 bw.write(dictionaries.get(s).get(i));
 
                 set.add(dictionaries.get(s).get(i));
@@ -215,46 +208,46 @@ public class DumpSequence {
             sourceTokens += amr.sourceText[i].toLowerCase();
         }
 
-        if (amr.nodeSetConnected(nodes)) {
-            AMR clone = amr.cloneConnectedSubset(nodes).first;
-            int minAlignment = 1000;
-            for (AMR.Node node : clone.nodes) {
-                if (node.alignment < minAlignment) minAlignment = node.alignment;
-            }
+        nodes = amr.getLargestConnectedSet(nodes);
 
-            for (AMR.Node node : clone.depthFirstSearch()) {
-                clone.giveNodeUniqueRef(node);
-                node.alignment = node.alignment - minAlignment;
-            }
-
-            clone.sourceText = new String[]{
-                    "A",
-                    "B",
-                    "C",
-                    "D",
-                    "E",
-                    "F",
-                    "G",
-                    "H",
-                    "I",
-                    "J",
-                    "K",
-                    "L",
-                    "M",
-                    "N",
-                    "O",
-                    "P",
-            };
-
-            String gen = clone.toString(AMR.AlignmentPrinting.ALL).replaceAll("\\n","").replaceAll("\\t","");
-            String context = amr.formatSourceTokens();
-
-            if (!dictionaries.containsKey(sourceTokens)) {
-                dictionaries.put(sourceTokens, new ArrayList<>());
-            }
-
-            dictionaries.get(sourceTokens).add(context+"\n"+gen+"\t"+start+"\t"+end+"\n");
+        AMR clone = amr.cloneConnectedSubset(nodes).first;
+        int minAlignment = 1000;
+        for (AMR.Node node : clone.nodes) {
+            if (node.alignment < minAlignment) minAlignment = node.alignment;
         }
+
+        for (AMR.Node node : clone.depthFirstSearch()) {
+            clone.giveNodeUniqueRef(node);
+            node.alignment = node.alignment - minAlignment;
+        }
+
+        clone.sourceText = new String[]{
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G",
+                "H",
+                "I",
+                "J",
+                "K",
+                "L",
+                "M",
+                "N",
+                "O",
+                "P",
+        };
+
+        String gen = clone.toString(AMR.AlignmentPrinting.ALL).replaceAll("\\n","").replaceAll("\\t","");
+        String context = amr.formatSourceTokens();
+
+        if (!dictionaries.containsKey(sourceTokens)) {
+            dictionaries.put(sourceTokens, new ArrayList<>());
+        }
+
+        dictionaries.get(sourceTokens).add(context+"\n"+gen+"\t"+start+"\t"+end+"\n");
     }
 
     public static void dumpCoNLLAMR(AMR amr, BufferedWriter bw) throws IOException {
@@ -286,7 +279,10 @@ public class DumpSequence {
                 // Multiheaded (incoming.size() > 1) can just pick one and should still be a tree.
 
                 AMR.Arc parent = incoming.get(0);
-                int parentId = Arrays.asList(nodes).indexOf(parent.head)+1;
+                int parentId = 0;
+                for (int k = 0; k < nodes.length; k++) {
+                    if (parent.head == nodes[k]) parentId = k + 1;
+                }
                 bw.append(""+parentId).append("\t").append(parent.title);
             }
             else {

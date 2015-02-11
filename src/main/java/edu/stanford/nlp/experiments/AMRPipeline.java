@@ -425,24 +425,23 @@ public class AMRPipeline {
         for (List<Integer> dict : adjacentDicts) {
             int first = dict.get(0);
             int last = dict.get(dict.size() - 1);
-            String amrString = dictionaryLookup.predict(new Triple<>(labeledSequence, first, last));
 
-            AMR amr;
-            if (amrString.startsWith("(")) {
-                assert(amrString.endsWith(")"));
-                amr = AMRSlurp.parseAMRTree(amrString);
-            }
-            else if (amrString.startsWith("\"")) {
-                amr = createAMRSingleton(amrString.substring(1, amrString.length()-1), AMR.NodeType.QUOTE);
-            }
-            else {
-                amr = createAMRSingleton(amrString, AMR.NodeType.VALUE);
-            }
+            for (String amrString : getBestAMRChunks(labeledSequence, first, last)) {
+                AMR amr;
+                if (amrString.startsWith("(")) {
+                    assert (amrString.endsWith(")"));
+                    amr = AMRSlurp.parseAMRTree(amrString);
+                } else if (amrString.startsWith("\"")) {
+                    amr = createAMRSingleton(amrString.substring(1, amrString.length() - 1), AMR.NodeType.QUOTE);
+                } else {
+                    amr = createAMRSingleton(amrString, AMR.NodeType.VALUE);
+                }
 
-            for (AMR.Node node : amr.nodes) {
-                node.alignment = Math.min(first + node.alignment, tokens.length-1);
+                for (AMR.Node node : amr.nodes) {
+                    node.alignment = Math.min(first + node.alignment, tokens.length - 1);
+                }
+                gen.add(amr);
             }
-            gen.add(amr);
         }
 
         // Go through and pick out all the nodes
@@ -476,6 +475,46 @@ public class AMRPipeline {
         }
 
         return new Pair<>(nodes, forcedArcs);
+    }
+
+    private List<String> getBestAMRChunks(LabeledSequence labeledSequence, int first, int last) {
+        List<String> bestChunks = new ArrayList<>();
+
+        Counter<String> amrStrings = dictionaryLookup.predictSoft(new Triple<>(labeledSequence, first, last));
+
+        String amrString = null;
+        double bestCount = 0.0;
+        for (String s : amrStrings.keySet()) {
+            double count = amrStrings.getCount(s);
+            if (count > bestCount) {
+                amrString = s;
+                bestCount = count;
+            }
+        }
+
+        if (bestCount > 0) {
+            bestChunks.add(amrString);
+            return bestChunks;
+        }
+        else {
+            // Recursion base case, we didn't find anything
+            if (first == last) {
+                return new ArrayList<>();
+            }
+
+            for (int pivot = first; pivot < last; pivot++) {
+                List<String> part1 = getBestAMRChunks(labeledSequence, first, pivot);
+                List<String> part2 = getBestAMRChunks(labeledSequence, pivot+1, last);
+
+                if (part1.size() + part2.size() > bestChunks.size()) {
+                    bestChunks = new ArrayList<>();
+                    bestChunks.addAll(part1);
+                    bestChunks.addAll(part2);
+                }
+            }
+
+            return bestChunks;
+        }
     }
 
     public AMR runMSTPipeline(String[] tokens, Annotation annotation, AMRNodeSet nodeSet) {
@@ -518,6 +557,29 @@ public class AMRPipeline {
 
         Map<Integer,Set<Pair<String,Integer>>> arcMap = mstGraph.getMST(false);
 
+        // Just a validity check on the graph
+        Set<Integer> seenNodes = new HashSet<>();
+        Queue<Integer> visitQueue = new ArrayDeque<>();
+        visitQueue.add(-1);
+
+        while (!visitQueue.isEmpty()) {
+            int i = visitQueue.poll();
+            seenNodes.add(i);
+            if (arcMap.containsKey(i)) {
+                for (Pair<String, Integer> arc : arcMap.get(i)) {
+                    if (!seenNodes.contains(arc.second)) {
+                        visitQueue.add(arc.second);
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < nodeSet.nodes.length; i++) {
+            if (nodeSet.nodes[i] != null && !seenNodes.contains(i)) {
+                throw new IllegalStateException("Must contain all relevant nodes!");
+            }
+        }
+
         GreedyState state = new GreedyState(nodeSet.nodes, tokens, annotation);
         for (int i : arcMap.keySet()) {
             for (Pair<String,Integer> arc : arcMap.get(i)) {
@@ -528,7 +590,39 @@ public class AMRPipeline {
                 state.arcs[head][arc.second] = arc.first;
             }
         }
-        return Generator.generateAMR(state);
+
+        // Verify that the arcs are all present that need to be
+        for (int i = 0; i < nodeSet.nodes.length; i++) {
+            if (nodeSet.nodes[i] != null) {
+                boolean hasIncoming = false;
+                for (int j = 0; j < nodeSet.nodes.length; j++) {
+                    if (state.arcs[i][j] != null && !state.arcs[i][j].equals("NONE")) {
+                        hasIncoming = true;
+                        break;
+                    }
+                }
+                if (!hasIncoming) {
+                    throw new IllegalStateException("Must have incoming arcs for all nodes. Missing: "+nodeSet.nodes[i]);
+                }
+            }
+        }
+
+        AMR generated = Generator.generateAMR(state);
+
+        // Verify the generated AMR has all relevant nodes
+        for (int i = 0; i < nodeSet.nodes.length; i++) {
+            if (nodeSet.nodes[i] != null) {
+                boolean containsAnEqual = false;
+                for (AMR.Node node : generated.nodes) {
+                    if (nodeSet.nodes[i].title.equals(node.title)) containsAnEqual = true;
+                }
+                if (!containsAnEqual) {
+                    throw new IllegalStateException("Must contain all nodes we arc'd for. Missing: "+nodeSet.nodes[i]);
+                }
+            }
+        }
+
+        return generated;
     }
 
     public AMR runPipeline(String[] tokens, Annotation annotation) {
@@ -798,7 +892,19 @@ public class AMRPipeline {
             if (line.length() == 0) {
                 // a newline to flush out old stuff
                 stage = 0;
-                setList.add(currentNodeSet);
+                if (currentNodeSet != null) {
+                    for (int i = 0; i < currentNodeSet.nodes.length; i++) {
+                        for (int j = 0; j < currentNodeSet.nodes.length; j++) {
+                            if (i == j) continue;
+                            if (currentNodeSet.nodes[i] == null || currentNodeSet.nodes[j] == null) continue;
+                            if (currentNodeSet.nodes[i].alignment == currentNodeSet.nodes[j].alignment) {
+                                currentNodeSet.forcedArcs[i][j] = currentNodeSet.correctArcs[i][j];
+                                currentNodeSet.correctArcs[i][j] = "NONE";
+                            }
+                        }
+                    }
+                    setList.add(currentNodeSet);
+                }
                 currentNodeSet = null;
             }
 

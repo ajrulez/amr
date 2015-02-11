@@ -81,7 +81,7 @@ public class MSTGraph {
 
         for (int r = 0; r < numNodes; r++) {
             for (int i = 0; i < numNodes; i++) {
-                weights[0][i+1] = i == r ? rootWeights[i] : -10000;
+                weights[0][i+1] = i == r ? rootWeights[i] : Double.NEGATIVE_INFINITY;
             }
             DGraph dGraph = new DGraph(weights, arcLabels);
             Pair<int[], Object[]> possibleArcs = dGraph.chuLiuEdmonds();

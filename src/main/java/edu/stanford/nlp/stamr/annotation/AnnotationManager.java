@@ -38,13 +38,13 @@ public class AnnotationManager {
             props.put("curator.port", "9010"); // point to the curator port
 
             props.put("customAnnotatorClass.regexner1", "edu.stanford.nlp.pipeline.TokensRegexNERAnnotator");
-            props.put("regexner1.mapping", "src/main/resources/kbp_regexner_mapping_nocase.tab");
+            props.put("regexner1.mapping", "data/kbp_regexner_mapping_nocase.tab");
             props.put("regexner1.validpospattern", "^(NN|JJ).*");
             props.put("regexner1.ignorecase", "true");
             props.put("regexner1.noDefaultOverwriteLabels", "CITY");
 
             props.put("customAnnotatorClass.regexner2", "edu.stanford.nlp.pipeline.TokensRegexNERAnnotator");
-            props.put("regexner2.mapping", "src/main/resources/kbp_regexner_mapping.tab");
+            props.put("regexner2.mapping", "data/kbp_regexner_mapping.tab");
             props.put("regexner2.ignorecase", "false");
             props.put("regexner2.noDefaultOverwriteLabels", "CITY");
 
@@ -61,13 +61,13 @@ public class AnnotationManager {
             props.put("annotators", "tokenize, ssplit, pos, lemma, ner, regexner1, regexner2, parse, dcoref");
 
             props.put("customAnnotatorClass.regexner1", "edu.stanford.nlp.pipeline.TokensRegexNERAnnotator");
-            props.put("regexner1.mapping", "src/main/resources/kbp_regexner_mapping_nocase.tab");
+            props.put("regexner1.mapping", "data/kbp_regexner_mapping_nocase.tab");
             props.put("regexner1.validpospattern", "^(NN|JJ).*");
             props.put("regexner1.ignorecase", "true");
             props.put("regexner1.noDefaultOverwriteLabels", "CITY");
 
             props.put("customAnnotatorClass.regexner2", "edu.stanford.nlp.pipeline.TokensRegexNERAnnotator");
-            props.put("regexner2.mapping", "src/main/resources/kbp_regexner_mapping.tab");
+            props.put("regexner2.mapping", "data/kbp_regexner_mapping.tab");
             props.put("regexner2.ignorecase", "false");
             props.put("regexner2.noDefaultOverwriteLabels", "CITY");
 
