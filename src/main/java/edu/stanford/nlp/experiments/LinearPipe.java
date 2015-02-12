@@ -275,7 +275,7 @@ public class LinearPipe<IN,OUT> {
 
         int[][] counts = confusion.second;
         for (int i = 0; i < counts.length; i++) {
-            bw.write(confusion.first.get(i).toString());
+            bw.write(""+confusion.first.get(i));
             for (int j = 0; j < counts[i].length; j++) {
                 bw.write(","+counts[i][j]);
             }
