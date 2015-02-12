@@ -463,23 +463,29 @@ public class AMRPipeline {
             int first = dict.get(0);
             int last = dict.get(dict.size() - 1);
 
-            for (Pair<String,Integer> amrPair : getBestAMRChunks(labeledSequence, first, last)) {
-                String amrString = amrPair.first;
-                AMR amr;
-                if (amrString.startsWith("(")) {
-                    assert (amrString.endsWith(")"));
-                    amr = AMRSlurp.parseAMRTree(amrString);
-                } else if (amrString.startsWith("\"")) {
-                    if (amrString.split(" ").length > 1) amrString = amrString.split(" ")[0];
-                    amr = createAMRSingleton(amrString.substring(1, amrString.length() - 1), AMR.NodeType.QUOTE);
-                } else {
-                    amr = createAMRSingleton(amrString, AMR.NodeType.VALUE);
-                }
+            List<Pair<String,Integer>> bestChunks = getBestAMRChunks(labeledSequence, first, last);
+            if (bestChunks.size() == 0) {
+                // TODO: Do something intelligent
+            }
+            else {
+                for (Pair<String, Integer> amrPair : bestChunks) {
+                    String amrString = amrPair.first;
+                    AMR amr;
+                    if (amrString.startsWith("(")) {
+                        assert (amrString.endsWith(")"));
+                        amr = AMRSlurp.parseAMRTree(amrString);
+                    } else if (amrString.startsWith("\"")) {
+                        if (amrString.split(" ").length > 1) amrString = amrString.split(" ")[0];
+                        amr = createAMRSingleton(amrString.substring(1, amrString.length() - 1), AMR.NodeType.QUOTE);
+                    } else {
+                        amr = createAMRSingleton(amrString, AMR.NodeType.VALUE);
+                    }
 
-                for (AMR.Node node : amr.nodes) {
-                    node.alignment = Math.min(amrPair.second + node.alignment, tokens.length - 1);
+                    for (AMR.Node node : amr.nodes) {
+                        node.alignment = Math.min(amrPair.second + node.alignment, tokens.length - 1);
+                    }
+                    gen.add(amr);
                 }
-                gen.add(amr);
             }
         }
 
