@@ -23,6 +23,7 @@ import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.Triple;
 import edu.stanford.nlp.word2vec.Word2VecLoader;
 import edu.stanford.nlp.wsd.WordNet;
+import org.ejml.alg.dense.decomposition.qr.QrUpdate;
 
 import java.io.*;
 import java.util.*;
@@ -705,13 +706,18 @@ public class AMRPipeline {
         if (title.contains("\\") || title.contains(":")) {
             title = "and";
         }
+        if (title.contains("/")) {
+            title = title.replaceAll("/","SLASH");
+        }
 
         // Quick dose of fix so that smatch will run properly
 
-        Pattern p = Pattern.compile("[a-zA-Z0-9].*");
-        Matcher matcher = p.matcher(title);
-        if (!matcher.matches()) {
-            title = "x"; // Illegal character replacement
+        if (type != AMR.NodeType.QUOTE) {
+            Pattern p = Pattern.compile("[a-zA-Z0-9-]*");
+            Matcher matcher = p.matcher(title);
+            if (!matcher.matches()) {
+                title = "x"; // Illegal character replacement
+            }
         }
 
         AMR amr = new AMR();
