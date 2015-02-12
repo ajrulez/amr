@@ -269,7 +269,7 @@ public class LinearPipe<IN,OUT> {
 
         bw.write("ROW=TARGET:COL=GUESS");
         for (OUT out : confusion.first) {
-            bw.write(","+out.toString());
+            bw.write(","+out);
         }
         bw.write("\n");
 
