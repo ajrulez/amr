@@ -385,6 +385,7 @@ public class AMRPipeline {
 
         System.out.println("Training");
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
+        dictionaryLookup.type = LinearPipe.ClassifierType.BAYESIAN;
         dictionaryLookup.train(getDictionaryForClassifier(dictionaryData));
         arcExistence.train(getArcExistenceForClassifier(mstData));
         arcType.train(getArcTypeForClassifier(mstData));

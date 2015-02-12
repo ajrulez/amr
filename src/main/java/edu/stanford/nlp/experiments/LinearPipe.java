@@ -33,7 +33,8 @@ public class LinearPipe<IN,OUT> {
 
     public enum ClassifierType {
         LINEAR,
-        SVM
+        SVM,
+        BAYESIAN
     }
 
     public ClassifierType type = ClassifierType.LINEAR;
@@ -124,6 +125,10 @@ public class LinearPipe<IN,OUT> {
             } else {
                 classifier = factory.trainClassifier(dataset);
             }
+        }
+        else if (type == ClassifierType.BAYESIAN) {
+            NaiveBayesClassifierFactory<OUT, String> factory = new NaiveBayesClassifierFactory<>();
+            classifier = factory.trainClassifier(dataset);
         }
 
         System.out.println("Trained classifier");
