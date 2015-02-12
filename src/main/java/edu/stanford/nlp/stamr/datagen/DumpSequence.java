@@ -19,15 +19,22 @@ import java.util.*;
 public class DumpSequence {
     public static void main(String[] args) throws IOException {
         // dumpMicrodata();
-        dumpPreAlignedSplit();
+        dumpPreAligned();
+        // dumpPreAlignedSplit();
         // dumpGiantdata();
+        // dumpTestData();
+    }
+
+    public static void dumpTestData() throws IOException {
+        AMR[] train = AMRSlurp.slurp("realdata/amr-release-1.0-test-proxy.txt", AMRSlurp.Format.LDC);
+        dumpCONLL(train, "realdata/release-test-conll.txt");
     }
 
     public static void dumpPreAligned() throws IOException {
         AMR[] train = AMRSlurp.slurp("data/training-500-subset.txt", AMRSlurp.Format.LDC);
-        dumpSequences(train, "data/training-500-seq.txt");
-        dumpManygenDictionaries(train, "data/training-500-manygen.txt");
-        dumpCONLL(train, "data/training-500-conll.txt");
+        dumpSequences(train, "data/train-500-seq.txt");
+        dumpManygenDictionaries(train, "data/train-500-manygen.txt");
+        dumpCONLL(train, "data/train-500-conll.txt");
     }
 
     public static void dumpGiantdata() throws IOException {

@@ -35,7 +35,7 @@ import java.util.function.Function;
  */
 public class AMRPipeline {
 
-    public static boolean FULL_DATA = false;
+    public static boolean FULL_DATA = true;
     public static boolean TINY_DATA = false;
     public static int trainDataSize = 400;
 
@@ -90,7 +90,7 @@ public class AMRPipeline {
                 });
                 // Right POS
                 add((pair) -> {
-                    if (pair.second == pair.first.tokens.length-1) return "$";
+                    if (pair.second >= pair.first.tokens.length-1) return "$";
                     else return pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class)
                             .get(pair.second+1).get(CoreAnnotations.PartOfSpeechAnnotation.class);
                 });
@@ -376,10 +376,9 @@ public class AMRPipeline {
 
     public void trainStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-"+trainDataSize+"-seq.txt"));
+        List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "data/train-500-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-"+trainDataSize+"-seq.txt"));
         List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-"+trainDataSize+"-manygen.txt"));
-        // List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
-        List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "realdata/train-conll.txt"));
+        List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
 
         System.out.println("Training");
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
@@ -712,13 +711,13 @@ public class AMRPipeline {
 
     public void analyzeStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData(FULL_DATA ? "realdata/train-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-"+trainDataSize+"-seq.txt"));
+        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData(FULL_DATA ? "data/train-500-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-"+trainDataSize+"-seq.txt"));
         List<LabeledSequence> dictionaryDataTrain = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-"+trainDataSize+"-manygen.txt"));
         List<AMRNodeSet> mstDataTrain = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
 
         System.out.println("Loading testing data");
-        List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData(FULL_DATA ? "realdata/test-seq.txt" : (TINY_DATA ? "data/train-3-seq.txt" : "data/test-100-seq.txt"));
-        List<LabeledSequence> dictionaryDataTest = loadManygenData(FULL_DATA ? "realdata/test-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "data/test-100-manygen.txt"));
+        List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData(FULL_DATA ? "data/test-100-seq.txt" : (TINY_DATA ? "data/train-3-seq.txt" : "data/test-100-seq.txt"));
+        List<LabeledSequence> dictionaryDataTest = loadManygenData(FULL_DATA ? "data/test-100-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "data/test-100-manygen.txt"));
         List<AMRNodeSet> mstDataTest = loadCoNLLData(FULL_DATA ? "realdata/test-conll.txt" : (TINY_DATA ? "data/train-3-conll.txt" : "data/test-100-conll.txt"));
 
         System.out.println("Running NER++ analysis");
@@ -744,22 +743,18 @@ public class AMRPipeline {
 
     public void testCompletePipeline() throws IOException, InterruptedException {
         System.out.println("Testing complete pipeline");
-        if (FULL_DATA) {
-            analyzeAMRSubset("realdata/train-subset.txt", "dabta/train-conll.txt", "realdata/amr-train-analysis");
-            analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "realdata/amr-test-analysis");
+        if (TINY_DATA) {
+            analyzeAMRSubset("data/train-3-subset.txt", "data/train-3-conll.txt", "data/amr-train-analysis");
         }
         else {
-            if (TINY_DATA) {
-                analyzeAMRSubset("data/train-3-subset.txt", "data/train-3-conll.txt", "data/amr-train-analysis");
-            }
-            else {
-                System.out.println("Testing training set");
-                analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/train-"+trainDataSize+"/amr-train-analysis");
-                System.out.println("Testing test set");
-                analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/train-"+trainDataSize+"/amr-test-analysis");
-                System.out.println("Testing on REAL TEST set");
-                analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "data/train-"+trainDataSize+"/amr-real-test-analysis");
-            }
+            System.out.println("Testing training set");
+            analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/train-"+trainDataSize+"/amr-train-analysis");
+            System.out.println("Testing test set");
+            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/train-"+trainDataSize+"/amr-test-analysis");
+            System.out.println("Testing on REAL DEV set");
+            analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "data/train-"+trainDataSize+"/amr-real-dev-analysis");
+            System.out.println("Testing on REAL TEST set");
+            analyzeAMRSubset("realdata/amr-release-1.0-test-proxy.txt", "realdata/release-test-conll.txt", "data/train-"+trainDataSize+"/amr-real-test-analysis");
         }
     }
 
@@ -776,6 +771,7 @@ public class AMRPipeline {
         AMR[] recovered = new AMR[bank.length];
         AMR[] recoveredPerfectDict = new AMR[bank.length];
         for (int i = 0; i < bank.length; i++) {
+            System.out.println("Parsing "+i+"/"+bank.length);
             Annotation annotation = cache.getAnnotation(i);
             recovered[i] = runPipeline(bank[i].sourceText, annotation);
             recoveredPerfectDict[i] = runMSTPipeline(bank[i].sourceText, annotation, mstDataTest.get(i));
@@ -929,9 +925,22 @@ public class AMRPipeline {
         for (int i = 0; i < seqList.size(); i++) {
             sentences[i] = seqList.get(i).formatTokens();
         }
-        CoreNLPCache coreNLPCache = new BatchCoreNLPCache(path, sentences);
+
+        String[] dedupedSentencesLong = new String[sentences.length];
+        Map<String,Integer> stringToOffsetMap = new HashMap<>();
+        for (String s : sentences) {
+            if (!stringToOffsetMap.containsKey(s)) {
+                int i = stringToOffsetMap.size();
+                stringToOffsetMap.put(s, i);
+                dedupedSentencesLong[i] = s;
+            }
+        }
+        String[] dedupedSentences = new String[stringToOffsetMap.size()];
+        System.arraycopy(dedupedSentencesLong, 0, dedupedSentences, 0, stringToOffsetMap.size());
+
+        CoreNLPCache coreNLPCache = new BatchCoreNLPCache(path, dedupedSentences);
         for (int i = 0; i < seqList.size(); i++) {
-            seqList.get(i).annotation = coreNLPCache.getAnnotation(i);
+            seqList.get(i).annotation = coreNLPCache.getAnnotation(stringToOffsetMap.get(sentences[i]));
         }
 
         br.close();
