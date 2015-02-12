@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
@@ -130,11 +131,68 @@ public class LinearPipe<IN,OUT> {
         }
     }
 
+    private class Parmap<E> implements Runnable {
+        List<Pair<IN,OUT>> data;
+        Object[] outs;
+        int threadIdx;
+        int numThreads;
+        Function<Pair<IN,OUT>, E> fn;
+        AtomicInteger atomic;
+
+        public Parmap(List<Pair<IN,OUT>> data, Object[] outs, int threadIdx, int numThreads, Function<Pair<IN,OUT>, E> fn, AtomicInteger atomic) {
+            this.data = data;
+            this.outs = outs;
+            this.threadIdx = threadIdx;
+            this.numThreads = numThreads;
+            this.fn = fn;
+            this.atomic = atomic;
+        }
+
+        @Override
+        public void run() {
+            for (int i = threadIdx; i < outs.length; i += numThreads) {
+                outs[i] = fn.apply(data.get(i));
+                int done = atomic.incrementAndGet();
+                if (done % 10 == 0) {
+                    System.out.println("Featurized "+done+"/"+data.size());
+                }
+            }
+        }
+    }
+
+    private <E> List<E> parmap(List<Pair<IN,OUT>> data, Function<Pair<IN,OUT>, E> fn) {
+        Object[] outs = new Object[data.size()];
+        int cpus = Runtime.getRuntime().availableProcessors();
+        AtomicInteger atomic = new AtomicInteger();
+        Thread[] threads = new Thread[cpus];
+        for (int i = 0; i < threads.length; i++) {
+            threads[i] = new Thread(new Parmap<>(data, outs, i, cpus, fn, atomic));
+            threads[i].start();
+        }
+        for (int i = 0; i < threads.length; i++) {
+            try {
+                threads[i].join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        List<E> es = new ArrayList<>();
+        for (int i = 0; i < outs.length; i++) {
+            if (outs[i] == null) {
+                throw new IllegalStateException("Shouldn't have any null outs: "+i);
+            }
+            es.add((E)outs[i]);
+        }
+        return es;
+    }
+
     public void train(List<Pair<IN,OUT>> data) {
         if (type == ClassifierType.LINEAR) {
+            List<RVFDatum<OUT,String>> datumList = parmap(data, (pair) -> toDatum(pair.first, pair.second));
+
             RVFDataset<OUT, String> dataset = new RVFDataset<>();
-            for (Pair<IN,OUT> pair : data) {
-                dataset.add(toDatum(pair.first, pair.second));
+            for (RVFDatum<OUT, String> datum : datumList) {
+                dataset.add(datum);
             }
 
             // Create a data-weighting array to down-weight super frequent tags and upweight infrequent ones
