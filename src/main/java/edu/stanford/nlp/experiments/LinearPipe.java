@@ -373,7 +373,7 @@ public class LinearPipe<IN,OUT> {
 
         for (Triple<IN,OUT,OUT> example : sorted) {
             if (!example.second.equals(example.third)) {
-                bw.write("TARGET: " + example.second.toString() + "\n");
+                bw.write("TARGET: " + example.second + "\n");
                 bw.write("GUESS: " + example.third + "\n");
                 if (debugErrorContext != null) {
                     bw.write("CONTEXT:\n");

@@ -38,7 +38,7 @@ import java.util.regex.Pattern;
  */
 public class AMRPipeline {
 
-    public static boolean FULL_DATA = false;
+    public static boolean FULL_DATA = true;
     public static boolean TINY_DATA = false;
     public static int trainDataSize = 400;
 
@@ -783,12 +783,10 @@ public class AMRPipeline {
             analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/train-"+trainDataSize+"/amr-train-analysis");
             System.out.println("Testing test set");
             analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/train-"+trainDataSize+"/amr-test-analysis");
-            /*
             System.out.println("Testing on REAL DEV set");
             analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "data/train-"+trainDataSize+"/amr-real-dev-analysis");
             System.out.println("Testing on REAL TEST set");
             analyzeAMRSubset("realdata/amr-release-1.0-test-proxy.txt", "realdata/release-test-conll.txt", "data/train-"+trainDataSize+"/amr-real-test-analysis");
-            */
         }
     }
 
