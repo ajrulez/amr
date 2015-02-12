@@ -153,7 +153,7 @@ public class LinearPipe<IN,OUT> {
             for (int i = threadIdx; i < outs.length; i += numThreads) {
                 outs[i] = fn.apply(data.get(i));
                 int done = atomic.incrementAndGet();
-                if (done % 10 == 0) {
+                if (done % 10000 == 0) {
                     System.out.println("Featurized "+done+"/"+data.size());
                 }
             }
