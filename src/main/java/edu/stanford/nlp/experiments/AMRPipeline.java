@@ -38,7 +38,7 @@ import java.util.regex.Pattern;
  */
 public class AMRPipeline {
 
-    public static boolean FULL_DATA = true;
+    public static boolean FULL_DATA = false;
     public static boolean TINY_DATA = false;
     public static int trainDataSize = 400;
 
@@ -148,6 +148,9 @@ public class AMRPipeline {
                 add((pair) -> frameManager.getMaxSimilarity(pair.first.tokens[pair.second].toLowerCase()));
                 // Closest frame token
                 add((pair) -> frameManager.getClosestFrame(pair.first.tokens[pair.second].toLowerCase()));
+
+                // Token NER
+                add((pair) -> pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class).get(pair.second).get(CoreAnnotations.NamedEntityTagAnnotation.class));
             }},
             AMRPipeline::writeNerPlusPlusContext
     );
@@ -379,8 +382,9 @@ public class AMRPipeline {
 
     public void trainStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "data/train-500-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-"+trainDataSize+"-seq.txt"));
-        List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-"+trainDataSize+"-manygen.txt"));
+        List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "data/train-500-seq.txt" : (TINY_DATA ? "data/train-3-seq.txt" : "data/train-" + trainDataSize + "-seq.txt"));
+        // List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "data/train-" + trainDataSize + "-manygen.txt"));
+        List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "realdata/train-manygen.txt"));
         List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
 
         System.out.println("Training");
@@ -733,7 +737,8 @@ public class AMRPipeline {
     public void analyzeStages() throws IOException {
         System.out.println("Loading training data");
         List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData(FULL_DATA ? "data/train-500-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-"+trainDataSize+"-seq.txt"));
-        List<LabeledSequence> dictionaryDataTrain = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-"+trainDataSize+"-manygen.txt"));
+        // List<LabeledSequence> dictionaryDataTrain = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-"+trainDataSize+"-manygen.txt"));
+        List<LabeledSequence> dictionaryDataTrain = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "realdata/train-manygen.txt"));
         List<AMRNodeSet> mstDataTrain = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
 
         System.out.println("Loading testing data");
@@ -772,10 +777,12 @@ public class AMRPipeline {
             analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/train-"+trainDataSize+"/amr-train-analysis");
             System.out.println("Testing test set");
             analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/train-"+trainDataSize+"/amr-test-analysis");
+            /*
             System.out.println("Testing on REAL DEV set");
             analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "data/train-"+trainDataSize+"/amr-real-dev-analysis");
             System.out.println("Testing on REAL TEST set");
             analyzeAMRSubset("realdata/amr-release-1.0-test-proxy.txt", "realdata/release-test-conll.txt", "data/train-"+trainDataSize+"/amr-real-test-analysis");
+            */
         }
     }
 

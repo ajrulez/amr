@@ -1,9 +1,13 @@
 package edu.stanford.nlp.experiments;
 
 import edu.stanford.nlp.classify.*;
+import edu.stanford.nlp.ling.BasicDatum;
+import edu.stanford.nlp.ling.Datum;
 import edu.stanford.nlp.ling.RVFDatum;
 import edu.stanford.nlp.stats.ClassicCounter;
 import edu.stanford.nlp.stats.Counter;
+import edu.stanford.nlp.stats.Counters;
+import edu.stanford.nlp.stats.TwoDimensionalCounter;
 import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.Triple;
 
@@ -27,6 +31,8 @@ public class LinearPipe<IN,OUT> {
     Function<IN,Object>[] features;
     Classifier<OUT,String> classifier;
     public BiConsumer<IN, BufferedWriter> debugErrorContext;
+
+    TwoDimensionalCounter<String,OUT> memorizedClassifier;
 
     public boolean automaticallyReweightTrainingData = true;
     public double sigma = 4.0;
@@ -80,6 +86,34 @@ public class LinearPipe<IN,OUT> {
         return featureCounts;
     }
 
+    private Collection<String> discreteFeaturize(IN in) {
+        Collection<String> featureValues = new HashSet<>();
+
+        for (int i = 0; i < features.length; i++) {
+            Function<IN,Object> feature = features[i];
+
+            Object obj = feature.apply(in);
+
+            if (obj == null) continue;
+
+            if (obj instanceof double[]) {
+                throw new IllegalArgumentException("Can't have double arguments to discreteFeaturize!");
+            }
+            else if (obj instanceof Double) {
+                throw new IllegalArgumentException("Can't have double arguments to discreteFeaturize!");
+            }
+            else {
+                featureValues.add(Integer.toString(i) + "->" + obj.toString());
+            }
+        }
+
+        return featureValues;
+    }
+
+    private Datum<OUT, String> toDiscreteDatum(IN in, OUT out) {
+        return new BasicDatum<>(discreteFeaturize(in), out);
+    }
+
     private RVFDatum<OUT, String> toDatum(IN in, OUT out) {
         return new RVFDatum<>(featurize(in), out);
     }
@@ -97,26 +131,26 @@ public class LinearPipe<IN,OUT> {
     }
 
     public void train(List<Pair<IN,OUT>> data) {
-        RVFDataset<OUT, String> dataset = new RVFDataset<>();
-        for (Pair<IN,OUT> pair : data) {
-            dataset.add(toDatum(pair.first, pair.second));
-        }
-
-        // Create a data-weighting array to down-weight super frequent tags and upweight infrequent ones
-
-        float[] dataWeights = null;
-        if (automaticallyReweightTrainingData) {
-            dataWeights = new float[dataset.size()];
-            Counter<OUT> labelCounts = new ClassicCounter<>();
-            for (int i = 0; i < dataset.size(); i++) {
-                labelCounts.incrementCount(dataset.getDatum(i).label());
-            }
-            for (int i = 0; i < dataset.size(); i++) {
-                dataWeights[i] = (float) (dataset.size() / labelCounts.getCount(dataset.getDatum(i).label()));
-            }
-        }
-
         if (type == ClassifierType.LINEAR) {
+            RVFDataset<OUT, String> dataset = new RVFDataset<>();
+            for (Pair<IN,OUT> pair : data) {
+                dataset.add(toDatum(pair.first, pair.second));
+            }
+
+            // Create a data-weighting array to down-weight super frequent tags and upweight infrequent ones
+
+            float[] dataWeights = null;
+            if (automaticallyReweightTrainingData) {
+                dataWeights = new float[dataset.size()];
+                Counter<OUT> labelCounts = new ClassicCounter<>();
+                for (int i = 0; i < dataset.size(); i++) {
+                    labelCounts.incrementCount(dataset.getDatum(i).label());
+                }
+                for (int i = 0; i < dataset.size(); i++) {
+                    dataWeights[i] = (float) (dataset.size() / labelCounts.getCount(dataset.getDatum(i).label()));
+                }
+            }
+
             LinearClassifierFactory<OUT, String> factory = new LinearClassifierFactory<>();
             factory.setSigma(sigma);  // higher -> less regularization (default=1)
             factory.setVerbose(true);
@@ -125,27 +159,54 @@ public class LinearPipe<IN,OUT> {
             } else {
                 classifier = factory.trainClassifier(dataset);
             }
+
+            System.out.println("Trained classifier");
+            int correct = 0;
+            for (int i = 0; i < dataset.size(); i++) {
+                OUT predicted = classifier.classOf(dataset.getRVFDatum(i));
+                if (predicted.equals(dataset.getRVFDatum(i).label())) correct++;
+            }
+            System.out.println("Accuracy: "+((double)correct/dataset.size())+" ("+correct+"/"+dataset.size()+")");
         }
         else if (type == ClassifierType.BAYESIAN) {
-            NaiveBayesClassifierFactory<OUT, String> factory = new NaiveBayesClassifierFactory<>();
-            classifier = factory.trainClassifier(dataset);
-        }
+            memorizedClassifier = new TwoDimensionalCounter<>();
+            for (Pair<IN,OUT> pair : data) {
+                Collection<String> f = discreteFeaturize(pair.first);
+                assert f.size() == 1;
+                String s = f.iterator().next();
+                memorizedClassifier.incrementCount(s, pair.second, 1.0);
+            }
 
-        System.out.println("Trained classifier");
-        int correct = 0;
-        for (int i = 0; i < dataset.size(); i++) {
-            OUT predicted = classifier.classOf(dataset.getRVFDatum(i));
-            if (predicted.equals(dataset.getRVFDatum(i).label())) correct++;
+            System.out.println("Trained classifier");
+
+            int correct = 0;
+            for (int i = 0; i < data.size(); i++) {
+                String s = discreteFeaturize(data.get(i).first).iterator().next();
+                OUT predicted = Counters.argmax(memorizedClassifier.getCounter(s));
+                if (predicted.equals(data.get(i).second)) correct++;
+            }
+            System.out.println("Accuracy: "+((double)correct/data.size())+" ("+correct+"/"+data.size()+")");
         }
-        System.out.println("Accuracy: "+((double)correct/dataset.size())+" ("+correct+"/"+dataset.size()+")");
     }
 
     public OUT predict(IN in) {
-        return classifier.classOf(new RVFDatum<OUT, String>(featurize(in)));
+        if (type == ClassifierType.BAYESIAN) {
+            String s = discreteFeaturize(in).iterator().next();
+            return Counters.argmax(memorizedClassifier.getCounter(s));
+        }
+        else {
+            return classifier.classOf(new RVFDatum<OUT, String>(featurize(in)));
+        }
     }
 
     public Counter<OUT> predictSoft(IN in) {
-        return classifier.scoresOf(new RVFDatum<OUT, String>(featurize(in)));
+        if (type == ClassifierType.BAYESIAN) {
+            String s = discreteFeaturize(in).iterator().next();
+            return memorizedClassifier.getCounter(s);
+        }
+        else {
+            return classifier.scoresOf(new RVFDatum<OUT, String>(featurize(in)));
+        }
     }
 
     public void analyze(List<Pair<IN,OUT>> train, List<Pair<IN,OUT>> test, String directory) throws IOException {
