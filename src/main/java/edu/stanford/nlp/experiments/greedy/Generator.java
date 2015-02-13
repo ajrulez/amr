@@ -70,6 +70,23 @@ public class Generator {
 
         for (AMR.Node node : amr.nodes) {
             amr.giveNodeUniqueRef(node);
+            if (amr.outgoingArcs.containsKey(node)) {
+                List<AMR.Arc> arcs = amr.outgoingArcs.get(node);
+                Collections.sort(arcs, new Comparator<AMR.Arc>() {
+                    @Override
+                    public int compare(AMR.Arc o1, AMR.Arc o2) {
+                        return o1.tail.alignment - o2.tail.alignment;
+                    }
+                });
+
+                int opCount = 1;
+                for (AMR.Arc arc : arcs) {
+                    if (arc.title.equals("op")) {
+                        arc.title = "op"+opCount;
+                        opCount++;
+                    }
+                }
+            }
         }
 
         amr.treeify();

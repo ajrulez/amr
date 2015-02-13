@@ -433,7 +433,7 @@ public class AMRPipeline {
         List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "data/train-500-seq.txt" : (TINY_DATA ? "data/train-3-seq.txt" : "data/train-" + trainDataSize + "-seq.txt"));
         // List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "data/train-" + trainDataSize + "-manygen.txt"));
         List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "realdata/train-manygen.txt"));
-        List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
+        List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/release-train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
 
         System.out.println("Training");
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
@@ -845,9 +845,9 @@ public class AMRPipeline {
         System.out.println("Testing complete pipeline");
         if (TINY_DATA) {
             System.out.println("Testing tiny set");
-            analyzeAMRSubset("data/train-3-subset.txt", "data/train-3-conll.txt", "data/amr-train-analysis");
+            analyzeAMRSubset("data/train-3-subset.txt", "data/train-3-conll.txt", "data/tiny/amr-train-analysis");
             System.out.println("Testing test set");
-            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/train-"+trainDataSize+"/amr-test-analysis");
+            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/tiny/train-"+trainDataSize+"/amr-test-analysis");
         }
         else {
             System.out.println("Testing training set");

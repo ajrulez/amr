@@ -5,7 +5,7 @@ Establishing Models in Industrial Innovation
 (m / monetary-quantity [1 = "B"]:unit (d / dollar [1 = "B"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "States" [0 = "A"]:op1 "United" [0 = "A"]))))	12	13
 
 After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
-(n / name [0 = "A"]:op1 "IM" [0 = "A"])	15	15
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "IM" [0 = "A"]))	15	15
 
 After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
 (s / strategy [0 = "A"])	31	31
@@ -14,11 +14,11 @@ After its competitor invented the front loading washing machine , the CEO of the
 (c / company [0 = "A"]:ARG0-of (c2 / compete-01 [0 = "A"]))	2	2
 
 After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
-(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "States" [0 = "A"]:op1 "United" [0 = "A"]))	14	14
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "United" [0 = "A"]:op2 "States" [0 = "A"]))	14	14
 
 After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
 (p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (C / CEO [0 = "A"])))	11	11
 
 After its competitor invented the front loading washing machine , the CEO of the American IM company believed that each of its employees had the ability for innovation , and formulated strategic countermeasures for innovation in the industry . 
-(p / person [0 = "A"]:ARG1-of (e / employ-01 [0 = "A"]))	22	22
+(p / person [0 = "A"])	22	22
 

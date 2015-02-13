@@ -1,10 +1,12 @@
 package edu.stanford.nlp.stamr.datagen;
 
 import com.mysql.jdbc.Buffer;
+import edu.stanford.nlp.ling.CoreAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRSlurp;
+import edu.stanford.nlp.stamr.alignments.EasyFirstAligner;
 import edu.stanford.nlp.util.IdentityHashSet;
 
 import java.io.BufferedWriter;
@@ -20,11 +22,18 @@ import java.util.*;
  */
 public class DumpSequence {
     public static void main(String[] args) throws IOException {
-        // dumpMicrodata();
-        dumpPreAligned();
+        // dumpReleaseData();
+        dumpMicrodata();
+        // dumpPreAligned();
         // dumpPreAlignedSplit();
         // dumpGiantdata();
         // dumpTestData();
+    }
+
+    public static void dumpReleaseData() throws IOException {
+        AMR[] train = AMRSlurp.slurp("realdata/amr-release-1.0-training-proxy.txt", AMRSlurp.Format.LDC);
+        EasyFirstAligner.align(train);
+        dumpCONLL(train, "realdata/release-train-conll.txt");
     }
 
     public static void dumpTestData() throws IOException {
@@ -115,8 +124,11 @@ public class DumpSequence {
         if (node.title.equalsIgnoreCase(tokens[i])) return "IDENTITY";
 
         if (annotation != null) {
-            if (node.title.equalsIgnoreCase(annotation.get(CoreAnnotations.TokensAnnotation.class).get(i).lemma()));
-                return "LEMMA";
+            if (annotation.get(CoreAnnotations.TokensAnnotation.class).size() > i) {
+                if (node.title.equalsIgnoreCase(annotation.get(CoreAnnotations.TokensAnnotation.class).get(i).lemma())) {
+                    return "LEMMA";
+                }
+            }
         }
 
         if (amr != null) {
@@ -302,7 +314,9 @@ public class DumpSequence {
                 for (int k = 0; k < nodes.length; k++) {
                     if (parent.head == nodes[k]) parentId = k + 1;
                 }
-                bw.append(""+parentId).append("\t").append(parent.title);
+                String arcTitle = parent.title;
+                if (arcTitle.startsWith("op")) arcTitle = "op";
+                bw.append(""+parentId).append("\t").append(arcTitle);
             }
             else {
                 bw.append("0\tROOT");
