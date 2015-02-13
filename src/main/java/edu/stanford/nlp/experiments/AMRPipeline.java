@@ -823,22 +823,22 @@ public class AMRPipeline {
         System.out.println("Running NER++ analysis");
         nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain),
                 getNERPlusPlusForClassifier(nerPlusPlusDataTest),
-                FULL_DATA ? "realdata/ner-plus-plus-analysis" : "data/train-"+trainDataSize+"/ner-plus-plus-analysis");
+                FULL_DATA ? "realdata/ner-plus-plus-analysis" : (TINY_DATA ? "data/tiny" : "data/train-"+trainDataSize)+"/ner-plus-plus-analysis");
 
         System.out.println("Running Dictionary analysis");
         dictionaryLookup.analyze(getDictionaryForClassifier(dictionaryDataTrain),
                 getDictionaryForClassifier(dictionaryDataTest),
-                FULL_DATA ? "realdata/dictionary-lookup-analysis" : "data/train-"+trainDataSize+"/dictionary-lookup-analysis");
+                FULL_DATA ? "realdata/dictionary-lookup-analysis" : (TINY_DATA ? "data/tiny" : "data/train-"+trainDataSize)+"/dictionary-lookup-analysis");
 
         System.out.println("Running Arc Existence analysis");
         arcExistence.analyze(getArcExistenceForClassifier(mstDataTrain),
                 getArcExistenceForClassifier(mstDataTest),
-                FULL_DATA ? "realdata/arc-existence-analysis" : "data/train-"+trainDataSize+"/arc-existence-analysis");
+                FULL_DATA ? "realdata/arc-existence-analysis" : (TINY_DATA ? "data/tiny" : "data/train-"+trainDataSize)+"/arc-existence-analysis");
 
         System.out.println("Running Arc Type analysis");
         arcType.analyze(getArcTypeForClassifier(mstDataTrain),
                 getArcTypeForClassifier(mstDataTest),
-                FULL_DATA ? "realdata/arc-type-analysis" : "data/train-"+trainDataSize+"/arc-type-analysis");
+                FULL_DATA ? "realdata/arc-type-analysis" : (TINY_DATA ? "data/tiny" : "data/train-"+trainDataSize)+"/arc-type-analysis");
     }
 
     public void testCompletePipeline() throws IOException, InterruptedException {
