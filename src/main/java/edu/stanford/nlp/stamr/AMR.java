@@ -354,7 +354,8 @@ public class AMR implements Serializable {
     }
 
     public List<Node> breadthFirstSearch() {
-        return breadthFirstSearch(head);
+        if (head == null) return new ArrayList<>();
+        else return breadthFirstSearch(head);
     }
 
     public List<Node> breadthFirstSearch(Node node) {

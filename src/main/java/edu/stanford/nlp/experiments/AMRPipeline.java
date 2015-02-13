@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
  */
 public class AMRPipeline {
 
-    public static boolean FULL_DATA = false;
+    public static boolean FULL_DATA = true;
     public static boolean TINY_DATA = false;
     public static int trainDataSize = 400;
 
@@ -215,6 +215,13 @@ public class AMRPipeline {
         return sb.toString();
     }
 
+    private String getEnumType(AMR.Node node) {
+        if (node.type == AMR.NodeType.ENTITY) return "ENTITY";
+        else if (node.type == AMR.NodeType.VALUE) return "VALUE";
+        else if (node.type == AMR.NodeType.QUOTE) return "QUOTE";
+        else return "UNKNOWN";
+    }
+
     /**
     Here's the list of CMU Features as seen in the ACL '14 paper:
 
@@ -365,23 +372,43 @@ public class AMRPipeline {
                 });
                 */
 
-                // Head type
+                // Head seq type
                 add((triple) -> {
                     if (triple.second == 0) return "ROOT";
                     AMR.Node node = triple.first.nodes[triple.second];
                     return DumpSequence.getType(node, node.alignment, triple.first.tokens, triple.first.annotation, null);
                 });
-                // Tail type
+                // Tail seq type
                 add((triple) -> {
                     AMR.Node node = triple.first.nodes[triple.third];
                     return DumpSequence.getType(node, node.alignment, triple.first.tokens, triple.first.annotation, null);
                 });
-                // Tail type
+                // Head+Tail seq type
                 add((triple) -> {
                     AMR.Node head = triple.first.nodes[triple.second];
                     AMR.Node tail = triple.first.nodes[triple.third];
                     String headType = triple.second == 0 ? "ROOT" : DumpSequence.getType(head, head.alignment, triple.first.tokens, triple.first.annotation, null);
                     String tailType = DumpSequence.getType(tail, tail.alignment, triple.first.tokens, triple.first.annotation, null);
+                    return headType+tailType;
+                });
+
+                // Head node type
+                add((triple) -> {
+                    if (triple.second == 0) return "ROOT";
+                    AMR.Node node = triple.first.nodes[triple.second];
+                    return getEnumType(node);
+                });
+                // Tail node type
+                add((triple) -> {
+                    AMR.Node node = triple.first.nodes[triple.third];
+                    return getEnumType(node);
+                });
+                // Head+Tail node type
+                add((triple) -> {
+                    AMR.Node head = triple.first.nodes[triple.second];
+                    AMR.Node tail = triple.first.nodes[triple.third];
+                    String headType = triple.second == 0 ? "ROOT" : getEnumType(head);
+                    String tailType = getEnumType(tail);
                     return headType+tailType;
                 });
     }};
@@ -626,9 +653,22 @@ public class AMRPipeline {
                         }
                     }
                     else {
-                        Counter<Boolean> counter = arcExistence.predictSoft(new Triple<>(nodeSet, i, j));
-                        Counters.logNormalizeInPlace(counter);
-                        mstGraph.addArc(i, j, "NO-LABEL", counter.getCount(true));
+                        double logProb;
+
+                        if (nodeSet.nodes[i] != null
+                                && nodeSet.nodes[j] != null
+                                && nodeSet.nodes[i].title.equals("name")
+                                && nodeSet.nodes[j].type != AMR.NodeType.QUOTE) {
+                            // Insanely unlikely that a name will ever link to a non-QUOTE node
+                            logProb = -10000;
+                        }
+                        else {
+                            Counter<Boolean> counter = arcExistence.predictSoft(new Triple<>(nodeSet, i, j));
+                            Counters.logNormalizeInPlace(counter);
+                            logProb = counter.getCount(true);
+                        }
+
+                        mstGraph.addArc(i, j, "NO-LABEL", logProb);
                     }
                 }
             }
