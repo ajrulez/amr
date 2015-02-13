@@ -34,6 +34,11 @@ public class MSTGraph {
 
         Map<Integer,Integer> nodesToSequenceMap = new HashMap<Integer, Integer>();
         Map<Integer,Integer> sequenceToNodes = new HashMap<Integer, Integer>();
+
+        // Make sure 0 is special, cause DGraph treats it as special
+        sequenceToNodes.put(0, 0);
+        nodesToSequenceMap.put(0, 0);
+
         for (int i : arcs.keySet()) {
             if (!nodesToSequenceMap.containsKey(i)) {
                 sequenceToNodes.put(nodesToSequenceMap.size(), i);
@@ -44,14 +49,14 @@ public class MSTGraph {
         int numNodes = nodesToSequenceMap.size();
         if (numNodes <= 1) return graph; // No arcs to be had here, I'm afraid
 
-        double[][] weights = new double[numNodes+1][numNodes+1];
-        String[][] arcLabels = new String[numNodes+1][numNodes+1];
+        double[][] weights = new double[numNodes][numNodes];
+        String[][] arcLabels = new String[numNodes][numNodes];
 
         // Initialize all arcs to "impossible"
 
         for (int i = 0; i < weights.length; i++) {
             for (int j = 0; j < weights.length; j++) {
-                weights[i][j] = i == 0 ? -1000.0 : Double.NEGATIVE_INFINITY;
+                weights[i][j] = Double.NEGATIVE_INFINITY;
             }
         }
 
@@ -64,16 +69,17 @@ public class MSTGraph {
                 int i = nodesToSequenceMap.get(a);
                 int j = nodesToSequenceMap.get(b);
 
-                arcLabels[i+1][j+1] = arc.second;
-                weights[i+1][j+1] = arc.third;
+                arcLabels[i][j] = arc.second;
+                weights[i][j] = arc.third;
             }
         }
 
         for (int node : nodesToSequenceMap.keySet()) {
+            if (node == 0) continue;
             int i = nodesToSequenceMap.get(node);
             double max = Double.NEGATIVE_INFINITY;
             for (int j = 0; j < weights.length; j++) {
-                if (weights[j][i+1] > max) max = weights[j][i+1];
+                if (weights[j][i] > max) max = weights[j][i];
             }
             if (max == Double.NEGATIVE_INFINITY) {
                 System.out.println("Broke on node "+node);
@@ -83,13 +89,13 @@ public class MSTGraph {
 
         // Add root arcs
 
-        for (int i = 0; i < numNodes; i++) {
-            arcLabels[0][i+1] = "ROOT";
+        for (int i = 1; i < numNodes; i++) {
+            arcLabels[0][i] = "ROOT";
         }
 
         double[] rootWeights = new double[numNodes];
         for (int i = 0; i < numNodes; i++) {
-            rootWeights[i] = weights[0][i+1];
+            rootWeights[i] = weights[0][i];
         }
 
         Pair<int[], Object[]> arcs = new Pair<int[], Object[]>();
@@ -97,16 +103,12 @@ public class MSTGraph {
 
         // Ensure only 1 root per graph
 
-        for (int r = 0; r < numNodes; r++) {
-            for (int i = 0; i < numNodes; i++) {
-                weights[0][i+1] = i == r ? rootWeights[i] : Double.NEGATIVE_INFINITY;
-            }
-            double max = Double.NEGATIVE_INFINITY;
-            for (int i = 0; i < numNodes; i++) {
-                if (weights[r+1][i+1] > max) max = weights[r+1][i+1];
-            }
-            if (max == Double.NEGATIVE_INFINITY) continue;
+        for (int r = 1; r < numNodes; r++) {
             try {
+                for (int i = 1; i < numNodes; i++) {
+                    weights[0][i] = i == r ? rootWeights[i] : Double.NEGATIVE_INFINITY;
+                }
+
                 DGraph dGraph = new DGraph(weights, arcLabels);
                 Pair<int[], Object[]> possibleArcs = dGraph.chuLiuEdmonds();
                 if (!dGraph.testOptimality()) {
@@ -114,18 +116,17 @@ public class MSTGraph {
                 }
 
                 double score = 0.0;
-                for (int i = 0; i < numNodes; i++) {
-                    score += weights[possibleArcs.first[i] + 1][i + 1];
+                for (int i = 1; i < numNodes; i++) {
+                    score += weights[possibleArcs.first[i - 1] + 1][i];
                 }
                 if (score > maxScore) {
                     maxScore = score;
                     arcs = possibleArcs;
                 }
             }
-            catch (Exception e) {
-                System.err.println("Got error trying root "+r);
+            catch (AssertionError e) {
                 e.printStackTrace();
-                // wasn't a root that could possibly work
+                System.err.println("Tried root "+r+", failed to parse");
             }
         }
 
@@ -140,13 +141,13 @@ public class MSTGraph {
 
         // Decode the graph
 
-        for (int i = 0; i < numNodes; i++) {
-            int a = -1;
-            if (parents[i] != -1) {
-                a = sequenceToNodes.get(parents[i]);
+        for (int i = 1; i < numNodes; i++) {
+            int a = 0;
+            if (parents[i-1] != -1) {
+                a = sequenceToNodes.get(parents[i-1]+1);
             }
             int b = sequenceToNodes.get(i);
-            String s = (String)parentArcs[i];
+            String s = (String)parentArcs[i-1];
             graph.putIfAbsent(a, new IdentityHashSet<Pair<String, Integer>>());
             graph.get(a).add(new Pair<String, Integer>(s, b));
         }

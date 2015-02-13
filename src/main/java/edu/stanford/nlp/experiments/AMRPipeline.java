@@ -38,8 +38,8 @@ import java.util.regex.Pattern;
  */
 public class AMRPipeline {
 
-    public static boolean FULL_DATA = true;
-    public static boolean TINY_DATA = false;
+    public static boolean FULL_DATA = false;
+    public static boolean TINY_DATA = true;
     public static int trainDataSize = 400;
 
     /////////////////////////////////////////////////////
@@ -572,19 +572,20 @@ public class AMRPipeline {
 
         // Parent Node
         for (int i = 0; i <= length; i++) {
-            if (nodeSet.nodes[i] == null) continue;
+            if (nodeSet.nodes[i] == null && i != 0) continue;
             // Can't have outgoing arcs from a non-entity type node
-            if (nodeSet.nodes[i].type == AMR.NodeType.ENTITY) {
+            if (i == 0 || nodeSet.nodes[i].type == AMR.NodeType.ENTITY) {
                 // Child Node
                 for (int j = 1; j <= length; j++) {
                     if (nodeSet.nodes[j] == null) continue;
                     if (i == j) continue;
 
+                    /*
                     if (nodeSet.forcedArcs[i][j] != null) {
                         mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], 1000.0);
                     }
+                    */
 
-                    /*
                     // Check if there's a forcedArc that corresponds to this child
                     int forcedParent = -1;
                     for (int k = 0; k <= length; k++) {
@@ -596,10 +597,15 @@ public class AMRPipeline {
 
                     // If there is a forcedParent, then set arcs accordingly
                     if (forcedParent != -1) {
-                        if (forcedParent == i)
+                        if (forcedParent == i) {
                             mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], 1000.0);
+                        }
+                        /*
+                        else {
+                            mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], -1000.0);
+                        }
+                        */
                     }
-                    */
                     else {
                         Counter<Boolean> counter = arcExistence.predictSoft(new Triple<>(nodeSet, i, j));
                         Counters.logNormalizeInPlace(counter);
@@ -613,12 +619,12 @@ public class AMRPipeline {
 
         Map<Integer,Set<Pair<String,Integer>>> arcMap = mstGraph.getMST(false);
 
-        final boolean VALIDITY_CHECKS = false;
+        final boolean VALIDITY_CHECKS = true;
 
         if (VALIDITY_CHECKS) {
             Set<Integer> seenNodes = new HashSet<>();
             Queue<Integer> visitQueue = new ArrayDeque<>();
-            visitQueue.add(-1);
+            visitQueue.add(0);
             while (!visitQueue.isEmpty()) {
                 int i = visitQueue.poll();
                 seenNodes.add(i);
@@ -632,6 +638,9 @@ public class AMRPipeline {
             }
             for (int i = 0; i < nodeSet.nodes.length; i++) {
                 if (nodeSet.nodes[i] != null && !seenNodes.contains(i)) {
+                    System.out.println("Sentence: "+annotation);
+                    System.out.println("Missing node "+i+": "+nodeSet.nodes[i]);
+                    System.out.println(Arrays.toString(nodeSet.nodes));
                     throw new IllegalStateException("Must contain all relevant nodes!");
                 }
             }
@@ -640,7 +649,7 @@ public class AMRPipeline {
         GreedyState state = new GreedyState(nodeSet.nodes, tokens, annotation);
         for (int i : arcMap.keySet()) {
             for (Pair<String,Integer> arc : arcMap.get(i)) {
-                int head = i == -1 ? 0 : i;
+                int head = i;
                 if (arc.first.equals("NO-LABEL")) {
                     arc.first = arcType.predict(new Triple<>(nodeSet, head, arc.second));
                 }
@@ -745,12 +754,12 @@ public class AMRPipeline {
         List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData(FULL_DATA ? "data/train-500-seq.txt" : ( TINY_DATA ? "data/train-3-seq.txt" : "data/train-"+trainDataSize+"-seq.txt"));
         // List<LabeledSequence> dictionaryDataTrain = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "data/train-"+trainDataSize+"-manygen.txt"));
         List<LabeledSequence> dictionaryDataTrain = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "realdata/train-manygen.txt"));
-        List<AMRNodeSet> mstDataTrain = loadCoNLLData(FULL_DATA ? "realdata/train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
+        List<AMRNodeSet> mstDataTrain = loadCoNLLData(FULL_DATA ? "data/train-500-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
 
         System.out.println("Loading testing data");
         List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData(FULL_DATA ? "data/test-100-seq.txt" : (TINY_DATA ? "data/train-3-seq.txt" : "data/test-100-seq.txt"));
         List<LabeledSequence> dictionaryDataTest = loadManygenData(FULL_DATA ? "data/test-100-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "data/test-100-manygen.txt"));
-        List<AMRNodeSet> mstDataTest = loadCoNLLData(FULL_DATA ? "realdata/test-conll.txt" : (TINY_DATA ? "data/train-3-conll.txt" : "data/test-100-conll.txt"));
+        List<AMRNodeSet> mstDataTest = loadCoNLLData(FULL_DATA ? "data/test-100-conll.txt" : (TINY_DATA ? "data/train-3-conll.txt" : "data/test-100-conll.txt"));
 
         System.out.println("Running NER++ analysis");
         nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain),
@@ -776,17 +785,22 @@ public class AMRPipeline {
     public void testCompletePipeline() throws IOException, InterruptedException {
         System.out.println("Testing complete pipeline");
         if (TINY_DATA) {
+            System.out.println("Testing tiny set");
             analyzeAMRSubset("data/train-3-subset.txt", "data/train-3-conll.txt", "data/amr-train-analysis");
+            System.out.println("Testing test set");
+            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/train-"+trainDataSize+"/amr-test-analysis");
         }
         else {
             System.out.println("Testing training set");
             analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/train-"+trainDataSize+"/amr-train-analysis");
             System.out.println("Testing test set");
             analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/train-"+trainDataSize+"/amr-test-analysis");
-            System.out.println("Testing on REAL DEV set");
-            analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "data/train-"+trainDataSize+"/amr-real-dev-analysis");
-            System.out.println("Testing on REAL TEST set");
-            analyzeAMRSubset("realdata/amr-release-1.0-test-proxy.txt", "realdata/release-test-conll.txt", "data/train-"+trainDataSize+"/amr-real-test-analysis");
+            if (FULL_DATA) {
+                System.out.println("Testing on REAL DEV set");
+                analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "data/train-" + trainDataSize + "/amr-real-dev-analysis");
+                System.out.println("Testing on REAL TEST set");
+                analyzeAMRSubset("realdata/amr-release-1.0-test-proxy.txt", "realdata/release-test-conll.txt", "data/train-" + trainDataSize + "/amr-real-test-analysis");
+            }
         }
     }
 

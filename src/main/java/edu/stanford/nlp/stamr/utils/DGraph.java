@@ -4,6 +4,8 @@ import edu.stanford.nlp.util.FixedPrioritiesPriorityQueue;
 import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.PriorityQueue;
 
+import java.util.Arrays;
+
 
 /**
  * Gabor's DGraph implementation
@@ -84,6 +86,9 @@ class DGraph {
                     max = weights[parent][child];
                     argmax = parent;
                 }
+            }
+            if (argmax < 0) {
+                throw new IllegalStateException("Node "+child+" doesn't have a parent: "+argmax);
             }
             assert argmax >= 0;
             // (set parent)
@@ -273,6 +278,10 @@ class DGraph {
                 }
             }
             assert !Double.isNaN(max);
+            if (argmax < 0) {
+                System.out.println(Arrays.toString(cycle));
+                System.out.println("Broken");
+            }
             assert argmax >= 0;
             assert max > Double.NEGATIVE_INFINITY;
             assert max < Double.POSITIVE_INFINITY;

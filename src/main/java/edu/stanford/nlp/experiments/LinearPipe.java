@@ -4,10 +4,12 @@ import edu.stanford.nlp.classify.*;
 import edu.stanford.nlp.ling.BasicDatum;
 import edu.stanford.nlp.ling.Datum;
 import edu.stanford.nlp.ling.RVFDatum;
+import edu.stanford.nlp.optimization.*;
 import edu.stanford.nlp.stats.ClassicCounter;
 import edu.stanford.nlp.stats.Counter;
 import edu.stanford.nlp.stats.Counters;
 import edu.stanford.nlp.stats.TwoDimensionalCounter;
+import edu.stanford.nlp.util.Factory;
 import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.Triple;
 
@@ -60,6 +62,11 @@ public class LinearPipe<IN,OUT> {
         }
     }
 
+    /*
+    Helpful note: Run this with XX:StringTableSize=1000003, which should vastly improve interned string hashmap
+    performance
+     */
+
     private Counter<String> featurize(IN in) {
         Counter<String> featureCounts = new ClassicCounter<>();
 
@@ -73,14 +80,14 @@ public class LinearPipe<IN,OUT> {
             if (obj instanceof double[]) {
                 double[] arr = (double[])obj;
                 for (int j = 0; j < arr.length; j++) {
-                    featureCounts.setCount(i + "->" + j, arr[j]);
+                    featureCounts.setCount((i + "->" + j).intern(), arr[j]);
                 }
             }
             else if (obj instanceof Double) {
-                featureCounts.setCount(Integer.toString(i), (double)obj);
+                featureCounts.setCount(Integer.toString(i).intern(), (double)obj);
             }
             else {
-                featureCounts.setCount(Integer.toString(i) + "->" + obj.toString(), 1.0);
+                featureCounts.setCount((Integer.toString(i) + "->" + obj.toString()).intern(), 1.0);
             }
         }
 
@@ -212,6 +219,12 @@ public class LinearPipe<IN,OUT> {
             LinearClassifierFactory<OUT, String> factory = new LinearClassifierFactory<>();
             factory.setSigma(sigma);  // higher -> less regularization (default=1)
             factory.setVerbose(true);
+            factory.setMinimizerCreator(new Factory<Minimizer<DiffFunction>>() {
+                @Override
+                public Minimizer<DiffFunction> create() {
+                    return new QNMinimizer();
+                }
+            });
             if (automaticallyReweightTrainingData) {
                 classifier = factory.trainClassifier(dataset, dataWeights, new LogPrior());
             } else {
