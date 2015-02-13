@@ -1,6 +1,8 @@
 package edu.stanford.nlp.stamr.datagen;
 
 import com.mysql.jdbc.Buffer;
+import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRSlurp;
 import edu.stanford.nlp.util.IdentityHashSet;
@@ -58,7 +60,7 @@ public class DumpSequence {
 
         AMR[] train = new AMR[]{bank[0], bank[1], bank[2]};
 
-        AMRSlurp.burp("data/train-"+train.length+"-subset.txt", AMRSlurp.Format.LDC, train, AMR.AlignmentPrinting.ALL, false);
+        AMRSlurp.burp("data/train-" + train.length + "-subset.txt", AMRSlurp.Format.LDC, train, AMR.AlignmentPrinting.ALL, false);
 
         dumpSequences(train, "data/train-" + train.length + "-seq.txt");
         dumpManygenDictionaries(train, "data/train-"+train.length+"-manygen.txt");
@@ -93,35 +95,31 @@ public class DumpSequence {
         dumpCONLL(test, "data/test-"+test.length+"-conll.txt");
     }
 
-    private static String getType(AMR amr, int i) {
-        Set<AMR.Node> nodes = amr.nodesWithAlignment(i);
-        if (nodes.size() == 0) return "NONE";
-        if (nodes.size() == 1) {
-            AMR.Node node = nodes.iterator().next();
+    public static String getType(AMR.Node node, int i, String[] tokens, Annotation annotation, AMR amr) {
+        if (node.type == AMR.NodeType.QUOTE) return "DICT";
 
-            if (node.type == AMR.NodeType.QUOTE) return "DICT";
-
-            if (node.title.contains("-")) {
-                String[] components = node.title.split("-");
-                if (components.length == 2) {
-                    String senseTag = components[1];
-                    try {
-                        int ignored = Integer.parseInt(senseTag);
-                        return "VERB";
-                    }
-                    catch (Exception e) {
-                        // do nothing
-                    }
+        if (node.title.contains("-")) {
+            String[] components = node.title.split("-");
+            if (components.length == 2) {
+                String senseTag = components[1];
+                try {
+                    int ignored = Integer.parseInt(senseTag);
+                    return "VERB";
+                }
+                catch (Exception e) {
+                    // do nothing
                 }
             }
+        }
 
-            if (node.title.equalsIgnoreCase(amr.sourceText[i])) return "IDENTITY";
+        if (node.title.equalsIgnoreCase(tokens[i])) return "IDENTITY";
 
-            if (amr.multiSentenceAnnotationWrapper != null) {
-                if (node.title.equalsIgnoreCase(amr.multiSentenceAnnotationWrapper.sentences.get(0).getLemmaAtIndex(i)))
-                    return "LEMMA";
-            }
+        if (annotation != null) {
+            if (node.title.equalsIgnoreCase(annotation.get(CoreAnnotations.TokensAnnotation.class).get(i).lemma()));
+                return "LEMMA";
+        }
 
+        if (amr != null) {
             for (AMR.Node otherNode : amr.nodes) {
                 if (otherNode != node) {
                     if (otherNode.ref.equals(node.ref)) {
@@ -129,8 +127,17 @@ public class DumpSequence {
                     }
                 }
             }
+        }
 
-            return "DICT";
+        return "DICT";
+    }
+
+    public static String getType(AMR amr, int i) {
+        Set<AMR.Node> nodes = amr.nodesWithAlignment(i);
+        if (nodes.size() == 0) return "NONE";
+        if (nodes.size() == 1) {
+            AMR.Node node = nodes.iterator().next();
+            return getType(node, i, amr.sourceText, amr.multiSentenceAnnotationWrapper.sentences.get(0).annotation, amr);
         }
 
         return "DICT";

@@ -263,7 +263,7 @@ class DGraph {
                 continue;
             }
             // (vars)
-            int argmax = -1;
+            int argmax = 0; // was -1
             double max = Double.NEGATIVE_INFINITY;
             // (get best edge into the cycle)
             for (int cycleParentI = 0; cycleParentI < cycle.length; cycleParentI++) {
@@ -278,12 +278,8 @@ class DGraph {
                 }
             }
             assert !Double.isNaN(max);
-            if (argmax < 0) {
-                System.out.println(Arrays.toString(cycle));
-                System.out.println("Broken");
-            }
             assert argmax >= 0;
-            assert max > Double.NEGATIVE_INFINITY;
+            // assert max > Double.NEGATIVE_INFINITY;
             assert max < Double.POSITIVE_INFINITY;
             // (create edge)
             assert cycleNode != child;

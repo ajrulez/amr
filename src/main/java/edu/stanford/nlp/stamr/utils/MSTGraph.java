@@ -47,7 +47,16 @@ public class MSTGraph {
         }
 
         int numNodes = nodesToSequenceMap.size();
-        if (numNodes <= 1) return graph; // No arcs to be had here, I'm afraid
+        if (numNodes <= 1) {
+            // We have no nodes here except artificial root...
+            return graph;
+        }
+        if (numNodes == 2) {
+            graph.put(0, new HashSet<Pair<String,Integer>>(){{
+                add(new Pair<>("ROOT",1));
+            }});
+            return graph; // No arcs to be had here, I'm afraid
+        }
 
         double[][] weights = new double[numNodes][numNodes];
         String[][] arcLabels = new String[numNodes][numNodes];
@@ -98,45 +107,59 @@ public class MSTGraph {
             rootWeights[i] = weights[0][i];
         }
 
-        Pair<int[], Object[]> arcs = new Pair<int[], Object[]>();
+        Pair<int[], Object[]> outArcs = new Pair<int[], Object[]>();
         double maxScore = Double.NEGATIVE_INFINITY;
 
         // Ensure only 1 root per graph
 
         for (int r = 1; r < numNodes; r++) {
-            try {
-                for (int i = 1; i < numNodes; i++) {
-                    weights[0][i] = i == r ? rootWeights[i] : Double.NEGATIVE_INFINITY;
-                }
 
-                DGraph dGraph = new DGraph(weights, arcLabels);
-                Pair<int[], Object[]> possibleArcs = dGraph.chuLiuEdmonds();
-                if (!dGraph.testOptimality()) {
-                    throw new IllegalStateException("Can't have a non-optimal graph solution!");
-                }
+            // We're trying to make a ROOT that the arc existence classifier calls impossible
+            if (weights[0][r] == Double.NEGATIVE_INFINITY) {
+                continue;
+            }
 
-                double score = 0.0;
-                for (int i = 1; i < numNodes; i++) {
-                    score += weights[possibleArcs.first[i - 1] + 1][i];
-                }
-                if (score > maxScore) {
-                    maxScore = score;
-                    arcs = possibleArcs;
+            // QUOTE, VALUE nodes make bad roots
+            boolean hasOutgoingArcs = false;
+            for (int i = 0; i < numNodes; i++) {
+                if (weights[r][i] > Double.NEGATIVE_INFINITY) {
+                    hasOutgoingArcs = true;
+                    break;
                 }
             }
-            catch (AssertionError e) {
-                e.printStackTrace();
-                System.err.println("Tried root "+r+", failed to parse");
+            if (!hasOutgoingArcs) continue;
+
+            for (int i = 1; i < numNodes; i++) {
+                weights[0][i] = i == r ? rootWeights[i] : Double.NEGATIVE_INFINITY;
+            }
+
+            DGraph dGraph = new DGraph(weights, arcLabels);
+            Pair<int[], Object[]> possibleArcs = dGraph.chuLiuEdmonds();
+            if (!dGraph.testOptimality()) {
+                throw new IllegalStateException("Can't have a non-optimal graph solution!");
+            }
+
+            double score = 0.0;
+            for (int i = 1; i < numNodes; i++) {
+                score += weights[possibleArcs.first[i - 1] + 1][i];
+            }
+            if (score > maxScore) {
+                maxScore = score;
+                outArcs = possibleArcs;
             }
         }
 
-        int[] parents = arcs.first;
-        Object[] parentArcs = arcs.second;
+        int[] parents = outArcs.first;
+        Object[] parentArcs = outArcs.second;
 
         if (debug) {
             for (int i = 0; i < numNodes; i++) {
                 System.out.println(i+": "+parents[i]+" with arc "+parentArcs[i].toString());
             }
+        }
+
+        if (parents == null) {
+            System.out.println("Break");
         }
 
         // Decode the graph

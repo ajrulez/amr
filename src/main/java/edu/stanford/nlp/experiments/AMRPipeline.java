@@ -23,6 +23,7 @@ import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.Triple;
 import edu.stanford.nlp.word2vec.Word2VecLoader;
 import edu.stanford.nlp.wsd.WordNet;
+import javassist.tools.Dump;
 import org.ejml.alg.dense.decomposition.qr.QrUpdate;
 
 import java.io.*;
@@ -39,7 +40,7 @@ import java.util.regex.Pattern;
 public class AMRPipeline {
 
     public static boolean FULL_DATA = false;
-    public static boolean TINY_DATA = true;
+    public static boolean TINY_DATA = false;
     public static int trainDataSize = 400;
 
     /////////////////////////////////////////////////////
@@ -363,6 +364,26 @@ public class AMRPipeline {
                     }
                 });
                 */
+
+                // Head type
+                add((triple) -> {
+                    if (triple.second == 0) return "ROOT";
+                    AMR.Node node = triple.first.nodes[triple.second];
+                    return DumpSequence.getType(node, node.alignment, triple.first.tokens, triple.first.annotation, null);
+                });
+                // Tail type
+                add((triple) -> {
+                    AMR.Node node = triple.first.nodes[triple.third];
+                    return DumpSequence.getType(node, node.alignment, triple.first.tokens, triple.first.annotation, null);
+                });
+                // Tail type
+                add((triple) -> {
+                    AMR.Node head = triple.first.nodes[triple.second];
+                    AMR.Node tail = triple.first.nodes[triple.third];
+                    String headType = triple.second == 0 ? "ROOT" : DumpSequence.getType(head, head.alignment, triple.first.tokens, triple.first.annotation, null);
+                    String tailType = DumpSequence.getType(tail, tail.alignment, triple.first.tokens, triple.first.annotation, null);
+                    return headType+tailType;
+                });
     }};
 
     LinearPipe<Triple<AMRNodeSet,Integer,Integer>, Boolean> arcExistence = new LinearPipe<>(
@@ -600,11 +621,9 @@ public class AMRPipeline {
                         if (forcedParent == i) {
                             mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], 1000.0);
                         }
-                        /*
                         else {
-                            mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], -1000.0);
+                            // mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], -1000.0);
                         }
-                        */
                     }
                     else {
                         Counter<Boolean> counter = arcExistence.predictSoft(new Triple<>(nodeSet, i, j));
