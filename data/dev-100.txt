@@ -1,1861 +1,2011 @@
-# ::id PROXY_APW_ENG_20080514_1125.1 ::date 2013-07-18T10:50:09 ::snt-type date ::annotator SDL-AMR-09 ::preferred
-# ::snt 2008-05-14 
-(d / date-entity
-	:month 5
-	:day 14
-	:year 2008)
-
-# ::id PROXY_APW_ENG_20080514_1125.3 ::date 2013-07-18T10:53:54 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
-# ::snt International ; Government ; Telecom ; technology ; science 
-(a / and
-	:op1 (i / international)
-	:op2 (g / government-organization
-		:ARG0-of (g2 / govern-01))
-	:op3 (t / telecommunication)
-	:op4 (t2 / technology)
-	:op5 (s / science))
-
-# ::id PROXY_APW_ENG_20080514_1125.5 ::date 2013-07-19T11:40:06 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
-# ::snt NATO allies have signed an agreement to fund a research center to bolster defenses against cyber attacks . 
-(s / sign-01
-	:ARG0 (p / person
-		:ARG0-of (a / ally-01)
-		:mod (m / military
-			:name (n / name
-				:op1 "NATO")))
-	:ARG1 (a2 / agree-01
-		:ARG0 p
-		:ARG1 (f / fund-01
-			:ARG0 p
-			:ARG1 (c / center
-				:mod (r / research-01))
-			:purpose (b / bolster-01
-				:ARG0 p
-				:ARG1 (d / defend-01
-					:prep-against (a3 / attack
-						:mod (c2 / cyber)))))))
-
-# ::id PROXY_APW_ENG_20080514_1125.7 ::date 2013-07-19T11:52:20 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The center will bolster NATO 's defenses against cyber attacks . 
-(b / bolster-01
-	:ARG0 (c / center)
-	:ARG1 (d / defend-01
-		:ARG0 (m / military
-			:name (n / name
-				:op1 "NATO"))
-		:ARG1 m
-		:prep-against (a / attack-01
-			:mod (c2 / cyber))))
-
-# ::id PROXY_APW_ENG_20080514_1125.9 ::date 2013-07-19T11:55:55 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The center will formally open in 2009 . 
-(o / open-01
-	:ARG1 (c / center)
-	:time (d / date-entity
-		:year 2009)
-	:manner (f / formal))
-
-# ::id PROXY_APW_ENG_20080514_1125.11 ::date 2013-07-19T12:01:54 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt NATO CONSIDERS cyber attacks a growing threat to military and civilian computer networks . 
-(c / consider-02
-	:ARG0 (m2 / military
-		:name (n / name
-			:op1 "NATO"))
-	:ARG1 (a / attack-01
-		:mod (c2 / cyber))
-	:ARG2 (t / thing
-		:ARG1-of (t2 / threaten-01
-			:ARG2 (a2 / and
-				:op1 (n2 / network
-					:mod (c3 / computer)
-					:mod (m / military))
-				:op2 (n3 / network
-					:mod c3
-					:mod (c4 / civilian))))
-		:ARG1-of (g / grow-01)))
-
-# ::id PROXY_APW_ENG_20080514_1125.13 ::date 2013-07-19T12:31:46 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Defense chiefs from Estonia , Latvia , Lithuania , Germany , Italy , Spain and Slovakia signed the agreement . 
-(s / sign-01
-	:ARG0 (a3 / and
-		:op1 (p / person
-			:ARG0-of (h / have-org-role-91
-				:ARG1 (c / country
-					:name (n2 / name
-						:op1 "Estonia"))
-				:ARG2 (c9 / chief
-					:mod (d / defense))))
-		:op2 (p2 / person
-			:ARG0-of (h2 / have-org-role-91
-				:ARG1 (c2 / country
-					:name (n3 / name
-						:op1 "Latvia"))
-				:ARG2 c9))
-		:op3 (p3 / person
-			:ARG0-of (h3 / have-org-role-91
-				:ARG1 (c3 / country
-					:name (n4 / name
-						:op1 "Lithuania"))
-				:ARG2 c9))
-		:op4 (p4 / person
-			:ARG0-of (h4 / have-org-role-91
-				:ARG1 (c4 / country
-					:name (n5 / name
-						:op1 "Germany"))
-				:ARG2 c9))
-		:op5 (p5 / person
-			:ARG0-of (h5 / have-org-role-91
-				:ARG1 (c5 / country
-					:name (n6 / name
-						:op1 "Italy"))
-				:ARG2 c9))
-		:op6 (p6 / person
-			:ARG0-of (h6 / have-org-role-91
-				:ARG1 (c6 / country
-					:name (n7 / name
-						:op1 "Spain"))
-				:ARG2 c9))
-		:op7 (p7 / person
-			:ARG0-of (h7 / have-org-role-91
-				:ARG1 (c7 / country
-					:name (n8 / name
-						:op1 "Slovakia"))
-				:ARG2 c9)))
-	:ARG1 (a / agree-01))
-
-# ::id PROXY_APW_ENG_20080514_1125.15 ::date 2013-07-19T12:46:41 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt In 2007 the Estonian Government was struck by cyber attacks . 
-(s / strike-01
-	:ARG0 (a / attack-01
-		:mod (c2 / cyber))
-	:ARG1 (g / government-organization
-		:ARG0-of (g2 / govern-01
-			:ARG1 (c / country
-				:name (n / name
-					:op1 "Estonia"))))
-	:time (d / date-entity
-		:year 2007))
-
-# ::id PROXY_APW_ENG_20080514_1125.17 ::date 2013-07-20T00:17:46 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The cyber attacks were unprecedented . 
-(p / precedent
-	:polarity -
-	:domain (a / attack-01
-		:mod (c / cyber)))
-
-# ::id PROXY_APW_ENG_20080514_1125.19 ::date 2013-07-20T00:23:44 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Many suspect the Kremlin of the cyber attacks . 
-(s / suspect-01
-	:ARG0 (m / many)
-	:ARG1 (g / government-organization
-		:name (n / name
-			:op1 "Kremlin"))
-	:ARG2 (a / attack-01
-		:mod (c / cyber)))
-
-# ::id PROXY_APW_ENG_20080514_1125.21 ::date 2013-07-20T00:37:27 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt NATO 's top commander in charge of military modernization U.S. Gen. James Mattis stated -- 
-(s / state-01
-	:ARG0 (p2 / person
-		:name (n2 / name
-			:op1 "James"
-			:op2 "Mattis")
-		:ARG0-of (h / have-org-role-91
-			:ARG1 (m / military
-				:name (n / name
-					:op1 "NATO"))
-			:ARG2 (c / commander
-				:mod (t / top))
-			:ARG3 (m2 / modernize-01
-				:ARG1 (m3 / military)))
-		:ARG0-of (h2 / have-org-role-91
-			:ARG2 (g / general
-				:mod (c2 / country
-					:name (n3 / name
-						:op1 "U.S."))))))
-
-# ::id PROXY_APW_ENG_20080514_1125.23 ::date 2013-07-20T00:46:19 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
-# ::snt NATO can not say that NATO will not defend the web that everybody needs . 
-(p / possible
-	:polarity -
-	:domain (s / say-01
-		:ARG0 (m / military
-			:name (n / name
-				:op1 "NATO"))
-		:ARG1 (d / defend-01
-			:polarity -
-			:ARG0 m
-			:ARG1 (w / web
-				:ARG1-of (n2 / need-01
-					:ARG0 (e / everybody))))))
-
-# ::id PROXY_APW_ENG_20080514_1125.25 ::date 2013-07-20T00:52:07 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Other NATO nations may join the project later . 
-(p / possible
-	:domain (j / join-02
-		:ARG0 (n2 / nation
-			:mod (o2 / other)
-			:mod (m2 / military
-				:name (n / name
-					:op1 "NATO")))
-		:ARG1 (p2 / project)
-		:time (l / late
-			:degree (m / more))))
-
-# ::id PROXY_APW_ENG_20080514_1125.27 ::date 2013-07-20T01:04:19 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
-# ::snt Cyber space essentially has no borders . 
-(h / have-03
-	:polarity -
-	:ARG0 (s / space
-		:mod (c / cyber))
-	:ARG1 (b / border)
-	:manner (e / essential))
-
-# ::id PROXY_APW_ENG_20080514_1125.29 ::date 2013-07-20T01:08:14 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
-# ::snt It is even more complicated in borderless cyber space where there is no smoking gun , fingerprints or footprints . 
-(c / complicate
-	:degree (m / more)
-	:mod (e / even)
-	:location (s / space
-		:mod (c2 / cyber)
-		:mod (b / border
-			:polarity -)
-		:location-of (a / and
-			:op1 (g / gun
-				:polarity -
-				:ARG0-of (s2 / smoke-01))
-			:op2 (f / fingerprint
-				:polarity -)
-			:op3 (f2 / footprint
-				:polarity -))))
-
-# ::id PROXY_APW_ENG_20080514_1125.31 ::date 2013-07-20T01:19:58 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Estonia is a Baltic nation . 
-(n2 / nation
-	:mod (s / sea
-		:name (n3 / name
-			:op1 "Baltic"))
-	:domain (c / country
-		:name (n / name
-			:op1 "Estonia")))
-
-# ::id PROXY_APW_ENG_20080515_0628.2 ::date 2013-07-20T01:23:24 ::snt-type country ::annotator SDL-AMR-09 ::preferred
-# ::snt Russian Federation -LRB- RU -RRB- ; China -LRB- CN -RRB- ; India -LRB- IN -RRB- ; Afghanistan -LRB- AF -RRB- 
-(a / and
-	:op1 (c / country
-		:name (n / name
-			:op1 "Russian"
-			:op2 "Federation"))
-	:op2 (c2 / country
-		:name (n2 / name
-			:op1 "China"))
-	:op3 (c3 / country
-		:name (n4 / name
-			:op1 "India"))
-	:op4 (c4 / country
-		:name (n6 / name
-			:op1 "Afghanistan")))
-
-# ::id PROXY_APW_ENG_20080515_0628.4 ::date 2013-07-20T01:26:33 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
-# ::snt Russia proposes cooperation with India and China to increase security around Afghanistan to block drug supplies . 
-(p / propose-01
-	:ARG0 (c / country
-		:name (n / name
-			:op1 "Russia"))
-	:ARG1 (c5 / cooperate-01
-		:ARG0 c
-		:ARG1 (a / and
-			:op1 (c2 / country
-				:name (n2 / name
-					:op1 "India"))
-			:op2 (c3 / country
-				:name (n3 / name
-					:op1 "China"))))
-	:purpose (i / increase-01
-		:ARG1 (s / security)
-		:location (a2 / around
-			:op1 (c4 / country
-				:name (n4 / name
-					:op1 "Afghanistan")))
-		:purpose (b / block-01
-			:ARG1 (s2 / supply-01
-				:ARG1 (d / drug)))))
-
-# ::id PROXY_APW_ENG_20080515_0628.6 ::date 2013-07-20T03:06:15 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt On 15 May 2008 the Government of Russia proposed cooperation with India and China to increase security around Afghanistan in order to block drug supplies . 
-(p / propose-01
-	:ARG0 (g / government-organization
-		:ARG0-of (g2 / govern-01
-			:ARG1 (c / country
-				:name (n / name
-					:op1 "Russia"))))
-	:ARG1 (c5 / cooperate-01
-		:ARG0 g
-		:ARG1 (a / and
-			:op1 (c2 / country
-				:name (n2 / name
-					:op1 "India"))
-			:op2 (c3 / country
-				:name (n3 / name
-					:op1 "China"))))
-	:time (d / date-entity
-		:month 5
-		:day 15
-		:year 2008)
-	:purpose (i / increase-01
-		:ARG1 (s / security)
-		:location (a2 / around
-			:op1 (c4 / country
-				:name (n4 / name
-					:op1 "Afghanistan")))
-		:purpose (b / block-01
-			:ARG1 (s2 / supply-01
-				:ARG1 (d2 / drug)))))
-
-# ::id PROXY_APW_ENG_20080515_0628.8 ::date 2013-07-20T03:36:31 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Lavrov 's intentions were not immediately clear since neither Russia nor India has a border with Afghanistan and China 's border with Afghanistan is only 76 kilometers -LRB- 45 miles -RRB- . 
-(c6 / clear-04
-	:polarity -
-	:ARG1 (i / intend-01
-		:ARG0 (p / person
-			:name (n / name
-				:op1 "Lavrov")))
-	:time (i2 / immediate)
-	:ARG1-of (c7 / cause-01
-		:ARG0 (a / and
-			:op1 (b4 / border-01
-				:polarity -
-				:ARG1 (a2 / and
-					:op1 (c / country
-						:name (n2 / name
-							:op1 "Russia"))
-					:op2 (c2 / country
-						:name (n3 / name
-							:op1 "India")))
-				:ARG2 (c5 / country
-					:name (n6 / name
-						:op1 "Afghanistan")))
-			:op2 (b3 / border-01
-				:ARG1 (c4 / country
-					:name (n5 / name
-						:op1 "China"))
-				:ARG2 c5
-				:mod (d / distance-quantity
-					:quant 76
-					:unit (k / kilometer)
-					:mod (o / only))))))
-
-# ::id PROXY_APW_ENG_20080515_0628.10 ::date 2013-07-20T03:48:24 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Afghanistan is 1 of the world 's major opium producers and supplies Western markets through transit countries such as Russia . 
-(a / and
-	:op1 (p / produce-01
-		:ARG0 (c / country
-			:name (n / name
-				:op1 "Afghanistan")
-			:ARG1-of (i / include-91
-				:ARG2 (w / world)))
-		:ARG1 (o / opium)
-		:mod (m / major))
-	:op2 (s / supply-01
-		:ARG0 c
-		:ARG1 (m2 / market
-			:location (w2 / world-region
-				:name (n3 / name
-					:op1 "West")))
-		:path (c3 / country
-			:ARG2-of (t / transit-01)
-			:example-of (c2 / country
-				:name (n2 / name
-					:op1 "Russia")))))
-
-# ::id PROXY_APW_ENG_20080515_0628.12 ::date 2013-07-20T04:27:59 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Officials in Afghanistan 's neighboring countries regularly announce large-scale arrests and seizures of narcotics made after illegal convoys cross the border . 
-(a / announce-01
-	:ARG0 (p / person
-		:ARG0-of (h / have-org-role-91
-			:ARG1 (c / country
-				:ARG1-of (n / neighbor-01
-					:ARG1 (c2 / country
-						:name (n2 / name
-							:op1 "Afghanistan"))))
-			:ARG2 (o / official)))
-	:ARG1 (a2 / and
-		:op1 (a3 / arrest-01
-			:degree (s / scale
-				:mod (l / large)))
-		:op2 (s2 / seize-01
-			:ARG1 (n3 / narcotic))
-		:ARG1-of (m / make-01
-			:time (a4 / after
-				:op1 (c3 / cross-02
-					:ARG0 (c4 / convoy
-						:mod (l2 / legal
-							:polarity -))
-					:ARG1 (b / border)))))
-	:manner (r / regular))
-
-# ::id PROXY_APW_ENG_20080515_0931.1 ::date 2013-07-20T04:36:58 ::snt-type date ::annotator SDL-AMR-09 ::preferred
-# ::snt 2008-05-15 
-(d / date-entity
-	:month 5
-	:day 15
-	:year 2008)
-
-# ::id PROXY_APW_ENG_20080515_0931.3 ::date 2013-07-20T04:39:02 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
-# ::snt Weapons ; military ; proliferation 
-(a / and
-	:op1 (w / weapon)
-	:op2 (m / military)
-	:op3 (p / proliferate-01))
-
-# ::id PROXY_APW_ENG_20080515_0931.5 ::date 2013-07-20T10:49:42 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Russian Federation President Dmitry Medvedev made a debut on May 15 , 2008 as commander in chief of the Russian Federation 's armed forces by touring a missile base and promising to provide the necessary funding for nuclear forces counter global threats . 
-(d2 / debut-01
-	:ARG1 (p / person
-		:name (n2 / name
-			:op1 "Dmitry"
-			:op2 "Medvedev")
-		:ARG0-of (h / have-org-role-91
-			:ARG1 (c / country
-				:name (n / name
-					:op1 "Russian"
-					:op2 "Federation"))
-			:ARG2 (p2 / president)))
-	:time (d / date-entity
-		:month 5
-		:day 15
-		:year 2008)
-	:manner (a2 / and
-		:op1 (t / tour-01
-			:ARG0 p
-			:ARG1 (b / base
-				:mod (m / missile)))
-		:op2 (p4 / promise-01
-			:ARG0 p
-			:ARG1 (p5 / provide-01
-				:ARG0 p
-				:ARG1 (f2 / fund-01
-					:ARG1-of (n3 / need-01
-						:purpose (c4 / counter-01
-							:ARG0 (f3 / force
-								:mod (n4 / nucleus))
-							:ARG1 (t2 / thing
-								:ARG1-of (t3 / threaten-01
-									:ARG2 (g / globe)))))))))
-	:prep-as (p3 / person
-		:ARG0-of (h3 / have-org-role-91
-			:ARG1 (f / force
-				:ARG1-of (a / arm-01)
-				:poss c)
-			:ARG2 (c5 / commander-in-chief))))
-
-# ::id PROXY_APW_ENG_20080515_0931.7 ::date 2013-07-20T11:06:11 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Dmitry Medvedev was impressed by the weapons and the level of training . 
-(i / impress-01
-	:ARG0 (a / and
-		:op1 (w / weapon)
-		:op2 (l / level
-			:mod (t / train-01)))
-	:ARG1 (p / person
-		:name (n / name
-			:op1 "Dmitry"
-			:op2 "Medvedev")))
-
-# ::id PROXY_APW_ENG_20080515_0931.9 ::date 2013-07-20T11:11:09 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Missiles from the base in teikovo took part in the Victory Day parade on May 9 , 2008 when Russia displayed the country 's military hardware on Red Square in Moscow for the first time since the Soviet collapse . 
-(p / participate-01
-	:ARG0 (m / missile
-		:source (b / base
-			:location (c4 / city
-				:name (n6 / name
-					:op1 "Teikovo"))))
-	:ARG1 (p2 / parade
-		:mod (e / event
-			:name (n / name
-				:op1 "Victory"
-				:op2 "Day")))
-	:time (d / date-entity
-		:month 5
-		:day 9
-		:year 2008)
-	:time (d2 / display-01
-		:ARG0 (c / country
-			:name (n2 / name
-				:op1 "Russia"))
-		:ARG1 (h / hardware
-			:mod (m2 / military)
-			:poss c)
-		:location (f / facility
-			:name (n3 / name
-				:op1 "Red"
-				:op2 "Square")
-			:location (c2 / city
-				:name (n4 / name
-					:op1 "Moscow")))
-		:ord (o / ordinal-entity
-			:value 1
-			:time (s / since
-				:op1 (c5 / collapse-01
-					:ARG1 (c3 / country
-						:name (n5 / name
-							:op1 "Soviet"
-							:op2 "Union")))))))
-
-# ::id PROXY_APW_ENG_20080515_0931.11 ::date 2013-07-20T12:57:12 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Dmitry Medvedev stated that the Russian Federation 's task for the next few years is to make sure that the Strategic Missile Forces receive the necessary funding to respond to modern threats . 
-(s / state-01
-	:ARG0 (p / person
-		:name (n / name
-			:op1 "Dmitry"
-			:op2 "Medvedev"))
-	:ARG1 (a / assure-01
-		:ARG0 c
-		:ARG1 m3
-		:ARG2 (r / receive-01
-			:ARG0 (m3 / military
-				:name (n3 / name
-					:op1 "Strategic"
-					:op2 "Missile"
-					:op3 "Forces"))
-			:ARG1 (f2 / fund-01
-				:ARG1-of (n5 / need-01
-					:purpose (r2 / respond-01
-						:ARG0 m3
-						:ARG1 (t3 / thing
-							:ARG1-of (t4 / threaten-01)
-							:mod (m2 / modern))))))
-		:mod (t2 / task
-			:poss (c / country
-				:name (n2 / name
-					:op1 "Russian"
-					:op2 "Federation"))
-			:duration (n6 / next
-				:quant (f / few
-					:op1 (t / temporal-quantity
-						:quant 1
-						:unit (y / year)))))))
-
-# ::id PROXY_APW_ENG_20080515_0931.13 ::date 2013-07-20T21:50:19 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Dmitry Medvedev promised to raise officers ' salaries . 
-(p2 / promise-01
-	:ARG0 (p / person
-		:name (n / name
-			:op1 "Dmitry"
-			:op2 "Medvedev"))
-	:ARG1 (r / raise-01
-		:ARG0 p
-		:ARG1 (s / salary
-			:poss (p3 / person
-				:ARG0-of (h / have-org-role-91
-					:ARG2 (o / officer))))))
-
-# ::id PROXY_APW_ENG_20080515_0931.15 ::date 2013-07-20T22:15:09 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Vladimir Putin was Dmitry Medvedev 's predecessor and mentor . 
-(a / and
-	:op1 (p3 / precede-01
-		:ARG0 (p / person
-			:name (n / name
-				:op1 "Vladimir"
-				:op2 "Putin"))
-		:ARG1 (p2 / person
-			:name (n2 / name
-				:op1 "Dmitry"
-				:op2 "Medvedev")))
-	:op2 (m / mentor-01
-		:ARG0 p
-		:ARG1 p2))
-
-# ::id PROXY_APW_ENG_20080515_0931.17 ::date 2013-07-20T22:23:51 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Teikovo is a small town in the Ivanovo region about 250 kilometers or 155 miles northeast of Moscow . 
-(t / town
-	:mod (s / small)
-	:location (p / province
-		:name (n / name
-			:op1 "Ivanovo"))
-	:location (r / relative-position
-		:op1 (c / city
-			:name (n2 / name
-				:op1 "Moscow"))
-		:direction (n3 / northeast)
-		:quant (a / about
-			:op1 (d / distance-quantity
-				:quant 250
-				:unit (k / kilometer))))
-	:domain (c2 / city
-		:name (n4 / name
-			:op1 "Teikovo")))
-
-# ::id PROXY_APW_ENG_20080515_0931.19 ::date 2013-07-20T23:26:28 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Vladimir Putin has threatened to point nuclear missiles at countries that take part in U.S. missile defense and opted out of a key Soviet-era arms control treaty . 
-(a / and
-	:op1 (t / threaten-01
-		:ARG0 (p / person
-			:name (n / name
-				:op1 "Vladimir"
-				:op2 "Putin"))
-		:ARG1 (p2 / point-01
-			:ARG0 p
-			:ARG1 (m / missile
-				:mod (n4 / nucleus))
-			:ARG2 (c3 / country
-				:ARG0-of (p3 / participate-01
-					:ARG1 (d / defend-01
-						:ARG2 (m2 / missile
-							:mod (c / country
-								:name (n2 / name
-									:op1 "U.S."))))))))
-	:op2 (o / opt-01
-		:ARG0 p
-		:ARG1 (o2 / out
-			:op1 (t2 / treaty
-				:topic (c4 / control-01
-					:ARG1 (a2 / arm-01))
-				:mod (k / key)
-				:time (e / era
-					:mod (c2 / country
-						:name (n3 / name
-							:op1 "Soviet"
-							:op2 "Union")))))))
-
-# ::id PROXY_APW_ENG_20080515_0931.21 ::date 2013-07-20T23:42:15 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The missiles are deployed in both silo-based and truck-mounted versions . 
-(d / deploy-01
-	:ARG1 (m / missile)
-	:ARG2 (a / and
-		:op1 (v / version
-			:ARG1-of (b / base-01
-				:location (s / silo)))
-		:op2 (v2 / version
-			:mod (m2 / mount-02
-				:location (t / truck)))))
-
-# ::id PROXY_APW_ENG_20080515_0931.23 ::date 2013-07-20T23:52:33 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Vladimir Putin and other officials have boasted about the Topol-M 's ability to penetrate any prospective missile defense . 
-(b / boast-01
-	:ARG0 (a / and
-		:op1 (p / person
-			:name (n / name
-				:op1 "Vladimir"
-				:op2 "Putin"))
-		:op2 (p3 / person
-			:ARG0-of (h / have-org-role-91
-				:ARG2 (o / official))
-			:mod (o2 / other)))
-	:ARG1 (c / capable-41
-		:ARG1 (p2 / product
-			:name (n2 / name
-				:op1 "Topol-M"))
-		:ARG2 (p4 / penetrate-01
-			:ARG0 p2
-			:ARG1 (d / defend-01
-				:ARG2 (m / missile)
-				:mod (p5 / prospective)
-				:mod (a2 / any)))))
-
-# ::id PROXY_APW_ENG_20080515_0931.25 ::date 2013-07-21T00:10:31 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Yuri solomonov stated that the missiles ' warhead and decoys closely resemble one another in flight , making it very difficult for a foe to select the real target from a multitude of false ones . 
-(s / state-01
-	:ARG0 (p / person
-		:name (n / name
-			:op1 "Yuri"
-			:op2 "Solomonov"))
-	:ARG1 (r / resemble-01
-		:ARG1 (w / warhead
-			:part-of (m2 / missile))
-		:ARG2 (d / decoy
-			:part-of m2)
-		:degree (c / close)
-		:time (f / fly-01)
-		:ARG0-of (m / make-02
-			:ARG1 (s2 / select-01
-				:ARG0 (f2 / foe)
-				:ARG1 (t / target
-					:mod (r2 / real))
-				:ARG2 (m4 / multiple
-					:op1 (t2 / target
-						:mod (f3 / false)))
-				:mod (d2 / difficult
-					:degree (v / very))))))
-
-# ::id PROXY_APW_ENG_20080515_0931.27 ::date 2013-07-21T00:50:42 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Large oil revenues in recent years have allowed the Government of the Russia Federation to buy weapons and fund the development of new missiles . 
-(a / allow-01
-	:ARG0 (r / revenue
-		:mod (o2 / oil)
-		:mod (l / large))
-	:ARG1 (a2 / and
-		:op1 (b / buy-01
-			:ARG0 (g / government-organization
-				:ARG0-of (g2 / govern-01
-					:ARG1 (c / country
-						:name (n / name
-							:op1 "Russia"
-							:op2 "Federation"))))
-			:ARG1 (w / weapon))
-		:op2 (f / fund-01
-			:ARG0 g
-			:ARG1 (d / develop-02
-				:ARG1 (m / missile
-					:mod (n2 / new)))))
-	:time (y / year
-		:mod (r2 / recency)))
-
-# ::id PROXY_APW_ENG_20080515_0931.29 ::date 2013-07-21T01:02:31 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The Navy of the Russian Federation is in poor shape . 
-(n3 / navy
-	:mod (c / country
-		:name (n2 / name
-			:op1 "Russian"
-			:op2 "Federation"))
-	:mod (s / shape
-		:mod (p / poverty)))
-
-# ::id PROXY_APW_ENG_20080515_0931.31 ::date 2013-07-21T01:08:20 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The Yuri dolgoruky is the first in a series of new nuclear submarines to be commissioned this year but the bulava nuclear-armed missile developed to equip the submarine has failed tests and the deployment prospects are uncertain . 
-(c3 / contrast-01
-	:ARG1 (c / commission-01
-		:ARG1 (p / product
-			:name (n / name
-				:op1 "Yuri"
-				:op2 "Dolgoruky")
-			:mod (f2 / first
-				:ARG1-of (i / include-91
-					:ARG2 (s / series
-						:mod (s2 / submarine
-							:mod (n2 / nucleus)
-							:mod (n3 / new))))))
-		:time (y / year
-			:mod (t / this)))
-	:ARG2 (a / and
-		:op1 (f / fail-01
-			:ARG0 (m2 / missile
-				:name (n4 / name
-					:op1 "Bulava")
-				:ARG1-of (d2 / develop-02
-					:purpose (e / equip-01
-						:ARG0 (m / missile)
-						:ARG1 (s3 / submarine)))
-				:ARG1-of (a2 / arm-01
-					:ARG2 (n5 / nucleus)))
-			:ARG1 (t2 / test-01))
-		:op2 (c2 / certain
-			:polarity -
-			:domain (p2 / prospect
-				:mod (d / deploy-01)))))
-
-# ::id PROXY_APW_ENG_20080710_1336.2 ::date 2013-07-18T06:27:58 ::snt-type country ::annotator SDL-AMR-09 ::preferred
-# ::snt Iran -LRB- IR -RRB- 
-(c / country
-	:name (n / name
-		:op1 "Iran"))
-
-# ::id PROXY_APW_ENG_20080710_1336.4 ::date 2013-07-18T06:30:32 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
-# ::snt Expert states that Iranian missile launch photo was doctored to show failed 4th missile launching . 
-(s / state-01
-	:ARG0 (p2 / person
-		:ARG1-of (e / expert-41))
-	:ARG1 (d / doctor-01
-		:ARG1 (p / photo
-			:mod (l / launch-01
-				:ARG1 (m / missile)
-				:location (c / country
-					:name (n / name
-						:op1 "Iran"))))
-		:purpose (s2 / show-01
-			:ARG1 (l2 / launch-01
-				:ARG1 m
-				:ord (o / ordinal-entity
-					:value 4)
-				:ARG1-of (f2 / fail-01)))))
-
-# ::id PROXY_APW_ENG_20080710_1336.6 ::date 2013-07-18T06:45:30 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The image was posted 20080709 on the Sepah news site , which is run by Iran 's Revolutionary Guards . 
-(p / post-01
-	:ARG1 (i / image)
-	:ARG2 (s / site
-		:mod (n3 / news)
-		:mod (o / organization
-			:name (n / name
-				:op1 "Sepah"))
-		:ARG1-of (r / run-01
-			:ARG0 (o2 / organization
-				:name (n2 / name
-					:op1 "Revolutionary"
-					:op2 "Guards")
-				:poss (c / country
-					:name (n4 / name
-						:op1 "Iran")))))
-	:time (d / date-entity
-		:day 9
-		:month 7
-		:year 2008))
-
-# ::id PROXY_APW_ENG_20080710_1336.8 ::date 2013-07-18T06:55:57 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt 20080710 the image with 4 launches was absent from Sepah 's main page but both images were in the archive . 
-(a / absent-01
-	:ARG1 (i / image
-		:prep-with (l / launch-01
-			:quant 4))
-	:ARG2 (p2 / page
-		:mod (m / main)
-		:mod (o / organization
-			:name (n2 / name
-				:op1 "Sepah")))
-	:time (d / date-entity
-		:day 10
-		:month 7
-		:year 2008)
-	:concession (i2 / image
-		:mod (b / both)
-		:prep-in (a2 / archive)))
-
-# ::id PROXY_APW_ENG_20080710_1336.10 ::date 2013-07-18T07:07:41 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Iranian officials did not immediately comment on the photos . 
-(c / comment-01
-	:polarity -
-	:ARG0 (p2 / person
-		:ARG0-of (h / have-org-role-91
-			:ARG1 (c2 / country
-				:name (n / name
-					:op1 "Iran"))
-			:ARG2 (o / official)))
-	:ARG1 (p / photo)
-	:time (i / immediate))
-
-# ::id PROXY_APW_ENG_20080710_1336.12 ::date 2013-07-18T09:11:13 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Iranian officials stated that the enhanced Shahab-3 missile has a range of 1250 miles and thus could reach Israel and the majority of the Middle East . 
-(s / state-01
-	:ARG0 (p / person
-		:ARG0-of (h2 / have-org-role-91
-			:ARG1 (c / country
-				:name (n / name
-					:op1 "Iran"))
-			:ARG2 (o / official)))
-	:ARG1 (h / have-03
-		:ARG0 (m2 / missile
-			:name (n5 / name
-				:op1 "Shahab-3")
-			:ARG1-of (e / enhance-01))
-		:ARG1 (r / range
-			:quant (d / distance-quantity
-				:quant 1250
-				:unit (m / mile))
-			:ARG0-of (c3 / cause-01
-				:ARG1 (p2 / possible
-					:domain (r2 / reach-01
-						:ARG0 m2
-						:ARG1 (a / and
-							:op1 (c2 / country
-								:name (n3 / name
-									:op1 "Israel"))
-							:op2 (w / world-region
-								:name (n4 / name
-									:op1 "Middle"
-									:op2 "East")
-								:mod (m3 / majority))))
-					:mod (t / thus))))))
-
-# ::id PROXY_APW_ENG_20080713_0588.1 ::date 2013-07-18T09:16:55 ::snt-type date ::annotator SDL-AMR-09 ::preferred
-# ::snt 2008-07-13 
-(d / date-entity
-	:day 13
-	:month 7
-	:year 2008)
-
-# ::id PROXY_APW_ENG_20080713_0588.3 ::date 2013-07-18T09:18:32 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
-# ::snt International ; weapons ; proliferation ; politics 
-(a / and
-	:op1 (i / international)
-	:op2 (w / weapon)
-	:op3 (p / proliferate-01)
-	:op4 (p2 / politics))
-
 # ::id PROXY_APW_ENG_20080713_0588.5 ::date 2013-07-18T09:23:12 ::snt-type body ::annotator SDL-AMR-09 ::preferred
 # ::snt On 080713 43 nations agreed to work toward zone free of weapons of mass destruction in Middle East . 
-(a / agree-01
-	:ARG0 (n2 / nation
-		:quant 43)
-	:ARG1 (w2 / work-01
-		:ARG0 n2
-		:ARG1 (z / zone
-			:location (w / world-region
-				:name (n / name
-					:op1 "Middle"
-					:op2 "East"))
-			:ARG1-of (f / free-01
-				:ARG2 (w3 / weapon
-					:ARG2-of (d2 / destroy-01
-						:degree (m / mass))))))
-	:time (d / date-entity
-		:day 13
-		:month 7
-		:year 2008))
+(a / agree-01 [4 = "agreed"]
+	:ARG0 (n2 / nation [3 = "nations"]
+		:quant 43 [2 = "43"])
+	:ARG1 (w2 / work-01 [6 = "work"]
+		:ARG0 n2 [3 = "nations"]
+		:ARG1 (z / zone [8 = "zone"]
+			:location (w / world-region [16 = "Middle"]
+				:name (n / name [16 = "Middle"]
+					:op1 "Middle" [16 = "Middle"]
+					:op2 "East" [17 = "East"]))
+			:ARG1-of (f / free-01 [9 = "free"]
+				:ARG2 (w3 / weapon [11 = "weapons"]
+					:ARG2-of (d2 / destroy-01 [14 = "destruction"]
+						:degree (m / mass [13 = "mass"]))))))
+	:time (d / date-entity [1 = "080713"]
+		:day 13 [1 = "080713"]
+		:month 7 [1 = "080713"]
+		:year 2008 [1 = "080713"]))
 
-# ::id PROXY_APW_ENG_20080713_0588.7 ::date 2013-07-18T09:27:33 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt A final declaration from a summit launching the Union for the Mediterranean states that the members of the Union for the Mediterranean States will pursue a mutually and effectively verifiable Middle East zone free of weapons of mass destruction . 
-(s2 / state-01
-	:ARG0 (d / declaration
-		:mod (f / final)
-		:source (s3 / summit
-			:ARG0-of (l2 / launch-01
-				:ARG1 (o / organization
-					:name (n / name
-						:op1 "Union"
-						:op2 "for"
-						:op3 "the"
-						:op4 "Mediterranean")))))
-	:ARG1 (p / pursue-01
-		:ARG0 (s / state
-			:ARG0-of (h / have-org-role-91
-				:ARG1 o
-				:ARG2 (m / member)))
-		:ARG1 (z / zone
-			:mod (p2 / possible
-				:domain (v / verify-01
-					:mod (m2 / mutual)
-					:mod (e / effective)))
-			:ARG1-of (f2 / free-01
-				:ARG2 (w / weapon
-					:ARG2-of (d2 / destroy-01
-						:degree (m3 / mass))))
-			:location (w2 / world-region
-				:name (n3 / name
-					:op1 "Middle"
-					:op2 "East")))))
+# ::id PROXY_APW_ENG_20080903_0510.19 ::date 2013-07-26T09:03:04 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt This ruling may hinder international efforts to stop the financing of terror groups including al-Qaida . 
+(p / possible [2 = "may"]
+	:domain (h / hinder-01 [3 = "hinder"]
+		:ARG0 (t3 / thing [1 = "ruling"]
+			:ARG1-of (r / rule-01 [1 = "ruling"])
+			:mod (t / this [0 = "This"]))
+		:ARG1 (e / effort [5 = "efforts"]
+			:mod (i / international [4 = "international"])
+			:purpose (s / stop-01 [7 = "stop"]
+				:ARG1 (f / finance-01 [9 = "financing"]
+					:ARG1 (g / group [12 = "groups"]
+						:mod (t2 / terror [11 = "terror"])
+						:ARG2-of (i2 / include-01 [13 = "including"]
+							:ARG1 (c / criminal-organization [14 = "al-Qaida"]
+								:name (n / name [14 = "al-Qaida"]
+									:op1 "al-Qaida" [14 = "al-Qaida"])))))))))
 
-# ::id PROXY_APW_ENG_20080713_0588.9 ::date 2013-07-18T09:35:47 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The Union for the Mediterranean States stated that the Union for the Mediterranean States member countries will consider practical steps to prevent the proliferation of weapons of mass destruction . 
-(s / state-01
-	:ARG0 (o / organization
-		:name (n / name
-			:op1 "Union"
-			:op2 "for"
-			:op3 "the"
-			:op4 "Mediterranean"))
-	:ARG1 (c / consider-02
-		:ARG0 (c2 / country
-			:ARG0-of (h / have-org-role-91
-				:ARG1 o
-				:ARG2 (m / member)))
-		:ARG1 (s2 / step-01
-			:mod (p / practical))
-		:ARG2 (p2 / prevent-01
-			:ARG1 (p3 / proliferate-01
-				:ARG0 (w / weapon
-					:ARG2-of (d / destroy-01
-						:degree (m2 / mass)))))))
+# ::id PROXY_APW_ENG_20080728_0937.8 ::date 2013-07-26T01:55:41 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Opium production in Afghanistan has increased since the U.S.-led invasion removed the Taliban regime in 2001 . 
+(i / increase-01 [5 = "increased"]
+	:ARG1 (p / produce-01 [1 = "production"]
+		:ARG1 (o / opium [0 = "Opium"])
+		:location (c4 / country [3 = "Afghanistan"]
+			:name (n4 / name [3 = "Afghanistan"]
+				:op1 "Afghanistan" [3 = "Afghanistan"])))
+	:time (s / since [6 = "since"]
+		:op1 (r / remove-01 [10 = "removed"]
+			:ARG0 (i2 / invade-01 [9 = "invasion"]
+				:ARG1-of (l / lead-02 [8 = "U.S.-led"]
+					:ARG0 (c5 / country [8 = "U.S.-led"]
+						:name (n5 / name [8 = "U.S.-led"]
+							:op1 "U.S." [8 = "U.S.-led"]))))
+			:ARG1 (r2 / regime [13 = "regime"]
+				:mod (c6 / criminal-organization [12 = "Taliban"]
+					:name (n6 / name [12 = "Taliban"]
+						:op1 "Taliban" [12 = "Taliban"])))
+			:time (d2 / date-entity [15 = "2001"]
+				:year 2001 [15 = "2001"]))))
 
-# ::id PROXY_APW_ENG_20080713_0588.11 ::date 2013-07-18T09:47:01 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Israel is widely believed to have a stockpile of nuclear weapons . 
-(b / believe-01
-	:ARG1 (c / country
-		:name (n / name
-			:op1 "Israel")
-		:ARG0-of (h / have-03
-			:ARG1 (s / stockpile-01
-				:ARG0 c
-				:ARG1 (w2 / weapon
-					:mod (n2 / nucleus)))))
-	:degree (w / wide))
+# ::id PROXY_LTW_ENG_20030814_0653.61 ::date 2013-08-07T13:20:11 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The nature of the Sun grisan 9 's cargo was unknown . 
+(k / know-01 [10 = "unknown"]
+	:polarity - [10 = "unknown"]
+	:ARG1 (n / nature [1 = "nature"]
+		:poss (c / cargo [8 = "cargo"]
+			:location (s / ship [4 = "Sun"]
+				:name (n2 / name [4 = "Sun"]
+					:op1 "Sun" [4 = "Sun"]
+					:op2 "Grisan" [5 = "grisan"]
+					:op3 "9" [6 = "9"])))))
 
-# ::id PROXY_APW_ENG_20080713_0588.13 ::date 2013-07-18T09:52:11 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Israel 's official stated nuclear weapons policy is called nuclear ambiguity . 
-(s2 / state-01
-	:ARG0 (o / official
-		:mod (c2 / country
-			:name (n2 / name
-				:op1 "Israel")))
-	:ARG1 (p / policy
-		:mod (w / weapon
-			:mod (n / nucleus)
-			:ARG1-of (c / call-01
-				:ARG2 (a / ambiguous
-					:mod (n3 / nucleus))))))
+# ::id PROXY_LTW_ENG_20070124_0098.14 ::date 2013-07-26T14:16:44 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The test raised concern in the United States . 
+(r / raise-01 [2 = "raised"]
+	:ARG0 (t / test [1 = "test"])
+	:ARG1 (c2 / concern-01 [3 = "concern"]
+		:location (c / country [6 = "United"]
+			:name (n / name [6 = "United"]
+				:op1 "United" [6 = "United"]
+				:op2 "States" [7 = "States"]))))
 
-# ::id PROXY_APW_ENG_20080713_0588.15 ::date 2013-07-18T09:59:47 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The United States and the allies of the United States believe Iran is pursuing nuclear arms . 
-(b / believe-01
-	:ARG0 (a / and
-		:op1 (c / country
-			:name (n / name
-				:op1 "United"
-				:op2 "States"))
-		:op2 (c2 / country
-			:ARG1-of (a4 / ally-01
-				:ARG2 c)))
-	:ARG1 (p / pursue-01
-		:ARG0 (c3 / country
-			:name (n3 / name
-				:op1 "Iran"))
-		:ARG1 (a3 / arm
-			:mod (n4 / nucleus))))
+# ::id PROXY_LTW_ENG_20070124_0098.20 ::date 2013-07-26T15:06:38 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Liu declined to address questions on this danger . 
+(d / decline-02 [1 = "declined"]
+	:ARG0 (p / person [0 = "Liu"]
+		:name (n / name [0 = "Liu"]
+			:op1 "Liu" [0 = "Liu"]))
+	:ARG1 (a / address-02 [3 = "address"]
+		:ARG0 p [0 = "Liu"]
+		:ARG1 (q / question-01 [4 = "questions"]
+			:ARG1 (d2 / danger [7 = "danger"]
+				:mod (t / this [6 = "this"])))))
 
-# ::id PROXY_APW_ENG_20080713_0588.17 ::date 2013-07-18T10:03:21 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The Iranian government has defied U.N. Security Council demands that Iran suspends the enrichment of uranium . 
-(d / defy-01
-	:ARG0 (g / government-organization
-		:ARG0-of (g2 / govern-01
-			:ARG1 (c / country
-				:name (n / name
-					:op1 "Iran"))))
-	:ARG1 (d2 / demand-01
-		:ARG0 (o / organization
-			:name (n2 / name
-				:op1 "U.N."
-				:op2 "Security"
-				:op3 "Council"))
-		:ARG1 (s / suspend-01
-			:ARG0 c
-			:ARG1 (e / enrich-01
-				:ARG1 (u / uranium)))))
+# ::id PROXY_LTW_ENG_20070609_0091.43 ::date 2013-07-30T08:52:13 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt On June 7 , 2007 there were three grenade attacks on two police stations and an army barracks in the southern state of Guerrero . 
+(a2 / attack-01 [9 = "attacks"]
+	:ARG1 (a4 / and [14 = "and"]
+		:op1 (s / station [13 = "stations"]
+			:quant 2 [11 = "two"]
+			:mod (p2 / police [12 = "police"]))
+		:op2 (b / barrack [17 = "barracks"]
+			:mod (a3 / army [16 = "army"])
+			:location (s2 / state [23 = "Guerrero"]
+				:name (n / name [23 = "Guerrero"]
+					:op1 "Guerrero" [23 = "Guerrero"])
+				:mod (s3 / south [20 = "southern"]))))
+	:quant 3 [7 = "three"]
+	:instrument (g2 / grenade [8 = "grenade"])
+	:time (d / date-entity [1 = "June"]
+		:day 7 [2 = "7"]
+		:month 6 [1 = "June"]
+		:year 2007 [4 = "2007"]))
 
-# ::id PROXY_APW_ENG_20080717_0509.2 ::date 2013-07-18T10:05:26 ::snt-type country ::annotator SDL-AMR-09 ::preferred
-# ::snt France -LRB- FR -RRB- ; Russian Federation -LRB- RU -RRB- ; Austria -LRB- AT -RRB- 
-(a / and
-	:op1 (c / country
-		:name (n / name
-			:op1 "France"))
-	:op2 (c2 / country
-		:name (n3 / name
-			:op1 "Russian"
-			:op2 "Federation"))
-	:op3 (c3 / country
-		:name (n4 / name
-			:op1 "Austria")))
-
-# ::id PROXY_APW_ENG_20080717_0509.4 ::date 2013-07-18T10:06:43 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
-# ::snt Austrian French Foreign Minister Bernard Kouchner told members of the Organization for Security and Cooperation in Europe that a European arms control treaty limiting the number of weapons that can be deployed west of the Ural Mountains must be maintained . 
-(t / tell-01
-	:ARG0 (p2 / person
-		:name (n / name
-			:op1 "Bernard"
-			:op2 "Kouchner")
-		:ARG0-of (h / have-org-role-91
-			:ARG1 (a2 / and
-				:op1 (c2 / country
-					:name (n5 / name
-						:op1 "Austria"))
-				:op2 (c3 / country
-					:name (n6 / name
-						:op1 "France")))
-			:ARG2 (m2 / minister
-				:mod (f / foreign))))
-	:ARG1 (o2 / obligate-01
-		:ARG2 (m4 / maintain-01
-			:ARG1 (t2 / treaty
-				:ARG0-of (c4 / control-01
-					:ARG1 (a / arm))
-				:mod (c / continent
-					:name (n3 / name
-						:op1 "Europe"))
-				:ARG0-of (l / limit-01
-					:ARG1 (n7 / number-01
-						:ARG1 (w / weapon
-							:ARG1-of (d2 / deploy-01
-								:location (r / relative-position
-									:op1 (m / mountain
-										:name (n4 / name
-											:op1 "Ural"
-											:op2 "Mountains"))
-									:direction (w2 / west))
-								:mod (p / possible))))))))
-	:ARG2 (p3 / person
-		:ARG0-of (h2 / have-org-role-91
-			:ARG1 (o / organization
-				:name (n2 / name
-					:op1 "Organization"
-					:op2 "for"
-					:op3 "Security"
-					:op4 "and"
-					:op5 "Cooperation"
-					:op6 "in"
-					:op7 "Europe"))
-			:ARG2 (m3 / member))))
-
-# ::id PROXY_APW_ENG_20080717_0509.6 ::date 2013-07-19T07:42:38 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
-# ::snt A key European arms control treaty must be maintained . 
-(o / obligate-01
-	:ARG2 (m / maintain-01
-		:ARG1 (t / treaty
-			:ARG0-of (c2 / control-01
-				:ARG1 (a / arm))
-			:mod (k / key)
-			:mod (c / continent
-				:name (n / name
-					:op1 "Europe")))))
+# ::id PROXY_LTW_ENG_20070207_0122.45 ::date 2013-08-01T13:43:04 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Basrawi is a prominent activist who helped draft petitions addressed to the Government during a vibrant period of political activism before the 2004 arrests 
+(a / activist [4 = "activist"]
+	:domain (p / person [0 = "Basrawi"]
+		:name (n / name [0 = "Basrawi"]
+			:op1 "Basrawi" [0 = "Basrawi"]))
+	:mod (p2 / prominent [3 = "prominent"])
+	:ARG0-of (h / help-01 [6 = "helped"]
+		:ARG1 (d / draft-01 [7 = "draft"]
+			:ARG1 (p3 / petition [8 = "petitions"])
+			:ARG1-of (a2 / address-01 [9 = "addressed"]
+				:ARG2 (g / government-organization [12 = "Government"]
+					:ARG0-of (g2 / govern-01 [12 = "Government"]))))
+		:time (p4 / period [16 = "period"]
+			:mod (v / vibrant [15 = "vibrant"])
+			:time-of (a3 / activism [19 = "activism"]
+				:mod (p5 / politics [18 = "political"]))
+			:time (b / before [20 = "before"]
+				:op1 (a4 / arrest-01 [23 = "arrests"]
+					:time (d3 / date-entity [22 = "2004"]
+						:year 2004 [22 = "2004"]))))))
 
 # ::id PROXY_APW_ENG_20080717_0509.8 ::date 2013-07-19T07:47:34 ::snt-type body ::annotator SDL-AMR-09 ::preferred
 # ::snt The arms control treaty limits the number of conventional weapons that can be deployed west of the Ural Mountains . 
-(l / limit-01
-	:ARG0 (t / treaty
-		:ARG0-of (c / control-01
-			:ARG1 (a / arm)))
-	:ARG1 (n2 / number-01
-		:ARG1 (w / weapon
-			:mod (c2 / conventional)
-			:ARG1-of (d2 / deploy-01
-				:mod (p2 / possible)
-				:location (r / relative-position
-					:op1 (m / mountain
-						:name (n / name
-							:op1 "Ural"
-							:op2 "Mountains"))
-					:direction (w2 / west))))))
+(l / limit-01 [4 = "limits"]
+	:ARG0 (t / treaty [3 = "treaty"]
+		:ARG0-of (c / control-01 [2 = "control"]
+			:ARG1 (a / arm [1 = "arms"])))
+	:ARG1 (n2 / number-01 [6 = "number"]
+		:ARG1 (w / weapon [9 = "weapons"]
+			:mod (c2 / conventional [8 = "conventional"])
+			:ARG1-of (d2 / deploy-01 [13 = "deployed"]
+				:mod (p2 / possible [11 = "can"])
+				:location (r / relative-position [15 = "of"]
+					:op1 (m / mountain [17 = "Ural"]
+						:name (n / name [17 = "Ural"]
+							:op1 "Ural" [17 = "Ural"]
+							:op2 "Mountains" [18 = "Mountains"]))
+					:direction (w2 / west [14 = "west"]))))))
 
-# ::id PROXY_APW_ENG_20080717_0509.10 ::date 2013-07-19T07:58:12 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Russia suspended participation in the arms control treaty late last year because NATO countries had not ratified a revised version of the Treaty . 
-(s / suspend-01
-	:ARG0 (c / country
-		:name (n / name
-			:op1 "Russia"))
-	:ARG1 (p / participate-01
-		:ARG0 c
-		:ARG1 (t / treaty
-			:ARG0-of (c2 / control-01
-				:ARG1 (a / arm))))
-	:time (y / year
-		:mod (l2 / last)
-		:mod (l3 / late))
-	:ARG1-of (c3 / cause-01
-		:ARG0 (r / ratify-01
-			:polarity -
-			:ARG0 (c4 / country
-				:mod (m / military
-					:name (n2 / name
-						:op1 "NATO")))
-			:ARG1 (t2 / treaty
-				:mod (v / version
-					:ARG1-of (r2 / revise-01))))))
+# ::id PROXY_CNA_ENG_20080216_0006.1 ::date 2013-07-28T13:26:36 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2008-02-15 
+(d / date-entity [0 = "2008-02-15"]
+	:year 2008 [0 = "2008-02-15"]
+	:month 2 [0 = "2008-02-15"]
+	:day 15 [0 = "2008-02-15"])
 
-# ::id PROXY_APW_ENG_20080717_0594.1 ::date 2013-07-19T08:11:48 ::snt-type date ::annotator SDL-AMR-09 ::preferred
-# ::snt 2008-07-17 
-(d / date-entity
-	:day 17
-	:month 7
-	:year 2008)
+# ::id PROXY_APW_ENG_20080514_1125.15 ::date 2013-07-19T12:46:41 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt In 2007 the Estonian Government was struck by cyber attacks . 
+(s / strike-01 [6 = "struck"]
+	:ARG0 (a / attack-01 [9 = "attacks"]
+		:mod (c2 / cyber [8 = "cyber"]))
+	:ARG1 (g / government-organization [4 = "Government"]
+		:ARG0-of (g2 / govern-01 [4 = "Government"]
+			:ARG1 (c / country [3 = "Estonian"]
+				:name (n / name [3 = "Estonian"]
+					:op1 "Estonia" [3 = "Estonian"]))))
+	:time (d / date-entity [1 = "2007"]
+		:year 2007 [1 = "2007"]))
 
-# ::id PROXY_APW_ENG_20080717_0594.3 ::date 2013-07-19T08:13:05 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
-# ::snt International ; crime ; proliferation 
-(a / and
-	:op1 (i / international)
-	:op2 (c / crime)
-	:op3 (p / proliferate-01))
+# ::id PROXY_LTW_ENG_20070207_0122.34 ::date 2013-08-01T02:59:23 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Faleh and the two others refused to sign and demanded legal representation and a public trial . 
+(a / and [8 = "and"]
+	:op1 (r / refuse-01 [5 = "refused"]
+		:ARG0 (a2 / and [1 = "and"]
+			:op1 (p2 / person [0 = "Faleh"]
+				:name (n2 / name [0 = "Faleh"]
+					:op1 "Faleh" [0 = "Faleh"]))
+			:op2 (p / person [4 = "others"]
+				:quant 2 [3 = "two"]
+				:mod (o / other [4 = "others"])))
+		:ARG1 (s / sign-01 [7 = "sign"]
+			:ARG0 a2 [1 = "and"]))
+	:op2 (d / demand-01 [9 = "demanded"]
+		:ARG0 a2 [1 = "and"]
+		:ARG1 (a3 / and [12 = "and"]
+			:op1 (r2 / represent-01 [11 = "representation"]
+				:ARG1 a2 [1 = "and"]
+				:manner (l / law [10 = "legal"]))
+			:op2 (t / try-02 [15 = "trial"]
+				:mod (p3 / public [14 = "public"])))))
 
-# ::id PROXY_APW_ENG_20080717_0594.5 ::date 2013-07-19T08:20:15 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
-# ::snt Godzhayev could be sentenced to 7 years in prison if convicted . 
-(p / possible
-	:domain (s / sentence-01
-		:ARG1 (p2 / person
-			:name (n / name
-				:op1 "Godzhayev"))
-		:ARG2 (t / temporal-quantity
-			:quant 7
-			:unit (y / year)
-			:location (p3 / prison))
-		:condition (c / convict-01
-			:ARG1 p2)))
+# ::id PROXY_APW_ENG_20080514_1125.26 ::date 2013-07-20T00:55:59 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt At a news conference at the research center Estonian Defense Minister Jaak Aaviksoo stated that -- 
+(s / state-01 [13 = "stated"]
+	:ARG0 (p2 / person [11 = "Jaak"]
+		:name (n3 / name [11 = "Jaak"]
+			:op1 "Jaak" [11 = "Jaak"]
+			:op2 "Aaviksoo" [12 = "Aaviksoo"])
+		:ARG0-of (h / have-org-role-91 [10 = "Minister"]
+			:ARG1 (c3 / country [8 = "Estonian"]
+				:name (n / name [8 = "Estonian"]
+					:op1 "Estonia" [8 = "Estonian"]))
+			:ARG2 (m / minister [10 = "Minister"]
+				:mod (d / defense [9 = "Defense"]))))
+	:time (c / conference [3 = "conference"]
+		:mod (n2 / news [2 = "news"])
+		:location (c2 / center [7 = "center"]
+			:mod (r / research-01 [6 = "research"]))))
 
-# ::id PROXY_APW_ENG_20080717_0594.7 ::date 2013-07-19T08:30:08 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The Prosecutor General 's Office said in a statement -- 
-(s / state-01
-	:ARG0 (o / office
-		:poss (p / person
-			:ARG0-of (h / have-org-role-91
-				:ARG3 (p2 / prosecute-01
-					:mod (g / general))))))
+# ::id PROXY_APW_ENG_20080514_1125.1 ::date 2013-07-18T10:50:09 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2008-05-14 
+(d / date-entity [0 = "2008-05-14"]
+	:month 5 [0 = "2008-05-14"]
+	:day 14 [0 = "2008-05-14"]
+	:year 2008 [0 = "2008-05-14"])
 
-# ::id PROXY_APW_ENG_20080717_0594.9 ::date 2013-07-19T08:35:15 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The metal in question is tantalum . 
-(t / tantalum
-	:domain (m / metal
-		:ARG1-of (q / question-01)))
+# ::id PROXY_CNA_ENG_20070304_0025.3 ::date 2013-08-07T15:45:34 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
+# ::snt International ; military ; economy ; weapons 
+(a / and [1 = ";"]
+	:op1 (i / international [0 = "International"])
+	:op2 (m / military [2 = "military"])
+	:op3 (e / economy [4 = "economy"])
+	:op4 (w / weapon [6 = "weapons"]))
 
-# ::id PROXY_APW_ENG_20080717_0594.11 ::date 2013-07-19T08:42:56 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Tantalum powder is a super-grade chemical and can be used in the manufacture of mobile phones , personal computers , motor vehicles and electronics goods . 
-(c / chemical
-	:mod (g / grade
-		:degree (s / super))
-	:domain (p / powder
-		:mod (t / tantalum
-			:mod (p2 / possible
-				:domain (u / use-01
-					:ARG1 p
-					:ARG2 (m / manufacture-01
-						:ARG1 (a / and
-							:op1 (p3 / phone
-								:mod (m2 / mobile))
-							:op2 (c2 / computer
-								:mod (p4 / personal))
-							:op3 (v / vehicle
-								:mod (m3 / motor))
-							:op4 (g2 / good
-								:mod (e / electronic)))
-						:ARG2 p))))))
+# ::id PROXY_CNA_ENG_20080408_0041.10 ::date 2013-07-28T18:40:54 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Investment Commission 's Executive Secretary Fan Liang-Tung stated the investment procedure aims to ensure Taiwan 's investments in China will not harm Taiwan 's industries and economy such as by leaking key technologies to the mainland . 
+(s / state-01 [8 = "stated"]
+	:ARG0 (p2 / person [6 = "Fan"]
+		:name (n / name [6 = "Fan"]
+			:op1 "Fan" [6 = "Fan"]
+			:op2 "Liang-Tung" [7 = "Liang-Tung"])
+		:ARG0-of (h2 / have-org-role-91 [5 = "Secretary"]
+			:ARG1 (g / government-organization [1 = "Investment"]
+				:name (n2 / name [1 = "Investment"]
+					:op1 "Investment" [1 = "Investment"]
+					:op2 "Commission" [2 = "Commission"]))
+			:ARG2 (s2 / secretary [5 = "Secretary"]
+				:mod (e / executive [4 = "Executive"]))))
+	:ARG1 (a / aim-01 [12 = "aims"]
+		:ARG0 (p / procedure [11 = "procedure"]
+			:mod (i / invest-01 [10 = "investment"]))
+		:ARG1 (e2 / ensure-01 [14 = "ensure"]
+			:ARG1 (h / harm-01 [22 = "harm"]
+				:polarity - [21 = "not"]
+				:ARG0 (t / thing [17 = "investments"]
+					:ARG1-of (i2 / invest-01 [17 = "investments"]
+						:ARG0 (c / country [15 = "Taiwan"]
+							:name (n3 / name [15 = "Taiwan"]
+								:op1 "Taiwan" [15 = "Taiwan"]))
+						:ARG2 (c2 / country [19 = "China"]
+							:name (n4 / name [19 = "China"]
+								:op1 "China" [19 = "China"]))))
+				:ARG1 (a2 / and [26 = "and"]
+					:op1 (i3 / industry [25 = "industries"]
+						:poss c [23 = "Taiwan"])
+					:op2 (e3 / economy [27 = "economy"]
+						:poss c [23 = "Taiwan"]))
+				:example (l / leak-01 [31 = "leaking"]
+					:ARG1 (t2 / technology [33 = "technologies"]
+						:mod (k / key [32 = "key"]))
+					:beneficiary (m / mainland [36 = "mainland"]))))))
 
-# ::id PROXY_APW_ENG_20080717_0594.13 ::date 2013-07-19T08:52:18 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Godzhayev was detained after customs officials checked the shipment in a container on a boat due to leave for Iran . 
-(d / detain-01
-	:ARG1 (p / person
-		:name (n2 / name
-			:op1 "Godzhayev"))
-	:time (a / after
-		:op1 (c2 / check-01
-			:ARG0 (p2 / person
-				:ARG0-of (h / have-org-role-91
-					:ARG1 (c3 / customs)
-					:ARG2 (o / official)))
-			:ARG1 (s / shipment
-				:location (c4 / container
-					:location (b / boat
-						:mod (d2 / due
-							:prep-to (l / leave-04
-								:ARG0 b
-								:ARG2 (c / country
-									:name (n / name
-										:op1 "Iran"))))))))))
+# ::id PROXY_APW_ENG_20080514_1125.8 ::date 2013-07-19T11:54:59 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The center will be operational in August 2008 . 
+(o / operate-01 [4 = "operational"]
+	:ARG0 (c / center [1 = "center"])
+	:time (d / date-entity [6 = "August"]
+		:month 8 [6 = "August"]
+		:year 2008 [7 = "2008"]))
 
-# ::id PROXY_APW_ENG_20080717_0594.15 ::date 2013-07-19T09:14:42 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Godzhayev could be sentenced to 7 years in prison if convicted . 
-(p / possible
-	:domain (s / sentence-01
-		:ARG1 (p2 / person
-			:name (n / name
-				:op1 "Godzhayev"))
-		:ARG2 (t / temporal-quantity
-			:quant 7
-			:unit (y / year)
-			:location (p3 / prison))
-		:condition (c / convict-01
-			:ARG1 p2)))
+# ::id PROXY_LTW_ENG_20070207_0122.44 ::date 2013-08-01T13:37:33 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Al-Rushoodi joined the defense team of three activists still behind bars . 
+(j / join-01 [1 = "joined"]
+	:ARG0 (p / person [0 = "Al-Rushoodi"]
+		:name (n2 / name [0 = "Al-Rushoodi"]
+			:op1 "Al-Rushoodi" [0 = "Al-Rushoodi"]))
+	:ARG1 (t / team [4 = "team"]
+		:ARG0-of (d / defend-01 [3 = "defense"]
+			:ARG1 (a2 / activist [7 = "activists"]
+				:quant 3 [6 = "three"]
+				:ARG1-of (b3 / be-located-at-91 [9 = "behind"]
+					:ARG2 (b / behind [9 = "behind"]
+						:op1 (b2 / bar [10 = "bars"]))
+					:time (s / still [8 = "still"]))))))
 
-# ::id PROXY_APW_ENG_20080717_0594.17 ::date 2013-07-19T09:17:51 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Godzhayev and Godzhayev 's lawyers were not immediately available to comment . 
-(a / available
-	:polarity -
-	:prep-to (c / comment-01)
-	:mod (i / immediate)
-	:domain (a2 / and
-		:op1 (p3 / person
-			:name (n3 / name
-				:op1 "Godzhayev"))
-		:op2 (l / lawyer
-			:mod p3)))
+# ::id PROXY_APW_ENG_20080717_0594.10 ::date 2013-07-19T08:37:01 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Tantalum can be used in the production of chemical processing equipment , nuclear reactors and missile parts and is subject to export restrictions under Russian law . 
+(p / possible [1 = "can"]
+	:domain (u / use-01 [3 = "used"]
+		:ARG1 (t / tantalum [0 = "Tantalum"]
+			:ARG1-of (s / subject-01 [19 = "subject"]
+				:ARG2 (r2 / restrict-01 [22 = "restrictions"]
+					:ARG1 (e2 / export-01 [21 = "export"]
+						:ARG1 t [0 = "Tantalum"])
+					:prep-under (l / law [25 = "law"]
+						:mod (c / country [24 = "Russian"]
+							:name (n / name [24 = "Russian"]
+								:op1 "Russia" [24 = "Russian"]))))))
+		:ARG2 (p2 / produce-01 [6 = "production"]
+			:ARG1 (a / and [11 = ","]
+				:op1 (e / equipment [10 = "equipment"]
+					:ARG0-of (p3 / process-01 [9 = "processing"]
+						:ARG1 (c2 / chemical [8 = "chemical"])))
+				:op2 (r / reactor [13 = "reactors"]
+					:mod (n2 / nucleus [12 = "nuclear"]))
+				:op3 (p4 / part [16 = "parts"]
+					:mod (m / missile [15 = "missile"])))
+			:ARG2 t [0 = "Tantalum"])))
 
-# ::id PROXY_APW_ENG_20080717_0594.19 ::date 2013-07-19T09:27:38 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The Russian government has stated there is no evidence proving claims by the U.S. and other Western countries that the Iranian government is seeking to develop nuclear weapons . 
-(s / state-01
-	:ARG0 (g / government-organization
-		:ARG0-of (g2 / govern-01
-			:ARG1 (c / country
-				:name (n / name
-					:op1 "Russia"))))
-	:ARG1 (e / evidence
-		:polarity -
-		:ARG0-of (p / prove-01
-			:ARG1 (c4 / claim-01
-				:ARG0 (a / and
-					:op1 (c2 / country
-						:name (n2 / name
-							:op1 "U.S."))
-					:op2 (c5 / country
-						:mod (o / other)
-						:location (w3 / world-region
-							:name (n5 / name
-								:op1 "West"))))
-				:ARG1 (s2 / seek-01
-					:ARG0 (g3 / government-organization
-						:ARG0-of (g4 / govern-01
-							:ARG1 (c3 / country
-								:name (n3 / name
-									:op1 "Iran"))))
-					:ARG1 (d / develop-02
-						:ARG0 g3
-						:ARG1 (w2 / weapon
-							:mod (n4 / nucleus))))))))
+# ::id PROXY_APW_ENG_20080926_1065.7 ::date 2013-07-27T07:22:14 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt President Dmitry Medvedev stated that the Russian Federation must make the modernization of the military a priority in light of the recent war with Georgia . 
+(c2 / cause-01 [18 = "light"]
+	:ARG0 (w / war-01 [22 = "war"]
+		:ARG1 (c3 / country [24 = "Georgia"]
+			:name (n3 / name [24 = "Georgia"]
+				:op1 "Georgia" [24 = "Georgia"]))
+		:time (r / recent [21 = "recent"]))
+	:ARG1 (s / state-01 [3 = "stated"]
+		:ARG0 (p / person [1 = "Dmitry"]
+			:name (n / name [1 = "Dmitry"]
+				:op1 "Dmitry" [1 = "Dmitry"]
+				:op2 "Medvedev" [2 = "Medvedev"])
+			:ARG0-of (h / have-org-role-91 [0 = "President"]
+				:ARG2 (p3 / president [0 = "President"])))
+		:ARG1 (o / obligate-01 [8 = "must"]
+			:ARG2 (p2 / prioritize-01 [16 = "priority"]
+				:ARG0 (c / country [6 = "Russian"]
+					:name (n2 / name [6 = "Russian"]
+						:op1 "Russian" [6 = "Russian"]
+						:op2 "Federation" [7 = "Federation"]))
+				:ARG1 (m / modernize-01 [11 = "modernization"]
+					:ARG1 (m2 / military [14 = "military"]))))))
 
-# ::id PROXY_APW_ENG_20080717_0594.21 ::date 2013-07-19T09:36:31 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The Russian government has also questioned U.S. assessments of the potential threat from Iranian missiles . 
-(q / question-01
-	:ARG0 (g / government-organization
-		:ARG0-of (g2 / govern-01
-			:ARG1 (c / country
-				:name (n / name
-					:op1 "Russia"))))
-	:ARG1 (a2 / assess-01
-		:ARG0 (c2 / country
-			:name (n2 / name
-				:op1 "U.S."))
-		:ARG1 (t / threaten-01
-			:ARG1 (m / missile
-				:mod (c3 / country
-					:name (n3 / name
-						:op1 "Iran")))
-			:mod (p / potential)))
-	:mod (a / also))
-
-# ::id PROXY_APW_ENG_20080728_0937.1 ::date 2013-07-25T12:23:44 ::snt-type date ::annotator SDL-AMR-09 ::preferred
-# ::snt 2008-07-28 
-(d2 / date-entity
-	:day 28
-	:month 7
-	:year 2008)
-
-# ::id PROXY_APW_ENG_20080728_0937.3 ::date 2013-07-25T12:31:11 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
-# ::snt Narcotics ; international 
-(a / and
-	:op1 (n / narcotics)
-	:op2 (i / international))
-
-# ::id PROXY_APW_ENG_20080728_0937.5 ::date 2013-07-25T13:05:24 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
-# ::snt The U.N. representative requested the international community share more information on known smugglers of the chemicals . 
-(r / request-01
-	:ARG0 (p / person
-		:ARG0-of (r2 / represent-01
-			:ARG1 (o2 / organization
-				:name (n2 / name
-					:op1 "U.N."))))
-	:ARG1 (s / share-01
-		:ARG0 (c / community
-			:mod (i / international))
-		:ARG1 (i2 / information
-			:mod (m / more)
-			:topic (p2 / person
-				:ARG0-of (s2 / smuggle-01
-					:ARG1 (c2 / chemical))
-				:ARG1-of (k / know-01)))))
-
-# ::id PROXY_APW_ENG_20080728_0937.7 ::date 2013-07-25T14:20:08 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Afghanistan produces more than 90 percent of the world 's opium . 
-(p2 / produce-01
-	:ARG0 (c2 / country
-		:name (n2 / name
-			:op1 "Afghanistan"))
-	:ARG1 (m / more-than
-		:op1 (o / opium
-			:quant (p / percentage-entity
-				:value 90)
-			:poss (w / world))))
-
-# ::id PROXY_APW_ENG_20080728_0937.9 ::date 2013-07-26T02:10:57 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Officials in the American-backed government and Taliban militants are believed to profit from the illicit trade . 
-(b / believe-01
-	:ARG1 (p / profit-01
-		:ARG0 (a / and
-			:op1 (p4 / person
-				:ARG0-of (h / have-org-role-91
-					:ARG1 (g / government-organization
-						:ARG0-of (g2 / govern-01)
-						:ARG1-of (b2 / back-01
-							:ARG0 (c3 / country
-								:name (n3 / name
-									:op1 "America"))))
-					:ARG2 (o / official)))
-			:op2 (p2 / person
-				:ARG0-of (h2 / have-org-role-91
-					:ARG1 (c4 / criminal-organization
-						:name (n4 / name
-							:op1 "Taliban"))
-					:ARG2 (m / militant))))
-		:ARG1 (t / trade-01
-			:mod (l / licit
-				:polarity -))))
-
-# ::id PROXY_APW_ENG_20080728_0937.11 ::date 2013-07-26T02:36:17 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Afghanistan 's representative for the U.N. Office on Drugs and Crime Christina Oguz stated the conversion of opium resin into heroin is increasingly being done inside Afghanistan mostly at laboratories in the border regions in the insurgency-plagued South and the East . 
-(s / state-01
-	:ARG0 (p / person
-		:name (n6 / name
-			:op1 "Christina"
-			:op2 "Oguz")
-		:ARG0-of (r / represent-01
-			:ARG1 (o2 / organization
-				:name (n7 / name
-					:op1 "U.N."
-					:op2 "Office"
-					:op3 "on"
-					:op4 "Drugs"
-					:op5 "and"
-					:op6 "Crime"))
-			:beneficiary c4))
-	:ARG1 (i / increase-01
-		:ARG1 (c3 / convert-01
-			:ARG1 (r4 / resin
-				:mod (o / opium))
-			:ARG2 (h / heroin)
-			:location (l2 / laboratory
-				:location (a2 / and
-					:op1 (r2 / region
-						:mod (b / border)
-						:location (s2 / south
-							:ARG1-of (p2 / plague-01
-								:ARG2 (i2 / insurgency))))
-					:op2 (r3 / region
-						:mod (b2 / border)
-						:location (e / east)))
-				:mod (m / mostly))
-			:location (c4 / country
-				:name (n8 / name
-					:op1 "Afghanistan")))))
-
-# ::id PROXY_APW_ENG_20080728_0937.13 ::date 2013-07-26T02:57:44 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Oguz stated the chemists originated from countries near the border but did not detail specific countries . 
-(c5 / contrast-01
-	:ARG1 (s / state-01
-		:ARG0 (p / person
-			:name (n / name
-				:op1 "Oguz"))
-		:ARG1 (o / originate-01
-			:ARG1 (c2 / chemist)
-			:ARG2 (c3 / country
-				:location (n2 / near
-					:op1 (b / border)))))
-	:ARG2 (d / detail-01
-		:polarity -
-		:ARG0 p
-		:ARG1 (c4 / country
-			:mod (s2 / specific))))
-
-# ::id PROXY_APW_ENG_20080728_0937.15 ::date 2013-07-26T03:09:21 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Oguz stated the so-called precursor chemicals such as acetic anhydride also have legal uses including in the paint and pharmaceutical industries . 
-(s / state-01
-	:ARG0 (p / person
-		:name (n / name
-			:op1 "Oguz"))
-	:ARG1 (u / use-01
-		:ARG1 (c / chemical
-			:example (a / anhydride
-				:mod (a2 / acetic))
-			:ARG1-of (c2 / call-01
-				:ARG2 (p2 / precursor)))
-		:ARG2 (t / thing
-			:mod (l / law)
-			:ARG2-of (i / include-91
-				:ARG1 (a3 / and
-					:op1 (i2 / industry
-						:mod (p3 / paint))
-					:op2 (i3 / industry
-						:mod (p4 / pharmacy)))))
-		:mod (a4 / also)))
-
-# ::id PROXY_APW_ENG_20080728_0937.17 ::date 2013-07-26T05:31:54 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Oguz stated -- 
-(s / state-01
-	:ARG0 (p / person
-		:name (n / name
-			:op1 "Oguz")))
-
-# ::id PROXY_APW_ENG_20080728_0937.19 ::date 2013-07-26T05:38:52 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Afghanistan does produce the opium which is the raw material for heroin but it is not possible to make heroin without certain chemicals that are not produced inside Afghanistan and are smuggled into Afghanistan . 
-(c4 / contrast-01
-	:ARG1 (p / produce-01
-		:ARG0 (c5 / country
-			:name (n4 / name
-				:op1 "Afghanistan"))
-		:ARG1 (o / opium
-			:mod (m / material
-				:mod (r / raw)
-				:prep-for (h / heroin))))
-	:ARG2 (h3 / have-condition-91
-		:ARG1 (p2 / possible
-			:polarity -
-			:domain (m2 / make-01
-				:ARG1 (h2 / heroin)
-				:ARG2 c6))
-		:ARG2 (c6 / chemical
-			:polarity -
-			:mod (c7 / certain)
-			:ARG1-of (p3 / produce-01
-				:polarity -
-				:location c5)
-			:ARG1-of (s / smuggle-01
-				:ARG3 c5)
-			:ARG2-of m2)))
-
-# ::id PROXY_APW_ENG_20080728_0937.21 ::date 2013-07-26T05:57:23 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The figures suggest the confiscated amount represented a small fraction of the total smuggled in . 
-(s / suggest-01
-	:ARG0 (f / figure)
-	:ARG1 (r / represent-01
-		:ARG0 (a / amount
-			:ARG1-of (c / confiscate-01))
-		:ARG1 (f2 / fraction
-			:mod (s2 / small)
-			:part-of (t / total
-				:ARG1-of (s3 / smuggle-01)))))
-
-# ::id PROXY_APW_ENG_20080728_0937.23 ::date 2013-07-26T06:18:16 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Oguz stated the international community should share more information on known smugglers of the chemicals who were long-established and based in Afghanistan 's neighboring countries . 
-(s / state-01
-	:ARG0 (p / person
-		:name (n2 / name
-			:op1 "Oguz"))
-	:ARG1 (r / recommend-01
-		:ARG1 (s2 / share-01
-			:ARG0 (c2 / community
-				:mod (i / international))
-			:ARG1 (i2 / information
-				:topic (p2 / person
-					:ARG1-of (k / know-01)
-					:ARG1-of (e / establish-01
-						:duration (l / long))
-					:ARG1-of (b / base-01
-						:location (c4 / country
-							:ARG1-of (n3 / neighbor-01)
-							:poss (c / country
-								:name (n / name
-									:op1 "Afghanistan"))))
-					:ARG0-of (s3 / smuggle-01
-						:ARG1 (c3 / chemical)))
-				:quant (m / more)))))
-
-# ::id PROXY_APW_ENG_20080728_0937.25 ::date 2013-07-26T06:30:02 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The U.N. briefing comes in the wake of allegations that Afghan President Hamid Karzai protected drug lords for political reasons . 
-(c4 / cause-01
-	:ARG0 (a / allege-01
-		:ARG1 (p3 / protect-01
-			:ARG0 (p4 / person
-				:name (n2 / name
-					:op1 "Hamid"
-					:op2 "Karzai")
-				:ARG0-of (h / have-org-role-91
-					:ARG1 (c / country
-						:name (n / name
-							:op1 "Afghanistan"))
-					:ARG2 (p2 / president)))
-			:ARG1 (l / lord
-				:mod (d / drug))
-			:purpose (p / politics)))
-	:ARG1 (b / brief-01
-		:ARG0 (o2 / organization
-			:name (n4 / name
-				:op1 "U.N."))))
-
-# ::id PROXY_APW_ENG_20080728_0937.27 ::date 2013-07-26T10:20:39 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The official alleged Karzai was reluctant to move against big drug lords in Karzai 's political power base in the south of Afghanistan where most opium is produced . 
-(a / allege-01
-	:ARG0 (p5 / person
-		:ARG0-of (h / have-org-role-91
-			:ARG2 (o / official)))
-	:ARG1 (r / reluctant
-		:topic (m / move-04
-			:ARG0 p
-			:ARG1 (l / lord
-				:mod (d / drug)
-				:mod (b / big))
-			:location (b2 / base
-				:mod (p2 / power)
-				:mod (p3 / politics)
-				:poss p
-				:location (s2 / south
-					:part-of (c / country
-						:name (n / name
-							:op1 "Afghanistan"))
-					:location-of (p4 / produce-01
-						:ARG1 (o2 / opium
-							:quant (m2 / most))))))
-		:domain (p / person
-			:name (n3 / name
-				:op1 "Karzai"))))
-
-# ::id PROXY_APW_ENG_20080728_0937.29 ::date 2013-07-26T10:38:32 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Oguz stated on 28 July 2008 that corruption exists within the system but Afghanistan lacked a well-trained police force for many years and officials are only now taking steps in fighting corruption . 
-(s / state-01
-	:ARG0 (p / person
-		:name (n2 / name
-			:op1 "Oguz"))
-	:ARG1 (c2 / contrast-01
-		:ARG1 (c / corrupt-01
-			:ARG1 (s2 / system))
-		:ARG2 (a / and
-			:op1 (l / lack-01
-				:ARG0 (c4 / country
-					:name (n3 / name
-						:op1 "Afghanistan"))
-				:ARG1 (f / force
-					:mod (p2 / police
-						:ARG2-of (t3 / train-01
-							:manner (w / well))))
-				:duration (m2 / many
-					:op1 (t2 / temporal-quantity
-						:quant 1
-						:unit (y2 / year))))
-			:op2 (t4 / take-01
-				:ARG0 (o / official)
-				:ARG1 (s3 / step)
-				:prep-in (f2 / fight-01
-					:ARG1 (c5 / corrupt-01))
-				:time (n / now
-					:mod (o2 / only)))))
-	:time (d2 / date-entity
-		:day 28
-		:month 7
-		:year 2008))
-
-# ::id PROXY_APW_ENG_20080825_0241.2 ::date 2013-07-26T10:58:25 ::snt-type country ::annotator SDL-AMR-09 ::preferred
-# ::snt Afghanistan -LRB- AF -RRB- 
-(c2 / country
-	:name (n3 / name
-		:op1 "Afghanistan"))
-
-# ::id PROXY_APW_ENG_20080825_0241.4 ::date 2013-07-26T11:00:53 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
-# ::snt Afghanistan 's counter-narcotic police have confiscated 1.2 metric tons -LRB- 1.3 tons -RRB- of opium during a raid . 
-(c2 / confiscate-01
-	:ARG0 (p / police
-		:poss (c3 / country
-			:name (n2 / name
-				:op1 "Afghanistan"))
-		:ARG0-of (c4 / counter-01
-			:ARG1 (n3 / narcotic)))
-	:ARG1 (o / opium
-		:quant (m2 / mass-quantity
-			:quant 1.2
-			:unit (t2 / ton
-				:mod (m3 / meter))))
-	:time (r / raid-01))
-
-# ::id PROXY_APW_ENG_20080825_0241.6 ::date 2013-07-26T11:19:39 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt On 25 August 2008 Afghanistan 's Interior Ministry announced in a statement that -- 
-(a / announce-01
-	:ARG0 (g2 / government-organization
-		:name (n3 / name
-			:op1 "Interior"
-			:op2 "Ministry")
-		:poss (c2 / country
-			:name (n4 / name
-				:op1 "Afghanistan")))
-	:time (d2 / date-entity
-		:day 25
-		:month 8
-		:year 2008)
-	:medium (t / thing
-		:ARG0-of (s / state-01)))
-
-# ::id PROXY_APW_ENG_20080825_0241.8 ::date 2013-07-27T06:18:06 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
-# ::snt The 1.2 metric tons of opium was seized on 19 August 2008 in Marjah district of Helmand province . 
-(s / seize-01
-	:ARG1 (o / opium
-		:quant (m2 / mass-quantity
-			:quant 1.2
-			:unit (t / ton
-				:mod (m3 / meter))))
-	:time (d2 / date-entity
-		:day 19
-		:month 8
-		:year 2008)
-	:location (d3 / district
-		:name (n3 / name
-			:op1 "Marjah")
-		:location (p2 / province
-			:name (n4 / name
-				:op1 "Helmand"))))
-
-# ::id PROXY_APW_ENG_20080825_0241.10 ::date 2013-07-27T06:25:16 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt In 2007 Afghanistan accounted for 93 percent of global opium supply . 
-(a / account-01
-	:ARG0 (c2 / country
-		:name (n2 / name
-			:op1 "Afghanistan"))
-	:ARG1 (o2 / opium
-		:ARG1-of (i / include-91
-			:ARG2 (o / opium
-				:ARG1-of (s / supply-01
-					:ARG2 (g / globe)))
-			:ARG3 (p2 / percentage-entity
-				:value 93)))
-	:time (d2 / date-entity
-		:year 2007))
-
-# ::id PROXY_APW_ENG_20080825_0241.12 ::date 2013-07-27T06:32:02 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt In 2007 Afghanistan produced 8200 metric tons -LRB- 9000 tons -RRB- of opium . 
-(p / produce-01
-	:ARG0 (c / country
-		:name (n / name
-			:op1 "Afghanistan"))
-	:ARG1 (o / opium
-		:quant (m2 / mass-quantity
-			:quant 8200
-			:unit (t2 / ton
-				:mod (m4 / meter))))
-	:time (d2 / date-entity
-		:year 2007))
-
-# ::id PROXY_APW_ENG_20080825_0241.14 ::date 2013-07-27T06:37:54 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt The multibillion-dollar opium trade helps fund the Taliban-led insurgency . 
-(h / help-01
-	:ARG0 (t / trade-01
-		:ARG1 (o / opium)
-		:quant (m2 / monetary-quantity
-			:unit (d2 / dollar)
-			:quant (m3 / multiple
-				:op1 1000000000)))
-	:ARG1 (f / fund-01
-		:ARG0 t
-		:ARG1 (i / insurgency
-			:ARG1-of (l / lead-01
-				:ARG0 (c2 / criminal-organization
-					:name (n2 / name
-						:op1 "Taliban"))))))
-
-# ::id PROXY_APW_ENG_20080826_0891.1 ::date 2013-07-27T06:46:37 ::snt-type date ::annotator SDL-AMR-09 ::preferred
-# ::snt 2008-08-26 
-(d2 / date-entity
-	:day 26
-	:month 8
-	:year 2008)
-
-# ::id PROXY_APW_ENG_20080826_0891.3 ::date 2013-07-27T06:48:59 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
-# ::snt International ; Telecom ; technology ; crime 
-(a / and
-	:op1 (i / international)
-	:op2 (t / telecom)
-	:op3 (t2 / technology)
-	:op4 (c / crime))
-
-# ::id PROXY_APW_ENG_20080826_0891.5 ::date 2013-07-27T06:53:22 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Officials stated on August 26 , 2008 that Estonia is temporarily hosting the websites of Georgia 's Central Bank and Foreign Ministry as well as a Georgian English-languages news portal in order to protect the websites from cyber attacks . 
-(s / state-01
-	:ARG0 (p3 / person
-		:ARG0-of (h2 / have-org-role-91
-			:ARG2 (o2 / official)))
-	:ARG1 (h / host-01
-		:ARG0 (c4 / country
-			:name (n7 / name
-				:op1 "Estonia"))
-		:ARG1 (a / and
-			:op1 (w / website
-				:poss (c / company
-					:name (n8 / name
-						:op1 "Central"
-						:op2 "Bank")
-					:poss (c5 / country
-						:name (n9 / name
-							:op1 "Georgia"))))
-			:op2 (w2 / website
-				:poss (g / government-organization
-					:name (n10 / name
-						:op1 "Foreign"
-						:op2 "Ministry")
-					:poss c5))
-			:op3 (p / portal
-				:mod (n11 / news)
-				:mod (l3 / language
-					:name (n12 / name
-						:op1 "English"))
-				:mod c5))
-		:duration (t / temporary)
-		:purpose (p2 / protect-01
-			:ARG1 a
-			:ARG2 (a2 / attack-01
-				:mod (c7 / cyber))))
-	:time (d2 / date-entity
-		:day 26
-		:month 7
-		:year 2008))
-
-# ::id PROXY_APW_ENG_20080826_0891.7 ::date 2013-07-27T07:35:18 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Estonian informatics center spokeswoman Katrin pargmae stated that hosting websites in different countries makes the websites more complicated and time-consuming for hackers to disrupt . 
-(s / state-01
-	:ARG0 (p / person
-		:name (n / name
-			:op1 "Katrin"
-			:op2 "Pargmae")
-		:ARG0-of (h3 / have-org-role-91
-			:ARG1 (o / organization
-				:name (n4 / name
-					:op1 "Estonian"
-					:op2 "Informatics"
-					:op3 "Center"))
-			:ARG2 (s3 / spokeswoman)))
-	:ARG1 (m / make-02
-		:ARG0 (h / host-01
-			:ARG1 (w / website)
-			:location (c3 / country
-				:ARG1-of (d / differ-02)))
-		:ARG1 (a / and
-			:op1 (c4 / complicate-01
-				:ARG1 (d2 / disrupt-01
-					:ARG0 (p2 / person
-						:ARG0-of (h2 / hack-04))
-					:ARG1 w)
-				:ARG2 p2
-				:degree (m2 / more))
-			:op2 (c / consume-01
-				:ARG0 d2
-				:ARG1 (t / time)))))
-
-# ::id PROXY_APW_ENG_20080826_0891.9 ::date 2013-07-27T07:55:38 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Katrin pargmae did not comment on the Georgian attacks . 
-(c2 / comment-01
-	:polarity -
-	:ARG0 (p2 / person
-		:name (n3 / name
-			:op1 "Katrin"
-			:op2 "Pargmae"))
-	:ARG1 (a / attack-01
-		:mod (c3 / country
-			:name (n4 / name
-				:op1 "Georgia"))))
+# ::id PROXY_APW_ENG_20080514_1125.18 ::date 2013-07-20T00:19:44 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The cyber attacks followed a dispute over the relocation of a Soviet war memorial in Estonia 's capital . 
+(f / follow-01 [3 = "followed"]
+	:ARG1 (a / attack-01 [2 = "attacks"]
+		:mod (c3 / cyber [1 = "cyber"]))
+	:ARG2 (d / dispute-01 [5 = "dispute"]
+		:ARG2 (r / relocate-01 [8 = "relocation"]
+			:ARG1 (m / memorial [13 = "memorial"]
+				:mod (w / war [12 = "war"])
+				:mod (c / country [11 = "Soviet"]
+					:name (n / name [11 = "Soviet"]
+						:op1 "Soviet" [11 = "Soviet"]
+						:op2 "Union" [11 = "Soviet"])))
+			:ARG2 (c4 / capital [17 = "capital"]
+				:mod (c2 / country [15 = "Estonia"]
+					:name (n2 / name [15 = "Estonia"]
+						:op1 "Estonia" [15 = "Estonia"]))))))
 
 # ::id PROXY_APW_ENG_20080826_0891.11 ::date 2013-07-27T08:24:22 ::snt-type body ::annotator SDL-AMR-09 ::preferred
 # ::snt The May 2007 attacks were days after Estonia decided to relocate a Soviet war memorial and grave . 
-(a / attack-01
-	:mod (d2 / date-entity
-		:month 5
-		:year 2007)
-	:time (a2 / after
-		:op1 (d4 / decide-01
-			:ARG0 (c3 / country
-				:name (n3 / name
-					:op1 "Estonia"))
-			:ARG1 (r / relocate-01
-				:ARG0 c3
-				:ARG1 (a3 / and
-					:op1 (m2 / memorial
-						:mod (w / war)
-						:mod (s / soviet))
-					:op2 (g / grave
-						:mod s))))
-		:quant (m / multiple
-			:op1 (t / temporal-quantity
-				:quant 1
-				:unit (d3 / day)))))
+(a / attack-01 [3 = "attacks"]
+	:mod (d2 / date-entity [1 = "May"]
+		:month 5 [1 = "May"]
+		:year 2007 [2 = "2007"])
+	:time (a2 / after [6 = "after"]
+		:op1 (d4 / decide-01 [8 = "decided"]
+			:ARG0 (c3 / country [7 = "Estonia"]
+				:name (n3 / name [7 = "Estonia"]
+					:op1 "Estonia" [7 = "Estonia"]))
+			:ARG1 (r / relocate-01 [10 = "relocate"]
+				:ARG0 c3 [7 = "Estonia"]
+				:ARG1 (a3 / and [15 = "and"]
+					:op1 (m2 / memorial [14 = "memorial"]
+						:mod (w / war [13 = "war"])
+						:mod (s / soviet [12 = "Soviet"]))
+					:op2 (g / grave [16 = "grave"]
+						:mod s [12 = "Soviet"]))))
+		:quant (m / multiple [5 = "days"]
+			:op1 (t / temporal-quantity [5 = "days"]
+				:quant 1 [5 = "days"]
+				:unit (d3 / day [5 = "days"])))))
 
-# ::id PROXY_APW_ENG_20080826_0891.13 ::date 2013-07-27T08:34:42 ::snt-type body ::annotator SDL-AMR-09 ::preferred
-# ::snt Estonian officials did not accuse any country of mounting what the Estonian Government stated were highly organized and professional attacks . 
-(a / accuse-01
-	:polarity -
-	:ARG0 (p2 / person
-		:ARG0-of (h2 / have-org-role-91
-			:ARG1 (c3 / country
-				:name (n3 / name
-					:op1 "Estonia"))
-			:ARG2 (o / official)))
-	:ARG1 (c4 / country
-		:mod (a2 / any))
-	:ARG2 (m / mount-01
-		:ARG1 (t / thing
-			:ARG1-of (s / state-01
-				:ARG0 (g / government-organization
-					:ARG0-of (g2 / govern-01
-						:ARG1 c3))
-				:ARG3 (a3 / attack-01
-					:ARG1-of (o2 / organize-01
-						:manner (h / high))
-					:mod (p / professional))))))
+# ::id PROXY_APW_ENG_20080825_0241.1 ::date 2013-07-26T10:57:44 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2008-08-25 
+(d2 / date-entity [0 = "2008-08-25"]
+	:day 25 [0 = "2008-08-25"]
+	:month 8 [0 = "2008-08-25"]
+	:year 2008 [0 = "2008-08-25"])
+
+# ::id PROXY_APW_ENG_20080514_1125.12 ::date 2013-07-19T12:30:14 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The research center is based in Tallinn , Estonia . 
+(b / base-01 [4 = "based"]
+	:ARG1 (c3 / center [2 = "center"]
+		:mod (r / research-01 [1 = "research"]))
+	:location (c / city [6 = "Tallinn"]
+		:name (n / name [6 = "Tallinn"]
+			:op1 "Tallinn" [6 = "Tallinn"])
+		:location (c2 / country [8 = "Estonia"]
+			:name (n2 / name [8 = "Estonia"]
+				:op1 "Estonia" [8 = "Estonia"]))))
+
+# ::id PROXY_APW_ENG_20080515_0931.18 ::date 2013-07-20T22:39:18 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia . 
+(o2 / oppose-01 [3 = "opposed"]
+	:ARG0 (p / person [0 = "Vladimir"]
+		:name (n / name [0 = "Vladimir"]
+			:op1 "Vladimir" [0 = "Vladimir"]
+			:op2 "Putin" [1 = "Putin"]))
+	:ARG1 (a / and [21 = "and"]
+		:op1 (p2 / plan-01 [8 = "plans"]
+			:ARG0 (c / country [5 = "United"]
+				:name (n2 / name [5 = "United"]
+					:op1 "United" [5 = "United"]
+					:op2 "States" [6 = "States"]))
+			:ARG1 (d / deploy-01 [10 = "deploy"]
+				:ARG0 c [5 = "United"]
+				:ARG1 (s / site [13 = "sites"]
+					:mod (m / missile [11 = "missile"]
+						:ARG2-of (d2 / defend-01 [12 = "defense"])))
+				:location (a2 / and [16 = "and"]
+					:op1 (c2 / country [15 = "Poland"]
+						:name (n3 / name [15 = "Poland"]
+							:op1 "Poland" [15 = "Poland"]))
+					:op2 (c3 / country [18 = "Czech"]
+						:name (n4 / name [18 = "Czech"]
+							:op1 "Czech" [18 = "Czech"]
+							:op2 "Republic" [19 = "Republic"])))))
+		:op2 (p3 / plan-01 [24 = "plans"]
+			:ARG0 (m2 / military [22 = "NATO"]
+				:name (n5 / name [22 = "NATO"]
+					:op1 "NATO" [22 = "NATO"])
+				:mod (a4 / alliance [22 = "NATO"]))
+			:ARG1 (a3 / accept-01 [26 = "accept"]
+				:ARG0 m2 [22 = "NATO"]
+				:ARG1 (j / join-05 [26 = "accept"]
+					:ARG0 (a5 / and [36 = "and"]
+						:op1 (c6 / country [35 = "Ukraine"]
+							:name (n8 / name [35 = "Ukraine"]
+								:op1 "Ukraine" [35 = "Ukraine"]))
+						:op2 (c7 / country [37 = "Georgia"]
+							:name (n9 / name [37 = "Georgia"]
+								:op1 "Georgia" [37 = "Georgia"]))
+						:ARG1-of (n10 / neighbor-01 [33 = "neighbors"]
+							:ARG1 (c4 / country [30 = "Russia"]
+								:name (n6 / name [30 = "Russia"]
+									:op1 "Russia" [30 = "Russia"])))
+						:ARG2-of (h / have-part-91 [32 = "ex-Soviet"]
+							:ARG1 (c5 / country [32 = "ex-Soviet"]
+								:name (n7 / name [32 = "ex-Soviet"]
+									:op1 "Soviet" [32 = "ex-Soviet"]
+									:op2 "Union" [32 = "ex-Soviet"]))
+							:time (e / ex [32 = "ex-Soviet"])))
+					:ARG1 m2 [22 = "NATO"]))))
+	:manner (f / fierce [2 = "fiercely"]))
+
+# ::id PROXY_APW_ENG_20080903_1278.7 ::date 2013-08-01T00:50:35 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Unger stated such technology transfers would involve a significant element of Research and Development in Brazil . 
+(s / state-01 [1 = "stated"]
+	:ARG0 (p / person [0 = "Unger"]
+		:name (n / name [0 = "Unger"]
+			:op1 "Unger" [0 = "Unger"]))
+	:ARG1 (i / involve-01 [6 = "involve"]
+		:ARG1 (e / element [9 = "element"]
+			:mod (s2 / significant [8 = "significant"])
+			:mod (r / research-01 [11 = "Research"])
+			:mod (d / develop-02 [13 = "Development"]))
+		:ARG2 (t / transfer-01 [4 = "transfers"]
+			:ARG1 (t2 / technology [3 = "technology"])
+			:mod (s3 / such [2 = "such"]))
+		:location (c / country [15 = "Brazil"]
+			:name (n3 / name [15 = "Brazil"]
+				:op1 "Brazil" [15 = "Brazil"]))))
+
+# ::id PROXY_CNA_ENG_20031021_0019.23 ::date 2013-08-02T01:12:52 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Pharmaessentia and Synmosa Biopharma will separately sell those products in the Asian and U.S. markets respectively . 
+(s / sell-01 [6 = "sell"]
+	:ARG0 (a / and [1 = "and"]
+		:op1 (c / company [0 = "Pharmaessentia"]
+			:name (n / name [0 = "Pharmaessentia"]
+				:op1 "Pharmaessentia" [0 = "Pharmaessentia"]))
+		:op2 (c2 / company [2 = "Synmosa"]
+			:name (n2 / name [2 = "Synmosa"]
+				:op1 "Synmosa" [2 = "Synmosa"]
+				:op2 "Biopharma" [3 = "Biopharma"])))
+	:ARG1 (p / product [8 = "products"]
+		:mod (t / that [7 = "those"]))
+	:manner (s2 / separate-01 [5 = "separately"])
+	:location (a3 / and [12 = "and"]
+		:op1 (m / market-01 [14 = "markets"]
+			:mod (c3 / continent [11 = "Asian"]
+				:name (n3 / name [11 = "Asian"]
+					:op1 "Asia" [11 = "Asian"])))
+		:op2 (m2 / market-01 [14 = "markets"]
+			:mod (c4 / country [13 = "U.S."]
+				:name (n4 / name [13 = "U.S."]
+					:op1 "U.S." [13 = "U.S."])))
+		:mod (r / respective [15 = "respectively"])))
+
+# ::id PROXY_APW_ENG_20080912_0932.7 ::date 2013-07-26T15:18:19 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Swedes were accused of using the informal money transfer networks called hawalas to send funds to alleged terror groups in Somalia . 
+(a / accuse-01 [3 = "accused"]
+	:ARG1 (p2 / person [6 = "the"]
+		:mod (c / country [1 = "Swedes"]
+			:name (n / name [1 = "Swedes"]
+				:op1 "Sweden" [1 = "Swedes"])))
+	:ARG2 (u / use-01 [5 = "using"]
+		:ARG0 p2 [1 = "Swedes"]
+		:ARG1 (n3 / network [10 = "networks"]
+			:instrument-of (t / transfer-01 [9 = "transfer"]
+				:ARG1 (m / money [8 = "money"]))
+			:mod (f / formal [7 = "informal"]
+				:polarity - [7 = "informal"])
+			:ARG1-of (c3 / call-01 [11 = "called"]
+				:ARG2 (h / hawalas [12 = "hawalas"])))
+		:ARG2 (s / send-01 [14 = "send"]
+			:ARG1 (t2 / thing [15 = "funds"]
+				:ARG2-of (f2 / fund-01 [15 = "funds"]))
+			:ARG2 (g / group [19 = "groups"]
+				:mod (t3 / terror [18 = "terror"])
+				:ARG1-of (a2 / allege-01 [17 = "alleged"])
+				:location (c2 / country [21 = "Somalia"]
+					:name (n2 / name [21 = "Somalia"]
+						:op1 "Somalia" [21 = "Somalia"]))))))
+
+# ::id PROXY_APW_ENG_20080515_0931.31 ::date 2013-07-21T01:08:20 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Yuri dolgoruky is the first in a series of new nuclear submarines to be commissioned this year but the bulava nuclear-armed missile developed to equip the submarine has failed tests and the deployment prospects are uncertain . 
+(c3 / contrast-01 [18 = "but"]
+	:ARG1 (c / commission-01 [15 = "commissioned"]
+		:ARG1 (p / product [1 = "Yuri"]
+			:name (n / name [1 = "Yuri"]
+				:op1 "Yuri" [1 = "Yuri"]
+				:op2 "Dolgoruky" [2 = "dolgoruky"])
+			:mod (f2 / first [5 = "first"]
+				:ARG1-of (i / include-91 [6 = "in"]
+					:ARG2 (s / series [8 = "series"]
+						:mod (s2 / submarine [12 = "submarines"]
+							:mod (n2 / nucleus [11 = "nuclear"])
+							:mod (n3 / new [10 = "new"]))))))
+		:time (y / year [17 = "year"]
+			:mod (t / this [16 = "this"])))
+	:ARG2 (a / and [31 = "and"]
+		:op1 (f / fail-01 [29 = "failed"]
+			:ARG0 (m2 / missile [20 = "bulava"]
+				:name (n4 / name [20 = "bulava"]
+					:op1 "Bulava" [20 = "bulava"])
+				:ARG1-of (d2 / develop-02 [23 = "developed"]
+					:purpose (e / equip-01 [25 = "equip"]
+						:ARG0 (m / missile [22 = "missile"])
+						:ARG1 (s3 / submarine [27 = "submarine"])))
+				:ARG1-of (a2 / arm-01 [21 = "nuclear-armed"]
+					:ARG2 (n5 / nucleus [21 = "nuclear-armed"])))
+			:ARG1 (t2 / test-01 [30 = "tests"]))
+		:op2 (c2 / certain [36 = "uncertain"]
+			:polarity - [36 = "uncertain"]
+			:domain (p2 / prospect [34 = "prospects"]
+				:mod (d / deploy-01 [33 = "deployment"])))))
+
+# ::id PROXY_LTW_ENG_20070609_0091.35 ::date 2013-07-30T08:36:26 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt This included a funeral Director who had transported the body of Efrain Torres to a cemetery in the city of Poza Rica in May . 
+(i / include-01 [1 = "included"]
+	:ARG1 (p2 / person [4 = "Director"]
+		:ARG0-of (h / have-org-role-91 [4 = "Director"]
+			:ARG2 (d2 / director [4 = "Director"]
+				:mod (f / funeral [3 = "funeral"])))
+		:ARG0-of (t2 / transport-01 [7 = "transported"]
+			:ARG1 (b / body [9 = "body"]
+				:poss (p / person [11 = "Efrain"]
+					:name (n / name [11 = "Efrain"]
+						:op1 "Efrain" [11 = "Efrain"]
+						:op2 "Torres" [12 = "Torres"])))
+			:ARG2 (c2 / cemetery [15 = "cemetery"]
+				:location (c / city [20 = "Poza"]
+					:name (n2 / name [20 = "Poza"]
+						:op1 "Poza" [20 = "Poza"]
+						:op2 "Rica" [21 = "Rica"])))
+			:time (d / date-entity [23 = "May"]
+				:month 5 [23 = "May"])))
+	:ARG2 (t / this [0 = "This"]))
 
 # ::id PROXY_APW_ENG_20080903_0510.1 ::date 2013-07-19T07:53:57 ::snt-type date ::annotator SDL-AMR-09 ::preferred
 # ::snt 2008-09-03 
-(d / date-entity
-	:year 2008
-	:month 9
-	:day 3)
+(d / date-entity [0 = "2008-09-03"]
+	:year 2008 [0 = "2008-09-03"]
+	:month 9 [0 = "2008-09-03"]
+	:day 3 [0 = "2008-09-03"])
 
-# ::id PROXY_APW_ENG_20080903_0510.3 ::date 2013-07-22T00:49:45 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
-# ::snt International ; money ; terrorism ; crime ; business 
-(a / and
-	:op1 (i / international)
-	:op2 (m / money)
-	:op3 (t / terrorism)
-	:op4 (c / crime)
-	:op5 (b / business))
+# ::id PROXY_APW_ENG_20080514_1125.9 ::date 2013-07-19T11:55:55 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The center will formally open in 2009 . 
+(o / open-01 [4 = "open"]
+	:ARG1 (c / center [1 = "center"])
+	:time (d / date-entity [4 = "open"]
+		:year 2009 [6 = "2009"])
+	:manner (f / formal [3 = "formally"]))
+
+# ::id PROXY_CNA_ENG_20080216_0006.9 ::date 2013-07-28T15:08:57 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Chen made the statement after presiding over an Interministerial Conference on whether the projects were in line with the Government 's active management and effective opening policy regarding investment in China . 
+(s / state-01 [3 = "statement"]
+	:ARG0 (p / person [0 = "Chen"]
+		:name (n / name [0 = "Chen"]
+			:op1 "Chen" [0 = "Chen"]))
+	:time (a / after [4 = "after"]
+		:op1 (p2 / preside-01 [5 = "presiding"]
+			:ARG0 p [0 = "Chen"]
+			:ARG1 (c / conference [9 = "Conference"]
+				:mod (i2 / interministerial [8 = "Interministerial"])
+				:topic (c2 / conform-01 [16 = "line"]
+					:mode interrogative [11 = "whether"]
+					:ARG1 (p3 / project [13 = "projects"])
+					:ARG2 (a4 / and [23 = "and"]
+						:op1 (p4 / policy [26 = "policy"]
+							:mod (m / manage-01 [22 = "management"]
+								:manner (a3 / active [21 = "active"])))
+						:op2 (p5 / policy [26 = "policy"]
+							:mod (o / open-01 [25 = "opening"]
+								:manner (e / effective [24 = "effective"])))
+						:poss (g / government-organization [19 = "Government"]
+							:name (n2 / name [19 = "Government"]
+								:op1 "Government" [19 = "Government"]))
+						:ARG0-of (c3 / concern-02 [27 = "regarding"]
+							:ARG1 (i / invest-01 [28 = "investment"]
+								:ARG2 (c4 / country [30 = "China"]
+									:name (n3 / name [30 = "China"]
+										:op1 "China" [30 = "China"]))))))))))
+
+# ::id PROXY_APW_ENG_20081023_1213.20 ::date 2013-07-28T22:35:14 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Court considered ouarab to be the natural , legitimate and operational successor of Bourada . 
+(c / consider-01 [2 = "considered"]
+	:ARG0 (c2 / court [1 = "Court"])
+	:ARG1 (s / succeed-02 [12 = "successor"]
+		:ARG0 (p / person [3 = "ouarab"]
+			:name (n2 / name [3 = "ouarab"]
+				:op1 "Ouarab" [3 = "ouarab"]))
+		:ARG1 (p2 / person [14 = "Bourada"]
+			:name (n3 / name [14 = "Bourada"]
+				:op1 "Bourada" [14 = "Bourada"]))
+		:mod (n4 / natural [7 = "natural"])
+		:mod (l / legitimacy [9 = "legitimate"])
+		:mod (o2 / operation [11 = "operational"])))
+
+# ::id PROXY_APW_ENG_20080515_0931.30 ::date 2013-07-21T01:05:08 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Soviet-built nuclear submarines frequently need repairs and rarely leave the bases . 
+(a / and [6 = "and"]
+	:op1 (n2 / need-01 [4 = "need"]
+		:ARG0 (s / submarine [2 = "submarines"]
+			:mod (n3 / nucleus [1 = "nuclear"])
+			:ARG1-of (b / build-01 [0 = "Soviet-built"]
+				:ARG0 (c / country [0 = "Soviet-built"]
+					:name (n / name [0 = "Soviet-built"]
+						:op1 "Soviet" [0 = "Soviet-built"]
+						:op2 "Union" [0 = "Soviet-built"]))))
+		:ARG1 (r2 / repair-01 [5 = "repairs"]
+			:ARG1 s [2 = "submarines"])
+		:frequency (f / frequent [3 = "frequently"]))
+	:op2 (l / leave-01 [8 = "leave"]
+		:ARG0 s [2 = "submarines"]
+		:ARG1 (b2 / base [10 = "bases"])
+		:frequency (r / rare [7 = "rarely"])))
+
+# ::id PROXY_APW_ENG_20080717_0509.10 ::date 2013-07-19T07:58:12 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Russia suspended participation in the arms control treaty late last year because NATO countries had not ratified a revised version of the Treaty . 
+(s / suspend-01 [1 = "suspended"]
+	:ARG0 (c / country [0 = "Russia"]
+		:name (n / name [0 = "Russia"]
+			:op1 "Russia" [0 = "Russia"]))
+	:ARG1 (p / participate-01 [2 = "participation"]
+		:ARG0 c [0 = "Russia"]
+		:ARG1 (t / treaty [7 = "treaty"]
+			:ARG0-of (c2 / control-01 [6 = "control"]
+				:ARG1 (a / arm [5 = "arms"]))))
+	:time (y / year [10 = "year"]
+		:mod (l2 / last [9 = "last"])
+		:mod (l3 / late [8 = "late"]))
+	:ARG1-of (c3 / cause-01 [11 = "because"]
+		:ARG0 (r / ratify-01 [16 = "ratified"]
+			:polarity - [15 = "not"]
+			:ARG0 (c4 / country [13 = "countries"]
+				:mod (m / military [12 = "NATO"]
+					:name (n2 / name [12 = "NATO"]
+						:op1 "NATO" [12 = "NATO"])))
+			:ARG1 (t2 / treaty [22 = "Treaty"]
+				:mod (v / version [19 = "version"]
+					:ARG1-of (r2 / revise-01 [18 = "revised"]))))))
+
+# ::id PROXY_LTW_ENG_20070207_0122.1 ::date 2013-07-30T06:38:31 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2007-02-02 
+(d / date-entity [0 = "2007-02-02"]
+	:year 2007 [0 = "2007-02-02"]
+	:month 2 [0 = "2007-02-02"]
+	:day 2 [0 = "2007-02-02"])
+
+# ::id PROXY_LTW_ENG_19951218_0100.13 ::date 2013-07-26T10:41:24 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Conference participants said Foreign Minister Milan Milutinovic from Serbia scolded his Croatian counterpart for grandstanding . 
+(s / say-01 [2 = "said"]
+	:ARG0 (p3 / person [1 = "participants"]
+		:ARG0-of (p4 / participate-01 [1 = "participants"]
+			:ARG1 (c3 / conference [0 = "Conference"])))
+	:ARG1 (s2 / scold-01 [9 = "scolded"]
+		:ARG0 (p / person [4 = "Minister"]
+			:name (n / name [4 = "Minister"]
+				:op1 "Milan" [5 = "Milan"]
+				:op2 "Milutinovic" [6 = "Milutinovic"])
+			:ARG0-of (h / have-org-role-91 [4 = "Minister"]
+				:ARG1 (c / country [8 = "Serbia"]
+					:name (n2 / name [8 = "Serbia"]
+						:op1 "Serbia" [8 = "Serbia"]))
+				:ARG2 (m / minister [4 = "Minister"]
+					:mod (f / foreign [3 = "Foreign"]))))
+		:ARG1 (p2 / person [12 = "counterpart"]
+			:ARG0-of (h2 / have-org-role-91 [12 = "counterpart"]
+				:ARG1 (c2 / country [11 = "Croatian"]
+					:name (n3 / name [11 = "Croatian"]
+						:op1 "Croatia" [11 = "Croatian"]))
+				:ARG2 m [12 = "counterpart"]))
+		:ARG2 (g / grandstand-01 [14 = "grandstanding"]
+			:ARG0 p2 [12 = "counterpart"])))
+
+# ::id PROXY_CNA_ENG_20040212_0013.1 ::date 2013-07-27T13:28:32 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2004-02-12 
+(d / date-entity [0 = "2004-02-12"]
+	:day 12 [0 = "2004-02-12"]
+	:month 2 [0 = "2004-02-12"]
+	:year 2004 [0 = "2004-02-12"])
+
+# ::id PROXY_CNA_ENG_20080216_0006.6 ::date 2013-07-28T15:00:07 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Ministry of Economic Affairs -LRB- moea -RRB- gave preliminary approval to 2 major China-bound investment projects at a review meeting on 15 February 2008 . 
+(a / approve-01 [10 = "approval"]
+	:ARG0 (g / government-organization [1 = "Ministry"]
+		:name (n / name [1 = "Ministry"]
+			:op1 "Ministry" [1 = "Ministry"]
+			:op2 "of" [2 = "of"]
+			:op3 "Economic" [3 = "Economic"]
+			:op4 "Affairs" [4 = "Affairs"]))
+	:ARG1 (p2 / project [16 = "projects"]
+		:quant 2 [12 = "2"]
+		:mod (m / major [13 = "major"])
+		:mod (i / invest-01 [15 = "investment"])
+		:ARG1-of (b / bind-01 [14 = "China-bound"]
+			:ARG2 (c / country [14 = "China-bound"]
+				:name (n2 / name [14 = "China-bound"]
+					:op1 "China" [14 = "China-bound"]))))
+	:manner (p / preliminary [9 = "preliminary"])
+	:time (m2 / meet-03 [20 = "meeting"]
+		:purpose (r / review-01 [19 = "review"])
+		:time (d / date-entity [23 = "February"]
+			:year 2008 [24 = "2008"]
+			:month 2 [23 = "February"]
+			:day 15 [22 = "15"])))
+
+# ::id PROXY_LTW_ENG_20070207_0122.47 ::date 2013-08-01T13:56:40 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Saudi Arabia has two Government-appointed human rights committees but bans independent human and civil rights organizations . 
+(c2 / contrast-01 [8 = "but"]
+	:ARG1 (h / have-03 [2 = "has"]
+		:ARG0 (c3 / country [0 = "Saudi"]
+			:name (n2 / name [0 = "Saudi"]
+				:op1 "Saudi" [0 = "Saudi"]
+				:op2 "Arabia" [1 = "Arabia"]))
+		:ARG1 (c4 / committee [7 = "committees"]
+			:quant 2 [3 = "two"]
+			:mod (r / right [6 = "rights"]
+				:mod (h2 / human [5 = "human"]))
+			:ARG1-of (a / appoint-01 [4 = "Government-appointed"]
+				:ARG0 (g / government-organization [4 = "Government-appointed"]
+					:ARG0-of (g2 / govern-01 [4 = "Government-appointed"])))))
+	:ARG2 (b / ban-01 [9 = "bans"]
+		:ARG0 c3 [0 = "Saudi"]
+		:ARG1 (a2 / and [12 = "and"]
+			:op1 (o / organization [15 = "organizations"]
+				:mod r [14 = "rights"])
+			:op2 (o2 / organization [15 = "organizations"]
+				:mod (r3 / right [14 = "rights"]
+					:mod (c / civil [13 = "civil"])))
+			:ARG0-of (d / depend-01 [10 = "independent"]
+				:polarity - [10 = "independent"]))))
+
+# ::id PROXY_CNA_ENG_20080408_0041.7 ::date 2013-07-28T14:16:12 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The companies will invest 10 million US dollars , 20 million US dollars , 6.7 million US dollars , and 50 million US dollars respectively . 
+(i / invest-01 [3 = "invest"]
+	:ARG0 (c / company [1 = "companies"])
+	:ARG1 (a / and [8 = ","]
+		:op1 (m / monetary-quantity [7 = "dollars"]
+			:quant 10000000 [4 = "10"]
+			:unit (d / dollar [7 = "dollars"]
+				:mod (c2 / country [6 = "US"]
+					:name (n / name [6 = "US"]
+						:op1 "US" [6 = "US"]))))
+		:op2 (m2 / monetary-quantity [12 = "dollars"]
+			:quant 20000000 [9 = "20"]
+			:unit d [12 = "dollars"])
+		:op3 (m3 / monetary-quantity [14 = "6.7"]
+			:quant 6700000 [14 = "6.7"]
+			:unit d [17 = "dollars"])
+		:op4 (m4 / monetary-quantity [20 = "50"]
+			:quant 50000000 [20 = "50"]
+			:unit d [23 = "dollars"]))
+	:manner (r / respective [24 = "respectively"]))
+
+# ::id PROXY_LTW_ENG_20070609_0091.7 ::date 2013-07-30T06:19:14 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The boy died in a drowning accident unrelated to drug trafficking . 
+(d / die-01 [2 = "died"]
+	:ARG1 (b / boy [1 = "boy"])
+	:ARG1-of (c / cause-01 [3 = "in"]
+		:ARG0 (a / accident [6 = "accident"]
+			:mod (d2 / drown-02 [5 = "drowning"])
+			:ARG1-of (r / relate-01 [7 = "unrelated"]
+				:polarity - [7 = "unrelated"]
+				:ARG2 (t / traffic-00 [10 = "trafficking"]
+					:ARG1 (d3 / drug [9 = "drug"]))))))
+
+# ::id PROXY_APW_ENG_20080515_0931.16 ::date 2013-07-20T22:17:38 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Most observers expect Dmitry Medvedev to continue the policies of Vladimir Putin , such as an assertive posture on the international scene and vow to strengthen the military . 
+(e / expect-01 [2 = "expect"]
+	:ARG0 (p3 / person [1 = "observers"]
+		:ARG0-of (o / observe-01 [1 = "observers"])
+		:mod (m / most [0 = "Most"]))
+	:ARG1 (a / and [12 = ","]
+		:op1 (c / continue-01 [6 = "continue"]
+			:ARG0 (p / person [3 = "Dmitry"]
+				:name (n / name [3 = "Dmitry"]
+					:op1 "Dmitry" [3 = "Dmitry"]
+					:op2 "Medvedev" [4 = "Medvedev"]))
+			:ARG1 (p4 / policy [8 = "policies"]
+				:poss (p2 / person [10 = "Vladimir"]
+					:name (n2 / name [10 = "Vladimir"]
+						:op1 "Vladimir" [10 = "Vladimir"]
+						:op2 "Putin" [11 = "Putin"]))
+				:example-of (p5 / posture [17 = "posture"]
+					:mod (a2 / assertive [16 = "assertive"])
+					:location (s / scene [21 = "scene"]
+						:mod (i / international [20 = "international"])))))
+		:op2 (v / vow-01 [23 = "vow"]
+			:ARG0 p [3 = "Dmitry"]
+			:ARG1 (s2 / strengthen-01 [25 = "strengthen"]
+				:ARG0 p [3 = "Dmitry"]
+				:ARG1 (m2 / military [27 = "military"])))))
+
+# ::id PROXY_APW_ENG_20080728_0937.12 ::date 2013-07-26T02:48:02 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Oguz stated to reporters in Kabul that evidence of higher quality Afghan heroin indicates that the people running the labs are getting assistance from chemists who have come from outside the country as foreign consultants . 
+(s / state-01 [1 = "stated"]
+	:ARG0 (p / person [0 = "Oguz"]
+		:name (n2 / name [0 = "Oguz"]
+			:op1 "Oguz" [0 = "Oguz"]))
+	:ARG1 (i / indicate-01 [13 = "indicates"]
+		:ARG0 (t / thing [7 = "evidence"]
+			:ARG0-of (e / evidence-01 [7 = "evidence"]
+				:ARG1 (h / heroin [12 = "heroin"]
+					:mod (c3 / country [11 = "Afghan"]
+						:name (n4 / name [11 = "Afghan"]
+							:op1 "Afghanistan" [11 = "Afghan"]))
+					:mod (q / quality [10 = "quality"]
+						:mod (h2 / high [9 = "higher"]
+							:degree (m / more [9 = "higher"]))))))
+		:ARG1 (a / assist-01 [22 = "assistance"]
+			:ARG0 (c4 / chemist [24 = "chemists"]
+				:ARG1-of (c5 / come-01 [27 = "come"]
+					:ARG3 (o / outside [29 = "outside"]
+						:op1 (c6 / country [31 = "country"]))
+					:prep-as (p4 / person [34 = "consultants"]
+						:mod (f / foreign [33 = "foreign"])
+						:ARG0-of (c / consult-01 [34 = "consultants"]))))
+			:ARG1 (p3 / person [16 = "people"]
+				:ARG0-of (r2 / run-01 [17 = "running"]
+					:ARG1 (l / lab [19 = "labs"])))))
+	:ARG2 (p2 / person [3 = "reporters"]
+		:ARG0-of (r / report-01 [3 = "reporters"])
+		:location (c2 / city [5 = "Kabul"]
+			:name (n3 / name [5 = "Kabul"]
+				:op1 "Kabul" [5 = "Kabul"]))))
+
+# ::id PROXY_APW_ENG_20081121_1082.10 ::date 2013-08-03T11:47:03 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Turkey 's government claimed preparations for getting rid of Turkish stockpiles took longer than planned . 
+(c / claim-01 [3 = "claimed"]
+	:ARG0 (g / government-organization [2 = "government"]
+		:ARG0-of (g2 / govern-01 [2 = "government"]
+			:ARG1 (c2 / country [0 = "Turkey"]
+				:name (n2 / name [0 = "Turkey"]
+					:op1 "Turkey" [0 = "Turkey"]))))
+	:ARG1 (p / prepare-02 [4 = "preparations"]
+		:ARG2 (r / rid-01 [7 = "rid"]
+			:ARG1 (t2 / thing [10 = "stockpiles"]
+				:ARG1-of (s / stockpile-01 [10 = "stockpiles"]
+					:ARG0 c2 [9 = "Turkish"])))
+		:ARG0-of (t / take-10 [11 = "took"]
+			:ARG1 (t3 / temporal-quantity [12 = "longer"]
+				:mod (l / long [12 = "longer"]
+					:degree (m / more [12 = "longer"])
+					:compared-to (t4 / temporal-quantity [14 = "planned"]
+						:ARG1-of (p2 / plan-01 [14 = "planned"])))))))
+
+# ::id PROXY_APW_ENG_20081121_1082.20 ::date 2013-08-03T00:26:37 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The International Campaign to Ban Landmines won the Nobel Peace Prize in 970000 . 
+(w / win-01 [6 = "won"]
+	:ARG0 (o / organization [1 = "International"]
+		:name (n / name [1 = "International"]
+			:op1 "International" [1 = "International"]
+			:op2 "Campaign" [2 = "Campaign"]
+			:op3 "to" [3 = "to"]
+			:op4 "Ban" [4 = "Ban"]
+			:op5 "Landmines" [5 = "Landmines"]))
+	:ARG1 (a / award [8 = "Nobel"]
+		:name (n3 / name [8 = "Nobel"]
+			:op1 "Nobel" [8 = "Nobel"]
+			:op2 "Peace" [9 = "Peace"]
+			:op3 "Prize" [10 = "Prize"]))
+	:time (d / date-entity [12 = "970000"]
+		:year 1997 [12 = "970000"]))
+
+# ::id PROXY_APW_ENG_20080728_0937.17 ::date 2013-07-26T05:31:54 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Oguz stated -- 
+(s / state-01 [1 = "stated"]
+	:ARG0 (p / person [0 = "Oguz"]
+		:name (n / name [0 = "Oguz"]
+			:op1 "Oguz" [0 = "Oguz"])))
+
+# ::id PROXY_CNA_ENG_20040628_0015.6 ::date 2013-08-05T13:41:38 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Taiwan Executive Yuan submitted a NT $ 610.8 billion -LRB- US $ 18.23 billion -RRB- special budget to buy 388 Patriot PAC-III missiles , 8 conventional submarines and 12 P-3 C anti-submarine aircraft from the United States earlier this month . 
+(s / submit-01 [4 = "submitted"]
+	:ARG0 (g / government-organization [2 = "Executive"]
+		:name (n7 / name [2 = "Executive"]
+			:op1 "Executive" [2 = "Executive"]
+			:op2 "Yuan" [3 = "Yuan"])
+		:mod (c / country [1 = "Taiwan"]
+			:name (n2 / name [1 = "Taiwan"]
+				:op1 "Taiwan" [1 = "Taiwan"])))
+	:ARG1 (m / monetary-quantity [6 = "NT"]
+		:quant 610800000000 [8 = "610.8"]
+		:unit (d / dollar [6 = "NT"]
+			:mod c [6 = "NT"]
+			:mod (n3 / new [6 = "NT"]))
+		:ARG1-of (b / budget-01 [17 = "budget"]
+			:mod (s2 / special [16 = "special"])))
+	:ARG3 (b2 / buy-01 [19 = "buy"]
+		:ARG0 (p / person [2 = "Executive"])
+		:ARG1 (a / and [24 = ","]
+			:op1 (m2 / missile [21 = "Patriot"]
+				:quant 388 [20 = "388"]
+				:name (n4 / name [21 = "Patriot"]
+					:op1 "Patriot" [21 = "Patriot"]
+					:op2 "PAC-III" [22 = "PAC-III"]))
+			:op2 (s3 / submarine [27 = "submarines"]
+				:quant 8 [25 = "8"]
+				:mod (c3 / conventional [26 = "conventional"]))
+			:op3 (a2 / aircraft-type [30 = "P-3"]
+				:quant 12 [29 = "12"]
+				:name (n5 / name [30 = "P-3"]
+					:op1 "P-3" [30 = "P-3"]
+					:op2 "C" [31 = "C"])
+				:ARG0-of (c4 / counter-01 [32 = "anti-submarine"]
+					:ARG1 (s4 / submarine [32 = "anti-submarine"]))))
+		:ARG2 (c5 / country [36 = "United"]
+			:name (n6 / name [36 = "United"]
+				:op1 "United" [36 = "United"]
+				:op2 "States" [37 = "States"]))
+		:time (e2 / early [38 = "earlier"]
+			:time (m3 / month [40 = "month"]
+				:mod (t / this [39 = "this"]))
+			:degree (m4 / more [35 = "the"]))))
+
+# ::id PROXY_APW_ENG_20080717_0509.2 ::date 2013-07-18T10:05:26 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt France -LRB- FR -RRB- ; Russian Federation -LRB- RU -RRB- ; Austria -LRB- AT -RRB- 
+(a / and [4 = ";"]
+	:op1 (c / country [0 = "France"]
+		:name (n / name [0 = "France"]
+			:op1 "France" [0 = "France"]))
+	:op2 (c2 / country [5 = "Russian"]
+		:name (n3 / name [5 = "Russian"]
+			:op1 "Russian" [5 = "Russian"]
+			:op2 "Federation" [6 = "Federation"]))
+	:op3 (c3 / country [11 = "Austria"]
+		:name (n4 / name [11 = "Austria"]
+			:op1 "Austria" [11 = "Austria"])))
+
+# ::id PROXY_LTW_ENG_20070609_0091.25 ::date 2013-07-30T07:18:12 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The new blood refers to a group of Gulf cartel operatives who have turned against the zetas as members of the organization bid to control trafficking routes and local drug markets . 
+(r / refer-01 [3 = "refers"]
+	:ARG0 (n / name [1 = "new"]
+		:op1 "New" [1 = "new"]
+		:op2 "Blood" [2 = "blood"])
+	:ARG2 (g / group [6 = "group"]
+		:consist-of (p / person [10 = "operatives"]
+			:ARG0-of (t / turn-01 [13 = "turned"]
+				:prep-against (c2 / criminal-organization [16 = "zetas"]
+					:name (n4 / name [16 = "zetas"]
+						:op1 "Zetas" [16 = "zetas"]))
+				:ARG1-of (c4 / cause-01 [22 = "bid"]
+					:ARG0 (b / bid-00 [22 = "bid"]
+						:ARG0 (p2 / person [18 = "members"]
+							:ARG0-of (h2 / have-org-role-91 [18 = "members"]
+								:ARG1 c2 [16 = "zetas"]
+								:ARG2 (m / member [18 = "members"])))
+						:ARG1 (c3 / control-01 [24 = "control"]
+							:ARG0 p2 [18 = "members"]
+							:ARG1 (a / and [27 = "and"]
+								:op1 (r2 / route [26 = "routes"]
+									:mod (t2 / traffic-00 [25 = "trafficking"]))
+								:op2 (m2 / market [30 = "markets"]
+									:mod (d / drug [29 = "drug"])
+									:mod (l / local [28 = "local"])))))))
+			:ARG0-of (h / have-org-role-91 [10 = "operatives"]
+				:ARG1 (c / criminal-organization [8 = "Gulf"]
+					:name (n3 / name [8 = "Gulf"]
+						:op1 "Gulf" [8 = "Gulf"]
+						:op2 "Cartel" [9 = "cartel"]))
+				:ARG2 (o / operative [10 = "operatives"])))))
+
+# ::id PROXY_APW_ENG_20081118_0402.6 ::date 2013-08-02T11:41:39 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Iranian state television reported the event on 081118 . 
+(r / report-01 [3 = "reported"]
+	:ARG0 (t / television [2 = "television"]
+		:mod (s / state [1 = "state"])
+		:mod (c / country [0 = "Iranian"]
+			:name (n / name [0 = "Iranian"]
+				:op1 "Iran" [0 = "Iranian"])))
+	:ARG1 (e / event [5 = "event"])
+	:time (d / date-entity [7 = "081118"]
+		:year 2008 [7 = "081118"]
+		:month 11 [7 = "081118"]
+		:day 18 [7 = "081118"]))
+
+# ::id PROXY_APW_ENG_20081031_1096.26 ::date 2013-07-31T01:42:25 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Christina Rocca stated that the United States supports the goal of promoting responsibility in arms transfers and reducing the destabilizing trade in illicit arms . 
+(s / state-01 [2 = "stated"]
+	:ARG0 (p / person [0 = "Christina"]
+		:name (n / name [0 = "Christina"]
+			:op1 "Christina" [0 = "Christina"]
+			:op2 "Rocca" [1 = "Rocca"]))
+	:ARG1 (s2 / support-01 [7 = "supports"]
+		:ARG0 (c / country [5 = "United"]
+			:name (n2 / name [5 = "United"]
+				:op1 "United" [5 = "United"]
+				:op2 "States" [6 = "States"]))
+		:ARG1 (g / goal [9 = "goal"]
+			:mod (p2 / promote-02 [11 = "promoting"]
+				:ARG1 (r / responsible-41 [12 = "responsibility"]
+					:ARG2 (t / transfer-01 [15 = "transfers"]
+						:ARG1 (a2 / arm [14 = "arms"]))))
+			:mod (r2 / reduce-01 [17 = "reducing"]
+				:ARG1 (t2 / trade-01 [20 = "trade"]
+					:ARG1 (a3 / arm [23 = "arms"]
+						:mod (l / law [22 = "illicit"]
+							:polarity - [22 = "illicit"]))
+					:ARG0-of (d / destabilize-01 [19 = "destabilizing"]))))))
+
+# ::id PROXY_CNA_ENG_20040212_0013.2 ::date 2013-07-27T13:30:27 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Taiwan -LRB- TW -RRB- 
+(c / country [0 = "Taiwan"]
+	:name (n / name [0 = "Taiwan"]
+		:op1 "Taiwan" [0 = "Taiwan"]))
+
+# ::id PROXY_CNA_ENG_20031021_0019.4 ::date 2013-08-01T02:45:49 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
+# ::snt 6 foreign companies enter into 7 cooperation agreements with Taiwanese companies in a ceremony in Taipei 
+(e / enter-01 [3 = "enter"]
+	:ARG1 (a / agree-01 [7 = "agreements"]
+		:ARG0 (c / company [2 = "companies"]
+			:mod (f / foreign [1 = "foreign"])
+			:quant 6 [0 = "6"])
+		:ARG1 (c4 / cooperate-01 [6 = "cooperation"])
+		:ARG2 (c2 / company [10 = "companies"]
+			:mod (c3 / country [9 = "Taiwanese"]
+				:name (n / name [9 = "Taiwanese"]
+					:op1 "Taiwan" [9 = "Taiwanese"])))
+		:quant 7 [5 = "7"])
+	:time (c5 / ceremony [13 = "ceremony"]
+		:location (c6 / city [15 = "Taipei"]
+			:name (n2 / name [15 = "Taipei"]
+				:op1 "Taipei" [15 = "Taipei"]))))
+
+# ::id PROXY_LTW_ENG_20070514_0055.9 ::date 2013-08-01T15:02:28 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The satellite will be managed from a control station in Abuja , Nigeria . 
+(m / manage-01 [4 = "managed"]
+	:ARG1 (s / satellite [1 = "satellite"])
+	:source (s2 / station [8 = "station"]
+		:location (c / city [10 = "Abuja"]
+			:name (n / name [10 = "Abuja"]
+				:op1 "Abuja" [10 = "Abuja"])
+			:location (c2 / country [12 = "Nigeria"]
+				:name (n2 / name [12 = "Nigeria"]
+					:op1 "Nigeria" [12 = "Nigeria"])))
+		:mod (c3 / control-01 [7 = "control"])))
+
+# ::id PROXY_LTW_ENG_20070514_0055.5 ::date 2013-08-01T14:19:36 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
+# ::snt The satellite demonstrate 's China 's increasing skill in space technology . 
+(d / demonstrate-01 [2 = "demonstrate"]
+	:ARG0 (s / satellite [1 = "satellite"])
+	:ARG1 (s2 / skill [7 = "skill"]
+		:ARG1-of (i / increase-01 [6 = "increasing"])
+		:prep-in (t / technology [10 = "technology"]
+			:mod (s3 / space [9 = "space"]))
+		:mod (c / country [4 = "China"]
+			:name (n / name [4 = "China"]
+				:op1 "China" [4 = "China"]))))
+
+# ::id PROXY_LTW_ENG_20070207_0122.6 ::date 2013-07-30T10:15:49 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The interior ministry said Saudi police have arrested 10 men and accused them of collecting donations to fund terrorist acts outside the Kingdom . 
+(s / say-01 [3 = "said"]
+	:ARG0 (g2 / government-organization [1 = "interior"]
+		:name (n3 / name [1 = "interior"]
+			:op1 "Interior" [1 = "interior"]
+			:op2 "Ministry" [2 = "ministry"]))
+	:ARG1 (a / and [10 = "and"]
+		:op1 (a2 / arrest-01 [7 = "arrested"]
+			:ARG0 (p / police [5 = "police"]
+				:mod (c2 / country [4 = "Saudi"]
+					:name (n4 / name [4 = "Saudi"]
+						:op1 "Saudi" [4 = "Saudi"]
+						:op2 "Arabia" [4 = "Saudi"])))
+			:ARG1 (m / man [9 = "men"]
+				:quant 10 [8 = "10"]))
+		:op2 (a3 / accuse-01 [11 = "accused"]
+			:ARG0 p [5 = "police"]
+			:ARG1 m [12 = "them"]
+			:ARG2 (c3 / collect-01 [14 = "collecting"]
+				:ARG0 m [12 = "them"]
+				:ARG1 (t / thing [15 = "donations"]
+					:ARG1-of (d / donate-01 [15 = "donations"]))
+				:purpose (f / fund-01 [17 = "fund"]
+					:ARG1 (a4 / act-02 [19 = "acts"]
+						:mod (t2 / terrorist [18 = "terrorist"]))
+					:location (o / outside [20 = "outside"]
+						:op1 c2 [22 = "Kingdom"]))))))
+
+# ::id PROXY_APW_ENG_20081121_1082.14 ::date 2013-08-03T00:14:37 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Human Rights Watch helped produce the report . 
+(h / help-01 [3 = "helped"]
+	:ARG0 (o / organization [0 = "Human"]
+		:name (n / name [0 = "Human"]
+			:op1 "Human" [0 = "Human"]
+			:op2 "Rights" [1 = "Rights"]
+			:op3 "Watch" [2 = "Watch"]))
+	:ARG1 (p / produce-01 [4 = "produce"]
+		:ARG1 (r / report-01 [6 = "report"])))
+
+# ::id PROXY_CNA_ENG_20070304_0025.6 ::date 2013-08-11T11:59:09 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Joseph Wu made his statement after China made public the Chinese draft budget bill for 2007 . 
+(s / state-01 [4 = "statement"]
+	:ARG0 (p / person [0 = "Joseph"]
+		:name (n / name [0 = "Joseph"]
+			:op1 "Joseph" [0 = "Joseph"]
+			:op2 "Wu" [1 = "Wu"]))
+	:time (a / after [5 = "after"]
+		:op1 (p2 / publicize-01 [8 = "public"]
+			:ARG0 (c / country [6 = "China"]
+				:name (n2 / name [6 = "China"]
+					:op1 "China" [6 = "China"]))
+			:ARG1 (b / bill [13 = "bill"]
+				:mod (b2 / budget [12 = "budget"])
+				:ARG1-of (d / draft-01 [11 = "draft"])
+				:mod c [10 = "Chinese"]
+				:time (f / for [14 = "for"]
+					:op1 (d2 / date-entity [15 = "2007"]
+						:year 2007 [15 = "2007"]))))))
+
+# ::id PROXY_APW_ENG_20080912_0932.18 ::date 2013-07-27T06:17:27 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Abu Musab al-Zarqawi is the late leader of al-Qaida in Iraq . 
+(p / person [0 = "Abu"]
+	:name (n / name [0 = "Abu"]
+		:op1 "Abu" [0 = "Abu"]
+		:op2 "Musab" [1 = "Musab"]
+		:op3 "al-Zarqawi" [2 = "al-Zarqawi"])
+	:ARG0-of (l / lead-02 [6 = "leader"]
+		:ARG1 (c / criminal-organization [8 = "al-Qaida"]
+			:name (n2 / name [8 = "al-Qaida"]
+				:op1 "al-Qaida" [8 = "al-Qaida"]))
+		:location (c2 / country [10 = "Iraq"]
+			:name (n3 / name [10 = "Iraq"]
+				:op1 "Iraq" [10 = "Iraq"])))
+	:mod (l2 / late [5 = "late"]))
+
+# ::id PROXY_APW_ENG_20080903_0510.22 ::date 2013-07-30T06:21:44 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Other suspects and groups on an European Union terror blacklist have also won legal victories for similar reasons against being listed . 
+(w / win-01 [12 = "won"]
+	:ARG0 (a / and [2 = "and"]
+		:op1 (p / person [1 = "suspects"]
+			:ARG2-of (s / suspect-01 [1 = "suspects"]))
+		:op2 (g / group [3 = "groups"])
+		:mod (o / other [0 = "Other"])
+		:ARG1-of (b / blacklist-01 [9 = "blacklist"]
+			:ARG0 (o2 / organization [6 = "European"]
+				:name (n / name [6 = "European"]
+					:op1 "European" [6 = "European"]
+					:op2 "Union" [7 = "Union"]))
+			:mod (t / terror [8 = "terror"])))
+	:prep-against (l2 / list-01 [20 = "listed"]
+		:ARG1 a [2 = "and"])
+	:mod (a2 / also [11 = "also"])
+	:ARG1-of (c / cause-01 [15 = "for"]
+		:ARG0 (r / reason [17 = "reasons"]
+			:ARG1-of (r2 / resemble-01 [16 = "similar"])))
+	:mod (l / law [13 = "legal"]))
+
+# ::id PROXY_APW_ENG_20081121_1082.11 ::date 2013-08-03T01:29:01 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Belarus said there were delays in receiving support funds from the European Union . 
+(s / say-01 [1 = "said"]
+	:ARG0 (c / country [0 = "Belarus"]
+		:name (n / name [0 = "Belarus"]
+			:op1 "Belarus" [0 = "Belarus"]))
+	:ARG1 (d / delay-01 [4 = "delays"]
+		:ARG1 (r / receive-01 [6 = "receiving"]
+			:ARG1 (m / monetary-quantity [8 = "funds"]
+				:ARG2-of (f / fund-01 [8 = "funds"]
+					:ARG0 o2 [11 = "European"])
+				:purpose (s2 / support-01 [7 = "support"]
+					:ARG0 o2 [11 = "European"]
+					:ARG1 c [0 = "Belarus"]))
+			:ARG2 (o2 / organization [11 = "European"]
+				:name (n3 / name [11 = "European"]
+					:op1 "European" [11 = "European"]
+					:op2 "Union" [12 = "Union"])))))
+
+# ::id PROXY_APW_ENG_20080903_0510.11 ::date 2013-07-25T08:05:59 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Head of the Saudi-based Muwafaq Foundation Yasin Al-Qadi appealed against the European Union 's decision to freeze proprietary assets . 
+(a / appeal-01 [8 = "appealed"]
+	:ARG0 (p / person [6 = "Yasin"]
+		:name (n4 / name [6 = "Yasin"]
+			:op1 "Yasin" [6 = "Yasin"]
+			:op2 "Al-Qadi" [7 = "Al-Qadi"])
+		:ARG0-of (h / head-01 [0 = "Head"]
+			:ARG1 (o / organization [4 = "Muwafaq"]
+				:name (n2 / name [4 = "Muwafaq"]
+					:op1 "Muwafaq" [4 = "Muwafaq"]
+					:op2 "Foundation" [5 = "Foundation"])
+				:ARG1-of (b / base-01 [3 = "Saudi-based"]
+					:location (c / country [3 = "Saudi-based"]
+						:name (n / name [3 = "Saudi-based"]
+							:op1 "Saudi" [3 = "Saudi-based"]
+							:op2 "Arabia" [3 = "Saudi-based"]))))))
+	:ARG1 (d / decide-01 [14 = "decision"]
+		:ARG0 (o2 / organization [11 = "European"]
+			:name (n3 / name [11 = "European"]
+				:op1 "European" [11 = "European"]
+				:op2 "Union" [12 = "Union"]))
+		:ARG1 (f / freeze-02 [16 = "freeze"]
+			:ARG0 o2 [11 = "European"]
+			:ARG1 (a2 / asset [18 = "assets"]
+				:mod (p2 / proprietor [17 = "proprietary"])))))
+
+# ::id PROXY_LTW_ENG_20070124_0098.22 ::date 2013-07-26T15:09:18 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The satellite orbited in a section of space where 125 other satellites fly . 
+(o / orbit-01 [2 = "orbited"]
+	:ARG0 (s / satellite [1 = "satellite"])
+	:location (s2 / section [5 = "section"]
+		:mod (s3 / space [7 = "space"])
+		:location-of (f / fly-01 [12 = "fly"]
+			:ARG1 (s4 / satellite [11 = "satellites"]
+				:quant 125 [9 = "125"]
+				:mod (o2 / other [10 = "other"])))))
+
+# ::id PROXY_APW_ENG_20081127_1149.7 ::date 2013-07-31T23:54:56 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The report was co-authored by former NATO chief George Robertson and published by international think tank the Institute for Public Policy Research . 
+(a / and [10 = "and"]
+	:op1 (c / co-author-01 [3 = "co-authored"]
+		:ARG0 (p2 / person [8 = "George"]
+			:name (n2 / name [8 = "George"]
+				:op1 "George" [8 = "George"]
+				:op2 "Robertson" [9 = "Robertson"])
+			:mod (f / former [5 = "former"])
+			:ARG0-of (h / have-org-role-91 [7 = "chief"]
+				:ARG1 (m / military [6 = "NATO"]
+					:name (n / name [6 = "NATO"]
+						:op1 "NATO" [6 = "NATO"]))
+				:ARG2 (c2 / chief [7 = "chief"])))
+		:ARG1 (r / report-01 [1 = "report"]))
+	:op2 (p / publish-01 [11 = "published"]
+		:ARG0 (r2 / research-institute [17 = "Institute"]
+			:name (n3 / name [17 = "Institute"]
+				:op1 "Institute" [17 = "Institute"]
+				:op2 "for" [18 = "for"]
+				:op3 "Public" [19 = "Public"]
+				:op4 "Policy" [20 = "Policy"]
+				:op5 "Research" [21 = "Research"])
+			:mod (t / think-tank [15 = "tank"]
+				:mod (i / international [13 = "international"])))
+		:ARG1 r [1 = "report"]))
+
+# ::id PROXY_CNA_ENG_20040628_0015.15 ::date 2013-08-07T14:42:32 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Lee said on 040628 that the delegation asked the United States to shorten the delivery period of the submarines from 15 years to 10 years . 
+(s / say-01 [1 = "said"]
+	:ARG0 (p / person [0 = "Lee"]
+		:name (n / name [0 = "Lee"]
+			:op1 "Lee" [0 = "Lee"]))
+	:ARG1 (a / ask-01 [7 = "asked"]
+		:ARG0 (d2 / delegation [6 = "delegation"])
+		:ARG1 (s2 / shorten-01 [12 = "shorten"]
+			:ARG0 c [9 = "United"]
+			:ARG1 (p2 / period [15 = "period"]
+				:duration-of (d3 / deliver-01 [14 = "delivery"]
+					:ARG1 (s3 / submarine [18 = "submarines"])))
+			:ARG3 (t / temporal-quantity [21 = "years"]
+				:quant 15 [20 = "15"]
+				:unit (y / year [21 = "years"]))
+			:ARG4 (t2 / temporal-quantity [23 = "10"]
+				:quant 10 [23 = "10"]
+				:unit (y2 / year [24 = "years"])))
+		:ARG2 (c / country [9 = "United"]
+			:name (n2 / name [9 = "United"]
+				:op1 "United" [9 = "United"]
+				:op2 "States" [10 = "States"])))
+	:time (d / date-entity [3 = "040628"]
+		:day 28 [3 = "040628"]
+		:month 6 [3 = "040628"]
+		:year 2004 [3 = "040628"]))
+
+# ::id PROXY_APW_ENG_20080903_0510.18 ::date 2013-07-26T08:40:18 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Swedish lawyer Thomas Olsson who represented Al-Barakaat in the case approved of the ruling . 
+(a / approve-01 [10 = "approved"]
+	:ARG0 (l / lawyer [1 = "lawyer"]
+		:name (n2 / name [2 = "Thomas"]
+			:op1 "Thomas" [2 = "Thomas"]
+			:op2 "Olsson" [3 = "Olsson"])
+		:mod (c / country [0 = "Swedish"]
+			:name (n / name [0 = "Swedish"]
+				:op1 "Sweden" [0 = "Swedish"]))
+		:ARG0-of (r / represent-01 [5 = "represented"]
+			:ARG1 (o / organization [6 = "Al-Barakaat"]
+				:name (n4 / name [6 = "Al-Barakaat"]
+					:op1 "Al-Barakaat" [6 = "Al-Barakaat"]))
+			:time (c2 / case [9 = "case"])))
+	:ARG1 (t / thing [13 = "ruling"]
+		:ARG1-of (r2 / rule-01 [13 = "ruling"])))
+
+# ::id PROXY_CNA_ENG_20031021_0019.15 ::date 2013-08-01T06:17:04 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The technology transfer will upgrade the research , development and production of Taiwanese motorcycle-makers . 
+(u / upgrade-02 [4 = "upgrade"]
+	:ARG0 (t / transfer-01 [2 = "transfer"]
+		:ARG1 (t2 / technology [1 = "technology"]))
+	:ARG1 (a / and [7 = ","]
+		:op1 (r / research-01 [6 = "research"]
+			:beneficiary (c / company [13 = "motorcycle-makers"]
+				:ARG0-of (m / make-01 [13 = "motorcycle-makers"]
+					:ARG1 (m2 / motorcycle [13 = "motorcycle-makers"]))
+				:mod (c2 / country [12 = "Taiwanese"]
+					:name (n / name [12 = "Taiwanese"]
+						:op1 "Taiwan" [12 = "Taiwanese"]))))
+		:op2 (d / develop-02 [8 = "development"]
+			:beneficiary c [13 = "motorcycle-makers"])
+		:op3 (p / produce-01 [10 = "production"]
+			:beneficiary c [13 = "motorcycle-makers"])))
+
+# ::id PROXY_CNA_ENG_20080216_0006.12 ::date 2013-07-28T16:56:46 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The company chairmen and President reported on financing plans , technology transfer and equipment delivery as well as globalization plans and matching investment in Taiwan . 
+(r / report-01 [5 = "reported"]
+	:ARG0 (a / and [3 = "and"]
+		:op1 (p4 / person [2 = "chairmen"]
+			:ARG0-of (h / have-org-role-91 [2 = "chairmen"]
+				:ARG1 (c2 / company [1 = "company"])
+				:ARG2 (c / chairman [2 = "chairmen"])))
+		:op2 (p / person [4 = "President"]
+			:ARG0-of (h2 / have-org-role-91 [4 = "President"]
+				:ARG1 c2 [1 = "company"]
+				:ARG2 (p5 / president [4 = "President"]))))
+	:ARG1 (a2 / and [12 = "and"]
+		:op1 (p2 / plan-01 [8 = "plans"]
+			:ARG1 (f / finance-01 [7 = "financing"]))
+		:op2 (t / transfer-01 [11 = "transfer"]
+			:ARG1 (t2 / technology [10 = "technology"]))
+		:op3 (d / deliver-01 [14 = "delivery"]
+			:ARG1 (e / equipment [13 = "equipment"]))
+		:op4 (p3 / plan-01 [19 = "plans"]
+			:ARG1 (g / globalize-01 [18 = "globalization"]))
+		:op5 (i / invest-01 [22 = "investment"]
+			:ARG1-of (m / match-01 [21 = "matching"]))
+		:location (c3 / country [24 = "Taiwan"]
+			:name (n / name [24 = "Taiwan"]
+				:op1 "Taiwan" [24 = "Taiwan"]))))
+
+# ::id PROXY_LTW_ENG_19951218_0100.18 ::date 2013-07-26T11:00:15 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Williams said it was really not clear that the parties are willing to engage in any arms control in a meaningful way . 
+(s / say-01 [1 = "said"]
+	:ARG0 (p / person [0 = "Williams"]
+		:name (n / name [0 = "Williams"]
+			:op1 "Williams" [0 = "Williams"]))
+	:ARG1 (c / clear [6 = "clear"]
+		:polarity - [5 = "not"]
+		:mod (r / really [4 = "really"])
+		:mod (w / will-02 [11 = "willing"]
+			:ARG0 (p2 / party [9 = "parties"])
+			:ARG1 (e / engage-01 [13 = "engage"]
+				:ARG2 (c2 / control-01 [17 = "control"]
+					:ARG1 (a / arm [16 = "arms"])
+					:mod (a2 / any [15 = "any"]))
+				:prep-in (w2 / way [21 = "way"]
+					:manner (m / meaningful [20 = "meaningful"]))))))
+
+# ::id PROXY_APW_ENG_20081031_1096.19 ::date 2013-07-30T22:27:27 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The United States favors language contained in some of the negotiating documents about treaty regulating the global arms trade that require consensus decisions that essentially give the United States and other nations veto power . 
+(f / favor-01 [3 = "favors"]
+	:ARG0 (c / country [1 = "United"]
+		:name (n / name [1 = "United"]
+			:op1 "United" [1 = "United"]
+			:op2 "States" [2 = "States"]))
+	:ARG1 (l / language [4 = "language"]
+		:ARG1-of (c2 / contain-01 [4 = "language"]
+			:ARG0 (d3 / document [11 = "documents"]
+				:quant (s2 / some [7 = "some"])
+				:ARG1-of (i2 / include-91 [12 = "about"]
+					:ARG2 (d / document [11 = "documents"]
+						:mod (n2 / negotiate-01 [10 = "negotiating"]
+							:ARG2 (t / treaty [13 = "treaty"]
+								:ARG0-of (r / regulate-01 [14 = "regulating"]
+									:ARG1 (t2 / trade-01 [18 = "trade"]
+										:ARG1 (a / arm [17 = "arms"])
+										:mod (g / globe [16 = "global"])))))
+						:ARG0-of (r2 / require-01 [20 = "require"]
+							:ARG1 (d2 / decide-01 [22 = "decisions"]
+								:manner (c3 / consensus [21 = "consensus"])
+								:ARG0-of (g2 / give-01 [25 = "give"]
+									:ARG1 (p / power [33 = "power"]
+										:ARG0-of (v / veto-01 [32 = "veto"]))
+									:ARG2 (a2 / and [29 = "and"]
+										:op1 c [27 = "United"]
+										:op2 (n3 / nation [31 = "nations"]
+											:mod (o / other [30 = "other"])))
+									:mod (e / essential [24 = "essentially"]))))))))))
+
+# ::id PROXY_LTW_ENG_19951218_0100.11 ::date 2013-07-26T10:29:20 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Croatian Foreign Minister Mate Granic complained that a part of Croatian territory is under occupation and time is running out . 
+(c3 / complain-01 [5 = "complained"]
+	:ARG0 (p / person [3 = "Mate"]
+		:name (n2 / name [3 = "Mate"]
+			:op1 "Mate" [3 = "Mate"]
+			:op2 "Granic" [4 = "Granic"])
+		:ARG0-of (h / have-org-role-91 [2 = "Minister"]
+			:ARG1 (c / country [0 = "Croatian"]
+				:name (n / name [0 = "Croatian"]
+					:op1 "Croatia" [0 = "Croatian"]))
+			:ARG2 (m / minister [2 = "Minister"]
+				:mod (f / foreign [1 = "Foreign"]))))
+	:ARG1 (a / and [15 = "and"]
+		:op1 (o / occupy-01 [14 = "occupation"]
+			:ARG1 (p2 / part [8 = "part"]
+				:part-of (t / territory [11 = "territory"]
+					:poss c [10 = "Croatian"])))
+		:op2 (r / run-05 [18 = "running"]
+			:ARG1 (t2 / time [16 = "time"]))))
+
+# ::id PROXY_LTW_ENG_20070609_0091.23 ::date 2013-07-30T07:41:49 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The message was signed as the new blood . 
+(s / sign-01 [3 = "signed"]
+	:ARG1 (m / message [1 = "message"])
+	:ARG2 (n / name [5 = "the"]
+		:op1 "The" [5 = "the"]
+		:op2 "New" [6 = "new"]
+		:op3 "Blood" [7 = "blood"]))
+
+# ::id PROXY_APW_ENG_20080515_0931.19 ::date 2013-07-20T23:26:28 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Vladimir Putin has threatened to point nuclear missiles at countries that take part in U.S. missile defense and opted out of a key Soviet-era arms control treaty . 
+(a / and [17 = "and"]
+	:op1 (t / threaten-01 [3 = "threatened"]
+		:ARG0 (p / person [0 = "Vladimir"]
+			:name (n / name [0 = "Vladimir"]
+				:op1 "Vladimir" [0 = "Vladimir"]
+				:op2 "Putin" [1 = "Putin"]))
+		:ARG1 (p2 / point-01 [5 = "point"]
+			:ARG0 p [0 = "Vladimir"]
+			:ARG1 (m / missile [7 = "missiles"]
+				:mod (n4 / nucleus [6 = "nuclear"]))
+			:ARG2 (c3 / country [9 = "countries"]
+				:ARG0-of (p3 / participate-01 [12 = "part"]
+					:ARG1 (d / defend-01 [16 = "defense"]
+						:ARG2 (m2 / missile [15 = "missile"]
+							:mod (c / country [14 = "U.S."]
+								:name (n2 / name [14 = "U.S."]
+									:op1 "U.S." [14 = "U.S."]))))))))
+	:op2 (o / opt-01 [18 = "opted"]
+		:ARG0 p [0 = "Vladimir"]
+		:ARG1 (o2 / out [19 = "out"]
+			:op1 (t2 / treaty [26 = "treaty"]
+				:topic (c4 / control-01 [25 = "control"]
+					:ARG1 (a2 / arm-01 [24 = "arms"]))
+				:mod (k / key [22 = "key"])
+				:time (e / era [23 = "Soviet-era"]
+					:mod (c2 / country [23 = "Soviet-era"]
+						:name (n3 / name [23 = "Soviet-era"]
+							:op1 "Soviet" [23 = "Soviet-era"]
+							:op2 "Union" [23 = "Soviet-era"])))))))
+
+# ::id PROXY_LTW_ENG_19951218_0100.16 ::date 2013-07-26T10:53:19 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The OSCE is to oversee the next round of Balkan arms-reduction talks . 
+(o2 / oversee-01 [4 = "oversee"]
+	:ARG0 (o / organization [1 = "OSCE"]
+		:name (n / name [1 = "OSCE"]
+			:op1 "OSCE" [1 = "OSCE"]))
+	:ARG1 (r / round [7 = "round"]
+		:mod (n3 / next [6 = "next"])
+		:mod (t / talk [11 = "talks"]
+			:purpose (r2 / reduce-01 [10 = "arms-reduction"]
+				:ARG1 (a / arm [10 = "arms-reduction"])
+				:location (w / world-region [9 = "Balkan"]
+					:name (n2 / name [9 = "Balkan"]
+						:op1 "Balkans" [9 = "Balkan"]))))))
+
+# ::id PROXY_APW_ENG_20080926_1157.6 ::date 2013-07-27T09:21:29 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Russian president Dmitry Medvedev stated on 26 September 2008 that the Russian military must modernize armed forces and upgrade nuclear deterrent by building a new air and space defense network . 
+(s / state-01 [4 = "stated"]
+	:ARG0 (p2 / person [2 = "Dmitry"]
+		:name (n2 / name [2 = "Dmitry"]
+			:op1 "Dmitry" [2 = "Dmitry"]
+			:op2 "Medvedev" [3 = "Medvedev"])
+		:ARG0-of (h / have-org-role-91 [1 = "president"]
+			:ARG1 (c / country [0 = "Russian"]
+				:name (n / name [0 = "Russian"]
+					:op1 "Russia" [0 = "Russian"]))
+			:ARG2 (p / president [1 = "president"])))
+	:ARG1 (o / obligate-01 [13 = "must"]
+		:ARG2 (a / and [17 = "and"]
+			:op1 (m / modernize-01 [14 = "modernize"]
+				:ARG0 (m2 / military [12 = "military"]
+					:mod c [11 = "Russian"])
+				:ARG1 (f / force [16 = "forces"]
+					:ARG1-of (a2 / arm-01 [15 = "armed"])))
+			:op2 (u / upgrade-02 [18 = "upgrade"]
+				:ARG0 m2 [12 = "military"]
+				:ARG1 (t / thing [20 = "deterrent"]
+					:ARG0-of (d2 / deter-01 [20 = "deterrent"])
+					:mod (n4 / nucleus [19 = "nuclear"])))
+			:manner (b / build-01 [22 = "building"]
+				:ARG0 m2 [12 = "military"]
+				:ARG1 (n5 / network [29 = "network"]
+					:ARG2-of (d3 / defend-01 [28 = "defense"]
+						:manner (a3 / air [25 = "air"])
+						:manner (s2 / space [27 = "space"]))
+					:mod (n3 / new [24 = "new"])))))
+	:time (d / date-entity [7 = "September"]
+		:day 26 [6 = "26"]
+		:month 9 [7 = "September"]
+		:year 2008 [8 = "2008"]))
+
+# ::id PROXY_APW_ENG_20080825_0241.2 ::date 2013-07-26T10:58:25 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Afghanistan -LRB- AF -RRB- 
+(c2 / country [0 = "Afghanistan"]
+	:name (n3 / name [0 = "Afghanistan"]
+		:op1 "Afghanistan" [0 = "Afghanistan"]))
+
+# ::id PROXY_APW_ENG_20080514_1125.29 ::date 2013-07-20T01:08:14 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
+# ::snt It is even more complicated in borderless cyber space where there is no smoking gun , fingerprints or footprints . 
+(c / complicate [4 = "complicated"]
+	:degree (m / more [3 = "more"])
+	:mod (e / even [2 = "even"])
+	:location (s / space [8 = "space"]
+		:mod (c2 / cyber [7 = "cyber"])
+		:mod (b / border [6 = "borderless"]
+			:polarity - [12 = "no"])
+		:location-of (a / and [15 = ","]
+			:op1 (g / gun [14 = "gun"]
+				:polarity - [12 = "no"]
+				:ARG0-of (s2 / smoke-01 [13 = "smoking"]))
+			:op2 (f / fingerprint [16 = "fingerprints"]
+				:polarity - [12 = "no"])
+			:op3 (f2 / footprint [18 = "footprints"]
+				:polarity - [12 = "no"]))))
+
+# ::id PROXY_APW_ENG_20080717_0509.7 ::date 2013-07-19T07:45:11 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
+# ::snt The Treaty is a major instrument of transparency . 
+(i / instrument [5 = "instrument"]
+	:mod (m / major [4 = "major"])
+	:mod (t / transparent [7 = "transparency"])
+	:domain (t2 / treaty [1 = "Treaty"]))
+
+# ::id PROXY_APW_ENG_20081118_0402.10 ::date 2013-08-04T00:55:34 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The area near town of mirjaveh has been the scene of frequent conflicts between Iranian police and drug smugglers . 
+(s2 / scene [9 = "scene"]
+	:domain (a / area [1 = "area"]
+		:mod (n2 / near [2 = "near"]
+			:op1 (t / town [3 = "town"]
+				:name (n3 / name [5 = "mirjaveh"]
+					:op1 "Mirjaveh" [5 = "mirjaveh"]))))
+	:location-of (c / conflict-01 [12 = "conflicts"]
+		:ARG0 (p / police [15 = "police"]
+			:mod (c2 / country [14 = "Iranian"]
+				:name (n / name [14 = "Iranian"]
+					:op1 "Iran" [14 = "Iranian"])))
+		:ARG1 (p2 / person [18 = "smugglers"]
+			:ARG0-of (s / smuggle-01 [18 = "smugglers"]
+				:ARG1 (d / drug [17 = "drug"])))
+		:frequency (f / frequent [11 = "frequent"])))
+
+# ::id PROXY_LTW_ENG_20030814_0653.70 ::date 2013-08-07T23:27:59 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt North Korean officials have defended the right to sell weapons and have stated that North Korean officials are not bound by international treaties restricting such trade . 
+(a / and [10 = "and"]
+	:op1 (d / defend-01 [4 = "defended"]
+		:ARG0 (p / person [2 = "officials"]
+			:ARG0-of (h / have-org-role-91 [2 = "officials"]
+				:ARG1 (c / country [0 = "North"]
+					:name (n / name [0 = "North"]
+						:op1 "North" [0 = "North"]
+						:op2 "Korea" [1 = "Korean"]))
+				:ARG2 (o / official [2 = "officials"])))
+		:ARG1 (e / entitle-01 [6 = "right"]
+			:ARG1 (s2 / sell-01 [8 = "sell"]
+				:ARG1 (w / weapon [9 = "weapons"]))))
+	:op2 (s / state-01 [12 = "stated"]
+		:ARG0 p [2 = "officials"]
+		:ARG1 (b / bind-01 [19 = "bound"]
+			:polarity - [18 = "not"]
+			:ARG0 (t / treaty [22 = "treaties"]
+				:mod (i / international [21 = "international"])
+				:ARG0-of (r2 / restrict-01 [23 = "restricting"]
+					:ARG1 (t2 / trade-01 [25 = "trade"]
+						:mod (s3 / such [24 = "such"]))))
+			:ARG1 p [16 = "officials"])))
+
+# ::id PROXY_LTW_ENG_20030814_0653.48 ::date 2013-08-07T10:27:01 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The investigation ultimately yielded information about North Korea 's weapons program which Indian authorities shared with ally Governments . 
+(y / yield-01 [3 = "yielded"]
+	:ARG0 (i / investigate-01 [1 = "investigation"])
+	:ARG1 (i2 / information [4 = "information"]
+		:topic (p / program [10 = "program"]
+			:poss (c / country [6 = "North"]
+				:name (n / name [6 = "North"]
+					:op1 "North" [6 = "North"]
+					:op2 "Korea" [7 = "Korea"]))
+			:topic (w / weapon [9 = "weapons"]))
+		:ARG1-of (s / share-01 [14 = "shared"]
+			:ARG0 (p2 / person [13 = "authorities"]
+				:ARG0-of (h / have-org-role-91 [13 = "authorities"]
+					:ARG2 (a3 / authority [13 = "authorities"]
+						:mod (c2 / country [12 = "Indian"]
+							:name (n2 / name [12 = "Indian"]
+								:op1 "India" [12 = "Indian"])))))
+			:ARG2 (g / government-organization [17 = "Governments"]
+				:ARG0-of (g2 / govern-01 [17 = "Governments"])
+				:ARG1-of (a2 / ally-01 [16 = "ally"]))))
+	:time (u / ultimate [2 = "ultimately"]))
+
+# ::id PROXY_LTW_ENG_19951218_0100.25 ::date 2013-07-26T13:33:27 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Croatia , Bosnia-Herzegovina and Serbia are the nations that signed the Dayton accord and are supposed to report how many tanks and armored vehicles , heavy artillery pieces , combat aircraft and attack helicopters they possess in the next phase . 
+(s / sign-01 [9 = "signed"]
+	:ARG0 (a / and [3 = "and"]
+		:op1 (n6 / nation [0 = "Croatia"]
+			:mod (c / country [0 = "Croatia"]
+				:name (n / name [0 = "Croatia"]
+					:op1 "Croatia" [0 = "Croatia"])))
+		:op2 (n7 / nation [2 = "Bosnia-Herzegovina"]
+			:mod (c2 / country [2 = "Bosnia-Herzegovina"]
+				:name (n2 / name [2 = "Bosnia-Herzegovina"]
+					:op1 "Bosnia-Herzegovina" [2 = "Bosnia-Herzegovina"])))
+		:op3 (n8 / nation [4 = "Serbia"]
+			:mod (c3 / country [4 = "Serbia"]
+				:name (n3 / name [4 = "Serbia"]
+					:op1 "Serbia" [4 = "Serbia"])))
+		:ARG1-of (s2 / suppose-02 [15 = "supposed"]
+			:ARG2 (r / report-01 [17 = "report"]
+				:ARG0 a [3 = "and"]
+				:ARG1 (t3 / thing [18 = "how"]
+					:quant-of (a3 / and [21 = "and"]
+						:op1 (t / tank [20 = "tanks"])
+						:op2 (v / vehicle [23 = "vehicles"]
+							:ARG1-of (a4 / armor-01 [22 = "armored"]))
+						:op3 (p / piece [27 = "pieces"]
+							:mod (a5 / artillery [26 = "artillery"]
+								:mod (h / heavy [25 = "heavy"])))
+						:op4 (a6 / aircraft [30 = "aircraft"]
+							:mod (c5 / combat [29 = "combat"]))
+						:op5 (h2 / helicopter [33 = "helicopters"]
+							:instrument-of (a7 / attack-01 [32 = "attack"]))
+						:ARG1-of (p2 / possess-01 [35 = "possess"]
+							:ARG0 a [34 = "they"])))
+				:time (p3 / phase [39 = "phase"]
+					:mod (n5 / next [38 = "next"])))))
+	:ARG1 (t2 / treaty [11 = "Dayton"]
+		:name (n9 / name [11 = "Dayton"]
+			:op1 "Dayton" [11 = "Dayton"]
+			:op2 "Accord" [12 = "accord"])))
+
+# ::id PROXY_LTW_ENG_20070609_0091.15 ::date 2013-07-30T06:50:19 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt There were multiple attacks including hand-grenade assaults and decapitations , with police , federal agents and rival drug-traffickers the principal victims . 
+(a8 / and [7 = "and"]
+	:op1 (a / attack-01 [3 = "attacks"]
+		:quant (m / multiple [2 = "multiple"])
+		:ARG2-of (i / include-01 [4 = "including"]
+			:ARG1 (a2 / and [7 = "and"]
+				:op1 (a3 / assault-01 [6 = "assaults"]
+					:instrument (g / grenade [5 = "hand-grenade"]
+						:mod (h / hand [5 = "hand-grenade"])))
+				:op2 (d / decapitate-01 [8 = "decapitations"]))))
+	:op2 (v / victim [20 = "victims"]
+		:mod (p3 / principal [19 = "principal"])
+		:domain (a5 / and [15 = "and"]
+			:op1 (p / police [11 = "police"])
+			:op2 (p4 / person [14 = "agents"]
+				:ARG0-of (h2 / have-org-role-91 [14 = "agents"]
+					:ARG2 (a4 / agent [14 = "agents"]
+						:mod (f / federal [13 = "federal"]))))
+			:op3 (p2 / person [17 = "drug-traffickers"]
+				:ARG0-of (t / traffic-00 [17 = "drug-traffickers"]
+					:ARG1 (d2 / drug [17 = "drug-traffickers"]))
+				:ARG0-of (r / rival-01 [16 = "rival"])))))
+
+# ::id PROXY_LTW_ENG_19951218_0100.5 ::date 2013-07-26T10:03:01 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The long process to try to control and reduce arms in the embattled Balkans was formally launched on 951218 in Bonn , Germany . 
+(l / launch-01 [16 = "launched"]
+	:ARG1 (p / process [2 = "process"]
+		:mod (l2 / long [1 = "long"])
+		:ARG0-of (t / try-01 [4 = "try"]
+			:ARG1 (a / and [7 = "and"]
+				:op1 (c3 / control-01 [6 = "control"]
+					:ARG1 (a2 / arm [9 = "arms"]))
+				:op2 (r / reduce-01 [8 = "reduce"]
+					:ARG1 a [9 = "arms"])
+				:location (w / world-region [13 = "Balkans"]
+					:name (n / name [13 = "Balkans"]
+						:op1 "Balkans" [13 = "Balkans"])
+					:ARG1-of (e / embattle-01 [12 = "embattled"])))))
+	:mod (f / formal [15 = "formally"])
+	:time (d / date-entity [18 = "951218"]
+		:day 18 [18 = "951218"]
+		:month 12 [18 = "951218"]
+		:year 1995 [18 = "951218"])
+	:location (c / city [20 = "Bonn"]
+		:name (n2 / name [20 = "Bonn"]
+			:op1 "Bonn" [20 = "Bonn"])
+		:location (c2 / country [22 = "Germany"]
+			:name (n3 / name [22 = "Germany"]
+				:op1 "Germany" [22 = "Germany"]))))
+
+# ::id PROXY_LTW_ENG_20070609_0091.1 ::date 2013-07-30T04:45:26 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2007-06-09 
+(d2 / date-entity [0 = "2007-06-09"]
+	:year 2007 [0 = "2007-06-09"]
+	:month 6 [0 = "2007-06-09"]
+	:day 9 [0 = "2007-06-09"])
+
+# ::id PROXY_APW_ENG_20080514_1125.6 ::date 2013-07-19T11:47:23 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt On 14 May 2008 7 NATO allies signed an agreement to fund a research center . 
+(s / sign-01 [7 = "signed"]
+	:ARG0 (p / person [6 = "allies"]
+		:quant 7 [4 = "7"]
+		:ARG0-of (a / ally-01 [6 = "allies"])
+		:mod (m / military [5 = "NATO"]
+			:name (n / name [5 = "NATO"]
+				:op1 "NATO" [5 = "NATO"])))
+	:ARG1 (a2 / agree-01 [9 = "agreement"]
+		:ARG1 (f / fund-01 [11 = "fund"]
+			:ARG0 p [6 = "allies"]
+			:ARG1 (c / center [14 = "center"]
+				:mod (r / research-01 [13 = "research"]))))
+	:time (d / date-entity [2 = "May"]
+		:month 5 [2 = "May"]
+		:day 14 [1 = "14"]
+		:year 2008 [3 = "2008"]))
+
+# ::id PROXY_APW_ENG_20081031_1096.25 ::date 2013-07-31T01:19:03 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The 081031 vote will move forward arms trade treaty discussions toward the specifics of the possible language of the arms trade treaty . 
+(f / forward-01 [5 = "forward"]
+	:ARG0 (v / vote-01 [2 = "vote"]
+		:time (d / date-entity [1 = "081031"]
+			:day 31 [1 = "081031"]
+			:month 10 [1 = "081031"]
+			:year 2008 [1 = "081031"]))
+	:ARG1 (d2 / discuss-01 [9 = "discussions"]
+		:ARG1 (t / treaty [8 = "treaty"]
+			:topic (t2 / trade-01 [7 = "trade"]
+				:ARG1 (a / arm [6 = "arms"]))))
+	:ARG2 (s / specific [12 = "specifics"]
+		:poss (l / language [16 = "language"]
+			:mod (p / possible [15 = "possible"])
+			:poss t [21 = "treaty"])))
+
+# ::id PROXY_APW_ENG_20080728_0937.26 ::date 2013-07-26T06:37:20 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt A former senior U.S. State Department counter-narcotics official wrote in an article in the 27 July 2008 issue of New York Times magazine that narco-corruption went to the top of the Afghan Government . 
+(w / write-01 [8 = "wrote"]
+	:ARG0 (p / person [7 = "official"]
+		:ARG0-of (h / have-org-role-91 [7 = "official"]
+			:ARG1 (g / government-organization [3 = "U.S."]
+				:name (n10 / name [3 = "U.S."]
+					:op1 "U.S." [3 = "U.S."]
+					:op2 "State" [4 = "State"]
+					:op3 "Department" [5 = "Department"]))
+			:ARG2 (o / official [7 = "official"]
+				:mod (c / counter-01 [6 = "counter-narcotics"]
+					:ARG1 (n2 / narcotic [6 = "counter-narcotics"]))
+				:mod (s / senior [2 = "senior"])
+				:mod (f / former [1 = "former"]))))
+	:ARG1 (g2 / go-01 [25 = "went"]
+		:ARG1 (c4 / corrupt-01 [24 = "narco-corruption"]
+			:mod (n / narcotic [24 = "narco-corruption"]))
+		:ARG4 (t / top [28 = "top"]
+			:part-of (g3 / government-organization [32 = "Government"]
+				:ARG0-of (g4 / govern-01 [32 = "Government"]
+					:ARG1 (c3 / country [31 = "Afghan"]
+						:name (n7 / name [31 = "Afghan"]
+							:op1 "Afghanistan" [31 = "Afghan"]))))))
+	:medium (a / article [11 = "article"]
+		:part-of (m / magazine [22 = "magazine"]
+			:part-of (n3 / newspaper [19 = "New"]
+				:name (n6 / name [19 = "New"]
+					:op1 "New" [19 = "New"]
+					:op2 "York" [20 = "York"]
+					:op3 "Times" [21 = "Times"]))
+			:time (d2 / date-entity [15 = "July"]
+				:day 27 [14 = "27"]
+				:month 7 [15 = "July"]
+				:year 2008 [16 = "2008"]))))
+
+# ::id PROXY_APW_ENG_20081023_1213.23 ::date 2013-07-29T19:16:40 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Djamel badaoui was sentenced to five years . 
+(s / sentence-01 [3 = "sentenced"]
+	:ARG1 (p / person [0 = "Djamel"]
+		:name (n / name [0 = "Djamel"]
+			:op1 "Djamel" [0 = "Djamel"]
+			:op2 "Badaoui" [1 = "badaoui"]))
+	:ARG2 (t / temporal-quantity [6 = "years"]
+		:quant 5 [5 = "five"]
+		:unit (y / year [6 = "years"])))
+
+# ::id PROXY_CNA_ENG_20040212_0013.17 ::date 2013-08-05T12:48:28 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Zach hopes to gain a better understanding of Taiwan 's development in the political , economic , cultural and tourism fields . 
+(h / hope-01 [1 = "hopes"]
+	:ARG0 (p / person [0 = "Zach"]
+		:name (n / name [0 = "Zach"]
+			:op1 "Zach" [0 = "Zach"]))
+	:ARG1 (g / gain-02 [3 = "gain"]
+		:ARG0 p [0 = "Zach"]
+		:ARG1 (u / understand-01 [6 = "understanding"]
+			:ARG0 p [0 = "Zach"]
+			:ARG1 (d / develop-02 [10 = "development"]
+				:ARG0 (c / country [8 = "Taiwan"]
+					:name (n2 / name [8 = "Taiwan"]
+						:op1 "Taiwan" [8 = "Taiwan"]))
+				:ARG1 (a / and [14 = ","]
+					:op1 (f / field [20 = "fields"]
+						:mod (p2 / politics [13 = "political"]))
+					:op2 (f2 / field [20 = "fields"]
+						:mod (e / economy [15 = "economic"]))
+					:op3 (f3 / field [20 = "fields"]
+						:mod (c2 / culture [17 = "cultural"]))
+					:op4 (f4 / field [20 = "fields"]
+						:mod (t / tourism [19 = "tourism"]))))
+			:mod (g2 / good [5 = "better"]
+				:degree (m / more [5 = "better"])))))
+
+# ::id PROXY_LTW_ENG_20030814_0653.58 ::date 2013-08-07T12:59:05 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The kuwolsan and the crew were unaccounted for after Indian officials released the kuwolsan in 2000 . 
+(a / account-01 [6 = "unaccounted"]
+	:polarity - [6 = "unaccounted"]
+	:ARG1 (a2 / and [2 = "and"]
+		:op1 (s / ship [1 = "kuwolsan"]
+			:name (n / name [1 = "kuwolsan"]
+				:op1 "Kuwolsan" [1 = "kuwolsan"]))
+		:op2 (c / crew [4 = "crew"]))
+	:time (a3 / after [8 = "after"]
+		:op1 (r / release-01 [11 = "released"]
+			:ARG0 (p / person [10 = "officials"]
+				:ARG0-of (h / have-org-role-91 [10 = "officials"]
+					:ARG1 (c2 / country [9 = "Indian"]
+						:name (n2 / name [9 = "Indian"]
+							:op1 "India" [9 = "Indian"]))
+					:ARG2 (o / official [10 = "officials"])))
+			:ARG1 s [13 = "kuwolsan"]
+			:time (d / date-entity [15 = "2000"]
+				:year 2000 [15 = "2000"]))))
+
+# ::id PROXY_APW_ENG_20080515_0931.11 ::date 2013-07-20T12:57:12 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Dmitry Medvedev stated that the Russian Federation 's task for the next few years is to make sure that the Strategic Missile Forces receive the necessary funding to respond to modern threats . 
+(s / state-01 [2 = "stated"]
+	:ARG0 (p / person [0 = "Dmitry"]
+		:name (n / name [0 = "Dmitry"]
+			:op1 "Dmitry" [0 = "Dmitry"]
+			:op2 "Medvedev" [1 = "Medvedev"]))
+	:ARG1 (a / assure-01 [17 = "sure"]
+		:ARG0 c [5 = "Russian"]
+		:ARG1 m3 [20 = "Strategic"]
+		:ARG2 (r / receive-01 [23 = "receive"]
+			:ARG0 (m3 / military [20 = "Strategic"]
+				:name (n3 / name [20 = "Strategic"]
+					:op1 "Strategic" [20 = "Strategic"]
+					:op2 "Missile" [21 = "Missile"]
+					:op3 "Forces" [22 = "Forces"]))
+			:ARG1 (f2 / fund-01 [26 = "funding"]
+				:ARG1-of (n5 / need-01 [25 = "necessary"]
+					:purpose (r2 / respond-01 [28 = "respond"]
+						:ARG0 m3 [20 = "Strategic"]
+						:ARG1 (t3 / thing [31 = "threats"]
+							:ARG1-of (t4 / threaten-01 [31 = "threats"])
+							:mod (m2 / modern [30 = "modern"]))))))
+		:mod (t2 / task [8 = "task"]
+			:poss (c / country [5 = "Russian"]
+				:name (n2 / name [5 = "Russian"]
+					:op1 "Russian" [5 = "Russian"]
+					:op2 "Federation" [6 = "Federation"]))
+			:duration (n6 / next [11 = "next"]
+				:quant (f / few [12 = "few"]
+					:op1 (t / temporal-quantity [13 = "years"]
+						:quant 1 [13 = "years"]
+						:unit (y / year [13 = "years"])))))))
+
+# ::id PROXY_APW_ENG_20080825_0241.4 ::date 2013-07-26T11:00:53 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
+# ::snt Afghanistan 's counter-narcotic police have confiscated 1.2 metric tons -LRB- 1.3 tons -RRB- of opium during a raid . 
+(c2 / confiscate-01 [5 = "confiscated"]
+	:ARG0 (p / police [3 = "police"]
+		:poss (c3 / country [0 = "Afghanistan"]
+			:name (n2 / name [0 = "Afghanistan"]
+				:op1 "Afghanistan" [0 = "Afghanistan"]))
+		:ARG0-of (c4 / counter-01 [2 = "counter-narcotic"]
+			:ARG1 (n3 / narcotic [2 = "counter-narcotic"])))
+	:ARG1 (o / opium [14 = "opium"]
+		:quant (m2 / mass-quantity [11 = "tons"]
+			:quant 1.2 [6 = "1.2"]
+			:unit (t2 / ton [8 = "tons"]
+				:mod (m3 / meter [7 = "metric"]))))
+	:time (r / raid-01 [17 = "raid"]))
+
+# ::id PROXY_CNA_ENG_20031021_0019.24 ::date 2013-08-02T01:32:50 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt AMERICAN COMPANY ryss laboratory 's Taiwan subsidiary and Taiwan 's pharmaceutical industry technology and development center concluded an agreement to exchange technology and combine their strengths for the research and manufacturing of new drugs to upgrade domestic pharmaceutical manufacturing standards . 
+(c / conclude-01 [16 = "concluded"]
+	:ARG1 (a / agree-01 [18 = "agreement"]
+		:ARG0 (s / subsidiary [6 = "subsidiary"]
+			:location (c2 / country [5 = "Taiwan"]
+				:name (n / name [5 = "Taiwan"]
+					:op1 "Taiwan" [5 = "Taiwan"]))
+			:part-of (c3 / company [2 = "ryss"]
+				:name (n2 / name [2 = "ryss"]
+					:op1 "Ryss" [2 = "ryss"]
+					:op2 "Laboratories" [3 = "laboratory"])
+				:mod (c4 / country [0 = "AMERICAN"]
+					:name (n3 / name [0 = "AMERICAN"]
+						:op1 "United" [0 = "AMERICAN"]
+						:op2 "States" [0 = "AMERICAN"]))))
+		:ARG1 (a2 / and [22 = "and"]
+			:op1 (e / exchange-01 [20 = "exchange"]
+				:ARG1 (t / technology [21 = "technology"])
+				:purpose (a3 / and [22 = "and"]
+					:op1 (r2 / research-01 [28 = "research"]
+						:ARG1 (d / drug [33 = "drugs"]
+							:mod (n5 / new [32 = "new"])))
+					:op2 (m / manufacture-01 [30 = "manufacturing"]
+						:ARG1 d [33 = "drugs"])))
+			:op2 (c5 / combine-01 [23 = "combine"]
+				:ARG1 (s2 / strength [25 = "strengths"]
+					:poss (t2 / they [24 = "their"]))
+				:purpose a3 [29 = "and"]))
+		:ARG2 (r / research-institute [10 = "pharmaceutical"]
+			:name (n4 / name [10 = "pharmaceutical"]
+				:op1 "Pharmaceutical" [10 = "pharmaceutical"]
+				:op2 "Industry" [11 = "industry"]
+				:op3 "Technology" [12 = "technology"]
+				:op4 "and" [13 = "and"]
+				:op5 "Development" [14 = "development"]
+				:op6 "Center" [15 = "center"])
+			:location c2 [8 = "Taiwan"]))
+	:purpose (u / upgrade-02 [35 = "upgrade"]
+		:ARG1 (s3 / standard [39 = "standards"]
+			:ARG1-of (m2 / manufacture-01 [38 = "manufacturing"])
+			:domain (p / pharmacy [37 = "pharmaceutical"]
+				:mod (d2 / domestic [36 = "domestic"])))))
+
+# ::id PROXY_APW_ENG_20081031_1096.7 ::date 2013-07-29T23:03:08 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Most of the nations that did not vote to move ahead with crafting the proposed arms trade treat abstained from 081031 vote . 
+(a2 / abstain-01 [18 = "abstained"]
+	:ARG0 (n / nation [3 = "nations"]
+		:ARG1-of (i / include-91 [1 = "of"]
+			:ARG2 (n2 / nation [3 = "nations"]
+				:ARG0-of (v / vote-01 [7 = "vote"]
+					:ARG1 (m2 / move-01 [9 = "move"]
+						:ARG1 (c / craft-01 [12 = "crafting"]
+							:ARG1 (t / treaty [17 = "treat"]
+								:topic (t2 / trade-01 [16 = "trade"]
+									:ARG1 (a3 / arm [15 = "arms"]))
+								:ARG1-of (p / propose-01 [14 = "proposed"])))
+						:ARG2 (a / ahead [10 = "ahead"])
+						:polarity - [6 = "not"]))))
+		:quant (m / most [0 = "Most"]))
+	:ARG1 (v2 / vote-01 [21 = "vote"]
+		:time (d / date-entity [20 = "081031"]
+			:day 31 [20 = "081031"]
+			:month 10 [20 = "081031"]
+			:year 2008 [20 = "081031"])))
+
+# ::id PROXY_LTW_ENG_20070609_0091.36 ::date 2013-07-30T08:24:12 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Torres was an assassinated leader of the zetas . 
+(p2 / person [4 = "leader"]
+	:ARG0-of (l / lead-02 [4 = "leader"]
+		:ARG1 (c / criminal-organization [7 = "zetas"]
+			:name (n2 / name [7 = "zetas"]
+				:op1 "Zetas" [7 = "zetas"])))
+	:ARG1-of (a / assassinate-01 [3 = "assassinated"])
+	:domain (p / person [0 = "Torres"]
+		:name (n / name [0 = "Torres"]
+			:op1 "Torres" [0 = "Torres"])))
+
+# ::id PROXY_LTW_ENG_19951218_0100.3 ::date 2013-07-26T08:12:08 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
+# ::snt International ; weapons ; war and conflict 
+(a / and [5 = "and"]
+	:op1 (i / international [0 = "International"])
+	:op2 (w / weapon [2 = "weapons"])
+	:op3 (a2 / and [5 = "and"]
+		:op1 (w2 / war [4 = "war"])
+		:op2 (c / conflict-01 [6 = "conflict"])))
+
+# ::id PROXY_CNA_ENG_20031021_0019.19 ::date 2013-08-01T07:56:14 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Itochu has promised to assist emtac in importing and developing key parts and is prepared to invest in emtac in the future . 
+(a / and [8 = "and"]
+	:op1 (p / promise-01 [2 = "promised"]
+		:ARG0 (c / company [0 = "Itochu"]
+			:name (n / name [0 = "Itochu"]
+				:op1 "Itochu" [0 = "Itochu"]))
+		:ARG2 (a2 / assist-01 [4 = "assist"]
+			:ARG1 (c2 / company [5 = "emtac"]
+				:name (n2 / name [5 = "emtac"]
+					:op1 "EMTAC" [5 = "emtac"]))
+			:ARG2 (a3 / and [8 = "and"]
+				:op1 (i / import-01 [7 = "importing"]
+					:ARG1 (p3 / part [11 = "parts"]
+						:mod (k / key [10 = "key"])))
+				:op2 (d / develop-02 [9 = "developing"]
+					:ARG1 p3 [11 = "parts"]))))
+	:op2 (p2 / prepare-02 [14 = "prepared"]
+		:ARG0 c [0 = "Itochu"]
+		:ARG2 (i2 / invest-01 [16 = "invest"]
+			:ARG2 c2 [18 = "emtac"]
+			:time (f / future [21 = "future"])))
+	:domain c [0 = "Itochu"])
 

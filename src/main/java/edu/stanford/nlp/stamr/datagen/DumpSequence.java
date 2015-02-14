@@ -43,8 +43,8 @@ public class DumpSequence {
         AMR[] randomDump = new AMR[dumpSize];
         for (int i = 0; i < dumpSize; i++) {
             int select = r.nextInt(devList.size());
-            randomDump[i] = devList.get(i);
-            devList.remove(i);
+            randomDump[i] = devList.get(select);
+            devList.remove(select);
         }
 
         AMRSlurp.burp("data/dev-100.txt", AMRSlurp.Format.LDC, randomDump, AMR.AlignmentPrinting.NONE, false);

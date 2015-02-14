@@ -378,7 +378,7 @@ public class AlignmentAnnotator {
         AMR.Node parent = parentArc.head;
         int parentAlignment = parent.alignment;
 
-        screenWriter.drawString(4, printTokensLowerBound+4, "Dependency path between \""+currentAMRNode.title+"\" and \""+parent.title+"\": "+amr.annotationWrapper.getDependencyPathBetweenNodes(alignment,parentAlignment));
+        screenWriter.drawString(4, printTokensLowerBound+4, "Dependency path between \""+currentAMRNode.title+"\" and \""+parent.title+"\": "+amr.multiSentenceAnnotationWrapper.sentences.get(0).getDependencyPathBetweenNodes(alignment,parentAlignment));
         screenWriter.drawString(0,printTokensLowerBound+6,divider);
         printAMR(4, printTokensLowerBound + 8);
         screen.refresh();
