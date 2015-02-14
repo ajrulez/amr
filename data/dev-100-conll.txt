@@ -1,0 +1,1911 @@
+18	On 080713 43 nations agreed to work toward zone free of weapons of mass destruction in Middle East .
+1	(w/world-region)	4	location	16
+2	(d/date-entity)	7	time	1
+3	(n/name)	1	name	16
+4	(z/zone)	16	ARG1	8
+5	(w3/weapon)	9	ARG2	11
+6	"East"	3	op	17
+7	(a/agree-01)	0	ROOT	4
+8	(d2/destroy-01)	5	ARG2-of	14
+9	(f/free-01)	4	ARG1-of	9
+10	(m/mass)	8	degree	13
+11	(n2/nation)	16	ARG0	3
+12	13	2	day	1
+13	7	2	month	1
+14	2008	2	year	1
+15	43	18	quant	2
+16	(w2/work-01)	7	ARG1	6
+17	"Middle"	3	op	16
+18	(n2/nation)	7	ARG0	3
+
+15	This ruling may hinder international efforts to stop the financing of terror groups including al-Qaida .
+1	(i/international)	6	mod	4
+2	(s/stop-01)	6	purpose	7
+3	(p/possible)	0	ROOT	2
+4	(c/criminal-organization)	14	ARG1	14
+5	(t3/thing)	15	ARG0	1
+6	(e/effort)	15	ARG1	5
+7	(g/group)	13	ARG1	12
+8	(r/rule-01)	5	ARG1-of	1
+9	(t/this)	5	mod	0
+10	(n/name)	4	name	14
+11	(t2/terror)	7	mod	11
+12	"al-Qaida"	10	op	14
+13	(f/finance-01)	2	ARG1	9
+14	(i2/include-01)	7	ARG2-of	13
+15	(h/hinder-01)	3	domain	3
+
+19	Opium production in Afghanistan has increased since the U.S.-led invasion removed the Taliban regime in 2001 .
+1	"Afghanistan"	17	op	3
+2	"U.S."	8	op	8
+3	(s/since)	18	time	6
+4	(p/produce-01)	18	ARG1	1
+5	(i2/invade-01)	13	ARG0	9
+6	(c6/criminal-organization)	16	mod	12
+7	2001	10	year	15
+8	(n5/name)	19	name	8
+9	(n6/name)	6	name	12
+10	(d2/date-entity)	13	time	15
+11	(l/lead-02)	5	ARG1-of	8
+12	(c4/country)	4	location	3
+13	(r/remove-01)	3	op	10
+14	(o/opium)	4	ARG1	0
+15	"Taliban"	9	op	12
+16	(r2/regime)	13	ARG1	13
+17	(n4/name)	12	name	3
+18	(i/increase-01)	0	ROOT	5
+19	(c5/country)	11	ARG0	8
+
+9	The nature of the Sun grisan 9 's cargo was unknown .
+1	(n/nature)	5	ARG1	1
+2	"9"	8	op	6
+3	"Grisan"	8	op	5
+4	"Sun"	8	op	4
+5	(k/know-01)	0	ROOT	10
+6	(c/cargo)	1	poss	8
+7	(s/ship)	6	location	4
+8	(n2/name)	7	name	4
+9	-	5	polarity	10
+
+7	The test raised concern in the United States .
+1	(t/test)	7	ARG0	1
+2	"States"	6	op	7
+3	(c/country)	5	location	6
+4	"United"	6	op	6
+5	(c2/concern-01)	7	ARG1	3
+6	(n/name)	3	name	6
+7	(r/raise-01)	0	ROOT	2
+
+9	Liu declined to address questions on this danger .
+1	(d2/danger)	7	ARG1	7
+2	(t/this)	1	mod	6
+3	(n/name)	9	name	0
+4	(a/address-02)	5	ARG1	3
+5	(d/decline-02)	0	ROOT	1
+6	"Liu"	3	op	0
+7	(q/question-01)	4	ARG1	4
+8	(p/person)	4	ARG0	0
+9	(p/person)	5	ARG0	0
+
+17	On June 7 , 2007 there were three grenade attacks on two police stations and an army barracks in the southern state of Guerrero .
+1	(s2/state)	7	location	23
+2	(a4/and)	12	ARG1	14
+3	(d/date-entity)	12	time	1
+4	(s/station)	2	op	13
+5	(s3/south)	1	mod	20
+6	6	3	month	1
+7	(b/barrack)	2	op	17
+8	3	12	quant	7
+9	2	4	quant	11
+10	(a3/army)	7	mod	16
+11	(g2/grenade)	12	instrument	8
+12	(a2/attack-01)	0	ROOT	9
+13	7	3	day	2
+14	(n/name)	1	name	23
+15	(p2/police)	4	mod	12
+16	"Guerrero"	14	op	23
+17	2007	3	year	4
+
+19	Basrawi is a prominent activist who helped draft petitions addressed to the Government during a vibrant period of political activism before the 2004 arrests
+1	(p2/prominent)	19	mod	3
+2	(h/help-01)	19	ARG0-of	6
+3	(p/person)	19	domain	0
+4	"Basrawi"	14	op	0
+5	(a2/address-01)	9	ARG1-of	9
+6	(g2/govern-01)	7	ARG0-of	12
+7	(g/government-organization)	5	ARG2	12
+8	(d3/date-entity)	16	time	22
+9	(d/draft-01)	2	ARG1	7
+10	2004	8	year	22
+11	(a3/activism)	12	time-of	19
+12	(p4/period)	2	time	16
+13	(b/before)	12	time	20
+14	(n/name)	3	name	0
+15	(p5/politics)	11	mod	18
+16	(a4/arrest-01)	13	op	23
+17	(v/vibrant)	12	mod	15
+18	(p3/petition)	9	ARG1	8
+19	(a/activist)	0	ROOT	4
+
+15	The arms control treaty limits the number of conventional weapons that can be deployed west of the Ural Mountains .
+1	(w2/west)	12	direction	14
+2	"Ural"	3	op	17
+3	(n/name)	13	name	17
+4	(l/limit-01)	0	ROOT	4
+5	(w/weapon)	6	ARG1	9
+6	(n2/number-01)	4	ARG1	6
+7	"Mountains"	3	op	18
+8	(c2/conventional)	5	mod	8
+9	(d2/deploy-01)	5	ARG1-of	13
+10	(p2/possible)	9	mod	11
+11	(t/treaty)	4	ARG0	3
+12	(r/relative-position)	9	location	15
+13	(m/mountain)	12	op	17
+14	(a/arm)	15	ARG1	1
+15	(c/control-01)	11	ARG0-of	2
+
+4	2008-02-15
+1	(d/date-entity)	0	ROOT	0
+2	15	1	day	0
+3	2008	1	year	0
+4	2	1	month	0
+
+10	In 2007 the Estonian Government was struck by cyber attacks .
+1	"Estonia"	6	op	3
+2	(g2/govern-01)	9	ARG0-of	4
+3	(c2/cyber)	7	mod	8
+4	2007	8	year	1
+5	(c/country)	2	ARG1	3
+6	(n/name)	5	name	3
+7	(a/attack-01)	10	ARG0	9
+8	(d/date-entity)	10	time	1
+9	(g/government-organization)	10	ARG1	4
+10	(s/strike-01)	0	ROOT	6
+
+19	Faleh and the two others refused to sign and demanded legal representation and a public trial .
+1	(s/sign-01)	17	ARG1	7
+2	(a3/and)	19	ARG1	12
+3	2	18	quant	3
+4	(a2/and)	1	ARG0	1
+5	(n2/name)	9	name	0
+6	(p3/public)	11	mod	14
+7	(a/and)	0	ROOT	8
+8	(o/other)	18	mod	4
+9	(p2/person)	12	op	0
+10	(a2/and)	16	ARG1	1
+11	(t/try-02)	2	op	15
+12	(a2/and)	17	ARG0	1
+13	(a2/and)	19	ARG0	1
+14	"Faleh"	5	op	0
+15	(l/law)	16	manner	10
+16	(r2/represent-01)	2	op	11
+17	(r/refuse-01)	7	op	5
+18	(p/person)	12	op	4
+19	(d/demand-01)	7	op	9
+
+15	At a news conference at the research center Estonian Defense Minister Jaak Aaviksoo stated that --
+1	(n2/news)	5	mod	2
+2	(d/defense)	3	mod	9
+3	(m/minister)	12	ARG2	10
+4	(s/state-01)	0	ROOT	13
+5	(c/conference)	4	time	3
+6	(r/research-01)	14	mod	6
+7	(n3/name)	11	name	11
+8	"Jaak"	7	op	11
+9	(c3/country)	12	ARG1	8
+10	"Estonia"	13	op	8
+11	(p2/person)	4	ARG0	11
+12	(h/have-org-role-91)	11	ARG0-of	10
+13	(n/name)	9	name	8
+14	(c2/center)	5	location	7
+15	"Aaviksoo"	7	op	12
+
+4	2008-05-14
+1	2008	4	year	0
+2	5	4	month	0
+3	14	4	day	0
+4	(d/date-entity)	0	ROOT	0
+
+5	International ; military ; economy ; weapons
+1	(m/military)	3	op	2
+2	(i/international)	3	op	0
+3	(a/and)	0	ROOT	1
+4	(e/economy)	3	op	4
+5	(w/weapon)	3	op	6
+
+35	The Investment Commission 's Executive Secretary Fan Liang-Tung stated the investment procedure aims to ensure Taiwan 's investments in China will not harm Taiwan 's industries and economy such as by leaking key technologies to the mainland .
+1	(l/leak-01)	34	example	31
+2	(t2/technology)	1	ARG1	33
+3	(c/country)	15	ARG0	15
+4	"Taiwan"	30	op	15
+5	(c/country)	21	poss	23
+6	(g/government-organization)	26	ARG1	1
+7	(t/thing)	34	ARG0	17
+8	"Fan"	14	op	6
+9	(n2/name)	6	name	1
+10	(s2/secretary)	26	ARG2	5
+11	(c2/country)	15	ARG2	19
+12	"Commission"	9	op	2
+13	-	34	polarity	21
+14	(n/name)	31	name	6
+15	(i2/invest-01)	7	ARG1-of	17
+16	(e2/ensure-01)	24	ARG1	14
+17	"Investment"	9	op	1
+18	(c/country)	23	poss	23
+19	(m/mainland)	1	beneficiary	36
+20	(e/executive)	10	mod	4
+21	(i3/industry)	35	op	25
+22	"China"	32	op	19
+23	(e3/economy)	35	op	27
+24	(a/aim-01)	28	ARG1	12
+25	(i/invest-01)	29	mod	10
+26	(h2/have-org-role-91)	31	ARG0-of	5
+27	(k/key)	2	mod	32
+28	(s/state-01)	0	ROOT	8
+29	(p/procedure)	24	ARG0	11
+30	(n3/name)	3	name	15
+31	(p2/person)	28	ARG0	6
+32	(n4/name)	11	name	19
+33	"Liang-Tung"	14	op	7
+34	(h/harm-01)	16	ARG1	22
+35	(a2/and)	34	ARG1	26
+
+5	The center will be operational in August 2008 .
+1	2008	5	year	7
+2	(c/center)	4	ARG0	1
+3	8	5	month	6
+4	(o/operate-01)	0	ROOT	4
+5	(d/date-entity)	4	time	6
+
+12	Al-Rushoodi joined the defense team of three activists still behind bars .
+1	(n2/name)	5	name	0
+2	(b3/be-located-at-91)	10	ARG1-of	9
+3	"Al-Rushoodi"	1	op	0
+4	(b2/bar)	7	op	10
+5	(p/person)	8	ARG0	0
+6	3	10	quant	6
+7	(b/behind)	2	ARG2	9
+8	(j/join-01)	0	ROOT	1
+9	(s/still)	2	time	8
+10	(a2/activist)	11	ARG1	7
+11	(d/defend-01)	12	ARG0-of	3
+12	(t/team)	8	ARG1	4
+
+21	Tantalum can be used in the production of chemical processing equipment , nuclear reactors and missile parts and is subject to export restrictions under Russian law .
+1	(p3/process-01)	10	ARG0-of	9
+2	(p/possible)	0	ROOT	1
+3	(r2/restrict-01)	20	ARG2	22
+4	(t/tantalum)	11	ARG1	0
+5	(a/and)	18	ARG1	11
+6	(l/law)	3	prep-under	25
+7	(t/tantalum)	18	ARG2	0
+8	(n/name)	12	name	24
+9	(c2/chemical)	1	ARG1	8
+10	(e/equipment)	5	op	10
+11	(u/use-01)	2	domain	3
+12	(c/country)	6	mod	24
+13	(r/reactor)	5	op	13
+14	(e2/export-01)	3	ARG1	21
+15	"Russia"	8	op	24
+16	(p4/part)	5	op	16
+17	(m/missile)	16	mod	15
+18	(p2/produce-01)	11	ARG2	6
+19	(n2/nucleus)	13	mod	12
+20	(s/subject-01)	4	ARG1-of	19
+21	(t/tantalum)	14	ARG1	0
+
+21	President Dmitry Medvedev stated that the Russian Federation must make the modernization of the military a priority in light of the recent war with Georgia .
+1	(n2/name)	18	name	6
+2	(m2/military)	14	ARG1	14
+3	(s/state-01)	7	ARG1	3
+4	(p/person)	3	ARG0	1
+5	(h/have-org-role-91)	4	ARG0-of	0
+6	"Dmitry"	21	op	1
+7	(c2/cause-01)	0	ROOT	18
+8	(p3/president)	5	ARG2	0
+9	"Federation"	1	op	7
+10	(r/recent)	16	time	21
+11	(o/obligate-01)	3	ARG1	8
+12	"Georgia"	17	op	24
+13	"Medvedev"	21	op	2
+14	(m/modernize-01)	20	ARG1	11
+15	"Russian"	1	op	6
+16	(w/war-01)	7	ARG0	22
+17	(n3/name)	19	name	24
+18	(c/country)	20	ARG0	6
+19	(c3/country)	16	ARG1	24
+20	(p2/prioritize-01)	11	ARG2	16
+21	(n/name)	4	name	1
+
+15	The cyber attacks followed a dispute over the relocation of a Soviet war memorial in Estonia 's capital .
+1	(c/country)	8	mod	11
+2	(w/war)	8	mod	12
+3	"Union"	6	op	11
+4	"Estonia"	9	op	15
+5	(c4/capital)	12	ARG2	17
+6	(n/name)	1	name	11
+7	(a/attack-01)	15	ARG1	2
+8	(m/memorial)	12	ARG1	13
+9	(n2/name)	10	name	15
+10	(c2/country)	5	mod	15
+11	(d/dispute-01)	15	ARG2	5
+12	(r/relocate-01)	11	ARG2	8
+13	(c3/cyber)	7	mod	1
+14	"Soviet"	6	op	11
+15	(f/follow-01)	0	ROOT	3
+
+21	The May 2007 attacks were days after Estonia decided to relocate a Soviet war memorial and grave .
+1	(s/soviet)	19	mod	12
+2	(g/grave)	7	op	16
+3	(a2/after)	20	time	6
+4	(m/multiple)	3	quant	5
+5	(d2/date-entity)	20	mod	1
+6	5	5	month	1
+7	(a3/and)	8	ARG1	15
+8	(r/relocate-01)	14	ARG1	10
+9	1	16	quant	5
+10	(d3/day)	16	unit	5
+11	(w/war)	19	mod	13
+12	"Estonia"	21	op	7
+13	2007	5	year	2
+14	(d4/decide-01)	3	op	8
+15	(s/soviet)	2	mod	12
+16	(t/temporal-quantity)	4	op	5
+17	(c3/country)	8	ARG0	7
+18	(c3/country)	14	ARG0	7
+19	(m2/memorial)	7	op	14
+20	(a/attack-01)	0	ROOT	3
+21	(n3/name)	18	name	7
+
+4	2008-08-25
+1	8	4	month	0
+2	25	4	day	0
+3	2008	4	year	0
+4	(d2/date-entity)	0	ROOT	0
+
+9	The research center is based in Tallinn , Estonia .
+1	"Estonia"	8	op	8
+2	(c3/center)	5	ARG1	2
+3	(c/city)	5	location	6
+4	"Tallinn"	9	op	6
+5	(b/base-01)	0	ROOT	4
+6	(r/research-01)	2	mod	1
+7	(c2/country)	3	location	8
+8	(n2/name)	7	name	8
+9	(n/name)	3	name	6
+
+51	Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia .
+1	"Georgia"	21	op	37
+2	(n4/name)	22	name	18
+3	"NATO"	46	op	22
+4	(a3/accept-01)	50	ARG1	26
+5	(c/country)	35	ARG0	5
+6	(n2/name)	24	name	5
+7	"Czech"	2	op	18
+8	(m2/military)	39	ARG1	22
+9	"Ukraine"	26	op	35
+10	"States"	6	op	6
+11	(n6/name)	34	name	30
+12	"Putin"	16	op	1
+13	(f/fierce)	49	manner	2
+14	(p/person)	49	ARG0	0
+15	"Soviet"	32	op	32
+16	(n/name)	14	name	0
+17	(c6/country)	40	op	35
+18	(c5/country)	28	ARG1	32
+19	"Union"	32	op	32
+20	(a4/alliance)	51	mod	22
+21	(n9/name)	25	name	37
+22	(c3/country)	31	op	18
+23	(e/ex)	28	time	32
+24	(c/country)	43	ARG0	5
+25	(c7/country)	40	op	37
+26	(n8/name)	17	name	35
+27	(n10/neighbor-01)	40	ARG1-of	33
+28	(h/have-part-91)	40	ARG2-of	32
+29	(m/missile)	42	mod	11
+30	"Republic"	2	op	19
+31	(a2/and)	35	location	16
+32	(n7/name)	18	name	32
+33	"Vladimir"	16	op	0
+34	(c4/country)	27	ARG1	30
+35	(d/deploy-01)	43	ARG1	10
+36	(d2/defend-01)	29	ARG2-of	12
+37	(n3/name)	47	name	15
+38	"United"	6	op	5
+39	(j/join-05)	4	ARG1	26
+40	(a5/and)	39	ARG0	36
+41	(a/and)	49	ARG1	21
+42	(s/site)	35	ARG1	13
+43	(p2/plan-01)	41	op	8
+44	"Poland"	37	op	15
+45	(m2/military)	4	ARG0	22
+46	(n5/name)	51	name	22
+47	(c2/country)	31	op	15
+48	"Russia"	11	op	30
+49	(o2/oppose-01)	0	ROOT	3
+50	(p3/plan-01)	41	op	24
+51	(m2/military)	50	ARG0	22
+
+15	Unger stated such technology transfers would involve a significant element of Research and Development in Brazil .
+1	(n/name)	10	name	0
+2	(s3/such)	14	mod	2
+3	(r/research-01)	13	mod	11
+4	(s/state-01)	0	ROOT	1
+5	"Unger"	1	op	0
+6	(t2/technology)	14	ARG1	3
+7	"Brazil"	9	op	15
+8	(s2/significant)	13	mod	8
+9	(n3/name)	11	name	15
+10	(p/person)	4	ARG0	0
+11	(c/country)	12	location	15
+12	(i/involve-01)	4	ARG1	6
+13	(e/element)	12	ARG1	9
+14	(t/transfer-01)	12	ARG2	4
+15	(d/develop-02)	13	mod	13
+
+22	Pharmaessentia and Synmosa Biopharma will separately sell those products in the Asian and U.S. markets respectively .
+1	"U.S."	14	op	13
+2	(m/market-01)	6	op	14
+3	(n3/name)	21	name	11
+4	(n/name)	9	name	0
+5	(n2/name)	11	name	2
+6	(a3/and)	19	location	12
+7	"Pharmaessentia"	4	op	0
+8	"Synmosa"	5	op	2
+9	(c/company)	22	op	0
+10	(r/respective)	6	mod	15
+11	(c2/company)	22	op	2
+12	(m2/market-01)	6	op	14
+13	(c4/country)	12	mod	13
+14	(n4/name)	13	name	13
+15	"Asia"	3	op	11
+16	(t/that)	17	mod	7
+17	(p/product)	19	ARG1	8
+18	(s2/separate-01)	19	manner	5
+19	(s/sell-01)	0	ROOT	6
+20	"Biopharma"	5	op	3
+21	(c3/continent)	2	mod	11
+22	(a/and)	19	ARG0	1
+
+23	The Swedes were accused of using the informal money transfer networks called hawalas to send funds to alleged terror groups in Somalia .
+1	(m/money)	22	ARG1	8
+2	(a2/allege-01)	21	ARG1-of	17
+3	(s/send-01)	10	ARG2	14
+4	(f/formal)	18	mod	7
+5	(h/hawalas)	23	ARG2	12
+6	(c/country)	12	mod	1
+7	(n/name)	6	name	1
+8	(t3/terror)	21	mod	18
+9	"Somalia"	19	op	21
+10	(u/use-01)	14	ARG2	5
+11	(f2/fund-01)	20	ARG2-of	15
+12	(p2/person)	14	ARG1	6
+13	(c2/country)	21	location	21
+14	(a/accuse-01)	0	ROOT	3
+15	-	4	polarity	7
+16	"Sweden"	7	op	1
+17	(p2/person)	10	ARG0	1
+18	(n3/network)	10	ARG1	10
+19	(n2/name)	13	name	21
+20	(t2/thing)	3	ARG1	15
+21	(g/group)	3	ARG2	19
+22	(t/transfer-01)	18	instrument-of	9
+23	(c3/call-01)	18	ARG1-of	11
+
+30	The Yuri dolgoruky is the first in a series of new nuclear submarines to be commissioned this year but the bulava nuclear-armed missile developed to equip the submarine has failed tests and the deployment prospects are uncertain .
+1	(e/equip-01)	20	purpose	25
+2	(a/and)	22	ARG2	31
+3	(i/include-91)	25	ARG1-of	6
+4	(m2/missile)	6	ARG0	20
+5	"Yuri"	14	op	1
+6	(f/fail-01)	2	op	29
+7	(t2/test-01)	6	ARG1	30
+8	(p2/prospect)	29	domain	34
+9	(m/missile)	1	ARG0	22
+10	(d/deploy-01)	8	mod	33
+11	-	29	polarity	36
+12	(s2/submarine)	24	mod	12
+13	(n3/new)	12	mod	10
+14	(n/name)	18	name	1
+15	"Dolgoruky"	14	op	2
+16	(a2/arm-01)	4	ARG1-of	21
+17	(t/this)	26	mod	16
+18	(p/product)	23	ARG1	1
+19	(n5/nucleus)	16	ARG2	21
+20	(d2/develop-02)	4	ARG1-of	23
+21	(n4/name)	4	name	20
+22	(c3/contrast-01)	0	ROOT	18
+23	(c/commission-01)	22	ARG1	15
+24	(s/series)	3	ARG2	8
+25	(f2/first)	18	mod	5
+26	(y/year)	23	time	17
+27	"Bulava"	21	op	20
+28	(s3/submarine)	1	ARG1	27
+29	(c2/certain)	2	op	36
+30	(n2/nucleus)	12	mod	11
+
+19	This included a funeral Director who had transported the body of Efrain Torres to a cemetery in the city of Poza Rica in May .
+1	(n/name)	15	name	11
+2	"Rica"	17	op	21
+3	(h/have-org-role-91)	6	ARG0-of	4
+4	(t2/transport-01)	6	ARG0-of	7
+5	"Poza"	17	op	20
+6	(p2/person)	10	ARG1	4
+7	(b/body)	4	ARG1	9
+8	(c2/cemetery)	4	ARG2	15
+9	(d/date-entity)	4	time	23
+10	(i/include-01)	0	ROOT	1
+11	"Efrain"	1	op	11
+12	(c/city)	8	location	20
+13	"Torres"	1	op	12
+14	(t/this)	10	ARG2	0
+15	(p/person)	7	poss	11
+16	(d2/director)	3	ARG2	4
+17	(n2/name)	12	name	20
+18	5	9	month	23
+19	(f/funeral)	16	mod	3
+
+4	2008-09-03
+1	(d/date-entity)	0	ROOT	0
+2	9	1	month	0
+3	3	1	day	0
+4	2008	1	year	0
+
+5	The center will formally open in 2009 .
+1	(o/open-01)	0	ROOT	4
+2	(c/center)	1	ARG1	1
+3	(d/date-entity)	1	time	4
+4	2009	3	year	6
+5	(f/formal)	1	manner	3
+
+27	Chen made the statement after presiding over an Interministerial Conference on whether the projects were in line with the Government 's active management and effective opening policy regarding investment in China .
+1	(p/person)	25	ARG0	0
+2	(n2/name)	13	name	19
+3	(i/invest-01)	20	ARG1	28
+4	(c4/country)	3	ARG2	30
+5	(c/conference)	9	ARG1	9
+6	(c2/conform-01)	5	topic	16
+7	"China"	12	op	30
+8	(a/after)	25	time	4
+9	(p2/preside-01)	8	op	5
+10	(p5/policy)	23	op	26
+11	(p4/policy)	23	op	26
+12	(n3/name)	4	name	30
+13	(g/government-organization)	23	poss	19
+14	(p/person)	9	ARG0	0
+15	interrogative	6	mode	11
+16	(a3/active)	27	manner	21
+17	(i2/interministerial)	5	mod	8
+18	"Chen"	21	op	0
+19	"Government"	2	op	19
+20	(c3/concern-02)	23	ARG0-of	27
+21	(n/name)	1	name	0
+22	(p3/project)	6	ARG1	13
+23	(a4/and)	6	ARG2	23
+24	(e/effective)	26	manner	24
+25	(s/state-01)	0	ROOT	3
+26	(o/open-01)	10	mod	25
+27	(m/manage-01)	11	mod	22
+
+12	The Court considered ouarab to be the natural , legitimate and operational successor of Bourada .
+1	"Ouarab"	12	op	3
+2	(n3/name)	4	name	14
+3	(c2/court)	9	ARG0	1
+4	(p2/person)	11	ARG1	14
+5	(o2/operation)	11	mod	11
+6	(p/person)	11	ARG0	3
+7	(n4/natural)	11	mod	7
+8	"Bourada"	2	op	14
+9	(c/consider-01)	0	ROOT	2
+10	(l/legitimacy)	11	mod	9
+11	(s/succeed-02)	9	ARG1	12
+12	(n2/name)	6	name	3
+
+16	Soviet-built nuclear submarines frequently need repairs and rarely leave the bases .
+1	(s/submarine)	16	ARG0	2
+2	(a/and)	0	ROOT	6
+3	(s/submarine)	12	ARG1	2
+4	(n2/need-01)	2	op	4
+5	(s/submarine)	4	ARG0	2
+6	(n3/nucleus)	5	mod	1
+7	(n/name)	11	name	0
+8	(b/build-01)	5	ARG1-of	0
+9	"Soviet"	7	op	0
+10	"Union"	7	op	0
+11	(c/country)	8	ARG0	0
+12	(r2/repair-01)	4	ARG1	5
+13	(f/frequent)	4	frequency	3
+14	(b2/base)	16	ARG1	10
+15	(r/rare)	16	frequency	7
+16	(l/leave-01)	2	op	8
+
+22	Russia suspended participation in the arms control treaty late last year because NATO countries had not ratified a revised version of the Treaty .
+1	(v/version)	18	mod	19
+2	(c4/country)	13	ARG0	13
+3	(r2/revise-01)	1	ARG1-of	18
+4	(t/treaty)	15	ARG1	7
+5	(c2/control-01)	4	ARG0-of	6
+6	(c3/cause-01)	17	ARG1-of	11
+7	(c/country)	17	ARG0	0
+8	(l3/late)	10	mod	8
+9	(n2/name)	19	name	12
+10	(y/year)	17	time	10
+11	(l2/last)	10	mod	9
+12	(n/name)	7	name	0
+13	(r/ratify-01)	6	ARG0	16
+14	(a/arm)	5	ARG1	5
+15	(p/participate-01)	17	ARG1	2
+16	(c/country)	15	ARG0	0
+17	(s/suspend-01)	0	ROOT	1
+18	(t2/treaty)	13	ARG1	22
+19	(m/military)	2	mod	12
+20	"NATO"	9	op	12
+21	"Russia"	12	op	0
+22	-	13	polarity	15
+
+4	2007-02-02
+1	2007	2	year	0
+2	(d/date-entity)	0	ROOT	0
+3	2	2	day	0
+4	2	2	month	0
+
+23	Conference participants said Foreign Minister Milan Milutinovic from Serbia scolded his Croatian counterpart for grandstanding .
+1	(c2/country)	11	ARG1	11
+2	"Serbia"	15	op	8
+3	(c3/conference)	9	ARG1	0
+4	(p2/person)	20	ARG1	12
+5	(h/have-org-role-91)	16	ARG0-of	4
+6	(m/minister)	11	ARG2	12
+7	(n3/name)	1	name	11
+8	(p2/person)	10	ARG0	12
+9	(p4/participate-01)	19	ARG0-of	1
+10	(g/grandstand-01)	20	ARG2	14
+11	(h2/have-org-role-91)	4	ARG0-of	12
+12	(c/country)	5	ARG1	8
+13	(m/minister)	5	ARG2	4
+14	(s/say-01)	0	ROOT	2
+15	(n2/name)	12	name	8
+16	(p/person)	20	ARG0	4
+17	(n/name)	16	name	4
+18	(f/foreign)	13	mod	3
+19	(p3/person)	14	ARG0	1
+20	(s2/scold-01)	14	ARG1	9
+21	"Milan"	17	op	5
+22	"Croatia"	7	op	11
+23	"Milutinovic"	17	op	6
+
+4	2004-02-12
+1	2004	4	year	0
+2	12	4	day	0
+3	2	4	month	0
+4	(d/date-entity)	0	ROOT	0
+
+22	The Ministry of Economic Affairs -LRB- moea -RRB- gave preliminary approval to 2 major China-bound investment projects at a review meeting on 15 February 2008 .
+1	(i/invest-01)	9	mod	15
+2	(b/bind-01)	9	ARG1-of	14
+3	(m/major)	9	mod	13
+4	(a/approve-01)	0	ROOT	10
+5	"of"	7	op	2
+6	2	15	month	23
+7	(n/name)	11	name	1
+8	2	9	quant	12
+9	(p2/project)	4	ARG1	16
+10	(m2/meet-03)	4	time	20
+11	(g/government-organization)	4	ARG0	1
+12	(r/review-01)	10	purpose	19
+13	(n2/name)	22	name	14
+14	2008	15	year	24
+15	(d/date-entity)	10	time	23
+16	"Ministry"	7	op	1
+17	"China"	13	op	14
+18	15	15	day	22
+19	(p/preliminary)	4	manner	9
+20	"Economic"	7	op	3
+21	"Affairs"	7	op	4
+22	(c/country)	2	ARG2	14
+
+23	Saudi Arabia has two Government-appointed human rights committees but bans independent human and civil rights organizations .
+1	(n2/name)	15	name	0
+2	(a/appoint-01)	19	ARG1-of	4
+3	"Arabia"	1	op	1
+4	(c/civil)	12	mod	13
+5	(o2/organization)	18	op	15
+6	(b/ban-01)	13	ARG2	9
+7	(r/right)	19	mod	6
+8	(d/depend-01)	18	ARG0-of	10
+9	-	8	polarity	10
+10	(h/have-03)	13	ARG1	2
+11	(o/organization)	18	op	15
+12	(r3/right)	5	mod	14
+13	(c2/contrast-01)	0	ROOT	8
+14	(h2/human)	7	mod	5
+15	(c3/country)	10	ARG0	0
+16	(c3/country)	6	ARG0	0
+17	(g/government-organization)	2	ARG0	4
+18	(a2/and)	6	ARG1	12
+19	(c4/committee)	10	ARG1	7
+20	"Saudi"	1	op	0
+21	(g2/govern-01)	17	ARG0-of	4
+22	(r/right)	11	mod	14
+23	2	19	quant	3
+
+19	The companies will invest 10 million US dollars , 20 million US dollars , 6.7 million US dollars , and 50 million US dollars respectively .
+1	(n/name)	8	name	6
+2	(a/and)	6	ARG1	8
+3	"US"	1	op	6
+4	(d/dollar)	17	unit	17
+5	20000000	11	quant	9
+6	(i/invest-01)	0	ROOT	3
+7	(r/respective)	6	manner	24
+8	(c2/country)	16	mod	6
+9	(c/company)	6	ARG0	1
+10	10000000	18	quant	4
+11	(m2/monetary-quantity)	2	op	12
+12	(m4/monetary-quantity)	2	op	20
+13	(d/dollar)	12	unit	23
+14	50000000	12	quant	20
+15	(d/dollar)	11	unit	12
+16	(d/dollar)	18	unit	7
+17	(m3/monetary-quantity)	2	op	14
+18	(m/monetary-quantity)	2	op	7
+19	6700000	17	quant	14
+
+9	The boy died in a drowning accident unrelated to drug trafficking .
+1	(c/cause-01)	9	ARG1-of	3
+2	(a/accident)	1	ARG0	6
+3	-	5	polarity	7
+4	(d3/drug)	8	ARG1	9
+5	(r/relate-01)	2	ARG1-of	7
+6	(b/boy)	9	ARG1	1
+7	(d2/drown-02)	2	mod	5
+8	(t/traffic-00)	5	ARG2	10
+9	(d/die-01)	0	ROOT	2
+
+24	Most observers expect Dmitry Medvedev to continue the policies of Vladimir Putin , such as an assertive posture on the international scene and vow to strengthen the military .
+1	(c/continue-01)	5	op	6
+2	"Dmitry"	10	op	3
+3	(m2/military)	22	ARG1	27
+4	(p5/posture)	12	example-of	17
+5	(a/and)	8	ARG1	12
+6	"Vladimir"	16	op	10
+7	(o/observe-01)	19	ARG0-of	1
+8	(e/expect-01)	0	ROOT	2
+9	(m/most)	19	mod	0
+10	(n/name)	18	name	3
+11	"Medvedev"	10	op	4
+12	(p4/policy)	1	ARG1	8
+13	(i/international)	21	mod	20
+14	(a2/assertive)	4	mod	16
+15	(v/vow-01)	5	op	23
+16	(n2/name)	20	name	10
+17	(p/person)	22	ARG0	3
+18	(p/person)	1	ARG0	3
+19	(p3/person)	8	ARG0	1
+20	(p2/person)	12	poss	10
+21	(s/scene)	4	location	21
+22	(s2/strengthen-01)	15	ARG1	25
+23	"Putin"	16	op	11
+24	(p/person)	15	ARG0	3
+
+30	Oguz stated to reporters in Kabul that evidence of higher quality Afghan heroin indicates that the people running the labs are getting assistance from chemists who have come from outside the country as foreign consultants .
+1	(h/heroin)	27	ARG1	12
+2	(c/consult-01)	22	ARG0-of	34
+3	(r/report-01)	16	ARG0-of	3
+4	(q/quality)	1	mod	10
+5	"Kabul"	18	op	5
+6	"Afghanistan"	12	op	11
+7	(i/indicate-01)	8	ARG1	13
+8	(s/state-01)	0	ROOT	1
+9	(t/thing)	7	ARG0	7
+10	(o/outside)	15	ARG3	29
+11	(m/more)	14	degree	9
+12	(n4/name)	25	name	11
+13	(r2/run-01)	29	ARG0-of	17
+14	(h2/high)	4	mod	9
+15	(c5/come-01)	23	ARG1-of	27
+16	(p2/person)	8	ARG2	3
+17	(l/lab)	13	ARG1	19
+18	(n3/name)	28	name	5
+19	(c6/country)	10	op	31
+20	(n2/name)	30	name	0
+21	(a/assist-01)	7	ARG1	22
+22	(p4/person)	15	prep-as	34
+23	(c4/chemist)	21	ARG0	24
+24	(f/foreign)	22	mod	33
+25	(c3/country)	1	mod	11
+26	"Oguz"	20	op	0
+27	(e/evidence-01)	9	ARG0-of	7
+28	(c2/city)	16	location	5
+29	(p3/person)	21	ARG1	16
+30	(p/person)	8	ARG0	0
+
+17	Turkey 's government claimed preparations for getting rid of Turkish stockpiles took longer than planned .
+1	(l/long)	2	mod	12
+2	(t3/temporal-quantity)	12	ARG1	12
+3	(c2/country)	7	ARG1	0
+4	(t4/temporal-quantity)	1	compared-to	14
+5	(g/government-organization)	10	ARG0	2
+6	(m/more)	1	degree	12
+7	(g2/govern-01)	5	ARG0-of	2
+8	(n2/name)	3	name	0
+9	(p/prepare-02)	10	ARG1	4
+10	(c/claim-01)	0	ROOT	3
+11	"Turkey"	8	op	0
+12	(t/take-10)	9	ARG0-of	11
+13	(p2/plan-01)	4	ARG1-of	14
+14	(c2/country)	16	ARG0	9
+15	(r/rid-01)	9	ARG2	7
+16	(s/stockpile-01)	17	ARG1-of	10
+17	(t2/thing)	15	ARG1	10
+
+15	The International Campaign to Ban Landmines won the Nobel Peace Prize in 970000 .
+1	(n3/name)	12	name	8
+2	(w/win-01)	0	ROOT	6
+3	"Ban"	15	op	4
+4	"Nobel"	1	op	8
+5	"Prize"	1	op	10
+6	1997	14	year	12
+7	"Peace"	1	op	9
+8	(o/organization)	2	ARG0	1
+9	"Landmines"	15	op	5
+10	"International"	15	op	1
+11	"Campaign"	15	op	2
+12	(a/award)	2	ARG1	8
+13	"to"	15	op	3
+14	(d/date-entity)	2	time	12
+15	(n/name)	8	name	1
+
+4	Oguz stated --
+1	(n/name)	3	name	0
+2	(s/state-01)	0	ROOT	1
+3	(p/person)	2	ARG0	0
+4	"Oguz"	1	op	0
+
+41	The Taiwan Executive Yuan submitted a NT $ 610.8 billion -LRB- US $ 18.23 billion -RRB- special budget to buy 388 Patriot PAC-III missiles , 8 conventional submarines and 12 P-3 C anti-submarine aircraft from the United States earlier this month .
+1	(n5/name)	20	name	30
+2	(b/budget-01)	32	ARG1-of	17
+3	(m2/missile)	10	op	21
+4	8	40	quant	25
+5	"Patriot"	21	op	21
+6	12	20	quant	29
+7	(n6/name)	27	name	36
+8	(p/person)	19	ARG0	2
+9	(n3/new)	18	mod	6
+10	(a/and)	19	ARG1	24
+11	"PAC-III"	21	op	22
+12	(c3/conventional)	40	mod	26
+13	(c4/counter-01)	20	ARG0-of	32
+14	(n7/name)	24	name	2
+15	(m4/more)	37	degree	35
+16	(s/submit-01)	0	ROOT	4
+17	610800000000	32	quant	8
+18	(d/dollar)	32	unit	6
+19	(b2/buy-01)	16	ARG3	19
+20	(a2/aircraft-type)	10	op	30
+21	(n4/name)	3	name	21
+22	(c/country)	24	mod	1
+23	(n2/name)	22	name	1
+24	(g/government-organization)	16	ARG0	2
+25	"P-3"	1	op	30
+26	(t/this)	38	mod	39
+27	(c5/country)	19	ARG2	36
+28	388	3	quant	20
+29	"Taiwan"	23	op	1
+30	"United"	7	op	36
+31	"Executive"	14	op	2
+32	(m/monetary-quantity)	16	ARG1	6
+33	"Yuan"	14	op	3
+34	(s4/submarine)	13	ARG1	32
+35	"States"	7	op	37
+36	"C"	1	op	31
+37	(e2/early)	19	time	38
+38	(m3/month)	37	time	40
+39	(c/country)	18	mod	6
+40	(s3/submarine)	10	op	27
+41	(s2/special)	2	mod	16
+
+11	France -LRB- FR -RRB- ; Russian Federation -LRB- RU -RRB- ; Austria -LRB- AT -RRB-
+1	(n3/name)	6	name	5
+2	(c3/country)	7	op	11
+3	(n/name)	11	name	0
+4	"France"	3	op	0
+5	(n4/name)	2	name	11
+6	(c2/country)	7	op	5
+7	(a/and)	0	ROOT	4
+8	"Federation"	1	op	6
+9	"Austria"	5	op	11
+10	"Russian"	1	op	5
+11	(c/country)	7	op	0
+
+30	The new blood refers to a group of Gulf cartel operatives who have turned against the zetas as members of the organization bid to control trafficking routes and local drug markets .
+1	(t/turn-01)	30	ARG0-of	13
+2	(o/operative)	21	ARG2	10
+3	(g/group)	20	ARG2	6
+4	(b/bid-00)	6	ARG0	22
+5	(t2/traffic-00)	9	mod	25
+6	(c4/cause-01)	1	ARG1-of	22
+7	(c2/criminal-organization)	1	prep-against	16
+8	(m2/market)	23	op	30
+9	(r2/route)	23	op	26
+10	(n4/name)	7	name	16
+11	(c2/criminal-organization)	18	ARG1	16
+12	(c3/control-01)	4	ARG1	24
+13	"Blood"	25	op	2
+14	"New"	25	op	1
+15	"Cartel"	28	op	9
+16	(p2/person)	12	ARG0	18
+17	(m/member)	18	ARG2	18
+18	(h2/have-org-role-91)	29	ARG0-of	18
+19	(c/criminal-organization)	21	ARG1	8
+20	(r/refer-01)	0	ROOT	3
+21	(h/have-org-role-91)	30	ARG0-of	10
+22	"Zetas"	10	op	16
+23	(a/and)	12	ARG1	27
+24	"Gulf"	28	op	8
+25	(n/name)	20	ARG0	1
+26	(d/drug)	8	mod	29
+27	(l/local)	8	mod	28
+28	(n3/name)	19	name	8
+29	(p2/person)	4	ARG0	18
+30	(p/person)	3	consist-of	10
+
+11	Iranian state television reported the event on 081118 .
+1	"Iran"	10	op	0
+2	(c/country)	7	mod	0
+3	(r/report-01)	0	ROOT	3
+4	(e/event)	3	ARG1	5
+5	(d/date-entity)	3	time	7
+6	11	5	month	7
+7	(t/television)	3	ARG0	2
+8	2008	5	year	7
+9	(s/state)	7	mod	1
+10	(n/name)	2	name	0
+11	18	5	day	7
+
+21	Christina Rocca stated that the United States supports the goal of promoting responsibility in arms transfers and reducing the destabilizing trade in illicit arms .
+1	(c/country)	12	ARG0	5
+2	(p/person)	3	ARG0	0
+3	(s/state-01)	0	ROOT	2
+4	(t/transfer-01)	21	ARG2	15
+5	(l/law)	9	mod	22
+6	(d/destabilize-01)	10	ARG0-of	19
+7	"United"	20	op	5
+8	(n/name)	2	name	0
+9	(a3/arm)	10	ARG1	23
+10	(t2/trade-01)	15	ARG1	20
+11	-	5	polarity	22
+12	(s2/support-01)	3	ARG1	7
+13	"Christina"	8	op	0
+14	(a2/arm)	4	ARG1	14
+15	(r2/reduce-01)	17	mod	17
+16	(p2/promote-02)	17	mod	11
+17	(g/goal)	12	ARG1	9
+18	"States"	20	op	6
+19	"Rocca"	8	op	1
+20	(n2/name)	1	name	5
+21	(r/responsible-41)	16	ARG1	12
+
+3	Taiwan -LRB- TW -RRB-
+1	(c/country)	0	ROOT	0
+2	(n/name)	1	name	0
+3	"Taiwan"	2	op	0
+
+15	6 foreign companies enter into 7 cooperation agreements with Taiwanese companies in a ceremony in Taipei
+1	7	4	quant	5
+2	(c6/city)	12	location	15
+3	(c/company)	4	ARG0	2
+4	(a/agree-01)	6	ARG1	7
+5	"Taipei"	14	op	15
+6	(e/enter-01)	0	ROOT	3
+7	(c2/company)	4	ARG2	10
+8	"Taiwan"	10	op	9
+9	(c4/cooperate-01)	4	ARG1	6
+10	(n/name)	13	name	9
+11	(f/foreign)	3	mod	1
+12	(c5/ceremony)	6	time	13
+13	(c3/country)	7	mod	9
+14	(n2/name)	2	name	15
+15	6	3	quant	0
+
+10	The satellite will be managed from a control station in Abuja , Nigeria .
+1	(n/name)	7	name	10
+2	(c3/control-01)	5	mod	7
+3	"Abuja"	1	op	10
+4	(n2/name)	9	name	12
+5	(s2/station)	8	source	8
+6	(s/satellite)	8	ARG1	1
+7	(c/city)	5	location	10
+8	(m/manage-01)	0	ROOT	4
+9	(c2/country)	7	location	12
+10	"Nigeria"	4	op	12
+
+9	The satellite demonstrate 's China 's increasing skill in space technology .
+1	(s/satellite)	5	ARG0	1
+2	(s2/skill)	5	ARG1	7
+3	(s3/space)	8	mod	9
+4	(c/country)	2	mod	4
+5	(d/demonstrate-01)	0	ROOT	2
+6	"China"	9	op	4
+7	(i/increase-01)	2	ARG1-of	6
+8	(t/technology)	2	prep-in	10
+9	(n/name)	4	name	4
+
+26	The interior ministry said Saudi police have arrested 10 men and accused them of collecting donations to fund terrorist acts outside the Kingdom .
+1	(d/donate-01)	21	ARG1-of	15
+2	(a4/act-02)	26	ARG1	19
+3	(p/police)	10	ARG0	5
+4	(n3/name)	6	name	1
+5	"Ministry"	4	op	2
+6	(g2/government-organization)	11	ARG0	1
+7	"Interior"	4	op	1
+8	(t2/terrorist)	2	mod	18
+9	(p/police)	19	ARG0	5
+10	(a3/accuse-01)	13	op	11
+11	(s/say-01)	0	ROOT	3
+12	(n4/name)	17	name	4
+13	(a/and)	11	ARG1	10
+14	(m/man)	19	ARG1	9
+15	10	14	quant	8
+16	"Arabia"	12	op	4
+17	(c2/country)	9	mod	4
+18	"Saudi"	12	op	4
+19	(a2/arrest-01)	13	op	7
+20	(m/man)	25	ARG0	12
+21	(t/thing)	25	ARG1	15
+22	(c2/country)	23	op	22
+23	(o/outside)	26	location	20
+24	(m/man)	10	ARG1	12
+25	(c3/collect-01)	10	ARG2	14
+26	(f/fund-01)	25	purpose	17
+
+8	Human Rights Watch helped produce the report .
+1	(p/produce-01)	2	ARG1	4
+2	(h/help-01)	0	ROOT	3
+3	(n/name)	4	name	0
+4	(o/organization)	2	ARG0	0
+5	"Watch"	3	op	2
+6	(r/report-01)	1	ARG1	6
+7	"Human"	3	op	0
+8	"Rights"	3	op	1
+
+17	Joseph Wu made his statement after China made public the Chinese draft budget bill for 2007 .
+1	(p/person)	16	ARG0	0
+2	(b/bill)	8	ARG1	13
+3	(d/draft-01)	2	ARG1-of	11
+4	(d2/date-entity)	11	op	15
+5	(n2/name)	9	name	6
+6	(b2/budget)	2	mod	12
+7	(n/name)	1	name	0
+8	(p2/publicize-01)	13	op	8
+9	(c/country)	8	ARG0	6
+10	(c/country)	2	mod	10
+11	(f/for)	2	time	14
+12	2007	4	year	15
+13	(a/after)	16	time	5
+14	"Joseph"	7	op	0
+15	"China"	5	op	6
+16	(s/state-01)	0	ROOT	4
+17	"Wu"	7	op	1
+
+13	Abu Musab al-Zarqawi is the late leader of al-Qaida in Iraq .
+1	"Iraq"	9	op	10
+2	"Musab"	11	op	1
+3	(l2/late)	6	mod	5
+4	"al-Zarqawi"	11	op	2
+5	(c/criminal-organization)	10	ARG1	8
+6	(p/person)	0	ROOT	0
+7	"Abu"	11	op	0
+8	(c2/country)	10	location	10
+9	(n3/name)	8	name	10
+10	(l/lead-02)	6	ARG0-of	6
+11	(n/name)	6	name	0
+12	"al-Qaida"	13	op	8
+13	(n2/name)	5	name	8
+
+19	Other suspects and groups on an European Union terror blacklist have also won legal victories for similar reasons against being listed .
+1	(p/person)	4	op	1
+2	(b/blacklist-01)	4	ARG1-of	9
+3	(s/suspect-01)	1	ARG2-of	1
+4	(a/and)	11	ARG0	2
+5	"Union"	16	op	7
+6	(l2/list-01)	11	prep-against	20
+7	(l/law)	11	mod	13
+8	(o2/organization)	2	ARG0	6
+9	(a/and)	6	ARG1	2
+10	(r2/resemble-01)	18	ARG1-of	16
+11	(w/win-01)	0	ROOT	12
+12	(c/cause-01)	11	ARG1-of	15
+13	(t/terror)	2	mod	8
+14	(g/group)	4	op	3
+15	(a2/also)	11	mod	11
+16	(n/name)	8	name	6
+17	"European"	16	op	6
+18	(r/reason)	12	ARG0	17
+19	(o/other)	4	mod	0
+
+16	Belarus said there were delays in receiving support funds from the European Union .
+1	(r/receive-01)	12	ARG1	6
+2	"European"	16	op	11
+3	(s2/support-01)	14	purpose	7
+4	(s/say-01)	0	ROOT	1
+5	(c/country)	4	ARG0	0
+6	"Union"	16	op	12
+7	(o2/organization)	1	ARG2	11
+8	o2	9	ARG0	11
+9	(f/fund-01)	14	ARG2-of	8
+10	o2	3	ARG0	11
+11	"Belarus"	13	op	0
+12	(d/delay-01)	4	ARG1	4
+13	(n/name)	5	name	0
+14	(m/monetary-quantity)	1	ARG1	8
+15	(c/country)	3	ARG1	0
+16	(n3/name)	7	name	11
+
+24	Head of the Saudi-based Muwafaq Foundation Yasin Al-Qadi appealed against the European Union 's decision to freeze proprietary assets .
+1	"European"	22	op	11
+2	(d/decide-01)	8	ARG1	14
+3	(a2/asset)	16	ARG1	18
+4	(p2/proprietor)	3	mod	17
+5	(h/head-01)	24	ARG0-of	0
+6	(n4/name)	24	name	6
+7	(o/organization)	5	ARG1	4
+8	(a/appeal-01)	0	ROOT	8
+9	"Foundation"	12	op	5
+10	(n/name)	17	name	3
+11	"Yasin"	6	op	6
+12	(n2/name)	7	name	4
+13	(b/base-01)	7	ARG1-of	3
+14	(o2/organization)	16	ARG0	11
+15	"Muwafaq"	12	op	4
+16	(f/freeze-02)	2	ARG1	16
+17	(c/country)	13	location	3
+18	"Union"	22	op	12
+19	(o2/organization)	2	ARG0	11
+20	"Arabia"	10	op	3
+21	"Saudi"	10	op	3
+22	(n3/name)	19	name	11
+23	"Al-Qadi"	6	op	7
+24	(p/person)	8	ARG0	6
+
+8	The satellite orbited in a section of space where 125 other satellites fly .
+1	(s/satellite)	7	ARG0	1
+2	125	6	quant	9
+3	(s2/section)	7	location	5
+4	(s3/space)	3	mod	7
+5	(f/fly-01)	3	location-of	12
+6	(s4/satellite)	5	ARG1	11
+7	(o/orbit-01)	0	ROOT	2
+8	(o2/other)	6	mod	10
+
+24	The report was co-authored by former NATO chief George Robertson and published by international think tank the Institute for Public Policy Research .
+1	(h/have-org-role-91)	23	ARG0-of	7
+2	(p/publish-01)	20	op	11
+3	(i/international)	5	mod	13
+4	(n/name)	8	name	6
+5	(t/think-tank)	22	mod	15
+6	(r/report-01)	2	ARG1	1
+7	(f/former)	23	mod	5
+8	(m/military)	1	ARG1	6
+9	"for"	11	op	18
+10	(r/report-01)	21	ARG1	1
+11	(n3/name)	22	name	17
+12	"NATO"	4	op	6
+13	"Public"	11	op	19
+14	"Research"	11	op	21
+15	"Policy"	11	op	20
+16	(n2/name)	23	name	8
+17	"Robertson"	16	op	9
+18	"George"	16	op	8
+19	(c2/chief)	1	ARG2	7
+20	(a/and)	0	ROOT	10
+21	(c/co-author-01)	20	op	3
+22	(r2/research-institute)	2	ARG0	17
+23	(p2/person)	21	ARG0	8
+24	"Institute"	11	op	17
+
+25	Lee said on 040628 that the delegation asked the United States to shorten the delivery period of the submarines from 15 years to 10 years .
+1	c	4	ARG0	9
+2	28	10	day	3
+3	(p2/period)	4	ARG1	15
+4	(s2/shorten-01)	8	ARG1	12
+5	(d3/deliver-01)	3	duration-of	14
+6	(n2/name)	25	name	9
+7	2004	10	year	3
+8	(a/ask-01)	14	ARG1	7
+9	(t/temporal-quantity)	4	ARG3	21
+10	(d/date-entity)	14	time	3
+11	"Lee"	18	op	0
+12	(y/year)	9	unit	21
+13	(s3/submarine)	5	ARG1	18
+14	(s/say-01)	0	ROOT	1
+15	10	20	quant	23
+16	"States"	6	op	10
+17	(p/person)	14	ARG0	0
+18	(n/name)	17	name	0
+19	(d2/delegation)	8	ARG0	6
+20	(t2/temporal-quantity)	4	ARG4	23
+21	(y2/year)	20	unit	24
+22	"United"	6	op	9
+23	15	9	quant	20
+24	6	10	month	3
+25	(c/country)	8	ARG2	9
+
+15	Swedish lawyer Thomas Olsson who represented Al-Barakaat in the case approved of the ruling .
+1	(r/represent-01)	5	ARG0-of	5
+2	(a/approve-01)	0	ROOT	10
+3	(n2/name)	5	name	2
+4	(n/name)	12	name	0
+5	(l/lawyer)	2	ARG0	1
+6	"Olsson"	3	op	3
+7	"Thomas"	3	op	2
+8	(c2/case)	1	time	9
+9	(o/organization)	1	ARG1	6
+10	(r2/rule-01)	13	ARG1-of	13
+11	"Al-Barakaat"	14	op	6
+12	(c/country)	5	mod	0
+13	(t/thing)	2	ARG1	13
+14	(n4/name)	9	name	6
+15	"Sweden"	4	op	0
+
+15	The technology transfer will upgrade the research , development and production of Taiwanese motorcycle-makers .
+1	(u/upgrade-02)	0	ROOT	4
+2	(m2/motorcycle)	14	ARG1	13
+3	(d/develop-02)	8	op	8
+4	(p/produce-01)	8	op	10
+5	(t2/technology)	11	ARG1	1
+6	"Taiwan"	12	op	12
+7	(c/company)	13	beneficiary	13
+8	(a/and)	1	ARG1	7
+9	(c2/country)	7	mod	12
+10	(c/company)	4	beneficiary	13
+11	(t/transfer-01)	1	ARG0	2
+12	(n/name)	9	name	12
+13	(r/research-01)	8	op	6
+14	(m/make-01)	7	ARG0-of	13
+15	(c/company)	3	beneficiary	13
+
+24	The company chairmen and President reported on financing plans , technology transfer and equipment delivery as well as globalization plans and matching investment in Taiwan .
+1	(e/equipment)	8	ARG1	13
+2	(i/invest-01)	11	op	22
+3	(f/finance-01)	22	ARG1	7
+4	(p3/plan-01)	11	op	19
+5	(p4/person)	10	op	2
+6	(c/chairman)	18	ARG2	2
+7	(t2/technology)	9	ARG1	10
+8	(d/deliver-01)	11	op	14
+9	(t/transfer-01)	11	op	11
+10	(a/and)	17	ARG0	3
+11	(a2/and)	17	ARG1	12
+12	"Taiwan"	23	op	24
+13	(m/match-01)	2	ARG1-of	21
+14	(p/person)	10	op	4
+15	(p5/president)	21	ARG2	4
+16	(c2/company)	21	ARG1	1
+17	(r/report-01)	0	ROOT	5
+18	(h/have-org-role-91)	5	ARG0-of	2
+19	(g/globalize-01)	4	ARG1	18
+20	(c3/country)	11	location	24
+21	(h2/have-org-role-91)	14	ARG0-of	4
+22	(p2/plan-01)	11	op	8
+23	(n/name)	20	name	24
+24	(c2/company)	18	ARG1	1
+
+15	Williams said it was really not clear that the parties are willing to engage in any arms control in a meaningful way .
+1	(w2/way)	8	prep-in	21
+2	(m/meaningful)	1	manner	20
+3	(r/really)	5	mod	4
+4	(s/say-01)	0	ROOT	1
+5	(c/clear)	4	ARG1	6
+6	(a2/any)	13	mod	15
+7	(p/person)	4	ARG0	0
+8	(e/engage-01)	11	ARG1	13
+9	-	5	polarity	5
+10	(n/name)	7	name	0
+11	(w/will-02)	5	mod	11
+12	(p2/party)	11	ARG0	9
+13	(c2/control-01)	8	ARG2	17
+14	(a/arm)	13	ARG1	16
+15	"Williams"	10	op	0
+
+28	The United States favors language contained in some of the negotiating documents about treaty regulating the global arms trade that require consensus decisions that essentially give the United States and other nations veto power .
+1	(s2/some)	5	quant	7
+2	"United"	24	op	1
+3	(t/treaty)	7	ARG2	13
+4	(r2/require-01)	18	ARG0-of	20
+5	(d3/document)	13	ARG0	11
+6	(g2/give-01)	22	ARG0-of	25
+7	(n2/negotiate-01)	18	mod	10
+8	(r/regulate-01)	3	ARG0-of	14
+9	(g/globe)	26	mod	16
+10	(v/veto-01)	27	ARG0-of	32
+11	(e/essential)	6	mod	24
+12	(a/arm)	26	ARG1	17
+13	(c2/contain-01)	20	ARG1-of	4
+14	(o/other)	16	mod	30
+15	(a2/and)	6	ARG2	29
+16	(n3/nation)	15	op	31
+17	(f/favor-01)	0	ROOT	3
+18	(d/document)	21	ARG2	11
+19	(c3/consensus)	22	manner	21
+20	(l/language)	17	ARG1	4
+21	(i2/include-91)	5	ARG1-of	12
+22	(d2/decide-01)	4	ARG1	22
+23	(c/country)	15	op	27
+24	(n/name)	28	name	1
+25	"States"	24	op	2
+26	(t2/trade-01)	8	ARG1	18
+27	(p/power)	6	ARG1	33
+28	(c/country)	17	ARG0	1
+
+18	Croatian Foreign Minister Mate Granic complained that a part of Croatian territory is under occupation and time is running out .
+1	"Croatia"	6	op	0
+2	"Mate"	8	op	3
+3	(c/country)	16	poss	10
+4	(f/foreign)	14	mod	1
+5	(a/and)	13	ARG1	15
+6	(n/name)	9	name	0
+7	(p/person)	13	ARG0	3
+8	(n2/name)	7	name	3
+9	(c/country)	12	ARG1	0
+10	(r/run-05)	5	op	18
+11	"Granic"	8	op	4
+12	(h/have-org-role-91)	7	ARG0-of	2
+13	(c3/complain-01)	0	ROOT	5
+14	(m/minister)	12	ARG2	2
+15	(p2/part)	18	ARG1	8
+16	(t/territory)	15	part-of	11
+17	(t2/time)	10	ARG1	16
+18	(o/occupy-01)	5	op	14
+
+6	The message was signed as the new blood .
+1	"New"	2	op	6
+2	(n/name)	4	ARG2	5
+3	"Blood"	2	op	7
+4	(s/sign-01)	0	ROOT	3
+5	"The"	2	op	5
+6	(m/message)	4	ARG1	1
+
+29	Vladimir Putin has threatened to point nuclear missiles at countries that take part in U.S. missile defense and opted out of a key Soviet-era arms control treaty .
+1	(e/era)	12	time	23
+2	"Union"	5	op	23
+3	"Vladimir"	8	op	0
+4	(c3/country)	23	ARG2	9
+5	(n3/name)	20	name	23
+6	"U.S."	26	op	14
+7	(a/and)	0	ROOT	17
+8	(n/name)	16	name	0
+9	(n4/nucleus)	27	mod	6
+10	(d/defend-01)	18	ARG1	16
+11	"Putin"	8	op	1
+12	(t2/treaty)	25	op	26
+13	(p/person)	22	ARG0	0
+14	(t/threaten-01)	7	op	3
+15	(a2/arm-01)	17	ARG1	24
+16	(p/person)	14	ARG0	0
+17	(c4/control-01)	12	topic	25
+18	(p3/participate-01)	4	ARG0-of	12
+19	(m2/missile)	10	ARG2	15
+20	(c2/country)	1	mod	23
+21	(k/key)	12	mod	22
+22	(o/opt-01)	7	op	18
+23	(p2/point-01)	14	ARG1	5
+24	(c/country)	19	mod	14
+25	(o2/out)	22	ARG1	19
+26	(n2/name)	24	name	14
+27	(m/missile)	23	ARG1	7
+28	"Soviet"	5	op	23
+29	(p/person)	23	ARG0	0
+
+12	The OSCE is to oversee the next round of Balkan arms-reduction talks .
+1	"OSCE"	10	op	1
+2	(n3/next)	5	mod	6
+3	(t/talk)	5	mod	11
+4	(o2/oversee-01)	0	ROOT	4
+5	(r/round)	4	ARG1	7
+6	(r2/reduce-01)	3	purpose	10
+7	(a/arm)	6	ARG1	10
+8	(w/world-region)	6	location	9
+9	"Balkans"	12	op	9
+10	(n/name)	11	name	1
+11	(o/organization)	4	ARG0	1
+12	(n2/name)	8	name	9
+
+33	Russian president Dmitry Medvedev stated on 26 September 2008 that the Russian military must modernize armed forces and upgrade nuclear deterrent by building a new air and space defense network .
+1	(s/state-01)	0	ROOT	4
+2	(n/name)	23	name	0
+3	(m2/military)	20	ARG0	12
+4	9	21	month	7
+5	(m/modernize-01)	18	op	14
+6	(f/force)	5	ARG1	16
+7	2008	21	year	8
+8	"Russia"	2	op	0
+9	(n5/network)	13	ARG1	29
+10	(a3/air)	28	manner	25
+11	(d2/deter-01)	33	ARG0-of	20
+12	(p/president)	22	ARG2	1
+13	(b/build-01)	18	manner	22
+14	(s2/space)	28	manner	27
+15	"Dmitry"	19	op	2
+16	(n4/nucleus)	33	mod	19
+17	(o/obligate-01)	1	ARG1	13
+18	(a/and)	17	ARG2	17
+19	(n2/name)	32	name	2
+20	(u/upgrade-02)	18	op	18
+21	(d/date-entity)	1	time	7
+22	(h/have-org-role-91)	32	ARG0-of	1
+23	(c/country)	22	ARG1	0
+24	(n3/new)	9	mod	24
+25	"Medvedev"	19	op	3
+26	(m2/military)	5	ARG0	12
+27	(m2/military)	13	ARG0	12
+28	(d3/defend-01)	9	ARG2-of	28
+29	26	21	day	6
+30	(c/country)	26	mod	11
+31	(a2/arm-01)	6	ARG1-of	15
+32	(p2/person)	1	ARG0	2
+33	(t/thing)	20	ARG1	20
+
+3	Afghanistan -LRB- AF -RRB-
+1	(c2/country)	0	ROOT	0
+2	(n3/name)	1	name	0
+3	"Afghanistan"	2	op	0
+
+15	It is even more complicated in borderless cyber space where there is no smoking gun , fingerprints or footprints .
+1	-	5	polarity	12
+2	(f2/footprint)	15	op	18
+3	(b/border)	8	mod	6
+4	(f/fingerprint)	15	op	16
+5	(g/gun)	15	op	14
+6	-	4	polarity	12
+7	(s2/smoke-01)	5	ARG0-of	13
+8	(s/space)	12	location	8
+9	-	2	polarity	12
+10	(c2/cyber)	8	mod	7
+11	(e/even)	12	mod	2
+12	(c/complicate)	0	ROOT	4
+13	-	3	polarity	12
+14	(m/more)	12	degree	3
+15	(a/and)	8	location-of	15
+
+4	The Treaty is a major instrument of transparency .
+1	(t2/treaty)	4	domain	1
+2	(t/transparent)	4	mod	7
+3	(m/major)	4	mod	4
+4	(i/instrument)	0	ROOT	5
+
+15	The area near town of mirjaveh has been the scene of frequent conflicts between Iranian police and drug smugglers .
+1	(a/area)	13	domain	1
+2	"Iran"	10	op	14
+3	(d/drug)	7	ARG1	17
+4	(n3/name)	6	name	5
+5	(c2/country)	8	mod	14
+6	(t/town)	9	op	3
+7	(s/smuggle-01)	15	ARG0-of	18
+8	(p/police)	11	ARG0	15
+9	(n2/near)	1	mod	2
+10	(n/name)	5	name	14
+11	(c/conflict-01)	13	location-of	12
+12	(f/frequent)	11	frequency	11
+13	(s2/scene)	0	ROOT	9
+14	"Mirjaveh"	4	op	5
+15	(p2/person)	11	ARG1	18
+
+22	North Korean officials have defended the right to sell weapons and have stated that North Korean officials are not bound by international treaties restricting such trade .
+1	(d/defend-01)	11	op	4
+2	(s3/such)	10	mod	24
+3	(i/international)	4	mod	21
+4	(t/treaty)	5	ARG0	22
+5	(b/bind-01)	17	ARG1	19
+6	(n/name)	14	name	0
+7	"North"	6	op	0
+8	"Korea"	6	op	1
+9	(s2/sell-01)	21	ARG1	8
+10	(t2/trade-01)	18	ARG1	25
+11	(a/and)	0	ROOT	10
+12	(p/person)	1	ARG0	2
+13	-	5	polarity	18
+14	(c/country)	15	ARG1	0
+15	(h/have-org-role-91)	12	ARG0-of	2
+16	(w/weapon)	9	ARG1	9
+17	(s/state-01)	11	op	12
+18	(r2/restrict-01)	4	ARG0-of	23
+19	(p/person)	5	ARG1	16
+20	(o/official)	15	ARG2	2
+21	(e/entitle-01)	1	ARG1	6
+22	(p/person)	17	ARG0	2
+
+20	The investigation ultimately yielded information about North Korea 's weapons program which Indian authorities shared with ally Governments .
+1	(p/program)	17	topic	10
+2	(s/share-01)	17	ARG1-of	14
+3	(n/name)	18	name	6
+4	(n2/name)	6	name	12
+5	(a2/ally-01)	7	ARG1-of	16
+6	(c2/country)	9	mod	12
+7	(g/government-organization)	2	ARG2	17
+8	(h/have-org-role-91)	12	ARG0-of	13
+9	(a3/authority)	8	ARG2	13
+10	(u/ultimate)	20	time	2
+11	(i/investigate-01)	20	ARG0	1
+12	(p2/person)	2	ARG0	13
+13	"India"	4	op	12
+14	(g2/govern-01)	7	ARG0-of	17
+15	(w/weapon)	1	topic	9
+16	"North"	3	op	6
+17	(i2/information)	20	ARG1	4
+18	(c/country)	1	poss	6
+19	"Korea"	3	op	7
+20	(y/yield-01)	0	ROOT	3
+
+37	Croatia , Bosnia-Herzegovina and Serbia are the nations that signed the Dayton accord and are supposed to report how many tanks and armored vehicles , heavy artillery pieces , combat aircraft and attack helicopters they possess in the next phase .
+1	(a3/and)	37	quant-of	21
+2	(c3/country)	36	mod	4
+3	"Dayton"	6	op	11
+4	(h/heavy)	12	mod	25
+5	(t2/treaty)	31	ARG1	11
+6	(n9/name)	5	name	11
+7	(h2/helicopter)	1	op	33
+8	(n5/next)	28	mod	38
+9	(n2/name)	14	name	2
+10	(a/and)	16	ARG0	3
+11	(a4/armor-01)	26	ARG1-of	22
+12	(a5/artillery)	24	mod	26
+13	(n6/nation)	32	op	0
+14	(c2/country)	20	mod	2
+15	(p2/possess-01)	1	ARG1-of	35
+16	(r/report-01)	27	ARG2	17
+17	(a7/attack-01)	7	instrument-of	32
+18	"Accord"	6	op	12
+19	(n/name)	23	name	0
+20	(n7/nation)	32	op	2
+21	(c5/combat)	33	mod	29
+22	"Croatia"	19	op	0
+23	(c/country)	13	mod	0
+24	(p/piece)	1	op	27
+25	(a/and)	15	ARG0	34
+26	(v/vehicle)	1	op	23
+27	(s2/suppose-02)	32	ARG1-of	15
+28	(p3/phase)	16	time	39
+29	"Serbia"	34	op	4
+30	"Bosnia-Herzegovina"	9	op	2
+31	(s/sign-01)	0	ROOT	9
+32	(a/and)	31	ARG0	3
+33	(a6/aircraft)	1	op	30
+34	(n3/name)	2	name	4
+35	(t/tank)	1	op	20
+36	(n8/nation)	32	op	4
+37	(t3/thing)	16	ARG1	18
+
+21	There were multiple attacks including hand-grenade assaults and decapitations , with police , federal agents and rival drug-traffickers the principal victims .
+1	(v/victim)	10	op	20
+2	(t/traffic-00)	4	ARG0-of	17
+3	(a5/and)	1	domain	15
+4	(p2/person)	3	op	17
+5	(p4/person)	3	op	14
+6	(p/police)	3	op	11
+7	(f/federal)	17	mod	13
+8	(a2/and)	12	ARG1	7
+9	(g/grenade)	21	instrument	5
+10	(a8/and)	0	ROOT	7
+11	(d2/drug)	2	ARG1	17
+12	(i/include-01)	14	ARG2-of	4
+13	(h2/have-org-role-91)	5	ARG0-of	14
+14	(a/attack-01)	10	op	3
+15	(r/rival-01)	4	ARG0-of	16
+16	(m/multiple)	14	quant	2
+17	(a4/agent)	13	ARG2	14
+18	(h/hand)	9	mod	5
+19	(p3/principal)	1	mod	19
+20	(d/decapitate-01)	8	op	8
+21	(a3/assault-01)	8	op	6
+
+24	The long process to try to control and reduce arms in the embattled Balkans was formally launched on 951218 in Bonn , Germany .
+1	(p/process)	13	ARG1	2
+2	(d/date-entity)	13	time	18
+3	"Germany"	23	op	22
+4	(w/world-region)	11	location	13
+5	(f/formal)	13	mod	15
+6	"Balkans"	15	op	13
+7	1995	2	year	18
+8	(l2/long)	1	mod	1
+9	"Bonn"	10	op	20
+10	(n2/name)	17	name	20
+11	(a/and)	22	ARG1	7
+12	18	2	day	18
+13	(l/launch-01)	0	ROOT	16
+14	(r/reduce-01)	11	op	8
+15	(n/name)	4	name	13
+16	(e/embattle-01)	4	ARG1-of	12
+17	(c/city)	13	location	20
+18	(c3/control-01)	11	op	6
+19	12	2	month	18
+20	(a/and)	14	ARG1	9
+21	(c2/country)	17	location	22
+22	(t/try-01)	1	ARG0-of	4
+23	(n3/name)	21	name	22
+24	(a2/arm)	18	ARG1	9
+
+4	2007-06-09
+1	6	4	month	0
+2	2007	4	year	0
+3	9	4	day	0
+4	(d2/date-entity)	0	ROOT	0
+
+16	On 14 May 2008 7 NATO allies signed an agreement to fund a research center .
+1	7	15	quant	4
+2	(n/name)	7	name	5
+3	(a2/agree-01)	13	ARG1	9
+4	(c/center)	12	ARG1	14
+5	5	14	month	2
+6	2008	14	year	3
+7	(m/military)	15	mod	5
+8	14	14	day	1
+9	(r/research-01)	4	mod	13
+10	(p/person)	12	ARG0	6
+11	(a/ally-01)	15	ARG0-of	6
+12	(f/fund-01)	3	ARG1	11
+13	(s/sign-01)	0	ROOT	7
+14	(d/date-entity)	13	time	2
+15	(p/person)	13	ARG0	6
+16	"NATO"	2	op	5
+
+14	The 081031 vote will move forward arms trade treaty discussions toward the specifics of the possible language of the arms trade treaty .
+1	(f/forward-01)	0	ROOT	5
+2	2008	12	year	1
+3	(t/treaty)	13	ARG1	8
+4	(l/language)	10	poss	16
+5	31	12	day	1
+6	(p/possible)	4	mod	15
+7	(v/vote-01)	1	ARG0	2
+8	10	12	month	1
+9	(a/arm)	14	ARG1	6
+10	(s/specific)	1	ARG2	12
+11	(t/treaty)	4	poss	21
+12	(d/date-entity)	7	time	1
+13	(d2/discuss-01)	1	ARG1	9
+14	(t2/trade-01)	3	topic	7
+
+33	A former senior U.S. State Department counter-narcotics official wrote in an article in the 27 July 2008 issue of New York Times magazine that narco-corruption went to the top of the Afghan Government .
+1	"State"	30	op	4
+2	2008	29	year	16
+3	(g2/go-01)	33	ARG1	25
+4	"Department"	30	op	5
+5	(n6/name)	12	name	19
+6	(t/top)	3	ARG4	28
+7	27	29	day	14
+8	(c4/corrupt-01)	3	ARG1	24
+9	(p/person)	33	ARG0	7
+10	(n2/narcotic)	19	ARG1	6
+11	(m/magazine)	31	part-of	22
+12	(n3/newspaper)	11	part-of	19
+13	"York"	5	op	20
+14	"U.S."	30	op	3
+15	(h/have-org-role-91)	9	ARG0-of	7
+16	(n/narcotic)	8	mod	24
+17	(n7/name)	23	name	31
+18	(o/official)	15	ARG2	7
+19	(c/counter-01)	18	mod	6
+20	(s/senior)	18	mod	2
+21	(g3/government-organization)	6	part-of	32
+22	7	29	month	15
+23	(c3/country)	32	ARG1	31
+24	"Afghanistan"	17	op	31
+25	(g/government-organization)	15	ARG1	3
+26	"New"	5	op	19
+27	(f/former)	18	mod	1
+28	"Times"	5	op	21
+29	(d2/date-entity)	11	time	15
+30	(n10/name)	25	name	3
+31	(a/article)	33	medium	11
+32	(g4/govern-01)	21	ARG0-of	32
+33	(w/write-01)	0	ROOT	8
+
+8	Djamel badaoui was sentenced to five years .
+1	(n/name)	6	name	0
+2	5	8	quant	5
+3	(y/year)	8	unit	6
+4	(s/sentence-01)	0	ROOT	3
+5	"Djamel"	1	op	0
+6	(p/person)	4	ARG1	0
+7	"Badaoui"	1	op	1
+8	(t/temporal-quantity)	4	ARG2	6
+
+23	Zach hopes to gain a better understanding of Taiwan 's development in the political , economic , cultural and tourism fields .
+1	(f2/field)	3	op	20
+2	(u/understand-01)	18	ARG1	6
+3	(a/and)	16	ARG1	14
+4	"Zach"	9	op	0
+5	(f/field)	3	op	20
+6	(f4/field)	3	op	20
+7	(e/economy)	1	mod	15
+8	(c/country)	16	ARG0	8
+9	(n/name)	14	name	0
+10	(f3/field)	3	op	20
+11	(g2/good)	2	mod	5
+12	(m/more)	11	degree	5
+13	(t/tourism)	6	mod	19
+14	(p/person)	15	ARG0	0
+15	(h/hope-01)	0	ROOT	1
+16	(d/develop-02)	2	ARG1	10
+17	(n2/name)	8	name	8
+18	(g/gain-02)	15	ARG1	3
+19	"Taiwan"	17	op	8
+20	(p2/politics)	5	mod	13
+21	(p/person)	2	ARG0	0
+22	(p/person)	18	ARG0	0
+23	(c2/culture)	10	mod	17
+
+18	The kuwolsan and the crew were unaccounted for after Indian officials released the kuwolsan in 2000 .
+1	2000	18	year	15
+2	-	13	polarity	6
+3	(c/crew)	14	op	4
+4	(n2/name)	10	name	9
+5	(s/ship)	15	ARG1	13
+6	(n/name)	12	name	1
+7	(h/have-org-role-91)	16	ARG0-of	10
+8	"India"	4	op	9
+9	(o/official)	7	ARG2	10
+10	(c2/country)	7	ARG1	9
+11	"Kuwolsan"	6	op	1
+12	(s/ship)	14	op	1
+13	(a/account-01)	0	ROOT	6
+14	(a2/and)	13	ARG1	2
+15	(r/release-01)	17	op	11
+16	(p/person)	15	ARG0	10
+17	(a3/after)	13	time	8
+18	(d/date-entity)	15	time	15
+
+31	Dmitry Medvedev stated that the Russian Federation 's task for the next few years is to make sure that the Strategic Missile Forces receive the necessary funding to respond to modern threats .
+1	(m3/military)	10	ARG0	20
+2	(f2/fund-01)	10	ARG1	26
+3	(a/assure-01)	13	ARG1	17
+4	(t4/threaten-01)	9	ARG1-of	31
+5	"Russian"	28	op	5
+6	(m2/modern)	9	mod	30
+7	(c/country)	14	poss	5
+8	"Forces"	19	op	22
+9	(t3/thing)	23	ARG1	31
+10	(r/receive-01)	3	ARG2	23
+11	"Strategic"	19	op	20
+12	"Missile"	19	op	21
+13	(s/state-01)	0	ROOT	2
+14	(t2/task)	3	mod	8
+15	c	3	ARG0	5
+16	(n5/need-01)	2	ARG1-of	25
+17	m3	3	ARG1	20
+18	(n6/next)	14	duration	11
+19	(n3/name)	1	name	20
+20	"Federation"	28	op	6
+21	"Medvedev"	25	op	1
+22	(p/person)	13	ARG0	0
+23	(r2/respond-01)	16	purpose	28
+24	1	27	quant	13
+25	(n/name)	22	name	0
+26	(m3/military)	23	ARG0	20
+27	(t/temporal-quantity)	29	op	13
+28	(n2/name)	7	name	5
+29	(f/few)	18	quant	12
+30	"Dmitry"	25	op	0
+31	(y/year)	27	unit	13
+
+13	Afghanistan 's counter-narcotic police have confiscated 1.2 metric tons -LRB- 1.3 tons -RRB- of opium during a raid .
+1	(n3/narcotic)	5	ARG1	2
+2	1.2	10	quant	6
+3	(c3/country)	11	poss	0
+4	(m3/meter)	13	mod	7
+5	(c4/counter-01)	11	ARG0-of	2
+6	(r/raid-01)	7	time	17
+7	(c2/confiscate-01)	0	ROOT	5
+8	(n2/name)	3	name	0
+9	(o/opium)	7	ARG1	14
+10	(m2/mass-quantity)	9	quant	11
+11	(p/police)	7	ARG0	3
+12	"Afghanistan"	8	op	0
+13	(t2/ton)	10	unit	8
+
+41	AMERICAN COMPANY ryss laboratory 's Taiwan subsidiary and Taiwan 's pharmaceutical industry technology and development center concluded an agreement to exchange technology and combine their strengths for the research and manufacturing of new drugs to upgrade domestic pharmaceutical manufacturing standards .
+1	(a2/and)	3	ARG1	22
+2	"United"	4	op	0
+3	(a/agree-01)	32	ARG1	18
+4	(n3/name)	21	name	0
+5	"Taiwan"	13	op	5
+6	(a3/and)	11	purpose	29
+7	"Ryss"	29	op	2
+8	(t/technology)	15	ARG1	21
+9	(t2/they)	33	poss	24
+10	(d/drug)	37	ARG1	33
+11	(c5/combine-01)	1	op	23
+12	"Pharmaceutical"	40	op	10
+13	(n/name)	23	name	5
+14	(n5/new)	36	mod	32
+15	(e/exchange-01)	1	op	20
+16	(r2/research-01)	39	op	28
+17	(m2/manufacture-01)	41	ARG1-of	38
+18	(u/upgrade-02)	32	purpose	35
+19	"Industry"	40	op	11
+20	(r/research-institute)	3	ARG2	10
+21	(c4/country)	28	mod	0
+22	"and"	40	op	13
+23	(c2/country)	24	location	5
+24	(s/subsidiary)	3	ARG0	6
+25	(c2/country)	20	location	8
+26	(p/pharmacy)	41	domain	37
+27	(d2/domestic)	26	mod	36
+28	(c3/company)	24	part-of	2
+29	(n2/name)	28	name	2
+30	"States"	4	op	0
+31	"Technology"	40	op	12
+32	(c/conclude-01)	0	ROOT	16
+33	(s2/strength)	11	ARG1	25
+34	"Development"	40	op	14
+35	"Laboratories"	29	op	3
+36	(d/drug)	16	ARG1	33
+37	(m/manufacture-01)	39	op	30
+38	"Center"	40	op	15
+39	(a3/and)	15	purpose	22
+40	(n4/name)	20	name	10
+41	(s3/standard)	18	ARG1	39
+
+19	Most of the nations that did not vote to move ahead with crafting the proposed arms trade treat abstained from 081031 vote .
+1	(c/craft-01)	8	ARG1	12
+2	31	12	day	20
+3	(m/most)	19	quant	0
+4	(p/propose-01)	13	ARG1-of	14
+5	(a/ahead)	8	ARG2	10
+6	2008	12	year	20
+7	(v/vote-01)	15	ARG0-of	7
+8	(m2/move-01)	7	ARG1	9
+9	(a3/arm)	11	ARG1	15
+10	(v2/vote-01)	16	ARG1	21
+11	(t2/trade-01)	13	topic	16
+12	(d/date-entity)	10	time	20
+13	(t/treaty)	1	ARG1	17
+14	-	8	polarity	6
+15	(n2/nation)	18	ARG2	3
+16	(a2/abstain-01)	0	ROOT	18
+17	10	12	month	20
+18	(i/include-91)	19	ARG1-of	1
+19	(n/nation)	16	ARG0	3
+
+9	Torres was an assassinated leader of the zetas .
+1	(l/lead-02)	7	ARG0-of	4
+2	(n2/name)	5	name	7
+3	(p/person)	7	domain	0
+4	"Torres"	8	op	0
+5	(c/criminal-organization)	1	ARG1	7
+6	(a/assassinate-01)	7	ARG1-of	3
+7	(p2/person)	0	ROOT	4
+8	(n/name)	3	name	0
+9	"Zetas"	2	op	7
+
+6	International ; weapons ; war and conflict
+1	(c/conflict-01)	3	op	6
+2	(a/and)	0	ROOT	5
+3	(a2/and)	2	op	5
+4	(w2/war)	3	op	4
+5	(i/international)	2	op	0
+6	(w/weapon)	2	op	2
+
+21	Itochu has promised to assist emtac in importing and developing key parts and is prepared to invest in emtac in the future .
+1	(c/company)	18	ARG0	0
+2	(d/develop-02)	4	op	9
+3	(f/future)	16	time	21
+4	(a3/and)	19	ARG2	8
+5	"EMTAC"	17	op	5
+6	(p3/part)	9	ARG1	11
+7	(p3/part)	2	ARG1	11
+8	(p/promise-01)	10	op	2
+9	(i/import-01)	4	op	7
+10	(a/and)	0	ROOT	8
+11	"Itochu"	20	op	0
+12	(k/key)	6	mod	10
+13	(c/company)	10	domain	0
+14	(c/company)	8	ARG0	0
+15	(c2/company)	19	ARG1	5
+16	(i2/invest-01)	18	ARG2	16
+17	(n2/name)	15	name	5
+18	(p2/prepare-02)	10	op	14
+19	(a2/assist-01)	8	ARG2	4
+20	(n/name)	14	name	0
+21	(c2/company)	16	ARG2	18
+

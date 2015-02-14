@@ -32,7 +32,8 @@ import java.util.function.Function;
 public class LinearPipe<IN,OUT> {
 
     Function<IN,Object>[] features;
-    Classifier<OUT,String> classifier;
+    Classifier<Integer,String> bucketClassifier;
+    List<Classifier<OUT,String>> classifiers;
     public BiConsumer<IN, BufferedWriter> debugErrorContext;
 
     TwoDimensionalCounter<String,OUT> memorizedClassifier;
@@ -85,6 +86,12 @@ public class LinearPipe<IN,OUT> {
             }
             else if (obj instanceof Double) {
                 featureCounts.setCount(Integer.toString(i).intern(), (double)obj);
+            }
+            else if (obj instanceof Set) {
+                Set s = (Set)obj;
+                for (Object o : s) {
+                    featureCounts.setCount(Integer.toString(i) + "->" + o.toString().intern(), 1.0);
+                }
             }
             else {
                 featureCounts.setCount((Integer.toString(i) + "->" + obj.toString()).intern(), 1.0);
@@ -194,6 +201,41 @@ public class LinearPipe<IN,OUT> {
     }
 
     public void train(List<Pair<IN,OUT>> data) {
+        List<Set<OUT>> clusters = new ArrayList<>();
+
+        Set<OUT> bigCluster = new HashSet<>();
+        for (Pair<IN,OUT> pair : data) {
+            bigCluster.add(pair.second);
+        }
+
+        clusters.add(bigCluster);
+
+        train(data, clusters);
+    }
+
+    private <L,F> float[] getNormalizingArray(RVFDataset<L,F> dataset) {
+        float[] dataWeights = new float[dataset.size()];
+        Counter<L> labelCounts = new ClassicCounter<>();
+        for (int i = 0; i < dataset.size(); i++) {
+            labelCounts.incrementCount(dataset.getDatum(i).label());
+        }
+        for (int i = 0; i < dataset.size(); i++) {
+            dataWeights[i] = (float) (dataset.size() / labelCounts.getCount(dataset.getDatum(i).label()));
+        }
+        return dataWeights;
+    }
+
+    public void train(List<Pair<IN,OUT>> data, List<Set<OUT>> clusters) {
+
+        Set<OUT> leftOutCluster = new HashSet<>();
+        outer: for (Pair<IN,OUT> pair : data) {
+            for (Set<OUT> cluster : clusters) {
+                if (cluster.contains(pair.second)) continue outer;
+            }
+            leftOutCluster.add(pair.second);
+        }
+        clusters.add(leftOutCluster);
+
         if (type == ClassifierType.LINEAR) {
             List<RVFDatum<OUT,String>> datumList = parmap(data, (pair) -> toDatum(pair.first, pair.second));
 
@@ -204,37 +246,66 @@ public class LinearPipe<IN,OUT> {
 
             // Create a data-weighting array to down-weight super frequent tags and upweight infrequent ones
 
-            float[] dataWeights = null;
-            if (automaticallyReweightTrainingData) {
-                dataWeights = new float[dataset.size()];
-                Counter<OUT> labelCounts = new ClassicCounter<>();
-                for (int i = 0; i < dataset.size(); i++) {
-                    labelCounts.incrementCount(dataset.getDatum(i).label());
-                }
-                for (int i = 0; i < dataset.size(); i++) {
-                    dataWeights[i] = (float) (dataset.size() / labelCounts.getCount(dataset.getDatum(i).label()));
-                }
-            }
-
             LinearClassifierFactory<OUT, String> factory = new LinearClassifierFactory<>();
+            LinearClassifierFactory<Integer, String> bucketClassifierFactory = new LinearClassifierFactory<>();
             factory.setSigma(sigma);  // higher -> less regularization (default=1)
             factory.setVerbose(true);
-            factory.setMinimizerCreator(new Factory<Minimizer<DiffFunction>>() {
-                @Override
-                public Minimizer<DiffFunction> create() {
-                    return new QNMinimizer();
+            bucketClassifierFactory.setSigma(sigma);  // higher -> less regularization (default=1)
+            bucketClassifierFactory.setVerbose(true);
+
+            classifiers = new ArrayList<>();
+            if (clusters.size() == 1) {
+                // trivial case, just do what we usually do
+                if (automaticallyReweightTrainingData) {
+                    classifiers.add(factory.trainClassifier(dataset, getNormalizingArray(dataset), new LogPrior()));
+                } else {
+                    classifiers.add(factory.trainClassifier(dataset));
                 }
-            });
-            if (automaticallyReweightTrainingData) {
-                classifier = factory.trainClassifier(dataset, dataWeights, new LogPrior());
-            } else {
-                classifier = factory.trainClassifier(dataset);
+            }
+            else {
+                // Create a cluster map dataset
+                RVFDataset<Integer, String> bucketDataset = new RVFDataset<>();
+                List<RVFDataset<OUT, String>> collectionDatasets = new ArrayList<>();
+
+                for (int i = 0; i < clusters.size(); i++) {
+                    collectionDatasets.add(new RVFDataset<>());
+                }
+
+                outer: for (RVFDatum<OUT, String> datum : datumList) {
+                    for (int i = 0; i < clusters.size(); i++) {
+                        if (clusters.get(i).contains(datum.label())) {
+                            bucketDataset.add(new RVFDatum<>(datum.asFeaturesCounter(), i));
+                            collectionDatasets.get(i).add(datum);
+                            continue outer;
+                        }
+                    }
+                }
+
+                if (automaticallyReweightTrainingData) {
+                    bucketClassifier = bucketClassifierFactory.trainClassifier(bucketDataset, getNormalizingArray(bucketDataset), new LogPrior());
+                }
+                else {
+                    bucketClassifier = bucketClassifierFactory.trainClassifier(bucketDataset);
+                }
+                for (int i = 0; i < clusters.size(); i++) {
+                    if (automaticallyReweightTrainingData) {
+                        classifiers.add(factory.trainClassifier(collectionDatasets.get(i), getNormalizingArray(collectionDatasets.get(i)), new LogPrior()));
+                    }
+                    else {
+                        classifiers.add(factory.trainClassifier(collectionDatasets.get(i)));
+                    }
+                }
             }
 
             System.out.println("Trained classifier");
             int correct = 0;
             for (int i = 0; i < dataset.size(); i++) {
-                OUT predicted = classifier.classOf(dataset.getRVFDatum(i));
+                int predictedCluster = 0;
+                if (classifiers.size() > 1) {
+                    RVFDatum<Integer,String> bucketDatum = new RVFDatum<>(dataset.getRVFDatum(i).asFeaturesCounter());
+                    predictedCluster = bucketClassifier.classOf(bucketDatum);
+                }
+                OUT predicted = classifiers.get(predictedCluster).classOf(dataset.getRVFDatum(i));
                 if (predicted.equals(dataset.getRVFDatum(i).label())) correct++;
             }
             System.out.println("Accuracy: "+((double)correct/dataset.size())+" ("+correct+"/"+dataset.size()+")");
@@ -266,7 +337,13 @@ public class LinearPipe<IN,OUT> {
             return Counters.argmax(memorizedClassifier.getCounter(s));
         }
         else {
-            return classifier.classOf(new RVFDatum<OUT, String>(featurize(in)));
+            Counter<String> features = featurize(in);
+            int predictedCluster = 0;
+            if (classifiers.size() > 1) {
+                RVFDatum<Integer,String> bucketDatum = new RVFDatum<>(features);
+                predictedCluster = bucketClassifier.classOf(bucketDatum);
+            }
+            return classifiers.get(predictedCluster).classOf(new RVFDatum<>(features));
         }
     }
 
@@ -276,7 +353,27 @@ public class LinearPipe<IN,OUT> {
             return memorizedClassifier.getCounter(s);
         }
         else {
-            return classifier.scoresOf(new RVFDatum<OUT, String>(featurize(in)));
+            if (classifiers.size() == 1) {
+                return classifiers.get(0).scoresOf(new RVFDatum<>(featurize(in)));
+            }
+            else {
+                Counter<String> features = featurize(in);
+                Counter<Integer> bucketProbs = bucketClassifier.scoresOf(new RVFDatum<>(features));
+                Counter<OUT> outClasses = new ClassicCounter<>();
+                Counters.logNormalizeInPlace(outClasses);
+
+                for (int i : bucketProbs.keySet()) {
+                    double logProbI = bucketProbs.getCount(i);
+                    Counter<OUT> localClasses = classifiers.get(i).scoresOf(new RVFDatum<OUT, String>(features));
+                    Counters.logNormalizeInPlace(localClasses);
+                    for (OUT out : localClasses.keySet()) {
+                        outClasses.incrementCount(out, Math.exp(localClasses.getCount(out) + logProbI));
+                    }
+                }
+
+                Counters.logInPlace(outClasses);
+                return outClasses;
+            }
         }
     }
 

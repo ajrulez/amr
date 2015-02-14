@@ -130,8 +130,8 @@ public class AlignmentAnnotator {
 
     public static void main(String[] args) throws IOException {
         AMR[] train = AMRSlurp.slurp("data/training-500-subset.txt", AMRSlurp.Format.LDC);
-        AMR[] dev = AMRSlurp.slurp("data/dev-100.txt", AMRSlurp.Format.LDC);
-        new AlignmentAnnotator(train, dev, "data/dev-100.txt", false);
+        AMR[] dev = AMRSlurp.slurp("data/real-train-300-subset.txt", AMRSlurp.Format.LDC);
+        new AlignmentAnnotator(train, dev, "data/real-train-300-subset.txt", false);
     }
 
     public AlignmentAnnotator(AMR[] train, AMR[] dev, String outputPath, boolean preAligned) {
@@ -378,7 +378,7 @@ public class AlignmentAnnotator {
         AMR.Node parent = parentArc.head;
         int parentAlignment = parent.alignment;
 
-        screenWriter.drawString(4, printTokensLowerBound+4, "Dependency path between \""+currentAMRNode.title+"\" and \""+parent.title+"\": "+amr.multiSentenceAnnotationWrapper.sentences.get(0).getDependencyPathBetweenNodes(alignment,parentAlignment));
+        screenWriter.drawString(4, printTokensLowerBound + 4, "Dependency path between \"" + currentAMRNode.title + "\" and \"" + parent.title + "\": " + amr.multiSentenceAnnotationWrapper.sentences.get(0).getDependencyPathBetweenNodes(alignment, parentAlignment));
         screenWriter.drawString(0,printTokensLowerBound+6,divider);
         printAMR(4, printTokensLowerBound + 8);
         screen.refresh();

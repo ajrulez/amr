@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
  */
 public class AMRPipeline {
 
-    public static boolean FULL_DATA = true;
+    public static boolean FULL_DATA = false;
     public static boolean TINY_DATA = false;
     public static int trainDataSize = 400;
 
@@ -102,7 +102,7 @@ public class AMRPipeline {
                 // Token dependency parent
                 add((pair) -> {
                     SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
-                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                            .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
                     IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
                     if (indexedWord == null) return "NON-DEP";
                     List<IndexedWord> l = graph.getPathToRoot(indexedWord);
@@ -114,7 +114,7 @@ public class AMRPipeline {
                 // Token dependency parent POS
                 add((pair) -> {
                     SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
-                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                            .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
                     IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
                     if (indexedWord == null) return "NON-DEP";
                     List<IndexedWord> l = graph.getPathToRoot(indexedWord);
@@ -126,22 +126,22 @@ public class AMRPipeline {
                 // Dependency parent arc
                 add((pair) -> {
                     SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
-                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                            .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
                     IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
                     if (indexedWord == null) return "NON-DEP";
                     IndexedWord parent = graph.getParent(indexedWord);
                     if (parent == null) return "ROOT";
-                    return graph.getAllEdges(parent, indexedWord).get(0).getRelation().getShortName();
+                    return graph.getAllEdges(parent, indexedWord).get(0).getRelation().toString();
                 });
                 // Dependency parent arc + Parent POS
                 add((pair) -> {
                     SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
-                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                            .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
                     IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
                     if (indexedWord == null) return "NON-DEP";
                     IndexedWord parent = graph.getParent(indexedWord);
                     if (parent == null) return "ROOT";
-                    return graph.getAllEdges(parent, indexedWord).get(0).getRelation().getShortName()+
+                    return graph.getAllEdges(parent, indexedWord).get(0).getRelation().toString()+
                             parent.get(CoreAnnotations.PartOfSpeechAnnotation.class);
                 });
 
@@ -173,6 +173,25 @@ public class AMRPipeline {
             AMRPipeline::writeDictionaryContext
     );
 
+    private Set<String> getBagOfEdges(AMRNodeSet set, int head, int tail) {
+        if (head == 0) return new HashSet<>();
+        int headToken = set.nodes[head].alignment;
+        int tailToken = set.nodes[tail].alignment;
+        SemanticGraph graph = set.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
+        IndexedWord headIndexedWord = graph.getNodeByIndexSafe(headToken);
+        IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tailToken);
+        if (headIndexedWord == null || tailIndexedWord == null) {
+            return new HashSet<>();
+        }
+        List<SemanticGraphEdge> edges = graph.getShortestUndirectedPathEdges(headIndexedWord, tailIndexedWord);
+        Set<String> bagOfEdges = new HashSet<>();
+        for (SemanticGraphEdge edge : edges) {
+            bagOfEdges.add(edge.getRelation().toString());
+        }
+        return bagOfEdges;
+    }
+
     private String getPath(AMRNodeSet set, int head, int tail) {
         if (head == 0 || tail == 0) { // if tail == 0, then something else went fairly wrong
             return "ROOT:NOPATH";
@@ -183,7 +202,7 @@ public class AMRPipeline {
         int headToken = set.nodes[head].alignment;
         int tailToken = set.nodes[tail].alignment;
         SemanticGraph graph = set.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
-                .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+                .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
         IndexedWord headIndexedWord = graph.getNodeByIndexSafe(headToken);
         IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tailToken);
         if (headIndexedWord == null || tailIndexedWord == null) {
@@ -205,7 +224,7 @@ public class AMRPipeline {
                 sb.append("<");
                 currentWord = edge.getDependent();
             }
-            sb.append(edge.getRelation().getShortName());
+            sb.append(edge.getRelation().toString());
             if (currentWord != headIndexedWord) {
                 sb.append(":");
                 sb.append(currentWord.get(CoreAnnotations.PartOfSpeechAnnotation.class));
@@ -422,6 +441,23 @@ public class AMRPipeline {
                     // TODO
                 });
                 */
+
+                // Bag of edges
+                add((triple) -> getBagOfEdges(triple.first, triple.second, triple.third));
+
+                // Bag of edges joined with lemma
+                add((triple) -> {
+                    if (triple.second == 0) return new HashSet<String>();
+                    int headToken = triple.first.nodes[triple.second].alignment;
+                    String headLemma = triple.first.annotation.get(CoreAnnotations.TokensAnnotation.class).get(headToken).lemma();
+
+                    Set<String> set = getBagOfEdges(triple.first, triple.second, triple.third);
+                    Set<String> appendedLemma = new HashSet<>();
+                    for (String s : set) {
+                        appendedLemma.add(s + headLemma);
+                    }
+                    return appendedLemma;
+                });
     }};
 
     LinearPipe<Triple<AMRNodeSet,Integer,Integer>, Boolean> arcExistence = new LinearPipe<>(
@@ -826,10 +862,10 @@ public class AMRPipeline {
         List<LabeledSequence> dictionaryDataTrain = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : ( TINY_DATA ? "data/train-3-manygen.txt" : "realdata/train-manygen.txt"));
         List<AMRNodeSet> mstDataTrain = loadCoNLLData(FULL_DATA ? "data/train-500-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
 
-        System.out.println("Loading testing data");
-        List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData(FULL_DATA ? "data/test-100-seq.txt" : (TINY_DATA ? "data/train-3-seq.txt" : "data/test-100-seq.txt"));
-        List<LabeledSequence> dictionaryDataTest = loadManygenData(FULL_DATA ? "data/test-100-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "data/test-100-manygen.txt"));
-        List<AMRNodeSet> mstDataTest = loadCoNLLData(FULL_DATA ? "data/test-100-conll.txt" : (TINY_DATA ? "data/train-3-conll.txt" : "data/test-100-conll.txt"));
+        System.out.println("Loading dev data");
+        List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData(FULL_DATA ? "data/test-100-seq.txt" : (TINY_DATA ? "data/train-3-seq.txt" : "data/dev-100-seq.txt"));
+        List<LabeledSequence> dictionaryDataTest = loadManygenData(FULL_DATA ? "data/test-100-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "data/dev-100-manygen.txt"));
+        List<AMRNodeSet> mstDataTest = loadCoNLLData(FULL_DATA ? "data/test-100-conll.txt" : (TINY_DATA ? "data/train-3-conll.txt" : "data/dev-100-conll.txt"));
 
         System.out.println("Running NER++ analysis");
         nerPlusPlus.analyze(getNERPlusPlusForClassifier(nerPlusPlusDataTrain),
@@ -857,14 +893,18 @@ public class AMRPipeline {
         if (TINY_DATA) {
             System.out.println("Testing tiny set");
             analyzeAMRSubset("data/train-3-subset.txt", "data/train-3-conll.txt", "data/tiny/amr-train-analysis");
-            System.out.println("Testing test set");
-            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/tiny/train-"+trainDataSize+"/amr-test-analysis");
+            System.out.println("Testing in domain dev set");
+            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/tiny/amr-in-domain-dev-analysis");
+            System.out.println("Testing real dev set");
+            analyzeAMRSubset("data/dev-100-subset.txt", "data/dev-100-conll.txt", "data/tiny/amr-dev-analysis");
         }
         else {
             System.out.println("Testing training set");
             analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/train-"+trainDataSize+"/amr-train-analysis");
-            System.out.println("Testing test set");
-            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/train-"+trainDataSize+"/amr-test-analysis");
+            System.out.println("Testing in domain dev set");
+            analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/train-"+trainDataSize+"/amr-in-domain-dev-analysis");
+            System.out.println("Testing real dev set");
+            analyzeAMRSubset("data/dev-100-subset.txt", "data/dev-100-conll.txt", "data/train-"+trainDataSize+"/amr-dev-analysis");
             if (FULL_DATA) {
                 System.out.println("Testing on REAL DEV set");
                 analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "data/train-" + trainDataSize + "/amr-real-dev-analysis");
@@ -882,7 +922,7 @@ public class AMRPipeline {
         for (int i = 0; i < bank.length; i++) {
             sentences[i] = bank[i].formatSourceTokens();
         }
-        CoreNLPCache cache = new LazyCoreNLPCache(path, sentences);
+        CoreNLPCache cache = new BatchCoreNLPCache(path, sentences);
 
         AMR[] recovered = new AMR[bank.length];
         AMR[] recoveredPerfectDict = new AMR[bank.length];
@@ -920,7 +960,104 @@ public class AMRPipeline {
         bw.close();
     }
 
+    private static void justTrainArcType() throws IOException {
+        AMRPipeline pipeline = new AMRPipeline();
+
+        boolean BIG = true;
+
+        List<AMRNodeSet> mstDataTrain = loadCoNLLData(BIG ? "realdata/release-train-conll.txt" : "data/train-400-conll.txt");
+        List<AMRNodeSet> mstDataTest = loadCoNLLData("data/dev-100-conll.txt");
+
+        List<Pair<Triple<AMRNodeSet, Integer, Integer>, String>> arcTypeData = getArcTypeForClassifier(mstDataTrain);
+        List<Pair<Triple<AMRNodeSet, Integer, Integer>, Boolean>> arcExistenceData = getArcExistenceForClassifier(mstDataTrain);
+
+        /*
+        int totalLen = 0;
+        int totalArcs = 0;
+        for (Pair<Triple<AMRNodeSet, Integer, Integer>, String> pair : data) {
+            AMRNodeSet set = pair.first.first;
+            SemanticGraph graph = set.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                    .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
+
+            int head = pair.first.second;
+            int tail = pair.first.third;
+
+            IndexedWord headIndexedWord = graph.getNodeByIndexSafe(head);
+            IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tail);
+            if (headIndexedWord == null || tailIndexedWord == null) {
+            }
+            else {
+                List<SemanticGraphEdge> edges = graph.getShortestUndirectedPathEdges(headIndexedWord, tailIndexedWord);
+                totalArcs++;
+                totalLen += edges.size();
+            }
+        }
+
+        System.out.println("Average len: "+((double)totalLen / totalArcs));
+        */
+
+        System.out.println("Training");
+
+        /*
+        List<Set<String>> arcClasses = new ArrayList<Set<String>>() {{
+
+            add(new HashSet<String>(){{
+                add("ARG0");
+                add("ARG1");
+                add("ARG2");
+                add("ARG3");
+                add("ARG4");
+            }});
+
+            add(new HashSet<String>(){{
+                add("ARG0-of");
+                add("ARG1-of");
+                add("ARG2-of");
+                add("ARG3-of");
+            }});
+
+            add(new HashSet<String>(){{
+                add("mod");
+                add("op");
+                add("poss");
+            }});
+
+        }};
+
+        // arcClasses.clear();
+        */
+
+        double[] sigmas = new double[]{
+                0.001, 0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 3.0, 10.0, 100.0
+        };
+
+        for (double i : sigmas) {
+            pipeline.arcType.sigma = i;
+            pipeline.arcExistence.sigma = i;
+            pipeline.arcType.train(arcTypeData);
+            pipeline.arcExistence.train(arcExistenceData);
+
+            System.out.println("Analyzing");
+            System.out.println("sigma: " + i);
+            try {
+                pipeline.arcType.analyze(arcTypeData, getArcTypeForClassifier(mstDataTest), BIG ? "data/arc-type-big-sigma-" + pipeline.arcType.sigma * 1000 : "data/arc-type-clusters");
+            }
+            catch (Exception e) {
+                System.err.println("meh");
+            }
+            try {
+                pipeline.arcExistence.analyze(arcExistenceData, getArcExistenceForClassifier(mstDataTest), BIG ? "data/arc-existence-big-sigma-"+pipeline.arcType.sigma*1000 : "data/arc-existence-clusters");
+            }
+            catch (Exception e) {
+                System.err.println("meh");
+            }
+            System.out.println("Done");
+        }
+    }
+
     public static void main(String[] args) throws IOException, InterruptedException {
+        justTrainArcType();
+
         AMRPipeline pipeline = new AMRPipeline();
         pipeline.trainStages();
         pipeline.analyzeStages();

@@ -1,0 +1,972 @@
+The technology transfer will upgrade the research , development and production of Taiwanese motorcycle-makers . 
+(c / company [0 = "A"]:ARG0-of (m / make-01 [0 = "A"]:ARG1 (m2 / motorcycle [0 = "A"])))	13	13
+
+Pharmaessentia and Synmosa Biopharma will separately sell those products in the Asian and U.S. markets respectively . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "U.S." [0 = "A"]))	13	13
+
+Vladimir Putin has threatened to point nuclear missiles at countries that take part in U.S. missile defense and opted out of a key Soviet-era arms control treaty . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "U.S." [0 = "A"]))	14	14
+
+Belarus said there were delays in receiving support funds from the European Union . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Belarus" [0 = "A"]))	0	0
+
+Lee said on 040628 that the delegation asked the United States to shorten the delivery period of the submarines from 15 years to 10 years . 
+(d / date-entity [0 = "A"]:year 2004 [0 = "A"]:day 28 [0 = "A"]:month 6 [0 = "A"])	3	3
+
+Lee said on 040628 that the delegation asked the United States to shorten the delivery period of the submarines from 15 years to 10 years . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Lee" [0 = "A"]))	0	0
+
+The Yuri dolgoruky is the first in a series of new nuclear submarines to be commissioned this year but the bulava nuclear-armed missile developed to equip the submarine has failed tests and the deployment prospects are uncertain . 
+(c / certain [0 = "A"]:polarity - [0 = "A"])	36	36
+
+The report was co-authored by former NATO chief George Robertson and published by international think tank the Institute for Public Policy Research . 
+(c / co-author-01 [0 = "A"])	3	3
+
+The cyber attacks followed a dispute over the relocation of a Soviet war memorial in Estonia 's capital . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Estonia" [0 = "A"]))	15	15
+
+The May 2007 attacks were days after Estonia decided to relocate a Soviet war memorial and grave . 
+(n / name [0 = "A"]:op1 "Estonia" [0 = "A"])	7	7
+
+The research center is based in Tallinn , Estonia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Estonia" [0 = "A"]))	8	8
+
+Other suspects and groups on an European Union terror blacklist have also won legal victories for similar reasons against being listed . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "European" [0 = "A"]:op2 "Union" [1 = "B"]))	6	7
+
+Belarus said there were delays in receiving support funds from the European Union . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "European" [0 = "A"]:op2 "Union" [1 = "B"]))	11	12
+
+Head of the Saudi-based Muwafaq Foundation Yasin Al-Qadi appealed against the European Union 's decision to freeze proprietary assets . 
+(n / name [0 = "A"]:op2 "Union" [1 = "B"]:op1 "European" [0 = "A"])	11	12
+
+Lee said on 040628 that the delegation asked the United States to shorten the delivery period of the submarines from 15 years to 10 years . 
+(t / temporal-quantity [0 = "A"]:quant 10 [0 = "A"])	23	23
+
+The International Campaign to Ban Landmines won the Nobel Peace Prize in 970000 . 
+(a / award [0 = "A"]:name (n / name [0 = "A"]:op3 "Prize" [2 = "C"]:op1 "Nobel" [0 = "A"]:op2 "Peace" [1 = "B"]))	8	10
+
+The center will be operational in August 2008 . 
+(d / date-entity [0 = "A"]:month 8 [0 = "A"])	6	6
+
+On June 7 , 2007 there were three grenade attacks on two police stations and an army barracks in the southern state of Guerrero . 
+(b / barrack [0 = "A"])	17	17
+
+A former senior U.S. State Department counter-narcotics official wrote in an article in the 27 July 2008 issue of New York Times magazine that narco-corruption went to the top of the Afghan Government . 
+(d / date-entity [0 = "A"]:month 7 [0 = "A"])	15	15
+
+This ruling may hinder international efforts to stop the financing of terror groups including al-Qaida . 
+(t / thing [0 = "A"]:ARG1-of (r / rule-01 [0 = "A"]))	1	2
+
+Croatia , Bosnia-Herzegovina and Serbia are the nations that signed the Dayton accord and are supposed to report how many tanks and armored vehicles , heavy artillery pieces , combat aircraft and attack helicopters they possess in the next phase . 
+(t / treaty [0 = "A"]:name (n / name [0 = "A"]:op1 "Dayton" [0 = "A"]:op2 "Accord" [1 = "B"]))	11	12
+
+Tantalum can be used in the production of chemical processing equipment , nuclear reactors and missile parts and is subject to export restrictions under Russian law . 
+(a / and [0 = "A"])	11	11
+
+The companies will invest 10 million US dollars , 20 million US dollars , 6.7 million US dollars , and 50 million US dollars respectively . 
+(a / and [0 = "A"])	8	8
+
+Most observers expect Dmitry Medvedev to continue the policies of Vladimir Putin , such as an assertive posture on the international scene and vow to strengthen the military . 
+(a / and [0 = "A"])	12	12
+
+The Taiwan Executive Yuan submitted a NT $ 610.8 billion -LRB- US $ 18.23 billion -RRB- special budget to buy 388 Patriot PAC-III missiles , 8 conventional submarines and 12 P-3 C anti-submarine aircraft from the United States earlier this month . 
+(a / and [0 = "A"])	24	24
+
+The technology transfer will upgrade the research , development and production of Taiwanese motorcycle-makers . 
+(a / and [0 = "A"])	7	7
+
+It is even more complicated in borderless cyber space where there is no smoking gun , fingerprints or footprints . 
+(a / and [0 = "A"])	15	15
+
+Zach hopes to gain a better understanding of Taiwan 's development in the political , economic , cultural and tourism fields . 
+(a / and [0 = "A"])	14	14
+
+Itochu has promised to assist emtac in importing and developing key parts and is prepared to invest in emtac in the future . 
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "EMTAC" [0 = "A"]))	5	5
+
+The interior ministry said Saudi police have arrested 10 men and accused them of collecting donations to fund terrorist acts outside the Kingdom . 
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op2 "Ministry" [1 = "B"]:op1 "Interior" [0 = "A"]))	1	2
+
+The interior ministry said Saudi police have arrested 10 men and accused them of collecting donations to fund terrorist acts outside the Kingdom . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Arabia" [0 = "A"]:op1 "Saudi" [0 = "A"]))	4	4
+
+The investigation ultimately yielded information about North Korea 's weapons program which Indian authorities shared with ally Governments . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (a / authority [0 = "A"])))	13	13
+
+Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia . 
+(a / accept-01 [0 = "A"]:ARG1 (j / join-05 [0 = "A"]))	26	26
+
+Zach hopes to gain a better understanding of Taiwan 's development in the political , economic , cultural and tourism fields . 
+(c / culture [0 = "A"])	17	17
+
+Christina Rocca stated that the United States supports the goal of promoting responsibility in arms transfers and reducing the destabilizing trade in illicit arms . 
+(l / law [0 = "A"]:polarity - [0 = "A"])	22	22
+
+Swedish lawyer Thomas Olsson who represented Al-Barakaat in the case approved of the ruling . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Al-Barakaat" [0 = "A"]))	6	6
+
+Turkey 's government claimed preparations for getting rid of Turkish stockpiles took longer than planned . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Turkey" [0 = "A"]))	0	0
+
+Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Ukraine" [0 = "A"]))	35	35
+
+Swedish lawyer Thomas Olsson who represented Al-Barakaat in the case approved of the ruling . 
+(n / name [0 = "A"]:op1 "Thomas" [0 = "A"]:op2 "Olsson" [1 = "B"])	2	3
+
+The nature of the Sun grisan 9 's cargo was unknown . 
+"9" [0 = "A"]	6	6
+
+International ; military ; economy ; weapons 
+(a / and [0 = "A"])	1	1
+
+France -LRB- FR -RRB- ; Russian Federation -LRB- RU -RRB- ; Austria -LRB- AT -RRB- 
+(a / and [0 = "A"])	4	4
+
+France -LRB- FR -RRB- ; Russian Federation -LRB- RU -RRB- ; Austria -LRB- AT -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Austria" [0 = "A"]))	11	11
+
+On 14 May 2008 7 NATO allies signed an agreement to fund a research center . 
+(p / person [0 = "A"])	6	6
+
+The kuwolsan and the crew were unaccounted for after Indian officials released the kuwolsan in 2000 . 
+(a / account-01 [0 = "A"]:polarity - [0 = "A"])	6	6
+
+On June 7 , 2007 there were three grenade attacks on two police stations and an army barracks in the southern state of Guerrero . 
+(s / south [0 = "A"])	20	20
+
+Saudi Arabia has two Government-appointed human rights committees but bans independent human and civil rights organizations . 
+(d / depend-01 [0 = "A"]:polarity - [0 = "A"])	10	10
+
+Soviet-built nuclear submarines frequently need repairs and rarely leave the bases . 
+(f / frequent [0 = "A"])	3	3
+
+AMERICAN COMPANY ryss laboratory 's Taiwan subsidiary and Taiwan 's pharmaceutical industry technology and development center concluded an agreement to exchange technology and combine their strengths for the research and manufacturing of new drugs to upgrade domestic pharmaceutical manufacturing standards . 
+(r / research-institute [0 = "A"]:name (n / name [0 = "A"]:op5 "Development" [4 = "E"]:op1 "Pharmaceutical" [0 = "A"]:op3 "Technology" [2 = "C"]:op6 "Center" [5 = "F"]:op4 "and" [3 = "D"]:op2 "Industry" [1 = "B"]))	10	15
+
+Oguz stated to reporters in Kabul that evidence of higher quality Afghan heroin indicates that the people running the labs are getting assistance from chemists who have come from outside the country as foreign consultants . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Oguz" [0 = "A"]))	0	0
+
+Oguz stated -- 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Oguz" [0 = "A"]))	0	0
+
+The Investment Commission 's Executive Secretary Fan Liang-Tung stated the investment procedure aims to ensure Taiwan 's investments in China will not harm Taiwan 's industries and economy such as by leaking key technologies to the mainland . 
+"Liang-Tung" [0 = "A"]	7	7
+
+The companies will invest 10 million US dollars , 20 million US dollars , 6.7 million US dollars , and 50 million US dollars respectively . 
+(m / monetary-quantity [0 = "A"]:unit (d / dollar [0 = "A"]))	7	7
+
+The companies will invest 10 million US dollars , 20 million US dollars , 6.7 million US dollars , and 50 million US dollars respectively . 
+(m / monetary-quantity [0 = "A"]:unit (d / dollar [0 = "A"]))	12	12
+
+The United States favors language contained in some of the negotiating documents about treaty regulating the global arms trade that require consensus decisions that essentially give the United States and other nations veto power . 
+(g / globe [0 = "A"])	16	16
+
+2007-06-09 
+(d / date-entity [0 = "A"]:month 6 [0 = "A"]:year 2007 [0 = "A"]:day 9 [0 = "A"])	0	0
+
+The Investment Commission 's Executive Secretary Fan Liang-Tung stated the investment procedure aims to ensure Taiwan 's investments in China will not harm Taiwan 's industries and economy such as by leaking key technologies to the mainland . 
+(t / thing [0 = "A"]:ARG1-of (i / invest-01 [0 = "A"]))	17	17
+
+The Taiwan Executive Yuan submitted a NT $ 610.8 billion -LRB- US $ 18.23 billion -RRB- special budget to buy 388 Patriot PAC-III missiles , 8 conventional submarines and 12 P-3 C anti-submarine aircraft from the United States earlier this month . 
+(m / missile [0 = "A"]:name (n / name [0 = "A"]:op1 "Patriot" [0 = "A"]:op2 "PAC-III" [1 = "B"]))	21	22
+
+Afghanistan 's counter-narcotic police have confiscated 1.2 metric tons -LRB- 1.3 tons -RRB- of opium during a raid . 
+(c / counter-01 [0 = "A"]:ARG1 (n / narcotic [0 = "A"]))	2	2
+
+Itochu has promised to assist emtac in importing and developing key parts and is prepared to invest in emtac in the future . 
+(n / name [0 = "A"]:op1 "Itochu" [0 = "A"])	0	0
+
+Soviet-built nuclear submarines frequently need repairs and rarely leave the bases . 
+(b / base [0 = "A"])	10	10
+
+Croatia , Bosnia-Herzegovina and Serbia are the nations that signed the Dayton accord and are supposed to report how many tanks and armored vehicles , heavy artillery pieces , combat aircraft and attack helicopters they possess in the next phase . 
+(t / thing [0 = "A"])	18	18
+
+The Investment Commission 's Executive Secretary Fan Liang-Tung stated the investment procedure aims to ensure Taiwan 's investments in China will not harm Taiwan 's industries and economy such as by leaking key technologies to the mainland . 
+(h / have-org-role-91 [0 = "A"]:ARG2 (s / secretary [0 = "A"]))	5	5
+
+Croatian Foreign Minister Mate Granic complained that a part of Croatian territory is under occupation and time is running out . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Mate" [0 = "A"]:op2 "Granic" [1 = "B"]))	3	4
+
+Conference participants said Foreign Minister Milan Milutinovic from Serbia scolded his Croatian counterpart for grandstanding . 
+(p / person [0 = "A"]:ARG0-of (p2 / participate-01 [0 = "A"]))	1	1
+
+The Court considered ouarab to be the natural , legitimate and operational successor of Bourada . 
+(o / operation [0 = "A"])	11	11
+
+2008-05-14 
+(d / date-entity [0 = "A"]:month 5 [0 = "A"]:day 14 [0 = "A"]:year 2008 [0 = "A"])	0	0
+
+Oguz stated to reporters in Kabul that evidence of higher quality Afghan heroin indicates that the people running the labs are getting assistance from chemists who have come from outside the country as foreign consultants . 
+(p / person [0 = "A"])	16	16
+
+The cyber attacks followed a dispute over the relocation of a Soviet war memorial in Estonia 's capital . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Union" [0 = "A"]:op1 "Soviet" [0 = "A"]))	11	11
+
+The Taiwan Executive Yuan submitted a NT $ 610.8 billion -LRB- US $ 18.23 billion -RRB- special budget to buy 388 Patriot PAC-III missiles , 8 conventional submarines and 12 P-3 C anti-submarine aircraft from the United States earlier this month . 
+(m / more [0 = "A"])	35	35
+
+The Taiwan Executive Yuan submitted a NT $ 610.8 billion -LRB- US $ 18.23 billion -RRB- special budget to buy 388 Patriot PAC-III missiles , 8 conventional submarines and 12 P-3 C anti-submarine aircraft from the United States earlier this month . 
+"Yuan" [0 = "A"]	3	3
+
+On June 7 , 2007 there were three grenade attacks on two police stations and an army barracks in the southern state of Guerrero . 
+(d / date-entity [0 = "A"]:month 6 [0 = "A"])	1	1
+
+The boy died in a drowning accident unrelated to drug trafficking . 
+(r / relate-01 [0 = "A"]:polarity - [0 = "A"])	7	7
+
+Afghanistan 's counter-narcotic police have confiscated 1.2 metric tons -LRB- 1.3 tons -RRB- of opium during a raid . 
+(m / meter [0 = "A"])	7	7
+
+Opium production in Afghanistan has increased since the U.S.-led invasion removed the Taliban regime in 2001 . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	3	3
+
+Afghanistan -LRB- AF -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	0	0
+
+Afghanistan 's counter-narcotic police have confiscated 1.2 metric tons -LRB- 1.3 tons -RRB- of opium during a raid . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	0	0
+
+The May 2007 attacks were days after Estonia decided to relocate a Soviet war memorial and grave . 
+(m / multiple [0 = "A"]:op1 (t / temporal-quantity [0 = "A"]:unit (d / day [0 = "A"]):quant 1 [0 = "A"]))	5	5
+
+North Korean officials have defended the right to sell weapons and have stated that North Korean officials are not bound by international treaties restricting such trade . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "North" [0 = "A"]))	0	1
+
+The new blood refers to a group of Gulf cartel operatives who have turned against the zetas as members of the organization bid to control trafficking routes and local drug markets . 
+(c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Zetas" [0 = "A"]))	16	16
+
+Torres was an assassinated leader of the zetas . 
+(c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Zetas" [0 = "A"]))	7	7
+
+Most observers expect Dmitry Medvedev to continue the policies of Vladimir Putin , such as an assertive posture on the international scene and vow to strengthen the military . 
+(p / person [0 = "A"]:ARG0-of (o / observe-01 [0 = "A"]))	1	1
+
+The companies will invest 10 million US dollars , 20 million US dollars , 6.7 million US dollars , and 50 million US dollars respectively . 
+(m / monetary-quantity [0 = "A"]:quant 6700000 [0 = "A"])	14	14
+
+The International Campaign to Ban Landmines won the Nobel Peace Prize in 970000 . 
+(d / date-entity [0 = "A"]:year 1997 [0 = "A"])	12	12
+
+6 foreign companies enter into 7 cooperation agreements with Taiwanese companies in a ceremony in Taipei 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Taipei" [0 = "A"]))	15	15
+
+Most of the nations that did not vote to move ahead with crafting the proposed arms trade treat abstained from 081031 vote . 
+(t / treaty [0 = "A"])	17	17
+
+Oguz stated to reporters in Kabul that evidence of higher quality Afghan heroin indicates that the people running the labs are getting assistance from chemists who have come from outside the country as foreign consultants . 
+(t / thing [0 = "A"]:ARG0-of (e / evidence-01 [0 = "A"]))	7	7
+
+Abu Musab al-Zarqawi is the late leader of al-Qaida in Iraq . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Musab" [1 = "B"]:op1 "Abu" [0 = "A"]:op3 "al-Zarqawi" [2 = "C"]))	0	2
+
+The Court considered ouarab to be the natural , legitimate and operational successor of Bourada . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Bourada" [0 = "A"]))	14	14
+
+The United States favors language contained in some of the negotiating documents about treaty regulating the global arms trade that require consensus decisions that essentially give the United States and other nations veto power . 
+(l / language [0 = "A"]:ARG1-of (c / contain-01 [0 = "A"]))	4	4
+
+The Swedes were accused of using the informal money transfer networks called hawalas to send funds to alleged terror groups in Somalia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Somalia" [0 = "A"]))	21	21
+
+Conference participants said Foreign Minister Milan Milutinovic from Serbia scolded his Croatian counterpart for grandstanding . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (m / minister [0 = "A"])))	12	12
+
+Faleh and the two others refused to sign and demanded legal representation and a public trial . 
+(l / law [0 = "A"])	10	10
+
+Other suspects and groups on an European Union terror blacklist have also won legal victories for similar reasons against being listed . 
+(l / law [0 = "A"])	13	13
+
+Liu declined to address questions on this danger . 
+(n / name [0 = "A"]:op1 "Liu" [0 = "A"])	0	0
+
+France -LRB- FR -RRB- ; Russian Federation -LRB- RU -RRB- ; Austria -LRB- AT -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "France" [0 = "A"]))	0	0
+
+Conference participants said Foreign Minister Milan Milutinovic from Serbia scolded his Croatian counterpart for grandstanding . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Serbia" [0 = "A"]))	8	8
+
+Croatia , Bosnia-Herzegovina and Serbia are the nations that signed the Dayton accord and are supposed to report how many tanks and armored vehicles , heavy artillery pieces , combat aircraft and attack helicopters they possess in the next phase . 
+(n / nation [0 = "A"]:mod (c / country [0 = "A"]:name (n2 / name [0 = "A"]:op1 "Serbia" [0 = "A"])))	4	4
+
+The companies will invest 10 million US dollars , 20 million US dollars , 6.7 million US dollars , and 50 million US dollars respectively . 
+(m / monetary-quantity [0 = "A"]:quant 50000000 [0 = "A"])	20	20
+
+Head of the Saudi-based Muwafaq Foundation Yasin Al-Qadi appealed against the European Union 's decision to freeze proprietary assets . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Muwafaq" [0 = "A"]:op2 "Foundation" [1 = "B"]))	4	5
+
+Faleh and the two others refused to sign and demanded legal representation and a public trial . 
+(p / person [0 = "A"]:mod (o / other [0 = "A"]))	4	4
+
+Pharmaessentia and Synmosa Biopharma will separately sell those products in the Asian and U.S. markets respectively . 
+(t / that [0 = "A"])	7	7
+
+The companies will invest 10 million US dollars , 20 million US dollars , 6.7 million US dollars , and 50 million US dollars respectively . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "US" [0 = "A"]))	6	6
+
+At a news conference at the research center Estonian Defense Minister Jaak Aaviksoo stated that -- 
+(h / have-org-role-91 [0 = "A"]:ARG2 (m / minister [0 = "A"]))	10	10
+
+Conference participants said Foreign Minister Milan Milutinovic from Serbia scolded his Croatian counterpart for grandstanding . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (m / minister [0 = "A"])):name (n / name [0 = "A"]))	4	4
+
+Croatian Foreign Minister Mate Granic complained that a part of Croatian territory is under occupation and time is running out . 
+(h / have-org-role-91 [0 = "A"]:ARG2 (m / minister [0 = "A"]))	2	2
+
+Opium production in Afghanistan has increased since the U.S.-led invasion removed the Taliban regime in 2001 . 
+(d / date-entity [0 = "A"]:year 2001 [0 = "A"])	15	15
+
+The kuwolsan and the crew were unaccounted for after Indian officials released the kuwolsan in 2000 . 
+(d / date-entity [0 = "A"]:year 2000 [0 = "A"])	15	15
+
+The investigation ultimately yielded information about North Korea 's weapons program which Indian authorities shared with ally Governments . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Korea" [1 = "B"]:op1 "North" [0 = "A"]))	6	7
+
+2004-02-12 
+(d / date-entity [0 = "A"]:month 2 [0 = "A"]:year 2004 [0 = "A"]:day 12 [0 = "A"])	0	0
+
+The message was signed as the new blood . 
+(n / name [0 = "A"]:op1 "The" [0 = "A"]:op2 "New" [1 = "B"]:op3 "Blood" [2 = "C"])	5	7
+
+The Investment Commission 's Executive Secretary Fan Liang-Tung stated the investment procedure aims to ensure Taiwan 's investments in China will not harm Taiwan 's industries and economy such as by leaking key technologies to the mainland . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Taiwan" [0 = "A"]))	15	15
+
+The Taiwan Executive Yuan submitted a NT $ 610.8 billion -LRB- US $ 18.23 billion -RRB- special budget to buy 388 Patriot PAC-III missiles , 8 conventional submarines and 12 P-3 C anti-submarine aircraft from the United States earlier this month . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Taiwan" [0 = "A"]))	1	1
+
+Taiwan -LRB- TW -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Taiwan" [0 = "A"]))	0	0
+
+The company chairmen and President reported on financing plans , technology transfer and equipment delivery as well as globalization plans and matching investment in Taiwan . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Taiwan" [0 = "A"]))	24	24
+
+Zach hopes to gain a better understanding of Taiwan 's development in the political , economic , cultural and tourism fields . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Taiwan" [0 = "A"]))	8	8
+
+AMERICAN COMPANY ryss laboratory 's Taiwan subsidiary and Taiwan 's pharmaceutical industry technology and development center concluded an agreement to exchange technology and combine their strengths for the research and manufacturing of new drugs to upgrade domestic pharmaceutical manufacturing standards . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Taiwan" [0 = "A"]))	5	5
+
+Turkey 's government claimed preparations for getting rid of Turkish stockpiles took longer than planned . 
+(t / temporal-quantity [0 = "A"]:mod (l / long [0 = "A"]:degree (m / more [0 = "A"])))	12	12
+
+Oguz stated to reporters in Kabul that evidence of higher quality Afghan heroin indicates that the people running the labs are getting assistance from chemists who have come from outside the country as foreign consultants . 
+(p / person [0 = "A"]:ARG0-of (c / consult-01 [0 = "A"]))	34	34
+
+Turkey 's government claimed preparations for getting rid of Turkish stockpiles took longer than planned . 
+(t / thing [0 = "A"]:ARG1-of (s / stockpile-01 [0 = "A"]))	10	10
+
+Christina Rocca stated that the United States supports the goal of promoting responsibility in arms transfers and reducing the destabilizing trade in illicit arms . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Christina" [0 = "A"]:op2 "Rocca" [1 = "B"]))	0	1
+
+A former senior U.S. State Department counter-narcotics official wrote in an article in the 27 July 2008 issue of New York Times magazine that narco-corruption went to the top of the Afghan Government . 
+(p / person [1 = "B"]:ARG0-of (h / have-org-role-91 [1 = "B"]:ARG2 (o / official [1 = "B"]:mod (c / counter-01 [0 = "A"]:ARG1 (n / narcotic [0 = "A"])))))	6	7
+
+The report was co-authored by former NATO chief George Robertson and published by international think tank the Institute for Public Policy Research . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "George" [0 = "A"]:op2 "Robertson" [1 = "B"]))	8	9
+
+Faleh and the two others refused to sign and demanded legal representation and a public trial . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Faleh" [0 = "A"]))	0	0
+
+Unger stated such technology transfers would involve a significant element of Research and Development in Brazil . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Unger" [0 = "A"]))	0	0
+
+Oguz stated to reporters in Kabul that evidence of higher quality Afghan heroin indicates that the people running the labs are getting assistance from chemists who have come from outside the country as foreign consultants . 
+(h / high [0 = "A"]:degree (m / more [0 = "A"]))	9	9
+
+Unger stated such technology transfers would involve a significant element of Research and Development in Brazil . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Brazil" [0 = "A"]))	15	15
+
+2007-02-02 
+(d / date-entity [0 = "A"]:year 2007 [0 = "A"]:day 2 [0 = "A"])	0	0
+
+The Yuri dolgoruky is the first in a series of new nuclear submarines to be commissioned this year but the bulava nuclear-armed missile developed to equip the submarine has failed tests and the deployment prospects are uncertain . 
+(p / prospect [0 = "A"])	34	34
+
+The long process to try to control and reduce arms in the embattled Balkans was formally launched on 951218 in Bonn , Germany . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Germany" [0 = "A"]))	22	22
+
+Al-Rushoodi joined the defense team of three activists still behind bars . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Al-Rushoodi" [0 = "A"]))	0	0
+
+Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia . 
+(h / have-part-91 [0 = "A"]:ARG1 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Soviet" [0 = "A"]:op2 "Union" [0 = "A"])):time (e / ex [0 = "A"]))	32	32
+
+A former senior U.S. State Department counter-narcotics official wrote in an article in the 27 July 2008 issue of New York Times magazine that narco-corruption went to the top of the Afghan Government . 
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "U.S." [0 = "A"]:op3 "Department" [2 = "C"]:op2 "State" [1 = "B"]))	3	5
+
+Opium production in Afghanistan has increased since the U.S.-led invasion removed the Taliban regime in 2001 . 
+(l / lead-02 [0 = "A"]:ARG0 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "U.S." [0 = "A"])))	8	8
+
+In 2007 the Estonian Government was struck by cyber attacks . 
+(d / date-entity [0 = "A"]:year 2007 [0 = "A"])	1	1
+
+Joseph Wu made his statement after China made public the Chinese draft budget bill for 2007 . 
+(d / date-entity [0 = "A"]:year 2007 [0 = "A"])	15	15
+
+Head of the Saudi-based Muwafaq Foundation Yasin Al-Qadi appealed against the European Union 's decision to freeze proprietary assets . 
+(p / proprietor [0 = "A"])	17	17
+
+Basrawi is a prominent activist who helped draft petitions addressed to the Government during a vibrant period of political activism before the 2004 arrests 
+(d / date-entity [0 = "A"]:year 2004 [0 = "A"])	22	22
+
+This ruling may hinder international efforts to stop the financing of terror groups including al-Qaida . 
+(c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "al-Qaida" [0 = "A"]))	14	14
+
+Abu Musab al-Zarqawi is the late leader of al-Qaida in Iraq . 
+(c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "al-Qaida" [0 = "A"]))	8	8
+
+Conference participants said Foreign Minister Milan Milutinovic from Serbia scolded his Croatian counterpart for grandstanding . 
+"Milan" [0 = "A"]	5	6
+
+Opium production in Afghanistan has increased since the U.S.-led invasion removed the Taliban regime in 2001 . 
+(c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Taliban" [0 = "A"]))	12	12
+
+Pharmaessentia and Synmosa Biopharma will separately sell those products in the Asian and U.S. markets respectively . 
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Synmosa" [0 = "A"]:op2 "Biopharma" [1 = "B"]))	2	3
+
+Tantalum can be used in the production of chemical processing equipment , nuclear reactors and missile parts and is subject to export restrictions under Russian law . 
+(n / nucleus [0 = "A"])	12	12
+
+The Yuri dolgoruky is the first in a series of new nuclear submarines to be commissioned this year but the bulava nuclear-armed missile developed to equip the submarine has failed tests and the deployment prospects are uncertain . 
+(n / nucleus [0 = "A"])	11	11
+
+Vladimir Putin has threatened to point nuclear missiles at countries that take part in U.S. missile defense and opted out of a key Soviet-era arms control treaty . 
+(n / nucleus [0 = "A"])	6	6
+
+The report was co-authored by former NATO chief George Robertson and published by international think tank the Institute for Public Policy Research . 
+(t / think-tank [0 = "A"])	15	15
+
+Human Rights Watch helped produce the report . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Human" [0 = "A"]))	0	0
+
+The test raised concern in the United States . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "States" [1 = "B"]:op1 "United" [0 = "A"]))	6	7
+
+Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia . 
+(n / name [0 = "A"]:op2 "States" [1 = "B"]:op1 "United" [0 = "A"])	5	6
+
+The Taiwan Executive Yuan submitted a NT $ 610.8 billion -LRB- US $ 18.23 billion -RRB- special budget to buy 388 Patriot PAC-III missiles , 8 conventional submarines and 12 P-3 C anti-submarine aircraft from the United States earlier this month . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "States" [1 = "B"]:op1 "United" [0 = "A"]))	36	37
+
+Christina Rocca stated that the United States supports the goal of promoting responsibility in arms transfers and reducing the destabilizing trade in illicit arms . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "United" [0 = "A"]:op2 "States" [1 = "B"]))	5	6
+
+Lee said on 040628 that the delegation asked the United States to shorten the delivery period of the submarines from 15 years to 10 years . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "States" [1 = "B"]:op1 "United" [0 = "A"]))	9	10
+
+The United States favors language contained in some of the negotiating documents about treaty regulating the global arms trade that require consensus decisions that essentially give the United States and other nations veto power . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "United" [0 = "A"]:op2 "States" [1 = "B"]))	1	2
+
+The long process to try to control and reduce arms in the embattled Balkans was formally launched on 951218 in Bonn , Germany . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Bonn" [0 = "A"]))	20	20
+
+The long process to try to control and reduce arms in the embattled Balkans was formally launched on 951218 in Bonn , Germany . 
+(w / world-region [0 = "A"]:name (n / name [0 = "A"]:op1 "Balkans" [0 = "A"]))	13	13
+
+The Ministry of Economic Affairs -LRB- moea -RRB- gave preliminary approval to 2 major China-bound investment projects at a review meeting on 15 February 2008 . 
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op4 "Affairs" [3 = "D"]:op1 "Ministry" [0 = "A"]:op3 "Economic" [2 = "C"]:op2 "of" [1 = "B"]))	1	4
+
+Human Rights Watch helped produce the report . 
+"Rights" [0 = "A"]	1	2
+
+Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia . 
+(f / fierce [0 = "A"])	2	2
+
+The Court considered ouarab to be the natural , legitimate and operational successor of Bourada . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Ouarab" [0 = "A"]))	3	3
+
+Zach hopes to gain a better understanding of Taiwan 's development in the political , economic , cultural and tourism fields . 
+(g / good [0 = "A"]:degree (m / more [0 = "A"]))	5	5
+
+Conference participants said Foreign Minister Milan Milutinovic from Serbia scolded his Croatian counterpart for grandstanding . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Croatia" [0 = "A"]))	11	11
+
+Croatian Foreign Minister Mate Granic complained that a part of Croatian territory is under occupation and time is running out . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Croatia" [0 = "A"]))	0	0
+
+6 foreign companies enter into 7 cooperation agreements with Taiwanese companies in a ceremony in Taipei 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Taiwan" [0 = "A"]))	9	9
+
+The technology transfer will upgrade the research , development and production of Taiwanese motorcycle-makers . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Taiwan" [0 = "A"]))	12	12
+
+The Investment Commission 's Executive Secretary Fan Liang-Tung stated the investment procedure aims to ensure Taiwan 's investments in China will not harm Taiwan 's industries and economy such as by leaking key technologies to the mainland . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "China" [0 = "A"]))	19	19
+
+Chen made the statement after presiding over an Interministerial Conference on whether the projects were in line with the Government 's active management and effective opening policy regarding investment in China . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "China" [0 = "A"]))	30	30
+
+The satellite demonstrate 's China 's increasing skill in space technology . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "China" [0 = "A"]))	4	4
+
+Joseph Wu made his statement after China made public the Chinese draft budget bill for 2007 . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "China" [0 = "A"]))	6	6
+
+The new blood refers to a group of Gulf cartel operatives who have turned against the zetas as members of the organization bid to control trafficking routes and local drug markets . 
+(c / cause-01 [0 = "A"]:ARG0 (b / bid-00 [0 = "A"]))	22	22
+
+President Dmitry Medvedev stated that the Russian Federation must make the modernization of the military a priority in light of the recent war with Georgia . 
+(h / have-org-role-91 [0 = "A"]:ARG2 (p / president [0 = "A"]))	0	0
+
+The company chairmen and President reported on financing plans , technology transfer and equipment delivery as well as globalization plans and matching investment in Taiwan . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (p2 / president [0 = "A"])))	4	4
+
+Russian president Dmitry Medvedev stated on 26 September 2008 that the Russian military must modernize armed forces and upgrade nuclear deterrent by building a new air and space defense network . 
+(h / have-org-role-91 [0 = "A"]:ARG2 (p / president [0 = "A"]))	1	1
+
+The kuwolsan and the crew were unaccounted for after Indian officials released the kuwolsan in 2000 . 
+(s / ship [0 = "A"]:name (n / name [0 = "A"]:op1 "Kuwolsan" [0 = "A"]))	1	1
+
+Iranian state television reported the event on 081118 . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	0	0
+
+The area near town of mirjaveh has been the scene of frequent conflicts between Iranian police and drug smugglers . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iran" [0 = "A"]))	14	14
+
+Torres was an assassinated leader of the zetas . 
+(p / person [0 = "A"]:ARG0-of (l / lead-02 [0 = "A"]))	4	4
+
+Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Poland" [0 = "A"]))	15	15
+
+The Swedes were accused of using the informal money transfer networks called hawalas to send funds to alleged terror groups in Somalia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Sweden" [0 = "A"]))	1	1
+
+The investigation ultimately yielded information about North Korea 's weapons program which Indian authorities shared with ally Governments . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	17	17
+
+AMERICAN COMPANY ryss laboratory 's Taiwan subsidiary and Taiwan 's pharmaceutical industry technology and development center concluded an agreement to exchange technology and combine their strengths for the research and manufacturing of new drugs to upgrade domestic pharmaceutical manufacturing standards . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "States" [0 = "A"]:op1 "United" [0 = "A"]))	0	0
+
+The area near town of mirjaveh has been the scene of frequent conflicts between Iranian police and drug smugglers . 
+(p / person [0 = "A"]:ARG0-of (s / smuggle-01 [0 = "A"]))	18	18
+
+Lee said on 040628 that the delegation asked the United States to shorten the delivery period of the submarines from 15 years to 10 years . 
+(t / temporal-quantity [0 = "A"]:unit (y / year [0 = "A"]))	21	21
+
+Djamel badaoui was sentenced to five years . 
+(t / temporal-quantity [0 = "A"]:unit (y / year [0 = "A"]))	6	6
+
+Dmitry Medvedev stated that the Russian Federation 's task for the next few years is to make sure that the Strategic Missile Forces receive the necessary funding to respond to modern threats . 
+(t / temporal-quantity [0 = "A"]:unit (y / year [0 = "A"]):quant 1 [0 = "A"])	13	13
+
+The Taiwan Executive Yuan submitted a NT $ 610.8 billion -LRB- US $ 18.23 billion -RRB- special budget to buy 388 Patriot PAC-III missiles , 8 conventional submarines and 12 P-3 C anti-submarine aircraft from the United States earlier this month . 
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Executive" [0 = "A"]))	2	2
+
+The Investment Commission 's Executive Secretary Fan Liang-Tung stated the investment procedure aims to ensure Taiwan 's investments in China will not harm Taiwan 's industries and economy such as by leaking key technologies to the mainland . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Fan" [0 = "A"]))	6	6
+
+The new blood refers to a group of Gulf cartel operatives who have turned against the zetas as members of the organization bid to control trafficking routes and local drug markets . 
+(p / person [2 = "C"]:ARG0-of (h / have-org-role-91 [2 = "C"]:ARG2 (o / operative [2 = "C"]):ARG1 (c / criminal-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Gulf" [0 = "A"]:op2 "Cartel" [1 = "B"]))))	8	10
+
+Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Russia" [0 = "A"]))	30	30
+
+Russia suspended participation in the arms control treaty late last year because NATO countries had not ratified a revised version of the Treaty . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Russia" [0 = "A"]))	0	0
+
+It is even more complicated in borderless cyber space where there is no smoking gun , fingerprints or footprints . 
+(b / border [0 = "A"])	6	6
+
+This included a funeral Director who had transported the body of Efrain Torres to a cemetery in the city of Poza Rica in May . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Torres" [1 = "B"]:op1 "Efrain" [0 = "A"]))	11	12
+
+Williams said it was really not clear that the parties are willing to engage in any arms control in a meaningful way . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Williams" [0 = "A"]))	0	0
+
+North Korean officials have defended the right to sell weapons and have stated that North Korean officials are not bound by international treaties restricting such trade . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (o / official [0 = "A"])))	2	2
+
+The kuwolsan and the crew were unaccounted for after Indian officials released the kuwolsan in 2000 . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (o / official [0 = "A"])))	10	10
+
+Saudi Arabia has two Government-appointed human rights committees but bans independent human and civil rights organizations . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Saudi" [0 = "A"]:op2 "Arabia" [1 = "B"]))	0	1
+
+AMERICAN COMPANY ryss laboratory 's Taiwan subsidiary and Taiwan 's pharmaceutical industry technology and development center concluded an agreement to exchange technology and combine their strengths for the research and manufacturing of new drugs to upgrade domestic pharmaceutical manufacturing standards . 
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Ryss" [0 = "A"]:op2 "Laboratories" [1 = "B"]))	2	3
+
+The Yuri dolgoruky is the first in a series of new nuclear submarines to be commissioned this year but the bulava nuclear-armed missile developed to equip the submarine has failed tests and the deployment prospects are uncertain . 
+(p / product [0 = "A"]:name (n / name [0 = "A"]:op1 "Yuri" [0 = "A"]:op2 "Dolgoruky" [1 = "B"]))	1	2
+
+Oguz stated to reporters in Kabul that evidence of higher quality Afghan heroin indicates that the people running the labs are getting assistance from chemists who have come from outside the country as foreign consultants . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	11	11
+
+A former senior U.S. State Department counter-narcotics official wrote in an article in the 27 July 2008 issue of New York Times magazine that narco-corruption went to the top of the Afghan Government . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Afghanistan" [0 = "A"]))	31	31
+
+Tantalum can be used in the production of chemical processing equipment , nuclear reactors and missile parts and is subject to export restrictions under Russian law . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Russia" [0 = "A"]))	24	24
+
+Russian president Dmitry Medvedev stated on 26 September 2008 that the Russian military must modernize armed forces and upgrade nuclear deterrent by building a new air and space defense network . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Russia" [0 = "A"]))	0	0
+
+The nature of the Sun grisan 9 's cargo was unknown . 
+(s / ship [0 = "A"]:name (n / name [0 = "A"]:op2 "Grisan" [1 = "B"]:op1 "Sun" [0 = "A"]))	4	5
+
+This included a funeral Director who had transported the body of Efrain Torres to a cemetery in the city of Poza Rica in May . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (d / director [0 = "A"])))	4	4
+
+Abu Musab al-Zarqawi is the late leader of al-Qaida in Iraq . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Iraq" [0 = "A"]))	10	10
+
+Dmitry Medvedev stated that the Russian Federation 's task for the next few years is to make sure that the Strategic Missile Forces receive the necessary funding to respond to modern threats . 
+(m / military [0 = "A"]:name (n / name [0 = "A"]:op1 "Strategic" [0 = "A"]:op2 "Missile" [1 = "B"]:op3 "Forces" [2 = "C"]))	20	22
+
+2008-08-25 
+(d / date-entity [0 = "A"]:month 8 [0 = "A"]:day 25 [0 = "A"]:year 2008 [0 = "A"])	0	0
+
+The Taiwan Executive Yuan submitted a NT $ 610.8 billion -LRB- US $ 18.23 billion -RRB- special budget to buy 388 Patriot PAC-III missiles , 8 conventional submarines and 12 P-3 C anti-submarine aircraft from the United States earlier this month . 
+(a / aircraft-type [0 = "A"]:ARG0-of (c / counter-01 [2 = "C"]:ARG1 (s / submarine [2 = "C"])):name (n / name [0 = "A"]:op2 "C" [1 = "B"]:op1 "P-3" [0 = "A"]))	30	32
+
+The satellite will be managed from a control station in Abuja , Nigeria . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Abuja" [0 = "A"]))	10	10
+
+The Ministry of Economic Affairs -LRB- moea -RRB- gave preliminary approval to 2 major China-bound investment projects at a review meeting on 15 February 2008 . 
+(b / bind-01 [0 = "A"]:ARG2 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "China" [0 = "A"])))	14	14
+
+The Treaty is a major instrument of transparency . 
+(t / transparent [0 = "A"])	7	7
+
+The Court considered ouarab to be the natural , legitimate and operational successor of Bourada . 
+(l / legitimacy [0 = "A"])	9	9
+
+2008-02-15 
+(d / date-entity [0 = "A"]:month 2 [0 = "A"]:day 15 [0 = "A"]:year 2008 [0 = "A"])	0	0
+
+Oguz stated to reporters in Kabul that evidence of higher quality Afghan heroin indicates that the people running the labs are getting assistance from chemists who have come from outside the country as foreign consultants . 
+(p / person [0 = "A"]:ARG0-of (r / report-01 [0 = "A"]))	3	3
+
+The interior ministry said Saudi police have arrested 10 men and accused them of collecting donations to fund terrorist acts outside the Kingdom . 
+(t / thing [0 = "A"]:ARG1-of (d / donate-01 [0 = "A"]))	15	15
+
+The Yuri dolgoruky is the first in a series of new nuclear submarines to be commissioned this year but the bulava nuclear-armed missile developed to equip the submarine has failed tests and the deployment prospects are uncertain . 
+(m / missile [0 = "A"]:ARG1-of (a / arm-01 [1 = "B"]:ARG2 (n / nucleus [1 = "B"])):name (n2 / name [0 = "A"]:op1 "Bulava" [0 = "A"]))	20	21
+
+Saudi Arabia has two Government-appointed human rights committees but bans independent human and civil rights organizations . 
+(a / appoint-01 [0 = "A"]:ARG0 (g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"])))	4	4
+
+At a news conference at the research center Estonian Defense Minister Jaak Aaviksoo stated that -- 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Aaviksoo" [1 = "B"]:op1 "Jaak" [0 = "A"]))	11	12
+
+Pharmaessentia and Synmosa Biopharma will separately sell those products in the Asian and U.S. markets respectively . 
+(r / respective [0 = "A"])	15	15
+
+The companies will invest 10 million US dollars , 20 million US dollars , 6.7 million US dollars , and 50 million US dollars respectively . 
+(r / respective [0 = "A"])	24	24
+
+Turkey 's government claimed preparations for getting rid of Turkish stockpiles took longer than planned . 
+(t / temporal-quantity [0 = "A"]:ARG1-of (p / plan-01 [0 = "A"]))	14	14
+
+The nature of the Sun grisan 9 's cargo was unknown . 
+(k / know-01 [0 = "A"]:polarity - [0 = "A"])	10	10
+
+This included a funeral Director who had transported the body of Efrain Torres to a cemetery in the city of Poza Rica in May . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op2 "Rica" [1 = "B"]:op1 "Poza" [0 = "A"]))	20	21
+
+Basrawi is a prominent activist who helped draft petitions addressed to the Government during a vibrant period of political activism before the 2004 arrests 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	12	12
+
+In 2007 the Estonian Government was struck by cyber attacks . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	4	4
+
+Chen made the statement after presiding over an Interministerial Conference on whether the projects were in line with the Government 's active management and effective opening policy regarding investment in China . 
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Government" [0 = "A"]))	19	19
+
+Turkey 's government claimed preparations for getting rid of Turkish stockpiles took longer than planned . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	2	2
+
+A former senior U.S. State Department counter-narcotics official wrote in an article in the 27 July 2008 issue of New York Times magazine that narco-corruption went to the top of the Afghan Government . 
+(g / government-organization [0 = "A"]:ARG0-of (g2 / govern-01 [0 = "A"]))	32	32
+
+Saudi Arabia has two Government-appointed human rights committees but bans independent human and civil rights organizations . 
+(r / right [0 = "A"])	14	14
+
+Iranian state television reported the event on 081118 . 
+(d / date-entity [0 = "A"]:year 2008 [0 = "A"]:month 11 [0 = "A"]:day 18 [0 = "A"])	7	7
+
+Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia . 
+(n / name [0 = "A"]:op1 "NATO" [0 = "A"])	22	22
+
+Russia suspended participation in the arms control treaty late last year because NATO countries had not ratified a revised version of the Treaty . 
+(m / military [0 = "A"]:name (n / name [0 = "A"]:op1 "NATO" [0 = "A"]))	12	12
+
+The report was co-authored by former NATO chief George Robertson and published by international think tank the Institute for Public Policy Research . 
+(m / military [0 = "A"]:name (n / name [0 = "A"]:op1 "NATO" [0 = "A"]))	6	6
+
+On 14 May 2008 7 NATO allies signed an agreement to fund a research center . 
+(m / military [0 = "A"]:name (n / name [0 = "A"]:op1 "NATO" [0 = "A"]))	5	5
+
+The long process to try to control and reduce arms in the embattled Balkans was formally launched on 951218 in Bonn , Germany . 
+(d / date-entity [0 = "A"]:day 18 [0 = "A"]:year 1995 [0 = "A"]:month 12 [0 = "A"])	18	18
+
+The new blood refers to a group of Gulf cartel operatives who have turned against the zetas as members of the organization bid to control trafficking routes and local drug markets . 
+(n / name [0 = "A"]:op1 "New" [0 = "A"]:op2 "Blood" [1 = "B"])	1	2
+
+The May 2007 attacks were days after Estonia decided to relocate a Soviet war memorial and grave . 
+(d / date-entity [0 = "A"]:month 5 [0 = "A"])	1	1
+
+This included a funeral Director who had transported the body of Efrain Torres to a cemetery in the city of Poza Rica in May . 
+(d / date-entity [0 = "A"]:month 5 [0 = "A"])	23	23
+
+On 14 May 2008 7 NATO allies signed an agreement to fund a research center . 
+(d / date-entity [0 = "A"]:month 5 [0 = "A"])	2	2
+
+The satellite will be managed from a control station in Abuja , Nigeria . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Nigeria" [0 = "A"]))	12	12
+
+On 080713 43 nations agreed to work toward zone free of weapons of mass destruction in Middle East . 
+(d / date-entity [0 = "A"]:year 2008 [0 = "A"]:day 13 [0 = "A"]:month 7 [0 = "A"])	1	1
+
+Basrawi is a prominent activist who helped draft petitions addressed to the Government during a vibrant period of political activism before the 2004 arrests 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Basrawi" [0 = "A"]))	0	0
+
+Pharmaessentia and Synmosa Biopharma will separately sell those products in the Asian and U.S. markets respectively . 
+(c / continent [0 = "A"]:name (n / name [0 = "A"]:op1 "Asia" [0 = "A"]))	11	11
+
+There were multiple attacks including hand-grenade assaults and decapitations , with police , federal agents and rival drug-traffickers the principal victims . 
+(p / person [0 = "A"]:ARG0-of (t / traffic-00 [0 = "A"]:ARG1 (d / drug [0 = "A"])))	17	17
+
+There were multiple attacks including hand-grenade assaults and decapitations , with police , federal agents and rival drug-traffickers the principal victims . 
+(g / grenade [0 = "A"]:mod (h / hand [0 = "A"]))	5	5
+
+There were multiple attacks including hand-grenade assaults and decapitations , with police , federal agents and rival drug-traffickers the principal victims . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (a / agent [0 = "A"])))	14	14
+
+Oguz stated to reporters in Kabul that evidence of higher quality Afghan heroin indicates that the people running the labs are getting assistance from chemists who have come from outside the country as foreign consultants . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Kabul" [0 = "A"]))	5	5
+
+The International Campaign to Ban Landmines won the Nobel Peace Prize in 970000 . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op2 "Campaign" [1 = "B"]:op1 "International" [0 = "A"]:op3 "to" [2 = "C"]))	1	3
+
+The OSCE is to oversee the next round of Balkan arms-reduction talks . 
+(o / organization [0 = "A"]:name (n / name [0 = "A"]:op1 "OSCE" [0 = "A"]))	1	1
+
+On 080713 43 nations agreed to work toward zone free of weapons of mass destruction in Middle East . 
+(w / world-region [0 = "A"]:name (n / name [0 = "A"]:op2 "East" [1 = "B"]:op1 "Middle" [0 = "A"]))	16	17
+
+Croatia , Bosnia-Herzegovina and Serbia are the nations that signed the Dayton accord and are supposed to report how many tanks and armored vehicles , heavy artillery pieces , combat aircraft and attack helicopters they possess in the next phase . 
+(n / nation [0 = "A"]:mod (c / country [0 = "A"]:name (n2 / name [0 = "A"]:op1 "Bosnia-Herzegovina" [0 = "A"])))	2	2
+
+A former senior U.S. State Department counter-narcotics official wrote in an article in the 27 July 2008 issue of New York Times magazine that narco-corruption went to the top of the Afghan Government . 
+(c / corrupt-01 [0 = "A"]:mod (n / narcotic [0 = "A"]))	24	24
+
+The investigation ultimately yielded information about North Korea 's weapons program which Indian authorities shared with ally Governments . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "India" [0 = "A"]))	12	12
+
+The kuwolsan and the crew were unaccounted for after Indian officials released the kuwolsan in 2000 . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "India" [0 = "A"]))	9	9
+
+Zach hopes to gain a better understanding of Taiwan 's development in the political , economic , cultural and tourism fields . 
+(e / economy [0 = "A"])	15	15
+
+The 081031 vote will move forward arms trade treaty discussions toward the specifics of the possible language of the arms trade treaty . 
+(s / specific [0 = "A"])	12	12
+
+AMERICAN COMPANY ryss laboratory 's Taiwan subsidiary and Taiwan 's pharmaceutical industry technology and development center concluded an agreement to exchange technology and combine their strengths for the research and manufacturing of new drugs to upgrade domestic pharmaceutical manufacturing standards . 
+(p / pharmacy [0 = "A"])	37	37
+
+Basrawi is a prominent activist who helped draft petitions addressed to the Government during a vibrant period of political activism before the 2004 arrests 
+(p / politics [0 = "A"])	18	18
+
+Zach hopes to gain a better understanding of Taiwan 's development in the political , economic , cultural and tourism fields . 
+(p / politics [0 = "A"])	13	13
+
+The arms control treaty limits the number of conventional weapons that can be deployed west of the Ural Mountains . 
+(m / mountain [0 = "A"]:name (n / name [0 = "A"]:op1 "Ural" [0 = "A"]:op2 "Mountains" [1 = "B"]))	17	18
+
+Djamel badaoui was sentenced to five years . 
+"Badaoui" [0 = "A"]	1	1
+
+President Dmitry Medvedev stated that the Russian Federation must make the modernization of the military a priority in light of the recent war with Georgia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Georgia" [0 = "A"]))	24	24
+
+Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Georgia" [0 = "A"]))	37	37
+
+Swedish lawyer Thomas Olsson who represented Al-Barakaat in the case approved of the ruling . 
+(t / thing [0 = "A"]:ARG1-of (r / rule-01 [0 = "A"]))	13	13
+
+The Taiwan Executive Yuan submitted a NT $ 610.8 billion -LRB- US $ 18.23 billion -RRB- special budget to buy 388 Patriot PAC-III missiles , 8 conventional submarines and 12 P-3 C anti-submarine aircraft from the United States earlier this month . 
+(e / early [0 = "A"])	38	38
+
+The new blood refers to a group of Gulf cartel operatives who have turned against the zetas as members of the organization bid to control trafficking routes and local drug markets . 
+(h / have-org-role-91 [0 = "A"]:ARG2 (m / member [0 = "A"]))	18	18
+
+Joseph Wu made his statement after China made public the Chinese draft budget bill for 2007 . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Wu" [1 = "B"]:op1 "Joseph" [0 = "A"]))	0	1
+
+The Swedes were accused of using the informal money transfer networks called hawalas to send funds to alleged terror groups in Somalia . 
+(t / thing [0 = "A"]:ARG2-of (f / fund-01 [0 = "A"]))	15	15
+
+Belarus said there were delays in receiving support funds from the European Union . 
+(m / monetary-quantity [0 = "A"]:ARG2-of (f / fund-01 [0 = "A"]))	8	8
+
+Swedish lawyer Thomas Olsson who represented Al-Barakaat in the case approved of the ruling . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Sweden" [0 = "A"]))	0	0
+
+The center will formally open in 2009 . 
+(o / open-01 [1 = "B"]:manner (f / formal [0 = "A"]):time (d / date-entity [1 = "B"]))	3	4
+
+Torres was an assassinated leader of the zetas . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Torres" [0 = "A"]))	0	0
+
+Other suspects and groups on an European Union terror blacklist have also won legal victories for similar reasons against being listed . 
+(p / person [0 = "A"]:ARG2-of (s / suspect-01 [0 = "A"]))	1	1
+
+The report was co-authored by former NATO chief George Robertson and published by international think tank the Institute for Public Policy Research . 
+(r / research-institute [0 = "A"]:name (n / name [0 = "A"]:op1 "Institute" [0 = "A"]:op4 "Policy" [3 = "D"]:op5 "Research" [4 = "E"]:op3 "Public" [2 = "C"]:op2 "for" [1 = "B"]))	17	21
+
+Vladimir Putin has threatened to point nuclear missiles at countries that take part in U.S. missile defense and opted out of a key Soviet-era arms control treaty . 
+(e / era [0 = "A"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Soviet" [0 = "A"]:op2 "Union" [0 = "A"])))	23	23
+
+Croatia , Bosnia-Herzegovina and Serbia are the nations that signed the Dayton accord and are supposed to report how many tanks and armored vehicles , heavy artillery pieces , combat aircraft and attack helicopters they possess in the next phase . 
+(n2 / nation [0 = "A"]:mod (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Croatia" [0 = "A"])))	0	0
+
+The area near town of mirjaveh has been the scene of frequent conflicts between Iranian police and drug smugglers . 
+(n / name [0 = "A"]:op1 "Mirjaveh" [0 = "A"])	5	5
+
+Afghanistan 's counter-narcotic police have confiscated 1.2 metric tons -LRB- 1.3 tons -RRB- of opium during a raid . 
+(m / mass-quantity [0 = "A"])	11	11
+
+The International Campaign to Ban Landmines won the Nobel Peace Prize in 970000 . 
+"Landmines" [0 = "A"]	4	5
+
+Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Republic" [1 = "B"]:op1 "Czech" [0 = "A"]))	18	19
+
+The long process to try to control and reduce arms in the embattled Balkans was formally launched on 951218 in Bonn , Germany . 
+(a / and [0 = "A"])	9	9
+
+Pharmaessentia and Synmosa Biopharma will separately sell those products in the Asian and U.S. markets respectively . 
+(c / company [0 = "A"]:name (n / name [0 = "A"]:op1 "Pharmaessentia" [0 = "A"]))	0	0
+
+Soviet-built nuclear submarines frequently need repairs and rarely leave the bases . 
+(r / rare [0 = "A"])	7	7
+
+The OSCE is to oversee the next round of Balkan arms-reduction talks . 
+(r / reduce-01 [1 = "B"]:ARG1 (a / arm [1 = "B"]):location (w / world-region [0 = "A"]:name (n / name [0 = "A"]:op1 "Balkans" [0 = "A"])))	9	10
+
+Al-Rushoodi joined the defense team of three activists still behind bars . 
+(b2 / be-located-at-91 [0 = "A"]:ARG2 (b / behind [0 = "A"]))	9	9
+
+Head of the Saudi-based Muwafaq Foundation Yasin Al-Qadi appealed against the European Union 's decision to freeze proprietary assets . 
+(b / base-01 [0 = "A"]:location (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Saudi" [0 = "A"]:op2 "Arabia" [0 = "A"])))	3	3
+
+The Taiwan Executive Yuan submitted a NT $ 610.8 billion -LRB- US $ 18.23 billion -RRB- special budget to buy 388 Patriot PAC-III missiles , 8 conventional submarines and 12 P-3 C anti-submarine aircraft from the United States earlier this month . 
+(m / monetary-quantity [0 = "A"]:unit (d / dollar [0 = "A"]:mod (n / new [0 = "A"]):mod (c / country [0 = "A"])))	6	6
+
+Russian president Dmitry Medvedev stated on 26 September 2008 that the Russian military must modernize armed forces and upgrade nuclear deterrent by building a new air and space defense network . 
+(t / thing [1 = "B"]:mod (n / nucleus [0 = "A"]):ARG0-of (d / deter-01 [1 = "B"]))	19	20
+
+President Dmitry Medvedev stated that the Russian Federation must make the modernization of the military a priority in light of the recent war with Georgia . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Federation" [1 = "B"]:op1 "Russian" [0 = "A"]))	6	7
+
+France -LRB- FR -RRB- ; Russian Federation -LRB- RU -RRB- ; Austria -LRB- AT -RRB- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op2 "Federation" [1 = "B"]:op1 "Russian" [0 = "A"]))	5	6
+
+Dmitry Medvedev stated that the Russian Federation 's task for the next few years is to make sure that the Strategic Missile Forces receive the necessary funding to respond to modern threats . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Russian" [0 = "A"]:op2 "Federation" [1 = "B"]))	5	6
+
+2008-09-03 
+(d / date-entity [0 = "A"]:year 2008 [0 = "A"]:day 3 [0 = "A"]:month 9 [0 = "A"])	0	0
+
+Head of the Saudi-based Muwafaq Foundation Yasin Al-Qadi appealed against the European Union 's decision to freeze proprietary assets . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Al-Qadi" [1 = "B"]:op1 "Yasin" [0 = "A"]))	6	7
+
+The arms control treaty limits the number of conventional weapons that can be deployed west of the Ural Mountains . 
+(p / possible [0 = "A"])	11	11
+
+Tantalum can be used in the production of chemical processing equipment , nuclear reactors and missile parts and is subject to export restrictions under Russian law . 
+(p / possible [0 = "A"])	1	1
+
+The 081031 vote will move forward arms trade treaty discussions toward the specifics of the possible language of the arms trade treaty . 
+(d / date-entity [0 = "A"]:day 31 [0 = "A"]:month 10 [0 = "A"]:year 2008 [0 = "A"])	1	1
+
+Most of the nations that did not vote to move ahead with crafting the proposed arms trade treat abstained from 081031 vote . 
+(d / date-entity [0 = "A"]:day 31 [0 = "A"]:month 10 [0 = "A"]:year 2008 [0 = "A"])	20	20
+
+A former senior U.S. State Department counter-narcotics official wrote in an article in the 27 July 2008 issue of New York Times magazine that narco-corruption went to the top of the Afghan Government . 
+(n / newspaper [0 = "A"]:name (n2 / name [0 = "A"]:op1 "New" [0 = "A"]:op2 "York" [1 = "B"]:op3 "Times" [2 = "C"]))	19	21
+
+Vladimir Putin fiercely opposed the United States ' plans to deploy missile defense sites in Poland and the Czech Republic , and NATO 's plans to accept into the alliance Russia 's ex-Soviet neighbors , Ukraine and Georgia . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Putin" [1 = "B"]:op1 "Vladimir" [0 = "A"]))	0	1
+
+Most observers expect Dmitry Medvedev to continue the policies of Vladimir Putin , such as an assertive posture on the international scene and vow to strengthen the military . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Vladimir" [0 = "A"]:op2 "Putin" [1 = "B"]))	10	11
+
+Vladimir Putin has threatened to point nuclear missiles at countries that take part in U.S. missile defense and opted out of a key Soviet-era arms control treaty . 
+(n / name [0 = "A"]:op1 "Vladimir" [0 = "A"]:op2 "Putin" [1 = "B"])	0	1
+
+Russian president Dmitry Medvedev stated on 26 September 2008 that the Russian military must modernize armed forces and upgrade nuclear deterrent by building a new air and space defense network . 
+(d / date-entity [0 = "A"]:month 9 [0 = "A"])	7	7
+
+In 2007 the Estonian Government was struck by cyber attacks . 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Estonia" [0 = "A"]))	3	3
+
+At a news conference at the research center Estonian Defense Minister Jaak Aaviksoo stated that -- 
+(c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Estonia" [0 = "A"]))	8	8
+
+The arms control treaty limits the number of conventional weapons that can be deployed west of the Ural Mountains . 
+(r / relative-position [0 = "A"])	15	15
+
+Dmitry Medvedev stated that the Russian Federation 's task for the next few years is to make sure that the Strategic Missile Forces receive the necessary funding to respond to modern threats . 
+(t / thing [0 = "A"]:ARG1-of (t2 / threaten-01 [0 = "A"]))	31	31
+
+The Investment Commission 's Executive Secretary Fan Liang-Tung stated the investment procedure aims to ensure Taiwan 's investments in China will not harm Taiwan 's industries and economy such as by leaking key technologies to the mainland . 
+(g / government-organization [0 = "A"]:name (n / name [0 = "A"]:op1 "Investment" [0 = "A"]:op2 "Commission" [1 = "B"]))	1	2
+
+Chen made the statement after presiding over an Interministerial Conference on whether the projects were in line with the Government 's active management and effective opening policy regarding investment in China . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Chen" [0 = "A"]))	0	0
+
+The research center is based in Tallinn , Estonia . 
+(c / city [0 = "A"]:name (n / name [0 = "A"]:op1 "Tallinn" [0 = "A"]))	6	6
+
+President Dmitry Medvedev stated that the Russian Federation must make the modernization of the military a priority in light of the recent war with Georgia . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op2 "Medvedev" [1 = "B"]:op1 "Dmitry" [0 = "A"]))	1	2
+
+Most observers expect Dmitry Medvedev to continue the policies of Vladimir Putin , such as an assertive posture on the international scene and vow to strengthen the military . 
+(n / name [0 = "A"]:op2 "Medvedev" [1 = "B"]:op1 "Dmitry" [0 = "A"])	3	4
+
+Russian president Dmitry Medvedev stated on 26 September 2008 that the Russian military must modernize armed forces and upgrade nuclear deterrent by building a new air and space defense network . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Dmitry" [0 = "A"]:op2 "Medvedev" [1 = "B"]))	2	3
+
+Dmitry Medvedev stated that the Russian Federation 's task for the next few years is to make sure that the Strategic Missile Forces receive the necessary funding to respond to modern threats . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Dmitry" [0 = "A"]:op2 "Medvedev" [1 = "B"]))	0	1
+
+The report was co-authored by former NATO chief George Robertson and published by international think tank the Institute for Public Policy Research . 
+(h / have-org-role-91 [0 = "A"]:ARG2 (c / chief [0 = "A"]))	7	7
+
+The Ministry of Economic Affairs -LRB- moea -RRB- gave preliminary approval to 2 major China-bound investment projects at a review meeting on 15 February 2008 . 
+(d / date-entity [0 = "A"]:month 2 [0 = "A"])	23	23
+
+On June 7 , 2007 there were three grenade attacks on two police stations and an army barracks in the southern state of Guerrero . 
+(s / state [0 = "A"]:name (n / name [0 = "A"]:op1 "Guerrero" [0 = "A"]))	23	23
+
+The investigation ultimately yielded information about North Korea 's weapons program which Indian authorities shared with ally Governments . 
+(u / ultimate [0 = "A"])	2	2
+
+The company chairmen and President reported on financing plans , technology transfer and equipment delivery as well as globalization plans and matching investment in Taiwan . 
+(p / person [0 = "A"]:ARG0-of (h / have-org-role-91 [0 = "A"]:ARG2 (c / chairman [0 = "A"])))	2	2
+
+Djamel badaoui was sentenced to five years . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Djamel" [0 = "A"]))	0	0
+
+Zach hopes to gain a better understanding of Taiwan 's development in the political , economic , cultural and tourism fields . 
+(p / person [0 = "A"]:name (n / name [0 = "A"]:op1 "Zach" [0 = "A"]))	0	0
+
+Soviet-built nuclear submarines frequently need repairs and rarely leave the bases . 
+(b / build-01 [0 = "A"]:ARG0 (c / country [0 = "A"]:name (n / name [0 = "A"]:op1 "Soviet" [0 = "A"]:op2 "Union" [0 = "A"])))	0	1
+
+The United States favors language contained in some of the negotiating documents about treaty regulating the global arms trade that require consensus decisions that essentially give the United States and other nations veto power . 
+(e / essential [0 = "A"])	24	24
+
+The Swedes were accused of using the informal money transfer networks called hawalas to send funds to alleged terror groups in Somalia . 
+(f / formal [0 = "A"]:polarity - [0 = "A"])	7	7
+
+The long process to try to control and reduce arms in the embattled Balkans was formally launched on 951218 in Bonn , Germany . 
+(f / formal [0 = "A"])	15	15
+

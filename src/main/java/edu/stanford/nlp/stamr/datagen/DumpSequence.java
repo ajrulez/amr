@@ -22,13 +22,34 @@ import java.util.*;
  */
 public class DumpSequence {
     public static void main(String[] args) throws IOException {
-        getRandomDevSet();
+        // getBetterRandomTrainSet();
+        // getRandomDevSet();
         // dumpReleaseData();
         // dumpMicrodata();
         // dumpPreAligned();
-        // dumpPreAlignedSplit();
+        // dumpPreAlignedDev();
+        dumpPreAlignedSplit();
         // dumpGiantdata();
         // dumpTestData();
+    }
+
+    public static void getBetterRandomTrainSet() throws IOException {
+        AMR[] dev = AMRSlurp.slurp("realdata/amr-release-1.0-training-proxy.txt", AMRSlurp.Format.LDC);
+
+        int dumpSize = 300;
+
+        Random r = new Random(42L);
+        List<AMR> devList = new ArrayList<>(dev.length);
+        Collections.addAll(devList, dev);
+
+        AMR[] randomDump = new AMR[dumpSize];
+        for (int i = 0; i < dumpSize; i++) {
+            int select = r.nextInt(devList.size());
+            randomDump[i] = devList.get(select);
+            devList.remove(select);
+        }
+
+        AMRSlurp.burp("data/real-train-"+dumpSize+"-subset.txt", AMRSlurp.Format.LDC, randomDump, AMR.AlignmentPrinting.NONE, false);
     }
 
     public static void getRandomDevSet() throws IOException {
@@ -47,7 +68,7 @@ public class DumpSequence {
             devList.remove(select);
         }
 
-        AMRSlurp.burp("data/dev-100.txt", AMRSlurp.Format.LDC, randomDump, AMR.AlignmentPrinting.NONE, false);
+        AMRSlurp.burp("data/dev-"+dumpSize+"-subset.txt", AMRSlurp.Format.LDC, randomDump, AMR.AlignmentPrinting.NONE, false);
     }
 
     public static void dumpReleaseData() throws IOException {
@@ -59,6 +80,13 @@ public class DumpSequence {
     public static void dumpTestData() throws IOException {
         AMR[] train = AMRSlurp.slurp("realdata/amr-release-1.0-test-proxy.txt", AMRSlurp.Format.LDC);
         dumpCONLL(train, "realdata/release-test-conll.txt");
+    }
+
+    public static void dumpPreAlignedDev() throws IOException {
+        AMR[] train = AMRSlurp.slurp("data/dev-100-subset.txt", AMRSlurp.Format.LDC);
+        dumpSequences(train, "data/dev-100-seq.txt");
+        dumpManygenDictionaries(train, "data/dev-100-manygen.txt");
+        dumpCONLL(train, "data/dev-100-conll.txt");
     }
 
     public static void dumpPreAligned() throws IOException {
@@ -100,7 +128,7 @@ public class DumpSequence {
         AMR[] bank = AMRSlurp.slurp("data/training-500-subset.txt", AMRSlurp.Format.LDC);
         List<AMR> trainList = new ArrayList<>();
         List<AMR> testList = new ArrayList<>();
-        int clipTrainListSize = 250;
+        int clipTrainListSize = 400;
         for (int i = 0; i < bank.length; i++) {
             if (i % 5 == 0) testList.add(bank[i]);
             else {

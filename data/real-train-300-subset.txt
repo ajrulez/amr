@@ -1,0 +1,6079 @@
+# ::id PROXY_AFP_ENG_20070206_0144.1 ::date 2013-06-01T20:52:25 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2007-02-06 
+(d / date-entity [0 = "2007-02-06"]
+	:month 2 [0 = "2007-02-06"]
+	:day 6 [0 = "2007-02-06"]
+	:year 2007 [0 = "2007-02-06"])
+
+# ::id PROXY_AFP_ENG_20050715_0227.26 ::date 2013-06-02T13:45:02 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Madrassas have been a part of Muslim social life on the Indian subcontinent for decades . 
+(p / participate-01 [4 = "part"]
+	:ARG0 (m / madrassa [0 = "Madrassas"])
+	:ARG1 (l / life [8 = "life"]
+		:mod (s / society [7 = "social"]
+			:mod (r / religious-group [6 = "Muslim"]
+				:name (n / name [6 = "Muslim"]
+					:op1 "Islam" [6 = "Muslim"])))
+		:location (s2 / subcontinent [12 = "subcontinent"]
+			:mod (c / country [11 = "Indian"]
+				:name (n2 / name [11 = "Indian"]
+					:op1 "India" [11 = "Indian"]))))
+	:duration (m2 / multiple [14 = "decades"]
+		:op1 (t / temporal-quantity [14 = "decades"]
+			:quant 1 [14 = "decades"]
+			:unit (d / decade [14 = "decades"]))))
+
+# ::id PROXY_AFP_ENG_20020406_0538.15 ::date 2013-06-09T15:55:32 ::snt-type body subordinate ::annotator LDC-AMR-14 ::preferred
+# ::snt Japan can produce thousands of nuclear warheads overnight . 
+(p / possible [1 = "can"]
+	:domain (p2 / produce-01 [2 = "produce"]
+		:ARG0 (c / country [0 = "Japan"]
+			:name (n / name [0 = "Japan"]
+				:op1 "Japan" [0 = "Japan"]))
+		:ARG1 (w / warhead [6 = "warheads"]
+			:mod (n2 / nucleus [5 = "nuclear"])
+			:quant (m2 / multiple [3 = "thousands"]
+				:op1 1000 [3 = "thousands"]))
+		:time (o / overnight [7 = "overnight"])))
+
+# ::id PROXY_AFP_ENG_20040209_0175.20 ::date 2013-05-12T04:49:04 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt SAIC 's sedan sales topped other domestic auto makers , most of which are volkswagens and General Motors ' buicks . 
+(t / top-02 [4 = "topped"]
+	:ARG0 (s / sell-01 [3 = "sales"]
+		:ARG0 (c / company [0 = "SAIC"]
+			:name (n / name [0 = "SAIC"]
+				:op1 "SAIC" [0 = "SAIC"]))
+		:ARG1 (c5 / car-make [2 = "sedan"]
+			:mod (s3 / sedan [2 = "sedan"])))
+	:ARG1 (s2 / sell-01 [3 = "sales"]
+		:ARG0 (c2 / company [8 = "makers"]
+			:ARG0-of (m / make-01 [8 = "makers"]
+				:ARG1 (a / auto [7 = "auto"]))
+			:mod (d / domestic [6 = "domestic"])
+			:mod (o / other [5 = "other"]))
+		:ARG1 (c6 / car-make [19 = "buicks"]
+			:ARG2-of (i / include-91 [13 = "are"]
+				:ARG1 (a2 / and [15 = "and"]
+					:op1 (c3 / car-make [14 = "volkswagens"]
+						:poss (c8 / company [14 = "volkswagens"]
+							:name (n2 / name [14 = "volkswagens"]
+								:op1 "Volkswagen" [14 = "volkswagens"])))
+					:op2 (c7 / car-make [19 = "buicks"]
+						:name (n5 / name [19 = "buicks"]
+							:op1 "Buick" [19 = "buicks"])
+						:poss (c4 / company [16 = "General"]
+							:name (n3 / name [16 = "General"]
+								:op1 "General" [16 = "General"]
+								:op2 "Motor" [17 = "Motors"]))))
+				:mod (m2 / most [10 = "most"])))))
+
+# ::id PROXY_AFP_ENG_20030220_0697.10 ::date 2013-07-11T15:47:14 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt NCRI showed satellite photographs of a site in Natanz portraying a cluster of warehouses in which the group claims the regime has hidden centrifuges used to enrich uranium that could be used in nuclear weapons . 
+(s / show-01 [1 = "showed"]
+	:ARG0 (o2 / organization [0 = "NCRI"]
+		:name (n3 / name [0 = "NCRI"]
+			:op1 "NCRI" [0 = "NCRI"]))
+	:ARG1 (p / photograph-01 [3 = "photographs"]
+		:ARG0 (s2 / satellite [2 = "satellite"])
+		:ARG1 (s3 / site [6 = "site"]
+			:location (c / city [8 = "Natanz"]
+				:name (n4 / name [8 = "Natanz"]
+					:op1 "Natanz" [8 = "Natanz"])))
+		:ARG0-of (p2 / portray-01 [9 = "portraying"]
+			:ARG1 (c2 / cluster-01 [11 = "cluster"]
+				:ARG1 (w / warehouse [13 = "warehouses"])
+				:location-of (h / hide-01 [22 = "hidden"]
+					:ARG0 (r / regime [20 = "regime"])
+					:ARG1 (c3 / centrifuge [23 = "centrifuges"]
+						:ARG1-of (u / use-01 [24 = "used"]
+							:ARG2 (e / enrich-01 [26 = "enrich"]
+								:ARG1 (u2 / uranium [27 = "uranium"]
+									:ARG1-of (u3 / use-01 [31 = "used"]
+										:ARG2 (w2 / weapon [34 = "weapons"]
+											:mod (n5 / nucleus [33 = "nuclear"]))
+										:mod (p3 / possible [29 = "could"]))))))
+					:ARG1-of (c4 / claim-01 [18 = "claims"]
+						:ARG0 o2 [0 = "NCRI"]))))))
+
+# ::id PROXY_AFP_ENG_20040305_0056.22 ::date 2013-05-14T03:17:55 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Amnesty International stated -- 
+(s / state-01 [2 = "stated"]
+	:ARG0 (o / organization [0 = "Amnesty"]
+		:name (n / name [0 = "Amnesty"]
+			:op1 "Amnesty" [0 = "Amnesty"]
+			:op2 "International" [1 = "International"])))
+
+# ::id PROXY_AFP_ENG_20080522_0345.5 ::date 2013-07-05T09:28:44 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Hopes for a global agreement to outlaw cluster bombs were given a boost on 080522 when British Prime Minister Gordon Brown called for a total ban on the use of the weapons by the British military . 
+(b2 / boost-01 [12 = "boost"]
+	:ARG1 (h / hope-01 [0 = "Hopes"]
+		:ARG1 (a / agree-01 [4 = "agreement"]
+			:ARG1 (o / outlaw-01 [6 = "outlaw"]
+				:ARG1 (b / bomb [8 = "bombs"]
+					:mod (c2 / cluster [7 = "cluster"])))
+			:mod (g2 / globe [3 = "global"])))
+	:time (d / date-entity [14 = "080522"]
+		:month 5 [14 = "080522"]
+		:day 22 [14 = "080522"]
+		:year 2008 [14 = "080522"]
+		:time-of (c3 / call-03 [21 = "called"]
+			:ARG0 (p2 / person [19 = "Gordon"]
+				:name (n2 / name [19 = "Gordon"]
+					:op1 "Gordon" [19 = "Gordon"]
+					:op2 "Brown" [20 = "Brown"])
+				:ARG0-of (h2 / have-org-role-91 [18 = "Minister"]
+					:ARG1 (c / country [16 = "British"]
+						:name (n / name [16 = "British"]
+							:op1 "Great" [16 = "British"]
+							:op2 "Britain" [16 = "British"]))
+					:ARG2 (m / minister [18 = "Minister"]
+						:mod (p / prime [17 = "Prime"]))))
+			:ARG1 (b3 / ban-01 [25 = "ban"]
+				:ARG1 (u / use-01 [28 = "use"]
+					:ARG0 (m2 / military [35 = "military"]
+						:mod c [34 = "British"])
+					:ARG1 (w / weapon [31 = "weapons"]))
+				:mod (t / total [24 = "total"])))))
+
+# ::id PROXY_APW_ENG_20030125_0190.29 ::date 2013-06-28T10:15:34 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Privately-owned Internet service provider timedotcom in Malaysia stated timedotcom had received numerous complaints from customers of partial or no access to the Internet . 
+(s / state-01 [7 = "stated"]
+	:ARG0 (c3 / company [3 = "provider"]
+		:name (n3 / name [4 = "timedotcom"]
+			:op1 "Time" [4 = "timedotcom"]
+			:op2 "dotCom" [4 = "timedotcom"])
+		:ARG0-of (p / provide-01 [3 = "provider"]
+			:ARG1 (s3 / service [2 = "service"]
+				:mod (i / internet [1 = "Internet"])))
+		:location (c / country [6 = "Malaysia"]
+			:name (n / name [6 = "Malaysia"]
+				:op1 "Malaysia" [6 = "Malaysia"]))
+		:ARG1-of (o / own-01 [0 = "Privately-owned"]
+			:ARG0 (t / thing [0 = "Privately-owned"]
+				:mod (p2 / private [0 = "Privately-owned"]))))
+	:ARG1 (c2 / complain-01 [12 = "complaints"]
+		:ARG0 (c4 / customer [14 = "customers"])
+		:ARG1 (o2 / or [17 = "or"]
+			:op1 (a / access-01 [19 = "access"]
+				:ARG0 c4 [14 = "customers"]
+				:ARG1 i [22 = "Internet"]
+				:mod (p3 / partial [16 = "partial"]))
+			:op2 (a2 / access-01 [19 = "access"]
+				:polarity - [18 = "no"]
+				:ARG0 c4 [14 = "customers"]
+				:ARG1 i [22 = "Internet"]))
+		:ARG2 c3 [8 = "timedotcom"]
+		:quant (n2 / numerous [11 = "numerous"])))
+
+# ::id PROXY_AFP_ENG_20020304_0028.22 ::date 2013-05-22T08:40:18 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Newspapers stated that the Eurofighter was rated excellent in general function and reliability categories but the Rafale also earned the excellent rating for its weapons and electronic warfare capability . 
+(s / state-01 [1 = "stated"]
+	:ARG0 (n / newspaper [0 = "Newspapers"])
+	:ARG1 (c / contrast-01 [14 = "but"]
+		:ARG1 (r / rate-01 [6 = "rated"]
+			:ARG1 (a2 / aircraft-type [4 = "Eurofighter"]
+				:name (n2 / name [4 = "Eurofighter"]
+					:op1 "Eurofighter" [4 = "Eurofighter"]))
+			:ARG2 (e2 / excellent [7 = "excellent"])
+			:topic (c2 / category [13 = "categories"]
+				:op1 (f / function-01 [10 = "function"]
+					:ARG1 (g / general [9 = "general"]))
+				:op2 (r2 / reliable [12 = "reliability"])))
+		:ARG2 (e / earn-01 [18 = "earned"]
+			:ARG0 (a3 / aircraft-type [16 = "Rafale"]
+				:name (n3 / name [16 = "Rafale"]
+					:op1 "Rafale" [16 = "Rafale"]))
+			:ARG1 (r3 / rate-01 [21 = "rating"]
+				:ARG1 a3 [16 = "Rafale"]
+				:ARG2 (e3 / excellent [20 = "excellent"]))
+			:ARG2 (c3 / capable-41 [28 = "capability"]
+				:ARG1 a3 [16 = "Rafale"]
+				:ARG2 (a4 / and [25 = "and"]
+					:op1 (w / weapon [24 = "weapons"])
+					:op2 (w2 / warfare [27 = "warfare"]
+						:mod (e4 / electronic [26 = "electronic"]))))
+			:mod (a / also [17 = "also"]))))
+
+# ::id PROXY_APW_ENG_20030125_0190.7 ::date 2013-06-21T10:32:43 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The infection slowed or halted web browsing and e-mail services in several countries . 
+(o / or [3 = "or"]
+	:op1 (s / slow-01 [2 = "slowed"]
+		:ARG0 (t / thing [1 = "infection"]
+			:ARG2-of (i / infect-01 [1 = "infection"]))
+		:ARG1 (a / and [7 = "and"]
+			:op1 (e / event [6 = "browsing"]
+				:ARG1-of (b / browse-01 [6 = "browsing"]
+					:mod (w / web [5 = "web"])))
+			:op2 (s2 / service [9 = "services"]
+				:mod (e2 / e-mail [8 = "e-mail"]))))
+	:op2 (h / halt-01 [4 = "halted"]
+		:ARG0 t [1 = "infection"]
+		:ARG1 a [7 = "and"])
+	:location (c / country [12 = "countries"]
+		:quant (s3 / several [11 = "several"])))
+
+# ::id PROXY_AFP_ENG_20020117_0270.11 ::date 2013-05-09T10:46:26 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Iran is a major transit point between drug producers in Afghanistan and Pakistan and the markets of Europe and the Gulf . 
+(p / point [5 = "point"]
+	:mod (t / transit [4 = "transit"]
+		:mod (m / major [3 = "major"]))
+	:domain (c / country [0 = "Iran"]
+		:name (n / name [0 = "Iran"]
+			:op1 "Iran" [0 = "Iran"]))
+	:location (b / between [6 = "between"]
+		:op1 (a / and [11 = "and"]
+			:op1 (p2 / person [8 = "producers"]
+				:ARG0-of (p3 / produce-01 [8 = "producers"]
+					:ARG1 (d / drug [7 = "drug"]))
+				:location (a2 / and [11 = "and"]
+					:op1 (c2 / country [10 = "Afghanistan"]
+						:name (n2 / name [10 = "Afghanistan"]
+							:op1 "Afghanistan" [10 = "Afghanistan"]))
+					:op2 (c3 / country [12 = "Pakistan"]
+						:name (n3 / name [12 = "Pakistan"]
+							:op1 "Pakistan" [12 = "Pakistan"])))))
+		:op2 (m2 / market [15 = "markets"]
+			:location (a3 / and [13 = "and"]
+				:op1 (c4 / continent [17 = "Europe"]
+					:name (n4 / name [17 = "Europe"]
+						:op1 "Europe" [17 = "Europe"]))
+				:op2 (w / world-region [20 = "Gulf"]
+					:name (n5 / name [20 = "Gulf"]
+						:op1 "Gulf" [20 = "Gulf"]))))))
+
+# ::id PROXY_AFP_ENG_20070906_0523.2 ::date 2013-06-21T11:48:10 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt China -LRB- CN -RRB- 
+(c / country [0 = "China"]
+	:name (n / name [0 = "China"]
+		:op1 "China" [0 = "China"]))
+
+# ::id PROXY_AFP_ENG_20020422_0296.22 ::date 2013-06-03T07:37:06 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Ingo Kober stated that the European Commission-ASEAN intellectual property rights cooperation program is further proof of the growing importance of intellectual property rights protection to world trade . 
+(s / state-01 [2 = "stated"]
+	:ARG0 (p / person [0 = "Ingo"]
+		:name (n / name [0 = "Ingo"]
+			:op1 "Ingo" [0 = "Ingo"]
+			:op2 "Kober" [1 = "Kober"]))
+	:ARG1 (p2 / prove-01 [14 = "proof"]
+		:ARG0 (p3 / program [11 = "program"]
+			:topic (c / cooperate-01 [10 = "cooperation"]
+				:ARG0 (o / organization [5 = "European"]
+					:name (n2 / name [5 = "European"]
+						:op1 "European" [5 = "European"]
+						:op2 "Commission" [6 = "Commission-ASEAN"]))
+				:ARG1 (o2 / organization [6 = "Commission-ASEAN"]
+					:name (n3 / name [6 = "Commission-ASEAN"]
+						:op1 "ASEAN" [6 = "Commission-ASEAN"]))
+				:ARG2 (e / entitle-01 [9 = "rights"]
+					:ARG1 (p4 / property [8 = "property"]
+						:mod (i / intellectual [7 = "intellectual"])))))
+		:ARG1 (g / grow-01 [17 = "growing"]
+			:ARG1 (i2 / important [18 = "importance"]
+				:domain (p5 / protect-01 [23 = "protection"]
+					:ARG0 e [22 = "rights"]
+					:ARG1 (t / trade-01 [26 = "trade"]
+						:ARG0 (w / world [25 = "world"])))))
+		:mod (f / further [13 = "further"])))
+
+# ::id PROXY_AFP_ENG_20020404_0305.18 ::date 2013-05-28T15:06:19 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt N. R. Mohanty stated that the Indian government was also planning to purchase 50 Sukhoi 30 MK fighter jets from Russia at a cost of 30 million United States dollars each . 
+(s / state-01 [3 = "stated"]
+	:ARG0 (p / person [0 = "N."]
+		:name (n / name [0 = "N."]
+			:op1 "N.R." [0 = "N."]
+			:op2 "Mohanty" [2 = "Mohanty"]))
+	:ARG1 (p2 / plan-01 [10 = "planning"]
+		:ARG0 (g / government-organization [7 = "government"]
+			:ARG0-of (g2 / govern-01 [7 = "government"]
+				:ARG1 (c / country [6 = "Indian"]
+					:name (n2 / name [6 = "Indian"]
+						:op1 "India" [6 = "Indian"]))))
+		:ARG1 (p3 / purchase-01 [12 = "purchase"]
+			:ARG0 g [7 = "government"]
+			:ARG1 (j / jet [14 = "Sukhoi"]
+				:quant 50 [13 = "50"]
+				:name (n3 / name [14 = "Sukhoi"]
+					:op1 "Sukhoi" [14 = "Sukhoi"]
+					:op2 "30" [15 = "30"]
+					:op3 "MK" [16 = "MK"])
+				:ARG0-of (f / fight-01 [17 = "fighter"]))
+			:ARG2 (c2 / country [20 = "Russia"]
+				:name (n4 / name [20 = "Russia"]
+					:op1 "Russia" [20 = "Russia"]))
+			:ARG3 (m / monetary-quantity [29 = "dollars"]
+				:quant 30000000 [25 = "30"]
+				:unit (d / dollar [29 = "dollars"]
+					:mod (c3 / country [27 = "United"]
+						:name (n5 / name [27 = "United"]
+							:op1 "United" [27 = "United"]
+							:op2 "States" [28 = "States"])))
+				:mod (e / each [30 = "each"])))
+		:mod (a2 / also [9 = "also"])))
+
+# ::id PROXY_AFP_ENG_20071219_0023.24 ::date 2013-06-30T15:50:22 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Libya was implicated in the 1988 bombing of a PanAm airliner over the Scottish town of Lockerbie and of a French passenger jet over Niger . 
+(i / implicate-01 [2 = "implicated"]
+	:ARG1 (c / country [0 = "Libya"]
+		:name (n / name [0 = "Libya"]
+			:op1 "Libya" [0 = "Libya"]))
+	:ARG2 (b / bomb-01 [6 = "bombing"]
+		:ARG0 (a / and [17 = "and"]
+			:op1 (a2 / airliner [10 = "airliner"]
+				:mod (c2 / company [9 = "PanAm"]
+					:name (n2 / name [9 = "PanAm"]
+						:op1 "PanAm" [9 = "PanAm"]))
+				:location (o / over [11 = "over"]
+					:op1 (t / town [16 = "Lockerbie"]
+						:name (n3 / name [16 = "Lockerbie"]
+							:op1 "Lockerbie" [16 = "Lockerbie"])
+						:location (c3 / country [13 = "Scottish"]
+							:name (n4 / name [13 = "Scottish"]
+								:op1 "Scotland" [13 = "Scottish"])))))
+			:op2 (j / jet [22 = "jet"]
+				:mod (p / passenger [21 = "passenger"])
+				:mod (c7 / country [20 = "French"]
+					:name (n11 / name [20 = "French"]
+						:op1 "France" [20 = "French"]))
+				:location (o2 / over [23 = "over"]
+					:op1 (c4 / country [24 = "Niger"]
+						:name (n5 / name [24 = "Niger"]
+							:op1 "Niger" [24 = "Niger"])))))
+		:time (d / date-entity [5 = "1988"]
+			:year 1988 [5 = "1988"])))
+
+# ::id PROXY_AFP_ENG_20050603_0056.16 ::date 2013-05-24T16:27:38 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The official said the launchings on May 27 , 2003 were Syrian President Bashir al-Assad 's response to U.S. and UN pressures that forced al-Assad to withdraw Syrian troops from neighboring Lebanon . 
+(s / say-01 [2 = "said"]
+	:ARG0 (p3 / person [1 = "official"]
+		:ARG0-of (h / have-org-role-91 [1 = "official"]
+			:ARG2 (o2 / official [1 = "official"])))
+	:ARG1 (r / respond-01 [16 = "response"]
+		:ARG0 (p4 / person [13 = "Bashir"]
+			:name (n / name [13 = "Bashir"]
+				:op1 "Bashir" [13 = "Bashir"]
+				:op2 "al-Assad" [14 = "al-Assad"])
+			:ARG0-of (h2 / have-org-role-91 [12 = "President"]
+				:ARG1 (c / country [11 = "Syrian"]
+					:name (n2 / name [11 = "Syrian"]
+						:op1 "Syria" [11 = "Syrian"]))
+				:ARG2 (p / president [12 = "President"])))
+		:ARG1 (p2 / pressure-01 [21 = "pressures"]
+			:ARG0 (a / and [19 = "and"]
+				:op1 (c2 / country [18 = "U.S."]
+					:name (n3 / name [18 = "U.S."]
+						:op1 "U.S." [18 = "U.S."]))
+				:op2 (o / organization [20 = "UN"]
+					:name (n4 / name [20 = "UN"]
+						:op1 "UN" [20 = "UN"])))
+			:ARG0-of (f / force-01 [23 = "forced"]
+				:ARG1 p4 [13 = "Bashir"]
+				:ARG2 (w / withdraw-01 [26 = "withdraw"]
+					:ARG0 p4 [13 = "Bashir"]
+					:ARG1 (t / troop [28 = "troops"]
+						:mod c [27 = "Syrian"])
+					:ARG2 (c3 / country [31 = "Lebanon"]
+						:name (n5 / name [31 = "Lebanon"]
+							:op1 "Lebanon" [31 = "Lebanon"])
+						:ARG1-of (n6 / neighbor-01 [30 = "neighboring"])))))
+		:ARG2 (l / launch-01 [4 = "launchings"]
+			:time (d / date-entity [6 = "May"]
+				:year 2003 [9 = "2003"]
+				:month 5 [6 = "May"]
+				:day 27 [7 = "27"]))))
+
+# ::id PROXY_AFP_ENG_20071008_0203.9 ::date 2013-06-19T14:24:45 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Odinaboi is a mountain village located near the border about 230 kilometers -LRB- 140 miles -RRB- southeast of the capital Dushanbe . 
+(l / locate-01 [5 = "located"]
+	:ARG1 (v / village [0 = "Odinaboi"]
+		:name (n2 / name [0 = "Odinaboi"]
+			:op1 "Odinaboi" [0 = "Odinaboi"])
+		:location (m2 / mountain [3 = "mountain"]))
+	:location (n / near [6 = "near"]
+		:op1 (b2 / border [8 = "border"]
+			:location (r / relative-position [16 = "southeast"]
+				:op1 (c2 / capital [20 = "Dushanbe"]
+					:name (n5 / name [20 = "Dushanbe"]
+						:op1 "Dushanbe" [20 = "Dushanbe"]))
+				:direction (s2 / southeast [16 = "southeast"])
+				:quant (a / about [9 = "about"]
+					:op1 (d / distance-quantity [11 = "kilometers"]
+						:quant 230 [10 = "230"]
+						:unit (k / kilometer [11 = "kilometers"])))))))
+
+# ::id PROXY_AFP_ENG_20030126_0212.16 ::date 2013-06-27T14:13:51 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Some trans-Atlantic Internet and phone service was disrupted . 
+(d / disrupt-01 [7 = "disrupted"]
+	:ARG1 (a / and [3 = "and"]
+		:op1 (s / service [5 = "service"]
+			:mod (p / phone [4 = "phone"])
+			:quant (s2 / some [0 = "Some"])
+			:mod (t / trans-atlantic [1 = "trans-Atlantic"]))
+		:op2 (s3 / service [5 = "service"]
+			:mod (i / internet [2 = "Internet"])
+			:quant (s4 / some [0 = "Some"])
+			:mod (t2 / trans-atlantic [1 = "trans-Atlantic"]))))
+
+# ::id PROXY_APW_ENG_20080306_0007.1 ::date 2013-07-15T17:56:54 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2008-03-06 
+(d / date-entity [0 = "2008-03-06"]
+	:day 6 [0 = "2008-03-06"]
+	:month 3 [0 = "2008-03-06"]
+	:year 2008 [0 = "2008-03-06"])
+
+# ::id PROXY_APW_ENG_20080112_0264.21 ::date 2013-07-11T22:19:01 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The South Korea is led by a liberal government . 
+(l / lead-02 [4 = "led"]
+	:ARG0 (g / government-organization [8 = "government"]
+		:ARG0-of (g2 / govern-01 [8 = "government"])
+		:mod (l2 / liberal [7 = "liberal"]))
+	:ARG1 (c / country [1 = "South"]
+		:name (n / name [1 = "South"]
+			:op1 "South" [1 = "South"]
+			:op2 "Korea" [2 = "Korea"])))
+
+# ::id PROXY_APW_ENG_20080304_0925.2 ::date 2013-07-11T07:26:07 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Colombia -LRB- CO -RRB- ; Ecuador -LRB- EC -RRB- 
+(a / and [4 = ";"]
+	:op1 (c / country [0 = "Colombia"]
+		:name (n / name [0 = "Colombia"]
+			:op1 "Colombia" [0 = "Colombia"]))
+	:op2 (c2 / country [5 = "Ecuador"]
+		:name (n2 / name [5 = "Ecuador"]
+			:op1 "Ecuador" [5 = "Ecuador"])))
+
+# ::id PROXY_AFP_ENG_20081107_0372.1 ::date 2013-07-09T11:11:44 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2008-11-07 
+(d / date-entity [0 = "2008-11-07"]
+	:year 2008 [0 = "2008-11-07"]
+	:month 11 [0 = "2008-11-07"]
+	:day 7 [0 = "2008-11-07"])
+
+# ::id PROXY_APW_ENG_20020415_0560.30 ::date 2013-07-09T21:46:48 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
+# ::snt Modernization would be costly . 
+(c2 / costly [3 = "costly"]
+	:domain (m / modernize-01 [0 = "Modernization"]))
+
+# ::id PROXY_AFP_ENG_20050718_0646.19 ::date 2013-06-01T13:25:38 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The former imam of Finsbury Park mosque is Egyptian-born Abu Hamza al-Masri . 
+(i / imam [2 = "imam"]
+	:mod (f / former [1 = "former"])
+	:poss (w / worship-place [4 = "Finsbury"]
+		:name (n / name [4 = "Finsbury"]
+			:op1 "Finsbury" [4 = "Finsbury"]
+			:op2 "Park" [5 = "Park"]
+			:op3 "Mosque" [6 = "mosque"]))
+	:domain (p / person [9 = "Abu"]
+		:name (n2 / name [9 = "Abu"]
+			:op1 "Abu" [9 = "Abu"]
+			:op2 "Hamza" [10 = "Hamza"]
+			:op3 "al-Masri" [11 = "al-Masri"])
+		:ARG1-of (b / bear-02 [8 = "Egyptian-born"]
+			:location (c / country [8 = "Egyptian-born"]
+				:name (n3 / name [8 = "Egyptian-born"]
+					:op1 "Egypt" [8 = "Egyptian-born"])))))
+
+# ::id PROXY_AFP_ENG_20070715_0100.16 ::date 2013-09-01T16:51:59 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The EU should immediately commence talks with India to prevent future sales of the alh , components or technology to India . 
+(r / recommend-01 [2 = "should"]
+	:ARG1 (c4 / commence-01 [4 = "commence"]
+		:ARG0 (o / organization [1 = "EU"]
+			:name (n4 / name [1 = "EU"]
+				:op1 "EU" [1 = "EU"]))
+		:ARG1 (t / talk-01 [5 = "talks"]
+			:ARG0 o [1 = "EU"]
+			:ARG2 (c5 / country [7 = "India"]
+				:name (n5 / name [7 = "India"]
+					:op1 "India" [7 = "India"]))
+			:purpose (p / prevent-01 [9 = "prevent"]
+				:ARG0 o [1 = "EU"]
+				:ARG1 (s / sell-01 [11 = "sales"]
+					:ARG1 (o2 / or [17 = "or"]
+						:op1 (a / aircraft-type [14 = "alh"]
+							:name (n6 / name [14 = "alh"]
+								:op1 "ALH" [14 = "alh"]))
+						:op2 (c6 / component [16 = "components"])
+						:op3 (t2 / technology [18 = "technology"]))
+					:ARG2 c5 [20 = "India"]
+					:time (f / future [10 = "future"]))))
+		:time (i / immediate [3 = "immediately"])))
+
+# ::id PROXY_AFP_ENG_20020416_0331.3 ::date 2013-05-30T07:49:55 ::snt-type topic ::annotator LDC-AMR-14 ::preferred
+# ::snt International ; narcotics 
+(a / and [1 = ";"]
+	:op1 (i / international [0 = "International"])
+	:op2 (n / narcotics [2 = "narcotics"]))
+
+# ::id PROXY_AFP_ENG_20070716_0392.42 ::date 2013-06-14T06:56:26 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
+# ::snt brake systems from Italy 
+(s / system [1 = "systems"]
+	:instrument-of (b / brake-01 [0 = "brake"])
+	:source (c / country [3 = "Italy"]
+		:name (n / name [3 = "Italy"]
+			:op1 "Italy" [3 = "Italy"])))
+
+# ::id PROXY_AFP_ENG_20070612_0180.2 ::date 2013-06-20T06:57:03 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Russian Federation -LRB- RU -RRB- 
+(c / country [0 = "Russian"]
+	:name (n / name [0 = "Russian"]
+		:op1 "Russian" [0 = "Russian"]
+		:op2 "Federation" [1 = "Federation"]))
+
+# ::id PROXY_AFP_ENG_20030204_0095.8 ::date 2013-07-09T14:31:15 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The attack is considered part of a global incitement to Jihad by al-Qaeda and its allies . 
+(c2 / consider-01 [3 = "considered"]
+	:ARG1 (a / attack-01 [1 = "attack"]
+		:part-of (i / incite-01 [8 = "incitement"]
+			:ARG0 (a2 / and [13 = "and"]
+				:op1 (c / criminal-organization [12 = "al-Qaeda"]
+					:name (n / name [12 = "al-Qaeda"]
+						:op1 "al-Qaeda" [12 = "al-Qaeda"]))
+				:op2 (a3 / ally-01 [15 = "allies"]
+					:ARG2 c [14 = "its"]))
+			:ARG1 (w / war [10 = "Jihad"]
+				:name (n2 / name [10 = "Jihad"]
+					:op1 "Jihad" [10 = "Jihad"]))
+			:extent (g / globe [7 = "global"]))))
+
+# ::id PROXY_AFP_ENG_20040209_0175.18 ::date 2013-05-11T10:03:11 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Approximately 633000 of Volkswagen 's own cars were sold in China in 030000 , up from 510000 in 020000 . 
+(s / sell-01 [8 = "sold"]
+	:ARG0 (c4 / company [3 = "Volkswagen"]
+		:name (n2 / name [3 = "Volkswagen"]
+			:op1 "Volkswagen" [3 = "Volkswagen"]))
+	:ARG1 (c5 / car [6 = "cars"]
+		:poss c4 [3 = "Volkswagen"]
+		:quant (a / approximately [0 = "Approximately"]
+			:op1 633000 [1 = "633000"]
+			:ARG4-of (i / increase-01 [14 = "up"]
+				:ARG3 (x / 510000 [16 = "510000"]
+					:quant-of (c2 / car [6 = "cars"]
+						:ARG1-of (s2 / sell-01 [8 = "sold"]
+							:time (d / date-entity [18 = "020000"]
+								:year 2002 [18 = "020000"])))))))
+	:time (d2 / date-entity [12 = "030000"]
+		:year 2003 [12 = "030000"])
+	:location (c / country [10 = "China"]
+		:name (n / name [10 = "China"]
+			:op1 "China" [10 = "China"])))
+
+# ::id PROXY_AFP_ENG_20080429_0271.7 ::date 2013-07-04T06:36:43 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Angela Merkel made this statement after a meeting with Swiss President Pascal Couchepin . 
+(s / state-01 [4 = "statement"]
+	:ARG0 (p / person [0 = "Angela"]
+		:name (n / name [0 = "Angela"]
+			:op1 "Angela" [0 = "Angela"]
+			:op2 "Merkel" [1 = "Merkel"]))
+	:ARG1 (t / this [3 = "this"])
+	:time (a / after [5 = "after"]
+		:op1 (m / meet-02 [7 = "meeting"]
+			:ARG0 p [0 = "Angela"]
+			:ARG1 (p2 / person [11 = "Pascal"]
+				:name (n3 / name [11 = "Pascal"]
+					:op1 "Pascal" [11 = "Pascal"]
+					:op2 "Couchepin" [12 = "Couchepin"])
+				:ARG0-of (h / have-org-role-91 [10 = "President"]
+					:ARG1 (c / country [9 = "Swiss"]
+						:name (n2 / name [9 = "Swiss"]
+							:op1 "Switzerland" [9 = "Swiss"]))
+					:ARG2 (p3 / president [10 = "President"]))))))
+
+# ::id PROXY_AFP_ENG_20050321_0150.21 ::date 2013-05-15T16:19:39 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt This followed assurances from potential investors that the island would not lose out on transferred technology . 
+(f / follow-01 [1 = "followed"]
+	:ARG1 (t / this [0 = "This"])
+	:ARG2 (a / assure-01 [2 = "assurances"]
+		:ARG0 (p / person [5 = "investors"]
+			:ARG0-of (i / invest-01 [5 = "investors"])
+			:mod (p2 / potential [4 = "potential"]))
+		:ARG2 (l / lose-06 [11 = "lose"]
+			:polarity - [10 = "not"]
+			:ARG0 (i2 / island [8 = "island"])
+			:ARG1 (t2 / technology [15 = "technology"]
+				:ARG1-of (t3 / transfer-01 [14 = "transferred"])))))
+
+# ::id PROXY_AFP_ENG_20071007_0248.10 ::date 2013-06-18T19:26:53 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Daud stated that the find was one of the Government 's biggest . 
+(s / state-01 [1 = "stated"]
+	:ARG0 (p / person [0 = "Daud"]
+		:name (n2 / name [0 = "Daud"]
+			:op1 "Daud" [0 = "Daud"]))
+	:ARG1 (f / find-01 [4 = "find"]
+		:quant 1 [3 = "the"]
+		:ARG1-of (i / include-91 [7 = "of"]
+			:ARG2 (f2 / find-01 [4 = "find"]
+				:ARG0 (g / government-organization [9 = "Government"]
+					:ARG0-of (g2 / govern-01 [9 = "Government"]))
+				:mod (b / big [11 = "biggest"])))))
+
+# ::id PROXY_AFP_ENG_20071211_0449.10 ::date 2013-06-30T09:18:43 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The channel broadcast an image of the 3 other criminals hanging from a frame in a prison yard . 
+(b / broadcast-01 [2 = "broadcast"]
+	:ARG0 (c / channel [1 = "channel"])
+	:ARG1 (i / image [4 = "image"]
+		:mod (c2 / criminal [9 = "criminals"]
+			:quant 3 [7 = "3"]
+			:mod (o / other [8 = "other"])
+			:ARG1-of (h / hang-01 [10 = "hanging"]
+				:ARG2 (f / frame [13 = "frame"])
+				:location (y / yard [17 = "yard"]
+					:mod (p / prison [16 = "prison"]))))))
+
+# ::id PROXY_APW_ENG_20080513_0501.26 ::date 2013-07-18T04:48:37 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Some pacifist lawmakers from the Communist and Social Democratic parties boycotted the vote on 13 May 2008 stating that the bill contradicted the principle of a civilian-controlled space program . 
+(a / and
+	:op1 (b / boycott-01
+		:ARG0 (a2 / and
+			:op1 (p7 / person
+				:mod (p / pacifist)
+				:ARG0-of (h / have-org-role-91
+					:ARG1 (p2 / political-party
+						:name (n / name
+							:op1 "Communist"
+							:op2 "Party"))
+					:ARG3 (l3 / legislate-01
+						:ARG0 p7)))
+			:op2 (p8 / person
+				:mod (p3 / pacifist)
+				:ARG0-of (h2 / have-org-role-91
+					:ARG1 (p4 / political-party
+						:name (n2 / name
+							:op1 "Social"
+							:op2 "Democratic"
+							:op3 "Party"))
+					:ARG3 (l / legislate-01
+						:ARG0 p8)))
+			:quant (s / some))
+		:ARG1 (v / vote-01)
+		:time (d2 / date-entity
+			:day 13
+			:month 5
+			:year 2008))
+	:op2 (s2 / state-01
+		:ARG0 a2
+		:ARG1 (c / contradict-01
+			:ARG0 (b2 / bill)
+			:ARG1 (p5 / principle
+				:poss (p6 / program
+					:mod (s3 / space))
+				:ARG1-of (c2 / control-01
+					:ARG0 (c3 / civilian))))))
+
+# ::id PROXY_AFP_ENG_20071228_0377.18 ::date 2013-06-27T05:13:50 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Opium is the raw material used to make heroin . 
+(m / material
+	:mod (r / raw)
+	:domain (o / opium)
+	:ARG1-of (u / use-01
+		:ARG2 (m2 / make-01
+			:ARG1 (h / heroin)
+			:ARG2 o)))
+
+# ::id PROXY_AFP_ENG_20030316_0321.1 ::date 2013-07-14T13:04:04 ::snt-type date ::annotator UCO-AMR-05 ::preferred
+# ::snt 2003-03-15 
+(d2 / date-entity
+	:day 15
+	:month 3
+	:year 2003)
+
+# ::id PROXY_AFP_ENG_20080418_0245.9 ::date 2013-07-02T21:10:02 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
+# ::snt Tension in Zimbabwe is mounting . 
+(m / mount-02
+	:ARG1 (t / tension)
+	:location (c / country
+		:name (n / name
+			:op1 "Zimbabwe")))
+
+# ::id PROXY_APW_ENG_20080304_0925.4 ::date 2013-07-12T00:19:32 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
+# ::snt Colombia 's Vice President Francisco Santos stated to the world disarmament body on March 4 , 2008 that police found computer evidence indicating the Revolutionary Armed Forces of Colombia has been trying to obtain radioactive material for dirty bombs to threaten Latin America . 
+(s / state-01
+	:ARG0 (p3 / person
+		:name (n / name
+			:op1 "Francisco"
+			:op2 "Santos")
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c / country
+				:name (n2 / name
+					:op1 "Colombia"))
+			:ARG2 (p / president
+				:mod (v / vice))))
+	:ARG1 (f / find-01
+		:ARG0 (p2 / police)
+		:ARG1 (t3 / thing
+			:ARG0-of (e / evidence-01)
+			:source (c2 / computer)
+			:ARG0-of (i / indicate-01
+				:ARG1 (t / try-01
+					:ARG0 (c3 / criminal-organization
+						:name (n3 / name
+							:op1 "Revolutionary"
+							:op2 "Armed"
+							:op3 "Forces"
+							:op4 "of"
+							:op5 "Colombia"))
+					:ARG1 (o2 / obtain-01
+						:ARG0 c3
+						:ARG1 (m / material
+							:mod (r / radioactive)
+							:purpose (b2 / bomb
+								:mod (d3 / dirty)))
+						:purpose (t2 / threaten-01
+							:ARG0 c3
+							:ARG2 (w2 / world-region
+								:name (n4 / name
+									:op1 "Latin"
+									:op2 "America"))))))))
+	:ARG2 (b / body
+		:mod (d / disarm-01
+			:mod (w / world)))
+	:time (d2 / date-entity
+		:year 2008
+		:month 3
+		:day 4))
+
+# ::id PROXY_AFP_ENG_20070625_0217.5 ::date 2013-06-16T07:03:42 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The United Nations said on June 25 , 2007 that sophisticated laboratories inside Afghanistan are converting 90 percent of Afghanistan 's opium into heroin and morphine before smuggling it around the world . 
+(s / say-01
+	:ARG0 (o / organization
+		:name (n / name
+			:op1 "United"
+			:op2 "Nations"))
+	:ARG1 (c3 / convert-01
+		:ARG0 (l / laboratory
+			:mod (s2 / sophisticated)
+			:location (c / country
+				:name (n2 / name
+					:op1 "Afghanistan")))
+		:ARG1 (i / include-91
+			:ARG1 (p / percentage-entity
+				:value 90)
+			:ARG2 (o2 / opium
+				:poss c))
+		:ARG2 (a / and
+			:op1 (h / heroin)
+			:op2 (m / morphine))
+		:time (b / before
+			:op1 (s3 / smuggle-01
+				:ARG0 c
+				:ARG1 a
+				:ARG3 (a2 / around
+					:op1 (w / world)))))
+	:time (d / date-entity
+		:month 6
+		:day 25
+		:year 2007))
+
+# ::id PROXY_APW_ENG_20080409_0911.7 ::date 2013-07-17T09:21:54 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Associated Press obtained a copy of the document . 
+(o / obtain-01
+	:ARG0 (p / publication
+		:name (n / name
+			:op1 "Associated"
+			:op2 "Press"))
+	:ARG1 (d / document
+		:ARG1-of (c / copy-01)))
+
+# ::id PROXY_AFP_ENG_20021110_0396.5 ::date 2013-05-23T08:16:32 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt On 021110 the ITAR-TASS news agency stated that Russian Foreign Minister Igor Ivanov and Defense Minister Sergei Ivanov are to travel to Paris on 021112 to meet the French Foreign Minister Dominique de Villepin and Defense Minister Michele Alliot-Marie . 
+(s / state-01
+	:ARG0 (a4 / agency
+		:name (n8 / name
+			:op1 "ITAR-TASS")
+		:mod (n / news))
+	:ARG1 (t / travel-01
+		:ARG0 (a / and
+			:op1 (p / person
+				:name (n2 / name
+					:op1 "Igor"
+					:op2 "Ivanov")
+				:ARG0-of (h / have-org-role-91
+					:ARG1 (c / country
+						:name (n3 / name
+							:op1 "Russia"))
+					:ARG2 (m / minister
+						:mod (f / foreign))))
+			:op2 (p2 / person
+				:name (n4 / name
+					:op1 "Sergei"
+					:op2 "Ivanov")
+				:ARG0-of (h2 / have-org-role-91
+					:ARG1 c
+					:ARG2 (m2 / minister
+						:mod (d / defense)))))
+		:ARG1 (c2 / city
+			:name (n5 / name
+				:op1 "Paris"))
+		:time (d3 / date-entity
+			:month 11
+			:day 12
+			:year 2002)
+		:purpose (m3 / meet-02
+			:ARG0 a
+			:ARG1 (a3 / and
+				:op1 (p3 / person
+					:name (n6 / name
+						:op1 "Dominique"
+						:op2 "de"
+						:op3 "Villepin")
+					:ARG0-of (h3 / have-org-role-91
+						:ARG1 (c3 / country
+							:name (n9 / name
+								:op1 "France"))
+						:ARG2 (m4 / minister
+							:mod (f2 / foreign))))
+				:op2 (p4 / person
+					:name (n7 / name
+						:op1 "Michele"
+						:op2 "Alliot-Marie")
+					:mod (d4 / defense)
+					:ARG0-of (h4 / have-org-role-91
+						:ARG1 c3
+						:ARG2 (m5 / minister
+							:mod (d5 / defense)))))))
+	:time (d2 / date-entity
+		:month 11
+		:day 10
+		:year 2002))
+
+# ::id PROXY_AFP_ENG_20070313_0288.2 ::date 2013-06-05T13:20:23 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt United Kingdom -LRB- GB -RRB- 
+(c / country
+	:name (n / name
+		:op1 "United"
+		:op2 "Kingdom"))
+
+# ::id PROXY_AFP_ENG_20070201_0099.20 ::date 2013-06-02T22:38:52 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The United States and the then Soviet Union are the only other nations to have carried similar tests . 
+(n / nation
+	:domain (a / and
+		:op1 (c / country
+			:name (n2 / name
+				:op1 "United"
+				:op2 "States"))
+		:op2 (c2 / country
+			:name (n3 / name
+				:op1 "Soviet"
+				:op2 "Union")
+			:time (t2 / then)))
+	:mod (o / other)
+	:mod (o2 / only)
+	:ARG0-of (t / test-01
+		:ARG1-of (r / resemble-01)))
+
+# ::id PROXY_AFP_ENG_20020423_0133.16 ::date 2013-06-02T15:21:24 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Vietnamese police detained two women on suspicion of human trafficking and smuggling Vietnamese virgins to Cambodian brothels . 
+(d / detain-01
+	:ARG0 (p / police
+		:mod (c / country
+			:name (n2 / name
+				:op1 "Vietnam")))
+	:ARG1 (w / woman
+		:quant 2)
+	:ARG2 (s / suspect-01
+		:ARG1 (a / and
+			:op1 (t / traffic-00
+				:ARG1 (h / human))
+			:op2 (s2 / smuggle-01
+				:ARG1 (v / virgin
+					:mod c)
+				:ARG3 (b / brothel
+					:mod (c2 / country
+						:name (n / name
+							:op1 "Cambodia")))))))
+
+# ::id PROXY_AFP_ENG_20020111_0093.40 ::date 2013-05-09T09:40:54 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The authorities say the practice is slowly disappearing in Korea . 
+(s / say-01
+	:ARG0 (a / authority)
+	:ARG1 (d / disappear-01
+		:ARG1 (p / practice-01)
+		:ARG2-of (s2 / slow-41)
+		:location (c / country
+			:name (n / name
+				:op1 "Korea"))))
+
+# ::id PROXY_AFP_ENG_20070906_0312.16 ::date 2013-06-16T06:44:46 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Iran is the most prolific applier of the death penalty in the world after China . 
+(p3 / penalize-01
+	:ARG0 (c / country
+		:name (n / name
+			:op1 "Iran"))
+	:mod (p2 / prolific
+		:degree (m / most)
+		:compared-to (w / world)
+		:mod (a2 / after
+			:op1 (c2 / country
+				:name (n2 / name
+					:op1 "China"))))
+	:instrument (d2 / die-01))
+
+# ::id PROXY_AFP_ENG_20020117_0270.9 ::date 2013-05-09T10:32:08 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Val Fajr means swear to victory in Arabic and is a phrase from the Koran . 
+(a / and
+	:op1 (m / mean-01
+		:ARG0 (e / event
+			:name (n2 / name
+				:op1 "Val"
+				:op2 "Fajr"))
+		:ARG1 (s / swear-01
+			:ARG1 (w / win-01)
+			:medium (l / language
+				:name (n3 / name
+					:op1 "Arabic"))))
+	:op2 (p / phrase
+		:domain e
+		:source (b / book
+			:name (n4 / name
+				:op1 "The"
+				:op2 "Koran"))))
+
+# ::id PROXY_APW_ENG_20031021_0426.20 ::date 2013-08-20T22:38:43 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Kosovo and Macedonia border Albania . 
+(b / border-01
+	:ARG1 (a / and
+		:op1 (c4 / country
+			:name (n4 / name
+				:op1 "Kosovo"))
+		:op2 (c5 / country
+			:name (n5 / name
+				:op1 "Macedonia")))
+	:ARG2 (c6 / country
+		:name (n6 / name
+			:op1 "Albania")))
+
+# ::id PROXY_AFP_ENG_20020404_0305.1 ::date 2013-05-28T13:31:31 ::snt-type date ::annotator LDC-AMR-14 ::preferred
+# ::snt 2002-04-04 
+(d / date-entity
+	:year 2002
+	:month 4
+	:day 4)
+
+# ::id PROXY_APW_ENG_20080209_0664.12 ::date 2013-07-14T08:46:23 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Lieberman pointed out that in the Nie report which said that the Iranian government 's covert work on bomb design may have been temporarily suspended in 03000 it was also and far more importantly stated that Iran 's overt work on enrichment continues apace . 
+(p2 / point-02
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Lieberman"))
+	:ARG1 (s / state-01
+		:ARG0 (r / report
+			:name (n2 / name
+				:op1 "NIE")
+			:ARG0-of (s3 / say-01
+				:ARG1 (p3 / possible
+					:domain (s2 / suspend-01
+						:ARG1 (w2 / work-01
+							:ARG0 (g / government-organization
+								:ARG0-of (g2 / govern-01
+									:ARG1 c))
+							:ARG1 (d2 / design-01
+								:ARG0 g2
+								:ARG1 (b / bomb))
+							:mod (c3 / covert))
+						:duration (t / temporary)
+						:time (d / date-entity
+							:year 2003)))))
+		:ARG1 (c2 / continue-01
+			:ARG1 (w / work-01
+				:ARG0 (c / country
+					:name (n3 / name
+						:op1 "Iran"))
+				:ARG1 (e / enrich-01)
+				:mod (o2 / overt))
+			:manner (a3 / apace))
+		:manner (i / important
+			:degree (m / more
+				:degree (f / far)))
+		:mod (a2 / also)))
+
+# ::id PROXY_APW_ENG_20080417_1113.25 ::date 2013-07-21T10:56:59 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The approval process can be lengthy . 
+(p / possible
+	:domain (l / lengthy
+		:domain (p2 / process
+			:mod (a / approve-01))))
+
+# ::id PROXY_AFP_ENG_20020406_0538.21 ::date 2013-06-10T08:47:35 ::snt-type body subordinate ::annotator LDC-AMR-14 ::preferred
+# ::snt A breakdown of order in China will be worse than in Afghanistan or Yugoslavia . 
+(b / bad
+	:degree (m / more)
+	:domain (b2 / break-12
+		:ARG1 (o / order)
+		:location (c / country
+			:name (n / name
+				:op1 "China")))
+	:compared-to (b3 / break-12
+		:ARG1 o
+		:location (o2 / or
+			:op1 (c2 / country
+				:name (n2 / name
+					:op1 "Afghanistan"))
+			:op2 (c3 / country
+				:name (n3 / name
+					:op1 "Yugoslavia")))))
+
+# ::id PROXY_AFP_ENG_20030210_0248.10 ::date 2013-07-10T16:45:22 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt At the specially called media briefing a military intelligence official Brigadier General Than Tun that it has been discovered that some members of the legally standing political parties inside Myanmar have been engaged in anti-government activities with financial support from dissident expatriates . 
+(s / state-01
+	:ARG0 (p3 / person
+		:name (n3 / name
+			:op1 "Than"
+			:op2 "Tun")
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (i2 / intelligence
+				:mod (m3 / military))
+			:ARG2 (o / official))
+		:ARG0-of (h2 / have-org-role-91
+			:ARG2 (g3 / general
+				:mod (b2 / brigadier))))
+	:ARG1 (d / discover-01
+		:ARG1 (e / engage-01
+			:ARG1 (m / member
+				:quant (s2 / some)
+				:poss (p / party
+					:mod (p2 / politics)
+					:location (i / inside
+						:op1 (c / country
+							:name (n2 / name
+								:op1 "Myanmar")))
+					:ARG1-of (s3 / stand-02
+						:manner (l2 / legal))))
+			:ARG2 (a / activity
+				:ARG0-of (o3 / oppose-01
+					:ARG1 (g / government-organization
+						:ARG0-of (g2 / govern-01))))
+			:manner (s4 / support-01
+				:ARG0 (e2 / expatriate
+					:mod (d2 / dissident))
+				:manner (f / financial))))
+	:location (b / brief-01
+		:ARG1 (m2 / media)
+		:ARG1-of (c2 / call-02
+			:manner (s5 / special))))
+
+# ::id PROXY_APW_ENG_20080425_1111.27 ::date 2013-07-21T16:23:51 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The 080425 resolution was approved on the day that Mohamed ElBaradei angrily criticized Israel for bombing an alleged Syrian nuclear facility , chastised the United States for withholding information on the alleged Syrian nuclear facility , and stated that the International Atomic Energy Agency would investigate the allegations of the Syrian nuclear facility . 
+(a / approve-01
+	:ARG1 (r / resolution
+		:time (d / date-entity
+			:day 25
+			:month 4
+			:year 2008
+			:mod (d2 / day
+				:time (a2 / and
+					:op1 (c6 / criticize-01
+						:ARG0 (p / person
+							:name (n / name
+								:op1 "Mohamed"
+								:op2 "ElBaradei"))
+						:ARG1 (c / country
+							:name (n2 / name
+								:op1 "Israel")
+							:ARG0-of (b / bomb-01
+								:ARG1 (f / facility
+									:mod (c2 / country
+										:name (n3 / name
+											:op1 "Syria"))
+									:ARG1-of (a3 / allege-01)
+									:mod (n7 / nucleus))))
+						:mod (a5 / angry))
+					:op2 (c7 / chastise-01
+						:ARG0 p
+						:ARG1 (c3 / country
+							:name (n4 / name
+								:op1 "United"
+								:op2 "States"))
+						:ARG2 (w / withhold-01
+							:ARG1 (i / information
+								:topic f)))
+					:op3 (s / state-01
+						:ARG0 p
+						:ARG1 (i2 / investigate-01
+							:ARG0 (o / organization
+								:name (n6 / name
+									:op1 "International"
+									:op2 "Atomic"
+									:op3 "Energy"
+									:op4 "Agency"))
+							:ARG1 (a4 / allege-01
+								:ARG1 (f2 / facility
+									:mod (n8 / nucleus)
+									:mod c2)))))))))
+
+# ::id PROXY_APW_ENG_20080415_1054.23 ::date 2013-07-18T14:32:23 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The arrests were believed to have been sparked by a militia-style demonstration by student Brotherhood members from the Al-Azhar University in Cairo . 
+(s / spark-01
+	:ARG0 (d / demonstrate-01
+		:ARG0 (p2 / person
+			:ARG0-of (s3 / study-01
+				:location (u / university
+					:name (n / name
+						:op1 "Al-Azhar"
+						:op2 "University")
+					:location (c / city
+						:name (n2 / name
+							:op1 "Cairo"))))
+			:ARG0-of (h / have-org-role-91
+				:ARG1 (o / organization
+					:name (n3 / name
+						:op1 "Brotherhood"))
+				:ARG2 (m2 / member)))
+		:manner (s2 / style
+			:mod (m / militia)))
+	:ARG1 (a / arrest-01)
+	:ARG1-of (b / believe-01))
+
+# ::id PROXY_AFP_ENG_20080521_0798.10 ::date 2013-07-04T06:35:34 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The passing of the new law comes amid growing concerns in Japan about North Korea 's ballistic missile development and China 's military and space programs . 
+(c4 / come-01
+	:ARG1 (p / pass-01
+		:ARG1 (l / law
+			:mod (n4 / new)))
+	:time (c5 / concern-01
+		:ARG0 (a / and
+			:op1 (d / develop-01
+				:ARG1 (c2 / country
+					:name (n2 / name
+						:op1 "North"
+						:op2 "Korea"))
+				:ARG2 (m / missile
+					:mod (b / ballistic)))
+			:op2 (a2 / and
+				:op1 (p2 / program
+					:mod (m2 / military)
+					:poss (c3 / country
+						:name (n3 / name
+							:op1 "China")))
+				:op2 (p3 / program
+					:mod (s / space)
+					:poss c3)))
+		:ARG1 (c / country
+			:name (n / name
+				:op1 "Japan"))
+		:ARG1-of (g / grow-01)))
+
+# ::id PROXY_AFP_ENG_20070612_0180.19 ::date 2013-06-20T12:53:23 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Antonov rejected an offer made by the US and NATO allies to the Russian Government the week of 3 June 2007 to accept a multinational peacekeeping force in the pro-Russian Moldovan separatist region of Transdniestr . 
+(r / reject-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Antonov"))
+	:ARG1 (o / offer-01
+		:ARG0 (a / and
+			:op1 (c / country
+				:name (n2 / name
+					:op1 "US"))
+			:op2 (a2 / ally-01
+				:ARG1 (c5 / country
+					:part-of (m / military
+						:name (n3 / name
+							:op1 "NATO")))))
+		:ARG1 (a3 / accept-01
+			:ARG0 g
+			:ARG1 (f / force
+				:mod (m2 / multinational)
+				:ARG0-of (k / keep-01
+					:ARG1 (p2 / peace)))
+			:location (c3 / country-region
+				:name (n5 / name
+					:op1 "Transdniestr")
+				:mod (c4 / country
+					:name (n6 / name
+						:op1 "Moldova"))
+				:mod (s / separatism)
+				:ARG0-of (f2 / favor-01
+					:ARG1 c2)))
+		:ARG3 (g / government-organization
+			:ARG0-of (g2 / govern-01
+				:ARG1 (c2 / country
+					:name (n4 / name
+						:op1 "Russia"))))
+		:time (w2 / week
+			:mod (d / date-entity
+				:year 2007
+				:month 6
+				:day 3))))
+
+# ::id PROXY_AFP_ENG_20021102_0031.17 ::date 2013-07-22T12:33:13 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Police said the army hadon 021101 arrested former state minister and Awami League lawmaker talukder Abdul khaleque in southwestern Khulna city soon after he spoke at a news conference against the deployment . 
+(s / say-01
+	:ARG0 (p2 / police)
+	:ARG1 (a / arrest-01
+		:ARG0 (a2 / army)
+		:ARG1 (p / person
+			:name (n4 / name
+				:op1 "Talukder"
+				:op2 "Abdul"
+				:op3 "Khaleque")
+			:ARG0-of (h / have-org-role-91
+				:ARG1 (s6 / state)
+				:ARG2 (m2 / minister
+					:mod (f / former)))
+			:ARG0-of (h2 / have-org-role-91
+				:ARG1 (p3 / political-party
+					:name (n5 / name
+						:op1 "Awami"
+						:op2 "League"))
+				:ARG2 (p4 / person
+					:ARG0-of (l / legislate-01))))
+		:time (d / date-entity
+			:day 1
+			:month 11
+			:year 2002)
+		:location (c / city
+			:name (n3 / name
+				:op1 "Khulna")
+			:mod (s3 / southwest))
+		:time (a4 / after
+			:op1 (s5 / speak-01
+				:ARG0 p
+				:ARG1 (a3 / against
+					:op1 (d2 / deploy-01))
+				:location (c2 / conference
+					:mod (n6 / news)))
+			:mod (s4 / soon))))
+
+# ::id PROXY_AFP_ENG_20030803_0475.4 ::date 2013-05-07T02:38:56 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
+# ::snt La times probe finds strong evidence that Iran appears to be in the late stages of developing the capacity to build a nuclear bomb . 
+(f / find-01
+	:ARG0 (p / probe-01
+		:ARG0 (p2 / publication
+			:name (n2 / name
+				:op1 "L.A."
+				:op2 "Times")))
+	:ARG1 (t / thing
+		:ARG0-of (e / evidence-01
+			:ARG1 (a / appear-02
+				:ARG1 (d / develop-02
+					:ARG0 (c / country
+						:name (n / name
+							:op1 "Iran"))
+					:ARG1 (c2 / capable-41
+						:ARG2 (b / build-01
+							:ARG0 c
+							:ARG1 (b2 / bomb
+								:mod (n3 / nucleus))))
+					:mod (s / stage
+						:time (l / late))))
+			:mod (s2 / strong))))
+
+# ::id PROXY_AFP_ENG_20080522_0345.3 ::date 2013-07-05T09:12:50 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
+# ::snt International ; weapons ; proliferation ; politics ; leader 
+(a / and
+	:op1 (i / international)
+	:op2 (w / weapon)
+	:op3 (p / proliferate-01)
+	:op4 (p2 / politics)
+	:op5 (p3 / person
+		:ARG0-of (l / lead-02)))
+
+# ::id PROXY_AFP_ENG_20020518_0107.14 ::date 2013-06-08T17:12:56 ::snt-type body subordinate ::annotator LDC-AMR-14 ::preferred
+# ::snt Pakistan has taken steps to facilitate movement of people and goods between Pakistan and Afghanistan for economic reconstruction . 
+(t / take-01
+	:ARG0 (c / country
+		:name (n2 / name
+			:op1 "Pakistan"))
+	:ARG1 (s / step)
+	:purpose (f / facilitate-01
+		:ARG1 (m / move-01
+			:ARG1 (a / and
+				:op1 (p / person)
+				:op2 (g / good))
+			:ARG2 (a2 / and
+				:op1 c
+				:op2 (c2 / country
+					:name (n / name
+						:op1 "Afghanistan")))
+			:purpose (r / reconstruct-01
+				:ARG1 (e / economy)))))
+
+# ::id PROXY_AFP_ENG_20020610_0336.9 ::date 2013-06-20T17:36:25 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Hla Min stated that illicit drugs worth some 50 billion dollars have been destroyed by authorities since 1974 . 
+(s2 / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Hla"
+			:op2 "Min"))
+	:ARG1 (d3 / destroy-01
+		:ARG0 (a / authority)
+		:ARG1 (d4 / drug
+			:mod (i / illicit)
+			:ARG1-of (v / value-01
+				:ARG2 (s3 / some
+					:op1 (m2 / monetary-quantity
+						:quant 50000000000
+						:unit (d5 / dollar)))))
+		:time (s4 / since
+			:op1 (d6 / date-entity
+				:year 1974))))
+
+# ::id PROXY_AFP_ENG_20070726_0219.24 ::date 2013-06-18T09:57:23 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Simon Nisan stated that the 070726 French-Libyan nuclear reactor deal followed the signature in 060300 of a agreement for bilateral cooperation in nuclear research and technology . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Simon"
+			:op2 "Nisan"))
+	:ARG1 (f / follow-01
+		:ARG1 (d2 / deal-01
+			:ARG0 (a3 / and
+				:op1 (c / country
+					:name (n4 / name
+						:op1 "France"))
+				:op2 (c3 / country
+					:name (n5 / name
+						:op1 "Libya")))
+			:ARG1 (r2 / reactor
+				:mod n2)
+			:time (d3 / date-entity
+				:year 2007
+				:month 7
+				:day 26))
+		:ARG2 (s2 / sign-02
+			:ARG1 (a / agree-01
+				:ARG1 (c2 / cooperate-01
+					:ARG2 (a2 / and
+						:op1 (r / research-01
+							:ARG1 (n2 / nucleus))
+						:op2 (t / technology))
+					:mod (b / bilateral)))
+			:time (d / date-entity
+				:year 2006
+				:month 3))))
+
+# ::id PROXY_AFP_ENG_20020629_0321.10 ::date 2013-05-25T15:38:48 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Indian Defense Secretary Yogendra Narain stated -- 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Yogendra"
+			:op2 "Narain")
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c / country
+				:name (n2 / name
+					:op1 "India"))
+			:ARG2 (s2 / secretary
+				:mod (d / defense)))))
+
+# ::id PROXY_AFP_ENG_20020629_0321.16 ::date 2013-05-25T15:51:46 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Narain also stated the Indian Defense Ministry has sought government approval to allow the Ministry to carry forward unutilized military budgetary allocations from 1 fiscal year to another . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Narain"))
+	:ARG1 (s2 / seek-01
+		:ARG0 (m / ministry
+			:mod (d / defense)
+			:mod (c / country
+				:name (n2 / name
+					:op1 "India")))
+		:ARG1 (a2 / approve-01
+			:ARG0 (g / government-organization
+				:ARG0-of (g2 / govern-01))
+			:ARG1 (a3 / allow-01
+				:ARG1 (c2 / carry-01
+					:ARG0 m
+					:ARG1 (t / thing
+						:ARG1-of (a4 / allocate-01
+							:ARG2 (b / budget
+								:poss (m2 / military)))
+						:ARG1-of (u / utilize-01
+							:polarity -))
+					:direction (f / forward)
+					:source (d2 / date-entity
+						:calendar (y3 / year
+							:mod (f3 / finance)))
+					:destination (d3 / date-entity
+						:calendar (y4 / year
+							:mod (f4 / finance)
+							:mod (a5 / another)))))))
+	:mod (a / also))
+
+# ::id PROXY_AFP_ENG_20070521_0178.2 ::date 2013-06-10T08:38:02 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Estonia -LRB- EE -RRB- ; Europe ; Russian Federation -LRB- RU -RRB- 
+(a / and
+	:op1 (c / country
+		:name (n / name
+			:op1 "Estonia"))
+	:op2 (c2 / continent
+		:name (n2 / name
+			:op1 "Europe"))
+	:op3 (c3 / country
+		:name (n3 / name
+			:op1 "Russian"
+			:op2 "Federation")))
+
+# ::id PROXY_APW_ENG_20080218_0615.35 ::date 2013-07-15T12:38:57 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt John Williams written statement can be found on the Internet at http://www.fco.gov.uk/files/kfile/WMD--Jul--2002.pdf . 
+(p2 / possible
+	:domain (f / find-01
+		:ARG1 (t / thing
+			:ARG1-of (s / state-01
+				:ARG0 (p / person
+					:name (n / name
+						:op1 "John"
+						:op2 "Williams")))
+			:ARG1-of (w / write-01
+				:ARG0 p))
+		:location (u / url-entity
+			:value "http://www.fco.gov.uk/files/kfile/WMD--Jul--2002.pdf")
+		:medium (i / internet)))
+
+# ::id PROXY_AFP_ENG_20070302_0535.16 ::date 2013-06-04T09:42:59 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Western countries widely suspect Iran of building atomic weapons under the pretense of a program to develop civilian nuclear power . 
+(s / suspect-01
+	:ARG0 (c / country
+		:location (w / world-region
+			:name (n / name
+				:op1 "West")))
+	:ARG1 (b / build-01
+		:ARG0 c2
+		:ARG1 (w3 / weapon
+			:mod (a / atom))
+		:manner (p / pretend-01
+			:ARG0 c2
+			:ARG1 (p2 / program
+				:topic (d / develop-02
+					:ARG0 c2
+					:ARG1 (p3 / power
+						:mod (n3 / nucleus)
+						:mod (c3 / civilian))))))
+	:ARG2 (c2 / country
+		:name (n2 / name
+			:op1 "Iran"))
+	:degree (w2 / wide))
+
+# ::id PROXY_AFP_ENG_20070508_0291.16 ::date 2013-06-13T13:51:22 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt This increase in attacks is the reason why the Australian government is planning exercises to improve the capacity to manage cyber attacks . 
+(c / cause-01
+	:ARG0 (i / increase-01
+		:ARG1 (a / attack-01)
+		:mod (t / this))
+	:ARG1 (p / plan-01
+		:ARG0 (g / government-organization
+			:ARG0-of (g2 / govern-01
+				:ARG1 (c2 / country
+					:name (n / name
+						:op1 "Australia"))))
+		:ARG1 (e / exercise-02
+			:purpose (i2 / improve-01
+				:ARG0 g
+				:ARG1 (c3 / capable-41
+					:ARG1 g
+					:ARG2 (m / manage-01
+						:ARG1 (a2 / attack-01
+							:mod (c4 / cyber))))))))
+
+# ::id PROXY_AFP_ENG_20021102_0031.15 ::date 2013-07-22T12:07:15 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Hasina wants the military to arrest real criminals and not violate Bangladesh 's constitution and human rights because of concern about such violations in the name of anti-crime drive . 
+(w / want-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Hasina"))
+	:ARG1 (a / and
+		:op1 (a2 / arrest-01
+			:ARG0 (m / military)
+			:ARG1 (c2 / criminal
+				:mod (r / real)))
+		:op2 (v / violate-01
+			:polarity -
+			:ARG0 m
+			:ARG1 (a3 / and
+				:op1 (c3 / constitution
+					:poss (c / country
+						:name (n2 / name
+							:op1 "Bangladesh")))
+				:op2 (t / thing
+					:ARG1-of (e / entitle-01
+						:ARG2 (h / human))))
+			:beneficiary (d / drive
+				:ARG0-of (o / oppose-01
+					:ARG1 (c6 / crime)))
+			:mod (s / such)))
+	:ARG1-of (c4 / cause-01
+		:ARG0 (c5 / concern-01
+			:ARG0 v)))
+
+# ::id PROXY_AFP_ENG_20020723_0353.12 ::date 2013-05-27T16:22:16 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt ASEAN must agree on a definition of terrorism to identify the common enemy . 
+(o / obligate-01
+	:ARG2 (a / agree-01
+		:ARG0 (o2 / organization
+			:name (n / name
+				:op1 "ASEAN"))
+		:ARG1 (t / thing
+			:ARG2-of (d / define-01
+				:ARG1 (t2 / terrorism)))
+		:purpose (i / identify-01
+			:ARG0 o2
+			:ARG1 (e / enemy
+				:ARG1-of (s / share-01
+					:ARG0 o2)))))
+
+# ::id PROXY_AFP_ENG_20080813_1032.43 ::date 2013-07-07T03:47:40 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Botnets can grow to thousands or millions of machines . 
+(p / possible
+	:domain (g / grow-01
+		:ARG1 (b / botnet)
+		:ARG4 (m / machine
+			:quant (o / or
+				:op1 (m2 / multiple
+					:op1 1000)
+				:op2 (m3 / multiple
+					:op1 1000000)))))
+
+# ::id PROXY_APW_ENG_20020516_0478.4 ::date 2013-07-10T12:42:08 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
+# ::snt Malaysia 's Deputy Home Affairs Minister Chor Chee Heung calls for leaders of Southeast Asian countries to standardize domestic laws and introduce anti-terrorism laws at a meeting of the Association of Southeast Asian Nations . 
+(c / call-03
+	:ARG0 (p2 / person
+		:name (n / name
+			:op1 "Chor"
+			:op2 "Chee"
+			:op3 "Heung")
+		:ARG0-of (h2 / have-org-role-91
+			:ARG1 (c2 / country
+				:name (n2 / name
+					:op1 "Malaysia"))
+			:ARG2 (m / minister
+				:mod (a / affairs
+					:mod (h / home))
+				:mod (d / deputy))))
+	:ARG1 (a2 / and
+		:op1 (s / standardize-01
+			:ARG0 (p / person
+				:ARG0-of (l / lead-02
+					:ARG1 (c3 / country
+						:location (w / world-region
+							:name (n3 / name
+								:op1 "Southeast"
+								:op2 "Asia")))))
+			:ARG1 (l3 / law
+				:mod (d2 / domestic)))
+		:op2 (i / introduce-02
+			:ARG0 p
+			:ARG1 (l2 / law
+				:ARG0-of (c4 / counter-01
+					:ARG1 (t / terrorism)))))
+	:location (m2 / meet-03
+		:ARG0 (o2 / organization
+			:name (n4 / name
+				:op1 "Association"
+				:op2 "of"
+				:op3 "Southeast"
+				:op4 "Asian"
+				:op5 "Nations"))))
+
+# ::id PROXY_AFP_ENG_20050715_0227.14 ::date 2013-05-31T15:24:59 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
+# ::snt Hyat said they want to ensure their children are not alienated from their family faith and hope a brief stint of a few terms will help ground them in Islamic and Pakistani culture . 
+(s / say-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Hyat"))
+	:ARG1 (a2 / and
+		:op1 (w / want-01
+			:ARG0 (t / they)
+			:ARG1 (e / ensure-01
+				:ARG0 t
+				:ARG1 (a / alienate-01
+					:polarity -
+					:ARG0 (f / faith
+						:mod (f2 / family
+							:poss c))
+					:ARG1 (c / child
+						:poss t))))
+		:op2 (h / hope-01
+			:ARG0 p
+			:ARG1 (h2 / help-01
+				:ARG0 (s2 / stint
+					:duration (b / brief)
+					:consist-of (t2 / term
+						:quant (f3 / few)))
+				:ARG1 (g / ground-01
+					:ARG1 c
+					:location (a3 / and
+						:op1 (c2 / culture
+							:mod (r / religious-group
+								:name (n2 / name
+									:op1 "Islam")))
+						:op2 (c4 / culture
+							:mod (c3 / country
+								:name (n3 / name
+									:op1 "Pakistan")))))))))
+
+# ::id PROXY_AFP_ENG_20051018_0064.40 ::date 2013-06-02T20:50:12 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Mukherjee stated -- 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Mukherjee")))
+
+# ::id PROXY_AFP_ENG_20050519_0289.10 ::date 2013-05-15T14:32:57 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Regional cross-border crime flourishes due to increasingly open borders and more amicable economic and social relations among countries in the region . 
+(f / flourish-01
+	:ARG1 (c / crime
+		:mod (r / region)
+		:ARG0-of (c5 / cross-02
+			:ARG1 (b2 / border)))
+	:ARG1-of (c3 / cause-01
+		:ARG0 (a / and
+			:op1 (b / border-01
+				:ARG1-of (o / open-01
+					:manner (i / increase-01)))
+			:op2 (a4 / and
+				:op1 (r2 / relation
+					:mod (c4 / country
+						:location (r3 / region))
+					:mod (e / economy))
+				:op2 (r4 / relation
+					:mod c4
+					:mod (s / society))
+				:mod (a2 / amicable
+					:degree (m / more))))))
+
+# ::id PROXY_AFP_ENG_20071228_0377.9 ::date 2013-06-27T09:16:33 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Since late 071100 the Vietnamese Courts have sentenced at least 43 people to death and jailed scores more in several group trials against heroin smuggling syndicates , extended family and clan networks . 
+(a / and
+	:op1 (s / sentence-01
+		:ARG0 (c / court
+			:mod (c2 / country
+				:name (n / name
+					:op1 "Vietnam")))
+		:ARG1 (p / person
+			:quant (a3 / at-least
+				:op1 43))
+		:ARG2 (d / die-01
+			:ARG1 p))
+	:op2 (j / jail-01
+		:ARG0 c
+		:ARG1 (p3 / person
+			:quant (m / more
+				:quant (s2 / score))))
+	:time (s5 / since
+		:op1 (l2 / late
+			:op1 (d3 / date-entity
+				:year 2007
+				:month 11)))
+	:time (t / try-02
+		:ARG0 c
+		:prep-against (a2 / and
+			:op1 (s3 / syndicate
+				:ARG0-of (s4 / smuggle-01
+					:ARG1 (h / heroin)))
+			:op2 (n2 / network
+				:mod (f / family
+					:ARG1-of (e / extend-01)))
+			:op3 (n3 / network
+				:mod (c3 / clan)))
+		:manner (g / group)
+		:quant (s6 / several)))
+
+# ::id PROXY_AFP_ENG_20070215_0113.9 ::date 2013-06-01T11:05:20 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Narayanan called for the lifting of banking secrecy and the corporate veil in terrorist-related cases in order to combat the financing of attacks . 
+(c / call-03
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Narayanan"))
+	:ARG1 (l / lift-02
+		:ARG1 (a3 / and
+			:op1 (s / secrecy
+				:mod (b / banking))
+			:op2 (v / veil
+				:mod (c2 / corporate)))
+		:ARG2 (c5 / case
+			:ARG1-of (r / relate-01
+				:ARG2 (t / terrorism))))
+	:purpose (c4 / combat-01
+		:ARG0 p
+		:ARG1 (f2 / finance-01
+			:ARG1 (a2 / attack-01))))
+
+# ::id PROXY_AFP_ENG_20040626_0107.3 ::date 2013-05-16T11:31:23 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
+# ::snt Military ; narcotics ; media 
+(a / and
+	:op1 (m / military)
+	:op2 (n / narcotic)
+	:op3 (m2 / media))
+
+# ::id PROXY_AFP_ENG_20030714_0701.3 ::date 2013-05-12T12:53:39 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
+# ::snt International ; weapons ; proliferation 
+(a / and
+	:op1 (i / international)
+	:op2 (w / weapon)
+	:op3 (p / proliferate-01))
+
+# ::id PROXY_AFP_ENG_20020201_0053.10 ::date 2013-06-05T12:16:47 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The book also implied that the businessman was a gangster in the Soviet black economy and had traded sporting medals for bribes . 
+(i / imply-01
+	:ARG0 (b / book)
+	:ARG1 (a / and
+		:op1 (g / gangster
+			:location (e / economy
+				:mod (b2 / black)
+				:mod (c / country
+					:name (n / name
+						:op1 "Soviet"
+						:op2 "Union")))
+			:domain (b3 / businessman))
+		:op2 (t / trade-01
+			:ARG0 b3
+			:ARG1 (m / medal
+				:mod (s / sport))
+			:ARG3 (b4 / bribe-01)))
+	:mod (a2 / also))
+
+# ::id PROXY_AFP_ENG_20031129_0137.22 ::date 2013-05-07T03:13:34 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Sign the NPT additional protocol allowing stricter inspections of Iranian nuclear facilities . 
+(s / sign-01
+	:ARG1 (p / protocol
+		:ARG1-of (a / add-02
+			:ARG2 (t / treaty
+				:name (n / name
+					:op1 "NPT")))
+		:ARG0-of (a2 / allow-01
+			:ARG1 (i / inspect-01
+				:ARG1 (f / facility
+					:mod (n2 / nucleus)
+					:mod (c / country
+						:name (n3 / name
+							:op1 "Iran")))
+				:manner (s2 / strict
+					:degree (m / more))))))
+
+# ::id PROXY_AFP_ENG_20050601_0389.4 ::date 2013-05-26T15:13:37 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
+# ::snt Experts warn of new cyber attack encrypting documents and extorting payment for decryption . 
+(w / warn-01
+	:ARG0 (p2 / person
+		:ARG1-of (e / expert-41))
+	:ARG1 (a / attack-01
+		:manner (c / cyber)
+		:mod (n / new)
+		:instrument (a2 / and
+			:op1 (e2 / encrypt-01
+				:ARG1 (d / document))
+			:op2 (e3 / extort-01
+				:ARG1 (p / pay-01
+					:ARG3 (d2 / decrypt-00
+						:ARG1 d))))))
+
+# ::id PROXY_AFP_ENG_20080101_0226.13 ::date 2013-06-30T11:22:11 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The campaign has been aimed at arresting drug-traffickers , rapists and those deemed a social menace . 
+(a / aim-02
+	:ARG0 (c / campaign-01)
+	:ARG2 (a2 / arrest-01
+		:ARG1 (a3 / and
+			:op1 (p2 / person
+				:ARG0-of (t / traffic-00
+					:ARG1 (d / drug)))
+			:op2 (p3 / person
+				:ARG0-of (r / rape-01))
+			:op3 (p / person
+				:ARG0-of (m2 / menace-01
+					:ARG1 (s2 / society)
+					:ARG1-of (d2 / deem-01))))))
+
+# ::id PROXY_AFP_ENG_20030128_0155.6 ::date 2013-06-30T13:24:51 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt A Japanese education and science ministry official said on 030128 that the total currently accounted for at the facility was 206 kg short of the plutonium initially estimated to have been produced by reprocessing spent nuclear fuel from power plants . 
+(s / say-01
+	:ARG0 (p5 / person
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (g3 / government-organization
+				:name (n3 / name
+					:op1 "Education"
+					:op2 "and"
+					:op3 "Science"
+					:op4 "Ministry")
+				:poss (c / country
+					:name (n / name
+						:op1 "Japan")))
+			:ARG2 (o / official)))
+	:ARG1 (a2 / account-01
+		:ARG1 (s3 / short-41
+			:ARG1 (t / total)
+			:ARG2 (p / plutonium
+				:ARG1-of (p2 / produce-01
+					:manner (r / reprocess-01
+						:ARG1 (f / fuel
+							:mod (n2 / nucleus)
+							:source (p3 / plant
+								:mod (p4 / power))
+							:ARG1-of (s5 / spend-00)))
+					:ARG1-of (e2 / estimate-01
+						:time (i / initial))))
+			:degree (m2 / mass-quantity
+				:quant 206
+				:unit (k / kilogram)))
+		:time (c2 / current)
+		:location (f2 / facility))
+	:time (d / date-entity
+		:day 28
+		:month 1
+		:year 2003))
+
+# ::id PROXY_AFP_ENG_20081119_0042.2 ::date 2013-07-05T20:01:39 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Costa Rica -LRB- CR -RRB- 
+(c / country
+	:name (n / name
+		:op1 "Costa"
+		:op2 "Rica"))
+
+# ::id PROXY_AFP_ENG_20040719_0650.39 ::date 2013-05-26T06:49:30 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Leftist groups from across the Americas met over the weekend to discuss regional issues as part of the anniversary event . 
+(m2 / meet-03
+	:ARG0 (g / group
+		:mod (l / leftism)
+		:source (a3 / across
+			:op1 (c2 / continent
+				:name (n2 / name
+					:op1 "America"))))
+	:time (w2 / weekend)
+	:purpose (d / discuss-01
+		:ARG0 g
+		:ARG1 (i / issue
+			:topic (r / region))
+		:subevent-of (e / event
+			:mod (a4 / anniversary))))
+
+# ::id PROXY_AFP_ENG_20081212_0630.16 ::date 2013-07-11T00:54:33 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Myanmar government stated Myanmar is on track to be drug-free by 2014 . 
+(s / state-01
+	:ARG0 (g / government-organization
+		:ARG0-of (g2 / govern-01
+			:ARG1 (c3 / country
+				:name (n3 / name
+					:op1 "Myanmar"))))
+	:ARG1 (t / track-03
+		:ARG1 (f / free-41
+			:ARG1 c3
+			:ARG2 (d2 / drug)
+			:time (b / by
+				:op1 (d / date-entity
+					:year 2014)))))
+
+# ::id PROXY_AFP_ENG_20030330_0257.4 ::date 2013-07-06T17:16:21 ::snt-type summary ::annotator UCO-AMR-05 ::preferred
+# ::snt The methamphetamine pills known as Yaa BAA have surpassed heroin as Thailand 's number one killer drug . 
+(s / surpass-01
+	:ARG0 (p / pill
+		:name (n / name
+			:op1 "Yaa"
+			:op2 "BAA")
+		:consist-of (m / methamphetamine))
+	:ARG1 (h / heroin)
+	:prep-as (d / drug
+		:ARG0-of (k / kill-01
+			:mod (n3 / number-one))
+		:location (c / country
+			:name (n2 / name
+				:op1 "Thailand"))))
+
+# ::id PROXY_APW_ENG_20080128_1199.15 ::date 2013-07-12T03:27:44 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Ramos said that the Brazilian government also hopes to discuss deals involving France 's Rafale fighter jet and the Cougar cargo helicopter but gave no additional details . 
+(s / say-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Ramos"))
+	:ARG1 (h / hope-01
+		:ARG0 (g2 / government-organization
+			:ARG0-of (g3 / govern-01
+				:ARG1 (c / country
+					:name (n2 / name
+						:op1 "Brazil"))))
+		:ARG1 (d2 / discuss-01
+			:ARG0 g2
+			:ARG1 (d3 / deal-01
+				:ARG2-of (i / involve-01
+					:ARG1 (a6 / and
+						:op1 (j2 / jet
+							:name (n4 / name
+								:op1 "Rafale")
+							:poss (c2 / country
+								:name (n3 / name
+									:op1 "France"))
+							:instrument-of (f / fight-01))
+						:op2 (h3 / helicopter
+							:name (n5 / name
+								:op1 "Cougar")
+							:mod (c3 / cargo))))))
+		:mod (a4 / also))
+	:concession-of (d / detail-01
+		:polarity -
+		:ARG0 p
+		:mod (a / additional)))
+
+# ::id PROXY_AFP_ENG_20030111_0136.9 ::date 2013-06-11T20:55:08 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Koizumi condemns and is concerned by North Korea 's decision . 
+(a / and
+	:op1 (c2 / condemn-01
+		:ARG0 (p / person
+			:name (n / name
+				:op1 "Koizumi"))
+		:ARG1 (d / decide-01
+			:ARG0 (c / country
+				:name (n2 / name
+					:op1 "North"
+					:op2 "Korea"))))
+	:op2 (c3 / concern-01
+		:ARG0 d
+		:ARG1 p))
+
+# ::id PROXY_AFP_ENG_20071228_0377.14 ::date 2013-06-27T09:28:24 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Experts stated that heroin is the most popular illegal drug in Vietnam and heroin is the leading cause of HIV infections because heroin is often injected with shared needles . 
+(s / state-01
+	:ARG0 (p2 / person
+		:ARG1-of (e / expert-41))
+	:ARG1 (a / and
+		:op1 (d / drug
+			:mod (l / law
+				:polarity -)
+			:mod (p / popular
+				:degree (m / most))
+			:domain (h / heroin)
+			:location (c / country
+				:name (n / name
+					:op1 "Vietnam")))
+		:op2 (c2 / cause-01
+			:ARG0 h
+			:ARG1 (i / infect-01
+				:ARG2 (d2 / disease
+					:name (n3 / name
+						:op1 "HIV"))
+				:ARG1-of (c3 / cause-01
+					:ARG0 (i2 / inject-01
+						:ARG1 h
+						:frequency (o / often)
+						:instrument (n2 / needle
+							:ARG1-of (s2 / share-01)))))
+			:ARG1-of (l2 / lead-02))))
+
+# ::id PROXY_AFP_ENG_20021015_0171.12 ::date 2013-07-12T15:36:23 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The number of Internet users in Vietnam is rapidly increasing and could reach 5 percent of its 79 million residents by 050000 . 
+(a / and
+	:op1 (i / increase-01
+		:ARG1 (n2 / number
+			:quant-of (p2 / person
+				:ARG0-of (u / use-01
+					:ARG1 (i2 / internet))
+				:location (c / country
+					:name (n / name
+						:op1 "Vietnam"))))
+		:manner (r2 / rapid))
+	:op2 (r / reach-01
+		:ARG0 n2
+		:ARG1 (p3 / percentage-entity
+			:value 5
+			:ARG3-of (i3 / include-91
+				:ARG1 p2
+				:ARG2 (p4 / person
+					:quant 79000000
+					:ARG0-of (r3 / reside-01
+						:ARG1 c))))
+		:mod (p5 / possible)
+		:time (b / by
+			:op1 (d2 / date-entity
+				:year 2005))))
+
+# ::id PROXY_AFP_ENG_20081119_0042.19 ::date 2013-07-06T11:18:08 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Arias is promoting stronger multi-lateralism . 
+(p / promote-02
+	:ARG0 (p2 / person
+		:name (n / name
+			:op1 "Arias"))
+	:ARG1 (m3 / multilateralism
+		:mod (s / strong
+			:degree (m2 / more))))
+
+# ::id PROXY_AFP_ENG_20070714_0273.10 ::date 2013-06-16T01:39:29 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt NATO spokesman James Appathurai stated that Russia 's actions were retrogressive because the NATO considers the CFE Treaty to be vital to European security and stability . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n4 / name
+			:op1 "James"
+			:op2 "Appathurai")
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (m2 / military
+				:name (n5 / name
+					:op1 "NATO"))
+			:ARG2 (s2 / spokesman)))
+	:ARG1 (r / retrogressive
+		:domain (a / action
+			:poss (c / country
+				:name (n / name
+					:op1 "Russia")))
+		:ARG1-of (c2 / cause-01
+			:ARG0 (c3 / consider-01
+				:ARG0 m2
+				:ARG1 (v / vital
+					:beneficiary (a2 / and
+						:op1 (s3 / security)
+						:op2 (s4 / stability)
+						:mod (c4 / continent
+							:name (n3 / name
+								:op1 "Europe")))
+					:domain (t / treaty
+						:name (n2 / name
+							:op1 "CFE"
+							:op2 "Treaty")))))))
+
+# ::id PROXY_AFP_ENG_20080304_0398.16 ::date 2013-07-02T12:20:48 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Shipments to and from Iran suspected of containing prohibited goods must be inspected . 
+(o / obligate-01
+	:ARG2 (i / inspect-01
+		:ARG1 (a / and
+			:op1 (s / ship-01
+				:ARG2 (c / country
+					:name (n / name
+						:op1 "Iran")))
+			:op2 (s3 / ship-01
+				:ARG3 c)
+			:ARG2-of (s2 / suspect-01
+				:ARG1 (c2 / contain-01
+					:ARG0 a
+					:ARG1 (g / good
+						:ARG1-of (p / prohibit-01)))))))
+
+# ::id PROXY_AFP_ENG_20070508_0291.9 ::date 2013-06-13T12:07:16 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Some of these dollars will be used for high priority intelligence needs , electronic and Internet security and further strengthening of aviation security . 
+(u / use-01
+	:ARG1 (d / dollar
+		:quant (s / some)
+		:ARG1-of (i / include-91
+			:ARG2 (d2 / dollar
+				:mod (t / this))))
+	:ARG2 (a / and
+		:op1 (n / need-01
+			:ARG0 (i2 / intelligence
+				:mod (p / priority
+					:mod (h / high))))
+		:op2 (a3 / and
+			:op1 (s2 / secure-02
+				:ARG1 (i3 / internet))
+			:op2 (s5 / secure-02
+				:mod (e / electronic)))
+		:op3 (s3 / strengthen-01
+			:ARG1 (s4 / secure-02
+				:ARG1 (a2 / aviation))
+			:mod (f / further))))
+
+# ::id PROXY_AFP_ENG_20030715_0045.9 ::date 2013-05-06T13:28:03 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Kim Myong-Chol stated that North Korea would retaliate with a nuclear missile attack on major cities such as New York and Washington DC . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Kim"
+			:op2 "Myong-Chol"))
+	:ARG1 (r / retaliate-01
+		:ARG0 (c / country
+			:name (n2 / name
+				:op1 "North"
+				:op2 "Korea"))
+		:instrument (a / attack-01
+			:ARG0 c
+			:ARG1 (c2 / city
+				:example (a2 / and
+					:op1 (c3 / city
+						:name (n4 / name
+							:op1 "New"
+							:op2 "York"))
+					:op2 (c4 / city
+						:name (n5 / name
+							:op1 "Washington"
+							:op2 "DC")))
+				:mod (m2 / major))
+			:instrument (m / missile
+				:mod (n3 / nucleus)))))
+
+# ::id PROXY_AFP_ENG_20030210_0248.26 ::date 2013-07-10T21:02:28 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Than Tun stated that despite the fact that it was clear some members of the opposition parties were involved in anti-Government activities Myanmar 's military have not accused the leadership of the National League for Democracy or the Shan National League for Democracy of being directly involved . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n6 / name
+			:op1 "Than"
+			:op2 "Tun"))
+	:ARG1 (h / have-concession-91
+		:ARG1 (a / accuse-01
+			:polarity -
+			:ARG0 (m / military
+				:mod (c / country
+					:name (n3 / name
+						:op1 "Myanmar")))
+			:ARG1 (l / leadership
+				:poss (o5 / or
+					:op1 (p4 / political-party
+						:name (n4 / name
+							:op1 "National"
+							:op2 "League"
+							:op3 "for"
+							:op4 "Democracy"))
+					:op2 (p5 / political-party
+						:name (n5 / name
+							:op1 "Shan"
+							:op2 "National"
+							:op3 "League"
+							:op4 "for"
+							:op5 "Democracy"))))
+			:ARG2 (i / involve-01
+				:ARG1 l
+				:manner (d / direct)))
+		:ARG2 (c2 / clear
+			:domain (i2 / involve-01
+				:ARG1 (p3 / person
+					:quant (s2 / some)
+					:ARG0-of (h2 / have-org-role-91
+						:ARG1 (p2 / party
+							:ARG0-of (o6 / oppose-01))
+						:ARG2 (m2 / member)))
+				:ARG2 (a2 / activity
+					:ARG0-of (o7 / oppose-01
+						:ARG1 (g / government-organization
+							:ARG0-of (g2 / govern-01))))))))
+
+# ::id PROXY_AFP_ENG_20040728_0433.3 ::date 2013-05-21T02:47:54 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
+# ::snt International ; energy 
+(a / and
+	:op1 (i / international)
+	:op2 (e / energy))
+
+# ::id PROXY_AFP_ENG_20071128_0737.22 ::date 2013-07-15T13:37:55 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Kazakhstan 's bid to assume the rotating chairmanship of the OSCE in 2009 is expected to be a major topic of discussion at the conference . 
+(e / expect-01
+	:ARG1 (d2 / discuss-01
+		:ARG0 (c4 / conference)
+		:ARG1 (t / topic
+			:mod (m / major)
+			:topic (b / bid-01
+				:ARG0 (c / country
+					:name (n / name
+						:op1 "Kazakhstan"))
+				:ARG1 (a / assume-01
+					:ARG0 c
+					:ARG1 (h / have-org-role-91
+						:ARG1 (o / organization
+							:name (n2 / name
+								:op1 "OSCE"))
+						:ARG2 (c2 / chairman)
+						:ARG1-of (r / rotate-01))
+					:time (d / date-entity
+						:year 2009))))))
+
+# ::id PROXY_AFP_ENG_20071228_0415.9 ::date 2013-06-28T18:41:12 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Heroin in Vietnam is most often injected with shared needles . 
+(i / inject-01
+	:ARG1 (h / heroin
+		:location (c / country
+			:name (n / name
+				:op1 "Vietnam")))
+	:instrument (n2 / needle
+		:ARG1-of (s / share-01))
+	:frequency (o / often
+		:degree (m / most)))
+
+# ::id PROXY_AFP_ENG_20030330_0257.40 ::date 2013-08-20T08:54:05 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Chouvy and meissonnier say that methamphetamine is overtaking heroin as the production drug of choice in the area and is profiting enormously from the distribution networks that heroin trafficking has already established . 
+(s / say-01
+	:ARG0 (a / and
+		:op1 (p / person
+			:name (n / name
+				:op1 "Chouvy"))
+		:op2 (p2 / person
+			:name (n2 / name
+				:op1 "Meissonnier")))
+	:ARG1 (a2 / and
+		:op1 (o / overtake-01
+			:ARG0 (m / methamphetamine
+				:mod (d / drug
+					:ARG1-of (p3 / produce-01)
+					:ARG1-of (c / choose-01)
+					:location (a3 / area)))
+			:ARG1 (h / heroin))
+		:op2 (p4 / profit-01
+			:ARG0 m
+			:ARG1 (n3 / network
+				:ARG0-of (d2 / distribute-01)
+				:ARG1-of (e / establish-01
+					:ARG0 (t / traffic-00
+						:ARG1 (h2 / heroin))
+					:time (a4 / already)))
+			:extent (e2 / enormous))))
+
+# ::id PROXY_AFP_ENG_20040719_0650.4 ::date 2013-05-16T21:34:55 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
+# ::snt Nicaragua commemorated the 25th anniversary of the Sandinista revolution that toppled the dictatorship of Anastasio Somoza but imposed a Cuban-style leftist regime . 
+(c / commemorate-01
+	:ARG0 (c2 / country
+		:name (n / name
+			:op1 "Nicaragua"))
+	:ARG1 (a / anniversary
+		:poss (r / revolution
+			:name (n5 / name
+				:op1 "Sandinista"
+				:op2 "Revolution")
+			:ARG0-of (t / topple-01
+				:ARG1 (d2 / dictatorship
+					:poss (p / person
+						:name (n6 / name
+							:op1 "Anastasio"
+							:op2 "Somoza"))))
+			:ARG0-of (i2 / impose-01
+				:ARG1 (r2 / regime
+					:mod (s / style
+						:mod (c3 / country
+							:name (n2 / name
+								:op1 "Cuba")))
+					:mod (l / leftism))))
+		:ord (o / ordinal-entity
+			:value 25)))
+
+# ::id PROXY_AFP_ENG_20070709_0116.13 ::date 2013-06-14T02:07:16 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt It is necessary to enhance information sharing between nations to fight theft . 
+(n2 / need-01
+	:ARG1 (e / enhance-01
+		:ARG1 (s / share-01
+			:ARG0 (n / nation)
+			:ARG1 (i / information))
+		:purpose (f / fight-01
+			:ARG1 (t / thieve-01))))
+
+# ::id PROXY_APW_ENG_20080417_1113.26 ::date 2013-07-21T12:22:29 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Zimbabwe is a landlocked country neighboring Zimbabwe , 
+(c / country
+	:mod (l / landlocked)
+	:ARG1-of (n / neighbor-01
+		:ARG1 c)
+	:domain (c2 / country
+		:name (n2 / name
+			:op1 "Zimbabwe")))
+
+# ::id PROXY_AFP_ENG_20020123_0334.18 ::date 2013-05-29T01:25:43 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Desperate Afghan farmers resumed growing opium poppies soon after the hard-line militia lost power in December 2001 . 
+(r / resume-01
+	:ARG0 (p / person
+		:ARG0-of (f / farm-01)
+		:mod (d / desperate)
+		:mod (c / country
+			:name (n / name
+				:op1 "Afghanistan")))
+	:ARG1 (g / grow-03
+		:ARG0 p
+		:ARG1 (p2 / poppy
+			:mod (o / opium)))
+	:time (s / soon
+		:op1 (a / after
+			:op1 (l / lose-02
+				:ARG0 (m / militia
+					:mod (h / hard-line))
+				:ARG1 (p3 / power)
+				:time (d2 / date-entity
+					:month 12
+					:year 2001)))))
+
+# ::id PROXY_AFP_ENG_20070521_0178.12 ::date 2013-06-14T05:08:53 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Aarelaid stated that McGlade 's assertion that Estonia should have employed basic procedures such as firewalls to defend from cyber attack demonstrated ignorance of the extent of the cyber assaults on Estonia . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Aarelaid"))
+	:ARG1 (d2 / demonstrate-01
+		:ARG0 (a / assert-03
+			:ARG0 (p2 / person
+				:name (n2 / name
+					:op1 "McGlade"))
+			:ARG1 (r / recommend-01
+				:ARG0 p2
+				:ARG1 (e / employ-02
+					:ARG0 (c3 / country
+						:name (n3 / name
+							:op1 "Estonia"))
+					:ARG1 (p3 / procedure
+						:mod (b / basic)
+						:example (f / firewall))
+					:ARG2 (d / defend-01
+						:ARG0 c3
+						:prep-against (a2 / attack-01
+							:mod (c4 / cyber))))))
+		:ARG1 (k / know-01
+			:polarity -
+			:ARG1 (e2 / extent
+				:poss (a3 / assault-01
+					:ARG1 c3
+					:mod (c2 / cyber))))))
+
+# ::id PROXY_AFP_ENG_20070313_0288.9 ::date 2013-06-06T01:05:18 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Lawmakers in the UK parliament 's lower House of Commons are to debate and vote on 070314 whether to back Blair 's controversial 38-billion-dollar plan to replace the US-built Trident missile system . 
+(a / and
+	:op1 (d / debate-01
+		:ARG0 (p3 / person
+			:ARG0-of (h / have-org-role-91
+				:ARG1 (g / government-organization
+					:name (n / name
+						:op1 "Lower"
+						:op2 "House"
+						:op3 "of"
+						:op4 "Commons")
+					:part-of (g2 / government-organization
+						:name (n5 / name
+							:op1 "Parliament")
+						:mod (c / country
+							:name (n2 / name
+								:op1 "UK"))))
+				:ARG3 (l2 / legislate-01
+					:ARG0 p3)))
+		:ARG1 (b / back-01
+			:mode interrogative
+			:ARG0 p3
+			:ARG1 (p / plan-01
+				:ARG0 (p2 / person
+					:name (n3 / name
+						:op1 "Blair"))
+				:ARG1 (r / replace-01
+					:ARG1 (s / system
+						:name (n4 / name
+							:op1 "Trident")
+						:mod (m2 / missile)
+						:ARG1-of (b2 / build-01
+							:ARG0 (c4 / country
+								:name (n6 / name
+									:op1 "US")))))
+				:mod (c2 / controversy)
+				:ARG1-of (c3 / cost-01
+					:ARG2 (m / monetary-quantity
+						:quant 38000000000
+						:unit (d3 / dollar)))))
+		:time (d2 / date-entity
+			:year 2007
+			:month 3
+			:day 14))
+	:op2 (v / vote-01
+		:ARG1 b))
+
+# ::id PROXY_APW_ENG_20080415_1054.9 ::date 2013-07-17T16:09:14 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The official stated that 15 other defendants were acquitted . 
+(s / state-01
+	:ARG0 (p2 / person
+		:ARG0-of (h / have-org-role-91
+			:ARG2 (o / official)))
+	:ARG1 (a / acquit-01
+		:ARG1 (p / person
+			:quant 15
+			:ARG1-of (d / defend-01)
+			:mod (o2 / other))))
+
+# ::id PROXY_AFP_ENG_20080423_0427.10 ::date 2013-07-03T17:10:03 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Switzerland will ban the delivery of dual use materials that could be used for the manufacture of nuclear plants . 
+(b / ban-01
+	:ARG0 (c / country
+		:name (n / name
+			:op1 "Switzerland"))
+	:ARG1 (d / deliver-01
+		:ARG1 (m3 / material
+			:ARG1-of (u3 / use-01
+				:mod (d3 / dual))
+			:ARG1-of (u4 / use-01
+				:ARG2 (m4 / manufacture-01
+					:ARG1 (p4 / plant
+						:mod (n3 / nucleus)))
+				:mod (p3 / possible)))))
+
+# ::id PROXY_AFP_ENG_20031210_0724.6 ::date 2013-05-16T09:41:27 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The legislation increases minimum age for purchasing a firearm from 21 to 25 and proposes a referendum on the ban of firearm sales in 20051000 . 
+(a / and
+	:op1 (i / increase-01
+		:ARG0 (l / legislation)
+		:ARG1 (a2 / age
+			:mod (m / minimum)
+			:mod (p / purchase-01
+				:ARG1 (f / firearm)))
+		:ARG3 (t / temporal-quantity
+			:quant 21
+			:unit (y / year))
+		:ARG4 (t2 / temporal-quantity
+			:quant 25
+			:unit (y2 / year)))
+	:op2 (p2 / propose-01
+		:ARG0 l
+		:ARG1 (r / referendum
+			:topic (b / ban-01
+				:ARG1 (s / sell-01
+					:ARG1 f))
+			:time (d2 / date-entity
+				:year 2005
+				:month 10))))
+
+# ::id PROXY_AFP_ENG_20070227_0060.18 ::date 2013-06-04T05:41:07 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt After the months of diplomacy and during six-nation talks in Beijing in 070200 North Korea agreed to dismantle North Korea 's nuclear program in return for economic aid and diplomatic benefits . 
+(a / agree-01
+	:ARG0 (c / country
+		:name (n / name
+			:op1 "North"
+			:op2 "Korea"))
+	:ARG1 (d / dismantle-01
+		:ARG0 c
+		:ARG1 (p / program
+			:mod (n2 / nucleus)
+			:poss c)
+		:ARG1-of (e2 / exchange-01
+			:ARG3 (a2 / and
+				:op1 (a3 / aid-01
+					:ARG2 c
+					:mod (e / economy))
+				:op2 (b / benefit-01
+					:ARG1 c
+					:mod (d2 / diplomacy)))))
+	:time (a4 / after
+		:op1 (d5 / diplomacy
+			:duration (m / multiple
+				:op1 (t2 / temporal-quantity
+					:quant 1
+					:unit (m2 / month)))))
+	:time (t / talk-01
+		:ARG0 (n3 / nation
+			:quant 6)
+		:location (c2 / city
+			:name (n4 / name
+				:op1 "Beijing"))
+		:time (d4 / date-entity
+			:year 2007
+			:month 2)))
+
+# ::id PROXY_AFP_ENG_20040424_0639.20 ::date 2013-05-21T20:36:14 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Concern focuses on the loss of service and qualified jobs . 
+(f / focus-01
+	:ARG1 (c / concern-01)
+	:ARG2 (l / lose-02
+		:ARG1 (a / and
+			:op1 (s / service)
+			:op2 (j / job
+				:ARG2-of (q / qualify-02)))))
+
+# ::id PROXY_AFP_ENG_20070906_0312.10 ::date 2013-06-16T03:26:52 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Iran had hanged 17 drug traffickers in prison in its northwestern city of Mashhad on the morning of September 5 , 2007 . 
+(h / hang-01
+	:ARG0 (c / country
+		:name (n / name
+			:op1 "Iran"))
+	:ARG1 (p / person
+		:quant 17
+		:ARG0-of (t / traffic-00
+			:ARG1 (d2 / drug)))
+	:location (p2 / prison
+		:location (c2 / city
+			:name (n2 / name
+				:op1 "Mashhad")
+			:mod (n3 / northwest)
+			:location c))
+	:time (d / date-entity
+		:day 5
+		:month 9
+		:year 2007
+		:dayperiod (m / morning)))
+
+# ::id PROXY_APW_ENG_20080306_0007.9 ::date 2013-07-15T19:51:17 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The FBI has an office in Bogota and Spokesman Richard kolko said in Washington that the FBI has no information or intelligence regarding the FARC attempting to use weapons of mass destruction . 
+(a / and
+	:op1 (h / have-03
+		:ARG0 (g / government-organization
+			:name (n / name
+				:op1 "FBI"))
+		:ARG1 (o2 / office)
+		:location (c / city
+			:name (n2 / name
+				:op1 "Bogota")))
+	:op2 (s2 / say-01
+		:ARG0 (p2 / person
+			:name (n3 / name
+				:op1 "Richard"
+				:op2 "Kolko")
+			:ARG0-of (h3 / have-org-role-91
+				:ARG2 (s / spokesman)))
+		:ARG1 (h2 / have-03
+			:polarity -
+			:ARG0 g
+			:ARG1 (o3 / or
+				:op1 (i / information)
+				:op2 (i2 / intelligence)
+				:ARG0-of (r / regard-01
+					:ARG1 (a2 / attempt-01
+						:ARG0 (c3 / criminal-organization
+							:name (n6 / name
+								:op1 "FARC"))
+						:ARG1 (u / use-01
+							:ARG1 (w / weapon)
+							:ARG2 (d / destroy-01
+								:degree (m / mass)))))))
+		:location (c2 / city
+			:name (n4 / name
+				:op1 "Washington"))))
+
+# ::id PROXY_APW_ENG_20020516_0478.12 ::date 2013-07-11T01:55:54 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Chor stated the recent communications developments have aided cross-border money laundering , illegal gambling and electronic fraud . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Chor"))
+	:ARG1 (a / aid-01
+		:ARG0 (d / develop-02
+			:ARG1 (c / communicate-01)
+			:time (r / recent))
+		:ARG2 (a2 / and
+			:op1 (l / launder-01
+				:ARG1 (m / money
+					:ARG0-of (c2 / cross-02
+						:ARG1 (b / border))))
+			:op2 (g / gamble-01
+				:mod (i / illegal))
+			:op3 (d2 / defraud-01
+				:mod (e / electronic)))))
+
+# ::id PROXY_AFP_ENG_20080125_0121.8 ::date 2013-06-27T08:23:12 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The FSB is the Russian Federation 's secret service . 
+(s / service
+	:mod (s2 / secret)
+	:poss (c / country
+		:name (n / name
+			:op1 "Russian"
+			:op2 "Federation"))
+	:domain (g / government-organization
+		:name (n2 / name
+			:op1 "FSB")))
+
+# ::id PROXY_AFP_ENG_20020518_0107.12 ::date 2013-06-08T17:07:28 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Pakistani Finance and Economy Minister Shaukat Aziz announced -- 
+(a / announce-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Shaukat"
+			:op2 "Aziz")
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c / country
+				:name (n2 / name
+					:op1 "Pakistan"))
+			:ARG2 (m / minister
+				:topic (a2 / and
+					:op1 (f / finance)
+					:op2 (e / economy))))))
+
+# ::id PROXY_AFP_ENG_20070716_0392.31 ::date 2013-06-13T13:49:34 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
+# ::snt Any future arms deals with India ban the transfer of technology to Myanmar . 
+(b / ban-01
+	:ARG0 (d / deal-01
+		:ARG1 (c / country
+			:name (n / name
+				:op1 "India"))
+		:topic (a / arm)
+		:time (f / future)
+		:mod (a2 / any))
+	:ARG1 (t / transfer-01
+		:ARG1 (t2 / technology)
+		:ARG2 (c2 / country
+			:name (n2 / name
+				:op1 "Myanmar"))))
+
+# ::id PROXY_AFP_ENG_20030714_0701.5 ::date 2013-05-12T16:46:39 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt On 030715 Australia 's government dismissed a threat by North Korea 's self-appointed spokesman of a North Korean nuclear attack on Australia if Australia takes part in an international operation to prevent ships from trafficking weapons of mass destruction . 
+(d / dismiss-01
+	:ARG0 (g / government-organization
+		:ARG0-of (g2 / govern-01
+			:ARG1 (c / country
+				:name (n2 / name
+					:op1 "Australia"))))
+	:ARG1 (t / threaten-01
+		:ARG0 (p3 / person
+			:ARG0-of (h / have-org-role-91
+				:ARG1 (c2 / country
+					:name (n3 / name
+						:op1 "North"
+						:op2 "Korea"))
+				:ARG2 (s / spokesman
+					:ARG2-of (a2 / appoint-01
+						:ARG0 p3))))
+		:ARG1 (a / attack-01
+			:ARG0 c2
+			:ARG1 c
+			:mod (n / nucleus))
+		:condition (p / partake-01
+			:ARG0 c
+			:ARG1 (o / operation
+				:mod (i / international)
+				:purpose (p2 / prevent-01
+					:ARG1 (s3 / ship)
+					:ARG2 (t2 / traffic-00
+						:ARG1 (w / weapon
+							:ARG2-of (d2 / destroy-01
+								:ARG1 (m / mass))))))))
+	:time (d3 / date-entity
+		:year 2003
+		:month 7
+		:day 15))
+
+# ::id PROXY_AFP_ENG_20020304_0028.6 ::date 2013-05-21T09:27:18 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt South Korea 's Defense Ministry came under attack in Parliament on 04 March 2002 over allegations that it is favoring U.S. company Boeing for a multi-billion-dollar fighter project . 
+(a / attack-01
+	:ARG1 (g / government-organization
+		:name (n / name
+			:op1 "Defense"
+			:op2 "Ministry")
+		:poss (c4 / country
+			:name (n5 / name
+				:op1 "South"
+				:op2 "Korea")))
+	:location (g2 / government-organization
+		:name (n2 / name
+			:op1 "Parliament"))
+	:ARG1-of (c / cause-01
+		:ARG0 (a2 / allege-01
+			:ARG1 (f / favor-01
+				:ARG0 g
+				:ARG1 (c2 / company
+					:name (n3 / name
+						:op1 "Boeing")
+					:source (c3 / country
+						:name (n4 / name
+							:op1 "U.S.")))
+				:purpose (p / project
+					:mod (a3 / aircraft
+						:ARG0-of (f2 / fight-01))
+					:mod (m / monetary-quantity
+						:unit (d / dollar)
+						:quant (m2 / multi-billion))))))
+	:time (d2 / date-entity
+		:year 2002
+		:month 3
+		:day 4))
+
+# ::id PROXY_AFP_ENG_20081014_0766.3 ::date 2013-07-09T12:34:18 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
+# ::snt Narcotics ; politics ; crime 
+(a / and
+	:op1 (n / narcotic)
+	:op2 (p / politics)
+	:op3 (c / crime))
+
+# ::id PROXY_AFP_ENG_20070620_0032.4 ::date 2013-06-16T01:17:46 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
+# ::snt A Sydney Council defended a decision on June 20 , 2007 to forge a sister-city relationship with Bethlehem despite allegations that such a relationship would be akin to supporting Hamas . 
+(d2 / defend-01
+	:ARG0 (c2 / council
+		:mod (c3 / city
+			:name (n / name
+				:op1 "Sydney")))
+	:ARG1 (d3 / decide-01
+		:ARG1 (f / forge-02
+			:ARG0 c2
+			:ARG1 (r / relationship
+				:mod (c4 / city
+					:mod (s / sister))
+				:prep-with (c / city
+					:name (n2 / name
+						:op1 "Bethlehem")))
+			:concession (a / allege-01
+				:ARG1 (r2 / resemble-01
+					:ARG1 r
+					:ARG2 (s2 / support-01
+						:ARG1 (o2 / organization
+							:name (n3 / name
+								:op1 "Hamas")))))))
+	:time (d / date-entity
+		:month 6
+		:day 20
+		:year 2007))
+
+# ::id PROXY_AFP_ENG_20081021_0061.1 ::date 2013-07-08T12:29:08 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2008-10-21 
+(d / date-entity
+	:year 2008
+	:month 10
+	:day 21)
+
+# ::id PROXY_AFP_ENG_20071003_0237.25 ::date 2013-06-23T07:19:45 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Only China 's economy is growing at a faster annual rate . 
+(g / grow-01
+	:ARG1 (e / economy
+		:mod (c / country
+			:name (n / name
+				:op1 "China"))
+		:mod (o / only))
+	:ARG2 (r2 / rate-entity-91
+		:ARG2 (t / temporal-quantity
+			:quant 1
+			:unit (y / year))
+		:mod (f / fast
+			:degree (m / more))))
+
+# ::id PROXY_AFP_ENG_20080527_0222.32 ::date 2013-07-07T05:39:39 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
+# ::snt The official sees no reason why the IAEA can not provide answers . 
+(s / see-01
+	:polarity -
+	:ARG0 (p2 / person
+		:ARG0-of (h / have-org-role-91
+			:ARG2 (o2 / official)))
+	:ARG1 (t / thing
+		:ARG0-of (c / cause-01
+			:ARG1 (p / possible
+				:polarity -
+				:domain (a / answer-01
+					:ARG0 (o / organization
+						:name (n / name
+							:op1 "IAEA")))))))
+
+# ::id PROXY_APW_ENG_20030406_0627.17 ::date 2013-07-31T09:10:14 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt 1 of the Philippine reports stated that local officials and Western business executives were shocked by the ability of Al-Qaida to plant operatives in such a tightly controlled society as Singapore . 
+(s / state-01
+	:ARG0 (r / report
+		:quant 1
+		:mod (c / country
+			:name (n / name
+				:op1 "Philippines")))
+	:ARG1 (s2 / shock-01
+		:ARG0 (p2 / possible
+			:domain (p3 / plant-01
+				:ARG0 (c3 / criminal-organization
+					:name (n5 / name
+						:op1 "Al-Qaida"))
+				:ARG1 (p / person
+					:ARG0-of (h / have-org-role-91
+						:ARG1 c3
+						:ARG2 (o2 / operative)))
+				:ARG2 (s3 / society
+					:ARG1-of (c2 / control-01
+						:mod (t / tight)
+						:mod (s4 / such))
+					:example (c4 / country
+						:name (n2 / name
+							:op1 "Singapore")))))
+		:ARG1 (a / and
+			:op1 (p4 / person
+				:mod (l / local)
+				:ARG0-of (h2 / have-org-role-91
+					:ARG2 (o / official)))
+			:op2 (p5 / person
+				:mod (w / world-region
+					:name (n4 / name
+						:op1 "West"))
+				:ARG0-of (h3 / have-org-role-91
+					:ARG1 (b / business)
+					:ARG2 (e / executive))))))
+
+# ::id PROXY_AFP_ENG_20070207_0243.9 ::date 2013-06-02T00:40:27 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The official stated that 42 defendants received sentences between 1 and 23 years in prison . 
+(s / state-01
+	:ARG0 (p2 / person
+		:ARG0-of (h / have-org-role-91
+			:ARG2 (o / official)))
+	:ARG1 (s2 / sentence-01
+		:ARG1 (d / defendant
+			:quant 42)
+		:ARG2 (b2 / between
+			:op1 (t / temporal-quantity
+				:quant 1
+				:unit (y2 / year))
+			:op2 (t2 / temporal-quantity
+				:quant 23
+				:unit (y3 / year))
+			:location (p / prison))))
+
+# ::id PROXY_AFP_ENG_20070125_0080.5 ::date 2013-06-02T04:35:58 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Police stated on January 25 , 2007 that a fugitive Taiwanese drug trafficker named Tsai Wen-Huang has been arrested in the southern Philippines . 
+(s / state-01
+	:ARG0 (p / police)
+	:ARG1 (a / arrest-01
+		:ARG0 p
+		:ARG1 (p2 / person
+			:name (n / name
+				:op1 "Tsai"
+				:op2 "Wen-Huang")
+			:ARG0-of (t / traffic-00
+				:ARG1 (d2 / drug))
+			:mod (c / country
+				:name (n2 / name
+					:op1 "Taiwan"))
+			:ARG0-of (f / flee-01))
+		:location (s2 / south
+			:part-of (c2 / country
+				:name (n3 / name
+					:op1 "Philippines"))))
+	:time (d / date-entity
+		:day 25
+		:month 1
+		:year 2007))
+
+# ::id PROXY_AFP_ENG_20071228_0415.12 ::date 2013-06-28T19:29:19 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt 18 were imprisoned for life . 
+(i / imprison-01
+	:ARG1 (p / person
+		:quant 18)
+	:ARG2 (l / live-01))
+
+# ::id PROXY_AFP_ENG_20040305_0056.23 ::date 2013-05-27T13:57:48 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Longer term assistance with their reintegration into Lao society will also be needed . 
+(n / need-01
+	:ARG1 (a2 / assist-01
+		:ARG2 (r / reintegrate-01
+			:ARG1 (t / they)
+			:ARG2 (s / society
+				:mod (c / country
+					:name (n2 / name
+						:op1 "Laos"))))
+		:duration (l / long
+			:degree (m / more)))
+	:mod (a / also))
+
+# ::id PROXY_AFP_ENG_20020522_0013.11 ::date 2013-06-06T16:00:29 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Chen traveled to Vietnam regularly since 1992 . 
+(t / travel-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Chen"))
+	:ARG1 (c / country
+		:name (n2 / name
+			:op1 "Vietnam"))
+	:frequency (r / regular)
+	:time (s / since
+		:op1 (d2 / date-entity
+			:year 1992)))
+
+# ::id PROXY_AFP_ENG_20030210_0248.2 ::date 2013-07-10T11:15:40 ::snt-type country ::annotator UCO-AMR-05 ::preferred
+# ::snt Myanmar -LRB- MM -RRB- 
+(c / country
+	:name (n / name
+		:op1 "Myanmar"))
+
+# ::id PROXY_APW_ENG_20020516_0478.18 ::date 2013-07-11T02:30:31 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt In early May 2002 officials from the Philippines , Malaysia and Indonesia signed an anti-terrorism agreement to share airline passenger lists and other intelligence . 
+(s / sign-02
+	:ARG0 (a5 / and
+		:op1 (p2 / person
+			:ARG0-of (h / have-org-role-91
+				:ARG1 (c / country
+					:name (n / name
+						:op1 "Philippines"))
+				:ARG2 (o / official)))
+		:op2 (p3 / person
+			:ARG0-of (h2 / have-org-role-91
+				:ARG1 (c2 / country
+					:name (n2 / name
+						:op1 "Malaysia"))
+				:ARG2 (o4 / official)))
+		:op3 (p4 / person
+			:ARG0-of (h3 / have-org-role-91
+				:ARG1 (c3 / country
+					:name (n3 / name
+						:op1 "Indonesia"))
+				:ARG2 (o5 / official))))
+	:ARG1 (a / agree-01
+		:ARG1 (s2 / share-01
+			:ARG1 (a2 / and
+				:op1 (l / list-01
+					:ARG1 (p / passenger
+						:mod (a3 / airline)))
+				:op2 (i / intelligence
+					:mod (o3 / other))))
+		:ARG0-of (c4 / counter-01
+			:ARG1 (t / terrorism)))
+	:time (e / early
+		:op1 (d / date-entity
+			:month 5
+			:year 2002)))
+
+# ::id PROXY_AFP_ENG_20020201_0053.11 ::date 2013-06-05T12:24:58 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Rakhimov was Vice-President of the Olympic Council of Asia and an Executive Member of the International Amateur Boxing Association . 
+(a / and
+	:op1 (p / president
+		:mod (v / vice)
+		:poss (o / organization
+			:name (n / name
+				:op1 "Olympic"
+				:op2 "Council"
+				:op3 "of"
+				:op4 "Asia")))
+	:op2 (m / member
+		:mod (e / executive)
+		:poss (o2 / organization
+			:name (n2 / name
+				:op1 "International"
+				:op2 "Amateur"
+				:op3 "Boxing"
+				:op4 "Association")))
+	:domain (p2 / person
+		:name (n3 / name
+			:op1 "Rakhimov")))
+
+# ::id PROXY_AFP_ENG_20040719_0650.24 ::date 2013-05-20T11:17:20 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
+# ::snt Approximately 50000 people on both sides were killed . 
+(k / kill-01
+	:ARG1 (p / person
+		:poss (s2 / side
+			:mod (b2 / both))
+		:quant (a2 / approximately
+			:op1 50000)))
+
+# ::id PROXY_AFP_ENG_20021226_0132.18 ::date 2013-05-27T11:50:06 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt ElBaradei said that the reprocessing facility at Yongbyong is irrelevant to North Korea 's ability to produce electricity . 
+(s / say-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "ElBaradei"))
+	:ARG1 (f / facility
+		:ARG0-of (r / reprocess-01)
+		:ARG1-of (r2 / relevant-41
+			:ARG2 (c2 / capable-41
+				:ARG1 (c / country
+					:name (n2 / name
+						:op1 "North"
+						:op2 "Korea"))
+				:ARG2 (p2 / produce-01
+					:ARG1 (e / electricity))))
+		:location (c3 / county
+			:name (n3 / name
+				:op1 "Yongbyong"))))
+
+# ::id PROXY_AFP_ENG_20071004_0210.12 ::date 2013-06-18T14:30:54 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The seizure is thought to be the biggest drug haul in Mauritania 's history . 
+(t / think-01
+	:ARG1 (s / seize-01)
+	:ARG2 (h / haul-01
+		:ARG1 (d / drug)
+		:mod (b / big
+			:degree (m / most))
+		:time (h2 / history
+			:location (c / country
+				:name (n / name
+					:op1 "Mauritania")))))
+
+# ::id PROXY_AFP_ENG_20070715_0100.10 ::date 2013-09-01T16:11:38 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Amnesty International 's report was compiled by European and international non-governmental organizations such as Saferworld , which opposes armed violence . 
+(c2 / compile-01
+	:ARG0 (a / and
+		:op1 (o4 / organization
+			:mod (g3 / government-organization
+				:polarity -)
+			:mod (c3 / continent
+				:name (n5 / name
+					:op1 "Europe")))
+		:op2 (o3 / organization
+			:mod (g / government-organization
+				:polarity -
+				:ARG0-of (g2 / govern-01))
+			:mod (i / international)
+			:example (o5 / organization
+				:name (n6 / name
+					:op1 "Saferworld")
+				:ARG0-of (o6 / oppose-01
+					:ARG1 (v / violence
+						:ARG1-of (a2 / arm-01))))))
+	:ARG1 (r / report
+		:poss (o2 / organization
+			:name (n4 / name
+				:op1 "Amnesty"
+				:op2 "International"))))
+
+# ::id PROXY_AFP_ENG_20050222_0430.11 ::date 2013-05-22T07:02:13 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Afghan government is receiving support by the international community in taking a harder line on the issue . 
+(r / receive-01
+	:ARG0 (g / government-organization
+		:ARG0-of (g2 / govern-01
+			:ARG1 (c / country
+				:name (n / name
+					:op1 "Afghanistan"))))
+	:ARG1 (s / support-01
+		:ARG0 (c2 / community
+			:mod (i / international))
+		:ARG1 (t / take-09
+			:ARG0 g
+			:ARG1 (l / line
+				:mod (h / hard
+					:degree (m / more)))
+			:ARG4 (i2 / issue))))
+
+# ::id PROXY_AFP_ENG_20070818_0297.2 ::date 2013-06-17T07:24:27 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Iraq -LRB- IQ -RRB- ; Jordan -LRB- JO -RRB- 
+(a / and
+	:op1 (c3 / country
+		:name (n / name
+			:op1 "Iraq"))
+	:op2 (c4 / country
+		:name (n3 / name
+			:op1 "Jordan")))
+
+# ::id PROXY_AFP_ENG_20030220_0697.12 ::date 2013-07-11T15:54:03 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt On 09 February 2003 Iranian President Mohammed Khatami recognized the existence of a uranium mine and extraction center but promised that the uranium would be used only for peaceful purposes . 
+(r / recognize-02
+	:ARG0 (p / person
+		:name (n4 / name
+			:op1 "Mohammed"
+			:op2 "Khatami")
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c / country
+				:name (n / name
+					:op1 "Iran"))
+			:ARG2 (p6 / president)))
+	:ARG1 (e / exist-01
+		:ARG1 (a / and
+			:op1 (m / mine
+				:mod (u / uranium))
+			:op2 (c2 / center
+				:mod (e2 / extract-01)))
+		:ARG1-of (c3 / contrast-01
+			:ARG2 (p3 / promise-01
+				:ARG0 p
+				:ARG2 (u2 / use-01
+					:ARG1 (u3 / uranium)
+					:ARG2 (p4 / purpose
+						:mod (p5 / peaceful)
+						:mod (o / only))))))
+	:time (d / date-entity
+		:day 9
+		:month 2
+		:year 2003))
+
+# ::id PROXY_AFP_ENG_20040719_0650.12 ::date 2013-05-19T11:18:00 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Sandinistas accused the Church of anti-government activities . 
+(a / accuse-01
+	:ARG0 (p3 / person
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (p / political-party
+				:name (n2 / name
+					:op1 "Sandinista"))))
+	:ARG1 (o2 / organization
+		:name (n3 / name
+			:op1 "Church"))
+	:ARG2 (a2 / activity
+		:ARG0-of (o / oppose-01
+			:ARG1 (g / government-organization
+				:ARG0-of (g2 / govern-01)))))
+
+# ::id PROXY_AFP_ENG_20080421_0468.1 ::date 2013-07-03T10:47:51 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2008-04-21 
+(d / date-entity
+	:year 2008
+	:month 4
+	:day 21)
+
+# ::id PROXY_APW_ENG_20020708_0642.20 ::date 2013-07-10T13:02:11 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Current state of biotechnology in Cuba -- 
+(s / state
+	:mod (b / biotechnology)
+	:location (c / country
+		:name (n / name
+			:op1 "Cuba"))
+	:time (c2 / current))
+
+# ::id PROXY_AFP_ENG_20020304_0028.13 ::date 2013-05-21T18:54:46 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The other competing planes are the Dassault firm 's Rafale , the Eurofighter Consortium 's typhoon 2000 and the Russian Su-32 made by Sukhoi . 
+(c / compete-01
+	:ARG0 (a / and
+		:op1 (p / plane
+			:name (n / name
+				:op1 "Rafale")
+			:poss (f / firm
+				:name (n2 / name
+					:op1 "Dassault")))
+		:op2 (p2 / plane
+			:name (n3 / name
+				:op1 "Typhoon"
+				:op2 "2000")
+			:poss (c3 / company
+				:name (n4 / name
+					:op1 "Eurofighter"
+					:op2 "Consortium")))
+		:op3 (p3 / plane
+			:name (n5 / name
+				:op1 "Su-32")
+			:source (c4 / country
+				:name (n6 / name
+					:op1 "Russia"))
+			:ARG1-of (m / make-01
+				:ARG0 (c5 / company
+					:name (n7 / name
+						:op1 "Sukhoi"))))
+		:mod (o / other)))
+
+# ::id PROXY_AFP_ENG_20071107_0030.27 ::date 2013-06-27T04:39:57 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Sisi 's last words were reportedly what happened to me ? . 
+(r / report-01
+	:ARG1 (w / word-01
+		:ARG0 (p / person
+			:name (n / name
+				:op1 "Sisi"))
+		:ARG1 (h / happen-01
+			:ARG1 (a / amr-unknown)
+			:ARG2 p)
+		:mod (l / last)))
+
+# ::id PROXY_APW_ENG_20080112_0264.19 ::date 2013-07-11T22:12:02 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The South Korean government has stated that South Korea does not want to provoke North Korea . 
+(s / state-01
+	:ARG0 (g / government-organization
+		:ARG0-of (g2 / govern-01
+			:ARG1 (c2 / country
+				:name (n2 / name
+					:op1 "South"
+					:op2 "Korea"))))
+	:ARG1 (w / want-01
+		:polarity -
+		:ARG0 c2
+		:ARG1 (p / provoke-01
+			:ARG0 c2
+			:ARG1 (c3 / country
+				:name (n3 / name
+					:op1 "North"
+					:op2 "Korea")))))
+
+# ::id PROXY_AFP_ENG_20070207_0243.8 ::date 2013-06-02T00:37:41 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The official stated that 10 people received sentences of life in prison . 
+(s / state-01
+	:ARG0 (p3 / person
+		:ARG0-of (h / have-org-role-91
+			:ARG2 (o / official)))
+	:ARG1 (s3 / sentence-01
+		:ARG1 (p / person
+			:quant 10)
+		:ARG2 (l / life
+			:location (p2 / prison))))
+
+# ::id PROXY_AFP_ENG_20030110_0628.2 ::date 2013-06-06T18:24:05 ::snt-type country ::annotator UCO-AMR-05 ::preferred
+# ::snt Russian Federation -LRB- RU -RRB- ; France -LRB- FR -RRB- ; French Guiana -LRB- GF -RRB- 
+(a / and
+	:op1 (c / country
+		:name (n / name
+			:op1 "Russian"
+			:op2 "Federation"))
+	:op2 (c2 / country
+		:name (n2 / name
+			:op1 "France"))
+	:op3 (c3 / country
+		:name (n3 / name
+			:op1 "French"
+			:op2 "Guiana")))
+
+# ::id PROXY_AFP_ENG_20070525_0061.23 ::date 2013-06-17T13:41:43 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Aegis combat system allows a ship to combat multiple surface , underwater and aerial targets . 
+(a / allow-01
+	:ARG0 (s / system
+		:name (n / name
+			:op1 "Aegis")
+		:instrument-of (c / combat-01))
+	:ARG1 (c2 / combat-01
+		:ARG0 (s2 / ship)
+		:ARG1 (a2 / and
+			:op1 (t / target
+				:location (s3 / surface))
+			:op2 (t2 / target
+				:location (u / under
+					:op1 (w / water)))
+			:op3 (t3 / target
+				:location (a3 / air))
+			:quant (m / multiple))))
+
+# ::id PROXY_AFP_ENG_20021226_0132.33 ::date 2013-05-28T09:14:16 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The President has complained that South Korea was sidelined during the entire dispute and ended up paying a multi-billion dollar bill for the light-water reactors . 
+(c / complain-01
+	:ARG0 (p / person
+		:ARG0-of (h / have-org-role-91
+			:ARG2 (p3 / president)))
+	:ARG1 (a / and
+		:op1 (m / move-01
+			:ARG1 (c2 / country
+				:name (n / name
+					:op1 "South"
+					:op2 "Korea"))
+			:ARG2 (s / sideline)
+			:time (d / dispute
+				:degree (e / entire)))
+		:op2 (e2 / end-03
+			:ARG1 c2
+			:ARG2 (p2 / pay-01
+				:ARG1 (b / bill
+					:quant (b2 / billion
+						:quant (m2 / multi))
+					:unit (d2 / dollar))
+				:ARG3 (r / reactor
+					:mod (l / light-water))))))
+
+# ::id PROXY_AFP_ENG_20051212_0547.12 ::date 2013-06-07T06:06:47 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Korean helicopter program is scheduled to be finalized in 2011 . 
+(s / schedule-01
+	:ARG1 (f / finalize-01
+		:ARG1 (p / program
+			:topic (h / helicopter)
+			:mod (c / country
+				:name (n / name
+					:op1 "Republic"
+					:op2 "of"
+					:op3 "Korea"))))
+	:ARG3 (d / date-entity
+		:year 2011))
+
+# ::id PROXY_AFP_ENG_20070209_0566.10 ::date 2013-06-01T02:29:58 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt 10 other Kurds will go before a judge on 9 February 2007 . 
+(g2 / go-01
+	:ARG1 (p / person
+		:quant 10
+		:mod (o / other)
+		:mod (e / ethnic-group
+			:name (n / name
+				:op1 "Kurd")))
+	:ARG4 (b / before
+		:op1 (p2 / person
+			:ARG0-of (h / have-org-role-91
+				:ARG3 (j / judge-01))))
+	:time (d / date-entity
+		:year 2007
+		:month 2
+		:day 9))
+
+# ::id PROXY_AFP_ENG_20071202_0475.14 ::date 2013-06-30T16:48:24 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The public executions served as warnings by the authorities of the seriousness of the campaign against criminals . 
+(s / serve-01
+	:ARG0 (e / execute-01
+		:manner (p / public))
+	:ARG1 (w / warn-01
+		:ARG0 (a / authority)
+		:ARG1 (s2 / serious-41
+			:ARG2 (c / campaign
+				:prep-against (c2 / criminal)))))
+
+# ::id PROXY_AFP_ENG_20030225_0785.11 ::date 2013-07-12T10:43:50 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Thailand is the world 's largest consumer of methamphetamines . 
+(c2 / consume-01
+	:ARG0 (c / country
+		:name (n / name
+			:op1 "Thailand")
+		:mod (l / large
+			:degree (m2 / most)
+			:compared-to (w / world)))
+	:ARG1 (m / methamphetamine))
+
+# ::id PROXY_AFP_ENG_20031204_0312.17 ::date 2013-05-15T13:19:55 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
+# ::snt If China makes the guarantee struck will not be concerned about the sale of the facility . 
+(c / concern-01
+	:ARG0 (s / sell-01
+		:ARG1 (f / facility))
+	:ARG1 (p / person
+		:name (n / name
+			:op1 "Struck"))
+	:polarity -
+	:condition (g / guarantee-01
+		:ARG0 (c2 / country
+			:name (n2 / name
+				:op1 "China"))))
+
+# ::id PROXY_AFP_ENG_20071107_0030.7 ::date 2013-06-27T01:38:11 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Blanchard revealed that he was funding Kurdish rebels in Iraq . 
+(r / reveal-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Blanchard"))
+	:ARG1 (f / fund-01
+		:ARG0 p
+		:ARG1 (p2 / person
+			:mod (c / country
+				:name (n2 / name
+					:op1 "Kurdistan"))
+			:location (c2 / country
+				:name (n3 / name
+					:op1 "Iraq"))
+			:ARG0-of (r2 / rebel-01))))
+
+# ::id PROXY_APW_ENG_20020605_0987.12 ::date 2013-06-19T17:45:34 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Pierre Brisson stated that Ukraine 's materials and processing sectors are the most immediately promising to other European clients and could have a large impact on the future . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Pierre"
+			:op2 "Brisson"))
+	:ARG1 (a / and
+		:op1 (p2 / promise-01
+			:ARG0 (a2 / and
+				:op1 (s2 / sector
+					:mod (m / material)
+					:mod (c / country
+						:name (n2 / name
+							:op1 "Ukraine")))
+				:op2 (s3 / sector
+					:mod (p4 / process-01)
+					:mod c))
+			:ARG1 (c3 / client
+				:mod (c2 / continent
+					:name (n3 / name
+						:op1 "Europe"))
+				:mod (o / other))
+			:time (i2 / immediately
+				:degree (m2 / most)))
+		:op2 (p3 / possible
+			:domain (i / impact-01
+				:ARG0 a2
+				:ARG1 (f / future)
+				:extent (l / large)))))
+
+# ::id PROXY_AFP_ENG_20020105_0162.7 ::date 2013-05-08T11:38:23 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Naif Arab Academy for Security Sciences is run by an Arab Interior Ministers ' Council . 
+(r / run-01
+	:ARG0 (o / organization
+		:name (n / name
+			:op1 "Arab"
+			:op2 "Interior"
+			:op3 "Ministers'"
+			:op4 "Council"))
+	:ARG1 (u / university
+		:name (n2 / name
+			:op1 "Naif"
+			:op2 "Arab"
+			:op3 "Academy"
+			:op4 "for"
+			:op5 "Security"
+			:op6 "Sciences")))
+
+# ::id PROXY_AFP_ENG_20040203_0804.20 ::date 2013-05-19T10:31:02 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt 20040202 Taiwan tightened security against smugglers following the discovery in 20031200 of H5N1 in ducks smuggled from mainland China . 
+(t / tighten-01
+	:ARG0 (c / country
+		:name (n / name
+			:op1 "Taiwan"))
+	:ARG1 (s / security
+		:prep-against (p / person
+			:ARG0-of (s3 / smuggle-01)))
+	:time (d4 / date-entity
+		:year 2004
+		:month 2
+		:day 2)
+	:ARG1-of (f2 / follow-01
+		:ARG2 (d / discover-01
+			:ARG1 (d5 / disease
+				:name (n2 / name
+					:op1 "H5N1")
+				:location (d3 / duck
+					:ARG1-of (s2 / smuggle-01
+						:ARG2 (c2 / country
+							:name (n3 / name
+								:op1 "China")
+							:mod (m / mainland)))))
+			:time (d2 / date-entity
+				:year 2003
+				:month 12))))
+
+# ::id PROXY_AFP_ENG_20071204_0145.20 ::date 2013-07-03T17:13:36 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Algeria became 1 of France 's proudest possessions . 
+(b / become-01
+	:ARG1 (c / country
+		:name (n / name
+			:op1 "Algeria"))
+	:ARG2 (p3 / possession
+		:ARG1-of (i / include-91
+			:ARG2 (p / possession
+				:mod (c2 / country
+					:name (n2 / name
+						:op1 "France"))
+				:ARG2-of (p2 / proud-41
+					:ARG1 c2
+					:degree (m / most))))
+		:ord (o / ordinal-entity
+			:value 1)))
+
+# ::id PROXY_AFP_ENG_20030125_0226.24 ::date 2013-06-26T12:41:12 ::snt-type body subordinate ::annotator UCO-AMR-05 ::preferred
+# ::snt the freedom movement will never be suppressed . 
+(s / suppress-01
+	:polarity -
+	:ARG1 (m / movement
+		:purpose (f / free-41))
+	:time (e / ever))
+
+# ::id PROXY_AFP_ENG_20031216_0401.10 ::date 2013-05-17T12:46:46 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Ahdal told the investigators all the financial and technical preparations for the attacks of both the USS Cole and Limburg were supervised by Ahdal and revealed that one of the two suicide bombers in the USS Cole attack carried the family name of Al-thore . 
+(a / and
+	:op1 (t / tell-01
+		:ARG0 (p / person
+			:name (n / name
+				:op1 "Ahdal"))
+		:ARG1 (s / supervise-01
+			:ARG0 p
+			:ARG1 (a5 / and
+				:op1 (p2 / prepare-02
+					:ARG2 (a2 / attack-01
+						:ARG1 (a3 / and
+							:op1 (s2 / ship
+								:name (n2 / name
+									:op1 "USS"
+									:op2 "Cole"))
+							:op2 (s3 / ship
+								:name (n3 / name
+									:op1 "Limburg"))))
+					:mod (f / finance))
+				:op2 (p6 / prepare-02
+					:ARG2 a2
+					:mod (t2 / technical))
+				:quant (a4 / all)))
+		:ARG2 (p3 / person
+			:ARG0-of (i2 / investigate-01)))
+	:op2 (r / reveal-01
+		:ARG0 p
+		:ARG1 (n6 / name-01
+			:ARG1 (p4 / person
+				:quant 1
+				:ARG1-of (i3 / include-91
+					:ARG2 (p5 / person
+						:quant 2
+						:ARG0-of (b2 / bomb-01
+							:mod (s6 / suicide))
+						:ARG0-of (a7 / attack-01
+							:ARG1 s2))))
+			:ARG2 (n7 / name
+				:op1 "Al-thore"
+				:mod (f2 / family)))))
+
+# ::id PROXY_AFP_ENG_20080723_0409.3 ::date 2013-07-06T07:09:42 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
+# ::snt Narcotics ; crime 
+(a / and
+	:op1 (n / narcotic)
+	:op2 (c / crime))
+
+# ::id PROXY_AFP_ENG_20070720_0144.15 ::date 2013-06-21T10:16:04 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The meetings will follow Russia 's withdrawal from the CFE . 
+(f / follow-01
+	:ARG1 (m / meet-03)
+	:ARG2 (w / withdraw-01
+		:ARG1 (c / country
+			:name (n / name
+				:op1 "Russia"))
+		:ARG2 (t / treaty
+			:name (n2 / name
+				:op1 "CFE"))))
+
+# ::id PROXY_AFP_ENG_20080303_0135.33 ::date 2013-06-30T04:24:55 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Ali Asghar SOLTANIEH stated that Iran would react to further United Nation 's sanctions with measures of Iran 's own . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Ali"
+			:op2 "Asghar"
+			:op3 "Soltanieh"))
+	:ARG1 (r / react-01
+		:ARG0 (c / country
+			:name (n2 / name
+				:op1 "Iran"))
+		:ARG1 (t / thing
+			:ARG2-of (s2 / sanction-02
+				:ARG0 (o / organization
+					:name (n3 / name
+						:op1 "United"
+						:op2 "Nations"))
+				:mod (f / further)))
+		:ARG2 (m / measure
+			:poss c)))
+
+# ::id PROXY_APW_ENG_20020708_0642.26 ::date 2013-07-11T20:41:28 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Cuba is cooperating with the small Canadian company YM biosciences on trials of a head and neck cancer treatment . 
+(c3 / cooperate-01
+	:ARG0 (c / country
+		:name (n / name
+			:op1 "Cuba"))
+	:ARG1 (c4 / company
+		:name (n3 / name
+			:op1 "YM"
+			:op2 "Biosciences")
+		:mod (s / small)
+		:mod (c2 / country
+			:name (n2 / name
+				:op1 "Canada")))
+	:ARG2 (t2 / try-01
+		:ARG1 (t / treat-03
+			:ARG1 (a / and
+				:op1 (c6 / cancer
+					:location (h / head))
+				:op2 (c7 / cancer
+					:location (n4 / neck))))))
+
+# ::id PROXY_AFP_ENG_20040203_0804.2 ::date 2013-05-17T14:30:45 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Vietnam -LRB- VN -RRB- ; China -LRB- CN -RRB- ; Cambodia -LRB- KH -RRB- ; Taiwan -LRB- TW -RRB- ; India -LRB- IN -RRB- ; Hong Kong -LRB- HK -RRB- 
+(a / and
+	:op1 (c / country
+		:name (n / name
+			:op1 "Vietnam"))
+	:op2 (c2 / country
+		:name (n2 / name
+			:op1 "China"))
+	:op3 (c3 / country
+		:name (n3 / name
+			:op1 "Cambodia"))
+	:op4 (c4 / country
+		:name (n4 / name
+			:op1 "Taiwan"))
+	:op5 (c5 / country
+		:name (n5 / name
+			:op1 "India"))
+	:op6 (c6 / city
+		:name (n6 / name
+			:op1 "Hong"
+			:op2 "Kong")))
+
+# ::id PROXY_AFP_ENG_20070716_0392.14 ::date 2013-06-13T10:59:29 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
+# ::snt The Amnesty International report put India in a difficult situation . 
+(p / put-01
+	:ARG0 (r / report
+		:source (o / organization
+			:name (n / name
+				:op1 "Amnesty"
+				:op2 "International")))
+	:ARG1 (c / country
+		:name (n2 / name
+			:op1 "India"))
+	:ARG2 (s / situation
+		:mod (d / difficult)))
+
+# ::id PROXY_AFP_ENG_20080813_1032.41 ::date 2013-07-07T03:10:50 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Botnets are networks of computers that have been turned into zombies or BOTs with malicious software . 
+(n2 / network
+	:consist-of (c / computer
+		:ARG1-of (t / turn-02
+			:ARG2 (o / or
+				:op1 (z / zombie)
+				:op2 (b2 / bot
+					:prep-with (s / software
+						:mod (m / malicious))))))
+	:domain (b / botnet))
+
+# ::id PROXY_AFP_ENG_20070215_0113.13 ::date 2013-06-02T05:33:01 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Raman recommended tightening regulations governing India 's stock markets to ensure that genuine companies only engaged in operations . 
+(r / recommend-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Raman"))
+	:ARG1 (t2 / tighten-01
+		:ARG1 (r2 / regulate-01
+			:ARG0-of (g / govern-01
+				:ARG1 (m / market
+					:mod (s / stock)
+					:poss (c / country
+						:name (n2 / name
+							:op1 "India")))))
+		:purpose (e / ensure-01
+			:ARG1 (e2 / engage-01
+				:ARG1 (c2 / company
+					:mod (g2 / genuine)
+					:mod (o2 / only))
+				:ARG2 (o / operation)))))
+
+# ::id PROXY_AFP_ENG_20080521_0475.1 ::date 2013-07-03T03:46:15 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2008-05-21 
+(d / date-entity
+	:year 2008
+	:month 5
+	:day 21)
+
+# ::id PROXY_AFP_ENG_20031202_0313.9 ::date 2013-05-07T06:10:42 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Gerhard Schroeder is on day 2 of a 3 day visit to China . 
+(d / day
+	:ARG1-of (i / include-91
+		:ARG2 (t / temporal-quantity
+			:quant 3
+			:unit (d2 / day)
+			:duration-of (v / visit-01
+				:ARG0 (p / person
+					:name (n / name
+						:op1 "Gerhard"
+						:op2 "Schroeder"))
+				:ARG1 (c / country
+					:name (n2 / name
+						:op1 "China")))))
+	:ord (o / ordinal-entity
+		:value 2))
+
+# ::id PROXY_AFP_ENG_20070426_0470.8 ::date 2013-06-10T20:29:51 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Family members were initially banned from the proceedings but were eventually permitted entrance . 
+(h / have-concession-91
+	:ARG1 (p / permit-01
+		:ARG1 (e / enter-01
+			:ARG0 p3)
+		:ARG2 p3
+		:time (e2 / eventual))
+	:ARG2 (b / ban-01
+		:ARG1 (p2 / proceedings)
+		:ARG2 (p3 / person
+			:ARG0-of (h2 / have-org-role-91
+				:ARG1 (f / family)
+				:ARG2 (m / member)))
+		:time (i / initial)))
+
+# ::id PROXY_AFP_ENG_20030120_0196.9 ::date 2013-06-15T20:08:59 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Sadagopan stated that these things happen with all technology if history is reviewed and that imaginative people can cause extraordinary problems even with primitive technology . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Sadagopan"))
+	:ARG1 (a / and
+		:op1 (h / happen-01
+			:ARG1 (t / thing
+				:mod (t2 / this))
+			:prep-with (t3 / technology
+				:mod (a2 / all))
+			:condition (r / review-01
+				:ARG1 (h2 / history)))
+		:op2 (p5 / possible
+			:domain (c / cause-01
+				:ARG0 (p2 / person
+					:mod (i / imaginative))
+				:ARG1 (p3 / problem
+					:mod (e / extraordinary)
+					:prep-with (t4 / technology
+						:mod (p4 / primitive
+							:mod (e2 / even))))))))
+
+# ::id PROXY_AFP_ENG_20071030_0116.12 ::date 2013-06-26T02:26:16 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The leader of the Eurasian Youth Union is banned from Ukraine for having vandalized Ukrainian national symbols on a mountain in the west of Ukraine . 
+(b / ban-01
+	:ARG1 (c / country
+		:name (n2 / name
+			:op1 "Ukraine"))
+	:ARG2 (p / person
+		:ARG0-of (l / lead-02
+			:ARG1 (o / organization
+				:name (n / name
+					:op1 "Eurasian"
+					:op2 "Youth"
+					:op3 "Union"))))
+	:ARG1-of (c2 / cause-01
+		:ARG0 (v / vandalize-01
+			:ARG0 p
+			:ARG1 (t / thing
+				:mod c
+				:mod (n3 / national)
+				:ARG1-of (s / symbolize-01))
+			:location (m / mountain
+				:location (w / west
+					:part-of c)))))
+
+# ::id PROXY_APW_ENG_20031021_0426.17 ::date 2013-08-20T22:26:35 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt An estimated 200000 arms are held by private citizens in Albania . 
+(h / hold-01
+	:ARG0 (c2 / citizen
+		:location (c3 / country
+			:name (n2 / name
+				:op1 "Albania"))
+		:mod (p / privacy))
+	:ARG1 (a / arm
+		:quant 200000
+		:quant (x / 200000
+			:ARG1-of (e / estimate-01))))
+
+# ::id PROXY_AFP_ENG_20030718_0132.14 ::date 2013-05-08T12:21:18 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Chinese reports in part verify recent claims made by the Government of North Korea that a number of spent nuclear fuel rods sealed in 1994 have been opened and have undergone reprocessing ostensibly to produce plutonium . 
+(v / verify-01
+	:ARG0 (r5 / report-01
+		:ARG0 (c / country
+			:name (n / name
+				:op1 "China")))
+	:ARG1 (c2 / claim-01
+		:ARG0 (g / government-organization
+			:ARG0-of (g2 / govern-01
+				:ARG1 (c3 / country
+					:name (n2 / name
+						:op1 "North"
+						:op2 "Korea"))))
+		:ARG1 (a / and
+			:op1 (o / open-01
+				:ARG1 (r / rod
+					:quant (n4 / number)
+					:mod (f / fuel
+						:mod (n3 / nucleus))
+					:ARG1-of (s2 / spend-01)
+					:ARG1-of (s / seal-01
+						:time (d / date-entity
+							:year 1994))))
+			:op2 (u / undergo-01
+				:ARG1 r
+				:ARG2 (r4 / reprocess-01
+					:manner (o2 / ostensible)
+					:ARG1-of (h / have-purpose-91
+						:ARG2 (p / produce-01
+							:ARG1 (p2 / plutonium))))))
+		:time (r2 / recent))
+	:degree (p3 / part))
+
+# ::id PROXY_APW_ENG_20080319_0386.9 ::date 2013-07-16T18:51:55 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Luong was apprehended in February 2007 at the Ho Chi Minh City Airport while preparing to board a flight to Sydney with heroin concealed in her shoes and luggage . 
+(a / apprehend-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Luong"))
+	:time (d / date-entity
+		:month 2
+		:year 2007)
+	:location (a2 / airport
+		:mod (c / city
+			:name (n2 / name
+				:op1 "Ho"
+				:op2 "Chi"
+				:op3 "Minh")))
+	:time (p2 / prepare-02
+		:ARG2 (b / board-01
+			:ARG1 (f / fly-01
+				:destination (c2 / city
+					:name (n3 / name
+						:op1 "Sydney")))
+			:prep-with (h / heroin
+				:ARG1-of (c3 / conceal-01
+					:location (a3 / and
+						:op1 (s / shoe-01)
+						:op2 (l / luggage)
+						:poss p))))))
+
+# ::id PROXY_AFP_ENG_20071211_0449.16 ::date 2013-06-30T10:27:46 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Executions have increased noticeably in 2007 as officials enforce a campaign against what authorities call thugs such as drug-traffickers , extortionists and rapists . 
+(i / increase-01
+	:ARG1 (e / execute-01)
+	:manner (n / noticeable)
+	:time (d / date-entity
+		:year 2007)
+	:ARG1-of (c / cause-01
+		:ARG0 (e2 / enforce-01
+			:ARG0 (p4 / person
+				:ARG0-of (h / have-org-role-91
+					:ARG2 (o / official)))
+			:ARG1 (c2 / campaign-01
+				:ARG0 p4
+				:prep-against (t / thug
+					:ARG1-of (c3 / call-01
+						:ARG0 (a / authority))
+					:example (a2 / and
+						:op1 (p3 / person
+							:ARG0-of (t2 / traffic-00
+								:ARG1 (d2 / drug)))
+						:op2 (p / person
+							:ARG0-of (e3 / extort-01))
+						:op3 (p2 / person
+							:ARG0-of (r / rape-01))))))))
+
+# ::id PROXY_AFP_ENG_20021226_0183.10 ::date 2013-05-28T12:16:33 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The IAEA said the North Koreans had moved 1000 fresh fuel rods into the Yongbyon reactor building . 
+(s / say-01
+	:ARG0 (o / organization
+		:name (n / name
+			:op1 "IAEA"))
+	:ARG1 (m / move-01
+		:ARG0 (p / person
+			:poss (c / country
+				:name (n2 / name
+					:op1 "North"
+					:op2 "Korea")))
+		:ARG1 (r / rod
+			:consist-of (f / fuel
+				:quant 1000)
+			:mod (f2 / fresh))
+		:ARG2 (b / building
+			:name (n3 / name
+				:op1 "Yongbyon")
+			:location-of (r2 / reactor))))
+
+# ::id PROXY_AFP_ENG_20080429_0271.10 ::date 2013-07-04T08:11:50 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Israel and the United States criticized the deal between Iran 's state gas firm and Switzerland 's elektrizitaets-Gesellschaft laufenburg . 
+(c5 / criticize-01
+	:ARG0 (a / and
+		:op1 (c / country
+			:name (n / name
+				:op1 "Israel"))
+		:op2 (c2 / country
+			:name (n2 / name
+				:op1 "United"
+				:op2 "States")))
+	:ARG1 (d / deal-01
+		:ARG0 (f / firm
+			:mod (g / gas)
+			:poss (c3 / country
+				:name (n3 / name
+					:op1 "Iran"))
+			:mod (s / state))
+		:ARG1 (c6 / company
+			:name (n5 / name
+				:op1 "Elektrizitaets"
+				:op2 "Gesellschaft"
+				:op3 "Laufenburg")
+			:poss (c4 / country
+				:name (n4 / name
+					:op1 "Switzerland")))))
+
+# ::id PROXY_AFP_ENG_20070207_0243.11 ::date 2013-06-02T00:53:02 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The heroin trafficking syndicate trafficked the drug from the northwestern provinces of Lai Chau and Son La from 1999 until the arrests in 2004 . 
+(t / traffic-00
+	:ARG0 (s / syndicate
+		:ARG0-of (t2 / traffic-00
+			:ARG1 (h / heroin)))
+	:ARG1 (d / drug)
+	:ARG2 (a / and
+		:op1 (p / province
+			:name (n / name
+				:op1 "Lai"
+				:op2 "Chau"))
+		:op2 (p2 / province
+			:name (n2 / name
+				:op1 "Son"
+				:op2 "La"))
+		:mod (n3 / northwest))
+	:time (d4 / date-interval
+		:op1 (d2 / date-entity
+			:year 1999)
+		:op2 (d3 / date-entity
+			:year 2004
+			:time-of (a2 / arrest-01))))
+
+# ::id PROXY_AFP_ENG_20070721_0240.3 ::date 2013-06-17T10:44:54 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
+# ::snt Narcotics ; crime 
+(a / and
+	:op1 (n / narcotic)
+	:op2 (c / crime))
+
+# ::id PROXY_AFP_ENG_20020406_0538.3 ::date 2013-06-09T15:27:08 ::snt-type topic ::annotator LDC-AMR-14 ::preferred
+# ::snt International ; politics ; Government ; weapons 
+(a / and
+	:op1 (i / international)
+	:op2 (p / politics)
+	:op3 (g / government-organization
+		:ARG0-of (g2 / govern-01))
+	:op4 (w / weapon))
+
+# ::id PROXY_APW_ENG_20080306_0007.17 ::date 2013-07-15T21:05:31 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Tovar wrote the deal would be with a Government and to sell them a sizable amount . 
+(w / write-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Tovar"))
+	:ARG1 (a / and
+		:op1 (d / deal-01
+			:ARG1 (g / government-organization
+				:ARG0-of (g2 / govern-01)))
+		:op2 (s / sell-01
+			:ARG1 (a2 / amount
+				:mod (s2 / sizeable))
+			:ARG2 g)))
+
+# ::id PROXY_AFP_ENG_20020723_0353.18 ::date 2013-07-11T14:11:09 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The trilateral pact between Malaysia , Indonesia and the Philippines constituted a constructive first step . 
+(c4 / constitute-01
+	:ARG0 (p / pact
+		:mod (t / trilateral)
+		:ARG1-of (h / have-org-role-91
+			:ARG0 (c / country
+				:name (n / name
+					:op1 "Malaysia"))
+			:ARG2 (m / member))
+		:ARG1-of (h2 / have-org-role-91
+			:ARG0 (c2 / country
+				:name (n2 / name
+					:op1 "Indonesia"))
+			:ARG2 (m2 / member))
+		:ARG1-of (h3 / have-org-role-91
+			:ARG0 (c3 / country
+				:name (n3 / name
+					:op1 "Philippines"))
+			:ARG2 (m3 / member)))
+	:ARG1 (s / step
+		:ord (o / ordinal-entity
+			:value 1)
+		:mod (c5 / constructive)))
+
+# ::id PROXY_AFP_ENG_20070315_0736.13 ::date 2013-06-06T07:42:02 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Ban announced plans soon after taking office on 070101 to reform the UN 's sprawling peacekeeping operations and tighten control over disarmament matters . 
+(a / announce-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Ban"))
+	:ARG1 (p2 / plan-01
+		:ARG1 (a3 / and
+			:op1 (r / reform-01
+				:ARG0 p
+				:ARG1 (o2 / operation
+					:purpose (k / keep-01
+						:ARG1 (p3 / peace))
+					:ARG1-of (s2 / sprawl-01)
+					:poss (o3 / organization
+						:name (n2 / name
+							:op1 "United"
+							:op2 "Nations"))))
+			:op2 (t2 / tighten-01
+				:ARG0 p
+				:ARG1 (c / control-01
+					:ARG1 (m / matter
+						:topic (d2 / disarm-01))))))
+	:time (s / soon
+		:op1 (a2 / after
+			:op1 (t / take-01
+				:ARG0 p
+				:ARG1 (o / office)
+				:time (d / date-entity
+					:year 2007
+					:month 1
+					:day 1)))))
+
+# ::id PROXY_APW_ENG_20020808_0105.33 ::date 2013-08-04T21:12:14 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Oxfram America is a nonprofit development group based in Boston . 
+(o2 / organization
+	:name (n3 / name
+		:op1 "Oxfram"
+		:op2 "America")
+	:ARG0-of (p / profit-01
+		:polarity -)
+	:mod (d / develop-02)
+	:ARG1-of (b / base-01
+		:location (c / city
+			:name (n2 / name
+				:op1 "Boston"))))
+
+# ::id PROXY_AFP_ENG_20021018_0360.2 ::date 2013-07-19T12:40:29 ::snt-type country ::annotator UCO-AMR-05 ::preferred
+# ::snt Iraq -LRB- IQ -RRB- 
+(c / country
+	:name (n / name
+		:op1 "Iraq"))
+
+# ::id PROXY_AFP_ENG_20020621_0524.6 ::date 2013-05-23T13:20:00 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The Russian branch of Greenpeace distributed a report at a press conference of Russia 's atomic energy ministry . 
+(d / distribute-01
+	:ARG0 (b / branch
+		:mod (c / country
+			:name (n / name
+				:op1 "Russia"))
+		:part-of (o / organization
+			:name (n2 / name
+				:op1 "Greenpeace")))
+	:ARG1 (t / thing
+		:ARG1-of (r / report-01))
+	:location (c2 / conference
+		:mod (p / press)
+		:ARG2-of (i / include-91
+			:ARG1 (m / ministry
+				:mod (e / energy
+					:mod (a / atom))
+				:poss c))))
+
+# ::id PROXY_APW_ENG_20080417_1113.4 ::date 2013-07-21T02:22:37 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
+# ::snt The South African Government stated on April 4 , 2008 that the South African Government will probably not stop the arms shipment head to Zimbabwe . 
+(s / state-01
+	:ARG0 (g / government-organization
+		:ARG0-of (g2 / govern-01
+			:ARG1 (c / country
+				:name (n / name
+					:op1 "South"
+					:op2 "Africa"))))
+	:ARG1 (p / probable
+		:domain (s2 / stop-01
+			:ARG0 g
+			:ARG1 (s3 / ship-01
+				:ARG1 (a / arm)
+				:ARG0-of (h / head-02
+					:ARG1 (c2 / country
+						:name (n2 / name
+							:op1 "Zimbabwe"))))
+			:polarity -))
+	:time (d2 / date-entity
+		:year 2008
+		:month 4
+		:day 4))
+
+# ::id PROXY_APW_ENG_20030125_0190.2 ::date 2013-06-21T09:33:06 ::snt-type country ::annotator UCO-AMR-05 ::preferred
+# ::snt Thailand -LRB- TH -RRB- ; Japan -LRB- JP -RRB- ; Malaysia -LRB- MY -RRB- ; Philippines -LRB- PH -RRB- ; Korea , Republic of -LRB- KR -RRB- ; India -LRB- IN -RRB- 
+(a / and
+	:op1 (c / country
+		:name (n / name
+			:op1 "Thailand"))
+	:op2 (c2 / country
+		:name (n2 / name
+			:op1 "Japan"))
+	:op3 (c3 / country
+		:name (n5 / name
+			:op1 "Malaysia"))
+	:op4 (c4 / country
+		:name (n7 / name
+			:op1 "Philippines"))
+	:op5 (c7 / country
+		:name (n14 / name
+			:op1 "Republic"
+			:op2 "of"
+			:op3 "Korea"))
+	:op6 (c6 / country
+		:name (n12 / name
+			:op1 "India")))
+
+# ::id PROXY_AFP_ENG_20080813_1032.1 ::date 2013-07-06T01:04:28 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2008-08-12 
+(d / date-entity
+	:year 2008
+	:month 8
+	:day 12)
+
+# ::id PROXY_APW_ENG_20030125_0190.1 ::date 2013-06-21T09:28:07 ::snt-type date ::annotator UCO-AMR-05 ::preferred
+# ::snt 2003-01-25 
+(d / date-entity
+	:day 25
+	:month 1
+	:year 2003)
+
+# ::id PROXY_APW_ENG_20080319_0386.8 ::date 2013-07-16T18:46:03 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The court official cited Vietnamese policy for speaking under condition of anonymity . 
+(c2 / cite-01
+	:ARG0 (p2 / person
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c3 / court)
+			:ARG2 (o / official)))
+	:ARG1 (p / policy
+		:mod (c / country
+			:name (n / name
+				:op1 "Vietnam"))
+		:ARG0-of (c5 / cause-01
+			:ARG1-of (s / speak-01
+				:manner (u / under
+					:op1 (c4 / condition-01
+						:ARG2 (a / anonymity)))))))
+
+# ::id PROXY_AFP_ENG_20030125_0226.4 ::date 2013-06-23T16:48:21 ::snt-type summary ::annotator UCO-AMR-05 ::preferred
+# ::snt Islamic activists condemn the arrests of Kashmiri separatist leaders in the Indian zone of the disputed Himalayan region . 
+(c2 / condemn-01
+	:ARG0 (p / person
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (r / religious-group
+				:name (n4 / name
+					:op1 "Islam"))
+			:ARG2 (a / activist)))
+	:ARG1 (a2 / arrest-01
+		:ARG1 (p4 / person
+			:ARG0-of (l2 / lead-02
+				:ARG1 (s / separatist))
+			:mod (w / world-region
+				:name (n / name
+					:op1 "Kashmir")))
+		:location (z / zone
+			:mod (c / country
+				:name (n2 / name
+					:op1 "India"))
+			:location (w2 / world-region
+				:name (n3 / name
+					:op1 "Himalayas")
+				:ARG2-of (d / dispute-01)))))
+
+# ::id PROXY_AFP_ENG_20071204_0145.25 ::date 2013-07-04T14:36:06 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt In his speech on 03 December 200 Sarkozy stated that the colonial system was profoundly unjust and contrary to the 3 founding words of the French Republic which are freedom , equality and brotherhood . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Sarkozy"))
+	:ARG1 (a / and
+		:op1 (j / just
+			:polarity -
+			:mod (p2 / profound))
+		:op2 (c2 / contrary-41
+			:ARG1 s3
+			:ARG2 (w / word
+				:quant 3
+				:ARG0-of (f / found-01
+					:ARG1 (c3 / country
+						:name (n2 / name
+							:op1 "French"
+							:op2 "Republic"))
+					:ARG2 (a2 / and
+						:op1 (f2 / free-41)
+						:op2 (e / equality)
+						:op3 (b / brotherhood)))))
+		:domain (s3 / system
+			:ARG0-of (c / colonize-01)))
+	:time (d / date-entity
+		:day 3
+		:month 12
+		:year 2000)
+	:time (s2 / speech
+		:poss p))
+
+# ::id PROXY_AFP_ENG_20070612_0538.14 ::date 2013-06-15T23:10:49 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The ministers ' statement called on countries including Russia and countries in the European Union to which the drugs are sent to seek to curb demand . 
+(c3 / call-05
+	:ARG0 (s / state-01
+		:ARG0 (p / person
+			:ARG0-of (h / have-org-role-91
+				:ARG2 (m / minister))))
+	:ARG1 (c6 / country
+		:ARG2-of (i / include-91
+			:ARG1 (a / and
+				:op1 (c / country
+					:name (n / name
+						:op1 "Russia"))
+				:op2 (c5 / country
+					:location (o / organization
+						:name (n2 / name
+							:op1 "European"
+							:op2 "Union")))))
+		:ARG2-of (s2 / send-01
+			:ARG1 (d / drug)))
+	:ARG2 (s3 / seek-01
+		:ARG0 c6
+		:ARG1 (c4 / curb-01
+			:ARG0 c6
+			:ARG1 (d2 / demand-01
+				:ARG1 d))))
+
+# ::id PROXY_AFP_ENG_20081211_0600.13 ::date 2013-07-10T06:35:49 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Some French media reports have stated that the motive for the attacks was the Chinese government 's anger over Sarkozy 's meeting with the Dalai Lama . 
+(s / state-01
+	:ARG0 (t / thing
+		:ARG1-of (r / report-01
+			:ARG0 (m / media
+				:mod (c3 / country
+					:name (n4 / name
+						:op1 "France")))
+			:mod (s2 / some)))
+	:ARG1 (m3 / motivate-02
+		:ARG0 (a / anger-01
+			:ARG0 (m2 / meet-03
+				:ARG0 (p / person
+					:name (n / name
+						:op1 "Sarkozy"))
+				:ARG1 (p2 / person
+					:name (n2 / name
+						:op1 "Dalai"
+						:op2 "Lama")))
+			:ARG1 (g3 / government-organization
+				:ARG0-of (g / govern-01
+					:ARG1 (c / country
+						:name (n3 / name
+							:op1 "China")))))
+		:ARG1 (a2 / attack-01)))
+
+# ::id PROXY_AFP_ENG_20071007_0248.7 ::date 2013-06-18T14:50:50 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The finds were made separately near the border with Iran which is a main smuggling route for drugs from Afghanistan . 
+(f2 / find-01
+	:manner (s / separate-01)
+	:location (n / near
+		:op1 (b2 / border-01
+			:ARG1 (c / country
+				:name (n2 / name
+					:op1 "Iran")
+				:mod (r / route-01
+					:path-of (s3 / smuggle-01
+						:ARG1 (d2 / drug)
+						:ARG2 (c2 / country
+							:name (n6 / name
+								:op1 "Afghanistan")))
+					:mod (m2 / main))))))
+
+# ::id PROXY_AFP_ENG_20071008_0203.19 ::date 2013-06-19T16:10:42 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The seizure was one of the largest to date . 
+(s / seize-01
+	:ARG1-of (i / include-91
+		:ARG2 (s2 / seize-01
+			:mod (l / large
+				:degree (m / most))
+			:time (t / to-date))))
+
+# ::id PROXY_APW_ENG_20080514_0575.9 ::date 2013-07-18T05:26:41 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The attacks occurred after a dispute between the Governments of Russia and Estonia over the relocation of a Soviet war memorial . 
+(a / attack-01
+	:time (a2 / after
+		:op1 (d / dispute-01
+			:ARG0 (g / government-organization
+				:ARG0-of (g2 / govern-01
+					:ARG1 (c4 / country
+						:name (n4 / name
+							:op1 "Russia"))))
+			:ARG1 (g3 / government-organization
+				:ARG0-of (g4 / govern-01
+					:ARG1 (c5 / country
+						:name (n5 / name
+							:op1 "Estonia"))))
+			:ARG2 (r / relocate-01
+				:ARG1 (m / memorial
+					:mod (w / war)
+					:mod (c / country
+						:name (n / name
+							:op1 "Soviet"
+							:op2 "Union")))))))
+
+# ::id PROXY_APW_ENG_20080304_0802.5 ::date 2013-07-11T07:10:14 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
+# ::snt Santos stated the FARC movement was apparently negotiating for radioactive material . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Santos"))
+	:ARG1 (a2 / appear-02
+		:ARG1 (n2 / negotiate-01
+			:ARG0 (m / movement
+				:name (n3 / name
+					:op1 "FARC"))
+			:ARG2 (m2 / material
+				:mod (r / radioactive)))))
+
+# ::id PROXY_AFP_ENG_20071204_0145.21 ::date 2013-07-03T17:20:42 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt France populated Algeria with 10s of 1000s of settlers . 
+(p / populate-01
+	:ARG0 (c / country
+		:name (n / name
+			:op1 "France"))
+	:ARG1 (c2 / country
+		:name (n2 / name
+			:op1 "Algeria"))
+	:ARG2 (p2 / person
+		:ARG1-of (s / settle-03)
+		:quant (m / multiple
+			:op1 10
+			:op2 1000)))
+
+# ::id PROXY_AFP_ENG_20020210_0074.24 ::date 2013-05-20T16:09:33 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Cultivation of raw opium provided the only source of income for much of the rural population . 
+(p / provide-01
+	:ARG0 (c / cultivate-01
+		:ARG1 (o / opium
+			:mod (r / raw)))
+	:ARG1 (s / source
+		:source-of (i / income)
+		:frequency (o2 / only))
+	:ARG2 (m / much
+		:part-of (p2 / population
+			:location (r2 / rural))))
+
+# ::id PROXY_AFP_ENG_20020106_0520.9 ::date 2013-05-09T13:07:59 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The IAEA tour of the isotope production laboratory will unlikely give a full picture of North Korea 's suspected nuclear weapons ambitions . 
+(l / likely
+	:polarity -
+	:domain (g / give-01
+		:ARG0 (t / tour-01
+			:ARG0 (o / organization
+				:name (n / name
+					:op1 "IAEA"))
+			:ARG1 (l2 / laboratory
+				:ARG0-of (p / produce-01
+					:ARG1 (i / isotope))))
+		:ARG1 (p2 / picture
+			:mod (f / full)
+			:consist-of (a / ambition
+				:mod (w / weapon
+					:mod (n2 / nucleus))
+				:ARG1-of (s / suspect-01)
+				:poss (c / country
+					:name (n3 / name
+						:op1 "North"
+						:op2 "Korea"))))))
+
+# ::id PROXY_AFP_ENG_20021226_0152.11 ::date 2013-05-28T10:09:30 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The Yongbyon plant produces 5 megawatts . 
+(p / produce-01
+	:ARG0 (p2 / plant
+		:location (f / facility
+			:name (n / name
+				:op1 "Yongbyon")))
+	:ARG1 (p3 / power-quantity
+		:quant 5
+		:unit (m2 / megawatt)))
+
+# ::id PROXY_AFP_ENG_20070207_0243.7 ::date 2013-06-01T23:57:44 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt A Hanoi People 's Court official stated that the 3 defendants to be executed included 1 woman and were found guilty of trafficking and selling approximately 18 kilograms -LRB- 48 pounds -RRB- of heroin from provinces near the Lao border . 
+(s / state-01
+	:ARG0 (p3 / person
+		:ARG0-of (h2 / have-org-role-91
+			:ARG1 (g2 / government-organization
+				:name (n / name
+					:op1 "People's"
+					:op2 "Court")
+				:mod (c / city
+					:name (n2 / name
+						:op1 "Hanoi")))
+			:ARG2 (o / official)))
+	:ARG1 (a / and
+		:op1 (i / include-01
+			:ARG1 (w / woman
+				:quant 1)
+			:ARG2 (d / defendant
+				:quant 3
+				:ARG1-of (e / execute-01)))
+		:op2 (f / find-02
+			:ARG1 (g / guilty-41
+				:ARG1 d
+				:ARG2 (a2 / and
+					:op1 (t / traffic-00
+						:ARG1 h)
+					:op2 (s2 / sell-01
+						:ARG1 (h / heroin
+							:source (p2 / province
+								:location (n3 / near
+									:op1 (l / location
+										:location-of (b / border-01
+											:ARG2 (c2 / country
+												:name (n4 / name
+													:op1 "Laos"))))))
+							:quant (a4 / approximately
+								:op1 (m / mass-quantity
+									:quant 18
+									:unit (k / kilogram))))))))))
+
+# ::id PROXY_APW_ENG_20020605_0987.10 ::date 2013-06-19T17:21:02 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The European Space Agency 's endorsement followed Ukraine 's formal announcement to bid to join NATO on May 29 , 2002 . 
+(f / follow-01
+	:ARG1 (e / endorse-01
+		:ARG0 (o / organization
+			:name (n / name
+				:op1 "European"
+				:op2 "Space"
+				:op3 "Agency")))
+	:ARG2 (a / announce-01
+		:ARG0 (c / country
+			:name (n2 / name
+				:op1 "Ukraine"))
+		:ARG1 (b / bid-01
+			:ARG0 c
+			:ARG1 (j / join-01
+				:ARG1 (m2 / military
+					:name (n4 / name
+						:op1 "NATO"))))
+		:manner (f2 / formal)
+		:time (d / date-entity
+			:day 29
+			:month 5
+			:year 2002)))
+
+# ::id PROXY_AFP_ENG_20070315_0736.8 ::date 2013-06-06T06:25:48 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt A separate Department of field support will consolidate the support functions of UN field personnel , procurement and financial management . 
+(c / consolidate-01
+	:ARG0 (o2 / organization
+		:name (n / name
+			:op1 "Department"
+			:op2 "of"
+			:op3 "Field"
+			:op4 "Support")
+		:mod (s / separate))
+	:ARG1 (a / and
+		:op1 (f / function
+			:mod (s2 / support-01)
+			:poss (p3 / person
+				:ARG0-of (h / have-org-role-91
+					:ARG1 (o / organization
+						:name (n2 / name
+							:op1 "United"
+							:op2 "Nations"))
+					:ARG2 (p2 / personnel
+						:mod (f2 / field)))))
+		:op2 (p / procure-01)
+		:op3 (m / manage-01
+			:ARG1 (f3 / finance))))
+
+# ::id PROXY_AFP_ENG_20030120_0196.1 ::date 2013-06-15T18:24:50 ::snt-type date ::annotator UCO-AMR-05 ::preferred
+# ::snt 2003-01-20 
+(d2 / date-entity
+	:day 20
+	:month 1
+	:year 2003)
+
+# ::id PROXY_AFP_ENG_20070521_0178.10 ::date 2013-06-12T08:35:25 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Aarelaid was responding to comments made by Jacqueline McGlade . 
+(r / respond-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Aarelaid"))
+	:ARG1 (t / thing
+		:ARG1-of (c / comment-02
+			:ARG0 (p2 / person
+				:name (n2 / name
+					:op1 "Jacqueline"
+					:op2 "McGlade")))))
+
+# ::id PROXY_AFP_ENG_20080212_0514.3 ::date 2013-07-05T14:23:54 ::snt-type topic ::annotator SDL-AMR-09 ::preferred
+# ::snt terrorism ; money ; politics 
+(a / and
+	:op1 (t / terrorism)
+	:op2 (m / money)
+	:op3 (p / politics))
+
+# ::id PROXY_AFP_ENG_20071001_0260.5 ::date 2013-06-22T09:40:31 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt 20071001 an anonymous senior Indian Home Ministry official engaged in anti-terrorism operations stated to AFP -- 
+(s / state-01
+	:ARG0 (p2 / person
+		:ARG0-of (h2 / have-org-role-91
+			:ARG1 (g2 / government-organization
+				:name (n4 / name
+					:op1 "Home"
+					:op2 "Ministry")
+				:mod (c3 / country
+					:name (n5 / name
+						:op1 "India")))
+			:ARG2 (o / official
+				:mod (s2 / senior)))
+		:mod (a / anonymous)
+		:ARG1-of (e / engage-01
+			:ARG2 (o2 / operation
+				:ARG0-of (c / counter-01
+					:ARG1 (t / terrorism)))))
+	:ARG2 (p / publication
+		:name (n6 / name
+			:op1 "AFP"))
+	:time (d / date-entity
+		:year 2007
+		:month 10
+		:day 1))
+
+# ::id PROXY_AFP_ENG_20070818_0297.48 ::date 2013-06-17T15:18:38 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt In July 2003 Raghad and family left Syria . 
+(l / leave-01
+	:ARG0 (a / and
+		:op1 (p / person
+			:name (n2 / name
+				:op1 "Raghad"))
+		:op2 (f / family))
+	:ARG1 (c2 / country
+		:name (n / name
+			:op1 "Syria"))
+	:time (d / date-entity
+		:month 7
+		:year 2003))
+
+# ::id PROXY_AFP_ENG_20070305_0181.5 ::date 2013-06-04T06:53:10 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Australia 's Foreign Minister Alexander Downer warned 070305 in opening remarks at a counter-terrorism conference Jakarta that terrorists continue to find new recruits and launch attacks despite the foiling of some plots and the jailing of militants . 
+(w / warn-01
+	:ARG0 (p4 / person
+		:name (n / name
+			:op1 "Alexander"
+			:op2 "Downer")
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c / country
+				:name (n2 / name
+					:op1 "Australia"))
+			:ARG2 (m / minister
+				:mod (f / foreign))))
+	:ARG1 (c5 / continue-01
+		:ARG0 (t / terrorist)
+		:ARG1 (a3 / and
+			:op1 (f2 / find-01
+				:ARG0 t
+				:ARG1 (p / person
+					:ARG1-of (r2 / recruit-01)
+					:mod (n4 / new)))
+			:op2 (l / launch-01
+				:ARG0 t
+				:ARG1 (a2 / attack-01)))
+		:concession (a4 / and
+			:op1 (f3 / foil-01
+				:ARG1 (p2 / plot
+					:quant (s / some)))
+			:op2 (j / jail-01
+				:ARG1 (m3 / militant))))
+	:time (d / date-entity
+		:year 2007
+		:month 3
+		:day 5)
+	:subevent-of (r / remark-01
+		:ARG0 p4
+		:time (c2 / conference
+			:location (c4 / city
+				:name (n3 / name
+					:op1 "Jakarta"))
+			:ARG0-of (c6 / counter-01
+				:ARG1 (t2 / terrorism)))
+		:ARG0-of (o / open-02)))
+
+# ::id PROXY_AFP_ENG_20020621_0524.12 ::date 2013-05-23T14:16:12 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Shingarev said Russia is currently in negotiations with Iran . 
+(s / say-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Shingarev"))
+	:ARG1 (n3 / negotiate-01
+		:ARG0 (c / country
+			:name (n2 / name
+				:op1 "Russia"))
+		:ARG1 (c2 / country
+			:name (n4 / name
+				:op1 "Iran"))
+		:time (c3 / current)))
+
+# ::id PROXY_AFP_ENG_20030403_0463.6 ::date 2013-08-20T16:38:07 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt On 03 April 2003 Afghanistan 's Interior Minister Ali Ahmad Jalali stated that Taliban and remaining al-Qaeda militants are not capable of destabilizing the Afghan government despite their increased attacks on government and foreign targets . 
+(s / state-01
+	:ARG0 (p3 / person
+		:name (n6 / name
+			:op1 "Ali"
+			:op2 "Ahmad"
+			:op3 "Jalali")
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c / country
+				:name (n / name
+					:op1 "Afghanistan"))
+			:ARG2 (m / minister
+				:mod (i / interior))))
+	:ARG1 (c5 / capable-41
+		:polarity -
+		:ARG1 (a / and
+			:op1 (p4 / person
+				:ARG0-of (h2 / have-org-role-91
+					:ARG1 (c2 / criminal-organization
+						:name (n3 / name
+							:op1 "Taliban"))
+					:ARG2 (m2 / militant)))
+			:op2 (p5 / person
+				:ARG0-of (h3 / have-org-role-91
+					:ARG1 (c3 / criminal-organization
+						:name (n4 / name
+							:op1 "al-Qaeda"))
+					:ARG2 (m3 / militant)))
+			:ARG1-of (r / remain-01))
+		:ARG2 (d2 / destabilize-01
+			:ARG0 a
+			:ARG1 (g / government-organization
+				:ARG0-of (g2 / govern-01
+					:ARG1 c)))
+		:concession (i2 / increase-01
+			:ARG1 (a2 / attack-01
+				:ARG0 a
+				:ARG1 (a3 / and
+					:op1 (t / target
+						:mod (g3 / government-organization
+							:ARG0-of (g4 / govern-01)))
+					:op2 (t2 / target
+						:mod (f / foreign))))))
+	:time (d / date-entity
+		:day 3
+		:month 4
+		:year 2003))
+
+# ::id PROXY_APW_ENG_20080218_0615.2 ::date 2013-07-16T04:06:03 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt United Kingdom -LRB- GB -RRB- ; Iraq -LRB- IQ -RRB- 
+(a / and
+	:op1 (c / country
+		:name (n / name
+			:op1 "United"
+			:op2 "Kingdom"))
+	:op2 (c2 / country
+		:name (n3 / name
+			:op1 "Iraq")))
+
+# ::id PROXY_APW_ENG_20021228_0236.5 ::date 2013-08-05T00:09:53 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt 20021228 Indian Deputy Prime Minister Lal Krishna Advani stated at a gathering of paramilitary police officers in New Delhi -- 
+(s / state-01
+	:ARG0 (p / person
+		:name (n6 / name
+			:op1 "Lal"
+			:op2 "Krishna"
+			:op3 "Advani")
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c4 / country
+				:name (n5 / name
+					:op1 "India"))
+			:ARG2 (m / minister
+				:mod (d2 / deputy)
+				:mod (p5 / prime))))
+	:location (g / gather-01
+		:ARG1 (p2 / person
+			:ARG0-of (h2 / have-org-role-91
+				:ARG1 (p3 / police
+					:mod (p4 / paramilitary))
+				:ARG2 (o / officer)))
+		:location (c3 / city
+			:name (n4 / name
+				:op1 "New"
+				:op2 "Delhi")))
+	:time (d / date-entity
+		:year 2002
+		:month 12
+		:day 28))
+
+# ::id PROXY_AFP_ENG_20080813_1032.38 ::date 2013-07-07T02:31:53 ::snt-type body subordinate ::annotator SDL-AMR-09 ::preferred
+# ::snt The cyber attack on Georgia looks more like grassroots hacktivists that jumped on the bandwagon . 
+(l / look-02
+	:ARG0 (a / attack-01
+		:ARG1 (c2 / country
+			:name (n / name
+				:op1 "Georgia"))
+		:mod (c / cyber))
+	:ARG1 (h / hacktivist
+		:mod (g2 / grassroot)
+		:ARG0-of (j / jump-08
+			:ARG1 (b2 / bandwagon)))
+	:degree (m / more))
+
+# ::id PROXY_AFP_ENG_20071127_0501.2 ::date 2013-06-26T00:16:05 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt France -LRB- FR -RRB- ; China -LRB- CN -RRB- 
+(a / and
+	:op1 (c / country
+		:name (n / name
+			:op1 "France"))
+	:op2 (c2 / country
+		:name (n2 / name
+			:op1 "China")))
+
+# ::id PROXY_AFP_ENG_20030225_0785.5 ::date 2013-07-12T10:30:32 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The International Narcotics Control Board reported on February 26 , 2003 that illicit manufacture of methamphetamines has risen significantly in Southeast Asia . 
+(r / report-01
+	:ARG0 (o / organization
+		:name (n / name
+			:op1 "International"
+			:op2 "Narcotics"
+			:op3 "Control"
+			:op4 "Board"))
+	:ARG1 (r2 / rise-01
+		:ARG1 (m / manufacture-01
+			:ARG1 (m2 / methamphetamine)
+			:manner (i / illicit))
+		:degree (s / significant)
+		:location (w / world-region
+			:name (n2 / name
+				:op1 "Southeast"
+				:op2 "Asia")))
+	:time (d / date-entity
+		:day 26
+		:month 2
+		:year 2003))
+
+# ::id PROXY_AFP_ENG_20081107_0372.10 ::date 2013-07-10T14:21:22 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The EU said they regret Russia 's move . 
+(s / say-01
+	:ARG0 (o / organization
+		:name (n / name
+			:op1 "EU"))
+	:ARG1 (r / regret-01
+		:ARG0 o
+		:ARG1 (m / move-02
+			:ARG0 (c / country
+				:name (n2 / name
+					:op1 "Russia")))))
+
+# ::id PROXY_AFP_ENG_20070627_0669.21 ::date 2013-06-16T02:48:44 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Police cordoned off the drug traffickers ' area in the early morning of 27 June 2007 . 
+(c / cordon-01
+	:ARG0 (p / police)
+	:ARG1 (a / area
+		:location-of (p2 / person
+			:ARG0-of (t / traffic-00
+				:ARG1 (d / drug))))
+	:time (e / early
+		:op1 (d2 / date-entity
+			:year 2007
+			:month 6
+			:day 27
+			:dayperiod (m / morning))))
+
+# ::id PROXY_AFP_ENG_20071201_0434.2 ::date 2013-06-25T23:02:05 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Vietnam -LRB- VN -RRB- 
+(c / country
+	:name (n / name
+		:op1 "Vietnam"))
+
+# ::id PROXY_AFP_ENG_20080304_0398.14 ::date 2013-07-02T05:48:21 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Officials involved in Iran 's nuclear and missile programs are banned from travel . 
+(b / ban-01
+	:ARG1 (t / travel-01)
+	:ARG2 (p3 / person
+		:ARG0-of (h / have-org-role-91
+			:ARG2 (o / official))
+		:ARG1-of (i / involve-01
+			:ARG2 (a / and
+				:op1 (p / program
+					:mod (n / nucleus))
+				:op2 (p2 / program
+					:mod (m / missile))
+				:poss (c / country
+					:name (n2 / name
+						:op1 "Iran"))))))
+
+# ::id PROXY_AFP_ENG_20071107_0030.2 ::date 2013-06-26T14:26:28 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Canada -LRB- CA -RRB- 
+(c / country
+	:name (n / name
+		:op1 "Canada"))
+
+# ::id PROXY_AFP_ENG_20070125_0080.2 ::date 2013-06-01T15:38:39 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Philippines -LRB- PH -RRB- 
+(c / country
+	:name (n / name
+		:op1 "Philippines"))
+
+# ::id PROXY_AFP_ENG_20070125_0080.9 ::date 2013-06-02T06:24:25 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Police also stated that Tsai Wen-Huang would buy Ketamine locally and export the Ketamine to Taiwan at a marked up price . 
+(s / state-01
+	:ARG0 (p / police)
+	:ARG1 (a / and
+		:op1 (b / buy-01
+			:ARG0 (p2 / person
+				:name (n / name
+					:op1 "Tsai"
+					:op2 "Wen-Huang"))
+			:ARG1 (k / ketamine)
+			:mod (l / local))
+		:op2 (e / export-01
+			:ARG0 p2
+			:ARG1 k
+			:ARG2 (c / country
+				:name (n3 / name
+					:op1 "Taiwan"))
+			:manner (m / mark-04
+				:ARG1 k)))
+	:mod (a2 / also))
+
+# ::id PROXY_AFP_ENG_20080521_0475.16 ::date 2013-07-03T15:08:41 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Japan 's US-imposed post-World War II constitution states that Japan will never again wage war . 
+(s / state-01
+	:ARG0 (c4 / constitution
+		:ARG1-of (i / impose-01
+			:ARG0 (c2 / country
+				:name (n2 / name
+					:op1 "US"))
+			:time (p / post
+				:op1 (w / war
+					:name (n3 / name
+						:op1 "World"
+						:op2 "War"
+						:op3 "II"))))
+		:poss (c3 / country
+			:name (n4 / name
+				:op1 "Japan")))
+	:ARG1 (w2 / wage-01
+		:polarity -
+		:ARG0 c3
+		:ARG1 (w3 / war)
+		:time (e / ever)
+		:mod (a / again)))
+
+# ::id PROXY_AFP_ENG_20040424_0639.13 ::date 2013-05-21T18:19:00 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Braun 's remarks were called unpatriotic by German Chancellor Gerhard Schroeder and Parliament President Wolfgang Thierse . 
+(c / call-01
+	:ARG0 (a / and
+		:op1 (p4 / person
+			:name (n2 / name
+				:op1 "Gerhard"
+				:op2 "Schroeder")
+			:ARG0-of (h / have-org-role-91
+				:ARG1 (c3 / country
+					:name (n4 / name
+						:op1 "Germany"))
+				:ARG2 (c2 / chancellor)))
+		:op2 (p5 / person
+			:name (n3 / name
+				:op1 "Wolfgang"
+				:op2 "Thierse")
+			:ARG0-of (h2 / have-org-role-91
+				:ARG1 (g / government-organization
+					:name (n5 / name
+						:op1 "Parliament"))
+				:ARG2 (p3 / president))))
+	:ARG1 (t / thing
+		:ARG1-of (r / remark-01
+			:ARG0 (p / person
+				:name (n / name
+					:op1 "Braun"))))
+	:ARG2 (p2 / patriotic
+		:polarity -))
+
+# ::id PROXY_AFP_ENG_20020111_0093.4 ::date 2013-05-08T13:52:31 ::snt-type summary ::annotator LDC-AMR-14 ::preferred
+# ::snt South Koreans rallied on January 11 , 2002 in support of their right to eat dog meat . 
+(r / rally-01
+	:ARG1 (p / person
+		:source (c / country
+			:name (n / name
+				:op1 "South"
+				:op2 "Korea")))
+	:ARG2 (s / support-01
+		:ARG0 p
+		:ARG1 (e2 / entitle-01
+			:ARG1 (e / eat-01
+				:ARG0 p
+				:ARG1 (m / meat
+					:consist-of (d2 / dog)))
+			:ARG2 p))
+	:time (d / date-entity
+		:year 2002
+		:month 1
+		:day 11))
+
+# ::id PROXY_AFP_ENG_20080813_1032.42 ::date 2013-07-07T03:44:23 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Hackers plant the malicious software without the machines ' owners ' knowledge . 
+(p / plant-01
+	:ARG0 (p2 / person
+		:ARG0-of (h / hack-04))
+	:ARG1 (s / software
+		:mod (m / malicious))
+	:manner (k / know-01
+		:polarity -
+		:ARG0 (p3 / person
+			:ARG0-of (o / own-01
+				:ARG1 (m2 / machine)))))
+
+# ::id PROXY_AFP_ENG_20040216_0567.6 ::date 2013-05-02T07:56:54 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The report is created by a working group including Research Commissioner Philippe Busquin and enterprise Commissioner Erkki Liikanen . 
+(c / create-01
+	:ARG0 (g / group
+		:ARG0-of (w / work-01)
+		:ARG2-of (i / include-01
+			:ARG1 (a / and
+				:op1 (p / person
+					:name (n / name
+						:op1 "Philippe"
+						:op2 "Busquin")
+					:ARG0-of (h / have-org-role-91
+						:ARG2 (c2 / commissioner
+							:mod (r2 / research-01))))
+				:op2 (p2 / person
+					:name (n2 / name
+						:op1 "Erkki"
+						:op2 "Liikanen")
+					:ARG0-of (h2 / have-org-role-91
+						:ARG2 (c3 / commissioner
+							:mod (e / enterprise)))))))
+	:ARG1 (r / report))
+
+# ::id PROXY_APW_ENG_20030406_0627.9 ::date 2013-07-03T09:46:36 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The embassy attacks were successfully stopped in the final stages by U.S. investigators and allies in Southeast Asia but the explosives were not recovered . 
+(s / stop-01
+	:ARG0 (a / and
+		:op1 (p / person
+			:ARG0-of (h2 / have-org-role-91
+				:ARG1 (c / country
+					:name (n / name
+						:op1 "U.S."))
+				:ARG2 (p3 / person
+					:ARG0-of (i / investigate-01))))
+		:op2 (p2 / person
+			:ARG1-of (a2 / ally-01
+				:ARG2 c)
+			:location (w / world-region
+				:name (n2 / name
+					:op1 "Southeast"
+					:op2 "Asia"))))
+	:ARG1 (a3 / attack-01
+		:ARG1 (e / embassy)
+		:time (s3 / stage
+			:mod (f / final)))
+	:manner (s2 / success)
+	:ARG1-of (h / have-concession-91
+		:ARG2 (r / recover-02
+			:polarity -
+			:ARG1 (e2 / explosive))))
+
+# ::id PROXY_AFP_ENG_20071128_0251.1 ::date 2013-06-22T02:34:17 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2007-11-28 
+(d / date-entity
+	:year 2007
+	:month 11
+	:day 28)
+
+# ::id PROXY_APW_ENG_20030428_0186.18 ::date 2013-08-13T09:25:38 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Defense deals take years to conclude in India because every agreement must be approved by several ministries and can be stalled by opposition parties . 
+(t / take-10
+	:ARG0 (c2 / conclude-02
+		:ARG1 (d / deal
+			:mod (d2 / defense))
+		:location (c / country
+			:name (n / name
+				:op1 "India"))
+		:ARG1-of (c3 / cause-01
+			:ARG0 (a3 / and
+				:op1 (o / obligate-01
+					:ARG2 (a / approve-01
+						:ARG0 (m2 / ministry
+							:quant (s / several))
+						:ARG1 (a2 / agreement
+							:mod (e / every))))
+				:op2 (p / possible
+					:domain (s2 / stall-01
+						:ARG0 (p2 / party
+							:ARG0-of (o2 / oppose-01))
+						:ARG1 a2)))))
+	:ARG1 (m / multiple
+		:unit (y / year)))
+
+# ::id PROXY_AFP_ENG_20030316_0321.21 ::date 2013-07-14T14:13:08 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Pakistan denies the charge . 
+(d / deny-01
+	:ARG0 (c / country
+		:name (n / name
+			:op1 "Pakistan"))
+	:ARG1 (c2 / charge-06))
+
+# ::id PROXY_AFP_ENG_20080303_0135.2 ::date 2013-06-29T21:49:12 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Iran -LRB- IR -RRB- 
+(c / country
+	:name (n / name
+		:op1 "Iran"))
+
+# ::id PROXY_AFP_ENG_20040216_0567.7 ::date 2013-05-02T08:12:57 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt It recommends that up to two billion euros be spent per year on a vast pan-European research program . 
+(r / recommend-01
+	:ARG0 (i / it)
+	:ARG1 (s / spend-01
+		:ARG1 (p / program
+			:topic (r2 / research-01)
+			:mod (v / vast)
+			:mod (p3 / pan
+				:op1 (c / continent
+					:name (n / name
+						:op1 "Europe"))))
+		:ARG3 (r3 / rate-entity-91
+			:ARG1 (u / up-to
+				:op1 (m / monetary-quantity
+					:quant 2000000000
+					:unit (e / euro)))
+			:ARG2 (t / temporal-quantity
+				:quant 1
+				:unit (y / year)))))
+
+# ::id PROXY_AFP_ENG_20071206_0630.2 ::date 2013-06-30T06:18:36 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Myanmar -LRB- MM -RRB- 
+(c / country
+	:name (n / name
+		:op1 "Myanmar"))
+
+# ::id PROXY_AFP_ENG_20021226_0152.12 ::date 2013-05-28T10:10:01 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Plants in France produce 1300 megawatts . 
+(p / produce-01
+	:ARG0 (p2 / plant
+		:location (c / country
+			:name (n / name
+				:op1 "France")))
+	:ARG1 (p3 / power-quantity
+		:quant 1300
+		:unit (m2 / megawatt)))
+
+# ::id PROXY_APW_ENG_20031021_0426.19 ::date 2013-08-20T22:34:38 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The riots started after pyramid schemes into which most Albanians had invested their savings had collapsed . 
+(s / start-01
+	:ARG1 (r / riot-01)
+	:time (a / after
+		:op1 (c2 / collapse-01
+			:ARG1 (s2 / scheme-01
+				:mod (p2 / pyramid)
+				:ARG2-of (i / invest-01
+					:ARG0 (p / person
+						:quant (m / more
+							:degree (m2 / most))
+						:mod (c / country
+							:name (n / name
+								:op1 "Albania")))
+					:ARG1 (m3 / monetary-quantity
+						:ARG1-of (s3 / save-03
+							:ARG0 p)))))))
+
+# ::id PROXY_AFP_ENG_20070430_0038.6 ::date 2013-06-12T14:21:15 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt A spokesman for the British deployment to Afghanistan stated to AFP that approximately 2000 NATO-led and Afghan troops initiated Operation silicon on 30 April 2007 to clear the Taliban from the lower Sangin valley in Afghanistan 's premier opium producing Helmand province . 
+(s / state-01
+	:ARG0 (p5 / person
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (p6 / person
+				:ARG1-of (d / deploy-01
+					:ARG0 (c / country
+						:name (n / name
+							:op1 "Britain"))
+					:location (c2 / country
+						:name (n2 / name
+							:op1 "Afghanistan"))))
+			:ARG2 (s2 / spokesman)))
+	:ARG1 (i / initiate-01
+		:ARG0 (a / and
+			:op1 (t / troop
+				:ARG1-of (l / lead-02
+					:ARG0 (m / military
+						:name (n4 / name
+							:op1 "NATO"))))
+			:op2 (t2 / troop
+				:mod c2)
+			:quant (a2 / approximately
+				:op1 2000))
+		:ARG1 (o3 / operation
+			:name (n6 / name
+				:op1 "Operation"
+				:op2 "Silicon"))
+		:time (d2 / date-entity
+			:year 2007
+			:month 4
+			:day 30)
+		:purpose (c4 / clear-01
+			:ARG0 a
+			:ARG1 (v / valley
+				:name (n8 / name
+					:op1 "Sangin"
+					:op2 "Valley")
+				:location (p / province
+					:name (n9 / name
+						:op1 "Helmand")
+					:poss c2
+					:ARG0-of (p2 / produce-01
+						:ARG1 (o4 / opium))
+					:mod (p3 / premier))
+				:mod (l2 / low
+					:degree (m2 / more)))
+			:ARG2 (c5 / criminal-organization
+				:name (n7 / name
+					:op1 "Taliban"))))
+	:ARG2 (p4 / publication
+		:name (n3 / name
+			:op1 "AFP")))
+
+# ::id PROXY_AFP_ENG_20080711_0200.8 ::date 2013-07-05T04:46:58 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The court in Adrar in southern Algeria sentenced 4 men to 5 years in prison and 3 others including 2 women to a 5-year suspended sentence . 
+(a / and
+	:op1 (s / sentence-01
+		:ARG0 (c / court
+			:location (c2 / city
+				:name (n / name
+					:op1 "Adrar")
+				:location (s3 / south
+					:part-of (c3 / country
+						:name (n2 / name
+							:op1 "Algeria")))))
+		:ARG1 (m / man
+			:quant 4)
+		:ARG2 (t / temporal-quantity
+			:quant 5
+			:unit (y / year)
+			:location (p / prison)))
+	:op2 (s2 / sentence-01
+		:ARG0 c
+		:ARG1 (p2 / person
+			:quant 3
+			:mod (o / other)
+			:ARG2-of (i / include-01
+				:ARG1 (w / woman
+					:quant 2)))
+		:ARG2 (t2 / temporal-quantity
+			:quant 5
+			:unit (y2 / year)
+			:ARG1-of (s4 / suspend-01))))
+
+# ::id PROXY_AFP_ENG_20070415_0167.2 ::date 2013-06-08T09:36:51 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Iran -LRB- IR -RRB- ; Israel -LRB- IS -RRB- ; Jordan -LRB- JO -RRB- 
+(a / and
+	:op1 (c / country
+		:name (n / name
+			:op1 "Iran"))
+	:op2 (c2 / country
+		:name (n2 / name
+			:op1 "Israel"))
+	:op3 (c3 / country
+		:name (n3 / name
+			:op1 "Jordan")))
+
+# ::id PROXY_AFP_ENG_20021230_0032.13 ::date 2013-06-05T12:25:42 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt In July 2002 the Pentagon announced -- 
+(a / announce-01
+	:ARG0 (g / government-organization
+		:name (n / name
+			:op1 "Pentagon"))
+	:time (d / date-entity
+		:month 7
+		:year 2002))
+
+# ::id PROXY_AFP_ENG_20080204_0525.2 ::date 2013-06-27T08:18:55 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt India -LRB- IN -RRB- ; Pakistan -LRB- PK -RRB- 
+(a / and
+	:op1 (c / country
+		:name (n / name
+			:op1 "India"))
+	:op2 (c2 / country
+		:name (n2 / name
+			:op1 "Pakistan")))
+
+# ::id PROXY_AFP_ENG_20020408_0307.3 ::date 2013-07-11T09:28:12 ::snt-type topic ::annotator LDC-AMR-14 ::preferred
+# ::snt proliferation ; politics 
+(a / and
+	:op1 (p / proliferate-01)
+	:op2 (p2 / politics))
+
+# ::id PROXY_AFP_ENG_20080114_0338.15 ::date 2013-06-28T07:50:34 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Sarkozy stated that France will aid any country in the acquisition of civilian nuclear power . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Sarkozy"))
+	:ARG1 (a / aid-01
+		:ARG0 (c / country
+			:name (n2 / name
+				:op1 "France"))
+		:ARG1 (a3 / acquire-01
+			:ARG1 (p2 / power
+				:mod (n3 / nucleus
+					:mod (c3 / civilian))))
+		:ARG2 (c2 / country
+			:mod (a2 / any))))
+
+# ::id PROXY_AFP_ENG_20021210_0370.2 ::date 2013-05-25T15:02:13 ::snt-type country ::annotator UCO-AMR-05 ::preferred
+# ::snt Europe ; Iraq -LRB- IQ -RRB- 
+(a / and
+	:op1 (c / continent
+		:name (n / name
+			:op1 "Europe"))
+	:op2 (c2 / country
+		:name (n2 / name
+			:op1 "Iraq")))
+
+# ::id PROXY_AFP_ENG_20040203_0804.31 ::date 2013-05-19T15:59:15 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The H5N1 flu strain has caused 13 deaths and reported outbreaks in 10 countries . 
+(c / cause-01
+	:ARG0 (s / strain
+		:name (n / name
+			:op1 "H5N1")
+		:mod (f / flu))
+	:ARG1 (a2 / and
+		:quant 13
+		:op1 (d / die-01)
+		:op2 (b / break-13
+			:ARG1-of (r2 / report-01)))
+	:location (c2 / country
+		:quant 10))
+
+# ::id PROXY_AFP_ENG_20030624_0449.22 ::date 2013-07-26T14:31:43 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt . 
+(a / amr-empty)
+
+# ::id PROXY_AFP_ENG_20070726_0219.13 ::date 2013-06-18T03:17:38 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Sortir du nucleaire stated that if Libya wishes to diversify Libyan power production than Libya should logically give priority to solar energy because Libya enjoys remarkable levels of sunshine all year long . 
+(s / state-01
+	:ARG0 (o / organization
+		:name (n / name
+			:op1 "Sortir"
+			:op2 "du"
+			:op3 "nucleaire"))
+	:ARG1 (h / have-condition-91
+		:ARG1 (r / recommend-01
+			:ARG1 (p4 / prioritize-01
+				:ARG0 c
+				:ARG1 (e / energy
+					:mod (s2 / sun))
+				:ARG1-of (c2 / cause-01
+					:ARG0 (e2 / enjoy-01
+						:ARG0 c
+						:ARG1 (s4 / sunshine
+							:mod (l / level
+								:mod (r2 / remarkable)))
+						:duration (y / year
+							:mod (a / all))))
+				:mod (l2 / logical)))
+		:ARG2 (w / wish-01
+			:ARG0 (c / country
+				:name (n2 / name
+					:op1 "Libya"))
+			:ARG1 (d / diversify-01
+				:ARG0 (p / produce-01
+					:ARG0 c
+					:ARG1 (p2 / power))))))
+
+# ::id PROXY_AFP_ENG_20050919_0252.5 ::date 2013-06-02T12:05:45 ::snt-type summary ::annotator SDL-AMR-09 ::preferred
+# ::snt Experts claim there are approximately 70 extremist groups in 70 Spanish cities comprising 11000 people . 
+(c / claim-01
+	:ARG0 (p2 / person
+		:ARG1-of (e3 / expert-41))
+	:ARG1 (b / be-located-at-91
+		:ARG1 (g / group
+			:mod (e2 / extremism)
+			:ARG1-of (c4 / comprise-01
+				:ARG2 (p / person
+					:quant 11000))
+			:quant (a2 / approximately
+				:op1 70))
+		:location (c2 / city
+			:quant 70
+			:mod (c3 / country
+				:name (n / name
+					:op1 "Spain")))))
+
+# ::id PROXY_AFP_ENG_20071128_0251.12 ::date 2013-06-22T10:15:16 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Russian President Vladimir Putin states that the decision is a response to U.S. plans to establish missile defense sites in eastern Europe and to NATO 's failure to ratify an amended version of the treaty . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Vladimir"
+			:op2 "Putin")
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c / country
+				:name (n2 / name
+					:op1 "Russia"))
+			:ARG2 (p2 / president)))
+	:ARG1 (r / respond-01
+		:ARG1 (a / and
+			:op1 (p3 / plan-01
+				:ARG0 (c3 / country
+					:name (n5 / name
+						:op1 "U.S."))
+				:ARG1 (e2 / establish-01
+					:ARG1 (s4 / site
+						:location-of (d3 / defend-01
+							:mod (m / missile)))
+					:location (w2 / world-region
+						:name (n6 / name
+							:op1 "Eastern"
+							:op2 "Europe"))))
+			:op2 (f / fail-01
+				:ARG1 (m2 / military
+					:name (n3 / name
+						:op1 "NATO"))
+				:ARG2 (r2 / ratify-01
+					:ARG0 m2
+					:ARG1 (v / version
+						:ARG1-of (a2 / amend-01)
+						:mod (t / treaty)))))
+		:ARG2 (d / decide-01)))
+
+# ::id PROXY_APW_ENG_20030125_0190.12 ::date 2013-06-21T11:27:37 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt A virus or worm attacked a bug in microsoft software . 
+(a / attack-01
+	:ARG0 (o / or
+		:op1 (v / virus)
+		:op2 (w / worm))
+	:ARG1 (b / bug)
+	:location (s / software
+		:mod (c / company
+			:name (n / name
+				:op1 "Microsoft"))))
+
+# ::id PROXY_AFP_ENG_20030522_0447.30 ::date 2013-09-10T20:36:30 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Egyptian security sources said that Ahmad and Salah were killed in the war on terror launched after 010911 . 
+(s / say-01
+	:ARG0 (s2 / source
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c / country
+				:name (n / name
+					:op1 "Egypt"))
+			:ARG3 (s3 / security)))
+	:ARG1 (k / kill-01
+		:ARG1 (a / and
+			:op1 (p / person
+				:name (n2 / name
+					:op1 "Ahmad"))
+			:op2 (p2 / person
+				:name (n3 / name
+					:op1 "Salah")))
+		:time (w / war-01
+			:ARG1 (t / terror)
+			:ARG1-of (l / launch-01
+				:time (a2 / after
+					:op1 (d / date-entity
+						:day 11
+						:month 9
+						:year 2001))))))
+
+# ::id PROXY_AFP_ENG_20030803_0475.19 ::date 2013-05-07T12:00:44 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Abdul Qadeer Khan has helped Iran for years and is a Pakistani nuclear scientist regarded by the United States as a purveyor of nuclear secrets . 
+(a / and
+	:op1 (h / help-01
+		:ARG0 (p3 / person
+			:name (n7 / name
+				:op1 "Abdul"
+				:op2 "Qadeer"
+				:op3 "Khan"))
+		:ARG1 (c / country
+			:name (n2 / name
+				:op1 "Iran"))
+		:duration (m / multiple
+			:op1 (t / temporal-quantity
+				:quant 1
+				:unit (y / year))))
+	:op2 (s / scientist
+		:mod (c2 / country
+			:name (n3 / name
+				:op1 "Pakistan"))
+		:mod (n4 / nucleus)
+		:ARG1-of (r / regard-01
+			:ARG0 (c3 / country
+				:name (n5 / name
+					:op1 "United"
+					:op2 "States"))
+			:ARG2 (p / person
+				:ARG0-of (p2 / purvey-00
+					:ARG1 (s3 / secret
+						:mod (n6 / nucleus)))))
+		:domain p3))
+
+# ::id PROXY_APW_ENG_20020611_1419.18 ::date 2013-07-01T13:04:53 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Embraer is the world 's 4th largest aircraft manufacturer and Brazil 's top exporter . 
+(a / and
+	:op1 (l / large
+		:degree (m2 / most
+			:ord (o / ordinal-entity
+				:value 4))
+		:compared-to (c5 / company
+			:ARG0-of (m3 / manufacture-01
+				:ARG1 (a2 / aircraft))
+			:location (w / world))
+		:domain (c / c))
+	:op2 (e / export-01
+		:ARG0 (c2 / company
+			:name (n2 / name
+				:op1 "Embraer"))
+		:degree (m / most)
+		:compared-to (c3 / company
+			:location (c4 / country
+				:name (n3 / name
+					:op1 "Brazil")))))
+
+# ::id PROXY_APW_ENG_20020708_0642.8 ::date 2013-07-02T16:52:27 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Amgen sells EPO in the US as epogen for over 36 dollars per dose . 
+(s / sell-01
+	:ARG0 (c2 / company
+		:name (n4 / name
+			:op1 "Amgen"))
+	:ARG1 (p / product
+		:name (n3 / name
+			:op1 "EPO")
+		:ARG1-of (n / name-01
+			:ARG2 (n5 / name
+				:op1 "Epogen")
+			:location (c / country
+				:name (n2 / name
+					:op1 "United"
+					:op2 "States"))))
+	:ARG3 (r / rate-entity-91
+		:ARG1 (o / over
+			:op1 (m / monetary-quantity
+				:quant 36
+				:unit (d / dollar)))
+		:ARG2 (q / quantity
+			:ARG2-of (d4 / dose-01))))
+
+# ::id PROXY_AFP_ENG_20071128_0737.15 ::date 2013-06-30T12:14:46 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Last week Spanish Foreign Minister Miguel Angel Moratinos stated that there was a desire among all parties including Russia to reach an agreement . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Miguel"
+			:op2 "Angel"
+			:op3 "Moratinos")
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c / country
+				:name (n3 / name
+					:op1 "Spain"))
+			:ARG2 (m / minister
+				:mod (f / foreign))))
+	:ARG1 (d / desire-01
+		:ARG0 (p2 / party
+			:mod (a2 / all)
+			:ARG2-of (i / include-91
+				:ARG1 (c2 / country
+					:name (n4 / name
+						:op1 "Russia"))))
+		:ARG1 (r / reach-01
+			:ARG1 (a / agree-01)))
+	:time (w / week
+		:mod (l / last)))
+
+# ::id PROXY_APW_ENG_20030406_0627.33 ::date 2013-08-07T08:06:36 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The al-Qaida officials apparently turned down the plan because the target was not large enough . 
+(t / turn-05
+	:ARG0 (p2 / person
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c2 / criminal-organization
+				:name (n2 / name
+					:op1 "al-Qaida"))
+			:ARG2 (o / official)))
+	:ARG1 (p / plan)
+	:manner (a / apparent)
+	:ARG1-of (c / cause-01
+		:ARG0 (l / large
+			:mod (e / enough
+				:polarity -)
+			:domain (t2 / target))))
+
+# ::id PROXY_AFP_ENG_20020105_0162.11 ::date 2013-05-28T19:27:07 ::snt-type body subordinate ::annotator LDC-AMR-14 ::preferred
+# ::snt The workshop 's anti-terrorism experts belong to anti-terror squads in Arab security agencies and Anti-Organized Crime Units . 
+(b / belong-01
+	:ARG0 (p / person
+		:ARG1-of (e / expert-41
+			:ARG2 (c4 / counter-01
+				:ARG1 (t2 / terrorism)))
+		:poss (w / workshop))
+	:ARG1 (s / squad
+		:part-of (a3 / and
+			:op1 (a4 / agency
+				:purpose (s2 / security)
+				:mod (e2 / ethnic-group
+					:name (n / name
+						:op1 "Arab")))
+			:op2 (u / unit
+				:purpose (c2 / counter-01
+					:ARG1 (c / crime
+						:ARG1-of (o / organize-01)))))
+		:purpose (c3 / counter-01
+			:ARG1 (t / terrorism))))
+
+# ::id PROXY_AFP_ENG_20020301_0316.5 ::date 2013-06-05T14:34:50 ::snt-type summary ::annotator LDC-AMR-14 ::preferred
+# ::snt Afghanistan seeks to end poppy harvesting and increase border control . 
+(s / seek-01
+	:ARG0 (c / country
+		:name (n / name
+			:op1 "Afghanistan"))
+	:ARG1 (a / and
+		:op1 (e / end-01
+			:ARG0 c
+			:ARG1 (h / harvest-01
+				:ARG1 (p / poppy)))
+		:op2 (i / increase-01
+			:ARG0 c
+			:ARG1 (c2 / control-01
+				:ARG0 c
+				:ARG1 (b / border)))))
+
+# ::id PROXY_AFP_ENG_20020123_0334.17 ::date 2013-05-18T15:34:13 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt The ban was strictly enforced and resulted in a decrease in opium production from 3200 tons to 185 tons . 
+(a / and
+	:op1 (e / enforce-01
+		:ARG1 (b / ban-01)
+		:manner (s / strict))
+	:op2 (r / result-01
+		:ARG1 b
+		:ARG2 (d / decrease-01
+			:ARG1 (p / produce-01
+				:ARG1 (o / opium))
+			:ARG3 (m / mass-quantity
+				:unit (t / ton)
+				:quant 3200)
+			:ARG4 (m2 / mass-quantity
+				:unit (t2 / ton)
+				:quant 185))))
+
+# ::id PROXY_AFP_ENG_20031210_0724.5 ::date 2013-05-16T09:01:46 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt 20031209 77 of 81 members of the Brazilian Senate approved restrictions on the sale of firearms and enhanced sentences for those found guilty of trafficking illegal guns . 
+(a2 / approve-01
+	:ARG0 (p2 / person
+		:quant 77
+		:ARG1-of (i / include-91
+			:ARG2 (p3 / person
+				:quant 81
+				:ARG0-of (h / have-org-role-91
+					:ARG1 (g3 / government-organization
+						:name (n / name
+							:op1 "Senate")
+						:mod (c / country
+							:name (n2 / name
+								:op1 "Brazil")))
+					:ARG2 (m / member)))))
+	:ARG1 (a3 / and
+		:op1 (r / restrict-01
+			:ARG1 (s2 / sell-01
+				:ARG1 (f / firearm)))
+		:op2 (t2 / thing
+			:ARG2-of (s3 / sentence-01
+				:ARG1 (p / person
+					:ARG1-of (g / guilty-41
+						:ARG2 (t / traffic-00
+							:ARG1 (g4 / gun
+								:mod (l2 / law
+									:polarity -)))
+						:ARG1-of (f2 / find-02))))
+			:ARG1-of (e / enhance-01)))
+	:time (d / date-entity
+		:year 2003
+		:month 12
+		:day 9))
+
+# ::id PROXY_AFP_ENG_20020626_0144.11 ::date 2013-05-24T19:58:34 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt At least 36 more drug criminals have been reported executed in China in the past week to mark World Anti-drugs day . 
+(r / report-01
+	:ARG1 (e / execute-01
+		:ARG1 (c / criminal
+			:mod (d / drug)
+			:quant (a / at-least
+				:op1 36)
+			:mod (m / more))
+		:location (c2 / country
+			:name (n / name
+				:op1 "China"))
+		:time (b / before
+			:op1 (n3 / now)
+			:duration (t / temporal-quantity
+				:quant 1
+				:unit (w / week)))
+		:purpose (m2 / mark-01
+			:ARG1 (f / festival
+				:name (n2 / name
+					:op1 "World"
+					:op2 "Anti-drugs"
+					:op3 "Day")))))
+
+# ::id PROXY_AFP_ENG_20020517_0339.11 ::date 2013-06-19T18:05:00 ::snt-type body ::annotator LDC-AMR-14 ::preferred
+# ::snt Director of Myanmar 's International Relations Department Colonel sit Aye addressed reporters at a two-day meeting of senior officials from the Association of Southeast Asian Nations -LRB- ASEAN -RRB- . 
+(a / address-01
+	:ARG0 (p2 / person
+		:name (n5 / name
+			:op1 "Sit"
+			:op2 "Aye")
+		:ARG0-of (h / have-org-role-91
+			:ARG2 (c / colonel))
+		:ARG0-of (h2 / have-org-role-91
+			:ARG1 (g / government-organization
+				:name (n6 / name
+					:op1 "International"
+					:op2 "Relations"
+					:op3 "Department")
+				:poss (c3 / country
+					:name (n7 / name
+						:op1 "Myanmar")))
+			:ARG2 (d2 / director)))
+	:ARG2 (p / person
+		:ARG0-of (r / report-01))
+	:location (m / meet-03
+		:ARG0 (p3 / person
+			:ARG0-of (h3 / have-org-role-91
+				:ARG1 (o5 / organization
+					:name (n8 / name
+						:op1 "Association"
+						:op2 "of"
+						:op3 "Southeast"
+						:op4 "Asian"
+						:op5 "Nations"))
+				:ARG2 (o / official
+					:mod (s / senior))))
+		:duration (t2 / temporal-quantity
+			:quant 2
+			:unit (d3 / day))))
+
+# ::id PROXY_AFP_ENG_20080123_0458.1 ::date 2013-07-07T17:44:17 ::snt-type date ::annotator SDL-AMR-09 ::preferred
+# ::snt 2008-01-23 
+(d / date-entity
+	:day 23
+	:month 1
+	:year 2008)
+
+# ::id PROXY_AFP_ENG_20080421_0468.10 ::date 2013-07-03T14:01:33 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Ketamine is a regulated veterinary anesthetic that is converted by crime gangs to an illicit crystal form and sold as a recreational drug . 
+(a3 / anesthetic
+	:ARG1-of (r3 / regulate-01)
+	:mod (v2 / veterinary)
+	:ARG1-of (c / convert-01
+		:ARG0 (g / gang
+			:mod (c2 / crime))
+		:ARG2 (f / form
+			:mod (c3 / crystal)
+			:mod (l / law
+				:polarity -)))
+	:ARG1-of (s2 / sell-01
+		:prep-as (d2 / drug
+			:mod (r4 / recreate-00)))
+	:domain (k / ketamine))
+
+# ::id PROXY_APW_ENG_20030406_0627.4 ::date 2013-07-02T09:01:00 ::snt-type summary ::annotator UCO-AMR-05 ::preferred
+# ::snt Philippine intelligence reports reveal Singapore-based al-Qaida group 's plans to bomb embassies , U.S. corporations , and warships in Singapore and to crash hijacked planes at Singapore 's National Airport . 
+(r / reveal-01
+	:ARG0 (r2 / report-01
+		:ARG0 (i / intelligence
+			:location (c / country
+				:name (n / name
+					:op1 "Philippines"))))
+	:ARG1 (p / plan-01
+		:ARG0 (g / group
+			:part-of (c8 / criminal-organization
+				:name (n8 / name
+					:op1 "al-Qaida"))
+			:ARG1-of (b2 / base-01
+				:location (c2 / country
+					:name (n2 / name
+						:op1 "Singapore"))))
+		:ARG1 (a2 / and
+			:op1 (b / bomb-01
+				:ARG1 (a3 / and
+					:op1 (e / embassy)
+					:op2 (c7 / corporation
+						:mod (c4 / country
+							:name (n4 / name
+								:op1 "U.S.")))
+					:op3 (w / warship)
+					:location c2))
+			:op2 (c3 / crash-01
+				:ARG1 (p2 / plane
+					:ARG1-of (h / hijack-01))
+				:location (a4 / airport
+					:mod (n3 / national)
+					:location c2)))))
+
+# ::id PROXY_AFP_ENG_20050322_0158.9 ::date 2013-05-16T02:53:26 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The goal of the submarine deal is to strengthen a weakness in India 's conventional military capability . 
+(d / deal-01
+	:mod (s / submarine)
+	:purpose (s2 / strengthen-01
+		:ARG0 d
+		:ARG1 (w / weak-41
+			:ARG1 (c / capable-41
+				:ARG1 (m / military
+					:mod (c2 / conventional))
+				:ARG2 (c3 / country
+					:name (n / name
+						:op1 "India"))))))
+
+# ::id PROXY_AFP_ENG_20021226_0132.11 ::date 2013-05-27T11:40:07 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt This further aggravated the situation . 
+(a / aggravate-01
+	:ARG0 (t / this)
+	:ARG1 (s / situation)
+	:degree (f2 / further))
+
+# ::id PROXY_APW_ENG_20080514_0575.22 ::date 2013-07-18T07:40:43 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Estonia is 1 of Europe 's most Internet-savvy nations . 
+(i / include-91
+	:ARG1 (n3 / nation
+		:quant 1
+		:domain (c4 / country
+			:name (n6 / name
+				:op1 "Estonia")))
+	:ARG2 (n4 / nation
+		:poss (c3 / continent
+			:name (n5 / name
+				:op1 "Europe"))
+		:ARG0-of (s / savvy-01
+			:ARG1 (i2 / internet)
+			:mod (m / most))))
+
+# ::id PROXY_AFP_ENG_20080719_0249.2 ::date 2013-07-06T05:00:27 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Uzbekistan -LRB- UZ -RRB- 
+(c2 / country
+	:name (n2 / name
+		:op1 "Uzbekistan"))
+
+# ::id PROXY_AFP_ENG_20071204_0145.13 ::date 2013-07-03T13:16:09 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The civil nuclear energy accord is described by a French source as the first between the Government of France and an Arab-Muslim country . 
+(d / describe-01
+	:ARG0 (s / source
+		:mod (c / country
+			:name (n / name
+				:op1 "France")))
+	:ARG1 (a2 / accord
+		:mod (n2 / nucleus)
+		:mod (c2 / civil)
+		:mod (e / energy))
+	:ARG2 (a / accord
+		:ord (o / ordinal-entity
+			:value 1)
+		:mod (b / between
+			:op1 (g / government-organization
+				:ARG0-of (g2 / govern-01
+					:ARG1 c))
+			:op2 (c4 / country
+				:mod (r / religious-group
+					:name (n4 / name
+						:op1 "Muslim")
+					:mod (e2 / ethnic-group
+						:name (n5 / name
+							:op1 "Arab")))))))
+
+# ::id PROXY_AFP_ENG_20020629_0321.15 ::date 2013-05-25T15:48:08 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt There has been a sharp increase in Indian Defense Ministry 's purchases of military hardware including night vision devices , unmanned aerial vehicles and other anti-terrorism devices . 
+(i / increase-01
+	:ARG1 (p / purchase-01
+		:ARG0 (m / ministry
+			:mod (d / defense)
+			:mod (c / country
+				:name (n / name
+					:op1 "India")))
+		:ARG1 (h / hardware
+			:mod (m2 / military)
+			:ARG2-of (i2 / include-01
+				:ARG1 (a / and
+					:op1 (d2 / device
+						:purpose (s2 / see-01
+							:time (n2 / night)))
+					:op2 (v2 / vehicle
+						:ARG1-of (m3 / man-01
+							:polarity -)
+						:mod (a2 / aerial))
+					:op3 (d3 / device
+						:mod (o / other)
+						:ARG0-of (c2 / counter-01
+							:ARG1 (t / terrorism)))))))
+	:manner (s / sharp))
+
+# ::id PROXY_AFP_ENG_20050912_0366.16 ::date 2013-06-02T10:07:22 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The diesel-electric submarines are designed for coastal defense . 
+(d / design-01
+	:ARG1 (s / submarine
+		:mod (d2 / diesel-electric))
+	:ARG3 (d3 / defend-01
+		:ARG1 (c / coast)))
+
+# ::id PROXY_AFP_ENG_20080128_0314.7 ::date 2013-06-30T02:20:32 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Bisogniero made the statement to delegates at a conference in the Qatari capital Doha . 
+(s / state-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "Bisogniero"))
+	:ARG2 (p2 / person
+		:ARG2-of (d / delegate-01))
+	:location (c / conference
+		:location (c2 / capital
+			:name (n2 / name
+				:op1 "Doha")
+			:mod (c3 / country
+				:name (n3 / name
+					:op1 "Qatar")))))
+
+# ::id PROXY_AFP_ENG_20030111_0136.12 ::date 2013-06-11T21:24:26 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Late 20030110 a Japanese spokesman stated to Interfax news that Koizumi encouraged Putin to employ the Russian government 's influence on North Korean leadership in pursuing a reversal . 
+(s / state-01
+	:ARG0 (p3 / person
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c / country
+				:name (n / name
+					:op1 "Japan"))
+			:ARG2 (s2 / spokesman)))
+	:ARG1 (e / encourage-01
+		:ARG0 (p / person
+			:name (n3 / name
+				:op1 "Koizumi"))
+		:ARG1 (p2 / person
+			:name (n5 / name
+				:op1 "Putin"))
+		:ARG2 (e2 / employ-02
+			:ARG1 (i / influence-01
+				:ARG0 (g / government-organization
+					:ARG0-of (g2 / govern-01
+						:ARG1 (c2 / country
+							:name (n6 / name
+								:op1 "Russia"))))
+				:ARG1 (p5 / person
+					:ARG0-of (l / lead-02
+						:ARG1 (c3 / country
+							:name (n7 / name
+								:op1 "North"
+								:op2 "Korea")))))
+			:ARG2 (p6 / pursue-01
+				:ARG1 (r / reverse-01))))
+	:ARG2 (p4 / publication
+		:name (n2 / name
+			:op1 "Interfax"))
+	:time (l2 / late
+		:op1 (d / date-entity
+			:day 10
+			:month 1
+			:year 2003)))
+
+# ::id PROXY_AFP_ENG_20070426_0470.17 ::date 2013-06-10T23:51:32 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Egyptian authorities accuse the movement of seeking to reactivate its underground military wing with the aim of eventually overthrowing the regime . 
+(a / accuse-01
+	:ARG0 (a2 / authority
+		:mod (c / country
+			:name (n / name
+				:op1 "Egypt")))
+	:ARG1 (m / movement)
+	:ARG2 (s / seek-01
+		:ARG1 (r / reactivate-01
+			:ARG0 m
+			:ARG1 (w / wing
+				:mod (u / underground)
+				:mod (m2 / military)
+				:poss m)
+			:ARG1-of (a3 / aim-02
+				:ARG2 (o / overthrow-01
+					:ARG0 m
+					:ARG1 (r2 / regime)
+					:time (e / eventual))))))
+
+# ::id PROXY_APW_ENG_20080218_0615.29 ::date 2013-07-15T11:34:48 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt David Miliband criticized the decision of freedom of information authorities to order the release of the John Williams document . 
+(c / criticize-01
+	:ARG0 (p / person
+		:name (n / name
+			:op1 "David"
+			:op2 "Miliband"))
+	:ARG1 (d / decide-01
+		:ARG0 (a / authority
+			:mod (f / free-41
+				:ARG2 (i / information)))
+		:ARG1 (o / order-01
+			:ARG0 a
+			:ARG1 (r / release-01
+				:ARG1 (d2 / document
+					:mod (p2 / person
+						:name (n2 / name
+							:op1 "John"
+							:op2 "Williams")))))))
+
+# ::id PROXY_AFP_ENG_20080521_0475.11 ::date 2013-07-04T08:26:07 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The bill proposing the new law allowing the use of space programs for defense was already approved by the lower house of Japan 's government last week . 
+(a / approve-01
+	:ARG0 (g / government-organization
+		:name (n3 / name
+			:op1 "Lower"
+			:op2 "House")
+		:part-of (g2 / government-organization
+			:ARG0-of (g3 / govern-01
+				:ARG1 (c / country
+					:name (n / name
+						:op1 "Japan")))))
+	:ARG1 (b / bill
+		:ARG0-of (p / propose-01
+			:ARG1 (l / law
+				:mod (n2 / new)
+				:ARG0-of (a3 / allow-01
+					:ARG1 (u / use-01
+						:ARG1 (p2 / program
+							:mod (s / space))
+						:ARG2 (d / defend-01))))))
+	:time (a2 / already)
+	:time (w / week
+		:mod (l2 / last)))
+
+# ::id PROXY_AFP_ENG_20071111_0386.19 ::date 2013-06-25T05:45:08 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Iran is an Islamic republic . 
+(r / republic
+	:domain (c / country
+		:name (n / name
+			:op1 "Iran"))
+	:mod (r2 / religious-group
+		:name (n2 / name
+			:op1 "Islam")))
+
+# ::id PROXY_AFP_ENG_20081104_0091.2 ::date 2013-07-09T09:32:18 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Iraq -LRB- IQ -RRB- ; Denmark -LRB- DK -RRB- 
+(a / and
+	:op1 (c / country
+		:name (n / name
+			:op1 "Iraq"))
+	:op2 (c2 / country
+		:name (n2 / name
+			:op1 "Denmark")))
+
+# ::id PROXY_AFP_ENG_20030630_0211.20 ::date 2013-05-08T01:38:02 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Korean Peninsula Energy Development Organization has maintained construction work on the 2 light-water nuclear reactors and has suspended shipments of fuel oil to North Korea from 021200 at the height of the nuclear stand-off which intensified in 021000 when the North Korean government admitted to running a nuclear weapons program based on enriched uranium . 
+(a / and
+	:op1 (m / maintain-01
+		:ARG0 (o / organization
+			:name (n / name
+				:op1 "Korean"
+				:op2 "Peninsula"
+				:op3 "Energy"
+				:op4 "Development"
+				:op5 "Organization"))
+		:ARG1 (w / work-01
+			:ARG1 (c / construct-01
+				:ARG1 (r / reactor
+					:quant 2
+					:mod (n2 / nucleus)
+					:mod (w3 / water
+						:mod (l / light))))))
+	:op2 (s / suspend-01
+		:ARG0 o
+		:ARG1 (s2 / ship-01
+			:ARG1 (o2 / oil
+				:mod (f / fuel))
+			:ARG2 (c2 / country
+				:name (n3 / name
+					:op1 "North"
+					:op2 "Korea"))
+			:time (d / date-entity
+				:year 2002
+				:month 12))
+		:time (h / high
+			:domain (s4 / stand-off
+				:mod (n4 / nucleus)
+				:ARG1-of (i / intensify-01
+					:time (d2 / date-entity
+						:year 2002
+						:month 10
+						:time-of (a2 / admit-01
+							:ARG0 (g / government-organization
+								:ARG0-of (g2 / govern-01
+									:ARG1 c2))
+							:ARG1 (r2 / run-01
+								:ARG0 g
+								:ARG1 (p / program
+									:topic (w2 / weapon
+										:mod (n6 / nucleus))
+									:ARG1-of (b / base-02
+										:ARG2 (u / uranium
+											:ARG1-of (e / enrich-01))))))))))))
+
+# ::id PROXY_APW_ENG_20030406_0627.32 ::date 2013-08-06T10:33:31 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt Singapore authorities believe a cell leader traveled to Afghanistan and briefed al-Qaida leaders about the proposed shuttle bus attack between August 1999 and April 2000 . 
+(b / believe-01
+	:ARG0 (p4 / person
+		:ARG0-of (h / have-org-role-91
+			:ARG1 (c4 / country
+				:name (n4 / name
+					:op1 "Singapore"))
+			:ARG2 (a / authority)))
+	:ARG1 (a2 / and
+		:op1 (t / travel-01
+			:ARG0 (p / person
+				:ARG0-of (l / lead-02
+					:ARG1 (c5 / cell)))
+			:ARG1 (c6 / country
+				:name (n5 / name
+					:op1 "Afghanistan")))
+		:op2 (b2 / brief-01
+			:ARG0 p
+			:ARG1 (p2 / person
+				:ARG0-of (l2 / lead-02
+					:ARG1 (c7 / criminal-organization
+						:name (n6 / name
+							:op1 "al-Qaida"))))
+			:ARG2 (a3 / attack-01
+				:ARG1 (b3 / bus
+					:mod (s / shuttle))
+				:ARG1-of (p3 / propose-01)))
+		:time (b4 / between
+			:op1 (d / date-entity
+				:month 8
+				:year 1999)
+			:op2 (d2 / date-entity
+				:month 4
+				:year 2000))))
+
+# ::id PROXY_APW_ENG_20020808_0105.30 ::date 2013-08-04T20:52:09 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The plan for Tunisia is the creation of electronic databases to facilitate tax collection . 
+(p / plan-01
+	:ARG1 (c2 / create-01
+		:ARG1 (d / database
+			:mod (e / electronics))
+		:purpose (f / facilitate-01
+			:ARG1 (c3 / collect-01
+				:ARG1 (t / tax-01))))
+	:ARG3 (c / country
+		:name (n / name
+			:op1 "Tunisia")))
+
+# ::id PROXY_APW_ENG_20080214_1715.2 ::date 2013-07-14T09:27:27 ::snt-type country ::annotator SDL-AMR-09 ::preferred
+# ::snt Austria -LRB- AT -RRB- ; India -LRB- IN -RRB- ; Brazil -LRB- BR -RRB- 
+(a / and
+	:op1 (c / country
+		:name (n / name
+			:op1 "Austria"))
+	:op2 (c2 / country
+		:name (n3 / name
+			:op1 "India"))
+	:op3 (c3 / country
+		:name (n5 / name
+			:op1 "Brazil")))
+
+# ::id PROXY_AFP_ENG_20070529_0077.22 ::date 2013-09-01T13:28:54 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The Ministry of Defense refused to reveal the characteristics of the new missile other than stating it was designed to replace the Soviet-era RS-18 and RS-20 rockets . 
+(r / refuse-01
+	:ARG0 (g / government-organization
+		:name (n / name
+			:op1 "Ministry"
+			:op2 "of"
+			:op3 "Defense"))
+	:ARG1 (r2 / reveal-01
+		:ARG1 (t / thing
+			:ARG2-of (c / characteristic-41
+				:ARG1 (m / missile
+					:mod (n2 / new))))
+		:concession-of (s / state-01
+			:ARG0 g
+			:ARG1 (d / design-01
+				:ARG1 m
+				:ARG3 (r3 / replace-01
+					:ARG1 (a / and
+						:op1 (r4 / rocket
+							:name (n3 / name
+								:op1 "RS-18"))
+						:op2 (r5 / rocket
+							:name (n4 / name
+								:op1 "RS-20"))
+						:time (e / era
+							:mod (c2 / country
+								:name (n5 / name
+									:op1 "Soviet"
+									:op2 "Union")))))))))
+
+# ::id PROXY_AFP_ENG_20021203_0751.18 ::date 2013-05-25T14:15:33 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt The blocked sites also included those of U.S. news organizations including ABC News and CBS News , the Alta Vista search engine , and a number of U.S. universities . 
+(i / include-91
+	:ARG1 s
+	:ARG2 (s / site
+		:ARG1-of (b / block-01)
+		:poss (o / organization
+			:mod (n / news)
+			:poss (c / country
+				:name (n2 / name
+					:op1 "U.S."))
+			:ARG1-of (i2 / include-91)
+			:example (a2 / and
+				:op1 (o2 / organization
+					:name (n3 / name
+						:op1 "ABC"
+						:op2 "News"))
+				:op2 (o3 / organization
+					:name (n4 / name
+						:op1 "CBS"
+						:op2 "News"))
+				:op3 (e / engine
+					:name (n5 / name
+						:op1 "Alta"
+						:op2 "Vista")
+					:mod (s2 / search))
+				:op4 (u / university
+					:quant (n7 / number)
+					:poss c))))
+	:mod (a / also))
+
+# ::id PROXY_AFP_ENG_20031129_0137.10 ::date 2013-05-06T14:51:26 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt The US demanded that the Iranian government be brought before the UN Security Council for possible sanctions while Britain , France and Germany demanded that Iran be rewarded for cooperating with the IAEA since 20031000 but neither demand was met by the resolution . 
+(c8 / contrast-01
+	:ARG1 (d / demand-01
+		:ARG0 (c7 / country
+			:name (n / name
+				:op1 "US"))
+		:ARG1 (b / bring-01
+			:ARG1 (g / government-organization
+				:ARG0-of (g2 / govern-01
+					:ARG1 (c / country
+						:name (n2 / name
+							:op1 "Iran"))))
+			:ARG2 (b2 / before
+				:op1 (o / organization
+					:name (n3 / name
+						:op1 "Security"
+						:op2 "Council")
+					:mod (o2 / organization
+						:name (n4 / name
+							:op1 "UN"))))
+			:purpose (s4 / sanction-02
+				:mod (p / possible))))
+	:ARG2 (d2 / demand-01
+		:ARG0 (a / and
+			:op1 (c3 / country
+				:name (n5 / name
+					:op1 "Britain"))
+			:op2 (c4 / country
+				:name (n6 / name
+					:op1 "France"))
+			:op3 (c5 / country
+				:name (n7 / name
+					:op1 "Germany")))
+		:ARG1 (r / reward-01
+			:ARG1 c
+			:ARG2 (c6 / cooperate-01
+				:ARG0 c
+				:ARG1 (o3 / organization
+					:name (n8 / name
+						:op1 "IAEA"))
+				:duration (s2 / since
+					:time (d3 / date-entity
+						:year 2003
+						:month 10)))))
+	:concession-of (m / meet-01
+		:ARG0 (r2 / resolution)
+		:ARG1 (a2 / and
+			:op1 c8
+			:op2 d2)
+		:polarity -))
+
+# ::id PROXY_AFP_ENG_20071111_0386.18 ::date 2013-06-25T05:31:36 ::snt-type body ::annotator SDL-AMR-09 ::preferred
+# ::snt Capital offenses in Iran include murder , rape , armed robbery , serious drug trafficking and adultery . 
+(i / include-01
+	:ARG1 (a / and
+		:op1 (m / murder-01)
+		:op2 (r / rape-01)
+		:op3 (r2 / rob-01
+			:manner (a2 / arm-01))
+		:op4 (t / traffic-00
+			:ARG1 (d / drug)
+			:mod (s / serious))
+		:op5 (a3 / adultery))
+	:ARG2 (o / offense
+		:mod (c / capital)
+		:location (c2 / country
+			:name (n / name
+				:op1 "Iran"))))
+
+# ::id PROXY_AFP_ENG_20030128_0700.20 ::date 2013-07-09T13:59:29 ::snt-type body ::annotator UCO-AMR-05 ::preferred
+# ::snt In 000000 Italy was attacked by a strike similar to the 030128 attack on Italy 's Internet network and at least 8 other Internet attacks in 020000 . 
+(a2 / attack-01
+	:ARG0 (s / strike
+		:ARG1-of (r / resemble-01
+			:ARG2 (a4 / and
+				:op1 (a3 / attack-01
+					:ARG1 (n3 / network
+						:mod (i / internet)
+						:mod c)
+					:time (d2 / date-entity
+						:day 28
+						:month 1
+						:year 2003))
+				:op2 (a5 / attack-01
+					:ARG1 (i2 / internet)
+					:quant (a6 / at-least
+						:op1 8)
+					:mod (o / other)
+					:time (d3 / date-entity
+						:year 2002)))))
+	:ARG1 (c / country
+		:name (n / name
+			:op1 "Italy"))
+	:time (d / date-entity
+		:year 2000))
+
