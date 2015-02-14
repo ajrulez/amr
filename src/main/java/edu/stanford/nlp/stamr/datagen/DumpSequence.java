@@ -22,12 +22,32 @@ import java.util.*;
  */
 public class DumpSequence {
     public static void main(String[] args) throws IOException {
+        getRandomDevSet();
         // dumpReleaseData();
-        dumpMicrodata();
+        // dumpMicrodata();
         // dumpPreAligned();
         // dumpPreAlignedSplit();
         // dumpGiantdata();
         // dumpTestData();
+    }
+
+    public static void getRandomDevSet() throws IOException {
+        AMR[] dev = AMRSlurp.slurp("data/amr-release-1.0-dev-proxy.txt", AMRSlurp.Format.LDC);
+
+        int dumpSize = 100;
+
+        Random r = new Random(42L);
+        List<AMR> devList = new ArrayList<>(dev.length);
+        Collections.addAll(devList, dev);
+
+        AMR[] randomDump = new AMR[dumpSize];
+        for (int i = 0; i < dumpSize; i++) {
+            int select = r.nextInt(devList.size());
+            randomDump[i] = devList.get(i);
+            devList.remove(i);
+        }
+
+        AMRSlurp.burp("data/dev-100.txt", AMRSlurp.Format.LDC, randomDump, AMR.AlignmentPrinting.NONE, false);
     }
 
     public static void dumpReleaseData() throws IOException {

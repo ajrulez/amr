@@ -411,6 +411,17 @@ public class AMRPipeline {
                     String tailType = getEnumType(tail);
                     return headType+tailType;
                 });
+
+                // All the tokens that didn't get nodes between head and tail
+                // Could also try a sum of the embeddings...
+                /*
+                add((triple) -> {
+                    AMR.Node head = triple.first.nodes[triple.second];
+                    if (triple.second == 0) return "ROOT";
+                    AMR.Node tail = triple.first.nodes[triple.third];
+                    // TODO
+                });
+                */
     }};
 
     LinearPipe<Triple<AMRNodeSet,Integer,Integer>, Boolean> arcExistence = new LinearPipe<>(
