@@ -486,6 +486,7 @@ public class AMRPipeline {
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
         dictionaryLookup.type = LinearPipe.ClassifierType.BAYESIAN;
         dictionaryLookup.train(getDictionaryForClassifier(dictionaryData));
+        arcExistence.type = LinearPipe.ClassifierType.LOGISTIC;
         arcExistence.train(getArcExistenceForClassifier(mstData));
         arcType.train(getArcTypeForClassifier(mstData));
     }
@@ -900,7 +901,7 @@ public class AMRPipeline {
         }
         else {
             System.out.println("Testing training set");
-            analyzeAMRSubset("data/train-400-subset.txt", "data/train-400-conll.txt", "data/train-"+trainDataSize+"/amr-train-analysis");
+            analyzeAMRSubset("data/train-"+trainDataSize+"-subset.txt", "data/train-"+trainDataSize+"-conll.txt", "data/train-"+trainDataSize+"/amr-train-analysis");
             System.out.println("Testing in domain dev set");
             analyzeAMRSubset("data/test-100-subset.txt", "data/test-100-conll.txt", "data/train-"+trainDataSize+"/amr-in-domain-dev-analysis");
             System.out.println("Testing real dev set");
@@ -963,7 +964,7 @@ public class AMRPipeline {
     private static void justTrainArcType() throws IOException {
         AMRPipeline pipeline = new AMRPipeline();
 
-        boolean BIG = true;
+        boolean BIG = false;
 
         List<AMRNodeSet> mstDataTrain = loadCoNLLData(BIG ? "realdata/release-train-conll.txt" : "data/train-400-conll.txt");
         List<AMRNodeSet> mstDataTest = loadCoNLLData("data/dev-100-conll.txt");
@@ -1034,19 +1035,20 @@ public class AMRPipeline {
         for (double i : sigmas) {
             pipeline.arcType.sigma = i;
             pipeline.arcExistence.sigma = i;
+            pipeline.arcExistence.type = LinearPipe.ClassifierType.LOGISTIC;
             pipeline.arcType.train(arcTypeData);
             pipeline.arcExistence.train(arcExistenceData);
 
             System.out.println("Analyzing");
             System.out.println("sigma: " + i);
             try {
-                pipeline.arcType.analyze(arcTypeData, getArcTypeForClassifier(mstDataTest), BIG ? "data/arc-type-big-sigma-" + pipeline.arcType.sigma * 1000 : "data/arc-type-clusters");
+                pipeline.arcType.analyze(arcTypeData, getArcTypeForClassifier(mstDataTest), BIG ? "data/arc-type-big-sigma-" + (int)(pipeline.arcType.sigma * 1000) : "data/arc-type-clusters-sigma-" + (int)(pipeline.arcType.sigma * 1000));
             }
             catch (Exception e) {
                 System.err.println("meh");
             }
             try {
-                pipeline.arcExistence.analyze(arcExistenceData, getArcExistenceForClassifier(mstDataTest), BIG ? "data/arc-existence-big-sigma-"+pipeline.arcType.sigma*1000 : "data/arc-existence-clusters");
+                pipeline.arcExistence.analyze(arcExistenceData, getArcExistenceForClassifier(mstDataTest), BIG ? "data/arc-existence-big-sigma-"+(int)(pipeline.arcType.sigma*1000) : "data/arc-existence-clusters-sigma-" + (int)(pipeline.arcType.sigma * 1000));
             }
             catch (Exception e) {
                 System.err.println("meh");
@@ -1058,10 +1060,12 @@ public class AMRPipeline {
     public static void main(String[] args) throws IOException, InterruptedException {
         justTrainArcType();
 
+        /*
         AMRPipeline pipeline = new AMRPipeline();
         pipeline.trainStages();
         pipeline.analyzeStages();
         pipeline.testCompletePipeline();
+        */
     }
 
     /////////////////////////////////////////////////////

@@ -43,6 +43,7 @@ public class LinearPipe<IN,OUT> {
 
     public enum ClassifierType {
         LINEAR,
+        LOGISTIC,
         SVM,
         BAYESIAN
     }
@@ -236,7 +237,23 @@ public class LinearPipe<IN,OUT> {
         }
         clusters.add(leftOutCluster);
 
-        if (type == ClassifierType.LINEAR) {
+        classifiers = new ArrayList<>();
+
+        if (type == ClassifierType.LOGISTIC) {
+            List<RVFDatum<OUT,String>> datumList = parmap(data, (pair) -> toDatum(pair.first, pair.second));
+            LogisticClassifierFactory<OUT, String> factory = new LogisticClassifierFactory<>();
+            RVFDataset<OUT, String> dataset = new RVFDataset<>();
+            for (RVFDatum<OUT, String> datum : datumList) {
+                dataset.add(datum);
+            }
+            if (automaticallyReweightTrainingData) {
+                classifiers.add(factory.trainWeightedData(dataset, getNormalizingArray(dataset)));
+            }
+            else {
+                classifiers.add(factory.trainClassifier(dataset));
+            }
+        }
+        else if (type == ClassifierType.LINEAR) {
             List<RVFDatum<OUT,String>> datumList = parmap(data, (pair) -> toDatum(pair.first, pair.second));
 
             RVFDataset<OUT, String> dataset = new RVFDataset<>();
@@ -253,7 +270,6 @@ public class LinearPipe<IN,OUT> {
             bucketClassifierFactory.setSigma(sigma);  // higher -> less regularization (default=1)
             bucketClassifierFactory.setVerbose(true);
 
-            classifiers = new ArrayList<>();
             if (clusters.size() == 1) {
                 // trivial case, just do what we usually do
                 if (automaticallyReweightTrainingData) {
@@ -399,15 +415,85 @@ public class LinearPipe<IN,OUT> {
         writeAccuracy(predictions, directory+"/accuracy.txt");
         writeConfusionMatrix(predictions, directory + "/confusion.csv");
         writeErrors(predictions, directory + "/errors.txt");
+        if (predictions.get(0).third instanceof Boolean) {
+            writeTuningCurve(data, directory + "/tuning");
+        }
+    }
+
+    private void writeTuningCurve(List<Pair<IN,OUT>> data, String path) throws IOException {
+        if (!(data.get(0).second instanceof Boolean)) {
+            throw new IllegalStateException("Can't call writeTuningCurve on non-boolean data!");
+        }
+
+        List<Pair<Double,Boolean>> predictions = new ArrayList<>();
+        for (Pair<IN,OUT> pair : data) {
+            double prob = predictSoft(pair.first).getCount(true);
+            boolean label = (Boolean)pair.second;
+            predictions.add(new Pair<>(prob, label));
+        }
+
+        int numBuckets = 5;
+        List<List<Pair<Double,Boolean>>> buckets = new ArrayList<>();
+        for (int i = 0; i < numBuckets; i++) {
+            buckets.add(new ArrayList<>());
+        }
+
+        for (Pair<Double,Boolean> prediction : predictions) {
+            int bucket = (int)Math.floor(prediction.first * numBuckets);
+            // This only happens if prediction.first == 1.0
+            if (bucket == numBuckets) bucket = numBuckets - 1;
+            buckets.get(bucket).add(prediction);
+        }
+
+        // Create the actual tuning curve plot
+
+        GNUPlot plot = new GNUPlot();
+        double[] xAxis = new double[numBuckets+1];
+        double[] yAxis = new double[numBuckets+1];
+        for (int i = 0; i < numBuckets; i++) {
+            xAxis[i] = (1.0 / numBuckets)*(0.5 + i); // put the x-label in the middle of the bucket set
+            int totalCount = 0;
+            int trueCount = 0;
+            for (Pair<Double,Boolean> prediction : buckets.get(i)) {
+                totalCount++;
+                if (prediction.second) trueCount++;
+            }
+            yAxis[i] = (double)totalCount / trueCount;
+        }
+        plot.addLine(xAxis, yAxis);
+        plot.saveAnalysis(path);
     }
 
     private void writeAccuracy(List<Triple<IN,OUT,OUT>> predictions, String path) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(path));
-        int correct = 0;
-        for (Triple<IN,OUT,OUT> prediction : predictions) {
-            if (prediction.second.equals(prediction.third)) correct++;
+        if (predictions.get(0).third instanceof Boolean) {
+            int truePositive = 0;
+            int falsePositive = 0;
+            int falseNegative = 0;
+            for (Triple<IN,OUT,OUT> prediction : predictions) {
+                boolean target = (Boolean)prediction.second;
+                boolean guess = (Boolean)prediction.third;
+                if (target && guess) truePositive++;
+                else if (!target && guess) falsePositive++;
+                else if (target && !guess) falseNegative++;
+            }
+            bw.write("True positive: "+truePositive+"\n");
+            bw.write("False positive: "+falsePositive+"\n");
+            bw.write("False negative: "+falseNegative+"\n");
+            double precision = (double)truePositive / (truePositive + falsePositive);
+            double recall = (double)truePositive / (truePositive + falseNegative);
+            bw.write("Precision: "+precision+"\n");
+            bw.write("Recall: "+recall+"\n");
+            double f1 = 2 * precision * recall / (precision + recall);
+            bw.write("F1: "+f1+"\n");
         }
-        bw.write("Accuracy: "+((double)correct / predictions.size()));
+        else {
+            int correct = 0;
+            for (Triple<IN, OUT, OUT> prediction : predictions) {
+                if (prediction.second.equals(prediction.third)) correct++;
+            }
+            bw.write("Accuracy: " + ((double) correct / predictions.size()));
+        }
         bw.close();
     }
 
