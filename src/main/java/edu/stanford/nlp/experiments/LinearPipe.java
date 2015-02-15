@@ -368,6 +368,15 @@ public class LinearPipe<IN,OUT> {
             String s = discreteFeaturize(in).iterator().next();
             return memorizedClassifier.getCounter(s);
         }
+        else if (type == ClassifierType.LOGISTIC) {
+            LogisticClassifier<Boolean,String> logistic = (LogisticClassifier <Boolean,String>)classifiers.get(0);
+
+            double trueCount = logistic.probabilityOf(featurize(in), Boolean.TRUE);
+            Counter<Boolean> out = new ClassicCounter<>();
+            out.incrementCount(true, Math.log(trueCount));
+            out.incrementCount(false, Math.log(1 - trueCount));
+            return (Counter<OUT>)out;
+        }
         else {
             if (classifiers.size() == 1) {
                 return classifiers.get(0).scoresOf(new RVFDatum<>(featurize(in)));
@@ -415,8 +424,8 @@ public class LinearPipe<IN,OUT> {
         writeAccuracy(predictions, directory+"/accuracy.txt");
         writeConfusionMatrix(predictions, directory + "/confusion.csv");
         writeErrors(predictions, directory + "/errors.txt");
-        if (predictions.get(0).third instanceof Boolean) {
-            writeTuningCurve(data, directory + "/tuning");
+        if (data.get(0).second instanceof Boolean) {
+            writeTuningCurve(data, directory);
         }
     }
 
@@ -427,12 +436,14 @@ public class LinearPipe<IN,OUT> {
 
         List<Pair<Double,Boolean>> predictions = new ArrayList<>();
         for (Pair<IN,OUT> pair : data) {
-            double prob = predictSoft(pair.first).getCount(true);
+            Counter<Boolean> logProb = (Counter<Boolean>) predictSoft(pair.first);
+            Counters.logNormalizeInPlace(logProb);
+            double prob = Math.exp(logProb.getCount(true));
             boolean label = (Boolean)pair.second;
             predictions.add(new Pair<>(prob, label));
         }
 
-        int numBuckets = 5;
+        int numBuckets = 15;
         List<List<Pair<Double,Boolean>>> buckets = new ArrayList<>();
         for (int i = 0; i < numBuckets; i++) {
             buckets.add(new ArrayList<>());
@@ -451,16 +462,19 @@ public class LinearPipe<IN,OUT> {
         double[] xAxis = new double[numBuckets+1];
         double[] yAxis = new double[numBuckets+1];
         for (int i = 0; i < numBuckets; i++) {
-            xAxis[i] = (1.0 / numBuckets)*(0.5 + i); // put the x-label in the middle of the bucket set
+            xAxis[i+1] = (1.0 / numBuckets)*(0.5 + i); // put the x-label in the middle of the bucket set
             int totalCount = 0;
             int trueCount = 0;
             for (Pair<Double,Boolean> prediction : buckets.get(i)) {
                 totalCount++;
                 if (prediction.second) trueCount++;
             }
-            yAxis[i] = (double)totalCount / trueCount;
+            yAxis[i+1] = (double)trueCount / totalCount;
         }
         plot.addLine(xAxis, yAxis);
+        plot.title = "tuning";
+        plot.xLabel = "Predicted Percentage";
+        plot.yLabel = "Actual Percentage";
         plot.saveAnalysis(path);
     }
 

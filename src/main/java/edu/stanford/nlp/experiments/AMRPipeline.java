@@ -1036,21 +1036,24 @@ public class AMRPipeline {
             pipeline.arcType.sigma = i;
             pipeline.arcExistence.sigma = i;
             pipeline.arcExistence.type = LinearPipe.ClassifierType.LOGISTIC;
-            pipeline.arcType.train(arcTypeData);
+            pipeline.arcExistence.automaticallyReweightTrainingData = false;
+            // pipeline.arcType.train(arcTypeData);
             pipeline.arcExistence.train(arcExistenceData);
 
             System.out.println("Analyzing");
             System.out.println("sigma: " + i);
             try {
-                pipeline.arcType.analyze(arcTypeData, getArcTypeForClassifier(mstDataTest), BIG ? "data/arc-type-big-sigma-" + (int)(pipeline.arcType.sigma * 1000) : "data/arc-type-clusters-sigma-" + (int)(pipeline.arcType.sigma * 1000));
+                // pipeline.arcType.analyze(arcTypeData, getArcTypeForClassifier(mstDataTest), BIG ? "data/arc-type-big-sigma-" + (int)(pipeline.arcType.sigma * 1000) : "data/arc-type-clusters-sigma-" + (int)(pipeline.arcType.sigma * 1000));
             }
             catch (Exception e) {
+                e.printStackTrace();
                 System.err.println("meh");
             }
             try {
                 pipeline.arcExistence.analyze(arcExistenceData, getArcExistenceForClassifier(mstDataTest), BIG ? "data/arc-existence-big-sigma-"+(int)(pipeline.arcType.sigma*1000) : "data/arc-existence-clusters-sigma-" + (int)(pipeline.arcType.sigma * 1000));
             }
             catch (Exception e) {
+                e.printStackTrace();
                 System.err.println("meh");
             }
             System.out.println("Done");
