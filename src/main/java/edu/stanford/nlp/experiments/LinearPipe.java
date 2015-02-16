@@ -39,7 +39,7 @@ public class LinearPipe<IN,OUT> {
     TwoDimensionalCounter<String,OUT> memorizedClassifier;
 
     public boolean automaticallyReweightTrainingData = true;
-    public double sigma = 4.0;
+    public double sigma = 1.0;
     public double epsilon = 0.05;
 
     public enum ClassifierType {

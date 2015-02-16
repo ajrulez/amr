@@ -45,11 +45,12 @@ import java.util.regex.Pattern;
  */
 public class AMRPipeline {
 
-    public static boolean FULL_DATA = true;
+    public static boolean FULL_DATA = false;
     public static boolean TINY_DATA = false;
     public static int trainDataSize = 400;
     public static boolean USE_MULTIHEAD = false;
     public static int maxAllowedHeads = 2;
+    public static boolean GREEDY_ARC_HEURISTIC = true;
 
     /////////////////////////////////////////////////////
     // FEATURE SPECS
@@ -69,6 +70,18 @@ public class AMRPipeline {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private String getSRLSenseAtIndex(Annotation annotation, int index) {
+        PredicateArgumentAnnotation srl = annotation.get(CuratorAnnotations.PropBankSRLAnnotation.class);
+        if (srl == null) return "-"; // If we have no SRL on this example, then oh well
+        for (PredicateArgumentAnnotation.AnnotationSpan span : srl.getPredicates()) {
+            if ((span.startToken <= index) && (span.endToken >= index + 1)) {
+                String sense = span.getAttribute("predicate") + "-" + span.getAttribute("sense");
+                return sense;
+            }
+        }
+        return "NONE";
     }
 
     private String getPrepSenseAtIndex(Annotation annotation, int index) {
@@ -174,15 +187,19 @@ public class AMRPipeline {
 
                 // Get the SRL lemma here
                 add((pair) -> {
+                    return getSRLSenseAtIndex(pair.first.annotation, pair.second);
+                });
+
+                // Binary indicator of SRL lemma
+                add((pair) -> {
                     PredicateArgumentAnnotation srl = pair.first.annotation.get(CuratorAnnotations.PropBankSRLAnnotation.class);
                     if (srl == null) return "-"; // If we have no SRL on this example, then oh well
                     for (PredicateArgumentAnnotation.AnnotationSpan span : srl.getPredicates()) {
                         if ((span.startToken <= pair.second) && (span.endToken >= pair.second + 1)) {
-                            String sense = span.getAttribute("predicate") + "-" + span.getAttribute("sense");
-                            return sense;
+                            return "YES";
                         }
                     }
-                    return "NONE";
+                    return "NO";
                 });
 
                 // Get the Prep sense tag here
@@ -574,16 +591,18 @@ public class AMRPipeline {
         List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/release-train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
 
         System.out.println("Training");
+        nerPlusPlus.sigma = 1.0;
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
 
         dictionaryLookup.type = LinearPipe.ClassifierType.BAYESIAN;
         dictionaryLookup.train(getDictionaryForClassifier(dictionaryData));
 
         arcExistence.type = LinearPipe.ClassifierType.LOGISTIC;
-        arcExistence.automaticallyReweightTrainingData = false; // uses HUBER penalty instead
+        arcExistence.automaticallyReweightTrainingData = false; // uses HUBER penalty instead on Logistic regression
         arcExistence.sigma = 0.13;
         arcExistence.train(getArcExistenceForClassifier(mstData));
 
+        arcType.sigma = 3.0;
         arcType.train(getArcTypeForClassifier(mstData));
         if (arcType.classifiers.size() != 1) throw new IllegalStateException("Should have 1 classifier for arcType. Instead "+arcType.classifiers.size());
 
@@ -653,9 +672,15 @@ public class AMRPipeline {
         for (int i = 0; i < tokens.length; i++) {
             AMR amr = null;
             if (labels[i].equals("VERB")) {
-                String stem = labeledSequence.annotation.get(CoreAnnotations.TokensAnnotation.class).
-                        get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase();
-                amr = createAMRSingleton(frameManager.getClosestFrame(stem));
+                String srlSense = getSRLSenseAtIndex(labeledSequence.annotation, i);
+                if (srlSense.equals("-") || srlSense.equals("NONE")) {
+                    String stem = labeledSequence.annotation.get(CoreAnnotations.TokensAnnotation.class).
+                            get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase();
+                    amr = createAMRSingleton(frameManager.getClosestFrame(stem));
+                }
+                else {
+                    amr = createAMRSingleton(srlSense);
+                }
             }
             else if (labels[i].equals("IDENTITY")) {
                 amr = createAMRSingleton(tokens[i].toLowerCase());
@@ -972,53 +997,53 @@ public class AMRPipeline {
 
         GreedyState state = new GreedyState(nodeSet.nodes, tokens, annotation);
         for (int i : arcMap.keySet()) {
-            for (Pair<String, Integer> arc : arcMap.get(i)) {
-                if (arc.first.equals("NO-LABEL")) {
-                    state.arcs[i][arc.second] = arcType.predict(new Triple<>(nodeSet, i, arc.second));
-                }
-                else {
-                    state.arcs[i][arc.second] = arc.first;
-                }
-            }
-
-            /*
-            while (true) {
-                Set<String> takenArcs = new HashSet<>();
-                for (int j = 0; j < nodeSet.nodes.length; j++) {
-                    if (state.arcs[i][j] != null) {
-                        takenArcs.add(state.arcs[i][j]);
+            if (GREEDY_ARC_HEURISTIC) {
+                while (true) {
+                    Set<String> takenArcs = new HashSet<>();
+                    for (int j = 0; j < nodeSet.nodes.length; j++) {
+                        if (state.arcs[i][j] != null) {
+                            takenArcs.add(state.arcs[i][j]);
+                        }
                     }
-                }
 
-                double bestNewArcScore = Double.NEGATIVE_INFINITY;
-                Pair<String,Integer> bestNewArc = null;
+                    double bestNewArcScore = Double.NEGATIVE_INFINITY;
+                    Pair<String, Integer> bestNewArc = null;
 
-                for (Pair<String, Integer> arc : arcMap.get(i)) {
-                    if (arc.first.equals("NO-LABEL")) {
-                        if ((state.arcs[i][arc.second] == null || state.arcs[i][arc.second].equals("NO-LABEL"))) {
-                            Counter<String> probs = arcType.predictSoft(new Triple<>(nodeSet, i, arc.second));
-                            for (String type : probs.keySet()) {
-                                if (!takenArcs.contains(type)) {
-                                    if (probs.getCount(type) > bestNewArcScore) {
-                                        bestNewArc = new Pair<>(type, arc.second);
-                                        bestNewArcScore = probs.getCount(type);
+                    for (Pair<String, Integer> arc : arcMap.get(i)) {
+                        if (arc.first.equals("NO-LABEL")) {
+                            if ((state.arcs[i][arc.second] == null || state.arcs[i][arc.second].equals("NO-LABEL"))) {
+                                Counter<String> probs = arcType.predictSoft(new Triple<>(nodeSet, i, arc.second));
+                                for (String type : probs.keySet()) {
+                                    if (!takenArcs.contains(type)) {
+                                        if (probs.getCount(type) > bestNewArcScore) {
+                                            bestNewArc = new Pair<>(type, arc.second);
+                                            bestNewArcScore = probs.getCount(type);
+                                        }
                                     }
                                 }
                             }
+                        } else {
+                            state.arcs[i][arc.second] = arc.first;
                         }
+                    }
+
+                    if (bestNewArc == null) break;
+                    if (state.arcs[i][bestNewArc.second] != null && !state.arcs[i][bestNewArc.second].equals("NO-LABEL")) {
+                        throw new IllegalStateException("Trying to label the same arc twice, old " + state.arcs[i][bestNewArc.second] + ", new " + bestNewArc.first);
+                    }
+                    state.arcs[i][bestNewArc.second] = bestNewArc.first;
+                }
+            }
+            else {
+                for (Pair<String, Integer> arc : arcMap.get(i)) {
+                    if (arc.first.equals("NO-LABEL")) {
+                        state.arcs[i][arc.second] = arcType.predict(new Triple<>(nodeSet, i, arc.second));
                     }
                     else {
                         state.arcs[i][arc.second] = arc.first;
                     }
                 }
-
-                if (bestNewArc == null) break;
-                if (state.arcs[i][bestNewArc.second] != null && !state.arcs[i][bestNewArc.second].equals("NO-LABEL")) {
-                    throw new IllegalStateException("Trying to label the same arc twice, old "+state.arcs[i][bestNewArc.second]+", new "+bestNewArc.first);
-                }
-                state.arcs[i][bestNewArc.second] = bestNewArc.first;
             }
-            */
         }
 
         if (VALIDITY_CHECKS) {
@@ -1230,6 +1255,29 @@ public class AMRPipeline {
         bw.close();
     }
 
+    private static void justTrainNERPlusPlus() throws IOException {
+        AMRPipeline pipeline = new AMRPipeline();
+
+        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData("data/train-500-seq.txt");
+        List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData("data/dev-100-seq.txt");
+
+        List<Pair<Pair<LabeledSequence,Integer>,String>> dataTrain = getNERPlusPlusForClassifier(nerPlusPlusDataTrain);
+        List<Pair<Pair<LabeledSequence,Integer>,String>> dataTest = getNERPlusPlusForClassifier(nerPlusPlusDataTest);
+
+        double[] sigmas = new double[]{
+                // 0.001, 0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 3.0, 10.0, 100.0
+                // 0.07, 0.1, 0.13, 0.18, 0.2, 0.3
+                // 0.1, 0.13, 0.18, 0.2, 0.3
+                0.9, 1.0, 1.1
+        };
+
+        for (double i : sigmas) {
+            pipeline.nerPlusPlus.sigma = i;
+            pipeline.nerPlusPlus.train(dataTrain);
+            pipeline.nerPlusPlus.analyze(dataTrain, dataTest, "data/ner-plus-plus-sigma-"+(int)(i*1000));
+        }
+    }
+
     private static void justTrainArcType() throws IOException {
         AMRPipeline pipeline = new AMRPipeline();
 
@@ -1296,9 +1344,9 @@ public class AMRPipeline {
         arcClasses.clear();
 
         double[] sigmas = new double[]{
-                // 0.001, 0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 3.0, 10.0, 100.0
+                0.001, 0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 3.0, 10.0, 100.0
                 // 0.07, 0.1, 0.13, 0.18, 0.2, 0.3
-                0.1, 0.13, 0.18, 0.2, 0.3
+                // 0.1, 0.13, 0.18, 0.2, 0.3
         };
 
         for (double i : sigmas) {
@@ -1307,9 +1355,8 @@ public class AMRPipeline {
             pipeline.arcExistence.type = LinearPipe.ClassifierType.LOGISTIC;
             pipeline.arcExistence.automaticallyReweightTrainingData = false;
 
-            pipeline.arcType.automaticallyReweightTrainingData = false;
             pipeline.arcType.train(arcTypeData, arcClasses);
-            pipeline.arcExistence.train(arcExistenceData);
+            // pipeline.arcExistence.train(arcExistenceData);
 
             System.out.println("Analyzing");
             System.out.println("sigma: " + i);
@@ -1321,7 +1368,7 @@ public class AMRPipeline {
                 System.err.println("meh");
             }
             try {
-                pipeline.arcExistence.analyze(arcExistenceData, getArcExistenceForClassifier(mstDataTest), BIG ? "data/arc-existence-big-sigma-"+(int)(pipeline.arcType.sigma*1000) : "data/arc-existence-clusters-sigma-" + (int)(pipeline.arcType.sigma * 1000));
+                // pipeline.arcExistence.analyze(arcExistenceData, getArcExistenceForClassifier(mstDataTest), BIG ? "data/arc-existence-big-sigma-"+(int)(pipeline.arcType.sigma*1000) : "data/arc-existence-clusters-sigma-" + (int)(pipeline.arcType.sigma * 1000));
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -1337,7 +1384,8 @@ public class AMRPipeline {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        justTrainArcType();
+        // justTrainArcType();
+        justTrainNERPlusPlus();
 
         /*
         AMRPipeline pipeline = new AMRPipeline();
@@ -1351,7 +1399,7 @@ public class AMRPipeline {
     // LOADERS
     /////////////////////////////////////////////////////
 
-    private List<LabeledSequence> loadSequenceData(String path) throws IOException {
+    private static List<LabeledSequence> loadSequenceData(String path) throws IOException {
         List<LabeledSequence> seqList = new ArrayList<>();
 
         BufferedReader br = new BufferedReader(new FileReader(path));
