@@ -24,11 +24,11 @@ public class DumpSequence {
     public static void main(String[] args) throws IOException {
         // getBetterRandomTrainSet();
         // getRandomDevSet();
-        // dumpReleaseData();
+        dumpReleaseData();
         // dumpMicrodata();
         // dumpPreAligned();
         // dumpPreAlignedDev();
-        dumpPreAlignedSplit();
+        // dumpPreAlignedSplit();
         // dumpGiantdata();
         // dumpTestData();
     }
@@ -75,6 +75,7 @@ public class DumpSequence {
         AMR[] train = AMRSlurp.slurp("realdata/amr-release-1.0-training-proxy.txt", AMRSlurp.Format.LDC);
         EasyFirstAligner.align(train);
         dumpCONLL(train, "realdata/release-train-conll.txt");
+        dumpSequences(train, "realdata/release-train-seq.txt");
     }
 
     public static void dumpTestData() throws IOException {

@@ -25370,7 +25370,7 @@
 14	(w2/web)	11	op	13
 15	(m/mechanism)	3	ARG1	4
 16	(w/worm)	3	ARG0	7
-17	(w/worm)	7	ARG1	0
+17	(w/worm)	7	ARG1	7
 
 4	2003-01-28
 1	(d/date-entity)	0	ROOT	0
@@ -41772,7 +41772,7 @@
 11	(n2/newspaper)	18	ARG0	5
 12	"Post"	16	op	7
 13	"Volkswagen"	6	op	0
-14	(c/company)	23	ARG0	10
+14	(c/company)	23	ARG0	0
 15	2004	4	year	2
 16	(n3/name)	11	name	5
 17	"Santana"	2	op	19
@@ -45032,7 +45032,7 @@
 27	(a/and)	19	example	13
 28	"Turkey"	33	op	9
 29	(g/group)	20	ARG0	25
-30	(c2/country)	29	mod	5
+30	(c2/country)	29	mod	23
 31	(s2/stop-01)	12	location-of	34
 32	"War"	11	op	19
 33	(n2/name)	23	name	9
@@ -45780,7 +45780,7 @@
 7	(b/build-01)	2	ARG1	11
 8	(s2/stop-01)	2	ARG2	25
 9	(a/along)	7	location	15
-10	(c4/country)	23	ARG1	16
+10	(c4/country)	23	ARG1	31
 11	(d/drug)	27	ARG1	29
 12	(c4/country)	4	poss	16
 13	(g/government-organization)	2	ARG0	8
@@ -46819,7 +46819,7 @@
 12	1949	11	year	21
 13	(n2/name)	17	name	3
 14	(c3/country)	8	op	11
-15	(c2/country)	18	ARG0	6
+15	(c2/country)	18	ARG0	9
 16	(h/have-part-91)	18	ARG1	4
 17	(c3/country)	16	ARG2	3
 18	(c/consider-01)	0	ROOT	2
@@ -47511,7 +47511,7 @@
 7	(c3/conduct-01)	16	ARG1-of	13
 8	(c4/country)	7	ARG0	15
 9	(m/match-01)	17	time	11
-10	(c2/country)	17	ARG0	10
+10	(c2/country)	17	ARG0	2
 11	(c2/country)	18	ARG0	2
 12	(n2/nucleus)	6	mod	4
 13	(n3/name)	8	name	15
@@ -57963,7 +57963,7 @@
 
 26	Gibraltarians in 020000 overwhelmingly rejected moves by Britain and Spain to move towards joint sovereignty for Gibraltar and Gibraltar 's 30000 inhabitants .
 1	(m/move-02)	21	ARG1	5
-2	(c3/country)	19	mod	16
+2	(c3/country)	19	mod	18
 3	(n/name)	2	name	0
 4	(j/joint)	26	mod	13
 5	"Great"	12	op	6
@@ -81912,11 +81912,11 @@
 2	(t/traffic-00)	6	op	6
 3	(o/opium)	10	ARG1	12
 4	-	13	polarity	1
-5	(m/man)	2	ARG0	0
+5	(m/man)	2	ARG0	11
 6	(a/and)	12	ARG2	7
 7	(p/possess-01)	6	op	8
 8	(o/opium)	7	ARG1	12
-9	(m/man)	7	ARG0	0
+9	(m/man)	7	ARG0	11
 10	(d/distribute-01)	6	op	11
 11	(m/man)	12	ARG1	11
 12	(c/convict-01)	0	ROOT	4
@@ -85076,8 +85076,8 @@
 6	(o2/observe-01)	12	ARG0-of	5
 7	(d/deny-01)	1	op	2
 8	(c/country)	7	ARG0	14
-9	(c/country)	5	ARG0	0
-10	(c/country)	15	ARG0	0
+9	(c/country)	5	ARG0	14
+10	(c/country)	15	ARG0	14
 11	(n/name)	8	name	0
 12	(p/person)	5	ARG1	5
 13	(e/elect-01)	15	ARG1	10
@@ -111503,7 +111503,7 @@
 19	(o3/organization)	1	mod	15
 20	(n15/name)	39	name	43
 21	(l2/law)	4	ARG1	49
-22	(c4/country)	45	poss	21
+22	(c4/country)	45	poss	35
 23	"Interpol"	32	op	7
 24	(p/person)	25	ARG0	4
 25	(s/state-01)	0	ROOT	10
@@ -121426,7 +121426,7 @@
 21	(g/government-organization)	38	ARG0	2
 22	"Defense"	33	op	2
 23	(w/world-region)	4	location	27
-24	(c/country)	21	mod	21
+24	(c/country)	21	mod	8
 25	(g3/government-organization)	17	ARG0	9
 26	(n4/name)	16	name	17
 27	"Ministry"	33	op	3
@@ -124671,7 +124671,7 @@
 20	Tovar wrote that a man named Belisario in Bogota supplies Tovar with explosives and sent Tovar a catalog and specifications .
 1	(s3/specification)	8	op	19
 2	(m/man)	15	ARG0	6
-3	(p/person)	9	ARG0	10
+3	(p/person)	9	ARG0	15
 4	(s/supply-01)	6	op	9
 5	(n2/name)	18	name	6
 6	(a/and)	9	ARG1	13

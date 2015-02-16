@@ -8,6 +8,7 @@ import edu.stanford.nlp.classify.LinearClassifier;
 import edu.stanford.nlp.classify.LogisticClassifier;
 import edu.stanford.nlp.curator.CuratorAnnotations;
 import edu.stanford.nlp.curator.PredicateArgumentAnnotation;
+import edu.stanford.nlp.dcoref.CorefCoreAnnotations;
 import edu.stanford.nlp.experiments.greedy.Generator;
 import edu.stanford.nlp.experiments.greedy.GreedyState;
 import edu.stanford.nlp.ie.NumberNormalizer;
@@ -105,6 +106,7 @@ public class AMRPipeline {
                 // Input pair is (Seq, index into Seq for current token)
 
                 add((pair) -> pair.first.tokens[pair.second]);
+
                 add((pair) -> embeddings.get(pair.first.tokens[pair.second]));
 
                 // Left context
@@ -116,6 +118,17 @@ public class AMRPipeline {
                 add((pair) -> {
                     if (pair.second == pair.first.tokens.length-1) return "$";
                     else return pair.first.tokens[pair.second+1];
+                });
+
+                // Left bigram
+                add((pair) -> {
+                    if (pair.second == 0) return "^:"+pair.first.tokens[pair.second];
+                    else return pair.first.tokens[pair.second-1]+":"+pair.first.tokens[pair.second];
+                });
+                // Right bigram
+                add((pair) -> {
+                    if (pair.second == pair.first.tokens.length-1) return pair.first.tokens[pair.second]+":$";
+                    else return pair.first.tokens[pair.second+1]+":"+pair.first.tokens[pair.second];
                 });
 
                 // POS
@@ -131,6 +144,22 @@ public class AMRPipeline {
                 add((pair) -> {
                     if (pair.second >= pair.first.tokens.length-1) return "$";
                     else return pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class)
+                            .get(pair.second+1).get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                });
+                // Left POS + POS
+                add((pair) -> {
+                    String myPOS = pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class)
+                        .get(pair.second).get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                    if (pair.second == 0) return "^:"+myPOS;
+                    else return pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class)
+                            .get(pair.second-1).get(CoreAnnotations.PartOfSpeechAnnotation.class)+":"+myPOS;
+                });
+                // Right POS + POS
+                add((pair) -> {
+                    String myPOS = pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class)
+                            .get(pair.second).get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                    if (pair.second >= pair.first.tokens.length-1) return myPOS+":$";
+                    else return myPOS+":"+pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class)
                             .get(pair.second+1).get(CoreAnnotations.PartOfSpeechAnnotation.class);
                 });
 
@@ -187,6 +216,22 @@ public class AMRPipeline {
 
                 // Token NER
                 add((pair) -> pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class).get(pair.second).get(CoreAnnotations.NamedEntityTagAnnotation.class));
+                // Left bigram NER
+                add((pair) -> {
+                    String leftNER = "^";
+                    if (pair.second > 0) {
+                        leftNER = pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class).get(pair.second-1).get(CoreAnnotations.NamedEntityTagAnnotation.class);
+                    }
+                    return leftNER+":"+pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class).get(pair.second).get(CoreAnnotations.NamedEntityTagAnnotation.class);
+                });
+                // Right bigram NER
+                add((pair) -> {
+                    String rightNER = "$";
+                    if (pair.second < pair.first.tokens.length-1) {
+                        rightNER = pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class).get(pair.second+1).get(CoreAnnotations.NamedEntityTagAnnotation.class);
+                    }
+                    return pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class).get(pair.second).get(CoreAnnotations.NamedEntityTagAnnotation.class)+":"+rightNER;
+                });
 
                 // Get the SRL lemma here
                 add((pair) -> {
@@ -209,6 +254,14 @@ public class AMRPipeline {
                 add((pair) -> {
                     return getPrepSenseAtIndex(pair.first.annotation, pair.second);
                 });
+
+                /*
+                // Get coref chain existence
+                add((pair) -> {
+                     = pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class).get(pair.second).get(CorefCoreAnnotations.CorefChainAnnotation.class);
+                    return "COREF";
+                });
+                */
             }},
             AMRPipeline::writeNerPlusPlusContext
     );
@@ -1530,7 +1583,8 @@ public class AMRPipeline {
     private static void justTrainNERPlusPlus() throws IOException {
         AMRPipeline pipeline = new AMRPipeline();
 
-        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData("data/train-500-seq.txt");
+        // List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData("data/train-500-seq.txt");
+        List<LabeledSequence> nerPlusPlusDataTrain = loadSequenceData("realdata/release-train-seq.txt");
         List<LabeledSequence> nerPlusPlusDataTest = loadSequenceData("data/dev-100-seq.txt");
 
         List<Pair<Pair<LabeledSequence,Integer>,String>> dataTrain = getNERPlusPlusForClassifier(nerPlusPlusDataTrain);
@@ -1538,14 +1592,30 @@ public class AMRPipeline {
 
         double[] sigmas = new double[]{
                 // 0.001, 0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 3.0, 10.0, 100.0
-                // 0.07, 0.1, 0.13, 0.18, 0.2, 0.3
+                0.07, 0.1, 0.13, 0.18, 0.2, 0.3
                 // 0.1, 0.13, 0.18, 0.2, 0.3
-                0.9, 1.0, 1.1
         };
+
+        List<Set<String>> typeClasses = new ArrayList<Set<String>>() {{
+
+            add(new HashSet<String>(){{
+                add("VERB");
+                add("IDENTITY");
+                add("LEMMA");
+            }});
+
+            add(new HashSet<String>(){{
+                add("NONE");
+                add("DICT");
+            }});
+
+        }};
+
+        typeClasses.clear();
 
         for (double i : sigmas) {
             pipeline.nerPlusPlus.sigma = i;
-            pipeline.nerPlusPlus.train(dataTrain);
+            pipeline.nerPlusPlus.train(dataTrain, typeClasses);
             pipeline.nerPlusPlus.analyze(dataTrain, dataTest, "data/ner-plus-plus-sigma-"+(int)(i*1000));
         }
     }
@@ -1657,12 +1727,14 @@ public class AMRPipeline {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         // justTrainArcType();
-        // justTrainNERPlusPlus();
+        justTrainNERPlusPlus();
 
+        /*
         AMRPipeline pipeline = new AMRPipeline();
         pipeline.trainStages();
         pipeline.analyzeStages();
         pipeline.testCompletePipeline();
+        */
     }
 
     /////////////////////////////////////////////////////
