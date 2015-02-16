@@ -48,8 +48,8 @@ import java.util.regex.Pattern;
  */
 public class AMRPipeline {
 
-    public static boolean FULL_DATA = false;
-    public static boolean TINY_DATA = true;
+    public static boolean FULL_DATA = true;
+    public static boolean TINY_DATA = false;
     public static int trainDataSize = 400;
     public static boolean USE_MULTIHEAD = false;
     public static int maxAllowedHeads = 2;
@@ -641,7 +641,7 @@ public class AMRPipeline {
 
     private AMR constructNERCluster(Annotation annotation, List<Integer> nerList, String tag, boolean debug) {
         tag = tag.toLowerCase();
-        if (tag.equals("date") || tag.equals("time") || tag.equals("duration")) {
+        if (tag.equals("date")) { // || tag.equals("time") || tag.equals("duration")) {
             return constructDateCluster(annotation, nerList, tag, debug);
         }
         else if (tag.equals("ordinal")) {
@@ -650,7 +650,7 @@ public class AMRPipeline {
         else if (tag.equals("number")) {
             return constructNumberCluster(annotation, nerList, debug);
         }
-        else if (AMRConstants.commonNamedEntityConfusions.containsKey(tag) || tag.equals("person")) {
+        else if (tag.equals("person")) {
             return constructEntityCluster(annotation, nerList, tag, debug);
         }
         return null;
@@ -753,7 +753,7 @@ public class AMRPipeline {
         }
         catch (Exception ignored) {}
         if (n == null) n = 1;
-        AMR.Node tail = chunk.addNode(n.toString(), AMR.NodeType.VALUE);
+        AMR.Node tail = chunk.addNode(n.toString(), AMR.NodeType.VALUE, Collections.min(ordinalList));
         chunk.addArc(head, tail, "value");
         return chunk;
     }
@@ -779,7 +779,7 @@ public class AMRPipeline {
         String quoteConjunction = "";
         for (int i : nerList) {
             if (quoteConjunction.length() > 0) quoteConjunction += " ";
-            quoteConjunction += annotation.get(CoreAnnotations.TokensAnnotation.class).get(nerList.get(i)).word().toLowerCase();
+            quoteConjunction += annotation.get(CoreAnnotations.TokensAnnotation.class).get(i).word().toLowerCase();
         }
 
         if (debug) System.out.println("Checking quote conjunction: \""+quoteConjunction+"\"");
@@ -875,11 +875,42 @@ public class AMRPipeline {
             adjacentDicts.add(currentDict);
         }
 
+        // Try generating anything that we can add with high precision
+
+        List<Integer> nerSpan = new ArrayList<>();
+        String lastNerTag = "O";
+
+        for (int i = 0; i < tokens.length; i++) {
+            String nerTag = annotation.get(CoreAnnotations.TokensAnnotation.class).get(i).get(CoreAnnotations.NamedEntityTagAnnotation.class);
+            if (nerTag == null) nerTag = "O";
+            if (blocked.contains(i)) nerTag = "O";
+            if (!nerTag.equals(lastNerTag)) {
+                if (!lastNerTag.equals("O")) {
+                    AMR attempt = constructNERCluster(annotation, nerSpan, lastNerTag, false);
+                    if (attempt != null) {
+                        System.out.println("Generated a cluster from a formula!");
+                        System.out.println("\""+getSequentialTokens(annotation, nerSpan)+"\"");
+                        System.out.println(attempt.toString(AMR.AlignmentPrinting.ALL));
+                        gen.add(attempt);
+                        blocked.addAll(nerSpan);
+                    }
+                    nerSpan = new ArrayList<>();
+                }
+            }
+            if (!nerTag.equals("O")) {
+                nerSpan.add(i);
+            }
+            lastNerTag = nerTag;
+        }
+
         // Add all the dict elements
 
-        for (List<Integer> dict : adjacentDicts) {
+        outer: for (List<Integer> dict : adjacentDicts) {
             int first = dict.get(0);
             int last = dict.get(dict.size() - 1);
+            for (int i = first; i <= last; i++) {
+                if (blocked.contains(i)) continue outer;
+            }
 
             List<Pair<String,Integer>> bestChunks = getBestAMRChunks(labeledSequence, first, last);
             if (bestChunks.size() > 0) {
@@ -909,30 +940,6 @@ public class AMRPipeline {
                     }
                 }
             }
-        }
-
-        // Try generating anything that the dictionary couldn't figure out
-
-        List<Integer> nerSpan = new ArrayList<>();
-        String lastNerTag = "O";
-
-        for (int i = 0; i < tokens.length; i++) {
-            String nerTag = annotation.get(CoreAnnotations.TokensAnnotation.class).get(i).get(CoreAnnotations.NormalizedNamedEntityTagAnnotation.class);
-            if (blocked.contains(i)) nerTag = "O";
-            if (!nerTag.equals(lastNerTag)) {
-                if (!lastNerTag.equals("O")) {
-                    AMR attempt = constructNERCluster(annotation, nerSpan, lastNerTag, false);
-                    if (attempt != null) {
-                        gen.add(attempt);
-                        blocked.addAll(nerSpan);
-                    }
-                    nerSpan = new ArrayList<>();
-                }
-            }
-            if (!nerTag.equals("O")) {
-                nerSpan.add(i);
-            }
-            lastNerTag = nerTag;
         }
 
         // Do all non-dict elements
@@ -1329,6 +1336,36 @@ public class AMRPipeline {
     }
 
     public AMR runPipeline(String[] tokens, Annotation annotation) {
+        // Special case code to handle things like: 2008-01-03
+        if (tokens.length == 1) {
+            String token = tokens[0];
+            Pattern p = Pattern.compile("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]");
+            if (p.matcher(token).matches()) {
+                String[] parts = token.split("-");
+                int year = Integer.parseInt(parts[0]);
+                int month = Integer.parseInt(parts[1]);
+                int day = Integer.parseInt(parts[2]);
+                AMR result = new AMR();
+                result.sourceText = tokens;
+
+                /*
+                (d / date-entity [0 = "2008-02-15"]
+                    :year 2008 [0 = "2008-02-15"]
+                    :month 2 [0 = "2008-02-15"]
+                    :day 15 [0 = "2008-02-15"])
+                 */
+
+                AMR.Node root = result.addNode("d", "date-entity", 0);
+                AMR.Node yearN = result.addNode(""+year, AMR.NodeType.VALUE);
+                AMR.Node monthN = result.addNode(""+month, AMR.NodeType.VALUE);
+                AMR.Node dayN = result.addNode(""+day, AMR.NodeType.VALUE);
+                result.addArc(root, yearN, "year");
+                result.addArc(root, monthN, "month");
+                result.addArc(root, dayN, "day");
+                return result;
+            }
+        }
+
         AMRNodeSet nodeSet = new AMRNodeSet();
         nodeSet.annotation = annotation;
         nodeSet.tokens = tokens;
@@ -1433,10 +1470,8 @@ public class AMRPipeline {
             if (FULL_DATA) {
                 System.out.println("Testing on REAL DEV set");
                 analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "data/train-" + trainDataSize + "/amr-real-dev-analysis");
-                /*
                 System.out.println("Testing on REAL TEST set");
                 analyzeAMRSubset("realdata/amr-release-1.0-test-proxy.txt", "realdata/release-test-conll.txt", "data/train-" + trainDataSize + "/amr-real-test-analysis");
-                */
             }
         }
     }
