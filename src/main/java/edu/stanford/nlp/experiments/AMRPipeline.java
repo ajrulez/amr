@@ -574,6 +574,20 @@ public class AMRPipeline {
                     return "NONE";
                 });
 
+                // Get the embeddings for the head node title
+                add((triple) -> {
+                    if (triple.second == 0) return new double[300];
+                    String headTitle = triple.first.nodes[triple.second].title;
+                    if (headTitle.contains("-") && !headTitle.equals("-")) headTitle = headTitle.split("-")[0];
+                    return embeddings.get(headTitle.toLowerCase());
+                });
+                // Get the embeddings for the tail node title
+                add((triple) -> {
+                    String tailTitle = triple.first.nodes[triple.third].title;
+                    if (tailTitle.contains("-") && !tailTitle.equals("-")) tailTitle = tailTitle.split("-")[0];
+                    return embeddings.get(tailTitle.toLowerCase());
+                });
+
                 /**
                  * Path, where all the PREP tokens get tagged with their SRL interpretation instead of POS
                  */
@@ -641,13 +655,13 @@ public class AMRPipeline {
 
     public void trainStages() throws IOException {
         System.out.println("Loading training data");
-        List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "data/train-500-seq.txt" : (TINY_DATA ? "data/train-3-seq.txt" : "data/train-" + trainDataSize + "-seq.txt"));
+        List<LabeledSequence> nerPlusPlusData = loadSequenceData(FULL_DATA ? "realdata/release-train-seq.txt" : (TINY_DATA ? "data/train-3-seq.txt" : "data/train-" + trainDataSize + "-seq.txt"));
         // List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "data/train-" + trainDataSize + "-manygen.txt"));
         List<LabeledSequence> dictionaryData = loadManygenData(FULL_DATA ? "realdata/train-manygen.txt" : (TINY_DATA ? "data/train-3-manygen.txt" : "realdata/train-manygen.txt"));
         List<AMRNodeSet> mstData = loadCoNLLData(FULL_DATA ? "realdata/release-train-conll.txt" : ( TINY_DATA ? "data/train-3-conll.txt" : "data/train-"+trainDataSize+"-conll.txt"));
 
         System.out.println("Training");
-        nerPlusPlus.sigma = 1.0;
+        nerPlusPlus.sigma = 0.5;
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
 
         dictionaryLookup.type = LinearPipe.ClassifierType.BAYESIAN;
@@ -1592,7 +1606,7 @@ public class AMRPipeline {
 
         double[] sigmas = new double[]{
                 // 0.001, 0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 3.0, 10.0, 100.0
-                0.07, 0.1, 0.13, 0.18, 0.2, 0.3
+                0.5, 0.7
                 // 0.1, 0.13, 0.18, 0.2, 0.3
         };
 
@@ -1685,23 +1699,29 @@ public class AMRPipeline {
 
         arcClasses.clear();
 
-        double[] sigmas = new double[]{
-                0.001, 0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 3.0, 10.0, 100.0
+        double[] existenceSigmas = new double[]{
+                // 0.001, 0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 3.0, 10.0, 100.0
                 // 0.07, 0.1, 0.13, 0.18, 0.2, 0.3
                 // 0.1, 0.13, 0.18, 0.2, 0.3
+                0.13
+        };
+        double[] typeSigmas = new double[]{
+                3.0
         };
 
-        for (double i : sigmas) {
-            pipeline.arcType.sigma = i;
-            pipeline.arcExistence.sigma = i;
+        for (int i = 0; i < existenceSigmas.length; i++) {
+            pipeline.arcType.sigma = typeSigmas[i];
+            pipeline.arcType.type = LinearPipe.ClassifierType.SVM;
+            pipeline.arcExistence.sigma = existenceSigmas[i];
             pipeline.arcExistence.type = LinearPipe.ClassifierType.LOGISTIC;
             pipeline.arcExistence.automaticallyReweightTrainingData = false;
 
             pipeline.arcType.train(arcTypeData, arcClasses);
-            // pipeline.arcExistence.train(arcExistenceData);
+            pipeline.arcExistence.train(arcExistenceData);
 
             System.out.println("Analyzing");
-            System.out.println("sigma: " + i);
+            System.out.println("type sigma: " + typeSigmas[i]);
+            System.out.println("existence sigma: " + existenceSigmas[i]);
             try {
                 pipeline.arcType.analyze(arcTypeData, getArcTypeForClassifier(mstDataTest), BIG ? "data/arc-type-big-sigma-" + (int)(pipeline.arcType.sigma * 1000) : "data/arc-type-clusters-sigma-" + (int)(pipeline.arcType.sigma * 1000));
             }
@@ -1710,7 +1730,7 @@ public class AMRPipeline {
                 System.err.println("meh");
             }
             try {
-                // pipeline.arcExistence.analyze(arcExistenceData, getArcExistenceForClassifier(mstDataTest), BIG ? "data/arc-existence-big-sigma-"+(int)(pipeline.arcType.sigma*1000) : "data/arc-existence-clusters-sigma-" + (int)(pipeline.arcType.sigma * 1000));
+                pipeline.arcExistence.analyze(arcExistenceData, getArcExistenceForClassifier(mstDataTest), BIG ? "data/arc-existence-big-sigma-"+(int)(pipeline.arcExistence.sigma*1000) : "data/arc-existence-clusters-sigma-" + (int)(pipeline.arcExistence.sigma * 1000));
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -1726,8 +1746,8 @@ public class AMRPipeline {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        // justTrainArcType();
-        justTrainNERPlusPlus();
+        justTrainArcType();
+        // justTrainNERPlusPlus();
 
         /*
         AMRPipeline pipeline = new AMRPipeline();

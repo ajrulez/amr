@@ -260,6 +260,23 @@ public class LinearPipe<IN,OUT> {
                 classifiers.add(factory.trainClassifier(dataset, prior, false));
             }
         }
+        else if (type == ClassifierType.SVM) {
+            SVMLightClassifierFactory<OUT, String> factory = new SVMLightClassifierFactory<>();
+            factory.svmLightLearn = "svm_light/svm_learn";
+            factory.svmStructLearn = "svm_multiclass/svm_multiclass_learn";
+            factory.svmLightClassify = "svm_light/svm_classify";
+            factory.svmStructClassify = "svm_multiclass/svm_multiclass_classify";
+            factory.setC(1.0);
+
+            List<RVFDatum<OUT,String>> datumList = parmap(data, (pair) -> toDatum(pair.first, pair.second));
+
+            RVFDataset<OUT, String> dataset = new RVFDataset<>();
+            for (RVFDatum<OUT, String> datum : datumList) {
+                dataset.add(datum);
+            }
+
+            classifiers.add(factory.trainClassifier(dataset));
+        }
         else if (type == ClassifierType.LINEAR) {
             List<RVFDatum<OUT,String>> datumList = parmap(data, (pair) -> toDatum(pair.first, pair.second));
 

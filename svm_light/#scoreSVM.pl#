@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+my ($ex,$mo) = @ARGV;
+open EX, $ex or die;
+
+system("/u/nlp/src/svm_light/svm_classify $ex $mo $ex.predictions > /dev/null");
+open EX_PRED, "$ex.predictions" or die;
+while(<EX_PRED>)  
+{
+    $line = <EX>;
+    $line =~ /(\d+\s+qid:\d+)/;
+    $_ = $1 . " " . $_;
+    my ($rank,$qid,$score) = split /\s+/, $_;
+
+    if ((!$cur_qid) or ($qid ne $cur_qid)) {
+        $lowest_score = 1e6;
+	$cur_qid = $qid;
+	if ($lowest_rank) {
+	    /incorrect\s+(\d+)/;
+	    $line_incorrect = $1;
+	    /total\s+(\d+)/;
+	    $line_total = $1;
+	    $incorrect += $line_incorrect;
+	    $total += $line_total;
+	}
+    }
+    if ($score < $lowest_score) {
+	$lowest_score = $score;
+	$lowest_rank  = $rank;
+	$lowest_line = $line;
+	
+    }
+}
+
+$correct++ if $lowest_rank eq 1;
+$total++;
+
+unlink("$ex.predictions");
+
+print "Accuracy: " . $correct / $total  . "\n";
