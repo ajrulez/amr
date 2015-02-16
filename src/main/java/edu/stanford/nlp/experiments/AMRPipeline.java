@@ -10,7 +10,9 @@ import edu.stanford.nlp.curator.CuratorAnnotations;
 import edu.stanford.nlp.curator.PredicateArgumentAnnotation;
 import edu.stanford.nlp.experiments.greedy.Generator;
 import edu.stanford.nlp.experiments.greedy.GreedyState;
+import edu.stanford.nlp.ie.NumberNormalizer;
 import edu.stanford.nlp.io.IOUtils;
+import edu.stanford.nlp.ling.CoreAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -18,6 +20,7 @@ import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
 import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 import edu.stanford.nlp.stamr.AMR;
+import edu.stanford.nlp.stamr.AMRConstants;
 import edu.stanford.nlp.stamr.AMRParser;
 import edu.stanford.nlp.stamr.AMRSlurp;
 import edu.stanford.nlp.stamr.datagen.DumpSequence;
@@ -46,7 +49,7 @@ import java.util.regex.Pattern;
 public class AMRPipeline {
 
     public static boolean FULL_DATA = false;
-    public static boolean TINY_DATA = false;
+    public static boolean TINY_DATA = true;
     public static int trainDataSize = 400;
     public static boolean USE_MULTIHEAD = false;
     public static int maxAllowedHeads = 2;
@@ -632,7 +635,196 @@ public class AMRPipeline {
         bw.close();
     }
 
+    /**
+     * This is bunch of code lifted from Ditch for generating special case AMR stuff that we have reliable parsers for.
+     */
+
+    private AMR constructNERCluster(Annotation annotation, List<Integer> nerList, String tag, boolean debug) {
+        tag = tag.toLowerCase();
+        if (tag.equals("date") || tag.equals("time") || tag.equals("duration")) {
+            return constructDateCluster(annotation, nerList, tag, debug);
+        }
+        else if (tag.equals("ordinal")) {
+            return constructOrdinalCluster(annotation, nerList, debug);
+        }
+        else if (tag.equals("number")) {
+            return constructNumberCluster(annotation, nerList, debug);
+        }
+        else if (AMRConstants.commonNamedEntityConfusions.containsKey(tag) || tag.equals("person")) {
+            return constructEntityCluster(annotation, nerList, tag, debug);
+        }
+        return null;
+    }
+
+    private AMR constructDateCluster(Annotation annotation, List<Integer> dateList, String tag, boolean debug) {
+        AMR dateChunk = new AMR();
+        if (tag.equals("date")) {
+            tag = "date-entity";
+        }
+        AMR.Node root = dateChunk.addNode("" + tag.charAt(0), tag, dateList.get(0));
+
+        String time = annotation.get(CoreAnnotations.TokensAnnotation.class).get(dateList.get(0)).get(CoreAnnotations.NormalizedNamedEntityTagAnnotation.class);
+        if (time == null) return dateChunk;
+        if (debug) System.out.println("DATE: "+dateList.get(0)+" -> "+time);
+
+        int year = -1;
+        boolean isWeek = false;
+        int week = -1;
+        int month = -1;
+        int day = -1;
+
+        String[] parts = time.split("-");
+        try {
+            year = Integer.parseInt(parts[0]);
+        }
+        catch (Exception ignored) {}
+        if (parts.length > 1) {
+            if (parts[1].startsWith("W")) {
+                isWeek = true;
+                try {
+                    week = Integer.parseInt(parts[1].substring(1));
+                } catch (Exception ignored) {
+                }
+            } else {
+                try {
+                    month = Integer.parseInt(parts[1]);
+                } catch (Exception ignored) {
+                }
+            }
+        }
+        if (parts.length > 2) {
+            try {
+                day = Integer.parseInt(parts[2]);
+            } catch (Exception ignored) {
+            }
+        }
+
+        if (year != -1) {
+            AMR.Node yearN = dateChunk.addNode(""+year, AMR.NodeType.VALUE);
+            dateChunk.addArc(root, yearN, "year");
+        }
+        if (month != -1) {
+            AMR.Node monthN = dateChunk.addNode(""+month, AMR.NodeType.VALUE);
+            dateChunk.addArc(root, monthN, "month");
+        }
+        if (week != -1) {
+            AMR.Node weekN = dateChunk.addNode(""+week, AMR.NodeType.VALUE);
+            dateChunk.addArc(root, weekN, "week");
+        }
+        if (day != -1) {
+            if (isWeek) {
+                String weekday = AMRConstants.weekdays.get(day).toLowerCase();
+                AMR.Node dayN = dateChunk.addNode(""+weekday.charAt(0), weekday);
+                dateChunk.addArc(root, dayN, "weekday");
+            }
+            else {
+                AMR.Node dayN = dateChunk.addNode("" + day, AMR.NodeType.VALUE);
+                dateChunk.addArc(root, dayN, "day");
+            }
+        }
+
+        // Just append everything if we have nothing else
+        if (year == -1 && month == -1 && week == -1 && day == -1) {
+            for (int i : dateList) {
+                String token = annotation.get(CoreAnnotations.TokensAnnotation.class).get(i).lemma();
+                AMR.Node word = dateChunk.addNode(""+token.charAt(0), token);
+                dateChunk.addArc(root, word, "time");
+            }
+        }
+
+        return dateChunk;
+    }
+
+    private static String getSequentialTokens(Annotation annotation, List<Integer> list) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            if (i != 0) sb.append(" ");
+            sb.append(annotation.get(CoreAnnotations.TokensAnnotation.class).get(list.get(i)));
+        }
+        return sb.toString();
+    }
+
+    private AMR constructOrdinalCluster(Annotation annotation, List<Integer> ordinalList, boolean debug) {
+        AMR chunk = new AMR();
+        AMR.Node head = chunk.addNode("o", "ordinal-entity");
+        Number n = null;
+        try {
+            n = NumberNormalizer.wordToNumber(getSequentialTokens(annotation, ordinalList));
+        }
+        catch (Exception ignored) {}
+        if (n == null) n = 1;
+        AMR.Node tail = chunk.addNode(n.toString(), AMR.NodeType.VALUE);
+        chunk.addArc(head, tail, "value");
+        return chunk;
+    }
+
+    private AMR constructNumberCluster(Annotation annotation, List<Integer> numberList, boolean debug) {
+        AMR chunk = new AMR();
+        Number n = null;
+        try {
+            NumberNormalizer.wordToNumber(getSequentialTokens(annotation, numberList));
+        }
+        catch (Exception ignored) {}
+        if (n == null) n = 1;
+        chunk.addNode(n.toString(), AMR.NodeType.VALUE);
+        return chunk;
+    }
+
+    private AMR constructEntityCluster(Annotation annotation, List<Integer> nerList, String tag, boolean debug) {
+        AMR nerChunk = new AMR();
+        AMR.Node root = nerChunk.addNode("" + tag.charAt(0), tag, nerList.get(0));
+        AMR.Node name = nerChunk.addNode("n", "name", nerList.get(0));
+        nerChunk.addArc(root, name, "name");
+
+        String quoteConjunction = "";
+        for (int i : nerList) {
+            if (quoteConjunction.length() > 0) quoteConjunction += " ";
+            quoteConjunction += annotation.get(CoreAnnotations.TokensAnnotation.class).get(nerList.get(i)).word().toLowerCase();
+        }
+
+        if (debug) System.out.println("Checking quote conjunction: \""+quoteConjunction+"\"");
+
+        if (AMRConstants.commonNamedEntityConfusions.containsKey(quoteConjunction)) {
+            Pair<String,String> pair = AMRConstants.commonNamedEntityConfusions.get(quoteConjunction);
+            // Set the type
+            root.title = pair.first;
+            // Set the parts as children
+            String[] parts = pair.second.split(" ");
+            for (int i = 0; i < parts.length; i++) {
+                AMR.Node opTag = nerChunk.addNode(parts[i], AMR.NodeType.QUOTE, root.alignment);
+                nerChunk.addArc(name, opTag, "op" + (i + 1));
+            }
+        }
+        else {
+            for (int i = 0; i < nerList.size(); i++) {
+                AMR.Node opTag = nerChunk.addNode(annotation.get(CoreAnnotations.TokensAnnotation.class).get(nerList.get(i)).word(), AMR.NodeType.QUOTE, nerList.get(i));
+                nerChunk.addArc(name, opTag, "op" + (i + 1));
+            }
+        }
+        if (debug) {
+            System.out.println("Built NER cluster: ");
+            System.out.println(nerChunk.toString());
+        }
+
+        int min = 10000;
+        for (int i : nerList) {
+            min = Math.min(min, i);
+        }
+
+        for (AMR.Node node : nerChunk.nodes) {
+            if (node.alignment == 0) {
+                node.alignment = min;
+            }
+        }
+
+        return nerChunk;
+    }
+
+
     private Pair<AMR.Node[],String[][]> predictNodes(String[] tokens, Annotation annotation) {
+        List<AMR> gen = new ArrayList<>();
+        Set<Integer> blocked = new HashSet<>();
+
         LabeledSequence labeledSequence = new LabeledSequence();
         labeledSequence.tokens = tokens;
         labeledSequence.annotation = annotation;
@@ -642,13 +834,33 @@ public class AMRPipeline {
             labels[i] = nerPlusPlus.predict(new Pair<>(labeledSequence, i));
         }
 
+        // Force anything inside an -LRB- -RRB- to be NONE, which is how AMR generally handles it
+
+        boolean inBrace = false;
+        for (int i = 0; i < tokens.length; i++) {
+            if (tokens[i].equals("-LRB-")) {
+                inBrace = true;
+                labels[i] = "NONE";
+                blocked.add(i);
+            }
+            if (tokens[i].equals("-RRB-")) {
+                inBrace = false;
+                labels[i] = "NONE";
+                blocked.add(i);
+            }
+            if (inBrace) {
+                labels[i] = "NONE";
+                blocked.add(i);
+            }
+        }
+
         // First we get all adjacent DICT entries together...
 
         List<List<Integer>> adjacentDicts = new ArrayList<>();
 
         List<Integer> currentDict = null;
         for (int i = 0; i < tokens.length; i++) {
-            if (labels[i].equals("DICT")) {
+            if (!blocked.contains(i) && labels[i].equals("DICT")) {
                 if (currentDict == null) {
                     currentDict = new ArrayList<>();
                 }
@@ -663,14 +875,71 @@ public class AMRPipeline {
             adjacentDicts.add(currentDict);
         }
 
-        // Now we can go through and start to generate components as a list of AMR's
+        // Add all the dict elements
 
-        List<AMR> gen = new ArrayList<>();
+        for (List<Integer> dict : adjacentDicts) {
+            int first = dict.get(0);
+            int last = dict.get(dict.size() - 1);
 
-        // First do all non-dict elements
+            List<Pair<String,Integer>> bestChunks = getBestAMRChunks(labeledSequence, first, last);
+            if (bestChunks.size() > 0) {
+                for (Pair<String, Integer> amrPair : bestChunks) {
+                    String amrString = amrPair.first;
+                    AMR amr;
+                    if (amrString.startsWith("(")) {
+                        assert (amrString.endsWith(")"));
+                        amr = AMRSlurp.parseAMRTree(amrString);
+                    } else if (amrString.startsWith("\"")) {
+                        if (amrString.split(" ").length > 1) amrString = amrString.split(" ")[0];
+                        amr = createAMRSingleton(amrString.substring(1, amrString.length() - 1), AMR.NodeType.QUOTE);
+                    } else {
+                        amr = createAMRSingleton(amrString, AMR.NodeType.VALUE);
+                    }
+
+                    int minAlignment = Integer.MAX_VALUE;
+                    int maxAlignment = Integer.MIN_VALUE;
+                    for (AMR.Node node : amr.nodes) {
+                        node.alignment = Math.min(amrPair.second + node.alignment, tokens.length - 1);
+                        if (minAlignment > node.alignment) minAlignment = node.alignment;
+                        if (maxAlignment < node.alignment) maxAlignment = node.alignment;
+                    }
+                    gen.add(amr);
+                    for (int i = minAlignment; i <= maxAlignment; i++) {
+                        blocked.add(i);
+                    }
+                }
+            }
+        }
+
+        // Try generating anything that the dictionary couldn't figure out
+
+        List<Integer> nerSpan = new ArrayList<>();
+        String lastNerTag = "O";
+
+        for (int i = 0; i < tokens.length; i++) {
+            String nerTag = annotation.get(CoreAnnotations.TokensAnnotation.class).get(i).get(CoreAnnotations.NormalizedNamedEntityTagAnnotation.class);
+            if (blocked.contains(i)) nerTag = "O";
+            if (!nerTag.equals(lastNerTag)) {
+                if (!lastNerTag.equals("O")) {
+                    AMR attempt = constructNERCluster(annotation, nerSpan, lastNerTag, false);
+                    if (attempt != null) {
+                        gen.add(attempt);
+                        blocked.addAll(nerSpan);
+                    }
+                    nerSpan = new ArrayList<>();
+                }
+            }
+            if (!nerTag.equals("O")) {
+                nerSpan.add(i);
+            }
+            lastNerTag = nerTag;
+        }
+
+        // Do all non-dict elements
 
         for (int i = 0; i < tokens.length; i++) {
             AMR amr = null;
+            if (blocked.contains(i)) continue;
             if (labels[i].equals("VERB")) {
                 String srlSense = getSRLSenseAtIndex(labeledSequence.annotation, i);
                 if (srlSense.equals("-") || srlSense.equals("NONE")) {
@@ -698,38 +967,6 @@ public class AMRPipeline {
             //
             // else do nothing, no other tags generate any nodes, purely for MST
             //
-        }
-
-        // Add all the dict elements
-
-        for (List<Integer> dict : adjacentDicts) {
-            int first = dict.get(0);
-            int last = dict.get(dict.size() - 1);
-
-            List<Pair<String,Integer>> bestChunks = getBestAMRChunks(labeledSequence, first, last);
-            if (bestChunks.size() == 0) {
-                // TODO: Do something intelligent
-            }
-            else {
-                for (Pair<String, Integer> amrPair : bestChunks) {
-                    String amrString = amrPair.first;
-                    AMR amr;
-                    if (amrString.startsWith("(")) {
-                        assert (amrString.endsWith(")"));
-                        amr = AMRSlurp.parseAMRTree(amrString);
-                    } else if (amrString.startsWith("\"")) {
-                        if (amrString.split(" ").length > 1) amrString = amrString.split(" ")[0];
-                        amr = createAMRSingleton(amrString.substring(1, amrString.length() - 1), AMR.NodeType.QUOTE);
-                    } else {
-                        amr = createAMRSingleton(amrString, AMR.NodeType.VALUE);
-                    }
-
-                    for (AMR.Node node : amr.nodes) {
-                        node.alignment = Math.min(amrPair.second + node.alignment, tokens.length - 1);
-                    }
-                    gen.add(amr);
-                }
-            }
         }
 
         // Go through and pick out all the nodes
@@ -1385,14 +1622,12 @@ public class AMRPipeline {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         // justTrainArcType();
-        justTrainNERPlusPlus();
+        // justTrainNERPlusPlus();
 
-        /*
         AMRPipeline pipeline = new AMRPipeline();
         pipeline.trainStages();
         pipeline.analyzeStages();
         pipeline.testCompletePipeline();
-        */
     }
 
     /////////////////////////////////////////////////////
