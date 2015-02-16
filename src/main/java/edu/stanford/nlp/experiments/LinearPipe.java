@@ -40,6 +40,7 @@ public class LinearPipe<IN,OUT> {
 
     public boolean automaticallyReweightTrainingData = true;
     public double sigma = 4.0;
+    public double epsilon = 0.05;
 
     public enum ClassifierType {
         LINEAR,
@@ -235,7 +236,9 @@ public class LinearPipe<IN,OUT> {
             }
             leftOutCluster.add(pair.second);
         }
-        clusters.add(leftOutCluster);
+        if (leftOutCluster.size() > 0) {
+            clusters.add(leftOutCluster);
+        }
 
         classifiers = new ArrayList<>();
 
@@ -250,7 +253,11 @@ public class LinearPipe<IN,OUT> {
                 classifiers.add(factory.trainWeightedData(dataset, getNormalizingArray(dataset)));
             }
             else {
-                classifiers.add(factory.trainClassifier(dataset));
+                // Use the HUBER penalty for non-automatically reweighted data
+                // Sigma is regularization
+                // Epsilon is boundary beyond which the HUBER penalty goes linear
+                LogPrior prior = new LogPrior(LogPrior.LogPriorType.HUBER, sigma, epsilon);
+                classifiers.add(factory.trainClassifier(dataset, prior, false));
             }
         }
         else if (type == ClassifierType.LINEAR) {
@@ -273,7 +280,7 @@ public class LinearPipe<IN,OUT> {
             if (clusters.size() == 1) {
                 // trivial case, just do what we usually do
                 if (automaticallyReweightTrainingData) {
-                    classifiers.add(factory.trainClassifier(dataset, getNormalizingArray(dataset), new LogPrior()));
+                    classifiers.add(factory.trainClassifier(dataset, getNormalizingArray(dataset), new LogPrior(LogPrior.LogPriorType.HUBER, sigma, epsilon)));
                 } else {
                     classifiers.add(factory.trainClassifier(dataset));
                 }
@@ -298,14 +305,14 @@ public class LinearPipe<IN,OUT> {
                 }
 
                 if (automaticallyReweightTrainingData) {
-                    bucketClassifier = bucketClassifierFactory.trainClassifier(bucketDataset, getNormalizingArray(bucketDataset), new LogPrior());
+                    bucketClassifier = bucketClassifierFactory.trainClassifier(bucketDataset, getNormalizingArray(bucketDataset), new LogPrior(LogPrior.LogPriorType.HUBER, sigma, epsilon));
                 }
                 else {
                     bucketClassifier = bucketClassifierFactory.trainClassifier(bucketDataset);
                 }
                 for (int i = 0; i < clusters.size(); i++) {
                     if (automaticallyReweightTrainingData) {
-                        classifiers.add(factory.trainClassifier(collectionDatasets.get(i), getNormalizingArray(collectionDatasets.get(i)), new LogPrior()));
+                        classifiers.add(factory.trainClassifier(collectionDatasets.get(i), getNormalizingArray(collectionDatasets.get(i)), new LogPrior(LogPrior.LogPriorType.HUBER, sigma, epsilon)));
                     }
                     else {
                         classifiers.add(factory.trainClassifier(collectionDatasets.get(i)));

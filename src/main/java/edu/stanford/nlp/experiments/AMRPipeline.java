@@ -1,10 +1,16 @@
 package edu.stanford.nlp.experiments;
 
+import edu.berkeley.nlp.util.IOUtil;
 import edu.stanford.nlp.cache.BatchCoreNLPCache;
 import edu.stanford.nlp.cache.CoreNLPCache;
 import edu.stanford.nlp.cache.LazyCoreNLPCache;
+import edu.stanford.nlp.classify.LinearClassifier;
+import edu.stanford.nlp.classify.LogisticClassifier;
+import edu.stanford.nlp.curator.CuratorAnnotations;
+import edu.stanford.nlp.curator.PredicateArgumentAnnotation;
 import edu.stanford.nlp.experiments.greedy.Generator;
 import edu.stanford.nlp.experiments.greedy.GreedyState;
+import edu.stanford.nlp.io.IOUtils;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -39,9 +45,11 @@ import java.util.regex.Pattern;
  */
 public class AMRPipeline {
 
-    public static boolean FULL_DATA = false;
+    public static boolean FULL_DATA = true;
     public static boolean TINY_DATA = false;
     public static int trainDataSize = 400;
+    public static boolean USE_MULTIHEAD = false;
+    public static int maxAllowedHeads = 2;
 
     /////////////////////////////////////////////////////
     // FEATURE SPECS
@@ -61,6 +69,17 @@ public class AMRPipeline {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private String getPrepSenseAtIndex(Annotation annotation, int index) {
+        PredicateArgumentAnnotation srl = annotation.get(CuratorAnnotations.PrepSRLAnnotation.class);
+        if (srl == null) return "-"; // If we have no SRL on this example, then oh well
+        for (PredicateArgumentAnnotation.AnnotationSpan span : srl.getPredicates()) {
+            if ((span.startToken <= index) && (span.endToken >= index + 1)) {
+                return span.label;
+            }
+        }
+        return "NONE";
     }
 
     @SuppressWarnings("unchecked")
@@ -103,7 +122,7 @@ public class AMRPipeline {
                 add((pair) -> {
                     SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
                             .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
-                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
+                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second + 1);
                     if (indexedWord == null) return "NON-DEP";
                     List<IndexedWord> l = graph.getPathToRoot(indexedWord);
                     if (l.size() > 0) {
@@ -115,7 +134,7 @@ public class AMRPipeline {
                 add((pair) -> {
                     SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
                             .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
-                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
+                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second + 1);
                     if (indexedWord == null) return "NON-DEP";
                     List<IndexedWord> l = graph.getPathToRoot(indexedWord);
                     if (l.size() > 0) {
@@ -127,7 +146,7 @@ public class AMRPipeline {
                 add((pair) -> {
                     SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
                             .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
-                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
+                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second + 1);
                     if (indexedWord == null) return "NON-DEP";
                     IndexedWord parent = graph.getParent(indexedWord);
                     if (parent == null) return "ROOT";
@@ -137,7 +156,7 @@ public class AMRPipeline {
                 add((pair) -> {
                     SemanticGraph graph = pair.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
                             .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
-                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second);
+                    IndexedWord indexedWord = graph.getNodeByIndexSafe(pair.second + 1);
                     if (indexedWord == null) return "NON-DEP";
                     IndexedWord parent = graph.getParent(indexedWord);
                     if (parent == null) return "ROOT";
@@ -152,6 +171,24 @@ public class AMRPipeline {
 
                 // Token NER
                 add((pair) -> pair.first.annotation.get(CoreAnnotations.TokensAnnotation.class).get(pair.second).get(CoreAnnotations.NamedEntityTagAnnotation.class));
+
+                // Get the SRL lemma here
+                add((pair) -> {
+                    PredicateArgumentAnnotation srl = pair.first.annotation.get(CuratorAnnotations.PropBankSRLAnnotation.class);
+                    if (srl == null) return "-"; // If we have no SRL on this example, then oh well
+                    for (PredicateArgumentAnnotation.AnnotationSpan span : srl.getPredicates()) {
+                        if ((span.startToken <= pair.second) && (span.endToken >= pair.second + 1)) {
+                            String sense = span.getAttribute("predicate") + "-" + span.getAttribute("sense");
+                            return sense;
+                        }
+                    }
+                    return "NONE";
+                });
+
+                // Get the Prep sense tag here
+                add((pair) -> {
+                    return getPrepSenseAtIndex(pair.first.annotation, pair.second);
+                });
             }},
             AMRPipeline::writeNerPlusPlusContext
     );
@@ -179,8 +216,8 @@ public class AMRPipeline {
         int tailToken = set.nodes[tail].alignment;
         SemanticGraph graph = set.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
                 .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
-        IndexedWord headIndexedWord = graph.getNodeByIndexSafe(headToken);
-        IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tailToken);
+        IndexedWord headIndexedWord = graph.getNodeByIndexSafe(headToken + 1);
+        IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tailToken + 1);
         if (headIndexedWord == null || tailIndexedWord == null) {
             return new HashSet<>();
         }
@@ -203,30 +240,32 @@ public class AMRPipeline {
         int tailToken = set.nodes[tail].alignment;
         SemanticGraph graph = set.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
                 .get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
-        IndexedWord headIndexedWord = graph.getNodeByIndexSafe(headToken);
-        IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tailToken);
+
+        IndexedWord headIndexedWord = graph.getNodeByIndexSafe(headToken+1);
+        IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tailToken+1);
+
         if (headIndexedWord == null || tailIndexedWord == null) {
             return "NOTOKENS:NOPATH";
         }
+
         List<SemanticGraphEdge> edges = graph.getShortestUndirectedPathEdges(headIndexedWord, tailIndexedWord);
 
         StringBuilder sb = new StringBuilder();
         IndexedWord currentWord = headIndexedWord;
         for (SemanticGraphEdge edge : edges) {
             if (edge.getDependent().equals(currentWord)) {
-                sb.append(">");
+                sb.append(" ^ ");
                 currentWord = edge.getGovernor();
             }
             else {
                 if (!edge.getGovernor().equals(currentWord)) {
                     throw new IllegalStateException("Edges not in order");
                 }
-                sb.append("<");
+                sb.append(" v ");
                 currentWord = edge.getDependent();
             }
             sb.append(edge.getRelation().toString());
             if (currentWord != headIndexedWord) {
-                sb.append(":");
                 sb.append(currentWord.get(CoreAnnotations.PartOfSpeechAnnotation.class));
             }
         }
@@ -369,28 +408,6 @@ public class AMRPipeline {
                     return distanceIndicator + ":" + getPath(triple.first, triple.second, triple.third);
                 });
 
-                /*
-                // Some embeddings, just for fun
-                add((triple) -> {
-                    double[] head = null;
-                    if (triple.second != 0) {
-                        head = embeddings.get(triple.first.tokens[triple.first.nodes[triple.second].alignment]);
-                    }
-                    double[] tail = embeddings.get(triple.first.tokens[triple.first.nodes[triple.third].alignment]);
-
-                    if (head == null || tail == null) {
-                        return new double[300];
-                    }
-                    else {
-                        double[] diff = new double[300];
-                        for (int i = 0; i < 300; i++) {
-                            diff[i] = head[i] - tail[i];
-                        }
-                        return diff;
-                    }
-                });
-                */
-
                 // Head seq type
                 add((triple) -> {
                     if (triple.second == 0) return "ROOT";
@@ -431,17 +448,6 @@ public class AMRPipeline {
                     return headType+tailType;
                 });
 
-                // All the tokens that didn't get nodes between head and tail
-                // Could also try a sum of the embeddings...
-                /*
-                add((triple) -> {
-                    AMR.Node head = triple.first.nodes[triple.second];
-                    if (triple.second == 0) return "ROOT";
-                    AMR.Node tail = triple.first.nodes[triple.third];
-                    // TODO
-                });
-                */
-
                 // Bag of edges
                 add((triple) -> getBagOfEdges(triple.first, triple.second, triple.third));
 
@@ -458,6 +464,91 @@ public class AMRPipeline {
                     }
                     return appendedLemma;
                 });
+
+                // SRL head
+                add((triple) -> {
+                    if (triple.second == 0) return new HashSet<String>();
+                    int headToken = triple.first.nodes[triple.second].alignment;
+                    String headLemma = triple.first.annotation.get(CoreAnnotations.TokensAnnotation.class).get(headToken).lemma();
+
+                    Set<String> set = getBagOfEdges(triple.first, triple.second, triple.third);
+                    Set<String> appendedLemma = new HashSet<>();
+                    for (String s : set) {
+                        appendedLemma.add(s + headLemma);
+                    }
+                    return appendedLemma;
+                });
+
+                // Get SRL path, if it exists
+                add((triple) -> {
+                    PredicateArgumentAnnotation srl = triple.first.annotation.get(CuratorAnnotations.PropBankSRLAnnotation.class);
+                    if (srl == null) return "-";
+                    if (triple.second == 0) return "ROOT";
+
+                    int headAlignment = triple.first.nodes[triple.second].alignment;
+                    int tailAlignment = triple.first.nodes[triple.third].alignment;
+
+                    for (PredicateArgumentAnnotation.AnnotationSpan span : srl.getPredicates()) {
+                        if ((span.startToken <= headAlignment) && (span.endToken >= headAlignment + 1)) {
+                            for (PredicateArgumentAnnotation.AnnotationSpan argSpan : srl.getArguments(span)) {
+                                if ((argSpan.startToken <= tailAlignment) && (argSpan.endToken >= tailAlignment + 1)) {
+                                    // System.out.println(triple.first.nodes[triple.second]+" :"+argSpan.label+" "+triple.first.nodes[triple.third]);
+                                    return argSpan.label;
+                                }
+                            }
+                        }
+                    }
+                    return "NONE";
+                });
+
+                /**
+                 * Path, where all the PREP tokens get tagged with their SRL interpretation instead of POS
+                 */
+            /*
+                add((triple) -> {
+                    if (triple.second == 0) { // if tail == 0, then something else went fairly wrong
+                        return "ROOT:NOPATH";
+                    }
+                    if (triple.second == triple.third) {
+                        return "IDENTITY";
+                    }
+                    int headToken = triple.first.nodes[triple.second].alignment;
+                    int tailToken = triple.first.nodes[triple.third].alignment;
+                    SemanticGraph graph = triple.first.annotation.get(CoreAnnotations.SentencesAnnotation.class).get(0)
+                            .get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation.class);
+
+                    IndexedWord headIndexedWord = graph.getNodeByIndexSafe(headToken+1);
+                    IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tailToken+1);
+
+                    if (headIndexedWord == null || tailIndexedWord == null) {
+                        return "NOTOKENS:NOPATH";
+                    }
+
+                    List<SemanticGraphEdge> edges = graph.getShortestUndirectedPathEdges(headIndexedWord, tailIndexedWord);
+
+                    StringBuilder sb = new StringBuilder();
+                    IndexedWord currentWord = headIndexedWord;
+                    for (SemanticGraphEdge edge : edges) {
+                        if (edge.getDependent().equals(currentWord)) {
+                            sb.append(" ^ ");
+                            currentWord = edge.getGovernor();
+                        }
+                        else {
+                            if (!edge.getGovernor().equals(currentWord)) {
+                                throw new IllegalStateException("Edges not in order");
+                            }
+                            sb.append(" v ");
+                            currentWord = edge.getDependent();
+                        }
+                        sb.append(edge.getRelation().toString());
+                        if (currentWord != headIndexedWord) {
+                            sb.append(getPrepSenseAtIndex(triple.first.annotation, currentWord.index()-1));
+                            // sb.append(currentWord.get(CoreAnnotations.PartOfSpeechAnnotation.class));
+                        }
+                    }
+                    return sb.toString();
+                });
+                */
     }};
 
     LinearPipe<Triple<AMRNodeSet,Integer,Integer>, Boolean> arcExistence = new LinearPipe<>(
@@ -484,11 +575,42 @@ public class AMRPipeline {
 
         System.out.println("Training");
         nerPlusPlus.train(getNERPlusPlusForClassifier(nerPlusPlusData));
+
         dictionaryLookup.type = LinearPipe.ClassifierType.BAYESIAN;
         dictionaryLookup.train(getDictionaryForClassifier(dictionaryData));
+
         arcExistence.type = LinearPipe.ClassifierType.LOGISTIC;
+        arcExistence.automaticallyReweightTrainingData = false; // uses HUBER penalty instead
+        arcExistence.sigma = 0.13;
         arcExistence.train(getArcExistenceForClassifier(mstData));
+
         arcType.train(getArcTypeForClassifier(mstData));
+        if (arcType.classifiers.size() != 1) throw new IllegalStateException("Should have 1 classifier for arcType. Instead "+arcType.classifiers.size());
+
+        LinearClassifier<String,String> classifier = (LinearClassifier<String, String>) arcType.classifiers.get(0);
+        PrintWriter pw = IOUtils.getPrintWriter("data/arcTypeWeights-full.txt");
+        classifier.dump(pw);
+        pw.close();
+
+        LogisticClassifier<Boolean,String> logistic = (LogisticClassifier<Boolean,String>) arcExistence.classifiers.get(0);
+        Counter<String> weights = logistic.weightsAsCounter();
+        BufferedWriter bw = new BufferedWriter(new FileWriter("data/arcExistence.csv"));
+        List<String> keys = new ArrayList<>();
+        keys.addAll(weights.keySet());
+        Collections.sort(keys, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return Double.compare(weights.getCount(o2), weights.getCount(o1));
+            }
+        });
+
+        for (String s : keys) {
+            bw.write(s);
+            bw.write(",");
+            bw.write(Double.toString(weights.getCount(s)));
+            bw.write("\n");
+        }
+        bw.close();
     }
 
     private Pair<AMR.Node[],String[][]> predictNodes(String[] tokens, Annotation annotation) {
@@ -658,6 +780,92 @@ public class AMRPipeline {
         }
     }
 
+    public AMR runMultiheadMSTPipeline(String[] tokens, Annotation annotation, AMRNodeSet nodeSet) {
+
+        // Run MST on the arcs we've got
+
+        MSTGraph mstGraph = new MSTGraph();
+
+        int length = nodeSet.nodes.length-1;
+
+        // Parent Node
+        for (int i = 0; i <= length; i++) {
+            if (nodeSet.nodes[i] == null && i != 0) continue;
+            // Can't have outgoing arcs from a non-entity type node
+            if (i == 0 || nodeSet.nodes[i].type == AMR.NodeType.ENTITY) {
+                // Child Node
+                for (int j = 1; j <= length; j++) {
+                    if (nodeSet.nodes[j] == null) continue;
+                    if (i == j) continue;
+
+                    /*
+                    if (nodeSet.forcedArcs[i][j] != null) {
+                        mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], 1000.0);
+                    }
+                    */
+
+                    // Check if there's a forcedArc that corresponds to this child
+                    int forcedParent = -1;
+                    for (int k = 0; k <= length; k++) {
+                        if (nodeSet.forcedArcs[k][j] != null) {
+                            forcedParent = k;
+                            break;
+                        }
+                    }
+
+                    // If there is a forcedParent, then set arcs accordingly
+                    if (forcedParent != -1) {
+                        if (forcedParent == i) {
+                            mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], 1000.0);
+                        }
+                        else {
+                            // mstGraph.addArc(i, j, nodeSet.forcedArcs[i][j], -1000.0);
+                        }
+                    }
+                    else {
+                        double logProb;
+
+                        if (nodeSet.nodes[i] != null
+                                && nodeSet.nodes[j] != null
+                                && nodeSet.nodes[i].title.equals("name")
+                                && nodeSet.nodes[j].type != AMR.NodeType.QUOTE) {
+                            // Insanely unlikely that a name will ever link to a non-QUOTE node
+                            logProb = -10000;
+                        }
+                        else {
+                            Counter<Boolean> counter = arcExistence.predictSoft(new Triple<>(nodeSet, i, j));
+                            Counters.logNormalizeInPlace(counter);
+                            logProb = counter.getCount(true);
+                        }
+
+                        Counter<String> arcTypeLogProb = arcType.predictSoft(new Triple<>(nodeSet, i, j));
+                        Counters.logNormalizeInPlace(arcTypeLogProb);
+
+                        for (String s : arcTypeLogProb.keySet()) {
+                            mstGraph.addArc(i, j, s, logProb + arcTypeLogProb.getCount(s));
+                        }
+                    }
+                }
+            }
+        }
+
+        Map<Integer,Set<Pair<String,Integer>>> arcMap = mstGraph.getMultiheadedMST(false, maxAllowedHeads);
+
+        GreedyState state = new GreedyState(nodeSet.nodes, tokens, annotation);
+        for (int i : arcMap.keySet()) {
+            for (Pair<String,Integer> arc : arcMap.get(i)) {
+                int head = i;
+                if (arc.first.equals("NO-LABEL")) {
+                    arc.first = arcType.predict(new Triple<>(nodeSet, head, arc.second));
+                }
+                state.arcs[head][arc.second] = arc.first;
+            }
+        }
+
+        AMR generated = Generator.generateAMR(state);
+        return generated;
+    }
+
     public AMR runMSTPipeline(String[] tokens, Annotation annotation, AMRNodeSet nodeSet) {
 
         // Run MST on the arcs we've got
@@ -716,6 +924,15 @@ public class AMRPipeline {
                             logProb = counter.getCount(true);
                         }
 
+                        /*
+                        Counter<String> arcTypeLogProb = arcType.predictSoft(new Triple<>(nodeSet, i, j));
+                        Counters.logNormalizeInPlace(arcTypeLogProb);
+
+                        for (String s : arcTypeLogProb.keySet()) {
+                            mstGraph.addArc(i, j, s, logProb + arcTypeLogProb.getCount(s));
+                        }
+                        */
+
                         mstGraph.addArc(i, j, "NO-LABEL", logProb);
                     }
                 }
@@ -755,13 +972,53 @@ public class AMRPipeline {
 
         GreedyState state = new GreedyState(nodeSet.nodes, tokens, annotation);
         for (int i : arcMap.keySet()) {
-            for (Pair<String,Integer> arc : arcMap.get(i)) {
-                int head = i;
+            for (Pair<String, Integer> arc : arcMap.get(i)) {
                 if (arc.first.equals("NO-LABEL")) {
-                    arc.first = arcType.predict(new Triple<>(nodeSet, head, arc.second));
+                    state.arcs[i][arc.second] = arcType.predict(new Triple<>(nodeSet, i, arc.second));
                 }
-                state.arcs[head][arc.second] = arc.first;
+                else {
+                    state.arcs[i][arc.second] = arc.first;
+                }
             }
+
+            /*
+            while (true) {
+                Set<String> takenArcs = new HashSet<>();
+                for (int j = 0; j < nodeSet.nodes.length; j++) {
+                    if (state.arcs[i][j] != null) {
+                        takenArcs.add(state.arcs[i][j]);
+                    }
+                }
+
+                double bestNewArcScore = Double.NEGATIVE_INFINITY;
+                Pair<String,Integer> bestNewArc = null;
+
+                for (Pair<String, Integer> arc : arcMap.get(i)) {
+                    if (arc.first.equals("NO-LABEL")) {
+                        if ((state.arcs[i][arc.second] == null || state.arcs[i][arc.second].equals("NO-LABEL"))) {
+                            Counter<String> probs = arcType.predictSoft(new Triple<>(nodeSet, i, arc.second));
+                            for (String type : probs.keySet()) {
+                                if (!takenArcs.contains(type)) {
+                                    if (probs.getCount(type) > bestNewArcScore) {
+                                        bestNewArc = new Pair<>(type, arc.second);
+                                        bestNewArcScore = probs.getCount(type);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        state.arcs[i][arc.second] = arc.first;
+                    }
+                }
+
+                if (bestNewArc == null) break;
+                if (state.arcs[i][bestNewArc.second] != null && !state.arcs[i][bestNewArc.second].equals("NO-LABEL")) {
+                    throw new IllegalStateException("Trying to label the same arc twice, old "+state.arcs[i][bestNewArc.second]+", new "+bestNewArc.first);
+                }
+                state.arcs[i][bestNewArc.second] = bestNewArc.first;
+            }
+            */
         }
 
         if (VALIDITY_CHECKS) {
@@ -818,7 +1075,12 @@ public class AMRPipeline {
         nodeSet.correctArcs = new String[nodeSet.nodes.length][nodeSet.nodes.length];
         nodeSet.forcedArcs = nodesAndArcs.second;
 
-        return runMSTPipeline(tokens, annotation, nodeSet);
+        if (USE_MULTIHEAD) {
+            return runMultiheadMSTPipeline(tokens, annotation, nodeSet);
+        }
+        else {
+            return runMSTPipeline(tokens, annotation, nodeSet);
+        }
     }
 
     private AMR createAMRSingleton(String title) {
@@ -909,8 +1171,10 @@ public class AMRPipeline {
             if (FULL_DATA) {
                 System.out.println("Testing on REAL DEV set");
                 analyzeAMRSubset("realdata/test-subset.txt", "realdata/test-conll.txt", "data/train-" + trainDataSize + "/amr-real-dev-analysis");
+                /*
                 System.out.println("Testing on REAL TEST set");
                 analyzeAMRSubset("realdata/amr-release-1.0-test-proxy.txt", "realdata/release-test-conll.txt", "data/train-" + trainDataSize + "/amr-real-test-analysis");
+                */
             }
         }
     }
@@ -931,7 +1195,12 @@ public class AMRPipeline {
             System.out.println("Parsing "+i+"/"+bank.length);
             Annotation annotation = cache.getAnnotation(i);
             recovered[i] = runPipeline(bank[i].sourceText, annotation);
-            recoveredPerfectDict[i] = runMSTPipeline(bank[i].sourceText, annotation, mstDataTest.get(i));
+            if (USE_MULTIHEAD) {
+                recoveredPerfectDict[i] = runMultiheadMSTPipeline(bank[i].sourceText, annotation, mstDataTest.get(i));
+            }
+            else {
+                recoveredPerfectDict[i] = runMSTPipeline(bank[i].sourceText, annotation, mstDataTest.get(i));
+            }
         }
         cache.close();
 
@@ -983,8 +1252,8 @@ public class AMRPipeline {
             int head = pair.first.second;
             int tail = pair.first.third;
 
-            IndexedWord headIndexedWord = graph.getNodeByIndexSafe(head);
-            IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tail);
+            IndexedWord headIndexedWord = graph.getNodeByIndexSafe(head + 1);
+            IndexedWord tailIndexedWord = graph.getNodeByIndexSafe(tail + 1);
             if (headIndexedWord == null || tailIndexedWord == null) {
             }
             else {
@@ -999,7 +1268,6 @@ public class AMRPipeline {
 
         System.out.println("Training");
 
-        /*
         List<Set<String>> arcClasses = new ArrayList<Set<String>>() {{
 
             add(new HashSet<String>(){{
@@ -1025,11 +1293,12 @@ public class AMRPipeline {
 
         }};
 
-        // arcClasses.clear();
-        */
+        arcClasses.clear();
 
         double[] sigmas = new double[]{
-                0.001, 0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 3.0, 10.0, 100.0
+                // 0.001, 0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 3.0, 10.0, 100.0
+                // 0.07, 0.1, 0.13, 0.18, 0.2, 0.3
+                0.1, 0.13, 0.18, 0.2, 0.3
         };
 
         for (double i : sigmas) {
@@ -1037,13 +1306,15 @@ public class AMRPipeline {
             pipeline.arcExistence.sigma = i;
             pipeline.arcExistence.type = LinearPipe.ClassifierType.LOGISTIC;
             pipeline.arcExistence.automaticallyReweightTrainingData = false;
-            // pipeline.arcType.train(arcTypeData);
+
+            pipeline.arcType.automaticallyReweightTrainingData = false;
+            pipeline.arcType.train(arcTypeData, arcClasses);
             pipeline.arcExistence.train(arcExistenceData);
 
             System.out.println("Analyzing");
             System.out.println("sigma: " + i);
             try {
-                // pipeline.arcType.analyze(arcTypeData, getArcTypeForClassifier(mstDataTest), BIG ? "data/arc-type-big-sigma-" + (int)(pipeline.arcType.sigma * 1000) : "data/arc-type-clusters-sigma-" + (int)(pipeline.arcType.sigma * 1000));
+                pipeline.arcType.analyze(arcTypeData, getArcTypeForClassifier(mstDataTest), BIG ? "data/arc-type-big-sigma-" + (int)(pipeline.arcType.sigma * 1000) : "data/arc-type-clusters-sigma-" + (int)(pipeline.arcType.sigma * 1000));
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -1057,6 +1328,11 @@ public class AMRPipeline {
                 System.err.println("meh");
             }
             System.out.println("Done");
+
+            /*
+            LinearClassifier<String,String> lin = (LinearClassifier<String, String>) pipeline.arcType.classifiers.get(0);
+            lin.dump(IOUtils.getPrintWriter("data/arc-type-clusters-sigma-" + (int)(pipeline.arcType.sigma * 1000)));
+            */
         }
     }
 

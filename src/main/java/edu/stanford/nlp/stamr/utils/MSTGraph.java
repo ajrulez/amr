@@ -1,5 +1,6 @@
 package edu.stanford.nlp.stamr.utils;
 
+import edu.stanford.nlp.experiments.MultiheadedConstrainedMST;
 import edu.stanford.nlp.util.IdentityHashSet;
 import edu.stanford.nlp.util.Pair;
 import edu.stanford.nlp.util.Triple;
@@ -24,6 +25,10 @@ public class MSTGraph {
         addNode(head);
         addNode(tail);
         arcs.get(head).add(new Triple<Integer, String, Double>(tail, type, score));
+    }
+
+    public Map<Integer,Set<Pair<String,Integer>>> getMultiheadedMST(boolean debug, int maxNumHeads) {
+        return MultiheadedConstrainedMST.solve(arcs, maxNumHeads);
     }
 
     public Map<Integer,Set<Pair<String,Integer>>> getMST(boolean debug) {
