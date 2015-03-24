@@ -15,11 +15,11 @@ public class AMR implements Serializable {
 
     public AMR() {}
 
-    @Deprecated
     public AnnotationWrapper annotationWrapper = null;
 
     public AMR(MultiSentenceAnnotationWrapper multisentenceAnnotationWrapper) {
         this.multiSentenceAnnotationWrapper = multisentenceAnnotationWrapper;
+        this.annotationWrapper = multisentenceAnnotationWrapper.sentences.get(0);
     }
 
     public enum NodeType {

@@ -19,7 +19,7 @@ import java.util.Map;
 public class AlignmentTester {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        AMR[] lpBank = AMRSlurp.slurp("src/test/resources/amr-bank-v1.2-human-assisted.txt", AMRSlurp.Format.LDC);
+        AMR[] lpBank = AMRSlurp.slurp("data/training-500-subset.txt", AMRSlurp.Format.LDC);
         AMR[] smallbank = new AMR[300];
         for (int i = 0; i < smallbank.length; i++) {
             smallbank[i] = lpBank[i];
@@ -30,7 +30,12 @@ public class AlignmentTester {
         int threads = 64;
 
         SRLSlurp.ignored = true;
+
+        // Use this to run real PGM-based EM
         testBank(smallbank, folds, threads, iterations, "src/test/resources/experimental-results/smallbank-no-ontonotes");
+
+        // Use this to run the rule-based system we actually use
+        // testBankRuleBased(smallbank, smallbank);
 
         /*
         SRLSlurp.ignored = false;

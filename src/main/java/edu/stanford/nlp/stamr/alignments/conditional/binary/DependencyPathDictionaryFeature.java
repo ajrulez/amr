@@ -24,7 +24,7 @@ public class DependencyPathDictionaryFeature extends BinaryAlignmentFeature {
     @Override
     public double score(AMR amr, AMR.Node node, int token, int parentToken, AMR.Arc parentArc) {
         String arc = parentArc.title;
-        String path = amr.annotationWrapper.getDependencyPathBetweenNodes(token, parentToken).replaceAll("<nn","").replaceAll(">nn","");
+        String path = amr.multiSentenceAnnotationWrapper.sentences.get(0).getDependencyPathBetweenNodes(token, parentToken).replaceAll("<nn","").replaceAll(">nn","");
         double boost = 10.0;
         /*if (arc.equals("ARG0")) {
             if (path.equals("<nsubj")) return 1.0;

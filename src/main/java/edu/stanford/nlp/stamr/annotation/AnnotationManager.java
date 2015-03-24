@@ -284,6 +284,7 @@ public class AnnotationManager {
 
         for (int i = 0; i < bank.length; i++) {
             bank[i].multiSentenceAnnotationWrapper = annotations[i];
+            bank[i].annotationWrapper = annotations[i].sentences.get(0);
         }
     }
 }
