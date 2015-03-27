@@ -37,7 +37,7 @@ public class AMRSlurp {
     }
 
     public static AMR[] slurp(String path, Format format) throws IOException {
-        String annotationLocation = path.replace(".txt",".ser.gz");
+        String annotationLocation = path.replace(".txt", ".ser.gz");
         return slurp(path, format, annotationLocation);
     }
 
@@ -97,8 +97,9 @@ public class AMRSlurp {
         }
 
         AMR[] arr = bank.toArray(new AMR[bank.size()]);
-        if (annotationLocation != null)
-            annotationManager.loadOrCreateAnnotations(arr, annotationLocation);
+        if (annotationLocation != null) {
+            //annotationManager.loadOrCreateAnnotations(arr, annotationLocation);
+        }
         return arr;
     }
 

@@ -159,6 +159,7 @@ public class EMAligner {
                 postIteration.hook(i);
             }
 
+            totalSizeMatched = 0; numTimesMatched = 0; numFixed = 0;
             System.out.println(" [E Step] Taking soft expectations ...");
 
             for (int t = 0; t < threadCount; t++) {
@@ -168,6 +169,8 @@ public class EMAligner {
             for (int t = 0; t < threadCount; t++) {
                 eStepThreads[t].join();
             }
+            System.out.println("numFixed: " + numFixed);
+            System.out.println("average match size: " + totalSizeMatched + "/" + numTimesMatched + "(" + (totalSizeMatched / (double) numTimesMatched) + ")");
 
             System.out.println();
             System.out.println(estimator.reportEstimate(i, iterations));
@@ -385,6 +388,7 @@ public class EMAligner {
         tree.getMarginals();
     }
 
+    private static int numTimesMatched = 0, totalSizeMatched = 0, numFixed = 0;
     public static PGMTree prepareExactInferenceGraph(AMR amr, UnaryAlignmentFeature[] unaryAlignmentFeatures, BinaryAlignmentFeature[] binaryAlignmentFeatures) {
         PGMTree tree = new PGMTree(amr);
 
@@ -401,6 +405,8 @@ public class EMAligner {
             // Only put matches as factors, limits possibilities to screw up somewhat
 
             Set<Integer> matches = getMatches(node, amr);
+            numTimesMatched++;
+            totalSizeMatched += matches.size();
             for (int match : matches) {
 
                 double lexicalProb = 1.0;
@@ -408,7 +414,7 @@ public class EMAligner {
                     lexicalProb *= unaryAlignmentFeature.score(amr, node, match);
                 }
 
-                if (matches.size() == 1) lexicalProb = 1.0;
+                if (matches.size() == 1) lexicalProb = 1.0; // JS 03/24/2015: why is this here?
                 singleFactorSum += lexicalProb;
                 singleFactor[match] = lexicalProb;
 
@@ -500,6 +506,7 @@ public class EMAligner {
         // If the alignment is fixed, force a fixed alignment
 
         if (node.alignmentFixed) {
+            numFixed++;
             matches.add(node.alignment);
             amr.matchesCache.put(node,matches);
             return matches;
