@@ -41,6 +41,7 @@ public class AMRSlurp {
         return slurp(path, format, annotationLocation);
     }
 
+    public static boolean doingAlignments = false;
     public static AMR[] slurp(String path, Format format, String annotationLocation) throws IOException {
 
         BufferedReader br = new BufferedReader(new FileReader(path));
@@ -98,7 +99,7 @@ public class AMRSlurp {
 
         AMR[] arr = bank.toArray(new AMR[bank.size()]);
         if (annotationLocation != null) {
-            //annotationManager.loadOrCreateAnnotations(arr, annotationLocation);
+            if(doingAlignments) annotationManager.loadOrCreateAnnotations(arr, annotationLocation);
         }
         return arr;
     }
