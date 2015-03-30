@@ -45,8 +45,10 @@ public class JointEM {
     }
 
     public static void main(String[] args) throws Exception {
+        long start = System.currentTimeMillis();
 //        doEM("data/train-3-subset.txt");
         doEM("data/training-500-subset.txt", new ProblemCache());
+        System.out.println("DONE [" + Redwood.formatTimeDifference(System.currentTimeMillis() - start) + ']');
     }
 
 
