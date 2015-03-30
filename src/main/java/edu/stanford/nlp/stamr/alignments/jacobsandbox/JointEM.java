@@ -5,13 +5,21 @@ import edu.stanford.nlp.cache.CoreNLPCache;
 import edu.stanford.nlp.curator.CuratorAnnotations;
 import edu.stanford.nlp.curator.PredicateArgumentAnnotation;
 import edu.stanford.nlp.experiments.FrameManager;
+import edu.stanford.nlp.io.IOUtils;
+import edu.stanford.nlp.keenonutils.JaroWinklerDistance;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRSlurp;
+import edu.stanford.nlp.util.Execution;
+import edu.stanford.nlp.util.StringUtils;
 import edu.stanford.nlp.util.concurrent.AtomicDouble;
+import edu.stanford.nlp.util.logging.Redwood;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -38,10 +46,12 @@ public class JointEM {
 
     public static void main(String[] args) throws Exception {
 //        doEM("data/train-3-subset.txt");
-        doEM("data/training-500-subset.txt");
+        doEM("data/training-500-subset.txt", new ProblemCache());
     }
-    static void doEM(String path) throws Exception {
-        int maxSize = 20;
+
+
+    static void doEM(String path, ProblemCache cache) throws Exception {
+        int maxSize = 500;
         // first, grab all the data
         AMRSlurp.doingAlignments = false;
         AMR[] bank = AMRSlurp.slurp(path, AMRSlurp.Format.LDC);
@@ -70,7 +80,7 @@ public class JointEM {
             final Model.SoftCountDict curDict = oldDict;
             final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, 2.0);
             final AtomicDouble logZTot = new AtomicDouble(0.0);
-            ExecutorService threadPool = Executors.newFixedThreadPool(4);
+            ExecutorService threadPool = Executors.newFixedThreadPool(Execution.threads);
             ArrayList<Future<Void>> threads = new ArrayList<>();
             for(int n = 0; n < bankSize; n++){
                 final AugmentedToken[] curTokens = tokens[n];
@@ -91,26 +101,29 @@ public class JointEM {
                             }
                         }
                         if (curN == 0)
-                            System.out.println("OPT(" + token + ") : " + bestAction + " => " + getNode(token, bestAction));
+                            System.out.println("OPT(" + token + ") : " + bestAction + " => " + getNode(token, bestAction, cache));
                     }
 
 
                     // loop over output
+                    // For each node...
                     for (AMR.Node node : curNodes) {
                         double Zsrc = 0.0, Ztar = 0.0;
                         HashMap<String, Double> counts = new HashMap<String, Double>();
                         Map<String, Double> gradientSrc = new HashMap<String, Double>(),
                                 gradientTar = new HashMap<String, Double>();
+                        // For each token...
                         for (AugmentedToken token : curTokens) {
                             double logZ2 = Double.NEGATIVE_INFINITY;
-                            for (Action action : Action.values()) {
+                            for (Action action : Action.validValues(token, node)) {
                                 List<String> features = extractFeatures(token, action);
                                 logZ2 = Util.lse(logZ2, Model.score(features));
                             }
-                            for (Action action : Action.values()) {
+                            // For each action...
+                            for (Action action : Action.validValues(token, node)) {
                                 List<String> features = extractFeatures(token, action);
                                 double probSrc = Math.exp(Model.score(features) - logZ2);
-                                double likelihood = getNode(token, action).score(node, curDict);
+                                double likelihood = getNode(token, action, cache).score(node, curDict);
                                 if (curN == 0 && likelihood > 0.01)
                                     System.out.println("likelihood(" + token + "," + action + "," + node + ") = " + likelihood);
                                 double probTar = probSrc * likelihood;
@@ -163,19 +176,50 @@ public class JointEM {
 
         int numCorrect = 0, numTotal = 0;
         final Model.SoftCountDict lpDict = oldDict;
+
+        // Get final accuracy
+        File debugFile = File.createTempFile("amr", ".txt");
+        PrintWriter debugWriter = IOUtils.getPrintWriter(debugFile);
         for(int n = 0; n < lpBankSize; n++){
-            for(AMR.Node node : lpNodes[n]){
-                TokenWithAction tokenWithAction = getBestToken(node, lpTokens[n], lpDict);
+            // Get the sentence and AMR graph
+            AugmentedToken[] sentence = lpTokens[n];
+            AMR.Node[] amr = lpNodes[n];
+            // Find the best alignments
+            for(AMR.Node node : amr){
+                // Get the best token for the AMR node
+                TokenWithAction tokenWithAction = getBestToken(node, sentence, lpDict, cache);
                 AugmentedToken token = tokenWithAction.token;
                 Action action = tokenWithAction.action;
-                System.out.println(node + "[" + node.alignment + " = " + lpTokens[n][node.alignment].value
-                        + " / " + token.index + " = " + token.value + "/" + action + "]");
-                if(token.index == node.alignment) numCorrect++;
+                // Find the gold alignment
+                AMR.Node goldNode = null;
+                for (AMR.Node candidate : amr) {
+                    if (candidate.alignment == token.index) {
+                        goldNode = candidate;
+                    }
+                }
+                // Register the accuracy data point
+                if(node.equals(goldNode)) {
+                    numCorrect += 1;
+                }
                 numTotal++;
+                // Debug print the alignment
+                String prefix = "✓";
+                if(!node.equals(goldNode)) {
+                    prefix = "x";
+                }
+                String msg = prefix + " " + node + "[" + node.alignment + " = " + lpTokens[n][node.alignment].value
+                                + " / " + token.index + " = " + token.value + "/" + action + "]";
+                System.out.println(msg);
+                debugWriter.println(action + "\t" + prefix + "\t" + token.value + "\t" + node + "\t" + goldNode);
             }
         }
+
+        // Print the final accuracies
         double percent = numCorrect * 100.0 / numTotal;
         System.out.println(numCorrect + "/" + numTotal + " correct (" + percent + ")");
+        System.out.println("Debug data at " + debugFile.getPath());
+        System.out.println("  format: action\tcorrect\tword\tguessed_node\tgold_node");
+        debugWriter.close();
 
 
         // TODO:
@@ -187,6 +231,60 @@ public class JointEM {
         // DONE 6. Make things faster
 
     }
+
+    /**
+     * <p>
+     *   Determine if a token could plausibly produce the given AMR node, given a perfect
+     *   action execution module. So, for example, we assume perfect WSD, lemmatization, dictionary
+     *   lookup, etc.
+     * </p>
+     *
+     * <p>
+     *   Note that this is a very forgiving function.
+     * </p>
+     *
+     * @param token The token in the sentence.
+     * @param node The AMR node we are proposing to align it with.
+     * @param action The action we are proposing to take.
+     *
+     * @return True if the action could plausibly produce the node from the token. False otherwise.
+     */
+    static boolean plausiblyCompatible(AugmentedToken token, AMR.Node node, Action action) {
+        return true;
+        /*
+        String normalizedTitle = node.title.toLowerCase().trim();
+        String normalizedToken = token.value.toLowerCase().trim();
+        String normalizedLemma = token.stem.toLowerCase().trim();
+        boolean nodeIsVerb = normalizedTitle.matches(".*-[0-9]+");
+        switch (action) {
+            case IDENTITY:
+                // The title and the token must be the same.
+                return normalizedTitle.equals(normalizedToken);
+            case NONE:
+                // You can always "generate" none (this should never fire, I think?)
+                return true;
+            case VERB:
+                // The node is a verb
+                return nodeIsVerb;
+            case LEMMA:
+                // The node is not a verb, and the token lemma is close to the title of the node.
+                return !nodeIsVerb && JaroWinklerDistance.distance(normalizedLemma, normalizedTitle) > 0.5;
+            case DICT:
+                // This can always be generated.
+                // If nothing else, this must be true so that at least _some_ action fires always.
+                return true;
+            case NAME:
+                // Not a verb, and is quoted.
+                return !nodeIsVerb && normalizedTitle.charAt(0) == '"' && normalizedTitle.charAt(normalizedTitle.length() - 1) == '"';
+            case PERSON:
+                // Not a verb, and is quoted.
+                return !nodeIsVerb && normalizedTitle.charAt(0) == '"' && normalizedTitle.charAt(normalizedTitle.length() - 1) == '"';
+            default:
+                throw new IllegalStateException("Unknown action: " + action);
+        }
+        */
+    }
+
 
     static void read(String path, AMR[] bank, AugmentedToken[][] tokens, AMR.Node[][] nodes, int bankSize){
         String[] sentences = new String[bankSize];
@@ -221,20 +319,20 @@ public class JointEM {
             this.action = action;
         }
     }
-    static TokenWithAction getBestToken(AMR.Node node, AugmentedToken[] tokens, Model.SoftCountDict dict){
+    static TokenWithAction getBestToken(AMR.Node node, AugmentedToken[] tokens, Model.SoftCountDict dict, ProblemCache cache){
         AugmentedToken bestToken = null;
         Action bestAction = null;
         double bestScore = 0.0;
         for(AugmentedToken token : tokens){
             double logZ2 = Double.NEGATIVE_INFINITY;
-            for(Action action : Action.values()) {
+            for(Action action : Action.validValues(token, node)) {
                 List<String> features = extractFeatures(token, action);
                 logZ2 = Util.lse(logZ2, Model.score(features));
             }
-            for(Action action : Action.values()){
+            for(Action action : Action.validValues(token, node)){
                 List<String> features = extractFeatures(token, action);
                 double probSrc = Math.exp(Model.score(features) - logZ2);
-                double likelihood = getNode(token, action).score(node, dict);
+                double likelihood = getNode(token, action, cache).score(node, dict);
                 double probTar = probSrc * likelihood;
                 if(bestToken == null || probTar > bestScore) {
                     bestToken = token;
@@ -258,7 +356,18 @@ public class JointEM {
         return ret;
     }
 
-    enum Action { IDENTITY, NONE, VERB, LEMMA, DICT, NAME, PERSON }
+    enum Action {
+        IDENTITY, NONE, VERB, LEMMA, DICT, NAME, PERSON ;
+        public static List<Action> validValues(AugmentedToken token, AMR.Node node) {
+            List<Action> rtn = new ArrayList<>();
+            for (Action candidate : Action.values()) {
+                if (plausiblyCompatible(token, node, candidate)) {
+                    rtn.add(candidate);
+                }
+            }
+            return rtn;
+        }
+    }
     /* AugmentedToken should keep track of following:
      *   0. string value of token
      *   1. srl sense
@@ -322,7 +431,7 @@ public class JointEM {
         }
     }
 
-    static MatchNode getNode(AugmentedToken token, Action action){
+    static MatchNode getNode(AugmentedToken token, Action action, ProblemCache cache){
         switch(action){
             case IDENTITY:
                 return new MatchNode(token.value.toLowerCase());
@@ -332,7 +441,7 @@ public class JointEM {
                 String srlSense = token.sense;
                 if (srlSense.equals("-") || srlSense.equals("NONE")) {
                     String stem = token.stem;
-                    return new MatchNode(frameManager.getClosestFrame(stem));
+                    return cache.getClosestFrame(frameManager, stem);
                 } else {
                     return new MatchNode(srlSense);
                 }
