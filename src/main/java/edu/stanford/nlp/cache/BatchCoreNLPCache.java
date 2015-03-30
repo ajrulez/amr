@@ -7,6 +7,7 @@ import edu.stanford.nlp.curator.CuratorClient;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.CoreNLPProtos;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.io.*;
 import java.util.Properties;
@@ -160,16 +161,21 @@ public class BatchCoreNLPCache extends CoreNLPCache {
 
         @Override
         public void run() {
-            for (int i = threadIdx; i < sentences.length; i += numThreads) {
-                Annotation annotation = new Annotation(sentences[i]);
-                try {
-                    System.out.println("Annotating "+i+"/"+sentences.length);
-                    coreNLP.annotate(annotation);
+            try {
+                for (int i = threadIdx; i < sentences.length; i += numThreads) {
+                    Annotation annotation = new Annotation(sentences[i]);
+                    try {
+                        System.out.println("Annotating " + i + "/" + sentences.length);
+                        coreNLP.annotate(annotation);
+                    } catch (Exception e) {
+                        coreNLPFallback.annotate(annotation);
+                    }
+                    annotations[i] = annotation;
                 }
-                catch (Exception e) {
-                    coreNLPFallback.annotate(annotation);
-                }
-                annotations[i] = annotation;
+            } catch (Throwable t) {
+                System.err.println("CAUGHT ERROR IN ANNOTATION (EXITING):");
+                t.printStackTrace();
+                System.exit(1);
             }
         }
     }

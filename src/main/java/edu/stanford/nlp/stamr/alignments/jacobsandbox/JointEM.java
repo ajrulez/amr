@@ -63,59 +63,56 @@ public class JointEM {
                 final AugmentedToken[] curTokens = tokens[n];
                 final AMR.Node[] curNodes = nodes[n];
                 final int curN = n;
-                Callable<Void> thread = new Callable<Void>() {
-                    @Override
-                    public Void call() throws Exception {
-                        // do IBM model 1
-                        // print current best predictions (for debugging)
+                Callable<Void> thread = () -> {
+                    // do IBM model 1
+                    // print current best predictions (for debugging)
+                    for (AugmentedToken token : curTokens) {
+                        Action bestAction = null;
+                        double bestScore = 0.0;
+                        for (Action action : Action.values()) {
+                            List<String> features = extractFeatures(token, action);
+                            double curScore = score(features);
+                            if (bestAction == null || curScore > bestScore) {
+                                bestAction = action;
+                                bestScore = curScore;
+                            }
+                        }
+                        if (curN == 0)
+                            System.out.println("OPT(" + token + ") : " + bestAction + " => " + getNode(token, bestAction));
+                    }
+
+
+                    // loop over output
+                    for (AMR.Node node : curNodes) {
+                        double Zsrc = 0.0, Ztar = 0.0;
+                        Map<String, Double> gradientSrc = new HashMap<String, Double>(),
+                                gradientTar = new HashMap<String, Double>();
                         for (AugmentedToken token : curTokens) {
-                            Action bestAction = null;
-                            double bestScore = 0.0;
+                            double logZ2 = Double.NEGATIVE_INFINITY;
                             for (Action action : Action.values()) {
                                 List<String> features = extractFeatures(token, action);
-                                double curScore = score(features);
-                                if (bestAction == null || curScore > bestScore) {
-                                    bestAction = action;
-                                    bestScore = curScore;
-                                }
+                                logZ2 = lse(logZ2, score(features));
                             }
-                            if (curN == 0)
-                                System.out.println("OPT(" + token + ") : " + bestAction + " => " + getNode(token, bestAction));
-                        }
-
-
-                        // loop over output
-                        for (AMR.Node node : curNodes) {
-                            double Zsrc = 0.0, Ztar = 0.0;
-                            Map<String, Double> gradientSrc = new HashMap<String, Double>(),
-                                    gradientTar = new HashMap<String, Double>();
-                            for (AugmentedToken token : curTokens) {
-                                double logZ2 = Double.NEGATIVE_INFINITY;
-                                for (Action action : Action.values()) {
-                                    List<String> features = extractFeatures(token, action);
-                                    logZ2 = lse(logZ2, score(features));
-                                }
-                                for (Action action : Action.values()) {
-                                    List<String> features = extractFeatures(token, action);
-                                    double probSrc = Math.exp(score(features) - logZ2);
-                                    double likelihood = getNode(token, action).score(node, curNodes.length);
-                                    if (curN == 0 && likelihood > 0.5)
-                                        System.out.println("likelihood(" + token + "," + action + "," + node + ") = " + likelihood);
-                                    double probTar = probSrc * likelihood;
-                                    Zsrc += probSrc;
-                                    Ztar += probTar;
-                                    incr(gradientSrc, features, probSrc);
-                                    incr(gradientTar, features, probTar);
-                                }
+                            for (Action action : Action.values()) {
+                                List<String> features = extractFeatures(token, action);
+                                double probSrc = Math.exp(score(features) - logZ2);
+                                double likelihood = getNode(token, action).score(node, curNodes.length);
+                                if (curN == 0 && likelihood > 0.5)
+                                    System.out.println("likelihood(" + token + "," + action + "," + node + ") = " + likelihood);
+                                double probTar = probSrc * likelihood;
+                                Zsrc += probSrc;
+                                Ztar += probTar;
+                                incr(gradientSrc, features, probSrc);
+                                incr(gradientTar, features, probTar);
                             }
-                            Map<String, Double> gradient = new HashMap<String, Double>();
-                            incr(gradient, gradientSrc, -1.0 / Zsrc);
-                            incr(gradient, gradientTar, 1.0 / Ztar);
-                            adagrad(gradient, eta);
-                            logZTot.addAndGet(Math.log(Zsrc / Ztar));
                         }
-                        return null;
+                        Map<String, Double> gradient = new HashMap<String, Double>();
+                        incr(gradient, gradientSrc, -1.0 / Zsrc);
+                        incr(gradient, gradientTar, 1.0 / Ztar);
+                        adagrad(gradient, eta);
+                        logZTot.addAndGet(Math.log(Zsrc / Ztar));
                     }
+                    return null;
                 };
                 threads.add(threadPool.submit(thread));
             }
@@ -179,6 +176,9 @@ public class JointEM {
         for(int i = 0; i < bankSize; i++){
             //Annotation annotation = manager.annotate(bank[i].formatSourceTokens()).annotation;
             Annotation annotation = cache.getAnnotation(i);
+            if (annotation == null) {
+                throw new IllegalStateException("The cache didn't return an annotation!");
+            }
             tokens[i] = augmentedTokens(bank[i].sourceText, annotation);
             nodes[i] = bank[i].nodes.toArray(new AMR.Node[0]);
             System.out.println("Data for example " + i + ":");
@@ -415,6 +415,9 @@ public class JointEM {
         PredicateArgumentAnnotation srl = annotation.get(CuratorAnnotations.PropBankSRLAnnotation.class);
         if (srl == null) return "-"; // If we have no SRL on this example, then oh well
         for (PredicateArgumentAnnotation.AnnotationSpan span : srl.getPredicates()) {
+            if (span == null) {
+              return "-";
+            }
             if ((span.startToken <= index) && (span.endToken >= index + 1)) {
                 String sense = span.getAttribute("predicate") + "-" + span.getAttribute("sense");
                 return sense;
