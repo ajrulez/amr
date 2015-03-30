@@ -50,12 +50,25 @@ public class JointEM {
         AMR.Node[][] nodes = new AMR.Node[bankSize][];
         read(path, bank, tokens, nodes, bankSize);
 
+        // initialize frequencies
+        HashMap<String, Integer> freqs = new HashMap<String, Integer>();
+        for(int n = 0; n < bankSize; n++){
+            for(AMR.Node node : nodes[n]){
+                Integer x = freqs.get(node.title);
+                if(x == null) freqs.put(node.title, 1);
+                else freqs.put(node.title, x+1);
+            }
+        }
+
         // now tokens[i] has all the required token info
         // and nodes[i] has all the required node info
         // and we can just solve the alignment problem
-        theta = new ConcurrentHashMap<String, AGPair>();
-        double eta = 0.3;
-        for(int iter = 0; iter < 5; iter++){
+        Model.theta = new ConcurrentHashMap<String, Model.AGPair>();
+        double eta = 1.0;
+        Model.SoftCountDict oldDict = new Model.SoftCountDict(freqs, 2.0);
+        for(int iter = 0; iter < 10; iter++){
+            final Model.SoftCountDict curDict = oldDict;
+            final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, 2.0);
             final AtomicDouble logZTot = new AtomicDouble(0.0);
             ExecutorService threadPool = Executors.newFixedThreadPool(4);
             ArrayList<Future<Void>> threads = new ArrayList<>();
@@ -71,7 +84,7 @@ public class JointEM {
                         double bestScore = 0.0;
                         for (Action action : Action.values()) {
                             List<String> features = extractFeatures(token, action);
-                            double curScore = score(features);
+                            double curScore = Model.score(features);
                             if (bestAction == null || curScore > bestScore) {
                                 bestAction = action;
                                 bestScore = curScore;
@@ -85,37 +98,45 @@ public class JointEM {
                     // loop over output
                     for (AMR.Node node : curNodes) {
                         double Zsrc = 0.0, Ztar = 0.0;
+                        HashMap<String, Double> counts = new HashMap<String, Double>();
                         Map<String, Double> gradientSrc = new HashMap<String, Double>(),
                                 gradientTar = new HashMap<String, Double>();
                         for (AugmentedToken token : curTokens) {
                             double logZ2 = Double.NEGATIVE_INFINITY;
                             for (Action action : Action.values()) {
                                 List<String> features = extractFeatures(token, action);
-                                logZ2 = lse(logZ2, score(features));
+                                logZ2 = Util.lse(logZ2, Model.score(features));
                             }
                             for (Action action : Action.values()) {
                                 List<String> features = extractFeatures(token, action);
-                                double probSrc = Math.exp(score(features) - logZ2);
-                                double likelihood = getNode(token, action).score(node, curNodes.length);
-                                if (curN == 0 && likelihood > 0.5)
+                                double probSrc = Math.exp(Model.score(features) - logZ2);
+                                double likelihood = getNode(token, action).score(node, curDict);
+                                if (curN == 0 && likelihood > 0.01)
                                     System.out.println("likelihood(" + token + "," + action + "," + node + ") = " + likelihood);
                                 double probTar = probSrc * likelihood;
                                 Zsrc += probSrc;
                                 Ztar += probTar;
-                                incr(gradientSrc, features, probSrc);
-                                incr(gradientTar, features, probTar);
+                                Util.incr(gradientSrc, features, probSrc);
+                                Util.incr(gradientTar, features, probTar);
+                                if(action == Action.DICT){
+                                    counts.put(token.value, probTar);
+                                }
                             }
                         }
+                        for(Map.Entry<String, Double> e : counts.entrySet()){
+                            nextDict.addCount(e.getKey(), node.title, e.getValue() / Ztar);
+                        }
                         Map<String, Double> gradient = new HashMap<String, Double>();
-                        incr(gradient, gradientSrc, -1.0 / Zsrc);
-                        incr(gradient, gradientTar, 1.0 / Ztar);
-                        adagrad(gradient, eta);
+                        Util.incr(gradient, gradientSrc, -1.0 / Zsrc);
+                        Util.incr(gradient, gradientTar, 1.0 / Ztar);
+                        Model.adagrad(gradient, eta);
                         logZTot.addAndGet(Math.log(Zsrc / Ztar));
                     }
                     return null;
                 };
                 threads.add(threadPool.submit(thread));
             }
+            oldDict = nextDict;
             threadPool.shutdown();
             threadPool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
             System.out.println("cost after iteration " + iter + ": " + logZTot.doubleValue());
@@ -141,9 +162,10 @@ public class JointEM {
         read(lpPath, lpBank, lpTokens, lpNodes, lpBankSize);
 
         int numCorrect = 0, numTotal = 0;
+        final Model.SoftCountDict lpDict = oldDict;
         for(int n = 0; n < lpBankSize; n++){
             for(AMR.Node node : lpNodes[n]){
-                TokenWithAction tokenWithAction = getBestToken(node, lpTokens[n], lpNodes[n].length);
+                TokenWithAction tokenWithAction = getBestToken(node, lpTokens[n], lpDict);
                 AugmentedToken token = tokenWithAction.token;
                 Action action = tokenWithAction.action;
                 System.out.println(node + "[" + node.alignment + " = " + lpTokens[n][node.alignment].value
@@ -160,7 +182,7 @@ public class JointEM {
         // DONE 1. Print out hard alignments at end
         // DONE 2. Get cost on labeled development set
         // 3. Modify cost function based on Dirichlet prior
-        // 4. Handle NAME construct
+        // DONE 4. Handle NAME construct
         // DONE 5. Print correct alignment ID
         // DONE 6. Make things faster
 
@@ -176,9 +198,6 @@ public class JointEM {
         for(int i = 0; i < bankSize; i++){
             //Annotation annotation = manager.annotate(bank[i].formatSourceTokens()).annotation;
             Annotation annotation = cache.getAnnotation(i);
-            if (annotation == null) {
-                throw new IllegalStateException("The cache didn't return an annotation!");
-            }
             tokens[i] = augmentedTokens(bank[i].sourceText, annotation);
             nodes[i] = bank[i].nodes.toArray(new AMR.Node[0]);
             System.out.println("Data for example " + i + ":");
@@ -202,7 +221,7 @@ public class JointEM {
             this.action = action;
         }
     }
-    static TokenWithAction getBestToken(AMR.Node node, AugmentedToken[] tokens, int length){
+    static TokenWithAction getBestToken(AMR.Node node, AugmentedToken[] tokens, Model.SoftCountDict dict){
         AugmentedToken bestToken = null;
         Action bestAction = null;
         double bestScore = 0.0;
@@ -210,12 +229,12 @@ public class JointEM {
             double logZ2 = Double.NEGATIVE_INFINITY;
             for(Action action : Action.values()) {
                 List<String> features = extractFeatures(token, action);
-                logZ2 = lse(logZ2, score(features));
+                logZ2 = Util.lse(logZ2, Model.score(features));
             }
             for(Action action : Action.values()){
                 List<String> features = extractFeatures(token, action);
-                double probSrc = Math.exp(score(features) - logZ2);
-                double likelihood = getNode(token, action).score(node, length);
+                double probSrc = Math.exp(Model.score(features) - logZ2);
+                double likelihood = getNode(token, action).score(node, dict);
                 double probTar = probSrc * likelihood;
                 if(bestToken == null || probTar > bestScore) {
                     bestToken = token;
@@ -237,57 +256,6 @@ public class JointEM {
             ret.add("PRE|" + token.value.substring(0, 4) + "|" + action.toString());
         }
         return ret;
-    }
-
-    static Map<String, AGPair> theta;
-    static void adagrad(Map<String, Double> gradient, double step){
-        for(Map.Entry<String, Double> e : gradient.entrySet()){
-            AGPair p = theta.get(e.getKey());
-            if(p == null) theta.put(e.getKey(), new AGPair(e.getValue(), step));
-            else p.incr(e.getValue(), step);
-        }
-    }
-    static double score(List<String> features){
-        double ret = 0.0;
-        for(String key : features){
-            AGPair p = theta.get(key);
-            if(p != null) ret += p.v;
-        }
-        return ret;
-    }
-    static void incr(Map<String, Double> map, List<String> keys, double x){
-        for(String key : keys) {
-            Double v = map.get(key);
-            if (v == null) map.put(key, x);
-            else map.put(key, v + x);
-        }
-    }
-    static void incr(Map<String, Double> map, Map<String, Double> rhs, double x){
-        for(Map.Entry<String, Double> e : rhs.entrySet()){
-            String key = e.getKey();
-            double dv = x * e.getValue();
-            Double v = map.get(key);
-            if(v == null) map.put(key, dv);
-            else map.put(key, v + dv);
-        }
-    }
-    static class AGPair {
-        private static final double DELTA = 1e-4;
-        double v, s;
-        public AGPair(double val, double step){
-            s = val*val + DELTA;
-            v = step * val / Math.sqrt(s);
-        }
-        void incr(double val, double step){
-            s += val * val;
-            v += step * val / Math.sqrt(s);
-        }
-    }
-    static double lse(double x, double y){
-        if(x == Double.NEGATIVE_INFINITY) return y;
-        else if(y == Double.NEGATIVE_INFINITY) return x;
-        else if(x < y) return y + Math.log(1 + Math.exp(x-y));
-        else return x + Math.log(1 + Math.exp(y-x));
     }
 
     enum Action { IDENTITY, NONE, VERB, LEMMA, DICT, NAME, PERSON }
@@ -334,7 +302,7 @@ public class JointEM {
             this.isDict = false;
             this.quoteType = quoteType;
         }
-        double score(AMR.Node match, int len){
+        double score(AMR.Node match, Model.SoftCountDict dict){
             if(quoteType != null) {
                 if(quoteType.equals(match.title)) return 1.0;
                 if(match.type == AMR.NodeType.QUOTE && name.equals(match.title)) return 1.0;
@@ -344,7 +312,7 @@ public class JointEM {
                 else return 0.0;
             } else {
                 // be lazy for now, just return a low-ish number
-                return 0.01 / len;
+                return dict.getProb(name, match.title);
             }
         }
         @Override
@@ -415,9 +383,6 @@ public class JointEM {
         PredicateArgumentAnnotation srl = annotation.get(CuratorAnnotations.PropBankSRLAnnotation.class);
         if (srl == null) return "-"; // If we have no SRL on this example, then oh well
         for (PredicateArgumentAnnotation.AnnotationSpan span : srl.getPredicates()) {
-            if (span == null) {
-              return "-";
-            }
             if ((span.startToken <= index) && (span.endToken >= index + 1)) {
                 String sense = span.getAttribute("predicate") + "-" + span.getAttribute("sense");
                 return sense;
@@ -425,7 +390,4 @@ public class JointEM {
         }
         return "NONE";
     }
-
-
-
 }
