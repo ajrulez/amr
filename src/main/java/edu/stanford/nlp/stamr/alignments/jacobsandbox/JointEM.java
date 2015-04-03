@@ -66,6 +66,8 @@ public class JointEM {
         HashMap<String, Integer> freqs = new HashMap<String, Integer>();
         for(int n = 0; n < bankSize; n++){
             for(AMR.Node node : nodes[n]){
+                if(node.title.equals("name")) continue;
+                if(node.title.equals("person")) continue;
                 Integer x = freqs.get(node.title);
                 if(x == null) freqs.put(node.title, 1);
                 else freqs.put(node.title, x+1);
@@ -76,9 +78,9 @@ public class JointEM {
         // and nodes[i] has all the required node info
         // and we can just solve the alignment problem
         Model.theta = new ConcurrentHashMap<String, Model.AGPair>();
-        double eta = 1.0;
+        double eta = 0.3;
         Model.SoftCountDict oldDict = new Model.SoftCountDict(freqs, 2.0);
-        for(int iter = 0; iter < 10; iter++){
+        for(int iter = 0; iter < 40; iter++){
             final Model.SoftCountDict curDict = oldDict;
             final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, 2.0);
             final AtomicDouble logZTot = new AtomicDouble(0.0);
@@ -110,6 +112,8 @@ public class JointEM {
                     // loop over output
                     // For each node...
                     for (AMR.Node node : curNodes) {
+                        if(node.title.equals("name")) continue;
+                        if(node.title.equals("person")) continue;
                         double Zsrc = 0.0, Ztar = 0.0;
                         HashMap<String, Double> counts = new HashMap<String, Double>();
                         Map<String, Double> gradientSrc = new HashMap<String, Double>(),
@@ -151,7 +155,9 @@ public class JointEM {
                 };
                 threads.add(threadPool.submit(thread));
             }
-            oldDict = nextDict;
+            if(iter >= 8 && iter % 1 == 0) {
+                oldDict = nextDict;
+            }
             threadPool.shutdown();
             threadPool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
             System.out.println("cost after iteration " + iter + ": " + logZTot.doubleValue());
@@ -188,31 +194,35 @@ public class JointEM {
             AMR.Node[] amr = lpNodes[n];
             // Find the best alignments
             for(AMR.Node node : amr){
+                if(node.title.equals("name")) continue;
+                if(node.title.equals("person")) continue;
                 // Get the best token for the AMR node
                 TokenWithAction tokenWithAction = getBestToken(node, sentence, lpDict, cache);
                 AugmentedToken token = tokenWithAction.token;
                 Action action = tokenWithAction.action;
                 // Find the gold alignment
-                AMR.Node goldNode = null;
+                Set<AMR.Node> goldNodes = new HashSet<>();
                 for (AMR.Node candidate : amr) {
+                    if(node.title.equals("name")) continue;
+                    if(node.title.equals("person")) continue;
                     if (candidate.alignment == token.index) {
-                        goldNode = candidate;
+                        goldNodes.add(candidate);
                     }
                 }
                 // Register the accuracy data point
-                if(node.equals(goldNode)) {
+                if(goldNodes.contains(node)) {
                     numCorrect += 1;
                 }
                 numTotal++;
                 // Debug print the alignment
                 String prefix = "✓";
-                if(!node.equals(goldNode)) {
+                if(!goldNodes.contains(node)) {
                     prefix = "x";
                 }
                 String msg = prefix + " " + node + "[" + node.alignment + " = " + lpTokens[n][node.alignment].value
                                 + " / " + token.index + " = " + token.value + "/" + action + "]";
                 System.out.println(msg);
-                debugWriter.println(action + "\t" + prefix + "\t" + token.value + "\t" + node + "\t" + goldNode);
+                debugWriter.println(action + "\t" + prefix + "\t" + token.value + "\t" + node + "\t" + (goldNodes.isEmpty() ? "nono" : goldNodes.iterator().next()));
             }
         }
 
