@@ -88,7 +88,10 @@ public class JointEM {
             ArrayList<Future<Void>> threads = new ArrayList<>();
             for(int n = 0; n < bankSize; n++){
                 final AugmentedToken[] curTokens = tokens[n];
-                final AMR.Node[] curNodes = nodes[n];
+                final List<AMR.Node> curNodes = new ArrayList<>(Arrays.asList(nodes[n]));
+                for(int count = 0; count < (curTokens.length + 1) / 3; count++) {
+                    curNodes.add(new NoneNode());
+                }
                 final int curN = n;
                 Callable<Void> thread = () -> {
                     // do IBM model 1
@@ -112,8 +115,8 @@ public class JointEM {
                     // loop over output
                     // For each node...
                     for (AMR.Node node : curNodes) {
-                        if(node.title.equals("name")) continue;
-                        if(node.title.equals("person")) continue;
+                        if (node.title.equals("name")) continue;
+                        if (node.title.equals("person")) continue;
                         double Zsrc = 0.0, Ztar = 0.0;
                         HashMap<String, Double> counts = new HashMap<String, Double>();
                         Map<String, Double> gradientSrc = new HashMap<String, Double>(),
@@ -130,8 +133,8 @@ public class JointEM {
                                 List<String> features = extractFeatures(token, action);
                                 double probSrc = Math.exp(Model.score(features) - logZ2);
                                 double likelihood = getNode(token, action, cache).score(node, curDict);
-                                if (curN == 0 && likelihood > 0.01)
-                                    System.out.println("likelihood(" + token + "," + action + "," + node + ") = " + likelihood);
+                                //if (curN == 0 && likelihood > 0.01)
+                                //    System.out.println("likelihood(" + token + "," + action + "," + node + ") = " + likelihood);
                                 double probTar = probSrc * likelihood;
                                 Zsrc += probSrc;
                                 Ztar += probTar;
@@ -424,6 +427,7 @@ public class JointEM {
             this.quoteType = quoteType;
         }
         double score(AMR.Node match, Model.SoftCountDict dict){
+            if(match instanceof NoneNode) return 0.0;
             if(quoteType != null) {
                 if(quoteType.equals(match.title)) return 1.0;
                 if(match.type == AMR.NodeType.QUOTE && name.equals(match.title)) return 1.0;
@@ -432,7 +436,6 @@ public class JointEM {
                 if(name.equals(match.title)) return 1.0;
                 else return 0.0;
             } else {
-                // be lazy for now, just return a low-ish number
                 return dict.getProb(name, match.title);
             }
         }
@@ -443,12 +446,26 @@ public class JointEM {
         }
     }
 
+    static class MatchNoneNode extends MatchNode {
+        public MatchNoneNode(){
+            super("NONE");
+        }
+        @Override
+        double score(AMR.Node match, Model.SoftCountDict dict) {
+            if(match instanceof NoneNode){
+                return 1.0;
+            } else {
+                return 0.0;
+            }
+        }
+    }
+
     static MatchNode getNode(AugmentedToken token, Action action, ProblemCache cache){
         switch(action){
             case IDENTITY:
                 return new MatchNode(token.value.toLowerCase());
             case NONE:
-                return new MatchNode("IMPOSSIBLE_TO_MATCH");
+                return new MatchNoneNode();
             case VERB:
                 String srlSense = token.sense;
                 if (srlSense.equals("-") || srlSense.equals("NONE")) {
