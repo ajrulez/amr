@@ -1,6 +1,7 @@
 package edu.stanford.nlp.stamr.alignments.jacobsandbox;
 
 import edu.stanford.nlp.experiments.FrameManager;
+import edu.stanford.nlp.process.WordShapeClassifier;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,5 +41,20 @@ public class ProblemCache {
         return new JointEM.MatchNode(rtn);
     }
 
+
+    private final Map<String, String> getWordShapeCache = new HashMap<>();
+
+    /**
+     * A cache for the word shape classifier.
+     */
+    public String getWordShape(String input) {
+        String shape;
+        if ( (shape = getWordShapeCache.get(input)) != null) {
+            return shape;
+        }
+        shape = WordShapeClassifier.wordShape(input, WordShapeClassifier.WORDSHAPECHRIS4);
+        getWordShapeCache.put(input, shape);
+        return shape;
+    }
 
 }
