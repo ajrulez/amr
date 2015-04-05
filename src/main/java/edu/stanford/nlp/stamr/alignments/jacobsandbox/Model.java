@@ -1,6 +1,9 @@
 package edu.stanford.nlp.stamr.alignments.jacobsandbox;
 
+import edu.stanford.nlp.stats.Counter;
+
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,12 +14,20 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Model implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Map<String, AGPair> theta = new ConcurrentHashMap<>();
+    /** The model parameters. Be sure the synchronize this! */
+    private Map<String, AGPair> theta = new HashMap<>();
 
     // TODO(gabor) some better way to manage this, instead of setting it at the end of EM
     public SoftCountDict dict;
 
-    public void adagrad(Map<String, Double> gradient, double step){
+    /**
+     *
+     * note: synchronized on theta
+     *
+     * @param gradient
+     * @param step
+     */
+    public synchronized void adagrad(Counter<String> gradient, double step){
         for(Map.Entry<String, Double> e : gradient.entrySet()){
             AGPair p = theta.get(e.getKey());
             if(p == null) theta.put(e.getKey(), new AGPair(e.getValue(), step));
@@ -24,7 +35,14 @@ public class Model implements Serializable {
         }
     }
 
-    public double score(List<String> features){
+    /**
+     *
+     * note: synchronized on theta
+     *
+     * @param features
+     * @return
+     */
+    public synchronized double score(List<String> features){
         double ret = 0.0;
         for(String key : features){
             AGPair p = theta.get(key);

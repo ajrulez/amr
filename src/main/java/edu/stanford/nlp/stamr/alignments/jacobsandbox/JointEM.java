@@ -15,6 +15,9 @@ import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
 import edu.stanford.nlp.semgraph.SemanticGraphEdge;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRSlurp;
+import edu.stanford.nlp.stats.ClassicCounter;
+import edu.stanford.nlp.stats.Counters;
+import edu.stanford.nlp.stats.Counter;
 import edu.stanford.nlp.util.CoreMap;
 import edu.stanford.nlp.util.Execution;
 import edu.stanford.nlp.util.concurrent.AtomicDouble;
@@ -209,8 +212,8 @@ public class JointEM {
                         if (namedEntityTypes.contains(node.title)) { continue; }
                         double Zsrc = 0.0, Ztar = 0.0;
                         HashMap<String, Double> counts = new HashMap<>();
-                        Map<String, Double> gradientSrc = new HashMap<>(),
-                                gradientTar = new HashMap<>();
+                        Counter<String> gradientSrc = new ClassicCounter<>(),
+                                gradientTar = new ClassicCounter<>();
                         // For each token...
                         for (AugmentedToken token : curTokens) {
                             double logZ2 = Double.NEGATIVE_INFINITY;
@@ -228,8 +231,10 @@ public class JointEM {
                                 double probTar = probSrc * likelihood;
                                 Zsrc += probSrc;
                                 Ztar += probTar;
-                                Util.incr(gradientSrc, features, probSrc);
-                                Util.incr(gradientTar, features, probTar);
+                                for (String feat : features) {
+                                    gradientSrc.incrementCount(feat, probSrc);
+                                    gradientTar.incrementCount(feat, probTar);
+                                }
                                 if(action == Action.DICT){
                                     counts.put(token.value, probTar);
                                 }
@@ -238,9 +243,11 @@ public class JointEM {
                         for(Map.Entry<String, Double> e : counts.entrySet()){
                             nextDict.addCount(e.getKey(), node.title, e.getValue() / Ztar);
                         }
-                        Map<String, Double> gradient = new HashMap<>();
-                        Util.incr(gradient, gradientSrc, -1.0 / Zsrc);
-                        Util.incr(gradient, gradientTar, 1.0 / Ztar);
+                        Counter<String> gradient = new ClassicCounter<>();
+                        Counters.addInPlace(gradient, gradientSrc, -1.0 / Zsrc);
+                        Counters.addInPlace(gradient, gradientTar, 1.0 / Ztar);
+//                        Util.incr(gradient, gradientSrc, -1.0 / Zsrc);
+//                        Util.incr(gradient, gradientTar, 1.0 / Ztar);
                         model.adagrad(gradient, eta);
                         logZTot.addAndGet(Math.log(Zsrc / Ztar));
                     }
