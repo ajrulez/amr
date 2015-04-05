@@ -15,7 +15,7 @@ public class Model implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /** The model parameters. Be sure the synchronize this! */
-    private Map<String, AGPair> theta = new HashMap<>();
+    private Map<String, AGPair> theta = new ConcurrentHashMap<>();
 
     // TODO(gabor) some better way to manage this, instead of setting it at the end of EM
     public SoftCountDict dict;
@@ -27,7 +27,7 @@ public class Model implements Serializable {
      * @param gradient
      * @param step
      */
-    public synchronized void adagrad(Counter<String> gradient, double step){
+    public void adagrad(Counter<String> gradient, double step){
         for(Map.Entry<String, Double> e : gradient.entrySet()){
             AGPair p = theta.get(e.getKey());
             if(p == null) theta.put(e.getKey(), new AGPair(e.getValue(), step));
@@ -42,7 +42,7 @@ public class Model implements Serializable {
      * @param features
      * @return
      */
-    public synchronized double score(List<String> features){
+    public double score(List<String> features){
         double ret = 0.0;
         for(String key : features){
             AGPair p = theta.get(key);
