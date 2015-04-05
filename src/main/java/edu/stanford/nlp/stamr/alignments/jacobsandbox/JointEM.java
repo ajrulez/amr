@@ -45,9 +45,10 @@ public class JointEM {
 
     @Execution.Option(name="train.data", gloss="The path to the training data")
     private static String TRAIN_DATA = "realdata/train-aligned.txt";
-
     @Execution.Option(name="train.count", gloss="The number of examples to train on")
     private static int TRAIN_COUNT = Integer.MAX_VALUE;
+    @Execution.Option(name="train.iters", gloss="The number of iterations to run EM for")
+    private static int TRAIN_ITERS = 40;
 
     @Execution.Option(name="test.data", gloss="The path to the test data")
     private static String TEST_DATA = "data/training-500-subset.txt";
@@ -122,7 +123,7 @@ public class JointEM {
             model = IOUtils.readObjectFromFile(modelPath);
         } else {
             // 2. Can't load the model: train a new one
-            model = doEM(TRAIN_DATA, TRAIN_COUNT, cache);
+            model = doEM(TRAIN_DATA, TRAIN_COUNT, TRAIN_ITERS, cache);
             startTrack("Training");
             IOUtils.writeObjectToFile(model, modelPath);
             endTrack("Training");
@@ -138,7 +139,7 @@ public class JointEM {
     }
 
 
-    static Model doEM(String path, int maxSize, ProblemCache cache) throws Exception {
+    static Model doEM(String path, int maxSize, int trainingIters, ProblemCache cache) throws Exception {
         Model model = new Model();
 
         // first, grab all the data
@@ -170,8 +171,8 @@ public class JointEM {
         forceTrack("EM");
         double eta = 0.3;
         Model.SoftCountDict oldDict = new Model.SoftCountDict(freqs, 2.0);
-        for(int iter = 0; iter < 40; iter++){
-            forceTrack("Iteration " + (iter + 1));
+        for(int iter = 0; iter < trainingIters; iter++){
+            forceTrack("Iteration " + (iter + 1) + " / " + trainingIters);
             final Model.SoftCountDict curDict = oldDict;
             final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, 2.0);
             final AtomicDouble logZTot = new AtomicDouble(0.0);
@@ -252,8 +253,8 @@ public class JointEM {
             }
             threadPool.shutdown();
             threadPool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
-            System.out.println("cost after iteration " + iter + ": " + logZTot.doubleValue());
-            endTrack("Iteration " + (iter + 1));
+            System.out.println("cost after iteration " + (iter + 1) + ": " + logZTot.doubleValue());
+            endTrack("Iteration " + (iter + 1) + " / " + trainingIters);
         }
         endTrack("EM");
 
@@ -424,16 +425,16 @@ public class JointEM {
             Annotation annotation = cache.getAnnotation(i);
             tokens[i] = augmentedTokens(bank[i].sourceText, annotation);
             nodes[i] = bank[i].nodes.toArray(new AMR.Node[bank[i].nodes.size()]);
-            System.out.println("Data for example " + i + ":");
-            System.out.println("\ttokens:");
-            for(AugmentedToken token : tokens[i]){
-                System.out.println("\t\t" + token.value + " / " + token.sense + " / " + token.stem);
-            }
-            System.out.println("\tnodes:");
-            for(AMR.Node node : nodes[i]){
-                System.out.println("\t\t" + node.title);
-            }
-            System.out.println("-------------\n");
+//            System.out.println("Data for example " + i + ":");
+//            System.out.println("\ttokens:");
+//            for(AugmentedToken token : tokens[i]){
+//                System.out.println("\t\t" + token.value + " / " + token.sense + " / " + token.stem);
+//            }
+//            System.out.println("\tnodes:");
+//            for(AMR.Node node : nodes[i]){
+//                System.out.println("\t\t" + node.title);
+//            }
+//            System.out.println("-------------\n");
         }
     }
 
