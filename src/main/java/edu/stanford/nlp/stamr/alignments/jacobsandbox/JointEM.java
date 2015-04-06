@@ -55,11 +55,11 @@ import static edu.stanford.nlp.util.logging.Redwood.Util.startTrack;
 public class JointEM {
 
     @Execution.Option(name="train.data", gloss="The path to the training data")
-    private static String TRAIN_DATA = "realdata/train-aligned.txt";
+    private static String TRAIN_DATA = "data/training-500-subset.txt";
     @Execution.Option(name="train.count", gloss="The number of examples to train on")
     private static int TRAIN_COUNT = Integer.MAX_VALUE;
     @Execution.Option(name="train.iters", gloss="The number of iterations to run EM for")
-    private static int TRAIN_ITERS = 40;
+    private static int TRAIN_ITERS = 20;
 
     @Execution.Option(name="test.data", gloss="The path to the test data")
     private static String TEST_DATA = "data/training-500-subset.txt";
@@ -69,12 +69,12 @@ public class JointEM {
     @Execution.Option(name="model.dir", gloss="The path to a directory with saved models")
     private static File MODEL_DIR = new File("models/");
     @Execution.Option(name="model.clobber", gloss="If true, clobber any existing saved model")
-    private static boolean MODEL_CLOBBER = false;
+    private static boolean MODEL_CLOBBER = true;
 
     private static final Set<String> namedEntityTypes = Collections.unmodifiableSet(new HashSet<String>() {{
         add("name");
         add("person");
-        add("country");
+        /*add("country");
         add("company");
         add("monetary-quantity");
         add("organization");
@@ -94,7 +94,7 @@ public class JointEM {
         add("book");
         add("earthquake");
         add("mass-quantity");
-        add("continent");
+        add("continent");*/
     }});
 
     static FrameManager frameManager;
@@ -180,18 +180,18 @@ public class JointEM {
         // and nodes[i] has all the required node info
         // and we can just solve the alignment problem
         forceTrack("EM");
-        double eta = 0.3;
-        Model.SoftCountDict oldDict = new Model.SoftCountDict(freqs, 2.0);
+        double eta = 0.3, gamma = 2.0;
+        Model.SoftCountDict oldDict = new Model.SoftCountDict(freqs, gamma);
         for(int iter = 0; iter < trainingIters; iter++){
             forceTrack("Iteration " + (iter + 1) + " / " + trainingIters);
             final Model.SoftCountDict curDict = oldDict;
-            final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, 2.0);
+            final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, gamma);
             final AtomicDouble logZTot = new AtomicDouble(0.0);
             ExecutorService threadPool = Executors.newFixedThreadPool(Execution.threads);
             for(int n = 0; n < bankSize; n++){
                 final AugmentedToken[] curTokens = tokens[n];
                 final List<AMR.Node> curNodes = new ArrayList<>(Arrays.asList(nodes[n]));
-                final boolean supervised = false; //(n % 2 == 0);
+                final boolean supervised = (n % 2 == 0);
                 if(!supervised){
                     for(int count = 0; count < (curTokens.length + 1) / 3; count++) {
                         curNodes.add(new NoneNode());
@@ -251,7 +251,6 @@ public class JointEM {
                         }
                         for (AugmentedToken token : theTokens) {
                             double logZ2 = Double.NEGATIVE_INFINITY;
-                            int numValid = Action.validValues(token, node).size();
                             for (Action action : Action.validValues(token, node)) {
                                 List<String> features = extractFeatures(token, action, cache);
                                 logZ2 = Util.lse(logZ2, model.score(features));
@@ -261,8 +260,6 @@ public class JointEM {
                                 List<String> features = extractFeatures(token, action, cache);
                                 double probSrc = Math.exp(model.score(features) - logZ2);
                                 double likelihood = getNode(token, action, cache).score(node, curDict);
-                                //if (curN == 0 && likelihood > 0.01)
-                                //    System.out.println("likelihood(" + token + "," + action + "," + node + ") = " + likelihood);
                                 double probTar = probSrc * likelihood;
                                 Zsrc += probSrc;
                                 Ztar += probTar;
@@ -303,25 +300,6 @@ public class JointEM {
         model.dict = oldDict;
 
         return model;
-
-        /* commented out because the next stage does the same thing (uncomment if path != lpPath)
-        // get hard alignments at end
-        for(int n = 0; n < bankSize; n++){
-            for(AMR.Node node : nodes[n]){
-                getBestToken(node, tokens[n], nodes[n].length);
-            }
-        }
-        */
-
-
-        // TODO:
-        // DONE 1. Print out hard alignments at end
-        // DONE 2. Get cost on labeled development set
-        // 3. Modify cost function based on Dirichlet prior
-        // DONE 4. Handle NAME construct
-        // DONE 5. Print correct alignment ID
-        // DONE 6. Make things faster
-
     }
 
 
@@ -458,6 +436,7 @@ public class JointEM {
 
 
     private static boolean isLikelyRef(String str){
+//        return false;
         return str.length() == 2 && str.charAt(0) >= 'a' && str.charAt(0) <= 'z'
                                  && str.charAt(1) >= '0' && str.charAt(1) <= '9';
     }
