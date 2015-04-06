@@ -490,12 +490,11 @@ public class JointEM {
         // Word shape
 //        ret.add("WORD_SHAPE|" + cache.getWordShape(token.value) + "|" + action.toString());
         // Incoming edge
-        if (token.isPunctuation()) {
-            ret.add("IS_PUNCT|" + action.toString());
-        } else {
-            ret.add("INCOMING_EDGE|" + token.incomingEdge() + "|" + action.toString());
-
-        }
+//        if (token.isPunctuation()) {
+//            ret.add("IS_PUNCT|" + action.toString());
+//        } else {
+//            ret.add("INCOMING_EDGE|" + token.incomingEdge() + "|" + action.toString());
+//        }
         return ret;
     }
 
