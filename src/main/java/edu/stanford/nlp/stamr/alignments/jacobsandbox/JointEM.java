@@ -60,11 +60,15 @@ public class JointEM {
     private static int TRAIN_COUNT = Integer.MAX_VALUE;
     @Execution.Option(name="train.iters", gloss="The number of iterations to run EM for")
     private static int TRAIN_ITERS = 20;
+    @Execution.Option(name="train.supervised_ratio", gloss="The mod of examples to treat as supervised")
+    private static int TRAIN_SUPERVISED_RATIO = 1;
 
     @Execution.Option(name="test.data", gloss="The path to the test data")
     private static String TEST_DATA = "data/training-500-subset.txt";
     @Execution.Option(name="test.count", gloss="The number of examples to test on")
     private static int TEST_COUNT = Integer.MAX_VALUE;
+    @Execution.Option(name="test.include_supervised", gloss="Include the supervised examples")
+    private static boolean TEST_INCLUDE_SUPERVISED = true;
 
     @Execution.Option(name="model.dir", gloss="The path to a directory with saved models")
     private static File MODEL_DIR = new File("models/");
@@ -183,7 +187,7 @@ public class JointEM {
         double eta = 0.3, gamma = 2.0;
         Model.SoftCountDict oldDict = new Model.SoftCountDict(freqs, gamma);
         for(int iter = 0; iter < trainingIters; iter++){
-            forceTrack("Iteration " + (iter + 1) + " / " + trainingIters);
+            forceTrack("Iteration " +(iter + 1) + " / " + trainingIters);
             final Model.SoftCountDict curDict = oldDict;
             final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, gamma);
             final AtomicDouble logZTot = new AtomicDouble(0.0);
@@ -191,7 +195,7 @@ public class JointEM {
             for(int n = 0; n < bankSize; n++){
                 final AugmentedToken[] curTokens = tokens[n];
                 final List<AMR.Node> curNodes = new ArrayList<>(Arrays.asList(nodes[n]));
-                final boolean supervised = (n % 2 == 0);
+                final boolean supervised = (n % TRAIN_SUPERVISED_RATIO == 0);
                 if(!supervised){
                     for(int count = 0; count < (curTokens.length + 1) / 3; count++) {
                         curNodes.add(new NoneNode());
@@ -323,7 +327,8 @@ public class JointEM {
         File debugFile = File.createTempFile("amr", ".txt");
         PrintWriter debugWriter = IOUtils.getPrintWriter(debugFile);
         for(int n = 0; n < lpBankSize; n++){
-            final boolean supervised = (n % 2 == 0);
+            final boolean supervised
+                    = !TEST_INCLUDE_SUPERVISED && (TRAIN_DATA.equals(TEST_DATA) && (n % TRAIN_SUPERVISED_RATIO == 0));
             if(supervised) continue;
             // Get the sentence and AMR graph
             AugmentedToken[] sentence = lpTokens[n];
@@ -452,13 +457,14 @@ public class JointEM {
             //Annotation annotation = manager.annotate(bank[i].formatSourceTokens()).annotation;
             Annotation annotation = cache.getAnnotation(i);
             tokens[i] = augmentedTokens(bank[i].sourceText, annotation);
-            nodes[i] = bank[i].nodes.toArray(new AMR.Node[0]);
+            nodes[i] = bank[i].nodes.toArray(new AMR.Node[bank[i].nodes.size()]);
             for(int j = 0; j < nodes[i].length; j++){
                 if(isLikelyRef(nodes[i][j].title) && nodes[i][j].ref.length() == 0){
                     for(int k = 0; k < nodes[i].length; k++){
                         if(nodes[i][j].title.equals(nodes[i][k].ref)){
                             nodes[i][j].ref = nodes[i][k].ref;
                             nodes[i][j].title = nodes[i][k].title;
+                            nodes[i][j].type = nodes[i][k].type;
                             break;
                         }
                     }
@@ -521,7 +527,7 @@ public class JointEM {
             ret.add("POST|" + token.value.substring(token.value.length()-3) + "|" + action.toString());
         }*/
         ret.add("NER|" + token.ner + "|" + action.toString());
-        ret.add("AMR|" + (token.amr == null ? "0" : "1") + "|" + action.toString());
+//        ret.add("AMR|" + (token.amr == null ? "0" : "1") + "|" + action.toString());
         // Word shape
 //        ret.add("WORD_SHAPE|" + cache.getWordShape(token.value) + "|" + action.toString());
         // Incoming edge
