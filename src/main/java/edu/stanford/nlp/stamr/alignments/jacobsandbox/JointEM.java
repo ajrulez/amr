@@ -28,10 +28,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 import java.util.concurrent.*;
-
 import static edu.stanford.nlp.util.logging.Redwood.Util.endTrack;
 import static edu.stanford.nlp.util.logging.Redwood.Util.forceTrack;
 import static edu.stanford.nlp.util.logging.Redwood.Util.startTrack;
+
+// TODO
+// Initial accuracy: 82.9 (early stopping)
+// 1. Add in some of Keenon's rule-based alignments
+//    (83.1) -force NONE alignments inside -LRB- -RRB-
+//    (83.3) -compute op1 for name and person
+// 2. Use the hand-labeled alignments to help with training
+//    (87.7, on half of the data) [note: sometimes 87.6, i guess due to nondeterminism with multithreading]
+// 3. Run on more data
 
 /**
  * Created by jacob on 3/26/15.
@@ -47,11 +55,11 @@ import static edu.stanford.nlp.util.logging.Redwood.Util.startTrack;
 public class JointEM {
 
     @Execution.Option(name="train.data", gloss="The path to the training data")
-    private static String TRAIN_DATA = "realdata/train-aligned.txt";
+    private static String TRAIN_DATA = "data/training-500-subset.txt";
     @Execution.Option(name="train.count", gloss="The number of examples to train on")
     private static int TRAIN_COUNT = Integer.MAX_VALUE;
     @Execution.Option(name="train.iters", gloss="The number of iterations to run EM for")
-    private static int TRAIN_ITERS = 40;
+    private static int TRAIN_ITERS = 20;
 
     @Execution.Option(name="test.data", gloss="The path to the test data")
     private static String TEST_DATA = "data/training-500-subset.txt";
@@ -61,12 +69,12 @@ public class JointEM {
     @Execution.Option(name="model.dir", gloss="The path to a directory with saved models")
     private static File MODEL_DIR = new File("models/");
     @Execution.Option(name="model.clobber", gloss="If true, clobber any existing saved model")
-    private static boolean MODEL_CLOBBER = false;
+    private static boolean MODEL_CLOBBER = true;
 
     private static final Set<String> namedEntityTypes = Collections.unmodifiableSet(new HashSet<String>() {{
         add("name");
         add("person");
-        add("country");
+        /*add("country");
         add("company");
         add("monetary-quantity");
         add("organization");
@@ -86,7 +94,7 @@ public class JointEM {
         add("book");
         add("earthquake");
         add("mass-quantity");
-        add("continent");
+        add("continent");*/
     }});
 
     static FrameManager frameManager;
@@ -172,37 +180,53 @@ public class JointEM {
         // and nodes[i] has all the required node info
         // and we can just solve the alignment problem
         forceTrack("EM");
-        double eta = 0.3;
-        Model.SoftCountDict oldDict = new Model.SoftCountDict(freqs, 2.0);
+        double eta = 0.3, gamma = 2.0;
+        Model.SoftCountDict oldDict = new Model.SoftCountDict(freqs, gamma);
         for(int iter = 0; iter < trainingIters; iter++){
             forceTrack("Iteration " + (iter + 1) + " / " + trainingIters);
             final Model.SoftCountDict curDict = oldDict;
-            final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, 2.0);
+            final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, gamma);
             final AtomicDouble logZTot = new AtomicDouble(0.0);
             ExecutorService threadPool = Executors.newFixedThreadPool(Execution.threads);
             for(int n = 0; n < bankSize; n++){
                 final AugmentedToken[] curTokens = tokens[n];
                 final List<AMR.Node> curNodes = new ArrayList<>(Arrays.asList(nodes[n]));
-                for(int count = 0; count < (curTokens.length + 1) / 3; count++) {
-                    curNodes.add(new NoneNode());
+                final boolean supervised = (n % 2 == 0);
+                if(!supervised){
+                    for(int count = 0; count < (curTokens.length + 1) / 3; count++) {
+                        curNodes.add(new NoneNode());
+                    }
+                } else {
+                    /*Set<Integer> indices = new HashSet<Integer>();
+                    for(AMR.Node node : curNodes) indices.remove(node.alignment);
+                    for(Integer index : indices){
+                        AMR.Node newNode = new NoneNode();
+                        newNode.alignment = index;
+                        //curNodes.add(newNode);
+                    }*/
                 }
                 final int curN = n;
                 Callable<Void> thread = () -> {
                     // do IBM model 1
                     // print current best predictions (for debugging)
-                    for (AugmentedToken token : curTokens) {
-                        Action bestAction = null;
-                        double bestScore = 0.0;
-                        for (Action action : Action.values()) {
-                            List<String> features = extractFeatures(token, action, cache);
-                            double curScore = model.score(features);
-                            if (bestAction == null || curScore > bestScore) {
-                                bestAction = action;
-                                bestScore = curScore;
+                    if (curN == 0) {
+                        for (AugmentedToken token : curTokens) {
+                            Action bestAction = null;
+                            double bestScore = 0.0;
+                            if(token.forcedAction != null){
+                                bestAction  = token.forcedAction;
+                            } else {
+                                for (Action action : Action.values()) {
+                                    List<String> features = extractFeatures(token, action, cache);
+                                    double curScore = model.score(features);
+                                    if (bestAction == null || curScore > bestScore) {
+                                        bestAction = action;
+                                        bestScore = curScore;
+                                    }
+                                }
                             }
-                        }
-                        if (curN == 0)
                             System.out.println("OPT(" + token + ") : " + bestAction + " => " + getNode(token, bestAction, cache));
+                        }
                     }
 
 
@@ -215,7 +239,17 @@ public class JointEM {
                         Counter<String> gradientSrc = new ClassicCounter<>(),
                                 gradientTar = new ClassicCounter<>();
                         // For each token...
-                        for (AugmentedToken token : curTokens) {
+                        AugmentedToken[] theTokens = null;
+                        if(supervised){
+                            theTokens = new AugmentedToken[1];
+                            theTokens[0] = curTokens[node.alignment];
+                            if(theTokens[0].forcedAction != null){
+                                System.out.println("uh oh " + theTokens[0].forcedAction + " " + node.title);
+                            }
+                        } else {
+                            theTokens = curTokens;
+                        }
+                        for (AugmentedToken token : theTokens) {
                             double logZ2 = Double.NEGATIVE_INFINITY;
                             for (Action action : Action.validValues(token, node)) {
                                 List<String> features = extractFeatures(token, action, cache);
@@ -226,8 +260,6 @@ public class JointEM {
                                 List<String> features = extractFeatures(token, action, cache);
                                 double probSrc = Math.exp(model.score(features) - logZ2);
                                 double likelihood = getNode(token, action, cache).score(node, curDict);
-                                //if (curN == 0 && likelihood > 0.01)
-                                //    System.out.println("likelihood(" + token + "," + action + "," + node + ") = " + likelihood);
                                 double probTar = probSrc * likelihood;
                                 Zsrc += probSrc;
                                 Ztar += probTar;
@@ -268,25 +300,6 @@ public class JointEM {
         model.dict = oldDict;
 
         return model;
-
-        /* commented out because the next stage does the same thing (uncomment if path != lpPath)
-        // get hard alignments at end
-        for(int n = 0; n < bankSize; n++){
-            for(AMR.Node node : nodes[n]){
-                getBestToken(node, tokens[n], nodes[n].length);
-            }
-        }
-        */
-
-
-        // TODO:
-        // DONE 1. Print out hard alignments at end
-        // DONE 2. Get cost on labeled development set
-        // 3. Modify cost function based on Dirichlet prior
-        // DONE 4. Handle NAME construct
-        // DONE 5. Print correct alignment ID
-        // DONE 6. Make things faster
-
     }
 
 
@@ -310,6 +323,8 @@ public class JointEM {
         File debugFile = File.createTempFile("amr", ".txt");
         PrintWriter debugWriter = IOUtils.getPrintWriter(debugFile);
         for(int n = 0; n < lpBankSize; n++){
+            final boolean supervised = (n % 2 == 0);
+            if(supervised) continue;
             // Get the sentence and AMR graph
             AugmentedToken[] sentence = lpTokens[n];
             AMR.Node[] amr = lpNodes[n];
@@ -420,6 +435,12 @@ public class JointEM {
     }
 
 
+    private static boolean isLikelyRef(String str){
+//        return false;
+        return str.length() == 2 && str.charAt(0) >= 'a' && str.charAt(0) <= 'z'
+                                 && str.charAt(1) >= '0' && str.charAt(1) <= '9';
+    }
+
     static void read(String path, AMR[] bank, AugmentedToken[][] tokens, AMR.Node[][] nodes, int bankSize){
         String[] sentences = new String[bankSize];
         for (int i = 0; i < bankSize; i++) {
@@ -431,7 +452,18 @@ public class JointEM {
             //Annotation annotation = manager.annotate(bank[i].formatSourceTokens()).annotation;
             Annotation annotation = cache.getAnnotation(i);
             tokens[i] = augmentedTokens(bank[i].sourceText, annotation);
-            nodes[i] = bank[i].nodes.toArray(new AMR.Node[bank[i].nodes.size()]);
+            nodes[i] = bank[i].nodes.toArray(new AMR.Node[0]);
+            for(int j = 0; j < nodes[i].length; j++){
+                if(isLikelyRef(nodes[i][j].title) && nodes[i][j].ref.length() == 0){
+                    for(int k = 0; k < nodes[i].length; k++){
+                        if(nodes[i][j].title.equals(nodes[i][k].ref)){
+                            nodes[i][j].ref = nodes[i][k].ref;
+                            nodes[i][j].title = nodes[i][k].title;
+                            break;
+                        }
+                    }
+                }
+            }
 //            System.out.println("Data for example " + i + ":");
 //            System.out.println("\ttokens:");
 //            for(AugmentedToken token : tokens[i]){
@@ -484,9 +516,12 @@ public class JointEM {
         //ret.add("ACT|"+action.toString());
         ret.add("VAL|"+token.value + "|" + action.toString());
         //ret.add("BLK|"+(token.blocked ? "1" : "0") + "|" + action.toString());
-        if(token.value.length() > 4) {
-            ret.add("PRE|" + token.value.substring(0, 4) + "|" + action.toString());
-        }
+        /*if(token.value.length() > 3) {
+            ret.add("PRE|" + token.value.substring(0, 3) + "|" + action.toString());
+            ret.add("POST|" + token.value.substring(token.value.length()-3) + "|" + action.toString());
+        }*/
+        ret.add("NER|" + token.ner + "|" + action.toString());
+        ret.add("AMR|" + (token.amr == null ? "0" : "1") + "|" + action.toString());
         // Word shape
 //        ret.add("WORD_SHAPE|" + cache.getWordShape(token.value) + "|" + action.toString());
         // Incoming edge
@@ -499,96 +534,19 @@ public class JointEM {
     }
 
     enum Action {
-        IDENTITY, NONE, VERB, LEMMA, DICT, NAME, PERSON ;
+        IDENTITY, NONE, VERB, LEMMA, DICT, NAME, PERSON, VERB02, VERB03, VERB41, AMRRULE;
         public static List<Action> validValues(AugmentedToken token, AMR.Node node) {
             List<Action> rtn = new ArrayList<>();
+            if(token.forcedAction != null){
+                rtn.add(token.forcedAction);
+                return rtn;
+            }
             for (Action candidate : Action.values()) {
                 if (plausiblyCompatible(token, node, candidate)) {
                     rtn.add(candidate);
                 }
             }
             return rtn;
-        }
-    }
-    /* AugmentedToken should keep track of following:
-     *   0. string value of token
-     *   1. srl sense
-     *   2. lemmatized value (stem)
-     *   3. whether "blocked"
-     *   We can start as a baseline by making sense = "NONE" and stem = token
-     */
-    static class AugmentedToken {
-        public final int index;
-        public final String value, sense, stem;
-        public final List<String> pathFromRoot;
-        boolean blocked;
-        public AugmentedToken(int index, String value, String sense, String stem,
-                              List<String> pathFromRoot, boolean blocked){
-            this.index = index;
-            this.value = value;
-            this.sense = sense;
-            this.stem = stem;
-            this.pathFromRoot = pathFromRoot;
-            this.blocked = blocked;
-        }
-        /** A heuristic to determine if this is likely to be a punctuation token */
-        public boolean isPunctuation() {
-            char firstChar = value.charAt(0);
-            return value.length() == 1 && firstChar != 'a' && firstChar != 'A' &&
-                    firstChar != 'i' && firstChar != 'I' &&
-                    !(firstChar >= '0' && firstChar <= '9');
-        }
-        /** The incoming edge. Note that dangling nodes (e.g., punctation) will look like ROOT */
-        public String incomingEdge() {
-            if (pathFromRoot.size() == 0) {
-                return "root";
-            } else {
-                return pathFromRoot.get(pathFromRoot.size() - 1);
-            }
-        }
-
-        @Override
-        public String toString(){
-            return value + "[" + index + "]";
-        }
-    }
-
-    static class MatchNode {
-        boolean isDict;
-        String name;
-        String quoteType;
-        public MatchNode(String name){
-            this.name = name;
-            this.isDict = false;
-            this.quoteType = null;
-        }
-        public MatchNode(String name, boolean isDict){
-            this.name = name;
-            this.isDict = isDict;
-            this.quoteType = null;
-        }
-        public MatchNode(String name, String quoteType){
-            this.name = name;
-            this.isDict = false;
-            this.quoteType = quoteType;
-        }
-        double score(AMR.Node match, Model.SoftCountDict dict){
-            if(match instanceof NoneNode) return 0.0;
-            if(quoteType != null) {
-                if(quoteType.equals(match.title)) return 1.0;
-                if(match.type == AMR.NodeType.QUOTE && name.equals(match.title)) return 1.0;
-                return 0.0;
-            } else if(!isDict){
-                if(name.equals(match.title)) return 1.0;
-                else return 0.0;
-            } else {
-                return dict.getProb(name, match.title);
-            }
-        }
-        @Override
-        public String toString(){
-            if(isDict) return "DICT("+name+")";
-            else return name;
         }
     }
 
@@ -606,7 +564,12 @@ public class JointEM {
         }
     }
 
+    private static String stemize(String stem, String end){
+        return stem.toLowerCase().substring(0, stem.length() - 2) + end;
+    }
+
     static MatchNode getNode(AugmentedToken token, Action action, ProblemCache cache){
+        String verb;
         switch(action){
             case IDENTITY:
                 return new MatchNode(token.value.toLowerCase());
@@ -620,6 +583,15 @@ public class JointEM {
                 } else {
                     return new MatchNode(srlSense);
                 }
+            case VERB02:
+                verb = cache.getClosestFrame(frameManager, token.stem).name;
+                return new MatchNode(stemize(verb, "02"));
+            case VERB03:
+                verb = cache.getClosestFrame(frameManager, token.stem).name;
+                return new MatchNode(stemize(verb, "03"));
+            case VERB41:
+                verb = cache.getClosestFrame(frameManager, token.stem).name;
+                return new MatchNode(stemize(verb, "41"));
             case LEMMA:
                 return new MatchNode(token.stem.toLowerCase());
             case DICT:
@@ -628,6 +600,8 @@ public class JointEM {
                 return new MatchNode(token.value, "name");
             case PERSON:
                 return new MatchNode(token.value, "person");
+            case AMRRULE:
+                return new AMRRuleNode(token.amr);
             default:
                 throw new RuntimeException("invalid action");
         }
@@ -653,6 +627,12 @@ public class JointEM {
             }
         }
 
+        HashSet<String> tagSet = new HashSet<String>();
+        tagSet.add("date");
+        tagSet.add("number");
+        tagSet.add("money");
+        AugmentedToken headToken = null;
+        ArrayList<Integer> nerList = new ArrayList<Integer>();
         List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
         List<CoreLabel> corenlpTokens = annotation.get(CoreAnnotations.TokensAnnotation.class);
         for (int i = 0; i < tokens.length; i++) {
@@ -673,8 +653,35 @@ public class JointEM {
                     node = null;
                 }
             }
-            // (create augmented token
-            output[i] = new AugmentedToken(i, tokens[i], srlSense, stem, pathFromRoot, blocked.contains(i));
+            // get NER tag
+            String nerTag = annotation.get(CoreAnnotations.TokensAnnotation.class).get(i).get(CoreAnnotations.NamedEntityTagAnnotation.class);
+            nerTag = nerTag.toLowerCase();
+            // (create augmented token)
+            output[i] = new AugmentedToken(i, tokens[i], srlSense, stem, nerTag, pathFromRoot, blocked.contains(i));
+            if(!tagSet.contains(nerTag)) {
+                nerList.clear();
+                continue;
+            }
+            // we currently don't handle the rules below correctly, so commented out to improve accuracy
+            /*if(nerList.size() == 0){
+                headToken = output[i];
+            }
+            nerList.add(i);
+            String nextTag = "o";
+            if(i+1 < tokens.length){
+                nextTag = annotation.get(CoreAnnotations.TokensAnnotation.class).get(i+1).get(CoreAnnotations.NamedEntityTagAnnotation.class);
+                nextTag = nextTag.toLowerCase();
+            }
+            if(!nextTag.equals(nerTag)){
+                System.out.println("Constructing amr...");
+                if(nerTag.equals("number") || nerTag.equals("money")){
+                    headToken.amr = RuleBased.constructNumberCluster(annotation, nerList);
+                } else {
+                    headToken.amr = RuleBased.constructDateCluster(annotation, nerList);
+                }
+                System.out.println(headToken.amr);
+                nerList.clear();
+            }*/
         }
 
         return output;

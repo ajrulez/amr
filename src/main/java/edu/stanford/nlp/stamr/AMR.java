@@ -31,6 +31,7 @@ public class AMR implements Serializable {
     public static class Node implements Serializable {
         public String title;
         public String ref;
+        public String op1 = null;
         public boolean isFirstRef = true;
         public int depth = 0;
         public int alignment = 0;
@@ -201,6 +202,10 @@ public class AMR implements Serializable {
 
     public Arc addArc(Node head, Node tail, String title) {
         assert(head != tail);
+        if(title.equals("op1")){
+//            System.out.println("adding " + tail.title + " as op1 of " + head.title);
+            head.op1 = tail.title;
+        }
         Arc arc = new Arc(head,tail,title);
         arcs.add(arc);
         addNodeArcToMap(head, arc, outgoingArcs);

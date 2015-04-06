@@ -26,7 +26,7 @@ public class ProblemCache {
     /**
      * A cached version of frameManager.getClosestFrame(stem);
      */
-    public JointEM.MatchNode getClosestFrame(FrameManager frameManager, String stem) {
+    public MatchNode getClosestFrame(FrameManager frameManager, String stem) {
         if (getClosestFrameCacheCond == null) {
             getClosestFrameCacheCond = frameManager;
         }
@@ -38,7 +38,7 @@ public class ProblemCache {
             rtn = frameManager.getClosestFrame(stem);
             getClosestFrameCache.put(stem, rtn);
         }
-        return new JointEM.MatchNode(rtn);
+        return new MatchNode(rtn);
     }
 
 
