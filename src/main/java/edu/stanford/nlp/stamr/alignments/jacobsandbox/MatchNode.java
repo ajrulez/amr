@@ -31,7 +31,7 @@ class MatchNode {
     double score(AMR.Node match, Model.SoftCountDict dict) {
         if (match instanceof NoneNode) return 0.0;
         if (quoteType != null) {
-            if (quoteType.equals(match.title) && match.op1.equals(name)) return 1.0;
+            if (quoteType.equals(match.title) && match.op1 != null && match.op1.equals(name)) return 1.0;
             if (match.type == AMR.NodeType.QUOTE && name.equals(match.title)) return 1.0;
             return 0.0;
         } else if (!isDict) {

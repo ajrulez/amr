@@ -13,11 +13,11 @@ import edu.stanford.nlp.stamr.AMR;
  *   We can start as a baseline by making sense = "NONE" and stem = token
  */
 class AugmentedToken {
-    int index;
-    String value, sense, stem, ner;
+    public final int index;
+    public final String value, sense, stem, ner;
     AMR amr = null;
-    boolean blocked;
-    JointEM.Action forcedAction;
+    public final boolean blocked;
+    public final JointEM.Action forcedAction;
 
     public AugmentedToken(int index, String value, String sense, String stem, String ner, boolean blocked) {
         this.index = index;

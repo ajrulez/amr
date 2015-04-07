@@ -9,9 +9,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by jacob on 3/28/15.
  */
 public class Model {
-    static Map<String, AGPair> theta;
+    private  Map<String, AGPair> theta = new ConcurrentHashMap<>();
 
-    static void adagrad(Map<String, Double> gradient, double step){
+    public SoftCountDict dict;
+
+    public void adagrad(Map<String, Double> gradient, double step){
         for(Map.Entry<String, Double> e : gradient.entrySet()){
             AGPair p = theta.get(e.getKey());
             if(p == null) theta.put(e.getKey(), new AGPair(e.getValue(), step));
@@ -19,7 +21,7 @@ public class Model {
         }
     }
 
-    static double score(List<String> features){
+    public double score(List<String> features){
         double ret = 0.0;
         for(String key : features){
             AGPair p = theta.get(key);
@@ -28,7 +30,7 @@ public class Model {
         return ret;
     }
 
-    static class AGPair {
+    private static class AGPair {
         private static final double DELTA = 1e-4;
         double v, s;
         public AGPair(double val, double step){
@@ -41,7 +43,7 @@ public class Model {
         }
     }
 
-    static class SoftCountDict {
+    public static class SoftCountDict {
         ConcurrentHashMap<String, ConcurrentHashMap<String, Double>> softCounts = new ConcurrentHashMap<>();
         ConcurrentHashMap<String, Double> totals = new ConcurrentHashMap<>();
         ConcurrentHashMap<String, Double> initCounts = new ConcurrentHashMap<>();

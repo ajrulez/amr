@@ -60,7 +60,7 @@ public class BatchCoreNLPCache extends CoreNLPCache {
             else {
 
                 Properties props = new Properties();
-                props.put("annotators", "tokenize, ssplit, pos, lemma, ner, regexner1, regexner2, parse, dcoref, srl, nom, prep");
+                props.put("annotators", "tokenize, ssplit, pos, lemma, ner, regexner1, regexner2, depparse"); //parse, dcoref, srl, nom, prep");
                 props.put("curator.host", "localhost"); // point to the curator host
                 props.put("curator.port", "9010"); // point to the curator port
 
