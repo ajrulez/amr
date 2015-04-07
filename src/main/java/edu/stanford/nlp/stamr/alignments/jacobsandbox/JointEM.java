@@ -71,29 +71,29 @@ public class JointEM {
 
     private static final Set<String> namedEntityTypes = Collections.unmodifiableSet(new HashSet<String>() {{
         add("name");
-        add("person");
         /*
+        add("person");
         add("country");
-        add("company");
-        add("monetary-quantity");
+        add("city");
+        add("date-entity");
+        add("continent");
         add("organization");
+        add("monetary-quantity");
+        add("temporal-quantity");
+        add("company");
         add("government-organization");
         add("university");
-        add("date-entity");
         add("aircraft-type");
-        add("temporal-quantity");
         add("criminal-organization");
         add("political-party");
         add("spaceship");
         add("world-region");
         add("aircraft-type");
         add("game");
-        add("city");
         add("event");
         add("book");
         add("earthquake");
         add("mass-quantity");
-        add("continent");
         */
     }});
 
