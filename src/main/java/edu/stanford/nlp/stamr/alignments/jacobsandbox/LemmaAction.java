@@ -12,12 +12,28 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Optional;
 
 import static edu.stanford.nlp.util.logging.Redwood.Util.endTrack;
 import static edu.stanford.nlp.util.logging.Redwood.Util.forceTrack;
 
 /**
- * TODO(gabor) JavaDoc
+ * <p>
+ * A class learning how AMR lemmatizes strings. At a high level, this class runs a greedy
+ * edit-distance-based aligner to find the most likely alignment for each word in each sentence, and
+ * counts these statistics. The affinity for a word to its candidate lemma is then the PMI^2 of the
+ * joint counts, considering the marginal counts of the word and the AMR node it wants to align to.
+ * The whole thing is smoothed with one count for every word to its Stanford lemma.
+ * </p>
+ *
+ * Notable points:
+ * <ul>
+ *     <li>Not every word has a lemma in here.</li>
+ *     <li>Lemma scores are initially normalized to be between 0 and 1, but are not a distribution
+ *         -- rather, I just divide by the max.</li>
+ *     <li>The identity mapping is not in here -- if a word and its lemma are the same, then use the
+ *         Identity action instead.</li>
+ * </ul>
  *
  * @author Gabor Angeli
  */
@@ -32,6 +48,10 @@ public class LemmaAction implements Serializable {
 
     public Counter<String> lemmasFor(String token) {
         return lemmas.getOrDefault(token.toLowerCase(), new ClassicCounter<String>(){{setCount(token, 1.0);}});
+    }
+
+    public Optional<String> lemmatize(String token) {
+        return lemmas.containsKey(token) ? Optional.of(Counters.argmax(lemmas.get(token))) : Optional.empty();
     }
 
     public void print(PrintWriter writer) {
