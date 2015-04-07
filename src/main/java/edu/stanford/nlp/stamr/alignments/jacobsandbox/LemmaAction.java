@@ -6,8 +6,10 @@ import edu.stanford.nlp.stats.ClassicCounter;
 import edu.stanford.nlp.stats.Counter;
 import edu.stanford.nlp.stats.Counters;
 
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import static edu.stanford.nlp.util.logging.Redwood.Util.endTrack;
@@ -31,6 +33,12 @@ public class LemmaAction implements Serializable {
         return lemmas.getOrDefault(token.toLowerCase(), new ClassicCounter<String>(){{setCount(token, 1.0);}});
     }
 
+    public void print(PrintWriter writer) {
+        for (Map.Entry<String, Counter<String>> entry : lemmas.entrySet()) {
+            writer.println(entry.getKey() + "\t" + Counters.toSortedString(entry.getValue(), 10, "%1$s -> %2$f", "\t"));
+        }
+    }
+
     public static LemmaAction initialize(AugmentedToken[][] tokens, AMR.Node[][] nodes, int candidatesPerWord) {
         forceTrack("Creating lemma dictionary");
         if (tokens.length != nodes.length) {
@@ -38,22 +46,33 @@ public class LemmaAction implements Serializable {
         }
 
         // Variables
-        Counter<String> globalCounts = new ClassicCounter<>();
+        Counter<String> lemmaCounts = new ClassicCounter<>();
+        Counter<String> wordCounts = new ClassicCounter<>();
         Map<String, Counter<String>> lemmas = new HashMap<>();
+
+        Map<String, String> naiveLemmaMap = new HashMap<>();
 
         // Collect counts
         for (int dataI = 0; dataI < tokens.length; ++dataI) {
             for (int tokenI = 0; tokenI < tokens[dataI].length; ++tokenI) {
-                // Get the closest matching word in the AMR graph
+                // Get the token
                 String token = tokens[dataI][tokenI].value.toLowerCase();
                 String lemma = tokens[dataI][tokenI].stem.toLowerCase();
+                if (token.matches("[0-9\\-\\.]+")) { continue; }
+                // Register the lemma
+                if (!token.equals(lemma)) {
+                    naiveLemmaMap.put(token, lemma);
+                }
+                // Get the closest matching word in the AMR graph
                 String bestLemma = null;
                 double bestJaroWinkler = Double.NEGATIVE_INFINITY;
                 for (int nodeI = 0; nodeI < nodes[dataI].length; ++nodeI) {
-                    String node = nodes[dataI][nodeI].title.replaceAll("-[0-9]*", "");
+                    String node = nodes[dataI][nodeI].title.replaceAll("-[0-9]+", "").toLowerCase();
                     double jaroWinkler = JaroWinklerDistance.distance(lemma, node);
-                    if (node.contains(lemma)) {
-                        jaroWinkler = 1.0;
+                    if (node.equals(lemma)) {
+                        jaroWinkler = 1.0 + 2e-10;
+                    } else if (node.contains(lemma)) {
+                        jaroWinkler = 1.0 + 1e-10;
                     }
                     if (jaroWinkler > bestJaroWinkler) {
                         bestJaroWinkler = jaroWinkler;
@@ -61,25 +80,59 @@ public class LemmaAction implements Serializable {
                     }
                 }
                 // Register the mapping
-                globalCounts.incrementCount(bestLemma, bestJaroWinkler);
-                Counter<String> counts = lemmas.get(token);
-                if (counts == null) {
-                    counts = new ClassicCounter<>();
-                    lemmas.put(token, counts);
+                if (bestJaroWinkler > 0.1 && !bestLemma.equals(token)) {
+                    lemmaCounts.incrementCount(bestLemma, bestJaroWinkler);
+                    wordCounts.incrementCount(token, 1.0);
+                    Counter<String> counts = lemmas.get(token);
+                    if (counts == null) {
+                        counts = new ClassicCounter<>();
+                        lemmas.put(token, counts);
+                    }
+                    counts.incrementCount(bestLemma, bestJaroWinkler);
                 }
-                counts.incrementCount(bestLemma, bestJaroWinkler);
             }
         }
+
+        // Register Stanford lemma counts
+        for (Map.Entry<String, String> entry : naiveLemmaMap.entrySet()) {
+            wordCounts.incrementCount(entry.getKey());
+            lemmaCounts.incrementCount(entry.getValue());
+            if (!lemmas.containsKey(entry.getKey())) {
+                lemmas.put(entry.getKey(), new ClassicCounter<>());
+            }
+            lemmas.get(entry.getKey()).incrementCount(entry.getValue());
+
+        }
+
 
         // Get lemma candidates
         for (Map.Entry<String, Counter<String>> entry : lemmas.entrySet()) {
             Counter<String> counts = entry.getValue();
+            // (calculate PMI^2)
             for (String lemma : counts.keySet()) {
-                assert globalCounts.getCount(lemma) > 0.0;
-                counts.setCount(lemma, counts.getCount(lemma) / globalCounts.getCount(lemma));
+                double jointCount = counts.getCount(lemma);
+                assert jointCount > 0.0;
+                double wordCount = wordCounts.getCount(entry.getKey());
+                assert wordCount > 0.0;
+                double lemmaCount = lemmaCounts.getCount(lemma);
+                assert lemmaCount > 0.0;
+                counts.setCount(lemma, jointCount * jointCount / (wordCount * lemmaCount)); //counts.getCount(lemma) / lemmaCounts.getCount(lemma));
             }
+            // (threshold and normalize to between 0 and 1)
+            Counters.retainAbove(counts, 0.1);
             Counters.retainTop(counts, candidatesPerWord);
-            Counters.normalize(counts);
+            if (counts.size() > 0) {
+                assert counts.totalCount() > 0.0;
+                Counters.divideInPlace(counts, Counters.max(counts));
+            }
+        }
+
+        // Remove empty lemma dictionary entries
+        Iterator<Map.Entry<String, Counter<String>>> iter = lemmas.entrySet().iterator();
+        while (iter.hasNext()) {
+            if (iter.next().getValue().size() == 0) {
+                iter.remove();
+            }
         }
 
         // Return

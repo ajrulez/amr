@@ -57,8 +57,8 @@ public class JointEM {
     @Execution.Option(name="train.eta", gloss="The learning rate for EM.")
     private static double TRAIN_ETA = 0.3;
     @Execution.Option(name="train.gamma", gloss="The initial soft count of the dict (dirichlet gamma)")
-    private static double TRAIN_GAMMA = 2.5;
-    @Execution.Option(name="train.alpha", gloss="The discount paramater of the dict (dirichlet alpha)")
+    private static double TRAIN_GAMMA = 3.0;
+    @Execution.Option(name="train.alpha", gloss="The discount parameter of the dict (dirichlet alpha)")
     private static double TRAIN_ALPHA = 0.4;
 
     @Execution.Option(name="test.data", gloss="The path to the test data")
@@ -154,16 +154,19 @@ public class JointEM {
 
     static Model doEM(ProblemCache cache) throws Exception {
         Model model = new Model();
+
         // first, grab all the data
+        forceTrack("Loading training data");
         AMRSlurp.doingAlignments = false;
         AMR[] bank = AMRSlurp.slurp(TRAIN_DATA, AMRSlurp.Format.LDC);
         int bankSize = Math.min(bank.length, TRAIN_COUNT);
         AugmentedToken[][] tokens = new AugmentedToken[bankSize][];
         AMR.Node[][] nodes = new AMR.Node[bankSize][];
         read(TRAIN_DATA, bank, tokens, nodes, bankSize);
+        endTrack("Loading training data");
 
         // Create candidate lemma dictionary
-        LemmaAction lemmaDict = LemmaAction.initialize(tokens, nodes, 10);
+        LemmaAction lemmaDict = LemmaAction.initialize(tokens, nodes, 5);
 
         // initialize frequencies
         HashMap<String, Integer> freqs = new HashMap<String, Integer>();
@@ -320,12 +323,11 @@ public class JointEM {
         // get cost on labeled dev set
         // first, grab all the data
         AMRSlurp.doingAlignments = false;
-        String lpPath = "data/training-500-subset.txt";
         AMR[] lpBank = AMRSlurp.slurp(TEST_DATA, AMRSlurp.Format.LDC);
-        int lpBankSize = Math.min(lpBank.length, TRAIN_COUNT);
+        int lpBankSize = Math.min(lpBank.length, TEST_COUNT);
         AugmentedToken[][] lpTokens = new AugmentedToken[lpBankSize][];
         AMR.Node[][] lpNodes = new AMR.Node[lpBankSize][];
-        read(lpPath, lpBank, lpTokens, lpNodes, lpBankSize);
+        read(TEST_DATA, lpBank, lpTokens, lpNodes, lpBankSize);
 
         int numCorrect = 0, numTotal = 0;
 
@@ -339,7 +341,7 @@ public class JointEM {
             AugmentedToken[] sentence = lpTokens[n];
             AMR.Node[] amr = lpNodes[n];
             // Find the best alignments
-            debugWriter.println(StringUtils.join(Arrays.asList(sentence).stream().map(x -> x.value).collect(Collectors.toList()), " "));
+//            debugWriter.println(StringUtils.join(Arrays.asList(sentence).stream().map(x -> x.value).collect(Collectors.toList()), " "));
             for(AMR.Node node : amr){
                 if (namedEntityTypes.contains(node.title)) { continue; }
                 // Get the best token for the AMR node
@@ -366,6 +368,9 @@ public class JointEM {
                 }
                 String msg = prefix + " " + node + "[" + node.alignment + " = " + lpTokens[n][node.alignment].value
                         + " / " + token.index + " = " + token.value + "/" + action + "]";
+//                if (action == Action.LEMMA) {
+//                    msg += " :: " + Counters.toVerticalString(model.lemmaDict.lemmasFor(token.value));
+//                }
                 System.out.println(msg);
                 debugWriter.println(action + "\t" + prefix + "\t" + token.value + "\t" + node + "\t" + (goldNodes.isEmpty() ? "none" : goldNodes.iterator().next()));
             }
@@ -376,6 +381,9 @@ public class JointEM {
         System.out.println(numCorrect + "/" + numTotal + " correct (" + percent + ")");
         System.out.println("Debug data at " + debugFile.getPath());
         System.out.println("  format: action\tcorrect\tword\tguessed_node\tgold_node");
+
+        // Print the lemma dictionary
+//        model.lemmaDict.print(debugWriter);
         debugWriter.close();
 
     }
@@ -546,7 +554,6 @@ public class JointEM {
     }
 
     static MatchNode getNode(AugmentedToken token, Action action, LemmaAction lemmaDict, ProblemCache cache){
-        String verb;
         switch(action){
             case IDENTITY:
                 return new MatchNode.ExactMatchNode(token.value);
@@ -555,10 +562,7 @@ public class JointEM {
             case VERB:
                 String srlSense = token.sense;
                 if (srlSense.equals("-") || srlSense.equals("NONE")) {
-                    // TODO(gabor) try me
-//                    String stem = Counters.argmax(lemmaDict.lemmasFor(token.value.toLowerCase()));
-                    String stem = token.stem;
-                    return cache.getClosestFrame(frameManager, stem);
+                    return cache.getClosestFrame(frameManager, token.value, lemmaDict);
                 } else {
                     return new MatchNode.VerbMatchNode(srlSense);
                 }
@@ -572,9 +576,8 @@ public class JointEM {
 //                verb = cache.getClosestFrame(frameManager, token.stem).name;
 //                return new MatchNode(stemize(verb, "41"));
             case LEMMA:
-                // TODO(gabor) try me
-//                return new MatchNode.LemmaMatchNode(lemmaDict.lemmasFor(token.value.toLowerCase()));
-                  return new MatchNode.ExactMatchNode(token.stem);
+                return new MatchNode.LemmaMatchNode(token.stem, lemmaDict.lemmasFor(token.value.toLowerCase()));
+//                return new MatchNode.ExactMatchNode(token.stem);
             case DICT:
                 return new MatchNode.DictMatchNode(token.value);
             case NAME:

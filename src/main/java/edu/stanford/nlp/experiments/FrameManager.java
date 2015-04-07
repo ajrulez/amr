@@ -14,6 +14,7 @@ import javax.xml.stream.XMLReporter;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by keenon on 2/8/15.
@@ -79,6 +80,17 @@ public class FrameManager {
             }
         }
         return maxSimilarity;
+    }
+
+    public boolean containsFrameWithLemma(String token) {
+        double maxSimilarity = 0;
+        Frame closestFrame = null;
+        for (Frame f : frames) {
+            if (token.toLowerCase().equals(f.lemma.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String getClosestFrame(String token) {

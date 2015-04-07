@@ -5,6 +5,7 @@ import edu.stanford.nlp.stats.Counter;
 
 /**
  * Created by jacob on 4/5/15.
+ * Heavily modified by Gabor 2015-04-06
  */
 interface MatchNode {
 
@@ -28,6 +29,13 @@ interface MatchNode {
         public double score(AMR.Node match, Model.SoftCountDict dict) {
             return dict.getProb(name, match.title);
         }
+
+        @Override
+        public String toString() {
+            return "DictMatchNode{" +
+                    "name='" + name + '\'' +
+                    '}';
+        }
     }
 
     public static class NoneMatchNode implements MatchNode {
@@ -39,6 +47,11 @@ interface MatchNode {
                 return 0.0;
             }
         }
+
+        @Override
+        public String toString() {
+            return "NoneMatchNode{}";
+        }
     }
 
     public static class ExactMatchNode implements MatchNode {
@@ -48,6 +61,13 @@ interface MatchNode {
         }
         public double score(AMR.Node match, Model.SoftCountDict dict) {
             return this.name.equalsIgnoreCase(match.title) ? 1.0 : 0.0;
+        }
+
+        @Override
+        public String toString() {
+            return "ExactMatchNode{" +
+                    "name='" + name + '\'' +
+                    '}';
         }
     }
 
@@ -66,6 +86,13 @@ interface MatchNode {
             return 0.0;
 
         }
+
+        @Override
+        public String toString() {
+            return "VerbMatchNode{" +
+                    "verbName='" + verbName + '\'' +
+                    '}';
+        }
     }
 
     public static class NamedEntityMatchNode implements MatchNode {
@@ -80,61 +107,38 @@ interface MatchNode {
             if (match.type == AMR.NodeType.QUOTE && name.equals(match.title)) return 1.0;
             return 0.0;
         }
+
+        @Override
+        public String toString() {
+            return "NamedEntityMatchNode{" +
+                    "name='" + name + '\'' +
+                    ", neTag='" + neTag + '\'' +
+                    '}';
+        }
     }
 
     public static class LemmaMatchNode implements MatchNode {
+        public final String stanfordLemma;
         public final Counter<String> candidates;
-        public LemmaMatchNode(Counter<String> lemmas) {
+        public LemmaMatchNode(String stanfordLemma, Counter<String> lemmas) {
+            this.stanfordLemma = stanfordLemma;
             this.candidates = lemmas;
         }
         public double score(AMR.Node match, Model.SoftCountDict dict) {
-            return candidates.getCount(match.title.toLowerCase());
+//            return candidates.containsKey(match.title.toLowerCase()) ? 1.0 : 0.0;
+            if (stanfordLemma.equalsIgnoreCase(match.title)) {
+                return 1.0;
+            } else {
+                return candidates.getCount(match.title.toLowerCase());
+            }
+        }
+
+        @Override
+        public String toString() {
+            return "LemmaMatchNode{" +
+                    "candidates=" + candidates +
+                    '}';
         }
     }
 
-    /*
-
-    boolean isDict;
-    String name;
-    String quoteType;
-
-    public MatchNode(String name) {
-        this.name = name;
-        this.isDict = false;
-        this.quoteType = null;
-    }
-
-    public MatchNode(String name, boolean isDict) {
-        this.name = name;
-        this.isDict = isDict;
-        this.quoteType = null;
-    }
-
-    public MatchNode(String name, String quoteType) {
-        this.name = name;
-        this.isDict = false;
-        this.quoteType = quoteType;
-    }
-
-    double score(AMR.Node match, Model.SoftCountDict dict) {
-        if (match instanceof NoneNode) return 0.0;
-        if (quoteType != null) {
-            if (quoteType.equals(match.title) && match.op1 != null && match.op1.equals(name)) return 1.0;
-            if (match.type == AMR.NodeType.QUOTE && name.equals(match.title)) return 1.0;
-            return 0.0;
-        } else if (!isDict) {
-            if (name.equals(match.title)) return 1.0;
-            else return 0.0;
-        } else {
-            return dict.getProb(name, match.title);
-        }
-    }
-
-    @Override
-    public String toString() {
-        if (isDict) return "DICT(" + name + ")";
-        else return name;
-    }
-
-    */
 }

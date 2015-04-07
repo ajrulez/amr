@@ -2,8 +2,10 @@ package edu.stanford.nlp.stamr.alignments.jacobsandbox;
 
 import edu.stanford.nlp.experiments.FrameManager;
 import edu.stanford.nlp.process.WordShapeClassifier;
+import edu.stanford.nlp.stats.Counters;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -26,17 +28,25 @@ public class ProblemCache {
     /**
      * A cached version of frameManager.getClosestFrame(stem);
      */
-    public MatchNode getClosestFrame(FrameManager frameManager, String stem) {
+    public MatchNode getClosestFrame(FrameManager frameManager, String value, LemmaAction lemmaDict) {
         if (getClosestFrameCacheCond == null) {
             getClosestFrameCacheCond = frameManager;
         }
         if (getClosestFrameCacheCond != frameManager) {
             throw new IllegalArgumentException("FrameManager changed between cache calls!");
         }
-        String rtn = getClosestFrameCache.get(stem);
+        String rtn = getClosestFrameCache.get(value);
         if (rtn == null) {
-            rtn = frameManager.getClosestFrame(stem);
-            getClosestFrameCache.put(stem, rtn);
+            for (String stem : Counters.toSortedList(lemmaDict.lemmasFor(value.toLowerCase()))) {
+                if (frameManager.containsFrameWithLemma(stem)) {
+                    rtn = frameManager.getClosestFrame(stem);
+                    break;
+                }
+            }
+            if (rtn == null) {
+                rtn = frameManager.getClosestFrame(value);
+            }
+            getClosestFrameCache.put(value, rtn);
         }
         return new MatchNode.VerbMatchNode(rtn);
     }
