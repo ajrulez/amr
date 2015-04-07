@@ -1,8 +1,5 @@
 package edu.stanford.nlp.stamr.alignments.jacobsandbox;
 
-import edu.stanford.nlp.stats.Counter;
-
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,23 +8,12 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by jacob on 3/28/15.
  */
-public class Model implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Model {
+    private  Map<String, AGPair> theta = new ConcurrentHashMap<>();
 
-    /** The model parameters. Be sure the synchronize this! */
-    private Map<String, AGPair> theta = new ConcurrentHashMap<>();
-
-    // TODO(gabor) some better way to manage this, instead of setting it at the end of EM
     public SoftCountDict dict;
 
-    /**
-     *
-     * note: synchronized on theta
-     *
-     * @param gradient
-     * @param step
-     */
-    public void adagrad(Counter<String> gradient, double step){
+    public void adagrad(Map<String, Double> gradient, double step){
         for(Map.Entry<String, Double> e : gradient.entrySet()){
             AGPair p = theta.get(e.getKey());
             if(p == null) theta.put(e.getKey(), new AGPair(e.getValue(), step));
@@ -35,13 +21,6 @@ public class Model implements Serializable {
         }
     }
 
-    /**
-     *
-     * note: synchronized on theta
-     *
-     * @param features
-     * @return
-     */
     public double score(List<String> features){
         double ret = 0.0;
         for(String key : features){
@@ -51,8 +30,7 @@ public class Model implements Serializable {
         return ret;
     }
 
-    static class AGPair implements Serializable {
-        private static final long serialVersionUID = 1L;
+    private static class AGPair {
         private static final double DELTA = 1e-4;
         double v, s;
         public AGPair(double val, double step){
@@ -65,8 +43,7 @@ public class Model implements Serializable {
         }
     }
 
-    static class SoftCountDict implements  Serializable {
-        private static final long serialVersionUID = 1L;
+    public static class SoftCountDict {
         ConcurrentHashMap<String, ConcurrentHashMap<String, Double>> softCounts = new ConcurrentHashMap<>();
         ConcurrentHashMap<String, Double> totals = new ConcurrentHashMap<>();
         ConcurrentHashMap<String, Double> initCounts = new ConcurrentHashMap<>();
