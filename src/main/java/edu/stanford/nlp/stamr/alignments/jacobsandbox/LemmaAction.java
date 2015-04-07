@@ -5,6 +5,7 @@ import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stats.ClassicCounter;
 import edu.stanford.nlp.stats.Counter;
 import edu.stanford.nlp.stats.Counters;
+import edu.stanford.nlp.util.StringUtils;
 
 import java.io.PrintWriter;
 import java.io.Serializable;
@@ -58,6 +59,7 @@ public class LemmaAction implements Serializable {
                 // Get the token
                 String token = tokens[dataI][tokenI].value.toLowerCase();
                 String lemma = tokens[dataI][tokenI].stem.toLowerCase();
+                String lemmaEssence = lemma.replace("ll", "l").replace("tt", "t").replace("pp", "p").replace("ss", "s");
                 if (token.matches("[0-9\\-\\.]+")) { continue; }
                 // Register the lemma
                 if (!token.equals(lemma)) {
@@ -65,30 +67,36 @@ public class LemmaAction implements Serializable {
                 }
                 // Get the closest matching word in the AMR graph
                 String bestLemma = null;
-                double bestJaroWinkler = Double.NEGATIVE_INFINITY;
+                double bestScore = Double.NEGATIVE_INFINITY;
                 for (int nodeI = 0; nodeI < nodes[dataI].length; ++nodeI) {
-                    String node = nodes[dataI][nodeI].title.replaceAll("-[0-9]+", "").toLowerCase();
-                    double jaroWinkler = JaroWinklerDistance.distance(lemma, node);
+                    String node = nodes[dataI][nodeI].title.replaceAll("-[0-9]+", "").replace("\"", "").toLowerCase();
+                    double score;
                     if (node.equals(lemma)) {
-                        jaroWinkler = 1.0 + 2e-10;
+                        score = 1.0 + 3e-10;
                     } else if (node.contains(lemma)) {
-                        jaroWinkler = 1.0 + 1e-10;
+                        score = 1.0 + 2e-10;
+                    } else if (node.contains(lemmaEssence)) {
+                        score = 1.0 + 1e-10;
+                    } else {
+                        double jw = JaroWinklerDistance.distance(lemma, node);
+                        double ed = 1.0 - ((double) StringUtils.editDistance(lemma, node)) / Math.max(lemma.length(), node.length());
+                        score = (jw + ed) / 2.0;
                     }
-                    if (jaroWinkler > bestJaroWinkler) {
-                        bestJaroWinkler = jaroWinkler;
+                    if (score > bestScore) {
+                        bestScore = score;
                         bestLemma = node;
                     }
                 }
                 // Register the mapping
-                if (bestJaroWinkler > 0.1 && !bestLemma.equals(token)) {
-                    lemmaCounts.incrementCount(bestLemma, bestJaroWinkler);
+                if (bestScore > 0.1 && !bestLemma.equals(token)) {
+                    lemmaCounts.incrementCount(bestLemma, bestScore);
                     wordCounts.incrementCount(token, 1.0);
                     Counter<String> counts = lemmas.get(token);
                     if (counts == null) {
                         counts = new ClassicCounter<>();
                         lemmas.put(token, counts);
                     }
-                    counts.incrementCount(bestLemma, bestJaroWinkler);
+                    counts.incrementCount(bestLemma, bestScore);
                 }
             }
         }
