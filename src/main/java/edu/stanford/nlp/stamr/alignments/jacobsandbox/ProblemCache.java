@@ -38,7 +38,7 @@ public class ProblemCache {
             rtn = frameManager.getClosestFrame(stem);
             getClosestFrameCache.put(stem, rtn);
         }
-        return new VerbMatchNode(rtn);
+        return new MatchNode.VerbMatchNode(rtn);
     }
 
 

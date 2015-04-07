@@ -11,9 +11,9 @@ import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRSlurp;
+import edu.stanford.nlp.stats.Counters;
 import edu.stanford.nlp.util.Execution;
 import edu.stanford.nlp.util.concurrent.AtomicDouble;
-import edu.stanford.nlp.util.logging.Redwood;
 import edu.stanford.nlp.util.logging.StanfordRedwoodConfiguration;
 
 import java.io.File;
@@ -135,9 +135,9 @@ public class JointEM {
         } else {
             // 2. Can't load the model: train a new one
             model = doEM(cache);
-//            startTrack("Training");
-//            IOUtils.writeObjectToFile(model, modelPath);
-//            endTrack("Training");
+            startTrack("Training");
+            IOUtils.writeObjectToFile(model, modelPath);
+            endTrack("Training");
         }
         endTrack("Creating Model");
 
@@ -159,6 +159,9 @@ public class JointEM {
         AugmentedToken[][] tokens = new AugmentedToken[bankSize][];
         AMR.Node[][] nodes = new AMR.Node[bankSize][];
         read(TRAIN_DATA, bank, tokens, nodes, bankSize);
+
+        // Create candidate lemma dictionary
+        LemmaAction lemmaDict = LemmaAction.initialize(tokens, nodes, 10);
 
         // initialize frequencies
         HashMap<String, Integer> freqs = new HashMap<String, Integer>();
@@ -220,7 +223,7 @@ public class JointEM {
                                         }
                                     }
                                 }
-                                System.out.println("OPT(" + token + ") : " + bestAction + " => " + getNode(token, bestAction, cache));
+                                System.out.println("OPT(" + token + ") : " + bestAction + " => " + getNode(token, bestAction, lemmaDict, cache));
                             }
                         }
 
@@ -257,7 +260,7 @@ public class JointEM {
                                 for (Action action : Action.validValues(token, node)) {
                                     List<String> features = extractFeatures(token, action);
                                     double probSrc = Math.exp(model.score(features) - logZ2);
-                                    double likelihood = getNode(token, action, cache).score(node, curDict);
+                                    double likelihood = getNode(token, action, lemmaDict, cache).score(node, curDict);
                                     //if (curN == 0 && likelihood > 0.01)
                                     //    System.out.println("likelihood(" + token + "," + action + "," + node + ") = " + likelihood);
                                     double probTar = probSrc * likelihood;
@@ -306,6 +309,7 @@ public class JointEM {
         */
 
         model.dict = oldDict;
+        model.lemmaDict = lemmaDict;
 
         return model;
     }
@@ -361,7 +365,7 @@ public class JointEM {
                 String msg = prefix + " " + node + "[" + node.alignment + " = " + lpTokens[n][node.alignment].value
                         + " / " + token.index + " = " + token.value + "/" + action + "]";
                 System.out.println(msg);
-                debugWriter.println(action + "\t" + prefix + "\t" + token.value + "\t" + node + "\t" + (goldNodes.isEmpty() ? "nono" : goldNodes.iterator().next()));
+                debugWriter.println(action + "\t" + prefix + "\t" + token.value + "\t" + node + "\t" + (goldNodes.isEmpty() ? "none" : goldNodes.iterator().next()));
             }
         }
 
@@ -490,7 +494,7 @@ public class JointEM {
             for(Action action : Action.validValues(token, node)){
                 List<String> features = extractFeatures(token, action);
                 double probSrc = Math.exp(model.score(features) - logZ2);
-                double likelihood = getNode(token, action, cache).score(node, model.dict);
+                double likelihood = getNode(token, action, model.lemmaDict, cache).score(node, model.dict);
                 double probTar = probSrc * likelihood;
                 if(bestToken == null || probTar > bestScore) {
                     bestToken = token;
@@ -535,38 +539,26 @@ public class JointEM {
         }
     }
 
-    static class MatchNoneNode extends MatchNode {
-        public MatchNoneNode(){
-            super("NONE");
-        }
-        @Override
-        double score(AMR.Node match, Model.SoftCountDict dict) {
-            if(match instanceof NoneNode){
-                return 1.0;
-            } else {
-                return 0.0;
-            }
-        }
-    }
-
     private static String stemize(String stem, String end){
         return stem.toLowerCase().substring(0, stem.length() - 2) + end;
     }
 
-    static MatchNode getNode(AugmentedToken token, Action action, ProblemCache cache){
+    static MatchNode getNode(AugmentedToken token, Action action, LemmaAction lemmaDict, ProblemCache cache){
         String verb;
         switch(action){
             case IDENTITY:
-                return new MatchNode(token.value.toLowerCase());
+                return new MatchNode.ExactMatchNode(token.value);
             case NONE:
-                return new MatchNoneNode();
+                return new MatchNode.NoneMatchNode();
             case VERB:
                 String srlSense = token.sense;
                 if (srlSense.equals("-") || srlSense.equals("NONE")) {
+                    // TODO(gabor) try me
+//                    String stem = Counters.argmax(lemmaDict.lemmasFor(token.value.toLowerCase()));
                     String stem = token.stem;
                     return cache.getClosestFrame(frameManager, stem);
                 } else {
-                    return new VerbMatchNode(srlSense);
+                    return new MatchNode.VerbMatchNode(srlSense);
                 }
 //            case VERB02:
 //                verb = cache.getClosestFrame(frameManager, token.stem).name;
@@ -578,13 +570,15 @@ public class JointEM {
 //                verb = cache.getClosestFrame(frameManager, token.stem).name;
 //                return new MatchNode(stemize(verb, "41"));
             case LEMMA:
-                return new MatchNode(token.stem.toLowerCase());
+                // TODO(gabor) try me
+//                return new MatchNode.LemmaMatchNode(lemmaDict.lemmasFor(token.value.toLowerCase()));
+                  return new MatchNode.ExactMatchNode(token.stem);
             case DICT:
-                return new MatchNode(token.value, true);
+                return new MatchNode.DictMatchNode(token.value);
             case NAME:
-                return new MatchNode(token.value, "name");
+                return new MatchNode.NamedEntityMatchNode(token.value, "name");
             case PERSON:
-                return new MatchNode(token.value, "person");
+                return new MatchNode.NamedEntityMatchNode(token.value, "person");
 //            case AMRRULE:
 //                return new AMRRuleNode(token.amr);
             default:

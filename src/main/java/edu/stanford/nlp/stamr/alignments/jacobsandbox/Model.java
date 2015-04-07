@@ -1,5 +1,6 @@
 package edu.stanford.nlp.stamr.alignments.jacobsandbox;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,10 +9,15 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by jacob on 3/28/15.
  */
-public class Model {
+public class Model implements Serializable {
+    private static final double serialVersionUID = 1l;
+
     private  Map<String, AGPair> theta = new ConcurrentHashMap<>();
 
+    // TODO(gabor) handle me better than setting me after doEM()
     public SoftCountDict dict;
+    // TODO(gabor) handle me better than setting me after doEM()
+    public LemmaAction lemmaDict;
 
     public void adagrad(Map<String, Double> gradient, double step){
         for(Map.Entry<String, Double> e : gradient.entrySet()){
@@ -30,7 +36,8 @@ public class Model {
         return ret;
     }
 
-    private static class AGPair {
+    private static class AGPair implements Serializable {
+        private static final double serialVersionUID = 1l;
         private static final double DELTA = 1e-4;
         double v, s;
         public AGPair(double val, double step){
@@ -43,7 +50,8 @@ public class Model {
         }
     }
 
-    public static class SoftCountDict {
+    public static class SoftCountDict implements Serializable {
+        private static final double serialVersionUID = 1l;
         ConcurrentHashMap<String, ConcurrentHashMap<String, Double>> softCounts = new ConcurrentHashMap<>();
         ConcurrentHashMap<String, Double> totals = new ConcurrentHashMap<>();
         ConcurrentHashMap<String, Double> initCounts = new ConcurrentHashMap<>();
