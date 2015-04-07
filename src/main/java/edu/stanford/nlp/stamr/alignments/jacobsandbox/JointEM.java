@@ -57,7 +57,9 @@ public class JointEM {
     @Execution.Option(name="train.eta", gloss="The learning rate for EM.")
     private static double TRAIN_ETA = 0.3;
     @Execution.Option(name="train.gamma", gloss="The initial soft count of the dict (dirichlet gamma)")
-    private static double TRAIN_GAMMA = 1.0;
+    private static double TRAIN_GAMMA = 2.5;
+    @Execution.Option(name="train.alpha", gloss="The discount paramater of the dict (dirichlet alpha)")
+    private static double TRAIN_ALPHA = 0.4;
 
     @Execution.Option(name="test.data", gloss="The path to the test data")
     private static String TEST_DATA = "data/training-500-subset.txt";
@@ -174,11 +176,11 @@ public class JointEM {
         // now tokens[i] has all the required token info
         // and nodes[i] has all the required node info
         // and we can just solve the alignment problem
-        Model.SoftCountDict oldDict = new Model.SoftCountDict(freqs, TRAIN_GAMMA);
+        Model.SoftCountDict oldDict = new Model.SoftCountDict(freqs, TRAIN_GAMMA, TRAIN_ALPHA);
         for(int iter = 0; iter < TRAIN_ITERS; iter++){
             forceTrack("Iteration " + (iter + 1) + " / " + TRAIN_ITERS);
             final Model.SoftCountDict curDict = oldDict;
-            final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, TRAIN_GAMMA);
+            final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, TRAIN_GAMMA, TRAIN_ALPHA);
             final AtomicDouble logZTot = new AtomicDouble(0.0);
             ExecutorService threadPool = Executors.newFixedThreadPool(Execution.threads);
             ArrayList<Future<Void>> threads = new ArrayList<>();
