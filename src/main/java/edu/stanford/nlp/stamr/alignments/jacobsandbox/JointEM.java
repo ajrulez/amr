@@ -443,8 +443,12 @@ public class JointEM {
 
 
     private static boolean isLikelyRef(String str){
-        return str.length() == 2 && str.charAt(0) >= 'a' && str.charAt(0) <= 'z'
-                                 && str.charAt(1) >= '0' && str.charAt(1) <= '9';
+        if(str.length() == 2 && str.charAt(0) >= 'a' && str.charAt(0) <= 'z'
+                                 && str.charAt(1) >= '0' && str.charAt(1) <= '9')
+            return true;
+        if(str.length() == 1 && str.charAt(0) >= 'a' && str.charAt(0) <= 'z')
+            return true;
+        return false;
     }
 
     static void read(String path, AMR[] bank, AugmentedToken[][] tokens, AMR.Node[][] nodes, int bankSize){
@@ -465,10 +469,12 @@ public class JointEM {
                         if(nodes[i][j].title.equals(nodes[i][k].ref)){
                             nodes[i][j].ref = nodes[i][k].ref;
                             nodes[i][j].title = nodes[i][k].title;
+                            nodes[i][j].type = nodes[i][k].type;
                             break;
                         }
                     }
                 }
+                nodes[i][j].neighborSet = bank[i].getNeighborsSafe(nodes[i][j]);
             }
 //            System.out.println("Data for example " + i + ":");
 //            System.out.println("\ttokens:");
@@ -533,7 +539,7 @@ public class JointEM {
     }
 
     enum Action {
-        IDENTITY, NONE, VERB, LEMMA, DICT, NAME, PERSON, /*VERB02, VERB03, VERB41, AMRRULE*/;
+        IDENTITY, NONE, VERB, LEMMA, DICT, NAME, PERSON, XER, /*VERB02, VERB03, VERB41, AMRRULE*/;
         public static List<Action> validValues(AugmentedToken token, AMR.Node node) {
             List<Action> rtn = new ArrayList<>();
             if(token.forcedAction != null){
@@ -584,6 +590,18 @@ public class JointEM {
                 return new MatchNode.NamedEntityMatchNode(token.value, "name");
             case PERSON:
                 return new MatchNode.NamedEntityMatchNode(token.value, "person");
+            case XER:
+                if(token.value.length() < 2
+                        || !token.value.substring(token.value.length()-2).equals("er")
+                        || !token.ner.equals("title")){
+                    return new MatchNode.XerMatchNode(null);
+                } else {
+                    String verb0 = token.value.substring(0, token.value.length()-2);
+                    String verb = ((MatchNode.VerbMatchNode)cache.getClosestFrame(frameManager, verb0, lemmaDict)).verbName;
+                    //System.out.println("Trying XER " + token.value + " => " +
+                    //        verb + " (" + token.stem + "," + verb + "," + token.ner + ")");
+                    return new MatchNode.XerMatchNode(verb);
+                }
 //            case AMRRULE:
 //                return new AMRRuleNode(token.amr);
             default:
