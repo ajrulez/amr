@@ -88,13 +88,6 @@ interface MatchNode {
         public double score(AMR.Node match, Model.SoftCountDict dict, Model.SoftCountDict nerDict) {
             if(verbMatch(verbName, match.title)) return 1.0;
             else return 0.0;
-//            if (verbName.length() >= 2 && match.title.length() >= 2) {
-//                if (verbName.substring(0, verbName.length() - 2).equals(match.title.substring(0, match.title.length() - 2))) {
-//                    return 1.0;
-//                }
-//            }
-//            return 0.0;
-
         }
 
         @Override
@@ -138,8 +131,6 @@ interface MatchNode {
                 if(nameNeighbor == null || nameNeighbor.op1 == null || !nameNeighbor.op1.equals(name)) return 0.0;
                 return nerDict.getProb(ner, match.title);
             }
-//            if (neTag.equals(match.title) && match.op1 != null && match.op1.equals(name)) return 1.0;
-//            if (match.type == AMR.NodeType.QUOTE && name.equals(match.title)) return 1.0;
             return 0.0;
         }
 
@@ -152,20 +143,26 @@ interface MatchNode {
         }
     }
 
-    public static class XerMatchNode implements MatchNode {
-        public final String verb;
-        public XerMatchNode(String verb){
-            this.verb = verb;
+    public static class XerMatchNode extends LemmaMatchNode {
+        public XerMatchNode(String stanfordLemma, Counter<String> lemmas) {
+            super(stanfordLemma, lemmas);
         }
         public double score(AMR.Node match, Model.SoftCountDict dict, Model.SoftCountDict nerDict){
-            if(verb != null){
+            if(match instanceof NoneNode) return 0.0;
+            if(stanfordLemma != null){
                 if ("person".equals(match.title)){
-                    for(String title : match.neighborSet){
-                        if(verbMatch(verb, title)) return 1.0;
+                    HashSet<AMR.CorefGroup> neighbors = match.amr.adjacencySet.get(new AMR.CorefGroup(match.ref));
+                    double best = 0.0;
+                    for(AMR.CorefGroup group : neighbors){
+                        if(group == null) continue;
+                        for(AMR.Node nodeInGroup : group.nodes){
+                            best = Math.max(best, super.score(nodeInGroup, dict, nerDict));
+                        }
                     }
-                    return 0.0;
+                    return best;
                 }
-                if (verbMatch(verb, match.title)) return 1.0;
+                if(!match.neighborSet.contains("person")) return 0.0;
+                return super.score(match, dict, nerDict);
             }
             return 0.0;
         }
@@ -179,7 +176,6 @@ interface MatchNode {
             this.candidates = lemmas;
         }
         public double score(AMR.Node match, Model.SoftCountDict dict, Model.SoftCountDict nerDict) {
-//            return candidates.containsKey(match.title.toLowerCase()) ? 1.0 : 0.0;
             if(match.type != AMR.NodeType.ENTITY) return 0.0;
             if (stanfordLemma.equalsIgnoreCase(match.title)) {
                 return 1.0;

@@ -15,7 +15,6 @@ import edu.stanford.nlp.stamr.AMR;
 class AugmentedToken {
     public final int index;
     public final String value, sense, stem, ner;
-    AMR amr = null;
     public final boolean blocked;
     public final JointEM.Action forcedAction;
 

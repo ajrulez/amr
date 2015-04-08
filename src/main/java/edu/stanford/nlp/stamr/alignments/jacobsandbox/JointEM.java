@@ -252,7 +252,7 @@ public class JointEM {
             final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, TRAIN_GAMMA, TRAIN_ALPHA);
             final Model.SoftCountDict nextNerDict = new Model.SoftCountDict(nerFreqs, TRAIN_GAMMA, TRAIN_ALPHA);
             final AtomicDouble logZTot = new AtomicDouble(0.0);
-            ExecutorService threadPool = Executors.newFixedThreadPool(Execution.threads);
+            ExecutorService threadPool = Executors.newFixedThreadPool(1); //Execution.threads);
             ArrayList<Future<Void>> threads = new ArrayList<>();
             for(int n = 0; n < bankSize; n++){
                 final AugmentedToken[] curTokens = tokens[n];
@@ -591,13 +591,12 @@ public class JointEM {
             ret.add("POST|" + token.value.substring(token.value.length()-3) + "|" + action.toString());
         }*/
         ret.add("NER|" + token.ner + "|" + action.toString());
-        ret.add("AMR|" + (token.amr == null ? "0" : "1") + "|" + action.toString());
         //ret.add("BLK|" + (token.blocked ? "1" : "0") + "|" + action.toString());
         return ret;
     }
 
     enum Action {
-        IDENTITY, NONE, VERB, LEMMA, DICT, NAME, XER, /*VERB02, VERB03, VERB41, AMRRULE*/;
+        IDENTITY, NONE, VERB, LEMMA, DICT, NAME, /*VERB02, VERB03, VERB41, AMRRULE*/;
         public static List<Action> validValues(AugmentedToken token, AMR.Node node) {
             List<Action> rtn = new ArrayList<>();
             if(token.forcedAction != null){
@@ -630,46 +629,23 @@ public class JointEM {
                 } else {
                     return new MatchNode.VerbMatchNode(srlSense);
                 }
-//            case VERB02:
-//                verb = cache.getClosestFrame(frameManager, token.stem).name;
-//                return new MatchNode(stemize(verb, "02"));
-//            case VERB03:
-//                verb = cache.getClosestFrame(frameManager, token.stem).name;
-//                return new MatchNode(stemize(verb, "03"));
-//            case VERB41:
-//                verb = cache.getClosestFrame(frameManager, token.stem).name;
-//                return new MatchNode(stemize(verb, "41"));
             case LEMMA:
-                return new MatchNode.LemmaMatchNode(token.stem, lemmaDict.lemmasFor(token.value.toLowerCase()));
-//                return new MatchNode.ExactMatchNode(token.stem);
+                if(token.ner.equals("title")){
+                    return new MatchNode.XerMatchNode(token.stem, lemmaDict.lemmasFor(token.value.toLowerCase()));
+                } else {
+                    return new MatchNode.LemmaMatchNode(token.stem, lemmaDict.lemmasFor(token.value.toLowerCase()));
+                }
             case DICT:
                 return new MatchNode.DictMatchNode(token.value);
             case NAME:
                 return new MatchNode.NamedEntityMatchNode(token.value, token.ner);
-            //case PERSON:
-            //    return new MatchNode.NamedEntityMatchNode(token.value, "person");
-            case XER:
-                if(/*token.value.length() < 2
-                        || !token.value.substring(token.value.length()-2).equals("er")
-                        ||*/ !token.ner.equals("title")){
-                    return new MatchNode.XerMatchNode(null);
-                } else {
-                    //String verb0 = token.value.substring(0, token.value.length()-2);
-                    String verb = ((MatchNode.VerbMatchNode)cache.getClosestFrame(frameManager, token.value, lemmaDict)).verbName;
-                    //System.out.println("Trying XER " + token.value + " => " +
-                    //        verb + " (" + token.stem + "," + verb + "," + token.ner + ")");
-                    return new MatchNode.XerMatchNode(verb);
-                }
-//            case AMRRULE:
-//                return new AMRRuleNode(token.amr);
             default:
                 throw new RuntimeException("invalid action");
         }
     }
 
     private static AugmentedToken[] augmentedTokens(String[] tokens, Annotation annotation) {
-        //AugmentedToken[] output = new AugmentedToken[tokens.length];
-        ArrayList<AugmentedToken> output0 = new ArrayList<AugmentedToken>();
+        AugmentedToken[] output = new AugmentedToken[tokens.length];
         Set<Integer> blocked = new HashSet<>();
 
         // Force anything inside an -LRB- -RRB- to be NONE, which is how AMR generally handles it
@@ -688,49 +664,16 @@ public class JointEM {
             }
         }
 
-        HashSet<String> tagSet = new HashSet<String>();
-        tagSet.add("date");
-        tagSet.add("number");
-        tagSet.add("money");
-        AugmentedToken headToken = null;
-        ArrayList<Integer> nerList = new ArrayList<Integer>();
         for (int i = 0; i < tokens.length; i++) {
             String srlSense = getSRLSenseAtIndex(annotation, i);
             String stem = annotation.get(CoreAnnotations.TokensAnnotation.class).
                             get(i).get(CoreAnnotations.LemmaAnnotation.class).toLowerCase();
             String nerTag = annotation.get(CoreAnnotations.TokensAnnotation.class).get(i).get(CoreAnnotations.NamedEntityTagAnnotation.class);
             nerTag = nerTag.toLowerCase();
-            /*if(tokens[i].equals("million")){
-                System.out.println("NERTAG " + tokens[i-1] + " " + nerTag);
-            }*/
-            output0.add(new AugmentedToken(i, tokens[i], srlSense, stem, nerTag, blocked.contains(i)));
-            if(!tagSet.contains(nerTag)) {
-                nerList.clear();
-                continue;
-            }
-            // we currently don't handle the rules below correctly, so commented out to improve accuracy
-            /*if(nerList.size() == 0){
-                headToken = output0.get(output0.size()-1);
-            }
-            nerList.add(i);
-            String nextTag = "o";
-            if(i+1 < tokens.length){
-                nextTag = annotation.get(CoreAnnotations.TokensAnnotation.class).get(i+1).get(CoreAnnotations.NamedEntityTagAnnotation.class);
-                nextTag = nextTag.toLowerCase();
-            }
-            if(!nextTag.equals(nerTag)){
-                System.out.println("Constructing amr...");
-                if(nerTag.equals("number") || nerTag.equals("money")){
-                    headToken.amr = RuleBased.constructNumberCluster(annotation, nerList);
-                } else {
-                    headToken.amr = RuleBased.constructDateCluster(annotation, nerList);
-                }
-                System.out.println(headToken.amr);
-                nerList.clear();
-            }*/
+            output[i] = new AugmentedToken(i, tokens[i], srlSense, stem, nerTag, blocked.contains(i));
         }
 
-        return output0.toArray(new AugmentedToken[0]);
+        return output;
     }
 
     private static String getSRLSenseAtIndex(Annotation annotation, int index) {
