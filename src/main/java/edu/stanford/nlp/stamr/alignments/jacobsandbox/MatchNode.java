@@ -3,6 +3,8 @@ package edu.stanford.nlp.stamr.alignments.jacobsandbox;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stats.Counter;
 
+import java.util.HashSet;
+
 /**
  * Created by jacob on 4/5/15.
  * Heavily modified by Gabor 2015-04-06
@@ -15,9 +17,10 @@ interface MatchNode {
      *
      * @param match
      * @param dict
+     * @param nerDict
      * @return
      */
-    public double score(AMR.Node match, Model.SoftCountDict dict);
+    public double score(AMR.Node match, Model.SoftCountDict dict, Model.SoftCountDict nerDict);
 
 
 
@@ -26,7 +29,7 @@ interface MatchNode {
         public DictMatchNode(String name) {
             this.name = name;
         }
-        public double score(AMR.Node match, Model.SoftCountDict dict) {
+        public double score(AMR.Node match, Model.SoftCountDict dict, Model.SoftCountDict nerDict) {
             return dict.getProb(name, match.title);
         }
 
@@ -40,7 +43,7 @@ interface MatchNode {
 
     public static class NoneMatchNode implements MatchNode {
         public NoneMatchNode() { }
-        public double score(AMR.Node match, Model.SoftCountDict dict) {
+        public double score(AMR.Node match, Model.SoftCountDict dict, Model.SoftCountDict nerDict) {
             if(match instanceof NoneNode){
                 return 1.0;
             } else {
@@ -59,7 +62,7 @@ interface MatchNode {
         public ExactMatchNode(String name) {
             this.name = name;
         }
-        public double score(AMR.Node match, Model.SoftCountDict dict) {
+        public double score(AMR.Node match, Model.SoftCountDict dict, Model.SoftCountDict nerDict) {
             return this.name.equalsIgnoreCase(match.title) ? 1.0 : 0.0;
         }
 
@@ -82,7 +85,7 @@ interface MatchNode {
             this.verbName = name;
         }
 
-        public double score(AMR.Node match, Model.SoftCountDict dict) {
+        public double score(AMR.Node match, Model.SoftCountDict dict, Model.SoftCountDict nerDict) {
             if(verbMatch(verbName, match.title)) return 1.0;
             else return 0.0;
 //            if (verbName.length() >= 2 && match.title.length() >= 2) {
@@ -104,14 +107,39 @@ interface MatchNode {
 
     public static class NamedEntityMatchNode implements MatchNode {
         public final String name;
-        public final String neTag;
-        public NamedEntityMatchNode(String name, String neTag) {
+        public final String ner;
+        public NamedEntityMatchNode(String name, String ner) {
             this.name = name;
-            this.neTag = neTag;
+            this.ner = ner;
         }
-        public double score(AMR.Node match, Model.SoftCountDict dict) {
-            if (neTag.equals(match.title) && match.op1 != null && match.op1.equals(name)) return 1.0;
-            if (match.type == AMR.NodeType.QUOTE && name.equals(match.title)) return 1.0;
+        public double score(AMR.Node match, Model.SoftCountDict dict, Model.SoftCountDict nerDict) {
+            if(match instanceof NoneNode) return 0.0;
+            // case 1: part of the quote
+            if(match.type == AMR.NodeType.QUOTE
+                    && match.neighborSet.contains("name") && match.title.equals(name)) return 1.0;
+            // case 2: name node
+            if(match.title.equals("name") && match.op1 != null && match.op1.equals(name)) return 1.0;
+            // case 3: ner node
+            if(match.type != AMR.NodeType.ENTITY) return 0.0;
+            if(match.neighborSet.contains("name")){
+                //System.out.println("match " + match + " ref " + match.ref + " keys " + match.amr.adjacencySet.keySet());
+                HashSet<AMR.CorefGroup> neighbors = match.amr.adjacencySet.get(new AMR.CorefGroup(match.ref));
+                AMR.Node nameNeighbor = null;
+                outer:
+                for(AMR.CorefGroup group : neighbors){
+                    if(group == null) continue;
+                    for(AMR.Node nodeInGroup : group.nodes){
+                        if(nodeInGroup.title.equals("name")){
+                            nameNeighbor = nodeInGroup;
+                            break outer;
+                        }
+                    }
+                }
+                if(nameNeighbor == null || nameNeighbor.op1 == null || !nameNeighbor.op1.equals(name)) return 0.0;
+                return nerDict.getProb(ner, match.title);
+            }
+//            if (neTag.equals(match.title) && match.op1 != null && match.op1.equals(name)) return 1.0;
+//            if (match.type == AMR.NodeType.QUOTE && name.equals(match.title)) return 1.0;
             return 0.0;
         }
 
@@ -119,7 +147,7 @@ interface MatchNode {
         public String toString() {
             return "NamedEntityMatchNode{" +
                     "name='" + name + '\'' +
-                    ", neTag='" + neTag + '\'' +
+                    ", ner='" + ner + '\'' +
                     '}';
         }
     }
@@ -129,7 +157,7 @@ interface MatchNode {
         public XerMatchNode(String verb){
             this.verb = verb;
         }
-        public double score(AMR.Node match, Model.SoftCountDict dict){
+        public double score(AMR.Node match, Model.SoftCountDict dict, Model.SoftCountDict nerDict){
             if(verb != null){
                 if ("person".equals(match.title)){
                     for(String title : match.neighborSet){
@@ -150,7 +178,7 @@ interface MatchNode {
             this.stanfordLemma = stanfordLemma;
             this.candidates = lemmas;
         }
-        public double score(AMR.Node match, Model.SoftCountDict dict) {
+        public double score(AMR.Node match, Model.SoftCountDict dict, Model.SoftCountDict nerDict) {
 //            return candidates.containsKey(match.title.toLowerCase()) ? 1.0 : 0.0;
             if(match.type != AMR.NodeType.ENTITY) return 0.0;
             if (stanfordLemma.equalsIgnoreCase(match.title)) {

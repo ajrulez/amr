@@ -7,6 +7,6 @@ import edu.stanford.nlp.stamr.AMR;
  */
 public class NoneNode extends AMR.Node {
     public NoneNode(){
-        super("LKSJADLKJD", "KSJALKFJSA", AMR.NodeType.VALUE);
+        super("NONE_NODE", "NONE_NODE", AMR.NodeType.VALUE, null);
     }
 }

@@ -17,6 +17,8 @@ public class Model implements Serializable {
     // TODO(gabor) handle me better than setting me after doEM()
     public SoftCountDict dict;
     // TODO(gabor) handle me better than setting me after doEM()
+    public SoftCountDict nerDict;
+    // TODO(gabor) handle me better than setting me after doEM()
     public LemmaAction lemmaDict;
 
     public void adagrad(Map<String, Double> gradient, double step){
