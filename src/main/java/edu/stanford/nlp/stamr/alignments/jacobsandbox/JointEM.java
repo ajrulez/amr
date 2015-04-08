@@ -349,21 +349,21 @@ public class JointEM {
                 AugmentedToken token = tokenWithAction.token;
                 Action action = tokenWithAction.action;
                 // Find the gold alignment
-                Set<AMR.Node> goldNodes = new HashSet<>();
+                Set<Integer> goldNodes = new HashSet<>();
                 for (AMR.Node candidate : amr) {
                     if (namedEntityTypes.contains(node.title)) { continue; }
                     if (candidate.alignment == token.index) {
-                        goldNodes.add(candidate);
+                        goldNodes.add(candidate.alignment);
                     }
                 }
                 // Register the accuracy data point
-                if(goldNodes.contains(node)) {
+                if(goldNodes.contains(node.alignment)) {
                     numCorrect += 1;
                 }
                 numTotal++;
                 // Debug print the alignment
                 String prefix = "✓";
-                if(!goldNodes.contains(node)) {
+                if(!goldNodes.contains(node.alignment)) {
                     prefix = "x";
                 }
                 String msg = prefix + " " + node + "[" + node.alignment + " = " + lpTokens[n][node.alignment].value
