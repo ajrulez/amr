@@ -96,10 +96,40 @@ public class JointEM {
         */
     }});
     private static final Set<String> nerTypes = Collections.unmodifiableSet(new HashSet<String>() {{
+        // From NER
         add("person");
+        // From RegexNER
         add("country");
         add("city");
         add("company");
+
+        /*
+        // from AMRNERAnnotator
+        // (regexner maps)
+        add("region");
+        add("continent");
+        add("criminal-organization");
+        add("game");
+        add("mass-quantity");
+        add("region");
+        add("religious-group");
+        add("url-entity");
+        // (extra regex maps)
+        add("publication");
+        add("university");
+        add("government-organization");
+        add("political-party");
+        add("monetary-quantity");
+        add("percent");
+        add("number");
+        // (keyword maps)
+        add("spaceship");
+        add("peninsula");
+        add("newspaper");
+        add("project");
+        add("county");
+        */
+        // Other
         /*
         add("date-entity");
         add("continent");
@@ -392,10 +422,12 @@ public class JointEM {
                 Action action = tokenWithAction.action;
                 // Find the gold alignment
                 Set<Integer> goldNodes = new HashSet<>();
+                AMR.Node exemplarGold = null;
                 for (AMR.Node candidate : amr) {
                     if (namedEntityTypes.contains(node.title)) { continue; }
                     if (candidate.alignment == token.index) {
                         goldNodes.add(candidate.alignment);
+                        exemplarGold = candidate;
                     }
                 }
                 // Register the accuracy data point
@@ -414,7 +446,7 @@ public class JointEM {
 //                    msg += " :: " + Counters.toVerticalString(model.lemmaDict.lemmasFor(token.value));
 //                }
                 System.out.println(msg);
-                debugWriter.println(action + "\t" + prefix + "\t" + token.value + "\t" + node + "\t" + (goldNodes.isEmpty() ? "none" : goldNodes.iterator().next()));
+                debugWriter.println(action + "\t" + prefix + "\t" + token.value + "\t" + node + "\t" + exemplarGold);
             }
         }
 
