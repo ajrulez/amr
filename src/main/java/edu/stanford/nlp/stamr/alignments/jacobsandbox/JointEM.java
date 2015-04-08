@@ -1,6 +1,5 @@
 package edu.stanford.nlp.stamr.alignments.jacobsandbox;
 
-import edu.berkeley.nlp.util.StringUtils;
 import edu.stanford.nlp.cache.BatchCoreNLPCache;
 import edu.stanford.nlp.cache.CoreNLPCache;
 import edu.stanford.nlp.curator.CuratorAnnotations;
@@ -11,7 +10,6 @@ import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.stamr.AMR;
 import edu.stanford.nlp.stamr.AMRSlurp;
-import edu.stanford.nlp.stats.Counters;
 import edu.stanford.nlp.util.Execution;
 import edu.stanford.nlp.util.concurrent.AtomicDouble;
 import edu.stanford.nlp.util.logging.StanfordRedwoodConfiguration;
@@ -21,7 +19,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 import java.util.concurrent.*;
-import java.util.stream.Collectors;
 
 import static edu.stanford.nlp.util.logging.Redwood.Util.*;
 
@@ -72,7 +69,7 @@ public class JointEM {
     private static boolean MODEL_CLOBBER = true;
 
     private static final Set<String> namedEntityTypes = Collections.unmodifiableSet(new HashSet<String>() {{
-        add("name");
+        //add("name");
         /*
         add("person");
         add("country");
@@ -83,6 +80,32 @@ public class JointEM {
         add("monetary-quantity");
         add("temporal-quantity");
         add("company");
+        add("government-organization");
+        add("university");
+        add("aircraft-type");
+        add("criminal-organization");
+        add("political-party");
+        add("spaceship");
+        add("world-region");
+        add("aircraft-type");
+        add("game");
+        add("event");
+        add("book");
+        add("earthquake");
+        add("mass-quantity");
+        */
+    }});
+    private static final Set<String> nerTypes = Collections.unmodifiableSet(new HashSet<String>() {{
+        add("person");
+        add("country");
+        add("city");
+        add("company");
+        /*
+        add("date-entity");
+        add("continent");
+        add("organization");
+        add("monetary-quantity");
+        add("temporal-quantity");
         add("government-organization");
         add("university");
         add("aircraft-type");
@@ -170,12 +193,17 @@ public class JointEM {
 
         // initialize frequencies
         HashMap<String, Integer> freqs = new HashMap<String, Integer>();
+        HashMap<String, Integer> nerFreqs = new HashMap<String, Integer>();
         for(int n = 0; n < bankSize; n++){
             for(AMR.Node node : nodes[n]){
                 if (namedEntityTypes.contains(node.title)) { continue; }
                 Integer x = freqs.get(node.title);
                 if(x == null) freqs.put(node.title, 1);
                 else freqs.put(node.title, x+1);
+                if(!nerTypes.contains(node.title)) continue;
+                x = nerFreqs.get(node.title);
+                if(x == null) nerFreqs.put(node.title, 1);
+                else nerFreqs.put(node.title, x+1);
             }
         }
 
@@ -183,10 +211,14 @@ public class JointEM {
         // and nodes[i] has all the required node info
         // and we can just solve the alignment problem
         Model.SoftCountDict oldDict = new Model.SoftCountDict(freqs, TRAIN_GAMMA, TRAIN_ALPHA);
+        Model.SoftCountDict oldNerDict = new Model.SoftCountDict(nerFreqs, TRAIN_GAMMA, TRAIN_ALPHA);
         for(int iter = 0; iter < TRAIN_ITERS; iter++){
+            final int Iter = iter;
             forceTrack("Iteration " + (iter + 1) + " / " + TRAIN_ITERS);
             final Model.SoftCountDict curDict = oldDict;
+            final Model.SoftCountDict curNerDict = oldNerDict;
             final Model.SoftCountDict nextDict = new Model.SoftCountDict(freqs, TRAIN_GAMMA, TRAIN_ALPHA);
+            final Model.SoftCountDict nextNerDict = new Model.SoftCountDict(nerFreqs, TRAIN_GAMMA, TRAIN_ALPHA);
             final AtomicDouble logZTot = new AtomicDouble(0.0);
             ExecutorService threadPool = Executors.newFixedThreadPool(Execution.threads);
             ArrayList<Future<Void>> threads = new ArrayList<>();
@@ -239,8 +271,10 @@ public class JointEM {
                             if (namedEntityTypes.contains(node.title)) {
                                 continue;
                             }
+                            //if(Iter >= 8 && Iter < 10 && Math.random() < 0.3) continue;
                             double Zsrc = 0.0, Ztar = 0.0;
                             HashMap<String, Double> counts = new HashMap<String, Double>();
+                            HashMap<String, Double> nerCounts = new HashMap<String, Double>();
                             Map<String, Double> gradientSrc = new HashMap<String, Double>(),
                                     gradientTar = new HashMap<String, Double>();
                             // For each token...
@@ -265,7 +299,7 @@ public class JointEM {
                                 for (Action action : Action.validValues(token, node)) {
                                     List<String> features = extractFeatures(token, action);
                                     double probSrc = Math.exp(model.score(features) - logZ2);
-                                    double likelihood = getNode(token, action, lemmaDict, cache).score(node, curDict);
+                                    double likelihood = getNode(token, action, lemmaDict, cache).score(node, curDict, curNerDict);
                                     //if (curN == 0 && likelihood > 0.01)
                                     //    System.out.println("likelihood(" + token + "," + action + "," + node + ") = " + likelihood);
                                     double probTar = probSrc * likelihood;
@@ -276,10 +310,16 @@ public class JointEM {
                                     if (action == Action.DICT) {
                                         counts.put(token.value, probTar);
                                     }
+                                    if(action == Action.NAME && nerTypes.contains(node.title)) {
+                                        counts.put(token.ner, probTar);
+                                    }
                                 }
                             }
                             for (Map.Entry<String, Double> e : counts.entrySet()) {
                                 nextDict.addCount(e.getKey(), node.title, e.getValue() / Ztar);
+                            }
+                            for (Map.Entry<String, Double> e : nerCounts.entrySet()) {
+                                nextNerDict.addCount(e.getKey(), node.title, e.getValue() / Ztar);
                             }
                             Map<String, Double> gradient = new HashMap<String, Double>();
                             Util.incr(gradient, gradientSrc, -1.0 / Zsrc);
@@ -295,8 +335,9 @@ public class JointEM {
                 };
                 threads.add(threadPool.submit(thread));
             }
-            if(iter >= 8 && iter % 1 == 0) {
+            if(iter >= 8) {
                 oldDict = nextDict;
+                oldNerDict = nextNerDict;
             }
             threadPool.shutdown();
             threadPool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
@@ -314,6 +355,7 @@ public class JointEM {
         */
 
         model.dict = oldDict;
+        model.nerDict = oldNerDict;
         model.lemmaDict = lemmaDict;
 
         return model;
@@ -474,7 +516,7 @@ public class JointEM {
                         }
                     }
                 }
-                nodes[i][j].neighborSet = bank[i].getNeighborsSafe(nodes[i][j]);
+                nodes[i][j].neighborSet = bank[i].getNeighborsSafe(bank[i].neighbors, nodes[i][j]);
             }
 //            System.out.println("Data for example " + i + ":");
 //            System.out.println("\ttokens:");
@@ -510,7 +552,7 @@ public class JointEM {
             for(Action action : Action.validValues(token, node)){
                 List<String> features = extractFeatures(token, action);
                 double probSrc = Math.exp(model.score(features) - logZ2);
-                double likelihood = getNode(token, action, model.lemmaDict, cache).score(node, model.dict);
+                double likelihood = getNode(token, action, model.lemmaDict, cache).score(node, model.dict, model.nerDict);
                 double probTar = probSrc * likelihood;
                 if(bestToken == null || probTar > bestScore) {
                     bestToken = token;
@@ -539,7 +581,7 @@ public class JointEM {
     }
 
     enum Action {
-        IDENTITY, NONE, VERB, LEMMA, DICT, NAME, PERSON, XER, /*VERB02, VERB03, VERB41, AMRRULE*/;
+        IDENTITY, NONE, VERB, LEMMA, DICT, NAME, XER, /*VERB02, VERB03, VERB41, AMRRULE*/;
         public static List<Action> validValues(AugmentedToken token, AMR.Node node) {
             List<Action> rtn = new ArrayList<>();
             if(token.forcedAction != null){
@@ -587,17 +629,17 @@ public class JointEM {
             case DICT:
                 return new MatchNode.DictMatchNode(token.value);
             case NAME:
-                return new MatchNode.NamedEntityMatchNode(token.value, "name");
-            case PERSON:
-                return new MatchNode.NamedEntityMatchNode(token.value, "person");
+                return new MatchNode.NamedEntityMatchNode(token.value, token.ner);
+            //case PERSON:
+            //    return new MatchNode.NamedEntityMatchNode(token.value, "person");
             case XER:
-                if(token.value.length() < 2
+                if(/*token.value.length() < 2
                         || !token.value.substring(token.value.length()-2).equals("er")
-                        || !token.ner.equals("title")){
+                        ||*/ !token.ner.equals("title")){
                     return new MatchNode.XerMatchNode(null);
                 } else {
-                    String verb0 = token.value.substring(0, token.value.length()-2);
-                    String verb = ((MatchNode.VerbMatchNode)cache.getClosestFrame(frameManager, verb0, lemmaDict)).verbName;
+                    //String verb0 = token.value.substring(0, token.value.length()-2);
+                    String verb = ((MatchNode.VerbMatchNode)cache.getClosestFrame(frameManager, token.value, lemmaDict)).verbName;
                     //System.out.println("Trying XER " + token.value + " => " +
                     //        verb + " (" + token.stem + "," + verb + "," + token.ner + ")");
                     return new MatchNode.XerMatchNode(verb);

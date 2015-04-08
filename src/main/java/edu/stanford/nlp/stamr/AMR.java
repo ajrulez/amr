@@ -33,6 +33,7 @@ public class AMR implements Serializable {
         public String ref;
         public String op1 = null;
         public HashSet<String> neighborSet = null;
+        public AMR amr;
         public boolean isFirstRef = true;
         public int depth = 0;
         public int alignment = 0;
@@ -42,7 +43,15 @@ public class AMR implements Serializable {
 
         public NodeType type;
 
-        public Node(String ref, String title, NodeType type) {this.ref = ref; this.title = title; this.type = type;}
+        public Node(String ref, String title, NodeType type, AMR amr) {
+            this.ref = ref;
+            this.title = title;
+            this.type = type;
+            this.amr = amr;
+        }
+        public Node(String ref, String title, NodeType type) {
+            this(ref, title, type, null);
+        }
 
         public String toString() {
             if (type == NodeType.ENTITY) {
@@ -109,9 +118,24 @@ public class AMR implements Serializable {
             this.ref = ref;
             nodes.add(seed);
         }
+        public CorefGroup(String ref){
+            this.ref = ref;
+        }
 
         public void addNode(Node node) {
             nodes.add(node);
+        }
+        @Override
+        public boolean equals(Object other){
+            return ref.equals(((CorefGroup)other).ref);
+        }
+        @Override
+        public int hashCode(){
+            return ref.hashCode();
+        }
+        @Override
+        public String toString(){
+            return ref + "(size=" + nodes.size() + ")";
         }
     }
 
@@ -129,13 +153,14 @@ public class AMR implements Serializable {
     public final Map<Node,List<Arc>> outgoingArcs = new IdentityHashMap<Node, List<Arc>>();
     public final Map<Node,List<Arc>> incomingArcs = new IdentityHashMap<Node, List<Arc>>();
     public final Map<String,CorefGroup> groups = new HashMap<String, CorefGroup>();
+    public final HashMap<CorefGroup, HashSet<CorefGroup>> adjacencySet = new HashMap<CorefGroup, HashSet<CorefGroup>>();
 
     // Just an optimization cache for EMAligner to use
     public final Map<Node,Set<Integer>> matchesCache = new IdentityHashMap<Node, Set<Integer>>();
 
     public int treeDepth = 0;
 
-    public Node nullNode = new Node("NULL","NULL", NodeType.ENTITY);
+    public Node nullNode = new Node("NULL","NULL", NodeType.ENTITY, null);
     public Arc nullArc = null;
 
     public MultiSentenceAnnotationWrapper multiSentenceAnnotationWrapper;
@@ -146,7 +171,7 @@ public class AMR implements Serializable {
     // PUBLIC INTERFACE
 
     public Node addNode(String ref, String title) {
-        Node node = new Node(ref, title, NodeType.ENTITY);
+        Node node = new Node(ref, title, NodeType.ENTITY, this);
         nodes.add(node);
         addNodeToGroup(node, ref);
         if (head == null) {
@@ -168,7 +193,7 @@ public class AMR implements Serializable {
     }
 
     public Node addNode(String title, NodeType type) {
-        Node node = new Node("", title, type);
+        Node node = new Node("", title, type, this);
         if (type == NodeType.QUOTE) {
             quoteNodeTextSet.add(title);
         }
@@ -188,7 +213,7 @@ public class AMR implements Serializable {
 
     public Node addNode(String ref) {
         // Take the same title as the first node in the group
-        Node node = new Node(ref, nodesWithRef(ref).iterator().next().title, NodeType.ENTITY);
+        Node node = new Node(ref, nodesWithRef(ref).iterator().next().title, NodeType.ENTITY, this);
         node.isFirstRef = false;
         nodes.add(node);
         addNodeToGroup(node, ref);
@@ -201,12 +226,12 @@ public class AMR implements Serializable {
         return node;
     }
 
-    HashMap<Node, HashSet<String>> neighbors = new HashMap<>();
-    public HashSet<String> getNeighborsSafe(Node n){
-        HashSet<String> ret = neighbors.get(n);
+    public final HashMap<Node, HashSet<String>> neighbors = new HashMap<>();
+    public <T1,T2> HashSet<T2> getNeighborsSafe(HashMap<T1, HashSet<T2>> map, T1 key){
+        HashSet<T2> ret = map.get(key);
         if(ret == null){
             ret = new HashSet<>();
-            neighbors.put(n, ret);
+            map.put(key, ret);
         }
         return ret;
     }
@@ -216,8 +241,10 @@ public class AMR implements Serializable {
 //            System.out.println("adding " + tail.title + " as op1 of " + head.title);
             head.op1 = tail.title;
         }
-        getNeighborsSafe(head).add(tail.title);
-        getNeighborsSafe(tail).add(head.title);
+        getNeighborsSafe(adjacencySet, groups.get(head.ref)).add(groups.get(tail.ref));
+        getNeighborsSafe(adjacencySet, groups.get(tail.ref)).add(groups.get(head.ref));
+        getNeighborsSafe(neighbors, head).add(tail.title);
+        getNeighborsSafe(neighbors, tail).add(head.title);
         Arc arc = new Arc(head,tail,title);
         arcs.add(arc);
         addNodeArcToMap(head, arc, outgoingArcs);

@@ -12,7 +12,7 @@ public class AMRRuleNode implements MatchNode {
     }
 
     @Override
-    public double score(AMR.Node match, Model.SoftCountDict dict) {
+    public double score(AMR.Node match, Model.SoftCountDict dict, Model.SoftCountDict nerDict) {
         if(amr == null) return 0.0;
         // TODO check that neighbors match too
         if(amr.nodeWithName(match.title) != null) return 1.0;
