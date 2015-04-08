@@ -60,7 +60,7 @@ public class BatchCoreNLPCache extends CoreNLPCache {
             else {
 
                 Properties props = new Properties();
-                props.put("annotators", "tokenize, ssplit, pos, lemma, ner, regexner1, regexner2, depparse"); //parse, dcoref, srl, nom, prep");
+                props.put("annotators", "tokenize, ssplit, pos, lemma, ner, regexner1, regexner2, regexner_amr, depparse"); //parse, dcoref, srl, nom, prep");
                 props.put("curator.host", "localhost"); // point to the curator host
                 props.put("curator.port", "9010"); // point to the curator port
 
@@ -74,6 +74,12 @@ public class BatchCoreNLPCache extends CoreNLPCache {
                 props.put("regexner2.mapping", "data/kbp_regexner_mapping.tab");
                 props.put("regexner2.ignorecase", "false");
                 props.put("regexner2.noDefaultOverwriteLabels", "CITY");
+
+                props.put("customAnnotatorClass.regexner_amr", "edu.stanford.nlp.stamr.annotation.AMRNERAnnotator");
+                props.put("regexner_amr.mapping", "data/amr_regexner.tab");
+                props.put("regexner_amr.validpospattern", "^(NN|JJ).*");
+                props.put("regexner_amr.ignorecase", "true");
+                props.put("regexner_amr.noDefaultOverwriteLabels", "CITY");
 
                 StanfordCoreNLP coreNLP = new CuratorClient(props, false);
 

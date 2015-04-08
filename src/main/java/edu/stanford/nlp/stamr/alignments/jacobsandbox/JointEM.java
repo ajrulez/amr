@@ -98,11 +98,41 @@ public class JointEM {
         */
     }});
     private static final Set<String> nerTypes = Collections.unmodifiableSet(new HashSet<String>() {{
+        // From NER
         add("person");
+        // From RegexNER
         add("country");
         add("city");
         add("company");
-/*        add("date-entity");
+        /*
+        // from AMRNERAnnotator
+        // (regexner maps)
+        add("region");
+        add("continent");
+        add("criminal-organization");
+        add("game");
+        add("mass-quantity");
+        add("region");
+        add("religious-group");
+        add("url-entity");
+        // (extra regex maps)
+        add("publication");
+        add("university");
+        add("government-organization");
+        add("political-party");
+        add("monetary-quantity");
+        add("percent");
+        add("number");
+        // (keyword maps)
+        add("spaceship");
+        add("peninsula");
+        add("newspaper");
+        add("project");
+        add("county");
+        */
+        // Other
+        /*
+        add("date-entity");
         add("continent");
         add("organization");
         add("monetary-quantity");
@@ -383,21 +413,23 @@ public class JointEM {
                 AugmentedToken token = tokenWithAction.token;
                 Action action = tokenWithAction.action;
                 // Find the gold alignment
-                Set<AMR.Node> goldNodes = new HashSet<>();
+                Set<Integer> goldNodes = new HashSet<>();
+                AMR.Node exemplarGold = null;
                 for (AMR.Node candidate : amr) {
                     if (namedEntityTypes.contains(node.title)) { continue; }
                     if (candidate.alignment == token.index) {
-                        goldNodes.add(candidate);
+                        goldNodes.add(candidate.alignment);
+                        exemplarGold = candidate;
                     }
                 }
                 // Register the accuracy data point
-                if(goldNodes.contains(node)) {
+                if(goldNodes.contains(node.alignment)) {
                     numCorrect += 1;
                 }
                 numTotal++;
                 // Debug print the alignment
                 String prefix = "✓";
-                if(!goldNodes.contains(node)) {
+                if(!goldNodes.contains(node.alignment)) {
                     prefix = "x";
                 }
                 String msg = prefix + " " + node + "[" + node.alignment + " = " + lpTokens[n][node.alignment].value
@@ -406,7 +438,7 @@ public class JointEM {
 //                    msg += " :: " + Counters.toVerticalString(model.lemmaDict.lemmasFor(token.value));
 //                }
                 System.out.println(msg);
-                debugWriter.println(action + "\t" + prefix + "\t" + token.value + "\t" + node + "\t" + (goldNodes.isEmpty() ? "none" : goldNodes.iterator().next()));
+                debugWriter.println(action + "\t" + prefix + "\t" + token.value + "\t" + node + "\t" + exemplarGold);
             }
         }
 
