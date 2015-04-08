@@ -45,9 +45,11 @@ public class JointEM {
 
     @Execution.Option(name="train.data", gloss="The path to the training data")
     private static String TRAIN_DATA = "data/training-500-subset.txt";
+    @Execution.Option(name="more.data", gloss="The path to more unlabeled data")
+    private static String MORE_DATA = "realdata/train-subset.txt";
 
     @Execution.Option(name="train.count", gloss="The number of examples to train on")
-    private static int TRAIN_COUNT = Integer.MAX_VALUE;
+    private static int TRAIN_COUNT = 500; //Integer.MAX_VALUE;
 
     @Execution.Option(name="train.iters", gloss="The number of iterations to run EM for")
     private static int TRAIN_ITERS = 20;
@@ -100,8 +102,7 @@ public class JointEM {
         add("country");
         add("city");
         add("company");
-        /*
-        add("date-entity");
+/*        add("date-entity");
         add("continent");
         add("organization");
         add("monetary-quantity");
@@ -118,8 +119,7 @@ public class JointEM {
         add("event");
         add("book");
         add("earthquake");
-        add("mass-quantity");
-        */
+        add("mass-quantity"); */
     }});
 
     static FrameManager frameManager;
@@ -181,11 +181,14 @@ public class JointEM {
         // first, grab all the data
         forceTrack("Loading training data");
         AMRSlurp.doingAlignments = false;
-        AMR[] bank = AMRSlurp.slurp(TRAIN_DATA, AMRSlurp.Format.LDC);
-        int bankSize = Math.min(bank.length, TRAIN_COUNT);
+        AMR[] bankLabeled = AMRSlurp.slurp(TRAIN_DATA, AMRSlurp.Format.LDC);
+        AMR[] bankUnlabeled = AMRSlurp.slurp(MORE_DATA, AMRSlurp.Format.LDC);
+        int bankLabeledSize = Math.min(bankLabeled.length, TRAIN_COUNT);
+        int bankSize = Math.min(bankLabeled.length + bankUnlabeled.length, TRAIN_COUNT);
         AugmentedToken[][] tokens = new AugmentedToken[bankSize][];
         AMR.Node[][] nodes = new AMR.Node[bankSize][];
-        read(TRAIN_DATA, bank, tokens, nodes, bankSize);
+        read(TRAIN_DATA, bankLabeled, tokens, nodes, 0, bankLabeledSize);
+        if(bankSize != bankLabeledSize) read(MORE_DATA, bankUnlabeled, tokens, nodes, bankLabeledSize, bankSize);
         endTrack("Loading training data");
 
         // Create candidate lemma dictionary
@@ -213,7 +216,6 @@ public class JointEM {
         Model.SoftCountDict oldDict = new Model.SoftCountDict(freqs, TRAIN_GAMMA, TRAIN_ALPHA);
         Model.SoftCountDict oldNerDict = new Model.SoftCountDict(nerFreqs, TRAIN_GAMMA, TRAIN_ALPHA);
         for(int iter = 0; iter < TRAIN_ITERS; iter++){
-            final int Iter = iter;
             forceTrack("Iteration " + (iter + 1) + " / " + TRAIN_ITERS);
             final Model.SoftCountDict curDict = oldDict;
             final Model.SoftCountDict curNerDict = oldNerDict;
@@ -225,19 +227,11 @@ public class JointEM {
             for(int n = 0; n < bankSize; n++){
                 final AugmentedToken[] curTokens = tokens[n];
                 final List<AMR.Node> curNodes = new ArrayList<>(Arrays.asList(nodes[n]));
-                final boolean supervised = (n % 2 == 0);
+                final boolean supervised = (n % 2 == 0) && n < bankLabeledSize;
                 if(!supervised){
                     for(int count = 0; count < (curTokens.length + 1) / 3; count++) {
                         curNodes.add(new NoneNode());
                     }
-                } else {
-                    /*Set<Integer> indices = new HashSet<Integer>();
-                    for(AMR.Node node : curNodes) indices.remove(node.alignment);
-                    for(Integer index : indices){
-                        AMR.Node newNode = new NoneNode();
-                        newNode.alignment = index;
-                        //curNodes.add(newNode);
-                    }*/
                 }
                 final int curN = n;
                 Callable<Void> thread = () -> {
@@ -300,8 +294,6 @@ public class JointEM {
                                     List<String> features = extractFeatures(token, action);
                                     double probSrc = Math.exp(model.score(features) - logZ2);
                                     double likelihood = getNode(token, action, lemmaDict, cache).score(node, curDict, curNerDict);
-                                    //if (curN == 0 && likelihood > 0.01)
-                                    //    System.out.println("likelihood(" + token + "," + action + "," + node + ") = " + likelihood);
                                     double probTar = probSrc * likelihood;
                                     Zsrc += probSrc;
                                     Ztar += probTar;
@@ -369,7 +361,7 @@ public class JointEM {
         int lpBankSize = Math.min(lpBank.length, TEST_COUNT);
         AugmentedToken[][] lpTokens = new AugmentedToken[lpBankSize][];
         AMR.Node[][] lpNodes = new AMR.Node[lpBankSize][];
-        read(TEST_DATA, lpBank, lpTokens, lpNodes, lpBankSize);
+        read(TEST_DATA, lpBank, lpTokens, lpNodes, 0, lpBankSize);
 
         int numCorrect = 0, numTotal = 0;
 
@@ -492,42 +484,34 @@ public class JointEM {
             return true;
         return false;
     }
-
-    static void read(String path, AMR[] bank, AugmentedToken[][] tokens, AMR.Node[][] nodes, int bankSize){
-        String[] sentences = new String[bankSize];
-        for (int i = 0; i < bankSize; i++) {
+    static void read(String path, AMR[] bank, AugmentedToken[][] tokens, AMR.Node[][] nodes,
+                     int offset, int end){
+        int size = end - offset;
+        String[] sentences = new String[size];
+        for (int i = 0; i < size; i++) {
             sentences[i] = bank[i].formatSourceTokens();
         }
         CoreNLPCache cache = new BatchCoreNLPCache(path, sentences);
         //AnnotationManager manager = new AnnotationManager();
-        for(int i = 0; i < bankSize; i++){
+        for(int i = 0; i < size; i++){
             //Annotation annotation = manager.annotate(bank[i].formatSourceTokens()).annotation;
             Annotation annotation = cache.getAnnotation(i);
-            tokens[i] = augmentedTokens(bank[i].sourceText, annotation);
-            nodes[i] = bank[i].nodes.toArray(new AMR.Node[0]);
-            for(int j = 0; j < nodes[i].length; j++){
-                if(isLikelyRef(nodes[i][j].title) && nodes[i][j].ref.length() == 0){
-                    for(int k = 0; k < nodes[i].length; k++){
-                        if(nodes[i][j].title.equals(nodes[i][k].ref)){
-                            nodes[i][j].ref = nodes[i][k].ref;
-                            nodes[i][j].title = nodes[i][k].title;
-                            nodes[i][j].type = nodes[i][k].type;
+            tokens[i + offset] = augmentedTokens(bank[i].sourceText, annotation);
+            nodes[i + offset] = bank[i].nodes.toArray(new AMR.Node[0]);
+            AMR.Node[] curNodes = nodes[i+offset];
+            for(int j = 0; j < curNodes.length; j++){
+                if(isLikelyRef(curNodes[j].title) && curNodes[j].ref.length() == 0){
+                    for(int k = 0; k < curNodes.length; k++){
+                        if(curNodes[j].title.equals(curNodes[k].ref)){
+                            curNodes[j].ref = curNodes[k].ref;
+                            curNodes[j].title = curNodes[k].title;
+                            curNodes[j].type = curNodes[k].type;
                             break;
                         }
                     }
                 }
-                nodes[i][j].neighborSet = bank[i].getNeighborsSafe(bank[i].neighbors, nodes[i][j]);
+                curNodes[j].neighborSet = bank[i].getNeighborsSafe(bank[i].neighbors, curNodes[j]);
             }
-//            System.out.println("Data for example " + i + ":");
-//            System.out.println("\ttokens:");
-//            for(AugmentedToken token : tokens[i]){
-//                System.out.println("\t\t" + token.value + " / " + token.sense + " / " + token.stem);
-//            }
-//            System.out.println("\tnodes:");
-//            for(AMR.Node node : nodes[i]){
-//                System.out.println("\t\t" + node.title + "\t|" + node.ref + "|\t" + node.isFirstRef);
-//            }
-//            System.out.println("-------------\n");
         }
     }
 
