@@ -32,6 +32,7 @@ public class AMR implements Serializable {
         public String title;
         public String ref;
         public String op1 = null;
+        public HashSet<String> neighborSet = null;
         public boolean isFirstRef = true;
         public int depth = 0;
         public int alignment = 0;
@@ -200,12 +201,23 @@ public class AMR implements Serializable {
         return node;
     }
 
+    HashMap<Node, HashSet<String>> neighbors = new HashMap<>();
+    public HashSet<String> getNeighborsSafe(Node n){
+        HashSet<String> ret = neighbors.get(n);
+        if(ret == null){
+            ret = new HashSet<>();
+            neighbors.put(n, ret);
+        }
+        return ret;
+    }
     public Arc addArc(Node head, Node tail, String title) {
         assert(head != tail);
         if(title.equals("op1")){
 //            System.out.println("adding " + tail.title + " as op1 of " + head.title);
             head.op1 = tail.title;
         }
+        getNeighborsSafe(head).add(tail.title);
+        getNeighborsSafe(tail).add(head.title);
         Arc arc = new Arc(head,tail,title);
         arcs.add(arc);
         addNodeArcToMap(head, arc, outgoingArcs);

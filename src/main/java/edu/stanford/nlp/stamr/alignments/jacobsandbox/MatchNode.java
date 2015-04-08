@@ -71,6 +71,11 @@ interface MatchNode {
         }
     }
 
+    static boolean verbMatch(String lhs, String rhs){
+        return lhs.length() >= 2 && rhs.length() >= 2
+                && lhs.substring(0, lhs.length()-2).equals(rhs.substring(0, rhs.length()-2));
+    }
+
     public static class VerbMatchNode implements MatchNode {
         public final String verbName;
         public VerbMatchNode(String name) {
@@ -78,12 +83,14 @@ interface MatchNode {
         }
 
         public double score(AMR.Node match, Model.SoftCountDict dict) {
-            if (verbName.length() >= 2 && match.title.length() >= 2) {
-                if (verbName.substring(0, verbName.length() - 2).equals(match.title.substring(0, match.title.length() - 2))) {
-                    return 1.0;
-                }
-            }
-            return 0.0;
+            if(verbMatch(verbName, match.title)) return 1.0;
+            else return 0.0;
+//            if (verbName.length() >= 2 && match.title.length() >= 2) {
+//                if (verbName.substring(0, verbName.length() - 2).equals(match.title.substring(0, match.title.length() - 2))) {
+//                    return 1.0;
+//                }
+//            }
+//            return 0.0;
 
         }
 
@@ -117,6 +124,25 @@ interface MatchNode {
         }
     }
 
+    public static class XerMatchNode implements MatchNode {
+        public final String verb;
+        public XerMatchNode(String verb){
+            this.verb = verb;
+        }
+        public double score(AMR.Node match, Model.SoftCountDict dict){
+            if(verb != null){
+                if ("person".equals(match.title)){
+                    for(String title : match.neighborSet){
+                        if(verbMatch(verb, title)) return 1.0;
+                    }
+                    return 0.0;
+                }
+                if (verbMatch(verb, match.title)) return 1.0;
+            }
+            return 0.0;
+        }
+    }
+
     public static class LemmaMatchNode implements MatchNode {
         public final String stanfordLemma;
         public final Counter<String> candidates;
@@ -126,6 +152,7 @@ interface MatchNode {
         }
         public double score(AMR.Node match, Model.SoftCountDict dict) {
 //            return candidates.containsKey(match.title.toLowerCase()) ? 1.0 : 0.0;
+            if(match.type != AMR.NodeType.ENTITY) return 0.0;
             if (stanfordLemma.equalsIgnoreCase(match.title)) {
                 return 1.0;
             } else {
